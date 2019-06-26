@@ -18,13 +18,13 @@ class GalleryController extends Controller
     }
 
     public function index(Request $request)
-    {   
+    {
         $this->title = ucfirst($request->query('type'));
         return view('_admin.gallery.index')->with('title', $this->title);
     }
 
     public function list(Request $request)
-    {   
+    {
         $type    = $request->query('type');
 
         $keyword = $request->get('only');

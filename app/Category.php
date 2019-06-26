@@ -16,9 +16,12 @@ class Category extends Model
     public static function newRecord($request)
     {
         $data= new Category;
-        $data->name = $request->get('name');
+        $data->name      = $request->get('name');
         $data->parent_id = $request->get('parent_id');
-        $data->slug = str_slug($request->get('name'));
+        $data->slug      = str_slug($request->get('name'));
+        if (self::whereSlug($data->slug)->exists()) {
+            $data->slug  = $data->slug.rand(1, 100);
+        }
 
         $data->save();
 

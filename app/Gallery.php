@@ -17,14 +17,18 @@ class Gallery extends Model
     protected $table = 'galleries';
 
     public static function newRecord($request)
-    {
-        $data= new Gallery;
+    {   
+        $data = new Gallery;
         $data->value    = $request->get('value');
         $data->title    = $request->get('title');
         $data->album_id = $request->get('album_id');
         $data->type     = $request->get('type');
         $data->publish  = $request->get('publish');
         $data->user_id  = Auth::guard('admin')->id();
+        $data->slug     = str_slug($request->get('title'));
+        if (self::whereSlug($data->slug)->exists()) {
+            $data->slug     = $data->slug.rand(1, 100);
+        }
 
         $data->save();
 

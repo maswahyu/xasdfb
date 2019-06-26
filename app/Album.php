@@ -15,10 +15,10 @@ class Album extends Model
 
     public static function newRecord($request)
     {
-        $data= new Album;
-        $data->name = $request->get('name');
+        $data = new Album;
+        $data->name  = $request->get('name');
         $data->image = $request->get('image');
-        $data->slug = str_slug($request->get('name'));
+        $data->slug  = str_slug($request->get('name'));
 
         $data->save();
 

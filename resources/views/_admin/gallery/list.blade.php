@@ -18,7 +18,7 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->album->name }}</td>
             <td>
-                <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
+                <span class="badge badge-{{ ($item->publish == 0) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span>
             </td>
             <td>
                 <div class="btn-group">
@@ -28,7 +28,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{ url('/magic/gallery/' . $item->id) }}?type={{ $type }}" title="View gallery"><i class="fa fa-eye"></i> View</a>
 
-                        <a class="dropdown-item" href="{{ url('/magic/gallery/' . $item->id . '/edit') }}?type={{ $type }}" title="Edit gallery"><i class="fa fa-pencil"></i> Edit</a>
+                        <a class="dropdown-item" href="{{ url('/magic/gallery/' . $item->id . '/edit') }}?type={{ $type }}" title="Edit gallery"><i class="fa fa-edit"></i> Edit</a>
                          
                         <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>   
                     </div>

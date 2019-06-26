@@ -14,9 +14,7 @@
     @endif
     <div class="input-group">
         <div class="input-group-btn">
-            <a href="{{ url('/') }}/filemanager/dialog.php?akey=868DA3BFA27E104C57E1CF4533271ED9&type=1&field_id=image_path&relative_url=1" class="file-iframe-btn" data-fancybox-type="iframe">
-                <button type="button" class="btn btn-block btn-default btn-flat">Browse</button>
-            </a>
+            <button type="button" class="btn btn-block btn-default btn-flat" id="button-image">Browse</button> 
         </div>
         <input id="image_path" name="value" type="text" class="form-control" value="{{ isset($gallery->value) ? $gallery->value : old('value') }}" placeholder="Image">
     </div>
