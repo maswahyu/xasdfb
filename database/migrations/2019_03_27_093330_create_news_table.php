@@ -15,15 +15,15 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->integer('category_id')->nullable()->index();
             $table->integer('user_id')->unsigned()->index();
+            $table->string('slug')->unique()->index();
+            $table->string('title')->index();
+            $table->enum('publish', ['0', '1'])->default('0');
             $table->string('image')->nullable();
+            $table->integer('view')->default(0);
             $table->text('summary')->nullable();
             $table->text('content')->nullable();
-            $table->enum('publish', ['0', '1'])->default('0');
-            $table->integer('category_id')->nullable();
-            $table->string('slug')->unique();
-            $table->integer('view')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
