@@ -24,7 +24,7 @@ return [
      * Default path for left manager
      * null - root directory
      */
-    'leftPath'  => null,
+    'leftPath'  => 'news',
 
     /**
      * Default path for right manager

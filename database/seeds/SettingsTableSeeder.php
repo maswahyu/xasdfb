@@ -15,7 +15,7 @@ class SettingsTableSeeder extends Seeder
         $data = [
         	[
 	        	'key' => 'site_name',
-	        	'value' => 'Education Park'
+	        	'value' => 'LAzone.id'
 	        ], 
 	        [
 	        	'key' => 'site_email',
@@ -27,15 +27,15 @@ class SettingsTableSeeder extends Seeder
 	        ],
 	        [
 	        	'key' => 'site_meta_title',
-	        	'value' => 'Education Park'
+	        	'value' => 'Berita Lifestyle dan Gaya Hidup Terkini'
 	        ],
             [
                 'key' => 'site_meta_description',
-                'value' => 'Education Park'
+                'value' => 'Temukan berita lifestyle seputar gaya hidup terkini yang kini jadi trending topic di Indonesia dan Dunia hanya di LAzone.id'
             ],
 	        [
 	        	'key' => 'site_meta_keyword',
-	        	'value' => 'campus'
+	        	'value' => 'berita lifestyle,berita gaya hidup,portal berita online'
 	        ],
 	        [
 	        	'key' => 'terms_title',

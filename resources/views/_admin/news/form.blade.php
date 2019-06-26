@@ -14,9 +14,7 @@
     @endif
     <div class="input-group">
         <div class="input-group-btn">
-            <a href="{{ url('/') }}/file-manager/fm-button" class="file-iframe-btn" data-fancybox-type="iframe">
-                <button type="button" class="btn btn-block btn-default btn-flat">Browse</button>
-            </a>
+            <button type="button" class="btn btn-block btn-default btn-flat" id="button-image">Browse</button> 
         </div>
         <input id="image_path" name="image" type="text" class="form-control" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image">
     </div>
@@ -64,5 +62,20 @@
 @section('javascript')
 <script type="text/javascript">
     
+    document.addEventListener("DOMContentLoaded", function() {
+
+      document.getElementById('button-image').addEventListener('click', (event) => {
+        event.preventDefault();
+
+        PopupCenter('/file-manager/fm-button','fm','900','500');  
+
+      });
+    });
+
+    // set file link
+    function fmSetLink($url) {
+      document.getElementById('image_path').value = $url;
+    }
+
 </script>
 @endsection

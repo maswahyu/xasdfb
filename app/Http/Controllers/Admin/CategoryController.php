@@ -25,17 +25,18 @@ class CategoryController extends Controller
     {   
         $keyword = $request->get('only');
         if (!empty($keyword)) {
-            $category = Category::latest()->paginate(10);
+            $category = Category::oldest()->paginate(10);
         } else {
-            $category = Category::latest()->paginate(10);
+            $category = Category::oldest()->paginate(10);
         }
         
         return view('_admin.category.list', compact('category','keyword'));
     }
 
     public function create()
-    {
-        return view('_admin.category.create')->with('title', $this->title);
+    {   
+        $parent = Category::where('parent_id', 0)->get();
+        return view('_admin.category.create', compact('parent'))->with('title', $this->title);
     }
 
     public function store(CategoryRequest $request)
@@ -50,7 +51,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('_admin.category.edit', compact('category'))->with('title', $this->title);
+        $parent = Category::where('parent_id', 0)->get();
+        return view('_admin.category.edit', compact('category','parent'))->with('title', $this->title);
     } 
 
     public function show($id)

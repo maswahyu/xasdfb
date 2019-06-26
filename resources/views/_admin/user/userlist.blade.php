@@ -33,7 +33,7 @@
                             Actions
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{action('Admin\UsersController@edit', $users->id)}}"><i class="fa fa-pencil"></i> Edit</a>
+                            <a class="dropdown-item" href="{{action('Admin\UsersController@edit', $users->id)}}"><i class="fa fa-edit"></i> Edit</a>
                              
                             @if($users->usertype != 'admin')
                                 <a class="dropdown-item" onclick="user_action({{$users->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a> 

@@ -35,7 +35,7 @@ if (! function_exists('imageview')) {
             $img ="avatar.png";
         }    
 
-        return url('/')."/uploads/files/".$img;
+        return url('/').$img;
     }
 }
 
@@ -48,7 +48,7 @@ if (! function_exists('imagethumb')) {
             $img ="avatar.png";
         }    
 
-        return url('/')."/thumbs/files/".$img;
+        return url('/').$img;
     }
 }
 
@@ -57,18 +57,5 @@ if (! function_exists('seribu')) {
     function seribu($output)
     {
         return number_format( $output , 0 , '.' , '.' );
-    }
-}
-
-if (! function_exists('imageprofile')) {
-
-    function imageprofile($img)
-    {
-
-        if($img == null or $img == ''){
-            return url('/')."/favicon.jpg";
-        }    
-
-        return url('/')."/storage/member/".$img;
     }
 }

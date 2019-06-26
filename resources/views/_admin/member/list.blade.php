@@ -1,7 +1,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>#</th><th>Name</th><th>Email</th><th>Photo</th><th>Actions</th>
+            <th>#</th><th>Name</th><th>Email</th><th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -9,11 +9,6 @@
         <tr id="row_{{$item->id}}">
             <td>{{ $items + $member->firstItem() }}</td>
             <td>{{ $item->name }}</td><td>{{ $item->email }}</td>
-            <td>
-                @if($item->profile_image)
-                    <img src="{{ imagethumb($item->profile_image) }}" width="150">
-                @endif
-            </td>
             <td>
                 <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

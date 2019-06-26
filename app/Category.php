@@ -17,6 +17,8 @@ class Category extends Model
     {
         $data= new Category;
         $data->name = $request->get('name');
+        $data->parent_id = $request->get('parent_id');
+        $data->slug = str_slug($request->get('name'));
 
         $data->save();
 
@@ -27,9 +29,18 @@ class Category extends Model
     {
         $data = Category::findOrFail($id);
         $data->name = $request->get('name');
+        $data->parent_id = $request->get('parent_id');
 
         $data->save();
 
         return $data;
+    }
+
+    public function parent() {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function children() {
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
 }

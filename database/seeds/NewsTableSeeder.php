@@ -36,7 +36,7 @@ Donec eget odio purus. Donec tempor, ligula ultrices aliquam bibendum, nisi maur
 <p>Donec eget odio purus. Donec tempor, ligula ultrices aliquam bibendum, nisi mauris consequat dolor, at pretium mi augue vel mi. Nunc rhoncus justo metus, sed luctus risus placerat at. Mauris ornare neque quis pretium tincidunt.</p>
 ', 
 				'slug'         => $faker->slug,
-				'image'        => "news/236669.jpg",
+				'image'        => "/storage/news/236669.jpg",
                 'publish'      => "1",
 				'category_id'  => 1,
 				'created_at'   => Carbon\Carbon::now(),

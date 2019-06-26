@@ -35,7 +35,12 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th> Id </th><td> {{ $category->id }} </td></tr><tr><th> Name </th><td> {{ $category->name }} </td></tr><tr><th> Created At </th><td> {{ $category->created_at }} </td></tr><tr><th> Updated At </th><td> {{ $category->updated_at }} </td></tr>
+                                    <tr><th> Id </th><td> {{ $category->id }} </td></tr>
+                                    <tr><th> Name </th><td> {{ $category->name }} </td></tr>
+                                    <tr><th> Slug </th><td> {{ $category->slug }} </td></tr>
+                                    <tr><th> Parent </th><td> {{ ($category->parent_id == 0) ? "Top Parent" : $category->parent->name }} </td></tr>
+                                    <tr><th> Created At </th><td> {{ $category->created_at }} </td></tr>
+                                    <tr><th> Updated At </th><td> {{ $category->updated_at }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
