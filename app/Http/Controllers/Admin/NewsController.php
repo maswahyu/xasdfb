@@ -8,6 +8,7 @@ use App\Http\Requests\NewsRequest;
 use App\News;
 use Auth;
 use App\Category;
+use App\Tag;
 
 class NewsController extends Controller
 {   
@@ -24,8 +25,7 @@ class NewsController extends Controller
     }
 
     public function list(Request $request)
-    {   
-        $type    = News::NEWS;
+    {
         $keyword = $request->get('only');
 
         if (!empty($keyword)) {
@@ -34,14 +34,15 @@ class NewsController extends Controller
             $news = News::latest()->paginate(10);
         }
 
-        return view('_admin.news.list', compact('news', 'type','keyword'));
+        return view('_admin.news.list', compact('news','keyword'));
     }
 
     public function create(Request $request)
     {
         $category = Category::where('parent_id', 0)->get();
+        $tags     = Tag::all();
 
-        return view('_admin.news.create', compact('category'))->with('title', $this->title);
+        return view('_admin.news.create', compact('category','tags'))->with('title', $this->title);
     }
 
     public function store(NewsRequest $request)
@@ -50,15 +51,16 @@ class NewsController extends Controller
 
         $data = News::newRecord($request);
 
-        $type = $request->get('type');
         return redirect('magic/news')->with('success', 'News added!');
     }
 
     public function edit(Request $request, $id)
     {   
         $category = Category::all();
-        $news = News::findOrFail($id); 
-        return view('_admin.news.edit', compact('news','category'))->with('title', $this->title);
+        $news     = News::findOrFail($id);
+        $tags     = Tag::all();
+
+        return view('_admin.news.edit', compact('news','category','tags'))->with('title', $this->title);
     } 
 
     public function show(Request $request, $id)
@@ -71,9 +73,7 @@ class NewsController extends Controller
     {
         $validated = $request->validated();
 
-        $data= News::updateRecord($request, $id);
-
-        $type = $request->get('type');
+        $data = News::updateRecord($request, $id);
 
         return redirect('magic/news')->with('success', 'News updated!');
     }

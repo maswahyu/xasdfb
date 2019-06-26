@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
+use App\Tag;
+use App\News_tag;
 
 class News extends Model
 {   
@@ -25,6 +27,11 @@ class News extends Model
         $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();  
         $data->save();
 
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::insertNewsTag($data->id, $tags);
+        }
+
         return $data;
     }
 
@@ -40,7 +47,33 @@ class News extends Model
         $data->user_id     = Auth::guard('admin')->id();
         $data->save();
 
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::updateNewsTag($data->id, $tags);   
+        }
+
         return $data;
+    }
+
+    public static function insertNewsTag($news_id, $tags)
+    {
+        if ($tags) {
+            foreach ($tags as $tag_id) {        
+                $tag = new News_tag;
+                $tag->news_id = $news_id;
+                $tag->tag_id  = $tag_id;
+                $tag->save();
+            }
+        }
+    }
+
+    public static function updateNewsTag($news_id, $tags)
+    {   
+        // delete news tags
+        News_tag::where('news_id', $news_id)->delete();
+
+        // insert ulang
+        self::insertNewsTag($news_id, $tags);
     }
 
     public static function generateRandomString($length = 5) {
@@ -85,5 +118,9 @@ class News extends Model
     public function category()
     {
         return $this->belongsTo('App\Category', 'category_id');
+    }
+
+    public function tags() {
+        return $this->hasMany('App\News_tag', 'news_id', 'id');
     }
 }

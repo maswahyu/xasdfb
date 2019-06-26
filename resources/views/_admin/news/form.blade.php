@@ -2,6 +2,22 @@
 
     <!-- Select2 -->
   <link rel="stylesheet" href="/dist/plugins/select2/select2.min.css">
+  <style type="text/css">
+        .select2-container--default 
+        .select2-selection--multiple 
+        .select2-selection__rendered li {
+            list-style: none;
+        }
+
+        .select2-container--default 
+        .select2-selection--multiple 
+        .select2-selection__choice {
+            background-color: #007bff;
+            border-color: #006fe6;
+            padding: 1px 10px;
+            color: #fff;
+        }
+  </style>
 
 @endsection
 <div class="form-group ">
@@ -15,7 +31,7 @@
             </optgroup>
         @endforeach
     </select>
-    <span class="text-danger">{{ $errors->first('publish') }}</span>
+    <span class="text-danger">{{ $errors->first('category_id') }}</span>
     <p class="help-block"></p>
 </div>
 
@@ -53,6 +69,23 @@
     <label for="content">{{ 'Content' }}</label>
     <textarea class="form-control wysiwyg-advanced-br" rows="5" name="content" type="textarea" id="content" placeholder="Content">{{ isset($news->content) ? $news->content : old('content') }}</textarea>
     <span class="text-danger">{{ $errors->first('content') }}</span>
+    <p class="help-block"></p>
+</div>
+
+<div class="form-group ">
+    <label for="tags">{{ 'Tags' }}</label>
+    <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
+        @if(isset($news->tags))
+            @foreach($news->tags as $item)
+                <option value='{{ $item->tag->id }}' selected>{{ $item->tag->name}}</option>
+            @endforeach
+        @else
+            @foreach($tags as $item)
+                <option value='{{ $item->id }}'>{{ $item->name}}</option>
+            @endforeach
+        @endif
+    </select>
+    <span class="text-danger">{{ $errors->first('tags') }}</span>
     <p class="help-block"></p>
 </div>
 
