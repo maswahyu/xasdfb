@@ -16,11 +16,11 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->string('value')->nullable();
-            $table->string('title')->nullable();
-            $table->integer('album_id')->nullable();
-            $table->enum('type', ["photo", "video"])->default("photo");
+            $table->integer('album_id')->nullable()->index();
+            $table->string('title')->nullable()->index();
             $table->enum('publish', ['0', '1'])->default('0');
+            $table->enum('type', ["photo", "video"])->default("photo");
+            $table->string('value')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
