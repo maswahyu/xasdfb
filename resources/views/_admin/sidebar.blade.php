@@ -78,6 +78,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/tag') }}" class="nav-link {!! classActiveSegment(2, 'tag') !!}">
+                        <i class="nav-icon fa fa-hashtag"></i>
+                        <p>
+                            Tags
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/filemanager') }}" class="nav-link {!! classActiveSegment(2, 'manager') !!}">
                         <i class="nav-icon fa fa-image"></i>
                         <p>
