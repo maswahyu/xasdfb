@@ -17,6 +17,8 @@ class Album extends Model
     {
         $data= new Album;
         $data->name = $request->get('name');
+        $data->image = $request->get('image');
+        $data->slug = str_slug($request->get('name'));
 
         $data->save();
 
@@ -27,6 +29,7 @@ class Album extends Model
     {
         $data = Album::findOrFail($id);
         $data->name = $request->get('name');
+        $data->image = $request->get('image');
 
         $data->save();
 

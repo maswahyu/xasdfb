@@ -59,23 +59,3 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
-@section('javascript')
-<script type="text/javascript">
-    
-    document.addEventListener("DOMContentLoaded", function() {
-
-      document.getElementById('button-image').addEventListener('click', (event) => {
-        event.preventDefault();
-
-        PopupCenter('/file-manager/fm-button','fm','900','500');  
-
-      });
-    });
-
-    // set file link
-    function fmSetLink($url) {
-      document.getElementById('image_path').value = $url;
-    }
-
-</script>
-@endsection

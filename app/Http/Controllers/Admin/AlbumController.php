@@ -25,7 +25,7 @@ class AlbumController extends Controller
     {   
         $keyword = $request->get('only');
         if (!empty($keyword)) {
-            $album = Album::latest()->paginate(10);
+            $album = Album::where('name', 'LIKE', '%'.$keyword.'%')->latest()->paginate(10);
         } else {
             $album = Album::latest()->paginate(10);
         }
