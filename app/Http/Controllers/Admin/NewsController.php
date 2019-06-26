@@ -38,8 +38,9 @@ class NewsController extends Controller
     }
 
     public function create(Request $request)
-    {   
-        $category = Category::all();
+    {
+        $category = Category::where('parent_id', 0)->get();
+
         return view('_admin.news.create', compact('category'))->with('title', $this->title);
     }
 
@@ -47,29 +48,10 @@ class NewsController extends Controller
     {   
         $validated = $request->validated();
 
-        $data= new News;
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
-        $data->slug        = str_slug($request->get('title')).'-'.$this->generateRandomString();  
-        $data->save();
+        $data = News::newRecord($request);
 
         $type = $request->get('type');
         return redirect('magic/news')->with('success', 'News added!');
-    }
-
-    protected function generateRandomString($length = 5) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     public function edit(Request $request, $id)
@@ -89,15 +71,8 @@ class NewsController extends Controller
     {
         $validated = $request->validated();
 
-        $data = News::findOrFail($id);
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
-        $data->save();
+        $data= News::updateRecord($request, $id);
+
         $type = $request->get('type');
 
         return redirect('magic/news')->with('success', 'News updated!');

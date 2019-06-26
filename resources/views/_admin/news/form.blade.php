@@ -1,3 +1,24 @@
+@section('header')
+
+    <!-- Select2 -->
+  <link rel="stylesheet" href="/dist/plugins/select2/select2.min.css">
+
+@endsection
+<div class="form-group ">
+    <label for="category_id">{{ 'Category' }}</label>
+    <select name="category_id" class="form-control select2" id="category_id" style="width: 100%;">
+        @foreach($category as $item) 
+            <optgroup label="{{ $item->name }}">
+                @foreach($item->children as $parent)
+                    <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }}</option>
+                @endforeach
+            </optgroup>
+        @endforeach
+    </select>
+    <span class="text-danger">{{ $errors->first('publish') }}</span>
+    <p class="help-block"></p>
+</div>
+
 <div class="form-group">
     <label for="title">{{ 'Title' }}</label>
     <input class="form-control" name="title" type="text" id="title" value="{{ isset($news->title) ? $news->title : old('title') }}" placeholder="Title">
@@ -36,17 +57,6 @@
 </div>
 
 <div class="form-group ">
-    <label for="category_id">{{ 'Category' }}</label>
-    <select name="category_id" class="form-control" id="category_id">
-        @foreach($category as $item)
-            <option value="{{ $item->id }}" {{ (isset($news->category_id) && $news->category_id == $item->id) ? 'selected' : '' }}>{{ $item->name }}</option>
-        @endforeach
-    </select>
-    <span class="text-danger">{{ $errors->first('publish') }}</span>
-    <p class="help-block"></p>
-</div>
-
-<div class="form-group ">
     <label for="publish">{{ 'Publish' }}</label>
     <select name="publish" class="form-control" id="publish">
         <option value="1" {{ (isset($news->publish) && $news->publish == '1') ? 'selected' : '' }}>Yes</option>
@@ -59,3 +69,15 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
+
+@section('javascript')
+
+<!-- Select2 -->
+<script src="/dist/plugins/select2/select2.full.min.js"></script>
+<script>
+    $(function () {
+        $('.select2').select2()
+    });
+</script>
+
+@endsection

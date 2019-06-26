@@ -1,14 +1,22 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>#</th><th>Title</th><th>Image</th><th>Summary</th><th>Publish</th><th>Actions</th>
+            <th>#</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Summary</th>
+            <th>Publish</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     @foreach($news as $items=>$item)
         <tr id="row_{{$item->id}}">
             <td>{{ $items + $news->firstItem() }}</td>
-            <td>{{ $item->title }}</td><td><img src="{{ imagethumb($item->image) }}" width="150"> </td><td>{{ $item->summary }}</td>
+            <td><a href="/{{ $item->slug }}" target="_blank">{{ $item->title }}</a></td>
+            <td>{{ $item->category->name }}</td>
+            <td><img src="{{ imagethumb($item->image) }}" width="150"> </td><td>{{ $item->summary }}</td>
             <td>
                 <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
             </td>

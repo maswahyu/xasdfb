@@ -15,9 +15,9 @@
             <td>{{ $items + $category->firstItem() }}</td>
             <td>{{ $item->name }}</td>
             @if($item->parent_id == 0)
-                <td><a href="{{ url('/'.$item->slug) }}">{{ $item->slug }}</a></td>
+                <td><a href="{{ url('/'.$item->slug) }}" target="_blank">{{ $item->slug }}</a></td>
             @else
-                <td><a href="{{ url('/'.$item->parent->slug.'/'.$item->slug) }}">{{ $item->slug }}</a></td>
+                <td><a href="{{ url('/'.$item->parent->slug.'/'.$item->slug) }}" target="_blank">{{ $item->slug }}</a></td>
             @endif
             <td>{{ ($item->parent_id == 0) ? "Top Parent" : $item->parent->name }}</td>
             <td>{{ $item->created_at }}</td>
