@@ -46,7 +46,7 @@
                 <div class="input-group mb-3">
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" required>
                     <div class="input-group-append">
-                        <span class="fa fa-lock input-group-text"></span> 
+                        <span class="fa fa-user input-group-text"></span> 
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>

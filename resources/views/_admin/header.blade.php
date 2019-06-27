@@ -8,7 +8,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link" target="_blank" href="{{ route('index') }}">
+            <a class="nav-link" target="_blank" href="{{ url('/') }}">
                 <i class="fa fa-globe"></i> Website
             </a>
         </li>
