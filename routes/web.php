@@ -403,6 +403,8 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('albumlist', 'AlbumController@list');
         Route::resource('tag', 'TagController');
         Route::get('taglist', 'TagController@list');
+        Route::resource('link', 'LinkController');
+        Route::get('linklist', 'LinkController@list');
     });
 
     Route::get('contact/list', 'ContactController@index');

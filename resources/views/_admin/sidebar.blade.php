@@ -123,6 +123,12 @@
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Website</p>
                             </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ url('magic/link') }}" class="nav-link {!! classActiveSegment(2, 'link') !!}">
+                                <i class="fa fa-circle nav-icon"></i>
+                                <p>Link</p>
+                            </a>
                         </li>  
                     </ul>
                 </li>
