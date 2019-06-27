@@ -123,4 +123,14 @@ class News extends Model
     public function tags() {
         return $this->hasMany('App\News_tag', 'news_id', 'id');
     }
+
+    public function isSelected($id){
+
+        if(!($ids = old('tags'))) {
+            $ids = self::tags()->pluck('tag_id');
+        }
+
+        return collect($ids)
+            ->contains($id) ? 'selected' : '';
+    }
 }
