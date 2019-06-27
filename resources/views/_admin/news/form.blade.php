@@ -76,7 +76,7 @@
     <label for="tags">{{ 'Tags' }}</label>
     <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
         @foreach($tags as $item)
-            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->slug}}</option>
+            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->name}}</option>
         @endforeach
     </select>
     <span class="text-danger">{{ $errors->first('tags') }}</span>
