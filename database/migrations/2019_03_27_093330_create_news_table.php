@@ -19,11 +19,15 @@ class CreateNewsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('slug')->unique()->index();
             $table->string('title')->index();
-            $table->enum('publish', ['0', '1'])->default('0');
+            $table->integer('publish')->default(0);
             $table->string('image')->nullable();
             $table->integer('view')->default(0);
             $table->text('summary')->nullable();
             $table->text('content')->nullable();
+            $table->dateTime('published_at')->nullable();
+            $table->integer('is_featured')->nullable();
+            $table->integer('is_highlight')->nullable();
+            $table->string('shortenUrl')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
