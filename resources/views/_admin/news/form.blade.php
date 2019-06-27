@@ -75,15 +75,9 @@
 <div class="form-group ">
     <label for="tags">{{ 'Tags' }}</label>
     <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
-        @if($formMode === 'edit')
-            @foreach($tags as $item)
-                <option value='{{ $item->id }}' {{ $news->isSelected($item->id) }}>{{ $item->name}}</option>
-            @endforeach
-        @else
-            @foreach($tags as $item)
-                <option value='{{ $item->id }}'>{{ $item->name}}</option>
-            @endforeach
-        @endif
+        @foreach($tags as $item)
+            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->name}}</option>
+        @endforeach
     </select>
     <span class="text-danger">{{ $errors->first('tags') }}</span>
     <p class="help-block"></p>
