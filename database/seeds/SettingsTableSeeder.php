@@ -59,7 +59,7 @@ class SettingsTableSeeder extends Seeder
             ],
 	        [
 	        	'key' => 'fb_id',
-	        	'value' => 'fb_id'
+	        	'value' => '914890341980196'
 	        ],
 	        [
 	        	'key' => 'headercode',

@@ -17,9 +17,10 @@ class ComposerServiceProvider extends ServiceProvider
         // Using class based composers...
         View::composer(
             [
-                'front.parts.footer',
-                'front.parts.header',
-                'front.app'
+                'frontend.layouts.skeleton',
+                'frontend.layouts.footer',
+                'frontend.layouts.header',
+                'frontend.layouts.mobile-header',
             ],
             'App\Http\ViewComposers\FrontendMasterComposer'
         );

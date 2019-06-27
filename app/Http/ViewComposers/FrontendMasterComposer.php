@@ -19,6 +19,7 @@ class FrontendMasterComposer
             'site_meta_description' => isset($metas['site_meta_description']) ? $metas['site_meta_description'] : '',
             'site_meta_keyword' => isset($metas['site_meta_keyword']) ? $metas['site_meta_keyword'] : '',
             'analytics_id' => isset($metas['analytics_id']) ? $metas['analytics_id'] : '',
+            'fb_id' => isset($metas['fb_id']) ? $metas['fb_id'] : '',
             'headercode' => isset($metas['headercode']) ? $metas['headercode'] : '',
             'footercode' => isset($metas['footercode']) ? $metas['footercode'] : '',
             'bodycode' => isset($metas['bodycode']) ? $metas['bodycode'] : '',
@@ -35,8 +36,6 @@ class FrontendMasterComposer
             'contact_youtube' => isset($metas['contact_youtube']) ? $metas['contact_youtube'] : '',
             'contact_linkedin' => isset($metas['contact_linkedin']) ? $metas['contact_linkedin'] : '',
         ];
-        $view->with('maintainer', 'idwebgit.com');
-        $view->with('maintainer_url', 'http://www.idwebgit.com');
         $view->with('siteInfo', $siteInfo);
     }
 }
