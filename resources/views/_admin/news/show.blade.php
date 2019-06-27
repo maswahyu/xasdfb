@@ -36,7 +36,7 @@
                             <table class="table">
                                 <tbody> 
                                     <tr><th> Title </th><td> {{ $news->title }} </td></tr>
-                                    <tr><th> User </th><td> {{ $news->user->name }} </td></tr>
+                                    <tr><th> User </th><td> {{ optional($news->user)->name }} </td></tr>
                                     <tr><th> Image </th><td> <img src="{{ imageview($news->image) }}" width="150"> </td></tr>
                                     <tr><th> Summary </th><td> {{ $news->summary }} </td></tr>                                    
                                     <tr><th> Category </th><td> {{ optional($news->category)->name }} </td></tr>
