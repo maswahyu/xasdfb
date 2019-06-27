@@ -34,7 +34,7 @@ class CategoryTableSeeder extends Seeder
 		];
 
 		$data[3] = [
-			'name'      => 'Lensaphoto',
+			'name'      => 'Lensa',
 			'slug'      => 'lensaphoto',
 			'parent_id' => 0,
 			'created_at' => Carbon\Carbon::now(),
@@ -48,9 +48,9 @@ class CategoryTableSeeder extends Seeder
 		];
 
 		$data[5] = [
-			'name'      => 'Community',
-			'slug'      => 'community',
-			'parent_id' => 0,
+			'name'      => 'Gadget',
+			'slug'      => 'gadget',
+			'parent_id' => 2,
 			'created_at' => Carbon\Carbon::now(),
 		];
 

@@ -4,7 +4,7 @@ namespace App\Http\ViewComposers;
 use App\Setting;
 use Illuminate\Contracts\View\View;
 use Auth;
-use App\City;
+use App\Category;
 
 class FrontendMasterComposer
 {
@@ -36,6 +36,9 @@ class FrontendMasterComposer
             'contact_youtube' => isset($metas['contact_youtube']) ? $metas['contact_youtube'] : '',
             'contact_linkedin' => isset($metas['contact_linkedin']) ? $metas['contact_linkedin'] : '',
         ];
+
+        $siteCategory = Category::getMenu();
+        $view->with('siteCategory', $siteCategory);
         $view->with('siteInfo', $siteInfo);
     }
 }

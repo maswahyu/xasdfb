@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Category extends Model
 {
@@ -45,5 +46,15 @@ class Category extends Model
 
     public function children() {
         return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public static function getMenu($parent_id = 0)
+    {
+        $value = Cache::rememberForever('menu-category', function () use ($parent_id) {
+
+            return self::select('name','slug','parent_id')->where('parent_id', $parent_id)->get();
+        });
+
+        return $value;
     }
 }

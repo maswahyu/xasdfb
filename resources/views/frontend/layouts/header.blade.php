@@ -11,21 +11,11 @@
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
                     <a href="#" class="dropdown-menu__link">Articles</a>
                     <ul class="dropdown-menu__dropdown">
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="#" class="dropdown-menu__dropdown-link"><span>Lifestyle</span></a>
-                        </li>
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="#" class="dropdown-menu__dropdown-link"><span>Entertaiment</span></a>
-                        </li>
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="#" class="dropdown-menu__dropdown-link"><span>Inspiration</span></a>
-                        </li>
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="#" class="dropdown-menu__dropdown-link"><span>Lensa</span></a>
-                        </li>
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="#" class="dropdown-menu__dropdown-link"><span>Sneakerland</span></a>
-                        </li>
+                        @foreach($siteCategory as $item)
+                            <li class="dropdown-menu__dropdown-item">
+                                <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}"><span>{{ $item->name }}</span></a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">

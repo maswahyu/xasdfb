@@ -15,7 +15,7 @@
         <tr id="row_{{$item->id}}">
             <td>{{ $items + $news->firstItem() }}</td>
             <td><a href="/{{ $item->slug }}" target="_blank">{{ $item->title }}</a></td>
-            <td>{{ $item->category->name }}</td>
+            <td>{{ optional($item->category)->name }}</td>
             <td><img src="{{ imagethumb($item->image) }}" width="150"> </td><td>{{ $item->summary }}</td>
             <td>
                 <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
