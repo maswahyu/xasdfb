@@ -1,0 +1,99 @@
+.btn-shoutbox {
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 3rem;
+  @include font-size(1.4rem);
+
+  @include media-over(md) {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.btn-login {
+  color: palette("white");
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-family: $nav-font-family;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-social {
+  margin: 0 1.5rem;
+
+  &,
+  &__icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.btn-load-more,
+.btn-detail {
+  border-width: 2px;
+  font-weight: 600;
+  color: palette("black");
+}
+
+.btn-load-more {
+  padding: 1rem 3rem;
+  border-color: palette("crimson");
+  background-color: transparent;
+  font-size: 1.4rem;
+
+  &:hover {
+    background-color: palette("crimson");
+  }
+
+  &--wide {
+    min-width: 156px;
+  }
+}
+
+.btn-detail {
+  padding: 1rem;
+  border-color: palette("black");
+  font-size: 1rem;
+
+  @include media-over(md) {
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+  }
+
+  @include media-over(lg) {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  @include media-over(xl) {
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+  }
+
+  &:hover {
+    background-color: palette("black");
+    color: palette("white");
+  }
+}
+
+.btn-point {
+  color: palette("white");
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $title-font-family;
+  font-size: 1.4rem;
+}
+
+.btn-submit {
+  min-width: 16rem;
+  border-width: 2px;
+  color: palette("black");
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $title-font-family;
+  font-size: 1.4rem;
+}

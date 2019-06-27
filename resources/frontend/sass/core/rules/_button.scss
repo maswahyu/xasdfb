@@ -1,0 +1,84 @@
+@import "../functions/unit";
+@import "../functions/array";
+@import "../functions/color";
+@import "../mixins/utility";
+@import "typography";
+
+$button-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$button-font-size-sm: 1.3rem !default;
+$button-font-size: 1.6rem !default;
+$button-light-color: palette("white") !default;
+$button-dark-color: palette("black") !default;
+$button-border-radius: 8px !default;
+$button-border-width: 1px !default;
+$button-padding-y: 0 !default;
+$button-padding-x: 1rem !default;
+
+.btn {
+  $this: &;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: ($button-padding-y * 3/4) ($button-padding-x * 3/4);
+  border-radius: $button-border-radius;
+  text-align: center;
+  text-decoration: none;
+  font-size: $button-font-size-sm;
+  font-family: $button-font-family;
+
+  @include media-over(lg) {
+    padding: $button-padding-y $button-padding-x;
+    font-size: $button-font-size;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled {
+    background-color: palette("gray");
+    border-color: palette("gray");
+  }
+
+  &--has-icon {
+    #{$this}__icon:first-child,
+    #{$this}__text:first-child {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@each $className, $btnColor in $palette {
+  .btn-#{$className} {
+    background-color: $btnColor;
+    border-color: $btnColor;
+
+    @if (choose-contrast-color($btnColor) == "light") {
+      color: $button-light-color;
+    } @else {
+      color: $button-dark-color;
+    }
+
+    &:hover {
+      background-color: lighten($btnColor, 5%);
+    }
+  }
+
+  .btn-ghost-#{$className} {
+    background-color: transparent;
+    border: 1px solid $btnColor;
+    border-radius: $button-border-radius;
+    color: $btnColor;
+
+    &:hover {
+      background-color: $btnColor;
+
+      @if (choose-contrast-color($btnColor) == "light") {
+        color: $button-light-color;
+      } @else {
+        color: $button-dark-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.photo-header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    &__breadcrumb {
+        margin-bottom: 2rem;
+    }
+
+	&__meta {
+        margin-bottom: 3rem;
+
+        &--video {
+            margin-bottom: 0;
+        }
+    }
+
+	&__title {
+        margin-bottom: 1.6rem;
+        @include font-size(3rem);
+        font-weight: bold;
+        font-family: $title-font-family;
+
+        &--video {
+            margin-top: 1rem;
+        }
+    }
+}
+
+.video-container {
+    margin: 2rem 0;
+}

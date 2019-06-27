@@ -1,0 +1,89 @@
+// Breakpoints
+$screen-breakpoints: (
+  xs: 0,
+  sm: 375px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+// Container
+$container-max-widths: (
+  sm: 520px,
+  md: 720px,
+  lg: 960px,
+  xl: 1180px,
+);
+
+// Colors
+$palette: (
+"white": #ffffff,
+  "black": #000000,
+  "tundora": #4a4a4a,
+  "gray": #888888,
+  "nobel": #9b9b9b,
+  "alto": #d8d8d8,
+  "athens": #f5f5f6,
+  "crimson": #ec2427
+);
+
+// Default
+$body-bg-color: palette("white");
+
+// Typography
+$default-font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$title-font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$nav-font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$info-font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$use-modular-scale: false;
+$text-color: palette("tundora");
+$link-color: palette("black");
+$baseline-font-size: 62.5%;
+$default-font-size: 1.6rem;
+$h1-font-size: 6.7rem;
+$h2-font-size: 5rem;
+$h3-font-size: 3.8rem;
+$h4-font-size: 2.8rem;
+$h5-font-size: 2.1rem;
+
+// Container
+$sm-padding-x: 1.5rem;
+$column-gutter: 1rem;
+
+// button
+$button-font-family: $title-font-family;
+$button-border-radius: 0;
+$button-padding-y: 0.8rem;
+$button-padding-x: 1.6rem;
+
+// Forms
+$form-input-height: 40px;
+$form-font-size: 16px;
+$form-label-size: $form-font-size;
+$form-label-font-weight: 600;
+$form-color: palette('black');
+$form-placeholder-color: palette("nobel");
+$form-font-family: $default-font-family;
+$form-font-weight: normal;
+$form-label-margin-bottom: 0.5rem;
+$form-placeholder-font-weight: $form-font-weight;
+$form-input-padding-x: 0;
+$form-input-padding-y: 6px;
+$form-input-background: palette("white");
+$form-input-border-color: palette("alto");
+$form-input-border-radius: 0;
+$form-input-border-width: 2px;
+$form-use-box-shadow: false;
+$form-row-space: 2.5rem;
+$form-border-bottom-only: true;
+
+$plyr-color-main: palette('crimson');
+$plyr-color-gunmetal: palette('nobel');
+$plyr-color-fiord: palette('tundora');
+$plyr-color-lynch: palette('athens');
+$plyr-color-heather: palette('alto');

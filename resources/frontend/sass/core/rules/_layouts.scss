@@ -1,0 +1,189 @@
+@import "../functions/array";
+@import "../functions/unit";
+@import "../functions/color";
+@import "../mixins/responsives";
+
+/**
+ * Variables
+ */
+$column-gutter: 15px !default;
+
+$container-max-widths: (
+  sm: 520px,
+  md: 720px,
+  lg: 960px,
+  xl: 1300px
+) !default;
+
+$grid-count: 12 !default;
+
+$body-bg-color: palette("white") !default;
+$sm-padding-x: 1.5rem !default;
+
+@function containerW($index: sm) {
+  @return map_get($container-max-widths, $index);
+}
+
+@mixin col($span: 0, $grow: 1, $shrink: 0, $totalCol: 12) {
+  $flexBasis: 0;
+
+  @if ($span != 0) {
+    $flexBasis: span($span, $totalCol);
+  }
+
+  flex: $grow $shrink $flexBasis;
+  @if ($flexBasis == 0) {
+    max-width: 100%;
+  } @else {
+    max-width: $flexBasis;
+  }
+  padding: 0 $column-gutter;
+  width: 100%;
+}
+
+@mixin row($no-gutter: false, $gutter: $column-gutter) {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+
+  @if ($no-gutter == false) {
+    margin-left: 0-$gutter;
+    margin-right: 0-$gutter;
+  }
+}
+
+@mixin responsiveColumns($max-column: $grid-count, $breakpoints: $screen-breakpoints) {
+  @for $i from 1 through $max-column {
+    .span-#{$i} {
+      @include col($i);
+    }
+
+    .off-#{$i} {
+      margin-left: span($i);
+    }
+  }
+
+  @each $screen, $size in $breakpoints {
+    @if ($size != 0) {
+      @include media-over($screen) {
+        @for $i from 1 through $max-column {
+          .span-#{$screen}-#{$i} {
+            @include col($i);
+          }
+        }
+
+        @for $i from 1 through $max-column {
+          .off-#{$screen}-#{$i} {
+            margin-left: span($i);
+          }
+        }
+      }
+    }
+  }
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $body-bg-color;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/**
+ *  Stay at bottom footer using flexbox
+    https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer */
+
+.site-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.site-content {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/*
+Container width for each breakpoints
+========================================================*/
+
+.container {
+  padding-left: $sm-padding-x;
+  padding-right: $sm-padding-x;
+  margin: 0 auto;
+  max-width: containerW(sm);
+  width: 100%;
+
+  @include media-over(md) {
+    max-width: containerW(md);
+    padding-right: 0;
+    padding-left: 0;
+  }
+  @include media-over(lg) {
+    max-width: containerW(lg);
+  }
+  @include media-over(xl) {
+    max-width: containerW(xl);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: (0-$column-gutter);
+  margin-left: (0-$column-gutter);
+
+  &.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  @include media-over(md) {
+    &.no-gutters-md {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  @include media-over(lg) {
+    &.no-gutters-lg {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &.no-gutters [class^="span-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.col {
+  @include col();
+}
+
+@include responsiveColumns();

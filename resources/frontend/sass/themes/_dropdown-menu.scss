@@ -1,0 +1,128 @@
+.dropdown-menu {
+  font-family: $nav-font-family;
+
+  &__link {
+    font-size: 1.6rem;
+    color: palette("white");
+    text-transform: uppercase;
+    line-height: (80/16);
+
+    &:hover {
+      text-shadow: 0 0 2px palette("white");
+      text-decoration: none;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  &__item {
+    display: block;
+    position: relative;
+    margin: 0 1.5rem;
+    height: 8rem;
+
+    transition-duration: 0.5s;
+
+    &--search {
+      padding-top: 0.6rem;
+    }
+
+    &--login {
+      padding-top: 2.2rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--has-submenu {
+      position: relative;
+      padding-right: 2rem;
+      @include chevron(10px, 2px, palette("white"), bottom, absolute);
+
+      &::before {
+        right: 0;
+        top: 50%;
+        margin-top: -8px;
+        transition: all 0.2s linear;
+      }
+
+      &:hover::before {
+        margin-top: -2px;
+        transform: rotate(-45deg);
+        border-color: palette("crimson");
+      }
+
+      &:hover > ul,
+      ul:hover {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    padding: 2.5rem 3rem;
+    width: 20rem;
+    z-index: 2;
+
+    background-color: palette("white");
+    border-top: 5px solid palette("crimson");
+    transition: all 0.5s ease;
+
+    &-item {
+      margin-bottom: 2rem;
+      clear: both;
+      width: 100%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-link {
+      position: relative;
+      display: inline-block;
+      width: auto;
+
+      color: palette("black");
+      cursor: pointer;
+
+      span {
+        position: relative;
+        z-index: 2;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.active::after,
+      &:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: -5%;
+        height: 8px;
+        width: 110%;
+        z-index: 1;
+      }
+
+      &.active::after,
+      &:hover::after {
+        background-color: rgba(palette("crimson"), 1);
+      }
+    }
+  }
+}

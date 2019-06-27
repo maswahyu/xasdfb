@@ -1,0 +1,348 @@
+@import "../functions/unit";
+@import "../functions/array";
+@import "../functions/color";
+@import "../mixins/utility";
+@import "../rules/layouts";
+@import "typography";
+
+$form-input-height: 40px !default;
+$form-font-size: 14px !default;
+$form-color: #000 !default;
+$form-label-font-weight: normal !default;
+$form-label-size: $form-font-size !default;
+$form-placeholder-color: palette("gray") !default;
+$form-font-family: $default-font-family !default;
+$form-font-weight: normal !default;
+$form-label-margin-bottom: 0.5rem !default;
+$form-placeholder-font-weight: $form-font-weight !default;
+$form-input-padding-x: 6px !default;
+$form-input-padding-y: 6px !default;
+$form-input-background: palette("white") !default;
+$form-input-border-color: palette("black") !default;
+$form-input-border-radius: 0 !default;
+$form-input-border-width: 1px !default;
+$form-use-box-shadow: true !default;
+$form-box-shadow-width: 4px !default;
+$form-box-shadow-bg: rgba(0, 0, 0, 0.2) !default;
+$form-row-space: 1.5rem !default;
+$form-border-bottom-only: false !default;
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+.form {
+  font-size: $form-font-size;
+  font-family: $form-font-family;
+  color: $form-color;
+
+  @include placeholder {
+    color: $form-placeholder-color;
+    font-weight: $form-placeholder-font-weight;
+  }
+
+  .form-row {
+    @include row();
+    margin-bottom: $form-row-space;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .form-col {
+    @include col();
+  }
+
+  .form-label {
+    display: block;
+    width: 100%;
+    margin-bottom: $form-label-margin-bottom;
+    font-size: rem-calc($form-label-size);
+    font-weight: $form-label-font-weight;
+  }
+
+  .form-input {
+    position: relative;
+  }
+
+  .form-control {
+    font-family: $form-font-family;
+    padding: $form-input-padding-y $form-input-padding-x;
+    width: 100%;
+    background-color: $form-input-background;
+    border-radius: $form-input-border-radius;
+    font-size: rem-calc($form-font-size);
+    font-weight: $form-font-weight;
+    outline: none;
+
+    @if ($form-border-bottom-only==false) {
+      border: $form-input-border-width solid $form-input-border-color;
+    } @else {
+      border: none;
+      border-bottom: $form-input-border-width solid $form-input-border-color;
+    }
+
+    @if ($form-use-box-shadow) {
+      box-shadow: inset 0 1px $form-box-shadow-width 0 $form-box-shadow-bg;
+    }
+  }
+
+  .form-inline-el {
+    display: inline-flex;
+    align-items: flex-start;
+
+    &__input {
+      position: static;
+    }
+
+    &__label {
+      margin: 0 0 0 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  select,
+  input[type="password"],
+  input[type="number"],
+  input[type="phone"],
+  input[type="email"],
+  input[type="text"] {
+    &.form-control {
+      padding-top: 0;
+      padding-bottom: 0;
+      height: rem-calc($form-input-height);
+      line-height: getLineHeight($form-input-height, $form-font-size);
+    }
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    &.form-control {
+      margin: 0;
+      padding: 0;
+      width: auto;
+    }
+  }
+
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+
+    & > .form-control {
+      flex: 1 1 auto;
+      width: 1%;
+
+      &:not(:first-child) {
+        padding-left: 0;
+        border-left-width: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        @if ($form-use-box-shadow) {
+          box-shadow: inset
+            (0-$form-box-shadow-width)
+            1px
+            ($form-box-shadow-width + 2)
+            (0-$form-box-shadow-width)
+            $form-box-shadow-bg;
+        }
+      }
+
+      &:not(:last-child) {
+        padding-right: 0;
+        border-right-width: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+
+        @if ($form-use-box-shadow) {
+          box-shadow: inset
+            $form-box-shadow-width
+            1px
+            ($form-box-shadow-width + 2)
+            (0-$form-box-shadow-width)
+            $form-box-shadow-bg;
+        }
+      }
+
+      &:not(:last-child):not(:first-child) {
+        border-left: 0;
+        border-right: 0;
+        box-shadow: none;
+      }
+    }
+
+    &-postfix,
+    &-prefix {
+      height: rem-calc($form-input-height);
+      line-height: getLineHeight($form-input-height, $form-font-size);
+    }
+
+    &-prefix {
+      padding: 0 0.1rem 0 0.5rem;
+      border-left: $form-input-border-width solid $form-input-border-color;
+      border-top: $form-input-border-width solid $form-input-border-color;
+      border-bottom: $form-input-border-width solid $form-input-border-color;
+      border-top-left-radius: $form-input-border-radius;
+      border-bottom-left-radius: $form-input-border-radius;
+
+      @if ($form-use-box-shadow) {
+        box-shadow: inset
+          $form-box-shadow-width
+          1px
+          ($form-box-shadow-width + 2)
+          (0-$form-box-shadow-width)
+          $form-box-shadow-bg;
+      }
+    }
+
+    &-postfix {
+      padding: 0 0.5rem 0 0.1rem;
+      border-right: $form-input-border-width solid $form-input-border-color;
+      border-top: $form-input-border-width solid $form-input-border-color;
+      border-bottom: $form-input-border-width solid $form-input-border-color;
+      border-top-right-radius: $form-input-border-radius;
+      border-bottom-right-radius: $form-input-border-radius;
+
+      @if ($form-use-box-shadow) {
+        box-shadow: inset
+          (0-$form-box-shadow-width)
+          1px
+          ($form-box-shadow-width + 2)
+          (0-$form-box-shadow-width)
+          $form-box-shadow-bg;
+      }
+    }
+  }
+
+  /*
+  Form helper
+  ========================================================*/
+  .form-row,
+  .form-inline-el {
+    &--b0 {
+      margin-bottom: 0;
+    }
+
+    &--start {
+      justify-content: flex-start;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--end {
+      justify-content: flex-end;
+    }
+
+    &--between {
+      justify-content: space-between;
+    }
+
+    &--around {
+      justify-content: space-around;
+    }
+
+    &--top {
+      align-items: flex-start;
+    }
+
+    &--middle {
+      align-items: center;
+    }
+
+    &--bottom {
+      align-items: flex-end;
+    }
+  }
+}
+
+.select-css-wrapper {
+    @include chevron(1rem, 2px, palette('nobel'), bottom, absolute);
+
+    &::before {
+        right: 0;
+        top: 8px;
+    }
+}
+
+.select-css {
+  display: block;
+  font-size: $form-font-size;
+  font-family: sans-serif;
+  padding: $form-input-padding-y $form-input-padding-x;
+  width: 100%;
+  max-width: 100%; /* useful when width is set to anything other than 100% */
+  box-sizing: border-box;
+  margin: 0;
+  @if ($form-border-bottom-only==false) {
+    border: $form-input-border-width solid $form-input-border-color;
+}@else{
+    border: none;
+    border-bottom: $form-input-border-width solid $form-input-border-color;
+}
+  border-radius: $form-input-border-radius;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $form-input-background;
+  color: $form-placeholder-color;
+
+  option:checked {
+      color: palette('black');
+  }
+}
+/* Hide arrow icon in IE browsers */
+.select-css::-ms-expand {
+  display: none;
+}
+/* Hover style */
+.select-css:hover {
+  border-color: #888;
+}
+/* Focus style */
+.select-css:focus {
+  border-color: #aaa;
+  /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+  color: #222;
+  outline: none;
+}
+
+/* Set options to normal weight */
+.select-css option {
+  font-weight: normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css,
+:root:lang(ar) .select-css,
+:root:lang(iw) .select-css {
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled,
+.select-css[aria-disabled="true"] {
+  color: palette('gray');
+}
+
+.select-css:disabled:hover,
+.select-css[aria-disabled="true"] {
+  border-color: #aaa;
+}

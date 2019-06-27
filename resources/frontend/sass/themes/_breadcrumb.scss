@@ -1,0 +1,37 @@
+.breadcrumb {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  &__item {
+    flex: 0 0 auto;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    &::after {
+      content: "";
+      display: block;
+      margin: 0 0.8rem;
+      height: 0;
+      width: 0;
+
+      border-style: solid;
+      border-width: 5px 0 5px 5px;
+      border-color: transparent transparent transparent palette("nobel");
+    }
+
+    &:last-child::after {
+        display: none;
+    }
+  }
+
+  &__link {
+    color: palette("nobel");
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}

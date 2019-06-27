@@ -1,0 +1,29 @@
+@import "../functions/unit";
+
+@mixin chevron($size, $width, $color, $direction: top, $position: relative) {
+
+  &::before {
+    border-style: solid;
+    border-width: $width $width 0 0;
+    content: '';
+    display: inline-block;
+    height: $size;
+    position: $position;
+    vertical-align: top;
+    width: $size;
+
+    @if($direction == right){
+      top: decimal-floor($size/2+1);
+      transform: rotate(45deg);
+    }@else if($direction == bottom){
+      top: decimal-floor($size/4);
+      transform: rotate(135deg);
+    }@else if($direction == left){
+      top: decimal-floor($size/2);
+      transform: rotate(-135deg);
+    }@else{
+      top: decimal-floor($size/2+1);
+      transform: rotate(-45deg);
+    }
+  }
+}

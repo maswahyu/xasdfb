@@ -1,0 +1,84 @@
+.shoutbox {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 32.2rem;
+  width: 100%;
+
+  text-align: center;
+  background-color: palette("athens");
+
+  @include media-over(lg){
+    width: 28.1rem;
+  }
+
+  &--wide {
+    min-height: 24rem;
+    max-width: 80rem;
+    width: 100%;
+
+    text-align: center;
+
+    @include media-over(md) {
+      text-align: left;
+    }
+  }
+
+  &--has-bg {
+    color: palette("white");
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__content-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    margin-bottom: 1.4rem;
+    @include font-size(2.4rem);
+    font-family: $title-font-family;
+    font-weight: bold;
+    line-height: (32/24);
+    letter-spacing: 1px;
+
+    &--extra-bold {
+      @include font-size(3rem);
+      font-weight: 800;
+    }
+  }
+
+  &__text {
+    margin-bottom: 1.4rem;
+    line-height: (26/16);
+
+    &--extra-space {
+      margin-bottom: 3rem;
+      line-height: (30/16);
+    }
+  }
+
+  &__cta {
+    text-align: center;
+
+    @include media-over(md) {
+      &--left {
+        text-align: left;
+      }
+    }
+  }
+}

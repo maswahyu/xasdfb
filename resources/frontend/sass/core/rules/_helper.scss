@@ -1,0 +1,144 @@
+@import "../functions/unit";
+@import "../mixins/responsives";
+@import "../functions/color";
+
+/*
+Color
+========================================================*/
+
+@each $className, $color in $palette {
+  .color-#{$className} {
+    color: $color !important;
+  }
+}
+
+/*
+Text and flexbox Align
+========================================================*/
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+
+@each $breakpoint in map-keys($screen-breakpoints) {
+  @include media-over($breakpoint) {
+    .text-#{$breakpoint}-left {
+      text-align: left !important;
+    }
+    .text-#{$breakpoint}-right {
+      text-align: right !important;
+    }
+    .text-#{$breakpoint}-center {
+      text-align: center !important;
+    }
+  }
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-align-start {
+  align-items: flex-start;
+}
+
+.flex-align-end {
+  align-items: flex-end;
+}
+
+.flex-align-stretch {
+  align-items: stretch;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-justify-start {
+  justify-content: flex-start;
+}
+
+.flex-justify-end {
+  justify-content: flex-end;
+}
+
+.flex-justify-between {
+  justify-content: space-between;
+}
+
+.flex-justify-around {
+  justify-content: space-around;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+@each $breakpoint in map-keys($screen-breakpoints) {
+  @include media-over($breakpoint) {
+    .flex-#{$breakpoint}-align-center {
+      align-items: center;
+    }
+    .flex-#{$breakpoint}-align-start {
+      align-items: flex-start;
+    }
+    .flex-#{$breakpoint}-align-end {
+      align-items: flex-end;
+    }
+    .flex-#{$breakpoint}-align-stretch {
+      align-items: stretch;
+    }
+    .flex-#{$breakpoint}-justify-center {
+      justify-content: center;
+    }
+    .flex-#{$breakpoint}-justify-start {
+      justify-content: flex-start;
+    }
+    .flex-#{$breakpoint}-justify-end {
+      justify-content: flex-end;
+    }
+    .flex-#{$breakpoint}-justify-between {
+      justify-content: space-between;
+    }
+    .flex-#{$breakpoint}-justify-around {
+      justify-content: space-around;
+    }
+    .text-#{$breakpoint}-left {
+      text-align: left !important;
+    }
+    .text-#{$breakpoint}-right {
+      text-align: right !important;
+    }
+    .text-#{$breakpoint}-center {
+      text-align: center !important;
+    }
+    .text-#{$breakpoint}-justify {
+      text-align: justify !important;
+    }
+  }
+}
+
+.position-relative {
+  position: relative;
+}
+
+.underline {
+  text-decoration: underline;
+}

@@ -1,0 +1,39 @@
+.site-footer {
+  background-color: #171717;
+  color: palette("white");
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  min-height: 21rem;
+  text-align: center;
+  font-family: $nav-font-family;
+
+  &__span {
+    @include col(12);
+    text-align: center;
+    margin-bottom: 3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.footer-bottom {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  min-height: 4rem;
+
+  background-color: palette("black");
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include media-over(lg){
+    padding: 0;
+  }
+}

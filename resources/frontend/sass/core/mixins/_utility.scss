@@ -1,0 +1,114 @@
+@import "../functions/unit";
+@import "../mixins/responsives";
+
+/**
+ * Vertical align elements using transform
+ */
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/**
+ * Horizontal align elements using transform
+ */
+
+@mixin horizontal-align($position: relative) {
+  position: $position;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+@mixin center-align($position: relative) {
+    position: $position;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+/**
+ * Hiding element visually
+ *
+ */
+
+@mixin hide-this-el() {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/**
+ * Clearfix using pseudoelement
+ */
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/**
+ * Create a box that will honor the ratio
+ */
+
+@mixin aspectRatioBox($width: 16, $height: 19) {
+  &::before {
+    content: "";
+    width: 1px;
+    margin-left: -1px;
+    float: left;
+    height: 0;
+    padding-top: calc(($height/$width) * 100%);
+  }
+  &::after {
+    /* to clear float */
+    content: "";
+    display: table;
+  }
+}
+
+@mixin truncate() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * Simple Mixin to generate chevron
+ */
+
+@mixin chevron($size, $width, $color, $direction: top, $position: relative) {
+  &::before {
+    border-style: solid;
+    border-width: $width $width 0 0;
+    border-color: $color;
+    content: "";
+    display: inline-block;
+    height: $size;
+    position: $position;
+    vertical-align: top;
+    width: $size;
+    @if ($direction==right) {
+      transform: rotate(45deg);
+    } @else if($direction==bottom) {
+      transform: rotate(135deg);
+    } @else if($direction==left) {
+      transform: rotate(-135deg);
+    } @else {
+      transform: rotate(-45deg);
+    }
+  }
+}

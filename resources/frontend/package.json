@@ -1,0 +1,31 @@
+{
+  "name": "hector-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.mix.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "dependencies": {
+    "laravel-mix": "^4.0.15",
+    "node-sass": "^4.12.0",
+    "postcss-css-variables": "^0.12.0",
+    "postcss-flexibility": "^2.0.0",
+    "postcss-normalize": "^7.0.1",
+    "postcss-object-fit-images": "^1.1.2",
+    "postcss-preset-env": "^6.6.0",
+    "rfs": "^8.0.4",
+    "sass-extract": "^2.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
