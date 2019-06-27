@@ -58,11 +58,13 @@ class News extends Model
     public static function insertNewsTag($news_id, $tags)
     {
         if ($tags) {
-            foreach ($tags as $tag_id) {        
-                $tag = new News_tag;
-                $tag->news_id = $news_id;
-                $tag->tag_id  = $tag_id;
-                $tag->save();
+            foreach ($tags as $tag_id) {
+                if (Tag::find($tag_id)) {
+                    $tag = News_tag::newNewsTag($news_id, $tag_id);
+                } else {
+                    $tag = Tag::newTag($tag_id);
+                    News_tag::newNewsTag($news_id, $tag->id);
+                }
             }
         }
     }

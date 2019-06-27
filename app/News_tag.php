@@ -12,4 +12,12 @@ class News_tag extends Model
     {
         return $this->belongsTo('App\Tag', 'tag_id');
     }
+
+    public static function newNewsTag($news_id, $tag_id)
+    {
+    	$tag = new self;
+        $tag->news_id = $news_id;
+        $tag->tag_id  = $tag_id;
+        $tag->save();
+    }
 }

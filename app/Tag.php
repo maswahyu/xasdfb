@@ -36,4 +36,18 @@ class Tag extends Model
 
         return $data;
     }
+
+    public static function newTag($name)
+    {
+        $data= new Tag;
+        $data->name = $name;
+        $data->slug  = str_slug($name);
+        if (self::whereSlug($data->slug)->exists()) {
+            $data->slug  = $data->slug.rand(1, 20);
+        }
+
+        $data->save();
+
+        return $data;
+    }
 }

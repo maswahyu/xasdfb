@@ -53,7 +53,7 @@
         <div class="input-group-btn">
             <button type="button" class="btn btn-block btn-default btn-flat" id="button-image">Browse</button> 
         </div>
-        <input id="image_path" name="image" type="text" class="form-control" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image">
+        <input id="image_path" name="image" type="text" class="form-control" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image" required>
     </div>
     <span class="text-danger">{{ $errors->first('image') }}</span>
     <p class="help-block"></p>
@@ -76,7 +76,7 @@
     <label for="tags">{{ 'Tags' }}</label>
     <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
         @foreach($tags as $item)
-            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->name}}</option>
+            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->slug}}</option>
         @endforeach
     </select>
     <span class="text-danger">{{ $errors->first('tags') }}</span>
@@ -103,7 +103,9 @@
 <script src="/dist/plugins/select2/select2.full.min.js"></script>
 <script>
     $(function () {
-        $('.select2').select2()
+        $('.select2').select2({
+            tags: true
+        })
     });
 </script>
 
