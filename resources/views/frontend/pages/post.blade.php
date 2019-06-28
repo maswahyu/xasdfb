@@ -36,7 +36,7 @@
 
     <div class="row">
 
-        <div class="span-12 span-lg-10 off-lg-1">
+        <div class="span-12 span-lg-10 off-lg-1 span-xl-8 off-xl-2">
 
             <div class="post-header text-center">
 
@@ -92,7 +92,7 @@
         </div>
 
         {{-- CONTENT DUMMY --}}
-        <div class="span-12 span-lg-11 span-xl-10 post-content">
+        <div class="span-12 span-lg-10 span-xl-8 post-content">
 
             <img src="{{ asset('static/images/mock/post-1.jpg') }}" alt="">
 
