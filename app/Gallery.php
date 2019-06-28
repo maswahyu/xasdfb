@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
+use Carbon\Carbon;
 
 class Gallery extends Model
 {   
@@ -50,6 +51,31 @@ class Gallery extends Model
         return $data;
     }
 
+    public static function getData($paginate = 10, $album_id, $type = 'photo')
+    {
+        return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
+    }
+
+    public static function getPage($paginate = 10, $album_id, $pageNumber = 1, $type)
+    {
+        return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
+    public static function getCount($album_id, $type)
+    {
+        return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->count();
+    }
+
+    public static function getGallery($type = 'video', $take = 4)
+    {
+        return self::where('publish', 1)->where('type', $type)->take($take)->get();
+    }
+
+    public function album()
+    {
+        return $this->belongsTo('App\Album', 'album_id');
+    }
+
     public function getYoutubeIdAttribute()
     {
         $link = $this->value;
@@ -68,23 +94,29 @@ class Gallery extends Model
         }
     }
 
-    public static function getData($paginate = 10, $album_id, $type = 'photo')
+    public function getCategoryNameAttribute()
     {
-        return self::where('publish', '1')->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
+        return 'Video'; 
     }
 
-    public static function getPage($paginate = 10, $album_id, $pageNumber = 1, $type)
+    public function getUrlAttribute()
     {
-        return self::where('publish', '1')->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return url('/'.$this->slug);
     }
 
-    public static function getCount($album_id, $type)
+    public function getPublishedDateAttribute()
     {
-        return self::where('publish', '1')->where('album_id', $album_id)->where('type', $type)->count();
+        return optional($this->created_at)->format('j M Y');
     }
 
-    public function album()
+    public function getTitleLimitAttribute()
     {
-        return $this->belongsTo('App\Album', 'album_id');
+        return str_limit($this->title, 40);
+    }    
+
+    public function getDurationAttribute()
+    {   
+        $duration = rand(300, 3600);
+        return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
     }
 }

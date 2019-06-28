@@ -88,14 +88,14 @@ class News extends Model
         return $randomString;
     }
 
-    public static function getNews($paginate = 10)
+    public static function getFeed($paginate = 10)
     {
-        return self::where('publish', '1')->orderBy('created_at', 'DESC')->paginate($paginate);  
+        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate);  
     }
 
-    public static function getPage($paginate = 10, $pageNumber = 1)
+    public static function getPage($pageNumber = 1, $paginate = 10)
     {
-        return self::where('publish', '1')->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
@@ -135,4 +135,60 @@ class News extends Model
         return collect($ids)
             ->contains($id) ? 'selected' : '';
     }
+
+    public static function getHighlight()
+    {
+        return self::where('publish', 1)->where('is_highlight', 1)->orderBy('updated_at', 'desc')->first();
+    }
+
+    public static function getMustReads($take = 2)
+    {
+        return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+    }
+
+    public static function getRecommended($take = 5)
+    {
+        return self::where('publish', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+    }
+
+    public static function getTrending($take = 4)
+    {
+        return self::where('publish', 1)->orderBy('updated_at', 'asc')->take($take)->get();
+    }
+
+    public function getUrlAttribute()
+    {
+        return url('/'.self::getCategorySlugAttribute().'/'.$this->slug);
+    }
+
+    public function getThumbnailAttribute()
+    {
+        return imageview($this->image);
+    }
+
+    public function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->format('j M Y');
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return ($this->category->name) ? $this->category->name : 'lazone'; 
+    }
+
+    public function getCategorySlugAttribute()
+    {
+        return ($this->category->slug) ? $this->category->slug : 'lazone'; 
+    }    
+
+    public function getTitleLimitAttribute()
+    {
+        return str_limit($this->title, 40);
+    }
+
+    public function getViewCountAttribute()
+    {
+        return rand(1, 999);
+    }
+
 }

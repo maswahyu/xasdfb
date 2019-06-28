@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\News;
+use App\Gallery;
 use Faker\Factory as Faker;
+use App\Http\Resources\NewsCollection;
 
 use Illuminate\Http\Request;
 
@@ -9,62 +12,11 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $faker = Faker::create();
-
-	    for ($i = 0; $i < 2; $i++) {
-	        $mustReads[] = (object)[
-	            'url' => '#',
-	            'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-	            'category' => randomCategory(),
-	            'published_date' => $faker->date('j M Y'),
-	            'view_count' => rand(1, 999),
-	            'title' => ucfirst($faker->words(rand(6, 10), true)),
-	        ];
-	    }
-
-	    for ($i = 0; $i < 5; $i++) {
-	        $recommended[] = (object)[
-	            'url' => '#',
-	            'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-	            'category' => randomCategory(),
-	            'published_date' => $faker->date('j M Y'),
-	            'view_count' => rand(1, 999),
-	            'title' => ucfirst($faker->words(rand(6, 10), true)),
-	        ];
-	    }
-
-	    for ($i = 0; $i < 4; $i++) {
-	        $trending[] = (object)[
-	            'url' => '#',
-	            'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-	            'category' => randomCategory(),
-	            'published_date' => $faker->date('j M Y'),
-	            'view_count' => rand(1, 999),
-	            'title' => ucfirst($faker->words(rand(6, 10), true)),
-	        ];
-	    }
-
-	    for ($i = 0; $i < 3; $i++) {
-	        $duration = rand(300, 3600);
-	        $videos[] = (object)[
-	            'url' => '#',
-	            'category' => 'Video',
-	            'yt_id' => 'Mxmu6YVVbDI',
-	            'published_date' => $faker->date('j M Y'),
-	            'title' => ucfirst($faker->words(rand(6, 10), true)),
-	            'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
-	        ];
-	    }
-
-	    $highlight = (object)[
-	        'url' => '#',
-	        'thumbnail' => 'holder.js/619x348?theme=sky&auto=yes',
-	        'category' =>  randomCategory(),
-	        'published_date' => $faker->date('j M Y'),
-	        'view_count' => rand(1, 999),
-	        'title' => $faker->words(rand(6, 10), true),
-	        'excerpt' => ucfirst($faker->words(rand(24, 36), true)),
-	    ];
+		$mustReads   = News::getMustReads();
+		$highlight   = News::getHighlight();
+		$recommended = News::getRecommended();
+		$trending    = News::getTrending();
+		$videos      = Gallery::getGallery();
 
 	    return view('frontend.pages.home', [
 	        'mustReads' => $mustReads,
@@ -73,6 +25,13 @@ class IndexController extends Controller
 	        'trending' => $trending,
 	        'videos' => $videos,
 	    ]);
+    }
+
+    public function feed(Request $request)
+    {	
+	    $page = $request->get('page');
+	    $posts = News::getPage($page);
+	    return response()->json(new NewsCollection($posts));
     }
 
     function randomCategory()

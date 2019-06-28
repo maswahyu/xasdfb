@@ -1,25 +1,26 @@
-const mix = require('laravel-mix');
-mix.pug = require('laravel-mix-pug');
+let mix = require('laravel-mix');
 
-const htmlPath = 'public/html/';
-const srcPath = 'resources/src/';
-
-mix.setPublicPath('public/assets/');
-mix.disableNotifications();
-
-mix.sass(srcPath + 'scss/site.scss', 'css/')
-  .sass(srcPath + 'scss/docs.scss', 'css/')
-  .options({
-    processCssUrls: false
-  })
-  .scripts([
-    srcPath + 'js/plugins.js',
-    srcPath + 'js/site.js'
-  ], 'public/assets/js/site.js')
-  .sourceMaps()
-  .pug(srcPath + 'pug/*.pug', '../../../public/html', {
-      pug: {
-        pretty: true
-      }
+mix
+    .sass('resources/frontend/sass/main.scss', 'public/static/css/main.css')
+    .options({
+        processCssUrls: false,
+        postCss: [
+            require('postcss-normalize')({
+                forceImport: true
+            }),
+            require('postcss-preset-env')(),
+            require('postcss-object-fit-images')(),
+            require('postcss-flexibility')(),
+            require('cssnano')({
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    normalizeWhitespace: false,
+                }]
+            })
+        ]
     })
-  ;
+    .browserSync({
+        proxy: 'http://lazone-site.test'
+    });

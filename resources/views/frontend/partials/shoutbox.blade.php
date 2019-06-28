@@ -7,7 +7,7 @@
         </div>
 
         <div class="shoutbox__cta">
-            <a href="#" class="btn btn-crimson"><strong class="text-white">PILIH MINATMU</strong></a>
+            <a href="{{ url('interest') }}" class="btn btn-crimson"><strong class="text-white">PILIH MINATMU</strong></a>
         </div>
 
     </div>

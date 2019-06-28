@@ -32,21 +32,11 @@
                         <li class="drilldown-back">
                             <a>Back</a>
                         </li>
-                        <li>
-                            <a href="#">Lifestyle</a>
-                        </li>
-                        <li>
-                            <a href="#">Entertaiment</a>
-                        </li>
-                        <li>
-                            <a href="#">Inspiration</a>
-                        </li>
-                        <li>
-                            <a href="#">Lensa</a>
-                        </li>
-                        <li>
-                            <a href="#">Sneakerland</a>
-                        </li>
+                        @foreach($siteCategory as $item)
+                            <li>
+                                <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="menu has-sub-menu">
@@ -56,43 +46,36 @@
                             <li class="drilldown-back">
                                 <a>Back</a>
                             </li>
-                            <li>
-                                <a href="#">LA Indie Movie</a>
-                            </li>
-                            <li>
-                                <a href="#">LA Streetball</a>
-                            </li>
-                            <li>
-                                <a href="#">Iceperience</a>
-                            </li>
-                            <li>
-                                <a href="#">Boldxperience</a>
-                            </li>
+                            @foreach($siteLink as $item)
+                                <li>
+                                    <a href="{{ $item->url }}" target="_blank" alt="{{ $item->name }}">{{ $item->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="#">
+                    <a href="{{ url('event') }}" alt="Events">
                         Events
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="#">
+                    <a href="{{ url('gallery') }}" alt="Gallery">
                         Gallery
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="#">
+                    <a href="{{ url('points') }}" alt="Points">
                         What is My Points?
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="#">
+                    <a href="{{ url('interest') }}" alt="interest">
                         Pick your interest
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="#" class="btn btn-crimson btn-login">Login</a>
+                    <a href="{{ url('login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
                 </li>
             </ul>
         </div>

@@ -5,6 +5,7 @@ use App\Setting;
 use Illuminate\Contracts\View\View;
 use Auth;
 use App\Category;
+use App\Link;
 
 class FrontendMasterComposer
 {
@@ -34,11 +35,13 @@ class FrontendMasterComposer
             'contact_facebook' => isset($metas['contact_facebook']) ? $metas['contact_facebook'] : '',
             'contact_twitter' => isset($metas['contact_twitter']) ? $metas['contact_twitter'] : '',
             'contact_youtube' => isset($metas['contact_youtube']) ? $metas['contact_youtube'] : '',
-            'contact_linkedin' => isset($metas['contact_linkedin']) ? $metas['contact_linkedin'] : '',
+            'contact_instagram' => isset($metas['contact_instagram']) ? $metas['contact_instagram'] : '',
         ];
 
         $siteCategory = Category::getMenu();
+        $siteLink = Link::getMenu();
         $view->with('siteCategory', $siteCategory);
+        $view->with('siteLink', $siteLink);
         $view->with('siteInfo', $siteInfo);
     }
 }

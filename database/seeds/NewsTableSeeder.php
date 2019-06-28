@@ -38,7 +38,9 @@ Donec eget odio purus. Donec tempor, ligula ultrices aliquam bibendum, nisi maur
 				'slug'         => $faker->slug,
 				'image'        => "/storage/news/236669.jpg",
                 'publish'      => 1,
-				'category_id'  => 1,
+                'category_id'  => 1,
+                'is_featured'  => rand(0,1),
+				'is_highlight'  => rand(0,1),
 				'created_at'   => Carbon\Carbon::now(),
     		];
     	}

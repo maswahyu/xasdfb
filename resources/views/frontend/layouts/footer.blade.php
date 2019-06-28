@@ -4,36 +4,42 @@
 
         <div class="row footer-top__row">
 
-            <div class="footer-top__span">Stay Connected With Lazone.id</div>
+            <div class="footer-top__span">Stay Connected With {{ $siteInfo['site_name'] }}</div>
 
             <div class="footer-top__span">
-
-                <a class="btn-social" href="#">
+                @if($siteInfo['contact_facebook'])
+                <a class="btn-social" href="{{ $siteInfo['contact_facebook'] }}" alt="Facebook" }}>
                     <svg class="fb-icon btn-social__icon">
                         <use xlink:href="{{ asset('static/images/sprites.svg') }}#fb"></use>
                     </svg>
                 </a>
-                <a class="btn-social" href="#">
+                @endif
+                @if($siteInfo['contact_twitter'])
+                <a class="btn-social" href="{{ $siteInfo['contact_twitter'] }}" alt="Twitter">
                     <svg class="tw-icon btn-social__icon">
                         <use xlink:href="{{ asset('static/images/sprites.svg') }}#tw"></use>
                     </svg>
                 </a>
-                <a class="btn-social" href="#">
+                @endif
+                @if($siteInfo['contact_instagram'])
+                <a class="btn-social" href="{{ $siteInfo['contact_instagram'] }}" alt="Instagram">
                     <svg class="ig-icon btn-social__icon">
                         <use xlink:href="{{ asset('static/images/sprites.svg') }}#ig"></use>
                     </svg>
                 </a>
-                <a class="btn-social" href="#">
+                @endif
+                @if($siteInfo['contact_youtube'])
+                <a class="btn-social" href="{{ $siteInfo['contact_youtube'] }}" alt="Youtube">
                     <svg class="yt-icon btn-social__icon">
                         <use xlink:href="{{ asset('static/images/sprites.svg') }}#yt"></use>
                     </svg>
                 </a>
-
+                @endif
             </div>
 
             <div class="footer-top__span">
                 <ul class="list flex-justify-center">
-                    <li class="list__item"><a class="list__link list__link--footer" href="#">Contact Us</a></li>
+                    <li class="list__item"><a class="list__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>
                     <li class="list__item"><a class="list__link list__link--footer" href="#">Privacy Policy</a></li>
                     <li class="list__item"><a class="list__link list__link--footer" href="#">Terms of Service</a></li>
                 </ul>
@@ -49,7 +55,7 @@
     <div class="container">
         <div class="row">
             <div class="span-12">
-                WEBSITE INI HANYA DIPERUNTUKKAN BAGI ANDA YANG SUDAH BERUSIA 18 TAHUN | COPYRIGHT&copy;LAZONE.ID,2019
+                WEBSITE INI HANYA DIPERUNTUKKAN BAGI ANDA YANG SUDAH BERUSIA 18 TAHUN | COPYRIGHT&copy;LAZONE.ID,{{ date('Y') }}
                 ALL RIGHT RESERVED
             </div>
         </div>

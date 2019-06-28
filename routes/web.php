@@ -20,6 +20,7 @@ function randomCategory()
 }
 
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/feed', 'IndexController@feed');
 
 Route::get('/category', function () {
     $faker = Faker::create();
@@ -173,25 +174,6 @@ Route::get('/event', function () {
     ]);
 });
 
-
-Route::get('/feed', function () {
-    $faker = Faker::create();
-    for ($i = 0; $i < 10; $i++) {
-        $posts[] = (object)[
-            'url' => '#',
-            'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-            'category' => randomCategory(),
-            'published_date' => $faker->date('j M Y'),
-            'view_count' => rand(1, 999),
-            'title' => ucfirst($faker->words(rand(6, 10), true)),
-        ];
-    }
-    return response()->json([
-        'data' => $posts,
-        'total_page' => 5,
-    ]);
-});
-
 Route::get('/feed-video', function () {
     $faker = Faker::create();
     for ($i = 0; $i < 8; $i++) {
@@ -338,7 +320,7 @@ Route::get('/point', function () {
     return view('frontend.pages.points', ['faqs' => $faq]);
 });
 
-Route::get('/contact', function () {
+Route::get('/contact-us', function () {
     return view('frontend.pages.contact');
 });
 

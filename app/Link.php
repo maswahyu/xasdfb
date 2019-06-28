@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Link extends Model
 {
@@ -33,5 +34,15 @@ class Link extends Model
         $data->save();
 
         return $data;
+    }
+
+    public static function getMenu()
+    {
+        $value = Cache::rememberForever('menu-link', function () {
+
+            return self::select('name','url')->get();
+        });
+
+        return $value;
     }
 }

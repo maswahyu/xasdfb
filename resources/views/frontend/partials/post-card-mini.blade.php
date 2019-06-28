@@ -1,8 +1,8 @@
-<a href="#" class="post-card">
+<a href="{{ $post->url }}" class="post-card" alt="{{ $post->title }}">
 
     <div class="post-card__meta post-meta">
 
-    <div class="post-meta__category"><span>{{ $post->category }}</span></div>
+    <div class="post-meta__category"><span>{{ $post->category_name }}</span></div>
 
     <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
