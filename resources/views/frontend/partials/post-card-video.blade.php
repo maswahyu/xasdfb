@@ -25,7 +25,7 @@
 
     <div class="post-card__meta post-meta">
 
-    <div class="post-meta__category"><span>{{ $video->category }}</span></div>
+    <div class="post-meta__category"><span>{{ $video->type }}</span></div>
 
     <div class="post-meta__stat"><span>{{ $video->published_date }}</span></div>
 

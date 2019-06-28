@@ -10,14 +10,14 @@ use Validator;
 
 class PageController extends Controller
 {
-    public function about()
+    public function search()
     {
-    	return view('front.about');
+    	return view('frontend.pages.search');
     }
 
     public function contact()
     {
-    	return view('front.contact');
+    	return view('frontend.pages.contact');
     }
 
     public function addContact(Request $request)

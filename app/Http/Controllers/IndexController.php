@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\News;
 use App\Gallery;
-use Faker\Factory as Faker;
 use App\Http\Resources\NewsCollection;
+use App\Http\Resources\GalleryCollection;
 
 use Illuminate\Http\Request;
 
@@ -34,9 +34,17 @@ class IndexController extends Controller
 	    return response()->json(new NewsCollection($posts));
     }
 
-    function randomCategory()
-	{
-	    $category = ['Lifestyle', 'Entertaiment', 'Inspiration', 'Lensa', 'Sneakerland', 'Music', 'Movie'];
-	    return $category[rand(0, count($category) - 1)];
-	}
+    public function feedPhoto(Request $request)
+    {
+	    $page = $request->get('page');
+	    $posts = Gallery::getPage($page, Gallery::PHOTO);
+	    return response()->json(new GalleryCollection($posts));
+    }
+
+    public function feedVideo(Request $request)
+    {	
+	    $page = $request->get('page');
+	    $posts = Gallery::getPage($page, Gallery::VIDEO);
+	    return response()->json(new GalleryCollection($posts));
+    }
 }

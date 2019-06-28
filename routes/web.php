@@ -21,6 +21,8 @@ function randomCategory()
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/feed', 'IndexController@feed');
+Route::get('/feed-photo', 'IndexController@feedPhoto');
+Route::get('/feed-video', 'IndexController@feedVideo');
 
 Route::get('/category', function () {
     $faker = Faker::create();
@@ -174,43 +176,6 @@ Route::get('/event', function () {
     ]);
 });
 
-Route::get('/feed-video', function () {
-    $faker = Faker::create();
-    for ($i = 0; $i < 8; $i++) {
-        $duration = rand(300, 3600);
-        $video[] = (object)[
-            'url' => '#',
-            'category' => 'Video',
-            'yt_id' => 'Mxmu6YVVbDI',
-            'published_date' => $faker->date('j M Y'),
-            'title' => ucfirst($faker->words(rand(6, 10), true)),
-            'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
-        ];
-    }
-    return response()->json([
-        'data' => $video,
-        'total_page' => 5,
-    ]);
-});
-
-Route::get('/feed-photo', function () {
-    $faker = Faker::create();
-    for ($i = 0; $i < 8; $i++) {
-        $photo[] = (object)[
-            'url' => '#',
-            'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-            'category' => 'Photo',
-            'published_date' => $faker->date('j M Y'),
-            'photo_count' => rand(1, 5),
-            'title' => ucfirst($faker->words(rand(6, 10), true)),
-        ];
-    }
-    return response()->json([
-        'data' => $photo,
-        'total_page' => 5,
-    ]);
-});
-
 Route::get('/feed-event', function () {
     $faker = Faker::create();
     for ($i = 0; $i < 5; $i++) {
@@ -320,22 +285,10 @@ Route::get('/point', function () {
     return view('frontend.pages.points', ['faqs' => $faq]);
 });
 
-Route::get('/contact-us', function () {
-    return view('frontend.pages.contact');
-});
 
-Route::get('/search', function () {
-    return view('frontend.pages.search');
-});
-
-
-Route::get('/all', function () {
-    return view('frontend.pages.kitchensink');
-});
-
-// Route::get('about', 'PageController@about')->name('about');
-// Route::get('contact-us', 'PageController@contact')->name('contact');
-// Route::post('contact-us', 'PageController@addContact');
+Route::get('search', 'PageController@search');
+Route::get('contact-us', 'PageController@contact')->name('contact');
+Route::post('contact-us', 'PageController@addContact');
 
 // Route::get('gallery', 'GalleryController@index')->name('gallery');
 // Route::get('gallery/{id}', 'GalleryController@index');

@@ -10,6 +10,9 @@ use Carbon\Carbon;
 class Gallery extends Model
 {   
     use SoftDeletes;
+
+    const PHOTO = "photo";
+    const VIDEO = "video";
 	 /**
      * The table associated with the model.
      *
@@ -56,9 +59,9 @@ class Gallery extends Model
         return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
     }
 
-    public static function getPage($paginate = 10, $album_id, $pageNumber = 1, $type)
+    public static function getPage($pageNumber = 1, $type = self::PHOTO, $paginate = 8)
     {
-        return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getCount($album_id, $type)
@@ -94,11 +97,6 @@ class Gallery extends Model
         }
     }
 
-    public function getCategoryNameAttribute()
-    {
-        return 'Video'; 
-    }
-
     public function getUrlAttribute()
     {
         return url('/'.$this->slug);
@@ -118,5 +116,15 @@ class Gallery extends Model
     {   
         $duration = rand(300, 3600);
         return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
+    }
+
+    public function getViewCountAttribute()
+    {
+        return rand(1, 999);
+    }
+
+    public function getThumbnailAttribute()
+    {
+        return imageview($this->value);
     }
 }

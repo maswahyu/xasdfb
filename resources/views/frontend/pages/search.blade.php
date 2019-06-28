@@ -12,7 +12,7 @@
         <div class="span-12">
 
             <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category">Search result for "Test"</span>
+                <span class="section-title__label section-title__label--category">Search result for "{{ request()->get('search') }}"</span>
             </div>
 
         </div>
@@ -142,7 +142,7 @@
                     <img src="{{ asset('static/images/slides.png') }}" alt="">
                     @verbatim
                 </span>
-                <span class="stat-with-icon__text">{{ photo_count }}</span>
+                <span class="stat-with-icon__text">{{ view_count }}</span>
             </div>
 
         </a>
@@ -160,7 +160,7 @@
             <a href="{{ url }}" class="post-card post-card--fourth">
 
                 <div class="post-card__thumbnail post-card__thumbnail--fourth">
-                    <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ yt_id }}/hqdefault.jpg" alt="">
+                    <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
                 </div>
 
                 <div class="post-card__meta post-meta">
