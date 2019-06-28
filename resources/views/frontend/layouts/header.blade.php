@@ -46,7 +46,7 @@
                     <a href="{{ url('interest') }}" class="dropdown-menu__link" alt="Interest">Pick your interest</a>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--login">
-                    <a href="{{ url('login') }}" class="btn btn-crimson btn-login" alt="Login">Login</a>
+                    <a href="{{ url('member/login') }}" class="btn btn-crimson btn-login" alt="Login">Login</a>
                 </li>
             </ul>
         </nav>
