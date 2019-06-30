@@ -55,7 +55,7 @@ Hector_infinitePaginator.prototype = {
             });
             self.currentPage++;
 
-            if(parsedData.pagination.total_pages < self.currentPage){
+            if(parsedData.total_page < self.currentPage){
                 self.$trigger.hide();
             }
         }).always(function () {
