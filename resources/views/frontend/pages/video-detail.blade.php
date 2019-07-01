@@ -41,11 +41,11 @@
 
                         <div class="post-meta">
 
-                            <div class="post-meta__category"><span>Photo</span></div>
+                            <div class="post-meta__category"><span>{{ $gallery->type }}</span></div>
 
-                            <div class="post-meta__stat"><span>6 hours ago</span></div>
+                            <div class="post-meta__stat"><span>{{ $gallery->created_at->diffForHumans() }}</span></div>
 
-                            <div class="post-meta__stat"><span>456 views</span></div>
+                            <div class="post-meta__stat"><span>{{ $gallery->view_count }} views</span></div>
 
                         </div>
 
