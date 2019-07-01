@@ -8,6 +8,8 @@ use App\Contact;
 use Auth;
 use Validator;
 use App\Gallery;
+use App\Event;
+use App\Http\Resources\EventCollection;
 use Faker\Factory as Faker;
 
 class PageController extends Controller
@@ -83,21 +85,7 @@ class PageController extends Controller
 
     public function events()
     {
-        $faker = Faker::create();
-
-        for ($i = 0; $i < 4; $i++) {
-            $date = $faker->dateTime();
-            $stickyEvent[] = (object)[
-                'url' => '#',
-                'thumbnail' => 'holder.js/580x290?theme=sky&auto=yes',
-                'type' => randomCategory(),
-                'date'  => date_format($date, 'j'),
-                'month_year' => date_format($date, 'M y'),
-                'name' => ucfirst($faker->words(rand(3, 5), true)),
-                'location' => $faker->words(rand(2, 3), true) . ' - ' . $faker->words(rand(1, 2), true) . ', ' . $faker->city(),
-            ];
-        }
-
+        $stickyEvent = Event::getSticky(4);
         $videos = Gallery::getGallery(Gallery::VIDEO, 2);
         $photos = Gallery::getGallery(Gallery::PHOTO, 2);
 
@@ -110,21 +98,25 @@ class PageController extends Controller
 
     public function feedEvent(Request $request)
     {
-        $faker = Faker::create();
-        for ($i = 0; $i < 5; $i++) {
-            $date = $faker->dateTime();
-            $event[] = (object)[
-                'url' => '#',
-                'thumbnail' => 'holder.js/480x240?theme=sky&auto=yes',
-                'date' => date_format($date, 'j M y'),
-                'name' => ucfirst($faker->words(rand(3, 5), true)),
-                'location' => $faker->words(rand(2, 3), true) . ' - ' . $faker->words(rand(1, 2), true) . ', ' . $faker->city(),
-            ];
-        }
+        // $faker = Faker::create();
+        // for ($i = 0; $i < 5; $i++) {
+        //     $date = $faker->dateTime();
+        //     $event[] = (object)[
+        //         'url' => '#',
+        //         'thumbnail' => 'holder.js/480x240?theme=sky&auto=yes',
+        //         'date' => date_format($date, 'j M y'),
+        //         'name' => ucfirst($faker->words(rand(3, 5), true)),
+        //         'location' => $faker->words(rand(2, 3), true) . ' - ' . $faker->words(rand(1, 2), true) . ', ' . $faker->city(),
+        //     ];
+        // }
 
-        return response()->json([
-            'data' => $event,
-            'total_page' => 5,
-        ]);
+        // return response()->json([
+        //     'data' => $event,
+        //     'total_page' => 5,
+        // ]);
+        // 
+        $page = $request->get('page');
+        $posts = Event::getPage($page);
+        return response()->json(new EventCollection($posts));
     }
 }

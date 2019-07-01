@@ -114,9 +114,9 @@
             <div class="event-card__meta event-card__meta--horizontal">
 
                 <div class="event-card__info">
-                    <div class="event-card__name event-card__name--horizontal"><span>{{ name }}</span></div>
+                    <div class="event-card__name event-card__name--horizontal"><span>{{ title }}</span></div>
                     <div class="event-card__date event-card__date--horizontal"><span>{{ date }}</span></div>
-                    <div class="event-card__location"><span>{{ location }}</span></div>
+                    <div class="event-card__location"><span>{{ summary }}</span></div>
                 </div>
 
             </div>

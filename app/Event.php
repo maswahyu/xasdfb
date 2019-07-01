@@ -14,6 +14,16 @@ class Event extends Model
      */
     protected $table = 'events';
 
+    public static function getSticky($take = 4)
+    {
+        return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+    }
+
+    public static function getPage($pageNumber = 1, $paginate = 5)
+    {
+        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Admin', 'created_by');
