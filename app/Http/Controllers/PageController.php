@@ -7,12 +7,25 @@ use App\Setting;
 use App\Contact;
 use Auth;
 use Validator;
+use Faker\Factory as Faker;
 
 class PageController extends Controller
 {
     public function search()
     {
-    	return view('frontend.pages.search');
+        return view('frontend.pages.search');
+    }
+
+    public function points()
+    {
+    	$faker = Faker::create();
+        for ($i = 0; $i < 10; $i++) {
+            $faq[] = (object)[
+                'title' => ucfirst($faker->words(rand(6, 10), true)),
+                'description' => ucfirst($faker->sentences(rand(10, 30), true)),
+            ];
+        }
+        return view('frontend.pages.points', ['faqs' => $faq]);
     }
 
     public function contact()

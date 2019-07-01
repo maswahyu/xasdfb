@@ -8,7 +8,7 @@ use App\Http\Resources\GalleryCollection;
 
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
@@ -46,5 +46,20 @@ class IndexController extends Controller
 	    $page = $request->get('page');
 	    $posts = Gallery::getPage($page, Gallery::VIDEO);
 	    return response()->json(new GalleryCollection($posts));
+    }
+
+    public function category($category)
+    {
+    	
+    }
+
+    public function subcategory($category, $subcategory)
+    {
+    	
+    }
+
+    public function detailPost($category, $subcategory, $slug)
+    {
+    	
     }
 }
