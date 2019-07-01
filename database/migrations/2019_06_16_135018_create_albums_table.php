@@ -18,6 +18,7 @@ class CreateAlbumsTable extends Migration
             $table->string('slug')->unique();
             $table->string('name')->index();
             $table->string('image')->nullable();
+            $table->integer('is_featured')->default(0);
             $table->timestamps();
         });
     }

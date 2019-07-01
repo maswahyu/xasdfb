@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gallery;
+use App\Http\Resources\GalleryCollection;
 use Faker\Factory as Faker;
 
 class GalleryController extends Controller
 {
+    public function index()
+    {
+        return redirect('gallery/video');
+    }
+
     public function photo()
     {	
     	$faker = Faker::create();
@@ -41,35 +47,13 @@ class GalleryController extends Controller
     }
 
     public function video()
-    {
-        $faker = Faker::create();
+    {   
+        $videos      = Gallery::getGallery(Gallery::VIDEO, 3);
+        $stickyVideo = Gallery::getSticky(Gallery::VIDEO);
 
-        for ($i = 0; $i < 3; $i++) {
-            $duration = rand(300, 3600);
-            $videos[] = (object)[
-                'url' => '#',
-                'category' => 'Video',
-                'yt_id' => 'Mxmu6YVVbDI',
-                'published_date' => $faker->date('j M Y'),
-                'title' => ucfirst($faker->words(rand(6, 10), true)),
-                'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
-            ];
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $duration = rand(300, 3600);
-            $stickyVideo = (object)[
-                'url' => '#',
-                'category' => 'Video',
-                'yt_id' => 'Mxmu6YVVbDI',
-                'published_date' => $faker->date('j M Y'),
-                'title' => ucfirst($faker->words(rand(6, 10), true)),
-                'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
-            ];
-        }
         return view('frontend.pages.video', [
             'latestVideos' => $videos,
-            'stickyVideo' => $stickyVideo,
+            'stickyVideo'  => $stickyVideo,
         ]);
     }
 
@@ -89,5 +73,19 @@ class GalleryController extends Controller
     public function videoDetail($slug)
     {
         return view('frontend.pages.video-detail');
+    }
+
+    public function feedPhoto(Request $request)
+    {
+        $page = $request->get('page');
+        $posts = Gallery::getPage($page, Gallery::PHOTO);
+        return response()->json(new GalleryCollection($posts));
+    }
+
+    public function feedVideo(Request $request)
+    {   
+        $page = $request->get('page');
+        $posts = Gallery::getPage($page, Gallery::VIDEO);
+        return response()->json(new GalleryCollection($posts));
     }
 }

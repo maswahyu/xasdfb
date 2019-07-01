@@ -16,7 +16,7 @@ class Gallery extends JsonResource
     {
         return [
             'url'            => $this->url,
-            'thumbnail'      => $this->thumbnail,
+            'thumbnail'      => ($this->type == 'photo') ? $this->thumbnail : '',
             'category'       => $this->type,
             'published_date' => $this->published_date,
             'view_count'     => $this->view_count,

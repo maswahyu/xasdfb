@@ -22,6 +22,7 @@ class GalleryTableSeeder extends Seeder
                 'publish'    => "1",
                 'user_id'    => 1,
                 'album_id'   => 1,
+                'is_featured'  => rand(0,1),
                 'created_at' => Carbon\Carbon::now(),
     		];
     	}
@@ -38,6 +39,7 @@ class GalleryTableSeeder extends Seeder
                 'publish'    => "1",
                 'user_id'    => 1,
                 'album_id'   => 1,
+                'is_featured'  => rand(0,1),
                 'created_at' => Carbon\Carbon::now(),
     		];
     	}

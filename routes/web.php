@@ -20,8 +20,8 @@ function randomCategory()
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/feed', 'IndexController@feed');
-Route::get('/feed-photo', 'IndexController@feedPhoto');
-Route::get('/feed-video', 'IndexController@feedVideo');
+Route::get('/feed-photo', 'GalleryController@feedPhoto');
+Route::get('/feed-video', 'GalleryController@feedVideo');
 Route::get('/feed-event', 'PageController@feedEvent');
 
 Route::get('search', 'PageController@search');
@@ -31,7 +31,7 @@ Route::post('contact-us', 'PageController@addContact');
 Route::get('events', 'PageController@events');
 Route::get('interest', 'MemberController@interest');
 
-Route::get('gallery', 'GalleryController@video');
+Route::get('gallery', 'GalleryController@index');
 Route::get('gallery/photo', 'GalleryController@photo');
 Route::get('gallery/video', 'GalleryController@video');
 Route::get('photo/detail/{slug}', 'GalleryController@photoDetail');

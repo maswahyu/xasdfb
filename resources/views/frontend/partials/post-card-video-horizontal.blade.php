@@ -1,9 +1,9 @@
-<a href="{{ $video->url }}" class="post-card post-card--video-horizontal">
+<a href="{{ url('video/detail/'.$video->slug) }}" class="post-card post-card--video-horizontal">
 
     <div class="post-card__thumbnail post-card__thumbnail--video-horizontal">
 
         <img class="post-card__img post-card__img--video-horizontal"
-            src="https://img.youtube.com/vi/{{ $video->yt_id }}/hqdefault.jpg" alt="">
+            src="https://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" alt="">
 
         <div class="post-card__overlay"></div>
 

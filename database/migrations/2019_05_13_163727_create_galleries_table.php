@@ -20,6 +20,7 @@ class CreateGalleriesTable extends Migration
             $table->integer('album_id')->nullable()->index();
             $table->string('title')->nullable()->index();
             $table->integer('publish')->default(0);
+            $table->integer('is_featured')->default(0);
             $table->enum('type', ["photo", "video"])->default("photo");
             $table->string('value')->nullable();
             $table->integer('sort')->default(0);

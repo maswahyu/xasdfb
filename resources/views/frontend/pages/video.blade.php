@@ -21,8 +21,8 @@
 
             <div class="span-12 text-center">
                 <ul class="list flex-justify-center">
-                    <li class="list__item active"><a href="#" class="list__link">Video</a></li>
-                    <li class="list__item"><a href="#" class="list__link">Photo</a></li>
+                    <li class="list__item active"><a href="{{ url('gallery/video') }}" class="list__link">Video</a></li>
+                    <li class="list__item"><a href="{{ url('gallery/photo') }}" class="list__link">Photo</a></li>
                 </ul>
             </div>
 
@@ -73,7 +73,7 @@
         <div class="span-12">
 
             <div class="section-title">
-                <span class="section-title__label">Must Reads</span>
+                <span class="section-title__label">See More Videos</span>
             </div>
 
         </div>
@@ -106,7 +106,7 @@
         <a href="{{ url }}" class="post-card post-card--fourth">
 
             <div class="post-card__thumbnail post-card__thumbnail--fourth">
-                <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ yt_id }}/hqdefault.jpg" alt="">
+                <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
             </div>
 
             <div class="post-card__meta post-meta">
