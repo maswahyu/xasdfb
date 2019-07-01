@@ -1,13 +1,16 @@
 $(function ()
 {
+    var $mobileMenu = $('#mobile-menu'),
+        $primaryNav = $('.mobile-nav');
+
     $(".mobile-menu-trigger").on('click', function (e)
     {
         e.preventDefault();
-        var $this = $(this),
-            $primaryNav = $('.mobile-nav');
+        var $this = $(this);
         if ($primaryNav.hasClass('active')) {
             $this.removeClass('is-active');
             $primaryNav.removeClass('active');
+            $mobileMenu.drilldown('reset');
         } else {
             $this.addClass('is-active');
             $primaryNav.addClass('active');
@@ -20,7 +23,21 @@ $(function ()
         $('.search-form').toggleClass('active');
     });
 
-    $('#mobile-menu').drilldown();
+    $mobileMenu.drilldown({
+        event: 'click',
+        selector: 'a'
+    });
+
+    $mobileMenu.on('click', 'a', function ()
+    {
+        var level = $mobileMenu.data('level');
+        if (level !== 0) {
+            $primaryNav.addClass('menu-drilled');
+        } else {
+            $primaryNav.removeClass('menu-drilled');
+        }
+    });
+
 
     $(document).ajaxComplete(function ()
     {
@@ -29,7 +46,8 @@ $(function ()
 
     new ClipboardJS('.jsCopyLink');
 
-    $('.jsCopyLink').on('click', function(e){
+    $('.jsCopyLink').on('click', function (e)
+    {
         e.preventDefault();
     });
 
