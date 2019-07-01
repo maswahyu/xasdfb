@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AlbumTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(LinkTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
     }
 }
