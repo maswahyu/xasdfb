@@ -22,13 +22,14 @@ class Event extends Model
     public static function newRecord($request)
     {
         $data = new Event;
-        $data->created_by = Auth::guard('admin')->id();
-        $data->slug       = str_slug($request->get('title')).'-'.self::generateRandomString();
-        $data->title      = $request->get('title');
-        $data->publish    = $request->get('publish');
-        $data->image      = $request->get('image');
-        $data->summary    = $request->get('summary');
-        $data->content    = $request->get('content');
+        $data->created_by  = Auth::guard('admin')->id();
+        $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
+        $data->title       = $request->get('title');
+        $data->publish     = $request->get('publish');
+        $data->is_featured = $request->get('is_featured');
+        $data->image       = $request->get('image');
+        $data->summary     = $request->get('summary');
+        $data->content     = $request->get('content');
 
         $data->save();
 
@@ -38,12 +39,13 @@ class Event extends Model
     public static function updateRecord($request, $id)
     {
         $data = Event::findOrFail($id);
-        $data->created_by = Auth::guard('admin')->id();
-        $data->title      = $request->get('title');
-        $data->publish    = $request->get('publish');
-        $data->image      = $request->get('image');
-        $data->summary    = $request->get('summary');
-        $data->content    = $request->get('content');
+        $data->created_by  = Auth::guard('admin')->id();
+        $data->title       = $request->get('title');
+        $data->publish     = $request->get('publish');
+        $data->is_featured = $request->get('is_featured');
+        $data->image       = $request->get('image');
+        $data->summary     = $request->get('summary');
+        $data->content     = $request->get('content');
 
         $data->save();
 

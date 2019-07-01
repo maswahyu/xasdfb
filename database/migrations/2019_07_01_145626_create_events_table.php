@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('slug')->unique()->index();
             $table->string('title')->index();
             $table->integer('publish')->default(0);
+            $table->integer('is_featured')->nullable();
             $table->string('image')->nullable();
             $table->text('summary')->nullable();
             $table->text('content')->nullable();

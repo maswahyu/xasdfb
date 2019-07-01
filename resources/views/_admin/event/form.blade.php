@@ -43,6 +43,15 @@
     <span class="text-danger">{{ $errors->first('publish') }}</span>
     <p class="help-block"></p>
 </div>
+<div class="form-group ">
+    <label for="is_featured">{{ 'Sticky' }}</label>
+    <select name="is_featured" class="form-control" id="is_featured">
+        <option value="1" {{ (isset($event->is_featured) && $event->is_featured == 1) ? 'selected' : '' }}>Yes</option>
+        <option value="0" {{ (isset($event->is_featured) && $event->is_featured == 0) ? 'selected' : '' }}>No</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('is_featured') }}</span>
+    <p class="help-block"></p>
+</div>
 
 
 <div class="form-group">
