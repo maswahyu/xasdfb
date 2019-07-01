@@ -6,7 +6,7 @@
 
     <div class="post-card__meta post-meta">
 
-        <div class="post-meta__category"><span>{{ $post->category }}</span></div>
+        <div class="post-meta__category"><span>{{ $post->category_name }}</span></div>
 
         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div class="post-card__title post-card__title--large">
-        <span>{{ $post->title }}</span>
+        <span>{{ $post->title_limit }}</span>
     </div>
 
 </a>

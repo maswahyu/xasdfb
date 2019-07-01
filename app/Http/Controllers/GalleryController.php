@@ -4,35 +4,90 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gallery;
+use Faker\Factory as Faker;
 
 class GalleryController extends Controller
 {
-    public function index(Request $request, $album_id = null)
+    public function photo()
     {	
-    	if (!$album_id) {
-    		$album_id = env('ALBUM_ID');
-    	}
+    	$faker = Faker::create();
 
-    	if ($request->ajax()) {
-    		$type = $request->get('type');
-    		$page = $request->get('page');
-    		if (!$page) {
-    			$page = 2;
-    		}
-    		$gallery = Gallery::getPage(6, $album_id, $page, $type);
-
-    		$response = [
-                'link' => $gallery->nextPageUrl(),
-                'html' => view('front.gallery-list', compact('gallery','type'))->render()
+        for ($i = 0; $i < 2; $i++) {
+            $sticky[] = (object)[
+                'url' => '#',
+                'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
+                'category' => randomCategory(),
+                'published_date' => $faker->date('j M Y'),
+                'photo_count' => rand(1, 5),
+                'title' => ucfirst($faker->words(rand(6, 10), true)),
             ];
+        }
 
-            return response()->json($response);
-    	}
+        for ($i = 0; $i < 3; $i++) {
+            $latest[] = (object)[
+                'url' => '#',
+                'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
+                'category' => randomCategory(),
+                'published_date' => $faker->date('j M Y'),
+                'photo_count' => rand(1, 5),
+                'title' => ucfirst($faker->words(rand(6, 10), true)),
+            ];
+        }
 
-    	$photo = Gallery::getData(5, $album_id, 'photo');
-    	$video = Gallery::getData(6, $album_id, 'video');
-    	$total_photo = Gallery::getCount($album_id, 'photo');
-    	$total_video = Gallery::getCount($album_id, 'video');
-    	return view('front.gallery', compact('photo','video','total_photo','total_video'));
+        return view('frontend.pages.photo', [
+            'stickyPosts' => $sticky,
+            'latestPosts' => $latest,
+        ]);
+    }
+
+    public function video()
+    {
+        $faker = Faker::create();
+
+        for ($i = 0; $i < 3; $i++) {
+            $duration = rand(300, 3600);
+            $videos[] = (object)[
+                'url' => '#',
+                'category' => 'Video',
+                'yt_id' => 'Mxmu6YVVbDI',
+                'published_date' => $faker->date('j M Y'),
+                'title' => ucfirst($faker->words(rand(6, 10), true)),
+                'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
+            ];
+        }
+
+        for ($i = 0; $i < 3; $i++) {
+            $duration = rand(300, 3600);
+            $stickyVideo = (object)[
+                'url' => '#',
+                'category' => 'Video',
+                'yt_id' => 'Mxmu6YVVbDI',
+                'published_date' => $faker->date('j M Y'),
+                'title' => ucfirst($faker->words(rand(6, 10), true)),
+                'duration' => $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration),
+            ];
+        }
+        return view('frontend.pages.video', [
+            'latestVideos' => $videos,
+            'stickyVideo' => $stickyVideo,
+        ]);
+    }
+
+    public function photoDetail($slug)
+    {
+        for ($i = 0; $i < 10; $i++) {
+            $images[] = (object)[
+                'thumbnail' => 'holder.js/247x150?theme=sky&auto=yes&text=Nav ' . $i,
+                'image' => 'holder.js/980x653?theme=sky&auto=yes&text=Original ' . $i,
+            ];
+        }
+        return view('frontend.pages.photo-detail', [
+            'images' => $images,
+        ]);
+    }
+
+    public function videoDetail($slug)
+    {
+        return view('frontend.pages.video-detail');
     }
 }

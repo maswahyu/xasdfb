@@ -69,7 +69,7 @@ class Gallery extends Model
         return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->count();
     }
 
-    public static function getGallery($type = 'video', $take = 4)
+    public static function getGallery($type = self::VIDEO, $take = 4)
     {
         return self::where('publish', 1)->where('type', $type)->take($take)->get();
     }

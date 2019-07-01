@@ -16,9 +16,7 @@ class NewsCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection,
-            'pagination' => [
-                'total_pages' => $this->lastPage()
-            ],
+            'total_page' => $this->lastPage()
         ];
     }
 }

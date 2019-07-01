@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('event') }}" class="dropdown-menu__link" alt="Events">Events</a>
+                    <a href="{{ url('events') }}" class="dropdown-menu__link" alt="Events">Events</a>
                 </li>
                 <li class="dropdown-menu__item">
                     <a href="{{ url('gallery') }}" class="dropdown-menu__link" alt="Gallery">Gallery</a>

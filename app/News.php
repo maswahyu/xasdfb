@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 use App\Tag;
 use App\News_tag;
+use Carbon\Carbon;
 
 class News extends Model
 {   
     use SoftDeletes;
 
     const NEWS = 'news';
+
+    protected $dates = ['published_at'];
 
     public static function newRecord($request)
     {
@@ -100,12 +103,12 @@ class News extends Model
 
     public static function detail($slug)
     {   
-        return self::where('publish', '1')->where('slug', $slug)->first();
+        return self::where('publish', 1)->where('slug', $slug)->first();
     }    
 
     public static function related($slug)
     {
-        return self::where('publish', '1')->where('slug', '!=', $slug)->take(3)->get();
+        return self::where('publish', 1)->where('slug', '!=', $slug)->take(3)->get();
     }
 	/**
      * Post belongs to user
@@ -156,9 +159,19 @@ class News extends Model
         return self::where('publish', 1)->orderBy('updated_at', 'asc')->take($take)->get();
     }
 
+    public static function getLatest($take = 4)
+    {
+        return self::where('publish', 1)->latest()->take($take)->get();
+    }
+
+    public static function getSticky($take = 4)
+    {
+        return self::where('publish', 1)->where('is_featured', 1)->latest()->take($take)->get();
+    }
+
     public function getUrlAttribute()
     {
-        return url('/'.self::getCategorySlugAttribute().'/'.$this->slug);
+        return url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug);
     }
 
     public function getThumbnailAttribute()

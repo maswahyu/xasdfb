@@ -12,17 +12,16 @@
         <div class="span-12">
 
             <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category">Category Title</span>
+                <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
             </div>
 
         </div>
 
         <div class="span-12 text-center">
             <ul class="list flex-justify-center">
-                <li class="list__item active"><a href="#" class="list__link">Movie</a></li>
-                <li class="list__item"><a href="#" class="list__link">Music</a></li>
-                <li class="list__item"><a href="#" class="list__link">Sport</a></li>
-                <li class="list__item"><a href="#" class="list__link">News</a></li>
+                @foreach($category->children as $key => $item)
+                    <li class="list__item {{ classActiveSegment(2, $item->slug) }} {{ ($key == 0 && !Request::segment(2)) ? 'active' : '' }}"><a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a></li>
+                @endforeach
             </ul>
         </div>
 

@@ -57,4 +57,14 @@ class Category extends Model
 
         return $value;
     }
+
+    public function getUrlAttribute()
+    {
+        return url('/'.$this->slug);
+    }
+
+    public function getSubUrlAttribute()
+    {
+        return url('/'.$this->parent->slug.'/'.$this->slug);
+    }
 }

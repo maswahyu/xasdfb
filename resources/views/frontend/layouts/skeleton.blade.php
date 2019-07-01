@@ -10,7 +10,7 @@
     <meta name="description" content="@yield('head_description', $siteInfo['site_meta_description'])">
     <meta name="keywords" content="{{ $siteInfo['site_meta_keyword'] }}">
     <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ $siteInfo['site_name'] }}" />
     <meta property="og:title" content="@yield('head_title', $siteInfo['site_meta_title']) " />
     <meta property="og:image" content="@yield('head_image', imageview('/'))" />
