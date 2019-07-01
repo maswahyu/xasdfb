@@ -45,6 +45,11 @@ class Gallery extends Model
         return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->first();
     }
 
+    public static function detail($type = self::VIDEO, $slug)
+    {   
+        return self::where('publish', 1)->where('type', $type)->where('slug', $slug)->first();
+    }
+
     public function album()
     {
         return $this->belongsTo('App\Album', 'album_id');

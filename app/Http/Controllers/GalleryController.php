@@ -71,8 +71,14 @@ class GalleryController extends Controller
     }
 
     public function videoDetail($slug)
-    {
-        return view('frontend.pages.video-detail');
+    {   
+        $gallery = Gallery::detail(Gallery::VIDEO, $slug);
+        
+        if (!$gallery) {
+            abort(404);
+        }
+
+        return view('frontend.pages.video-detail', compact('gallery'));
     }
 
     public function feedPhoto(Request $request)

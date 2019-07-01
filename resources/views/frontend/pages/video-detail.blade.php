@@ -28,7 +28,7 @@
             <div class="video-container">
                 <div class="plyr__video-embed" id="player">
                     <iframe
-                        src="https://www.youtube.com/embed/Mxmu6YVVbDI?origin={{ url('/') }}&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                        src="https://www.youtube.com/embed/{{ $gallery->youtube_id }}?origin={{ url('/') }}&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                         allowfullscreen allowtransparency allow="autoplay"></iframe>
                 </div>
             </div>
@@ -114,7 +114,7 @@
         <div class="span-12">
 
             <div class="section-title">
-                <span class="section-title__label">Must Watch</span>
+                <span class="section-title__label">See More Videos</span>
             </div>
 
         </div>
@@ -147,7 +147,7 @@
             <a href="{{ url }}" class="post-card post-card--fourth">
 
                 <div class="post-card__thumbnail post-card__thumbnail--fourth">
-                    <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ yt_id }}/hqdefault.jpg" alt="">
+                    <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
                 </div>
 
                 <div class="post-card__meta post-meta">

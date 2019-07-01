@@ -37,6 +37,6 @@ class NewsRepository
      */
     public function findByField($field, $value = null)
     {
-        return $this->model->where($field, '=', $value)->first();
+        return $this->model->where('publish', 1)->where($field, '=', $value)->first();
     }
 }
