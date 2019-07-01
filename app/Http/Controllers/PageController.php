@@ -98,23 +98,6 @@ class PageController extends Controller
 
     public function feedEvent(Request $request)
     {
-        // $faker = Faker::create();
-        // for ($i = 0; $i < 5; $i++) {
-        //     $date = $faker->dateTime();
-        //     $event[] = (object)[
-        //         'url' => '#',
-        //         'thumbnail' => 'holder.js/480x240?theme=sky&auto=yes',
-        //         'date' => date_format($date, 'j M y'),
-        //         'name' => ucfirst($faker->words(rand(3, 5), true)),
-        //         'location' => $faker->words(rand(2, 3), true) . ' - ' . $faker->words(rand(1, 2), true) . ', ' . $faker->city(),
-        //     ];
-        // }
-
-        // return response()->json([
-        //     'data' => $event,
-        //     'total_page' => 5,
-        // ]);
-        // 
         $page = $request->get('page');
         $posts = Event::getPage($page);
         return response()->json(new EventCollection($posts));
