@@ -27,7 +27,7 @@ class News extends Model
         $data->publish     = $request->get('publish');
         $data->category_id = $request->get('category_id');
         $data->user_id     = Auth::guard('admin')->id();
-        $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();  
+        $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
         $data->save();
 
         $tags = $request->get('tags');

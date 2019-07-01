@@ -54,6 +54,8 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('taglist', 'TagController@list');
         Route::resource('link', 'LinkController');
         Route::get('linklist', 'LinkController@list');
+        Route::resource('event', 'EventController');
+        Route::get('eventlist', 'EventController@list');
     });
 
     Route::get('contact/list', 'ContactController@index');

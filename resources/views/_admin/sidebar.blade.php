@@ -78,6 +78,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/event') }}" class="nav-link {!! classActiveSegment(2, 'event') !!}">
+                        <i class="nav-icon fa fa-calendar-week"></i>
+                        <p>
+                            Event
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/tag') }}" class="nav-link {!! classActiveSegment(2, 'tag') !!}">
                         <i class="nav-icon fa fa-hashtag"></i>
                         <p>
