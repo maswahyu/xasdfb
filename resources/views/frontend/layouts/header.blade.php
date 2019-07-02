@@ -11,31 +11,48 @@
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
                     <a href="#" class="dropdown-menu__link">Articles</a>
                     <ul class="dropdown-menu__dropdown">
-                        @foreach($siteCategory as $item)
-                            <li class="dropdown-menu__dropdown-item">
-                                <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
-                            </li>
-                        @endforeach
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Lifestyle</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Entertaiment</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Inspiration</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Lensa</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Sneakerland</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
                     <a href="#" class="dropdown-menu__link">Community</a>
                     <ul class="dropdown-menu__dropdown">
-                        @foreach($siteLink as $item)
-                            <li class="dropdown-menu__dropdown-item">
-                                <a href="{{ $item->url }}" target="_blank" class="dropdown-menu__dropdown-link" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
-                            </li>
-                        @endforeach
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>LA Indie Movie</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>LA Streetball</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Iceperience</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="#" class="dropdown-menu__dropdown-link"><span>Boldxperience</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('event') }}" class="dropdown-menu__link" alt="Events">Events</a>
+                    <a href="#" class="dropdown-menu__link">Events</a>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('gallery') }}" class="dropdown-menu__link" alt="Gallery">Gallery</a>
+                    <a href="#" class="dropdown-menu__link">Gallery</a>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('points') }}" class="dropdown-menu__link" alt="Points">What is My Points?</a>
+                    <a href="#" class="dropdown-menu__link">What is My Points?</a>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--search">
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
@@ -43,11 +60,36 @@
                     </a>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('interest') }}" class="dropdown-menu__link" alt="Interest">Pick your interest</a>
+                    <a href="#" class="dropdown-menu__link">Pick your interest</a>
                 </li>
-                <li class="dropdown-menu__item dropdown-menu__item--login">
-                    <a href="{{ url('member/login') }}" class="btn btn-crimson btn-login" alt="Login">Login</a>
-                </li>
+                @auth
+                    <li class="dropdown-menu__item dropdown-menu__item--has-submenu dropdown-menu__item--user-menu jsUserMenu">
+                        <span class="dropdown-menu__avatar">
+                            <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar">
+                        </span>
+                        <ul class="dropdown-menu__dropdown">
+                            <li class="dropdown-menu__dropdown-item">
+                                <strong class="dropdown-menu__username">John Doe</strong>
+                                <br>
+                                <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span>7.000 pts</span></span>
+                            </li>
+                            <li class="dropdown-menu__separator">&nbsp;</li>
+                            <li class="dropdown-menu__dropdown-item">
+                                <a href="#" class="dropdown-menu__dropdown-link"><span>My Profile</span></a>
+                            </li>
+                            <li class="dropdown-menu__dropdown-item">
+                                <a href="#" class="dropdown-menu__dropdown-link"><span>My Points</span></a>
+                            </li>
+                            <li class="dropdown-menu__dropdown-item">
+                                <a href="#" class="dropdown-menu__dropdown-link"><span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="dropdown-menu__item dropdown-menu__item--login">
+                        <a href="#" class="btn btn-crimson btn-login">Login</a>
+                    </li>
+                @endif
             </ul>
         </nav>
 
@@ -55,7 +97,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span-6 off-3 position-relative">
-                        <form class="form" action="{{ url('search') }}" method="get">
+                        <form class="form" action="">
                             <input type="search" name="search" class="search-input form-control">
                             <button type="submit" class="search-btn-icon">
                                 <img src="{{ asset('static/images/search-black.png') }}" alt="">
