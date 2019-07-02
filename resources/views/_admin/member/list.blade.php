@@ -17,7 +17,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{ url('/magic/member/' . $item->id) }}" title="View member"><i class="fa fa-eye"></i> View</a>
 
-                        <a class="dropdown-item" href="{{ url('/magic/member/' . $item->id . '/edit') }}" title="Edit member"><i class="fa fa-pencil"></i> Edit</a>
+                        <a class="dropdown-item" href="{{ url('/magic/member/' . $item->id . '/edit') }}" title="Edit member"><i class="fa fa-edit"></i> Edit</a>
                          
                         <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>   
                     </div>

@@ -35,7 +35,9 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th> Id </th><td> {{ $member->id }} </td></tr><tr><th> Name </th><td> {{ $member->name }} </td></tr><tr><th> Email </th><td> {{ $member->email }} </td></tr><tr><th> Profile Image </th><td> <img src="{{ imageview($member->profile_image) }}" width="150"> </td></tr>
+                                    <tr><th> Id </th><td> {{ $member->id }} </td></tr>
+                                    <tr><th> Name </th><td> {{ $member->name }} </td></tr>
+                                    <tr><th> Email </th><td> {{ $member->email }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

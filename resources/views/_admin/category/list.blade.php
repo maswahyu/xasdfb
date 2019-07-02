@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Slug</th>
             <th>Parent</th>
@@ -13,6 +14,7 @@
     @foreach($category as $items=>$item)
         <tr id="row_{{$item->id}}">
             <td>{{ $items + $category->firstItem() }}</td>
+            <td><img src="{{ imagethumb($item->image) }}" width="150"></td>
             <td>{{ $item->name }}</td>
             @if($item->parent_id == 0)
                 <td><a href="{{ url('/'.$item->slug) }}" target="_blank">{{ $item->slug }}</a></td>

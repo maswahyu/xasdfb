@@ -79,12 +79,6 @@ class User extends Authenticatable
         $data->email             = $request->get('email');
         $data->usertype          = self::TEACHER;
         $data->password          = bcrypt($request->get('email'));
-        $data->profile_image     = $request->get('profile_image');
-        $data->facebook          = $request->get('facebook');
-        $data->twitter           = $request->get('twitter');
-        $data->short_bio         = $request->get('short_bio');
-        $data->bio               = $request->get('bio');
-
         $data->save();
 
         return $data;
@@ -96,12 +90,6 @@ class User extends Authenticatable
         $data->name              = $request->get('name');
         $data->email             = $request->get('email');
         $data->password          = bcrypt($request->get('email'));
-        $data->profile_image     = $request->get('profile_image');
-        $data->facebook          = $request->get('facebook');
-        $data->twitter           = $request->get('twitter');
-        $data->short_bio         = $request->get('short_bio');
-        $data->bio               = $request->get('bio');
-
         $data->save();
 
         return $data;
