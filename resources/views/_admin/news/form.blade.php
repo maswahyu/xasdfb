@@ -93,6 +93,26 @@
     <p class="help-block"></p>
 </div>
 
+<div class="form-group ">
+    <label for="is_featured">{{ 'Featured' }}</label>
+    <select name="is_featured" class="form-control" id="is_featured">
+        <option value="1" {{ (isset($news->is_featured) && $news->is_featured == 1) ? 'selected' : '' }}>Yes</option>
+        <option value="0" {{ (isset($news->is_featured) && $news->is_featured == 0) ? 'selected' : '' }}>No</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('is_featured') }}</span>
+    <p class="help-block"></p>
+</div>
+
+<div class="form-group ">
+    <label for="is_highlight">{{ 'Highlight' }}</label>
+    <select name="is_highlight" class="form-control" id="is_highlight">
+        <option value="1" {{ (isset($news->is_highlight) && $news->is_highlight == 1) ? 'selected' : '' }}>Yes</option>
+        <option value="0" {{ (isset($news->is_highlight) && $news->is_highlight == 0) ? 'selected' : '' }}>No</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('is_highlight') }}</span>
+    <p class="help-block"></p>
+</div>
+
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

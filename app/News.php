@@ -25,6 +25,8 @@ class News extends Model
         $data->summary     = $request->get('summary');
         $data->content     = $request->get('content'); 
         $data->publish     = $request->get('publish');
+        $data->is_featured = $request->get('is_featured');
+        $data->is_highlight = $request->get('is_highlight');
         $data->category_id = $request->get('category_id');
         $data->user_id     = Auth::guard('admin')->id();
         $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
@@ -46,6 +48,8 @@ class News extends Model
         $data->summary     = $request->get('summary');
         $data->content     = $request->get('content'); 
         $data->publish     = $request->get('publish');
+        $data->is_featured = $request->get('is_featured');
+        $data->is_highlight = $request->get('is_highlight');
         $data->category_id = $request->get('category_id');
         $data->user_id     = Auth::guard('admin')->id();
         $data->save();

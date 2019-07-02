@@ -7,6 +7,8 @@
             <th>Image</th>
             <th>Summary</th>
             <th>Publish</th>
+            <th>Featured</th>
+            <th>Highlight</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -19,6 +21,12 @@
             <td><img src="{{ imagethumb($item->image) }}" width="150"> </td><td>{{ $item->summary }}</td>
             <td>
                 <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
+            </td>
+            <td>
+                <span class="badge badge-{{ ($item->is_featured == '0') ? 'warning' : 'info' }}">{{ ($item->is_featured == '0') ? 'No' : 'Yes' }}</span>
+            </td>
+            <td>
+                <span class="badge badge-{{ ($item->is_highlight == '0') ? 'warning' : 'info' }}">{{ ($item->is_highlight == '0') ? 'No' : 'Yes' }}</span>
             </td>
             <td>
                 <div class="btn-group">
