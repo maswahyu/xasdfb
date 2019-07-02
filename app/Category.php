@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cache;
+use Auth;
 
 class Category extends Model
 {
@@ -48,6 +49,18 @@ class Category extends Model
 
     public function children() {
         return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public function subscribe() {
+        return $this->hasMany('App\Subscribe', 'category_id', 'id')->where('user_id', Auth::id());
+    }
+
+    public function isChecked(){
+
+        $ids = self::subscribe()->pluck('category_id');
+
+        return collect($ids)
+            ->contains($this->id) ? 'checked' : '';
     }
 
     public static function getMenu($parent_id = 0)
