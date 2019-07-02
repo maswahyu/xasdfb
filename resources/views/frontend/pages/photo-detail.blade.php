@@ -1,12 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
-@section('inside-head')
-<meta property="og:url" content="{{ Request::url() }}" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="judul" />
-<meta property="og:description" content="deskripsi" />
-<meta property="og:image" content="thumbnail" />
-@endsection
+@section('head_title', $album->name)
+@section('head_image', $album->thumbnail)
+@section('head_url', $album->url)
 
 @section('content')
 
@@ -23,8 +19,8 @@
                     <div class="photo-header__breadcrumb">
 
                         <ul class="breadcrumb">
-                            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Photo</a></li>
-                            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">Detail Photo</a></li>
+                            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ url('gallery/photo') }}">Photo</a></li>
+                            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ url()->current() }}">Detail Photo</a></li>
                         </ul>
 
                     </div>
@@ -33,18 +29,18 @@
 
                         <div class="post-meta">
 
-                            <div class="post-meta__category"><span>Photo</span></div>
+                            <div class="post-meta__category"><span>{{ $album->category }}</span></div>
 
-                            <div class="post-meta__stat"><span>6 hours ago</span></div>
+                            <div class="post-meta__stat"><span>{{ $album->created_at->diffForHumans() }}</span></div>
 
-                            <div class="post-meta__stat"><span>456 views</span></div>
+                            <div class="post-meta__stat"><span>{{ $album->view_count }} views</span></div>
 
                         </div>
 
                     </div>
 
                     <div class="photo-header__title">
-                        <span>Lensa Academy Jakarta 2019</span>
+                        <span>{{ $album->name }}</span>
                     </div>
 
                     <div class="photo-header__stat">
@@ -55,7 +51,7 @@
                                 <img src="{{ asset('static/images/slides.png') }}" alt="">
                             </span>
 
-                            <span class="stat-with-icon__text">15 Photos</span>
+                            <span class="stat-with-icon__text">{{ $album->photos->count() }} Photos</span>
 
                         </div>
 
@@ -74,7 +70,7 @@
                         </li>
                         <li class="list__item list__item--social">
                             <a class="list__link list__link--social jsTwShare"
-                                href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode('text buat di share disini') .'&url=' . urlencode(url()->current()) }}">
+                                href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($album->name) .'&url=' . urlencode(url()->current()) }}">
                                 <img src="{{ asset('static/images/tw-share.png') }}" alt="">
                             </a>
                         </li>
@@ -93,17 +89,17 @@
 
     </div>
 
-    @foreach($images as $image)
+    @foreach($album->photos as $image)
 
     @push('main-slider')
     <div class="photo-slider__slide">
-        <img src="{{ $image->image }}" alt="" class="photo-slider__img">
+        <img src="{{ $image->thumbnail }}" alt="{{ $image->title }}" class="photo-slider__img">
     </div>
     @endpush
 
     @push('nav-slider')
     <div class="photo-nav__slide">
-        <img src="{{ $image->thumbnail }}" alt="" class="photo-nav__img">
+        <img src="{{ $image->thumbnail }}" alt="{{ $image->title }}" class="photo-nav__img" style="width: 247px;">
     </div>
     @endpush
 
@@ -149,7 +145,7 @@
         <div class="span-12">
 
             <div class="section-title">
-                <span class="section-title__label">Must Reads</span>
+                <span class="section-title__label">See More Photos</span>
             </div>
 
         </div>

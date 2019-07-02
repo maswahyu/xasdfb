@@ -1,12 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
-@section('inside-head')
-<meta property="og:url" content="{{ Request::url() }}" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="judul" />
-<meta property="og:description" content="deskripsi" />
-<meta property="og:image" content="thumbnail" />
-@endsection
+@section('head_title', $gallery->title)
+@section('head_image', 'https://img.youtube.com/vi/'.$gallery->youtube_id.'/hqdefault.jpg')
+@section('head_url', $gallery->url)
 
 @section('content')
 

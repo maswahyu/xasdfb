@@ -142,7 +142,7 @@
                     <img src="{{ asset('static/images/slides.png') }}" alt="">
                     @verbatim
                 </span>
-                <span class="stat-with-icon__text">{{ view_count }}</span>
+                <span class="stat-with-icon__text">{{ photo_count }}</span>
             </div>
 
         </a>

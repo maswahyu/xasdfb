@@ -21,7 +21,7 @@ class GalleryTableSeeder extends Seeder
                 'type'       => "photo",
                 'publish'    => "1",
                 'user_id'    => 1,
-                'album_id'   => 1,
+                'album_id'   => rand(1,5),
                 'is_featured'  => rand(0,1),
                 'created_at' => Carbon\Carbon::now(),
     		];
@@ -38,7 +38,7 @@ class GalleryTableSeeder extends Seeder
                 'type'       => "video",
                 'publish'    => "1",
                 'user_id'    => 1,
-                'album_id'   => 1,
+                'album_id'   => rand(5, 10),
                 'is_featured'  => rand(0,1),
                 'created_at' => Carbon\Carbon::now(),
     		];

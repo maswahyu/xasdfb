@@ -1,11 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
-@section('inside-head')
 @section('head_title', $post->title)
 @section('head_description', $post->summary)
 @section('head_image', imageview($post->image))
 @section('head_url', $post->url)
-@endsection
 
 @section('content')
 

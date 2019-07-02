@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gallery;
 use App\Http\Resources\GalleryCollection;
-use Faker\Factory as Faker;
+use App\Http\Resources\AlbumCollection;
+use App\Album;
 
 class GalleryController extends Controller
 {
@@ -16,29 +17,8 @@ class GalleryController extends Controller
 
     public function photo()
     {	
-    	$faker = Faker::create();
-
-        for ($i = 0; $i < 2; $i++) {
-            $sticky[] = (object)[
-                'url' => '#',
-                'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-                'category' => randomCategory(),
-                'published_date' => $faker->date('j M Y'),
-                'photo_count' => rand(1, 5),
-                'title' => ucfirst($faker->words(rand(6, 10), true)),
-            ];
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $latest[] = (object)[
-                'url' => '#',
-                'thumbnail' => 'holder.js/380x229?theme=sky&auto=yes',
-                'category' => randomCategory(),
-                'published_date' => $faker->date('j M Y'),
-                'photo_count' => rand(1, 5),
-                'title' => ucfirst($faker->words(rand(6, 10), true)),
-            ];
-        }
+        $sticky = Album::getSticky();
+        $latest = Album::getLatest();
 
         return view('frontend.pages.photo', [
             'stickyPosts' => $sticky,
@@ -58,15 +38,11 @@ class GalleryController extends Controller
     }
 
     public function photoDetail($slug)
-    {
-        for ($i = 0; $i < 10; $i++) {
-            $images[] = (object)[
-                'thumbnail' => 'holder.js/247x150?theme=sky&auto=yes&text=Nav ' . $i,
-                'image' => 'holder.js/980x653?theme=sky&auto=yes&text=Original ' . $i,
-            ];
-        }
+    {   
+        $album = Album::detail($slug);
+
         return view('frontend.pages.photo-detail', [
-            'images' => $images,
+            'album' => $album,
         ]);
     }
 
@@ -84,8 +60,8 @@ class GalleryController extends Controller
     public function feedPhoto(Request $request)
     {
         $page = $request->get('page');
-        $posts = Gallery::getPage($page, Gallery::PHOTO);
-        return response()->json(new GalleryCollection($posts));
+        $posts = Album::getPage($page);
+        return response()->json(new AlbumCollection($posts));
     }
 
     public function feedVideo(Request $request)

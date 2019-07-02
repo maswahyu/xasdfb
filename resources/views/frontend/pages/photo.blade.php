@@ -21,8 +21,8 @@
 
             <div class="span-12 text-center">
                 <ul class="list flex-justify-center">
-                    <li class="list__item"><a href="#" class="list__link">Video</a></li>
-                    <li class="list__item active"><a href="#" class="list__link">Photo</a></li>
+                    <li class="list__item"><a href="{{ url('gallery/video') }}" class="list__link">Video</a></li>
+                    <li class="list__item active"><a href="{{ url('gallery/photo') }}" class="list__link">Photo</a></li>
                 </ul>
             </div>
 
@@ -84,7 +84,7 @@
         <div class="span-12">
 
             <div class="section-title">
-                <span class="section-title__label">Must Reads</span>
+                <span class="section-title__label">See More Photos</span>
             </div>
 
         </div>

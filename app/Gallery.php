@@ -42,7 +42,7 @@ class Gallery extends Model
 
     public static function getSticky($type = self::VIDEO)
     {
-        return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->first();
+        return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('created_at', 'DESC')->first();
     }
 
     public static function detail($type = self::VIDEO, $slug)
