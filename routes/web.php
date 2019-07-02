@@ -11,13 +11,6 @@
 |
 */
 
-
-function randomCategory()
-{
-    $category = ['Lifestyle', 'Entertaiment', 'Inspiration', 'Lensa', 'Sneakerland', 'Music', 'Movie'];
-    return $category[rand(0, count($category) - 1)];
-}
-
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/feed', 'IndexController@feed');
 Route::get('/feed-photo', 'GalleryController@feedPhoto');
@@ -30,6 +23,9 @@ Route::get('contact-us', 'PageController@contact')->name('contact');
 Route::post('contact-us', 'PageController@addContact');
 Route::get('events', 'PageController@events');
 Route::get('interest', 'MemberController@interest');
+Route::get('member/login', 'MemberController@casLogin')->name('login');
+Route::get('login', 'MemberController@memberLogin');
+Route::get('member/logout', 'MemberController@memberLogout');
 
 Route::get('gallery', 'GalleryController@index');
 Route::get('gallery/photo', 'GalleryController@photo');

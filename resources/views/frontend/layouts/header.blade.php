@@ -45,9 +45,15 @@
                 <li class="dropdown-menu__item">
                     <a href="{{ url('interest') }}" class="dropdown-menu__link" alt="Interest">Pick your interest</a>
                 </li>
-                <li class="dropdown-menu__item dropdown-menu__item--login">
-                    <a href="{{ url('member/login') }}" class="btn btn-crimson btn-login" alt="Login">Login</a>
-                </li>
+                @guest
+                    <li class="dropdown-menu__item dropdown-menu__item--login">
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-login" alt="Login">Login</a>
+                    </li>
+                @else
+                    <li class="dropdown-menu__item">
+                        <a href="http://{{ env('CAS_HOSTNAME') }}/profile/?service={{ url('/') }}" target="_blank" class="dropdown-menu__link">Halo {{ auth()->user()->name }}</a>
+                    </li>
+                @endguest
             </ul>
         </nav>
 

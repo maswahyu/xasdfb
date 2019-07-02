@@ -74,9 +74,15 @@
                         Pick your interest
                     </a>
                 </li>
-                <li class="menu">
-                    <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
-                </li>
+                @guest
+                    <li class="menu">
+                        <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
+                    </li>
+                @else
+                    <li class="menu">
+                         Halo {{ auth()->user()->name }}
+                     </li>
+                @endguest
             </ul>
         </div>
     </div>

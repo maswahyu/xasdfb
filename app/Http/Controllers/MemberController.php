@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Hash;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -51,5 +54,55 @@ class MemberController extends Controller
 	        ],
 	    ];
 	    return view('frontend.pages.interest', ['interests' => $interest]);
+    }
+
+    public function memberLogin()
+    {
+    	if (cas()->isAuthenticated()) {
+            $email = cas()->user();
+            $attribute = cas()->getAttributes();
+            $user = User::where('email', $email)->first();
+            if (! $user) {
+                $user = new User();
+                $user->email = $email;
+                $user->password = Hash::make($email . now());
+                if ($attribute) {
+                    if (array_key_exists('FIRST_NAME', $attribute)) {
+                        $user->name = $attribute['FIRST_NAME'];
+                    }
+                    if (array_key_exists('ID', $attribute)) {
+                        $user->sso_id = $attribute['ID'];
+                    }
+                    if (array_key_exists('NO_KTP', $attribute)) {
+                        $user->no_ktp = $attribute['NO_KTP'];
+                    }
+                }   
+                $user->save();
+            }
+
+            Auth::loginUsingId($user->id);
+            
+            return redirect()->route('index');
+
+        } else {
+        	return redirect('/');
+        }
+    }
+
+    public function casLogin()
+    {
+        if (cas()->isAuthenticated()) {
+            return redirect('login');
+        }
+        cas()->authenticate();
+    }
+
+    public function memberLogout()
+    {
+        if (Auth::check()) {
+            cas()->logout();
+        }
+
+        return redirect('/');
     }
 }

@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 use App\News;
 use App\Gallery;
 use App\Http\Resources\NewsCollection;
+use Auth;
 
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
-{
+{	
+	function __construct()
+    {
+        $this->middleware('auth.sso.clear');
+    }
+    
     public function index()
     {
 		$mustReads   = News::getMustReads();
