@@ -22,7 +22,9 @@ Route::get('points', 'PageController@points');
 Route::get('contact-us', 'PageController@contact')->name('contact');
 Route::post('contact-us', 'PageController@addContact');
 Route::get('events', 'PageController@events');
+
 Route::get('interest', 'MemberController@interest');
+Route::post('interest', 'MemberController@addInterest');
 Route::get('member/login', 'MemberController@casLogin')->name('login');
 Route::get('login', 'MemberController@memberLogin');
 Route::get('member/logout', 'MemberController@memberLogout');

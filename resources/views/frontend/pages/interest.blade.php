@@ -10,17 +10,18 @@
                 <span class="section-title__label section-title__label--category">Beritahu Kami Minat Kamu</span>
             </div>
             <p class="subtitle text-center">Pilih topik-topik menarik yang kamu suka.</p>
+            <p class="subtitle text-center" style="color: #ec2427;" id="its_warning"></p>
         </div>
     </div>
 
-    <form action="" method="post">
+    <form class="js-form" action="{{ url('interest') }}" method="post">
 
         <div class="row">
 
             @foreach($interests as $interest)
             <div class="span-12 span-lg-4">
 
-                <a href="#" class="post-card post-card--third post-card--elevation post-card--interest">
+                <a href="javascript:void(0)" class="post-card post-card--third post-card--elevation post-card--interest">
 
                     <div class="post-card__thumbnail post-card__thumbnail--interest">
                         <img class="post-card__img post-card__img--interest" src="{{ $interest->img }}" alt="">
@@ -31,7 +32,7 @@
                         <div class="post-card__interest">
                             <div class="post-card__interest-checkbox">
                                 <div class="pretty p-default">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" name="interest[]" class="ids" value="{{ $interest->id }}" />
                                     <div class="state p-danger">
                                         <label class="post-card__interest-title">{{ $interest->name }}</label>
                                     </div>
@@ -62,4 +63,7 @@
 
 </div>
 
+@endsection
+@section('before-body-end')
+<script src="{{ asset('static/js/interest.js') }}?v={{ filemtime(public_path() . '/static/js/interest.js') }}"></script>
 @endsection

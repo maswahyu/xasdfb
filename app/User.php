@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Category;
+use App\Subscribe;
 
 class User extends Authenticatable
 {
@@ -45,6 +47,25 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         if ($role == $this->usertype) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function insertInterest($user_id, $interest)
+    {   
+        if ($interest) {
+            
+            Subscribe::delSubscribe($user_id);
+
+            foreach ($interest as $category_id) {
+                
+                $category = Category::find($category_id);
+                if ($category) {
+                    Subscribe::addSubscribe($user_id, $category_id);
+                }
+            }
             return true;
         }
 

@@ -14,6 +14,8 @@ class Category extends Model
      */
     protected $table = 'categories';
 
+    const TOP_PARENT = 0;
+
     public static function newRecord($request)
     {
         $data= new Category;
@@ -58,6 +60,11 @@ class Category extends Model
         return $value;
     }
 
+    public static function getInterest()
+    {
+        return self::where('parent_id', '!=', self::TOP_PARENT)->get();
+    }
+
     public function getUrlAttribute()
     {
         return url('/'.$this->slug);
@@ -66,5 +73,10 @@ class Category extends Model
     public function getSubUrlAttribute()
     {
         return url('/'.$this->parent->slug.'/'.$this->slug);
+    }
+
+    public function getImgAttribute()
+    {
+        return imageview($this->image);
     }
 }

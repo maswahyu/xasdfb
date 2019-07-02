@@ -6,54 +6,53 @@ use Illuminate\Http\Request;
 use App\User;
 use Hash;
 use Auth;
+use App\Category;
 
 class MemberController extends Controller
 {
     public function interest(Request $request)
     {
-    	$interest = [
-	        (object)[
-	            'img' => asset('static/images/mock/in-movie.jpg'),
-	            'name' => 'movie',
-	            'description' => 'Artikel seputar film terkini yang wajib kamu tau',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-oto.jpg'),
-	            'name' => 'otomotif',
-	            'description' => 'Artikel seputar otomotif terbaru dan terupdate',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-lensa.jpg'),
-	            'name' => 'lensa',
-	            'description' => 'Berita terbaru buat kamu yang suka dunia visual terbaru ',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-sneakerland.jpg'),
-	            'name' => 'sneakerland',
-	            'description' => 'Lebih update tentang sneakers favorit kamu',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-sepakbola.jpg'),
-	            'name' => 'sepak bola',
-	            'description' => 'Artikel seputar olahraga sepak bola terupdate yang kamu harus tahu ',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-esports.jpg'),
-	            'name' => 'e-sports',
-	            'description' => 'Dapatkan info ter-update seputar dunia e-sport',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-music.jpg'),
-	            'name' => 'music',
-	            'description' => 'info ter-update buat kamu yang suka dunia musik ',
-	        ],
-	        (object)[
-	            'img' => asset('static/images/mock/in-lifestyle.jpg'),
-	            'name' => 'lifestyle',
-	            'description' => 'Lebih update seputar lifestyle',
-	        ],
-	    ];
+        $interest = Category::getInterest(); 
+
 	    return view('frontend.pages.interest', ['interests' => $interest]);
+    }
+
+    public function addInterest(Request $request)
+    {
+        if (!Auth::check()) {
+
+            $response = [
+                'info' => 'login',
+                'message' => ''
+            ];
+
+            return response()->json($response);
+        }
+
+        $input = $request->all();        
+
+        if (isset($input['interest'])) {
+
+             $interest = $input['interest'];
+             $model = User::insertInterest(Auth::id(), $interest);
+
+            if ($model) {
+                
+                $response = [
+                        'info' => 'success',
+                        'message' => 'Pilihan topik kamu telah berhasil disimpan'
+                    ];
+
+            }
+        } else {
+
+            $response = [
+                'info' => 'error',
+                'message' => 'Kamu belum memilih salah satu topik.'
+            ];
+        }
+
+        return response()->json($response);
     }
 
     public function memberLogin()
