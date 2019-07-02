@@ -16,7 +16,7 @@
     @foreach($news as $items=>$item)
         <tr id="row_{{$item->id}}">
             <td>{{ $items + $news->firstItem() }}</td>
-            <td><a href="/{{ $item->slug }}" target="_blank">{{ $item->title }}</a></td>
+            <td><a href="{{ $item->url }}" target="_blank">{{ $item->title }}</a></td>
             <td>{{ optional($item->category)->name }}</td>
             <td><img src="{{ imagethumb($item->image) }}" width="150"> </td><td>{{ $item->summary }}</td>
             <td>
