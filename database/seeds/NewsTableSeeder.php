@@ -41,6 +41,7 @@ Donec eget odio purus. Donec tempor, ligula ultrices aliquam bibendum, nisi maur
                 'category_id'  => 7,
                 'is_featured'  => rand(0,1),
 				'is_highlight'  => rand(0,1),
+                'is_mustread'  => rand(0,1),
 				'created_at'   => Carbon\Carbon::now(),
     		];
     	}
