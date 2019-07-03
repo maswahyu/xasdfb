@@ -64,7 +64,7 @@
                                 <a href="{{ env('URL_MYPOINT') }}" class="dropdown-menu__dropdown-link" target="_blank"><span>My Points</span></a>
                             </li>
                             <li class="dropdown-menu__dropdown-item">
-                                <a href="#" class="dropdown-menu__dropdown-link"><span>Logout</span></a>
+                                <a href="{{ url('member/logout') }}" class="dropdown-menu__dropdown-link"><span>Logout</span></a>
                             </li>
                         </ul>
                     </li>
