@@ -24,6 +24,24 @@
                         </button>
                     </form>
                 </li>
+                @auth
+                <li class="menu">
+                    <div class="user-info">
+                        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+                        <span class="user-info__name"><strong>John Doe</strong></span>
+                        <span class="user-info__point"><span>7.000 pts</span></span>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="#"><span>My Profile</span></a>
+                </li>
+                <li class="menu">
+                    <a href="#"><span>My Points</span></a>
+                </li>
+                <li class="menu">
+                    <a href="#"><span>Logout</span></a>
+                </li>
+                @endauth
                 <li class="menu has-sub-menu">
                     <a target="_blank" href="#">
                         <span>Articles</span>
@@ -32,11 +50,21 @@
                         <li class="drilldown-back">
                             <a>Back</a>
                         </li>
-                        @foreach($siteCategory as $item)
-                            <li>
-                                <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
-                            </li>
-                        @endforeach
+                        <li>
+                            <a href="#">Lifestyle</a>
+                        </li>
+                        <li>
+                            <a href="#">Entertaiment</a>
+                        </li>
+                        <li>
+                            <a href="#">Inspiration</a>
+                        </li>
+                        <li>
+                            <a href="#">Lensa</a>
+                        </li>
+                        <li>
+                            <a href="#">Sneakerland</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu has-sub-menu">
@@ -46,36 +74,43 @@
                             <li class="drilldown-back">
                                 <a>Back</a>
                             </li>
-                            @foreach($siteLink as $item)
-                                <li>
-                                    <a href="{{ $item->url }}" target="_blank" alt="{{ $item->name }}">{{ $item->name }}</a>
-                                </li>
-                            @endforeach
+                            <li>
+                                <a href="#">LA Indie Movie</a>
+                            </li>
+                            <li>
+                                <a href="#">LA Streetball</a>
+                            </li>
+                            <li>
+                                <a href="#">Iceperience</a>
+                            </li>
+                            <li>
+                                <a href="#">Boldxperience</a>
+                            </li>
                         </ul>
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('event') }}" alt="Events">
+                    <a href="#">
                         Events
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('gallery') }}" alt="Gallery">
+                    <a href="#">
                         Gallery
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('points') }}" alt="Points">
+                    <a href="#">
                         What is My Points?
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('interest') }}" alt="interest">
+                    <a href="#">
                         Pick your interest
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
+                    <a href="#" class="btn btn-crimson btn-login">Login</a>
                 </li>
             </ul>
         </div>
