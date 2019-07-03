@@ -40,9 +40,12 @@ Donec eget odio purus. Donec tempor, ligula ultrices aliquam bibendum, nisi maur
                 'publish'      => 1,
                 'category_id'  => 7,
                 'is_featured'  => rand(0,1),
-				'is_highlight'  => rand(0,1),
+				'is_highlight' => rand(0,1),
                 'is_mustread'  => rand(0,1),
-				'created_at'   => Carbon\Carbon::now(),
+				'featured_at'  => Carbon\Carbon::now(),
+                'highlight_at' => Carbon\Carbon::now(),
+                'mustread_at'  => Carbon\Carbon::now(),
+                'created_at'   => Carbon\Carbon::now(),
     		];
     	}
 

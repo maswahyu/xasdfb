@@ -145,12 +145,12 @@ class News extends Model
 
     public static function getHighlight()
     {
-        return self::where('publish', 1)->where('is_highlight', 1)->orderBy('updated_at', 'desc')->first();
+        return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
     }
 
     public static function getMustReads($take = 2)
     {
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+        return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
     }
 
     public static function getRecommended($take = 5)
@@ -170,7 +170,7 @@ class News extends Model
 
     public static function getSticky($take = 4)
     {
-        return self::where('publish', 1)->where('is_featured', 1)->latest()->take($take)->get();
+        return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
     }
 
     public function getUrlAttribute()
