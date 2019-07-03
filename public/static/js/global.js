@@ -17,6 +17,30 @@ $(function ()
         }
     });
 
+    $('.jsUserMenu').on('click', function(e){
+       e.preventDefault();
+       var $this = $(this);
+       if($this.hasClass('active')){
+           $(this).removeClass('active');
+           $('#user-menu-overlay').unbind('click');
+           $('.site-content').find('#user-menu-overlay').remove();
+       }else{
+           $(this).addClass('active');
+           $('.site-content').append('<div id="user-menu-overlay" style="position:absolute; width: 100%;' +
+               ' height:100%;left:0;top:' +
+               ' 0;background-color: rgba(0,0,0,0.8);z-index:2;"></div>');
+           $('#user-menu-overlay').on('click', function(){
+               $('.jsUserMenu').removeClass('active');
+               $('#user-menu-overlay').unbind('click');
+               $(this).remove();
+           });
+       }
+    });
+
+    $('.jsUserMenu .dropdown-menu__dropdown-link').on('click', function(e){
+       e.stopPropagation();
+    });
+
     $('.jsSearchTrigger').on('click', function (e)
     {
         e.preventDefault();
