@@ -7,8 +7,7 @@
             <th>Image</th>
             <th>Summary</th>
             <th>Publish</th>
-            <th>Featured</th>
-            <th>Highlight</th>
+            <th>Type</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,10 +22,15 @@
                 <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
             </td>
             <td>
-                <span class="badge badge-{{ ($item->is_featured == '0') ? 'warning' : 'info' }}">{{ ($item->is_featured == '0') ? 'No' : 'Yes' }}</span>
-            </td>
-            <td>
-                <span class="badge badge-{{ ($item->is_highlight == '0') ? 'warning' : 'info' }}">{{ ($item->is_highlight == '0') ? 'No' : 'Yes' }}</span>
+                @if(($item->is_featured == 1))
+                    <span class="badge badge-primary">Recomended</span><br>
+                @endif
+                @if(($item->is_highlight == 1))
+                    <span class="badge badge-success">Highlight</span><br>
+                @endif
+                @if(($item->is_mustread == 1))
+                    <span class="badge badge-info">Must Read</span><br>
+                @endif
             </td>
             <td>
                 <div class="btn-group">

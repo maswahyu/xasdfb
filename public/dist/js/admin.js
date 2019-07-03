@@ -20,14 +20,14 @@ $(function () {
         CKEDITOR.replace( $(this).attr('id'), {
             customConfig : BASE_URL + '/dist/js/ckeditor_config.js',
             toolbar : 'Basic',
-            height  : 200
+            height  : 500
         });
     });
     $(".wysiwyg-advanced-br").each( function() {
         CKEDITOR.replace( $(this).attr('id'), {
             customConfig : BASE_URL + '/dist/js/ckeditor_config.js',
             toolbar : 'Standard',
-            height  : 250,
+            height  : 400,
             // filebrowserBrowseUrl : BASE_URL + 'filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
             // filebrowserUploadUrl : BASE_URL + 'filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
             filebrowserImageBrowseUrl : BASE_URL + '/file-manager/ckeditor'

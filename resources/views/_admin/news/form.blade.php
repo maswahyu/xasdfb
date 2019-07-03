@@ -22,7 +22,7 @@
 @endsection
 <div class="form-group ">
     <label for="category_id">{{ 'Category' }}</label>
-    <select name="category_id" class="form-control select2" id="category_id" style="width: 100%;">
+    <select name="category_id" class="form-control form-control-sm select2" id="category_id" style="width: 100%;">
         @foreach($category as $item) 
             <optgroup label="{{ $item->name }}">
                 @foreach($item->children as $parent)
@@ -37,7 +37,7 @@
 
 <div class="form-group">
     <label for="title">{{ 'Title' }}</label>
-    <input class="form-control" name="title" type="text" id="title" value="{{ isset($news->title) ? $news->title : old('title') }}" placeholder="Title">
+    <input class="form-control form-control-sm" name="title" type="text" id="title" value="{{ isset($news->title) ? $news->title : old('title') }}" placeholder="Title">
     <span class="text-danger">{{ $errors->first('title') }}</span>
     <p class="help-block"></p>
 </div>
@@ -51,9 +51,9 @@
     @endif
     <div class="input-group">
         <div class="input-group-btn">
-            <button type="button" class="btn btn-block btn-default btn-flat" id="button-image">Browse</button> 
+            <button type="button" class="btn btn-block btn-sm btn-default btn-flat" id="button-image">Browse</button> 
         </div>
-        <input id="image_path" name="image" type="text" class="form-control" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image" required>
+        <input id="image_path" name="image" type="text" class="form-control form-control-sm" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image" required>
     </div>
     <span class="text-danger">{{ $errors->first('image') }}</span>
     <p class="help-block"></p>
@@ -67,17 +67,14 @@
 </div>
 <div class="form-group">
     <label for="content">{{ 'Content' }}</label>
-    <textarea class="form-control wysiwyg-advanced-br" rows="5" name="content" type="textarea" id="content" placeholder="Content">{{ isset($news->content) ? $news->content : old('content') }}</textarea>
+    <textarea class="form-control wysiwyg-advanced-br" rows="10" name="content" type="textarea" id="content" placeholder="Content">{{ isset($news->content) ? $news->content : old('content') }}</textarea>
     <span class="text-danger">{{ $errors->first('content') }}</span>
     <p class="help-block"></p>
 </div>
 
 <div class="form-group ">
     <label for="tags">{{ 'Tags' }}</label>
-    <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
-        @foreach($tags as $item)
-            <option value='{{ $item->id }}' {{ ($formMode === 'edit') ? $news->isSelected($item->id) : '' }}>{{ $item->name}}</option>
-        @endforeach
+    <select name="tags[]" id="tags" class="select2" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
     </select>
     <span class="text-danger">{{ $errors->first('tags') }}</span>
     <p class="help-block"></p>
@@ -85,7 +82,7 @@
 
 <div class="form-group ">
     <label for="publish">{{ 'Publish' }}</label>
-    <select name="publish" class="form-control" id="publish">
+    <select name="publish" class="form-control form-control-sm" id="publish">
         <option value="1" {{ (isset($news->publish) && $news->publish == '1') ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->publish) && $news->publish == '0') ? 'selected' : '' }}>No</option>
     </select>
@@ -94,8 +91,8 @@
 </div>
 
 <div class="form-group ">
-    <label for="is_featured">{{ 'Featured' }}</label>
-    <select name="is_featured" class="form-control" id="is_featured">
+    <label for="is_featured">{{ 'Recommended' }}</label>
+    <select name="is_featured" class="form-control form-control-sm" id="is_featured">
         <option value="1" {{ (isset($news->is_featured) && $news->is_featured == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->is_featured) && $news->is_featured == 0) ? 'selected' : '' }}>No</option>
     </select>
@@ -105,11 +102,21 @@
 
 <div class="form-group ">
     <label for="is_highlight">{{ 'Highlight' }}</label>
-    <select name="is_highlight" class="form-control" id="is_highlight">
+    <select name="is_highlight" class="form-control form-control-sm" id="is_highlight">
         <option value="1" {{ (isset($news->is_highlight) && $news->is_highlight == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->is_highlight) && $news->is_highlight == 0) ? 'selected' : '' }}>No</option>
     </select>
     <span class="text-danger">{{ $errors->first('is_highlight') }}</span>
+    <p class="help-block"></p>
+</div>
+
+<div class="form-group ">
+    <label for="is_mustread">{{ 'Must Read' }}</label>
+    <select name="is_mustread" class="form-control form-control-sm" id="is_mustread">
+        <option value="1" {{ (isset($news->is_mustread) && $news->is_mustread == 1) ? 'selected' : '' }}>Yes</option>
+        <option value="0" {{ (isset($news->is_mustread) && $news->is_mustread == 0) ? 'selected' : '' }}>No</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('is_mustread') }}</span>
     <p class="help-block"></p>
 </div>
 
@@ -123,10 +130,50 @@
 <script src="/dist/plugins/select2/select2.full.min.js"></script>
 <script>
     $(function () {
-        $('.select2').select2({
-            tags: true
-        })
+        $('#category_id').select2();
+
+        $('#tags').select2({
+            tags: true,
+            placeholder: 'Cari...',
+            data : {
+                id: '3', 
+                text: 'Bold'
+            },
+            ajax: {
+              url: '/magic/loadtags',
+              dataType: 'json',
+              delay: 250,
+              processResults: function (data) {
+                return {
+                  results:  $.map(data, function (item) {
+                    return {
+                      text: item.name,
+                      id: item.id
+                    }
+                  })
+                };
+              },
+              cache: true
+            }
+        });
+
+        @if($formMode === 'edit')
+        var newsId = '{{ isset($news->id) ? $news->id : 0 }}';
+        var newsSelect = $('#tags');
+        
+        $.ajax({
+            type: 'GET',
+            url: '/magic/loadtagsnews/' + newsId
+        }).then(function (data) {
+            $.map(data, function (v) {
+                var option = new Option(v.name, v.id, true, true);
+                newsSelect.append(option).trigger('change');
+            });
+
+        });
+        @endif
     });
+
 </script>
 
 @endsection

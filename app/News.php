@@ -20,16 +20,17 @@ class News extends Model
     public static function newRecord($request)
     {
         $data = new self;
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+        $data->is_featured  = $request->get('is_featured');
         $data->is_highlight = $request->get('is_highlight');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
-        $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
+        $data->is_mustread  = $request->get('is_mustread');
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
         $data->save();
 
         $tags = $request->get('tags');
@@ -43,15 +44,16 @@ class News extends Model
     public static function updateRecord($request, $id)
     {
         $data = self::findOrFail($id);
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+        $data->is_featured  = $request->get('is_featured');
         $data->is_highlight = $request->get('is_highlight');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
+        $data->is_mustread  = $request->get('is_mustread');
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
         $data->save();
 
         $tags = $request->get('tags');
