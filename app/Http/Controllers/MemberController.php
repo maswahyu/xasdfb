@@ -75,7 +75,15 @@ class MemberController extends Controller
                     if (array_key_exists('NO_KTP', $attribute)) {
                         $user->no_ktp = $attribute['NO_KTP'];
                     }
-                }   
+                    if (array_key_exists('TOTAL_POINT', $attribute)) {
+                        $user->total_point = $attribute['TOTAL_POINT'];
+                    }
+                }
+                $user->save();
+            } else {
+                if (array_key_exists('TOTAL_POINT', $attribute)) {
+                    $user->total_point = $attribute['TOTAL_POINT'];
+                }
                 $user->save();
             }
 

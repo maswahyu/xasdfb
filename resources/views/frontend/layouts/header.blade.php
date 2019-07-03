@@ -54,7 +54,7 @@
                             <li class="dropdown-menu__dropdown-item">
                                 <strong class="dropdown-menu__username">{{ auth()->user()->name }}</strong>
                                 <br>
-                                <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span>7.000 pts</span></span>
+                                <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span>{{ seribu(auth()->user()->total_point) }} pts</span></span>
                             </li>
                             <li class="dropdown-menu__separator">&nbsp;</li>
                             <li class="dropdown-menu__dropdown-item">
