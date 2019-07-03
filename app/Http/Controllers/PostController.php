@@ -11,18 +11,18 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {	
-	protected $catRepo;
-	protected $newsRepo;
+	protected $category;
+	protected $news;
 
-	function __construct(CategoryRepository $catRepo, NewsRepository $newsRepo)
+	function __construct(CategoryRepository $category, NewsRepository $news)
 	{
-		$this->catRepo = $catRepo;
-		$this->newsRepo = $newsRepo;
+		$this->category = $category;
+		$this->news = $news;
 	}
 
     public function category($category)
     {	
-    	$category = $this->catRepo->findByField('slug', $category);
+    	$category = $this->category->findByField('slug', $category);
 
 	    if (!$category) {
 	    	abort(404);
@@ -42,13 +42,13 @@ class PostController extends Controller
 
     public function subcategory($category, $subcategory)
     {	
-    	$category = $this->catRepo->findByField('slug', $category);
+    	$category = $this->category->findByField('slug', $category);
 
 	    if (!$category) {
 	    	abort(404);
 	    }
 
-	    $subcategory = $this->catRepo->findByField('slug', $subcategory);
+	    $subcategory = $this->category->findByField('slug', $subcategory);
 
 	    if (!$subcategory) {
 	    	abort(404);
@@ -68,10 +68,16 @@ class PostController extends Controller
 
     public function detailPost($category, $subcategory, $slug)
     {	
-    	$post = $this->newsRepo->findByField('slug', $slug);
+    	$post = $this->news->findByField('slug', $slug);
     	if (!$post) {
 	    	abort(404);
 	    }
+
+
+	    if (!session('visit-saved')) {
+    		$post->hit();
+	    	session(['visit-saved' => true]);
+		}
 
 	    $related = News::related($post->slug);
 

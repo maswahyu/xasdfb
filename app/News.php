@@ -8,6 +8,7 @@ use Auth;
 use App\Tag;
 use App\News_tag;
 use Carbon\Carbon;
+use App\Model\Stats;
 
 class News extends Model
 {   
@@ -208,6 +209,114 @@ class News extends Model
     public function getViewCountAttribute()
     {
         return rand(1, 999);
+    }
+
+    /**
+     * Get post stats
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function popularityStats()
+    {
+        return $this->morphOne('App\Model\Stats', 'trackable');
+    }
+
+    public function hit()
+    {
+        //check if a polymorphic relation can be set
+        if($this->exists){
+            $stats = $this->popularityStats()->first();
+
+            if( empty( $stats ) ){
+                //associates a new Stats instance for this instance
+                $stats = new Stats();
+                $this->popularityStats()->save($stats);
+            }
+
+            return $stats->updateStats();
+        }
+        return false;
+    }
+
+    /**
+     * Get posts by stats
+     *
+     */
+
+    public function scopeGetStats($query, $days = 'one_day_stats', $orderType = 'DESC', $limit = 10)
+    {
+          $query->select('posts.*');
+
+         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'posts.id');
+
+         $query->where( $days, '!=', 0 );
+
+         $query->take($limit);
+
+         $query->orderBy( $days, $orderType );
+
+         return $query;
+    }
+
+    /**
+     *
+     * Get post by category
+     * @param $query
+     * @param $categoryid
+     * @return mixed
+     */
+    public function scopeByCategory($query, $categoryid)
+    {
+        return $query->where("category_id", $categoryid);
+    }
+
+    /**
+     * Get posts by featured
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByFeatured($query)
+    {
+        return $query->where('is_featured', 1);
+    }
+
+
+    /**
+     * Get posts by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', 1);
+    }
+
+    /**
+     * Get posts by highlight
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByHighlight($query)
+    {
+        return $query->where('is_highlight', 1);
+    }
+
+    /**
+     * Get posts by mustread
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByMustread($query)
+    {
+        return $query->where('is_mustread', 1);
     }
 
 }
