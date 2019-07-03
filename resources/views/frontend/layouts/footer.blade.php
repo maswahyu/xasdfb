@@ -40,8 +40,8 @@
             <div class="footer-top__span">
                 <ul class="list flex-justify-center">
                     <li class="list__item"><a class="list__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>
-                    <li class="list__item"><a class="list__link list__link--footer" href="#">Privacy Policy</a></li>
-                    <li class="list__item"><a class="list__link list__link--footer" href="#">Terms of Service</a></li>
+                    {{-- <li class="list__item"><a class="list__link list__link--footer" href="#">Privacy Policy</a></li>
+                    <li class="list__item"><a class="list__link list__link--footer" href="#">Terms of Service</a></li> --}}
                 </ul>
             </div>
 

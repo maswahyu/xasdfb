@@ -66,6 +66,22 @@ class PageController extends Controller
         if ($recaptcha->score >= 0.5) {
             $input = $request->all();
             Contact::create($input);
+
+            if (env('MAIL_PASSWORD')) {
+                $data = [
+                    'from' =>  $request->get('email'),
+                    'to'  => env('MAIL_RECEIVER','contact@boldxperience.com'),
+                    'subject' => "[".$request->get('name')."] ".$request->get('subject'),
+                    'body' => $request->get('message')
+                ];
+
+                Mail::send(array(), array(), function ($message) use ($data) {
+                    $message->to($data['to'])
+                    ->subject($data['subject'])
+                    ->from($data['from'])
+                    ->setBody($data['body']);
+                });
+            }
         
             $response = [
                 'info' => 'success',

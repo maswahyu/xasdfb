@@ -1,14 +1,5 @@
 @extends('frontend.layouts.skeleton')
 
-@section('inside-head')
-<script src="https://www.google.com/recaptcha/api.js?onload=recaptchaReady" async defer"></script>
-<script>
-    function onSubmit(token) {
-          document.getElementById("contact-form").submit();
-        }
-</script>
-@endsection
-
 @section('content')
 <div class="container">
 
@@ -24,22 +15,16 @@
 
                 <div class="form-row group-legend group-legend--top-margin-small">
                     <div class="form-col">
-                        <span>Hello! Why Are You Contacting Us Today?</span>
+                        <span>Hello! Why Are You Contacting Us Today?</span><br>
+                        <span id="contact-war"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-col">
-                        <label for="subject" class="form-label">Subject<sup>*</sup></label>
+                        <label for="subject" class="form-label">Subject</label>
                         <div class="form-input">
-                            <div class="select-css-wrapper">
-                                <select required name="subject" id="subject" class="select-css">
-                                    <option value="">Please Select</option>
-                                    <option value="1">Subject 1</option>
-                                    <option value="2">Subject 2</option>
-                                    <option value="3">Subject 3</option>
-                                </select>
-                            </div>
+                            <input required type="text" name="subject" id="subject" class="form-control" placeholder="Type your subject">
                         </div>
                     </div>
                 </div>
@@ -52,28 +37,25 @@
 
                 <div class="form-row">
                     <div class="form-col">
-                        <label for="name" class="form-label">Name<sup>*</sup></label>
+                        <label for="name" class="form-label">Name</label>
                         <div class="form-input">
-                            <input required type="text" name="name" id="name" class="form-control"
-                                placeholder="Type your name">
+                            <input required type="text" name="name" id="name" class="form-control" value="{{ (auth()->check()) ? auth()->user()->name : '' }}" placeholder="Type your name">
                         </div>
                     </div>
                 </div>
 
                 <div class="row form-row">
                     <div class="form-col">
-                        <label for="email" class="form-label">Email<sup>*</sup></label>
+                        <label for="email" class="form-label">Email</label>
                         <div class="form-input">
-                            <input required type="email" name="email" id="email" class="form-control"
-                                placeholder="Type your email address">
+                            <input required type="email" name="email" id="email" class="form-control" value="{{ (auth()->check()) ? auth()->user()->email : '' }}" placeholder="Type your email address">
                         </div>
                     </div>
 
                     <div class="form-col">
-                        <label for="email" class="form-label">Phone<sup>*</sup></label>
+                        <label for="email" class="form-label">Phone</label>
                         <div class="form-input">
-                            <input required type="text" name="phone" id="phone" class="form-control"
-                                placeholder="Type your phone number">
+                            <input type="tel" name="phone" id="phone" class="form-control" placeholder="Type your phone number" data-parsley-pattern-message="Pastikan format no hp anda benar, contoh (0812xxxxxxxxxx)" maxlength="14" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" required>
                         </div>
                     </div>
                 </div>
@@ -82,17 +64,16 @@
                     <div class="form-col">
                         <label for="name" class="form-label">Message</label>
                         <div class="form-input">
-                            <textarea name="message" id="message" cols="30" rows="2" class="form-control"
-                                placeholder="Type your message here"></textarea>
+                            <textarea name="message" id="message" cols="30" rows="2" class="form-control" placeholder="Type your message here"></textarea>
                         </div>
                     </div>
                 </div>
 
-                <div id="grecaptcha"></div>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                 <div class="form-row">
                     <div class="form-col text-center form-submit">
-                        <button class="btn btn-ghost-crimson btn-submit">SUBMIT</button>
+                        <button class="btn btn-ghost-crimson btn-submit" type="submit" >SUBMIT</button>
                     </div>
                 </div>
 
@@ -100,9 +81,15 @@
         </div>
     </div>
 </div>
+<div id="loading"></div>
+
 @endsection
 
 @section('before-body-end')
 <script src="{{ asset('static/js/parsley.min.js') }}"></script>
-<script src="{{ asset('static/js/contact.js') }}"></script>
+<script src="{{ asset('static/js/contact.js') }}?v={{ filemtime(public_path() . '/static/js/contact.js') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_KEY') }}"></script>
+<script type="text/javascript">
+    var GOOGLE_KEY = '{{ env('GOOGLE_KEY') }}'
+</script>
 @endsection
