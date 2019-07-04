@@ -26,9 +26,22 @@ class News extends Model
         $data->summary      = $request->get('summary');
         $data->content      = $request->get('content'); 
         $data->publish      = $request->get('publish');
+
+        if ($data->publish)
+            $data->published_at  = Carbon::now();
+
         $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
         $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
         $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
         $data->category_id  = $request->get('category_id');
         $data->user_id      = Auth::guard('admin')->id();
         $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
@@ -50,9 +63,19 @@ class News extends Model
         $data->summary      = $request->get('summary');
         $data->content      = $request->get('content'); 
         $data->publish      = $request->get('publish');
+
         $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
         $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
         $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
         $data->category_id  = $request->get('category_id');
         $data->user_id      = Auth::guard('admin')->id();
         $data->save();
