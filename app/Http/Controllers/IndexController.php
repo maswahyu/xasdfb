@@ -5,6 +5,7 @@ use App\News;
 use App\Gallery;
 use App\Http\Resources\NewsCollection;
 use Auth;
+use App\Slide;
 
 use Illuminate\Http\Request;
 
@@ -22,6 +23,7 @@ class IndexController extends Controller
 		$recommended = News::getRecommended();
 		$trending    = News::getTrending();
 		$videos      = Gallery::getGallery();
+		$slides      = Slide::getFeatured(5);
 
 	    return view('frontend.pages.home', [
 	        'mustReads' => $mustReads,
@@ -29,6 +31,7 @@ class IndexController extends Controller
 	        'recommended' => $recommended,
 	        'trending' => $trending,
 	        'videos' => $videos,
+	        'slides' => $slides,
 	    ]);
     }
 

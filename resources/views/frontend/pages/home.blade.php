@@ -47,21 +47,13 @@
 
         <div class="home-below-fold__slider">
             <div class="home-promo-slider jsHomeSlider">
+                @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
-                    <img src="{{ asset('static/images/mock/slider.jpg') }}" alt="slide">
+                    <a href="{{ $post->url }}" alt="{{ $post->title }}">
+                    <img src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+                    </a>
                 </div>
-                <div class="home-promo-slider__slide">
-                    <img src="{{ asset('static/images/mock/slider.jpg') }}" alt="slide">
-                </div>
-                <div class="home-promo-slider__slide">
-                    <img src="{{ asset('static/images/mock/slider.jpg') }}" alt="slide">
-                </div>
-                <div class="home-promo-slider__slide">
-                    <img src="{{ asset('static/images/mock/slider.jpg') }}" alt="slide">
-                </div>
-                <div class="home-promo-slider__slide">
-                    <img src="{{ asset('static/images/mock/slider.jpg') }}" alt="slide">
-                </div>
+                @endforeach
             </div>
         </div>
 
@@ -130,20 +122,17 @@
 
                 <div class="shoutbox__content-wrapper">
 
-                    <div class="shoutbox__title shoutbox__title--extra-bold"><span>Menangkan Hadiah Menarik Tiap
-                            Bulan!</span></div>
+                    <div class="shoutbox__title shoutbox__title--extra-bold"><span>Menangkan Hadiah Menarik Tiap Bulan!</span></div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">
-                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan
-                            kumpukan terus
-                            poin mu!</p>
+                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
                     </div>
 
                     <div class="shoutbox__cta shoutbox__cta--left">
-                        <a href="#" class="btn btn-ghost-white btn-shoutbox"><span class="semibold">PELAJARI TENTANG
-                                POIN</strong></a>
-                        <a href="#" class="btn btn-white btn-shoutbox"><span class="semibold">DAFTAR
-                                SEKARANG</strong></a>
+                        <a href="{{ url('points') }}" class="btn btn-ghost-white btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                        @guest
+                        <a href="{{ url('member/login') }}" class="btn btn-white btn-shoutbox" alt="Login"><span class="semibold">DAFTAR SEKARANG</strong></a>
+                        @endguest
                     </div>
 
                 </div>
@@ -167,7 +156,7 @@
 
             <div class="section-title section-title--plain section-title--has-more">
                 <span class="section-title__label">Videos</span>
-                <a href="#" class="section-title__more"><span>SEE MORE</span><span class="arrow-left"></span></a>
+                <a href="{{ url('gallery/video') }}" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
             </div>
 
             <div class="row no-gutters">

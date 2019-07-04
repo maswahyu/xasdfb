@@ -14,7 +14,7 @@ class ContactTableSeeder extends Seeder
 
         $data = [];
     	$faker = Faker\Factory::create('id_ID');
-    	for($i=0;$i<15;$i++){
+    	for($i=0;$i<10;$i++){
     		$data[$i] = [
 				'name'       => $faker->name(),
                 'phone'      => $faker->phoneNumber(),

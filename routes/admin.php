@@ -56,7 +56,9 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('linklist', 'LinkController@list');
         Route::resource('event', 'EventController');
         Route::get('eventlist', 'EventController@list');
-
+        Route::resource('slide', 'SlideController');
+        Route::get('slidelist', 'SlideController@list');
+        
         Route::get('loadtags', 'NewsController@loadTagData');
         Route::get('loadtagsnews/{id}', 'NewsController@loadTagNews');
     });
