@@ -17,7 +17,7 @@
         <div class="drilldown-container">
             <ul class="drilldown-root">
                 <li class="search">
-                    <form class="form" action="">
+                    <form class="form" action="{{ url('search') }}" method="get">
                         <input type="search" name="search" class="search-input form-control">
                         <button type="submit" class="search-btn-icon">
                             <img src="{{ asset('static/images/search-black.png') }}" alt="">
