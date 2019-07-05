@@ -19,113 +19,6 @@ class News extends Model
 
     protected $dates = ['published_at'];
 
-    public static function newRecord($request)
-    {
-        $data = new self;
-        $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
-        $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
-        $data->publish      = $request->get('publish');
-
-        if ($data->publish)
-            $data->published_at  = Carbon::now();
-
-        $data->is_featured  = $request->get('is_featured');
-        if ($data->is_featured) 
-            $data->featured_at  = Carbon::now();
-
-        $data->is_highlight = $request->get('is_highlight');
-        if ($data->is_highlight)
-            $data->highlight_at = Carbon::now();
-
-        $data->is_mustread  = $request->get('is_mustread');
-        if ($data->is_mustread)
-            $data->mustread_at  = Carbon::now();
-
-        $data->category_id  = $request->get('category_id');
-        $data->user_id      = Auth::guard('admin')->id();
-        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
-        $data->save();
-
-        $tags = $request->get('tags');
-        if ($tags) {
-            self::insertNewsTag($data->id, $tags);
-        }
-
-        self::forgotCache();
-
-        return $data;
-    }
-
-    public static function updateRecord($request, $id)
-    {
-        $data = self::findOrFail($id);
-        $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
-        $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
-        $data->publish      = $request->get('publish');
-
-        $data->is_featured  = $request->get('is_featured');
-        if ($data->is_featured) 
-            $data->featured_at  = Carbon::now();
-
-        $data->is_highlight = $request->get('is_highlight');
-        if ($data->is_highlight)
-            $data->highlight_at = Carbon::now();
-
-        $data->is_mustread  = $request->get('is_mustread');
-        if ($data->is_mustread)
-            $data->mustread_at  = Carbon::now();
-
-        $data->category_id  = $request->get('category_id');
-        $data->user_id      = Auth::guard('admin')->id();
-        $data->save();
-
-        $tags = $request->get('tags');
-        if ($tags) {
-            self::updateNewsTag($data->id, $tags);   
-        }
-
-        self::forgotCache();
-
-        return $data;
-    }
-
-    public static function insertNewsTag($news_id, $tags)
-    {
-        if ($tags) {
-            foreach ($tags as $tag_id) {
-                if (Tag::find($tag_id)) {
-                    $tag = News_tag::newNewsTag($news_id, $tag_id);
-                } else {
-                    $tag = Tag::newTag($tag_id);
-                    News_tag::newNewsTag($news_id, $tag->id);
-                }
-            }
-        }
-    }
-
-    public static function updateNewsTag($news_id, $tags)
-    {   
-        // delete news tags
-        News_tag::where('news_id', $news_id)->delete();
-
-        // insert ulang
-        self::insertNewsTag($news_id, $tags);
-    }
-
-    public static function generateRandomString($length = 5) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-
     public static function getFeed($paginate = 10)
     {
         return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate);  
@@ -138,18 +31,19 @@ class News extends Model
 
     public static function detail($slug)
     {   
-        return self::where('publish', 1)->where('slug', $slug)->first();
-    }    
+        if (!Cache::has('post'.$slug)) {
+            $data = self::where('publish', 1)->where('slug', $slug)->first();
+            Cache::forever('post'.$slug, $data);
+        }
 
-    public static function related($slug)
-    {
-        return self::where('publish', 1)->where('slug', '!=', $slug)->take(3)->get();
+        return Cache::get('post'.$slug);
     }
-	/**
-     * Post belongs to user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
+    public static function related($slug, $category_id)
+    {
+        return self::where('publish', 1)->where('category_id', $category_id)->where('slug', '!=', $slug)->take(3)->get();
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Admin', 'user_id');
@@ -317,6 +211,113 @@ class News extends Model
          $query->orderBy( $days, $orderType );
 
          return $query;
+    }
+
+    public static function newRecord($request)
+    {
+        $data = new self;
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+
+        if ($data->publish)
+            $data->published_at  = Carbon::now();
+
+        $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
+        $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
+        $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
+        $data->save();
+
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::insertNewsTag($data->id, $tags);
+        }
+
+        self::forgotCache();
+
+        return $data;
+    }
+
+    public static function updateRecord($request, $id)
+    {
+        $data = self::findOrFail($id);
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+
+        $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
+        $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
+        $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->save();
+
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::updateNewsTag($data->id, $tags);   
+        }
+
+        self::forgotCache();
+
+        return $data;
+    }
+
+    public static function insertNewsTag($news_id, $tags)
+    {
+        if ($tags) {
+            foreach ($tags as $tag_id) {
+                if (Tag::find($tag_id)) {
+                    $tag = News_tag::newNewsTag($news_id, $tag_id);
+                } else {
+                    $tag = Tag::newTag($tag_id);
+                    News_tag::newNewsTag($news_id, $tag->id);
+                }
+            }
+        }
+    }
+
+    public static function updateNewsTag($news_id, $tags)
+    {   
+        // delete news tags
+        News_tag::where('news_id', $news_id)->delete();
+
+        // insert ulang
+        self::insertNewsTag($news_id, $tags);
+    }
+
+    public static function generateRandomString($length = 5) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
     /**

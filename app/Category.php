@@ -47,6 +47,16 @@ class Category extends Model
         return $data;
     }
 
+    public static function detail($slug)
+    {
+        if (!Cache::has('category'.$slug)) {
+            $data = self::where('slug', $slug)->first();
+            Cache::forever('category'.$slug, $data);
+        }
+
+        return Cache::get('category'.$slug);
+    }
+
     public function parent() {
         return $this->belongsTo(self::class, 'parent_id');
     }

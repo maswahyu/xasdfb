@@ -3,26 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\News;
-use App\Http\Repository\CategoryRepository;
-use App\Http\Repository\NewsRepository;
+use App\Category;
 use Faker\Factory as Faker;
 
 use Illuminate\Http\Request;
 
 class PostController extends Controller
-{	
-	protected $category;
-	protected $news;
-
-	function __construct(CategoryRepository $category, NewsRepository $news)
-	{
-		$this->category = $category;
-		$this->news = $news;
-	}
-
+{
     public function category($category)
     {	
-    	$category = $this->category->findByField('slug', $category);
+    	$category = Category::detail($category);
 
 	    if (!$category) {
 	    	abort(404);
@@ -42,13 +32,13 @@ class PostController extends Controller
 
     public function subcategory($category, $subcategory)
     {	
-    	$category = $this->category->findByField('slug', $category);
+    	$category = Category::detail($category);
 
 	    if (!$category) {
 	    	abort(404);
 	    }
 
-	    $subcategory = $this->category->findByField('slug', $subcategory);
+	    $subcategory = $category = Category::detail($subcategory);
 
 	    if (!$subcategory) {
 	    	abort(404);
@@ -68,12 +58,12 @@ class PostController extends Controller
 
     public function detailPost($category, $subcategory, $slug)
     {	
-    	$post = $this->news->findByField('slug', $slug);
+    	$post = News::detail($slug);
     	if (!$post) {
 	    	abort(404);
 	    }
 
-	    $related = News::related($post->slug);
+	    $related = News::related($post->slug, $post->category_id);
 
 	    return view('frontend.pages.post', [
 	        'post' => $post,
