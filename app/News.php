@@ -8,6 +8,7 @@ use Auth;
 use App\Tag;
 use App\News_tag;
 use Carbon\Carbon;
+use App\Model\Stats;
 
 class News extends Model
 {   
@@ -20,16 +21,17 @@ class News extends Model
     public static function newRecord($request)
     {
         $data = new self;
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+        $data->is_featured  = $request->get('is_featured');
         $data->is_highlight = $request->get('is_highlight');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
-        $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
+        $data->is_mustread  = $request->get('is_mustread');
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
         $data->save();
 
         $tags = $request->get('tags');
@@ -43,15 +45,16 @@ class News extends Model
     public static function updateRecord($request, $id)
     {
         $data = self::findOrFail($id);
-        $data->title       = $request->get('title');
-        $data->image       = $request->get('image');  
-        $data->summary     = $request->get('summary');
-        $data->content     = $request->get('content'); 
-        $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+        $data->is_featured  = $request->get('is_featured');
         $data->is_highlight = $request->get('is_highlight');
-        $data->category_id = $request->get('category_id');
-        $data->user_id     = Auth::guard('admin')->id();
+        $data->is_mustread  = $request->get('is_mustread');
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
         $data->save();
 
         $tags = $request->get('tags');
@@ -206,6 +209,114 @@ class News extends Model
     public function getViewCountAttribute()
     {
         return rand(1, 999);
+    }
+
+    /**
+     * Get post stats
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function popularityStats()
+    {
+        return $this->morphOne('App\Model\Stats', 'trackable');
+    }
+
+    public function hit()
+    {
+        //check if a polymorphic relation can be set
+        if($this->exists){
+            $stats = $this->popularityStats()->first();
+
+            if( empty( $stats ) ){
+                //associates a new Stats instance for this instance
+                $stats = new Stats();
+                $this->popularityStats()->save($stats);
+            }
+
+            return $stats->updateStats();
+        }
+        return false;
+    }
+
+    /**
+     * Get posts by stats
+     *
+     */
+
+    public function scopeGetStats($query, $days = 'one_day_stats', $orderType = 'DESC', $limit = 10)
+    {
+          $query->select('posts.*');
+
+         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'posts.id');
+
+         $query->where( $days, '!=', 0 );
+
+         $query->take($limit);
+
+         $query->orderBy( $days, $orderType );
+
+         return $query;
+    }
+
+    /**
+     *
+     * Get post by category
+     * @param $query
+     * @param $categoryid
+     * @return mixed
+     */
+    public function scopeByCategory($query, $categoryid)
+    {
+        return $query->where("category_id", $categoryid);
+    }
+
+    /**
+     * Get posts by featured
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByFeatured($query)
+    {
+        return $query->where('is_featured', 1);
+    }
+
+
+    /**
+     * Get posts by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', 1);
+    }
+
+    /**
+     * Get posts by highlight
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByHighlight($query)
+    {
+        return $query->where('is_highlight', 1);
+    }
+
+    /**
+     * Get posts by mustread
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByMustread($query)
+    {
+        return $query->where('is_mustread', 1);
     }
 
 }

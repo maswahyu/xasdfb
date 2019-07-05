@@ -17,13 +17,32 @@
         <div class="drilldown-container">
             <ul class="drilldown-root">
                 <li class="search">
-                    <form class="form" action="">
+                    <form class="form" action="{{ url('search') }}" method="get">
                         <input type="search" name="search" class="search-input form-control">
                         <button type="submit" class="search-btn-icon">
                             <img src="{{ asset('static/images/search-black.png') }}" alt="">
                         </button>
                     </form>
                 </li>
+                @auth
+                <li class="menu">
+                    <div class="user-info">
+                        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+                        <span class="user-info__name"><strong>{{ auth()->user()->name }}</strong></span>
+                        <span class="user-info__point"><span>{{ seribu(auth()->user()->total_point) }} pts</span></span>
+                    </div>
+                </li>
+                <li class="menu">
+                    <a href="https://{{ env('CAS_HOSTNAME') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
+                </li>
+                <li class="menu">
+                    <a href="{{ env('URL_MYPOINT') }}"><span>My Points</span></a>
+                </li>
+                <li class="menu">
+                    <a href="{{ url('member/logout') }}"><span>Logout</span></a>
+                </li>
+                @endauth
+
                 <li class="menu has-sub-menu">
                     <a target="_blank" href="#">
                         <span>Articles</span>
@@ -78,10 +97,6 @@
                     <li class="menu">
                         <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
                     </li>
-                @else
-                    <li class="menu">
-                         Halo {{ auth()->user()->name }}
-                     </li>
                 @endguest
             </ul>
         </div>

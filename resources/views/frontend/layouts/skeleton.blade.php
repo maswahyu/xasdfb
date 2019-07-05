@@ -14,6 +14,7 @@
     <meta property="og:site_name" content="{{ $siteInfo['site_name'] }}" />
     <meta property="og:title" content="@yield('head_title', $siteInfo['site_meta_title']) " />
     <meta property="og:image" content="@yield('head_image', imageview('/'))" />
+    <meta property="og:image_secure" content="@yield('head_image', imageview('/'))" />
     <meta property="og:description" content="@yield('head_description', $siteInfo['site_meta_description'])" />
     <meta property="og:url" content="@yield('head_url', url('/'))" />
     <meta property="fb:app_id" content="{{ $siteInfo['fb_id'] }}"/>

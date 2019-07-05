@@ -40,7 +40,6 @@ class NewsController extends Controller
     public function create(Request $request)
     {
         $category = Category::where('parent_id', 0)->get();
-        $tags     = Tag::all();
 
         return view('_admin.news.create', compact('category','tags'))->with('title', $this->title);
     }
@@ -58,9 +57,8 @@ class NewsController extends Controller
     {   
         $category = Category::all();
         $news     = News::findOrFail($id);
-        $tags     = Tag::all();
 
-        return view('_admin.news.edit', compact('news','category','tags'))->with('title', $this->title);
+        return view('_admin.news.edit', compact('news','category'))->with('title', $this->title);
     } 
 
     public function show(Request $request, $id)
@@ -87,5 +85,19 @@ class NewsController extends Controller
         } else {
             return redirect('magic/news')->with('success', 'News deleted!');
         }
+    }
+
+    public function loadTagData(Request $request)
+    {
+        $tags = Tag::all();
+        return response()->json($tags);
+    }    
+
+    public function loadTagNews(Request $request, $id)
+    {   
+        $news = News::findOrFail($id); 
+        $tags = $news->tags->pluck('tag_id');
+        $tags = Tag::whereIn('id', $tags)->get();
+        return response()->json($tags);
     }
 }

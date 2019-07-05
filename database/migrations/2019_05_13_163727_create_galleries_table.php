@@ -24,6 +24,7 @@ class CreateGalleriesTable extends Migration
             $table->enum('type', ["photo", "video"])->default("photo");
             $table->string('value')->nullable();
             $table->integer('sort')->default(0);
+            $table->string('mime_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
