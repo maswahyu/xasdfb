@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Slide extends Model
 {
@@ -14,8 +15,12 @@ class Slide extends Model
     protected $table = 'slides';
 
     public static function getFeatured($take = 5)
-    {
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getFeatured', function () use ($take) {
+            return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function newRecord($request)
@@ -28,6 +33,7 @@ class Slide extends Model
         $data->title       = $request->get('title');
 
         $data->save();
+        Cache::forget('getFeatured');
 
         return $data;
     }
@@ -42,6 +48,8 @@ class Slide extends Model
         $data->title       = $request->get('title');
 
         $data->save();
+
+        Cache::forget('getFeatured');
 
         return $data;
     }

@@ -9,6 +9,7 @@ use App\Tag;
 use App\News_tag;
 use Carbon\Carbon;
 use App\Model\Stats;
+use Cache;
 
 class News extends Model
 {   
@@ -52,6 +53,8 @@ class News extends Model
             self::insertNewsTag($data->id, $tags);
         }
 
+        self::forgotCache();
+
         return $data;
     }
 
@@ -84,6 +87,8 @@ class News extends Model
         if ($tags) {
             self::updateNewsTag($data->id, $tags);   
         }
+
+        self::forgotCache();
 
         return $data;
     }
@@ -169,24 +174,48 @@ class News extends Model
             ->contains($id) ? 'selected' : '';
     }
 
-    public static function getHighlight()
+    public static function forgotCache()
     {
-        return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
+        Cache::forget('getHighlight');
+        Cache::forget('getMustReads');
+        Cache::forget('getRecommended');
+    }
+
+    public static function getHighlight()
+    {   
+        $model = Cache::rememberForever('getHighlight', function () {
+            return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
+        });
+
+        return $model;
     }
 
     public static function getMustReads($take = 2)
-    {
-        return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getMustReads', function () use ($take) {
+
+            return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function getRecommended($take = 5)
-    {
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getRecommended', function () use ($take) {
+            return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function getTrending($take = 4)
-    {
-        return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+    {   
+        $model = Cache::remember('getTrending', 3600, function () use ($take) {
+            return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+        });
+
+        return $model;
     }
 
     public static function getLatest($take = 4)
