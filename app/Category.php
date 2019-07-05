@@ -47,12 +47,33 @@ class Category extends Model
         return $data;
     }
 
+    public static function detail($slug)
+    {
+        if (!Cache::has('category'.$slug)) {
+            $data = self::where('slug', $slug)->first();
+            Cache::forever('category'.$slug, $data);
+        }
+
+        return Cache::get('category'.$slug);
+    }
+
     public function parent() {
         return $this->belongsTo(self::class, 'parent_id');
     }
 
+    public function postOne() {
+        return $this->hasOne('App\News', 'category_id')
+                ->where('publish', 1)
+                ->where('is_featured', 1)
+                ->orderBy('featured_at', 'desc');
+    }
+
     public function children() {
         return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public function menu() {
+        return $this->hasMany(self::class, 'parent_id', 'id')->whereNotIn('slug', ['lensaphoto','sneakerland']);
     }
 
     public function subscribe() {

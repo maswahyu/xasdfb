@@ -93,8 +93,8 @@
 <div class="form-group ">
     <label for="is_featured">{{ 'Recommended' }}</label>
     <select name="is_featured" class="form-control form-control-sm" id="is_featured">
-        <option value="1" {{ (isset($news->is_featured) && $news->is_featured == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->is_featured) && $news->is_featured == 0) ? 'selected' : '' }}>No</option>
+        <option value="1" {{ (isset($news->is_featured) && $news->is_featured == 1) ? 'selected' : '' }}>Yes</option>
     </select>
     <span class="text-danger">{{ $errors->first('is_featured') }}</span>
     <p class="help-block"></p>
@@ -103,8 +103,8 @@
 <div class="form-group ">
     <label for="is_highlight">{{ 'Highlight' }}</label>
     <select name="is_highlight" class="form-control form-control-sm" id="is_highlight">
-        <option value="1" {{ (isset($news->is_highlight) && $news->is_highlight == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->is_highlight) && $news->is_highlight == 0) ? 'selected' : '' }}>No</option>
+        <option value="1" {{ (isset($news->is_highlight) && $news->is_highlight == 1) ? 'selected' : '' }}>Yes</option>
     </select>
     <span class="text-danger">{{ $errors->first('is_highlight') }}</span>
     <p class="help-block"></p>
@@ -113,8 +113,8 @@
 <div class="form-group ">
     <label for="is_mustread">{{ 'Must Read' }}</label>
     <select name="is_mustread" class="form-control form-control-sm" id="is_mustread">
-        <option value="1" {{ (isset($news->is_mustread) && $news->is_mustread == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (isset($news->is_mustread) && $news->is_mustread == 0) ? 'selected' : '' }}>No</option>
+        <option value="1" {{ (isset($news->is_mustread) && $news->is_mustread == 1) ? 'selected' : '' }}>Yes</option>
     </select>
     <span class="text-danger">{{ $errors->first('is_mustread') }}</span>
     <p class="help-block"></p>

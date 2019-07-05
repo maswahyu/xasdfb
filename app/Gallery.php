@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 use Carbon\Carbon;
+use Cache;
 
 class Gallery extends Model
 {   
@@ -36,8 +37,12 @@ class Gallery extends Model
     }
 
     public static function getGallery($type = self::VIDEO, $take = 4)
-    {
-        return self::where('publish', 1)->where('type', $type)->orderBy('created_at', 'DESC')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getGallery', function () use ($type, $take) {
+            return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function getSticky($type = self::VIDEO)
@@ -90,6 +95,7 @@ class Gallery extends Model
 
     public function getDurationAttribute()
     {   
+        return '';
         $duration = rand(300, 3600);
         return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
     }
@@ -119,6 +125,8 @@ class Gallery extends Model
         }
 
         $data->save();
+        
+        Cache::forget('getGallery');
 
         return $data;
     }
@@ -134,6 +142,8 @@ class Gallery extends Model
         $data->user_id  = Auth::guard('admin')->id();
 
         $data->save();
+
+        Cache::forget('getGallery');
 
         return $data;
     }

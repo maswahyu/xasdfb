@@ -78,6 +78,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/slide') }}" class="nav-link {!! classActiveSegment(2, 'slide') !!}">
+                        <i class="nav-icon fa fa-sliders-h"></i>
+                        <p>
+                            Slide
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/event') }}" class="nav-link {!! classActiveSegment(2, 'event') !!}">
                         <i class="nav-icon fa fa-calendar-week"></i>
                         <p>

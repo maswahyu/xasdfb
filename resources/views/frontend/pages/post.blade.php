@@ -25,7 +25,7 @@
     <div class="row flex-justify-center post-breadcrumb">
 
         <ul class="breadcrumb">
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">{{ optional($post->category->parent)->name }}</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">{{ $post->parent_name }}</a></li>
             <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">{{ $post->category_name }}</a></li>
         </ul>
 
@@ -102,10 +102,12 @@
     <div class="row post-tag">
         <div class="span-12 span-lg-10 off-lg-1">
             <ul class="list">
+                @if($post->tags)
                 <li>TAGS</li>
                 @foreach($post->tags as $item)
                     <li class="list__item active"><a href="{{ url('tags/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
                 @endforeach
+                @endif
             </ul>
 
         </div>

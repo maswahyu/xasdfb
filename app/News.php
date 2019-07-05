@@ -9,6 +9,7 @@ use App\Tag;
 use App\News_tag;
 use Carbon\Carbon;
 use App\Model\Stats;
+use Cache;
 
 class News extends Model
 {   
@@ -17,86 +18,6 @@ class News extends Model
     const NEWS = 'news';
 
     protected $dates = ['published_at'];
-
-    public static function newRecord($request)
-    {
-        $data = new self;
-        $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
-        $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
-        $data->publish      = $request->get('publish');
-        $data->is_featured  = $request->get('is_featured');
-        $data->is_highlight = $request->get('is_highlight');
-        $data->is_mustread  = $request->get('is_mustread');
-        $data->category_id  = $request->get('category_id');
-        $data->user_id      = Auth::guard('admin')->id();
-        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
-        $data->save();
-
-        $tags = $request->get('tags');
-        if ($tags) {
-            self::insertNewsTag($data->id, $tags);
-        }
-
-        return $data;
-    }
-
-    public static function updateRecord($request, $id)
-    {
-        $data = self::findOrFail($id);
-        $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
-        $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
-        $data->publish      = $request->get('publish');
-        $data->is_featured  = $request->get('is_featured');
-        $data->is_highlight = $request->get('is_highlight');
-        $data->is_mustread  = $request->get('is_mustread');
-        $data->category_id  = $request->get('category_id');
-        $data->user_id      = Auth::guard('admin')->id();
-        $data->save();
-
-        $tags = $request->get('tags');
-        if ($tags) {
-            self::updateNewsTag($data->id, $tags);   
-        }
-
-        return $data;
-    }
-
-    public static function insertNewsTag($news_id, $tags)
-    {
-        if ($tags) {
-            foreach ($tags as $tag_id) {
-                if (Tag::find($tag_id)) {
-                    $tag = News_tag::newNewsTag($news_id, $tag_id);
-                } else {
-                    $tag = Tag::newTag($tag_id);
-                    News_tag::newNewsTag($news_id, $tag->id);
-                }
-            }
-        }
-    }
-
-    public static function updateNewsTag($news_id, $tags)
-    {   
-        // delete news tags
-        News_tag::where('news_id', $news_id)->delete();
-
-        // insert ulang
-        self::insertNewsTag($news_id, $tags);
-    }
-
-    public static function generateRandomString($length = 5) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
 
     public static function getFeed($paginate = 10)
     {
@@ -110,18 +31,19 @@ class News extends Model
 
     public static function detail($slug)
     {   
-        return self::where('publish', 1)->where('slug', $slug)->first();
-    }    
+        if (!Cache::has('post'.$slug)) {
+            $data = self::where('publish', 1)->where('slug', $slug)->first();
+            Cache::forever('post'.$slug, $data);
+        }
 
-    public static function related($slug)
-    {
-        return self::where('publish', 1)->where('slug', '!=', $slug)->take(3)->get();
+        return Cache::get('post'.$slug);
     }
-	/**
-     * Post belongs to user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
+    public static function related($slug, $category_id)
+    {
+        return self::where('publish', 1)->where('category_id', $category_id)->where('slug', '!=', $slug)->take(3)->get();
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Admin', 'user_id');
@@ -146,24 +68,48 @@ class News extends Model
             ->contains($id) ? 'selected' : '';
     }
 
-    public static function getHighlight()
+    public static function forgotCache()
     {
-        return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
+        Cache::forget('getHighlight');
+        Cache::forget('getMustReads');
+        Cache::forget('getRecommended');
+    }
+
+    public static function getHighlight()
+    {   
+        $model = Cache::rememberForever('getHighlight', function () {
+            return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
+        });
+
+        return $model;
     }
 
     public static function getMustReads($take = 2)
-    {
-        return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getMustReads', function () use ($take) {
+
+            return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function getRecommended($take = 5)
-    {
-        return self::where('publish', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+    {   
+        $model = Cache::rememberForever('getRecommended', function () use ($take) {
+            return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+        });
+
+        return $model;
     }
 
     public static function getTrending($take = 4)
-    {
-        return self::where('publish', 1)->orderBy('updated_at', 'asc')->take($take)->get();
+    {   
+        $model = Cache::remember('getTrending', 3600, function () use ($take) {
+            return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+        });
+
+        return $model;
     }
 
     public static function getLatest($take = 4)
@@ -178,7 +124,9 @@ class News extends Model
 
     public function getUrlAttribute()
     {
-        return url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug);
+        return isset($this->category->parent) ?
+            url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug) :
+            url('lifestyle/style/'.$this->slug);
     }
 
     public function getThumbnailAttribute()
@@ -191,14 +139,21 @@ class News extends Model
         return optional($this->published_at)->format('j M Y');
     }
 
+    public function getParentNameAttribute()
+    {   
+        return isset($this->category) && isset($this->category->parent) ?
+                optional($this->category->parent)->name : 
+                'Lifestyle';
+    }
+
     public function getCategoryNameAttribute()
     {
-        return ($this->category->name) ? $this->category->name : 'lazone'; 
+        return (isset($this->category) && $this->category->name) ? $this->category->name : 'style';
     }
 
     public function getCategorySlugAttribute()
     {
-        return ($this->category->slug) ? $this->category->slug : 'lazone'; 
+        return (isset($this->category) && $this->category->slug) ? $this->category->slug : 'style';
     }    
 
     public function getTitleLimitAttribute()
@@ -245,9 +200,9 @@ class News extends Model
 
     public function scopeGetStats($query, $days = 'one_day_stats', $orderType = 'DESC', $limit = 10)
     {
-          $query->select('posts.*');
+          $query->select('news.*');
 
-         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'posts.id');
+         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'news.id');
 
          $query->where( $days, '!=', 0 );
 
@@ -256,6 +211,113 @@ class News extends Model
          $query->orderBy( $days, $orderType );
 
          return $query;
+    }
+
+    public static function newRecord($request)
+    {
+        $data = new self;
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+
+        if ($data->publish)
+            $data->published_at  = Carbon::now();
+
+        $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
+        $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
+        $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
+        $data->save();
+
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::insertNewsTag($data->id, $tags);
+        }
+
+        self::forgotCache();
+
+        return $data;
+    }
+
+    public static function updateRecord($request, $id)
+    {
+        $data = self::findOrFail($id);
+        $data->title        = $request->get('title');
+        $data->image        = $request->get('image');  
+        $data->summary      = $request->get('summary');
+        $data->content      = $request->get('content'); 
+        $data->publish      = $request->get('publish');
+
+        $data->is_featured  = $request->get('is_featured');
+        if ($data->is_featured) 
+            $data->featured_at  = Carbon::now();
+
+        $data->is_highlight = $request->get('is_highlight');
+        if ($data->is_highlight)
+            $data->highlight_at = Carbon::now();
+
+        $data->is_mustread  = $request->get('is_mustread');
+        if ($data->is_mustread)
+            $data->mustread_at  = Carbon::now();
+
+        $data->category_id  = $request->get('category_id');
+        $data->user_id      = Auth::guard('admin')->id();
+        $data->save();
+
+        $tags = $request->get('tags');
+        if ($tags) {
+            self::updateNewsTag($data->id, $tags);   
+        }
+
+        self::forgotCache();
+
+        return $data;
+    }
+
+    public static function insertNewsTag($news_id, $tags)
+    {
+        if ($tags) {
+            foreach ($tags as $tag_id) {
+                if (Tag::find($tag_id)) {
+                    $tag = News_tag::newNewsTag($news_id, $tag_id);
+                } else {
+                    $tag = Tag::newTag($tag_id);
+                    News_tag::newNewsTag($news_id, $tag->id);
+                }
+            }
+        }
+    }
+
+    public static function updateNewsTag($news_id, $tags)
+    {   
+        // delete news tags
+        News_tag::where('news_id', $news_id)->delete();
+
+        // insert ulang
+        self::insertNewsTag($news_id, $tags);
+    }
+
+    public static function generateRandomString($length = 5) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
     /**
