@@ -1,6 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@section('head_title', $category->name)
+@section('head_description', $category->description)
+@section('head_image', $category->img)
+@section('head_url', $type ? $category->url : $subcategory->url)
 
 @section('content')
 

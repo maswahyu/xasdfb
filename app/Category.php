@@ -105,7 +105,7 @@ class Category extends Model
 
     public function getUrlAttribute()
     {
-        return url('/'.$this->slug);
+        return ($this->parent_id == 0) ? url('/'.$this->slug) : self::getSubUrlAttribute();
     }
 
     public function getSubUrlAttribute()

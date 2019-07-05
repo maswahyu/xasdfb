@@ -18,12 +18,14 @@ class PostController extends Controller
 	    	abort(404);
 	    }
 
-	    $sticky 	 = News::getSticky(2);
-	    $latest 	 = News::getLatest(3);
-	    $recommended = News::getRecommended();
+	    $sticky 	 = News::getSticky(2, $category);
+	    $latest 	 = News::getLatest(3, $category);
+	    $recommended = News::getCatRecomended(5, $category);
+	    $type 	 	 = 1;
 
 	    return view('frontend.pages.category', [
 			'category'         => $category,
+			'type'             => $type,
 			'stickyPosts'      => $sticky,
 			'latestPosts'      => $latest,
 			'recommendedPosts' => $recommended,
@@ -38,21 +40,24 @@ class PostController extends Controller
 	    	abort(404);
 	    }
 
-	    $subcategory = $category = Category::detail($subcategory);
+	    $subcategory = Category::detail($subcategory);
 
 	    if (!$subcategory) {
 	    	abort(404);
 	    }
 
-    	$sticky 	 = News::getSticky(2);
-	    $latest 	 = News::getLatest(3);
-	    $recommended = News::getRecommended();
+    	$sticky 	 = News::getSticky(2, $subcategory);
+	    $latest 	 = News::getLatest(3, $subcategory);
+	    $recommended = News::getCatRecomended(5, $subcategory);
+	    $type 	 	 = 0;
 
 	    return view('frontend.pages.category', [
-	        'category' => $category,
-	        'stickyPosts' => $sticky,
-	        'latestPosts' => $latest,
-	        'recommendedPosts' => $recommended,
+			'category'         => $category,
+			'subcategory'      => $subcategory,
+			'type'             => $type,
+			'stickyPosts'      => $sticky,
+			'latestPosts'      => $latest,
+			'recommendedPosts' => $recommended,
 	    ]);
     }
 
