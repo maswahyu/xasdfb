@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/feed', 'IndexController@feed');
 Route::get('/feed-photo', 'GalleryController@feedPhoto');
@@ -40,3 +39,6 @@ Route::get('tags/{slug}', 'PostController@tags');
 Route::get('{category}', 'PostController@category');
 Route::get('{category}/{subcategory}', 'PostController@subcategory');
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');
+
+/* handle images from old storage */
+Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
