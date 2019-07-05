@@ -6,7 +6,7 @@ return [
      * list of disk names that you want to use
      * (from config/filesystems)
      */
-    'diskList'  => ['filemanager'],
+    'diskList'  => [/*'filemanager'*/ 'new'],
 
     /**
      * Default disk for left manager

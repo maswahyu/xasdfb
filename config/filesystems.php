@@ -72,17 +72,21 @@ return [
         ],
 
         'old' => [
-            /* local atau pake lan */
-            // 'driver' => 'local',
-            // 'root' => '\\\\10.0.0.43\tobi\sagadev',
-
-            /* pake sftp 9*/
             'driver' => env('OLD_STORAGE_DRIVER', 'sftp'),
             'host' => env('OLD_STORAGE_HOST', '10.0.13.38'),
             'port' => env('OLD_STORAGE_PORT', '22'),
             'username' => env('OLD_STORAGE_USERNAME', 'root'),
             'privateKey' => env('OLD_STORAGE_KEY_PATH', '/home/djamur/key/saga.key'),
             'root' => env('OLD_STORAGE_ROOT_PATH', '/app/lazone.com/website'),
+        ],
+
+        'new' => [
+            'driver' => env('NEW_STORAGE_DRIVER', 'sftp'),
+            'host' => env('NEW_STORAGE_HOST', '10.0.13.38'),
+            'port' => env('NEW_STORAGE_PORT', '22'),
+            'username' => env('NEW_STORAGE_USERNAME', 'root'),
+            'privateKey' => env('NEW_STORAGE_KEY_PATH', '/home/djamur/key/saga.key'),
+            'root' => env('NEW_STORAGE_ROOT_PATH', '/data/storage'),
         ],
 
     ],

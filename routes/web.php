@@ -36,12 +36,9 @@ Route::get('video/detail/{slug}', 'GalleryController@videoDetail');
 
 Route::get('tags/{slug}', 'PostController@tags');
 
-/* handle images from old storage */
-// image dari news content dan news thumbnail
+Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
-// image dari news cover
 Route::get('/news/{year}/{path}', 'StorageController@oldImageNewsCover')->where('path', '.+');
-// image dari news cover yg langsung file name
 Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirectFile');
 
 Route::get('{category}', 'PostController@category');

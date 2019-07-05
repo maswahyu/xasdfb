@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Storage;
 class StorageController extends Controller
 {
     /**
+     * Handle semua image selain old image dari pimcore.
+     */
+    public function imageHandler(Request $request)
+    {
+        $file = $request->path();
+        $file = urldecode(str_replace('storage/', '/', $file));
+        $file = Storage::disk('new')->get($file);
+        return Image::make($file)->response('png');
+    }
+
+    /**
      * Get image from the old storage on the pimcore storage server.
      * Biasanya dari news content.
      */
