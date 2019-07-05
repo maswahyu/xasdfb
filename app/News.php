@@ -181,7 +181,7 @@ class News extends Model
 
     public static function getRecommended($take = 5)
     {
-        return self::where('publish', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+        return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
     }
 
     public static function getTrending($take = 4)

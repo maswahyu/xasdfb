@@ -55,6 +55,10 @@ class Category extends Model
         return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
+    public function menu() {
+        return $this->hasMany(self::class, 'parent_id', 'id')->whereNotIn('slug', ['lensaphoto','sneakerland']);
+    }
+
     public function subscribe() {
         return $this->hasMany('App\Subscribe', 'category_id', 'id')->where('user_id', Auth::id());
     }

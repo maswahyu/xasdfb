@@ -19,8 +19,10 @@
 
         <div class="span-12 text-center">
             <ul class="list flex-justify-center">
-                @foreach($category->children as $key => $item)
-                    <li class="list__item {{ classActiveSegment(2, $item->slug) }} {{ ($key == 0 && !Request::segment(2)) ? 'active' : '' }}"><a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a></li>
+                @foreach($category->menu as $key => $item)
+                    <li class="list__item {{ classActiveSegment(2, $item->slug) }} {{ ($key == 0 && !Request::segment(2)) ? 'active' : '' }}">
+                        <a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>
