@@ -53,7 +53,7 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-        ],        
+        ],
 
         'filemanager' => [
             'driver' => 'local',
@@ -69,6 +69,20 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+
+        'old' => [
+            /* local atau pake lan */
+            // 'driver' => 'local',
+            // 'root' => '\\\\10.0.0.43\tobi\sagadev',
+
+            /* pake sftp 9*/
+            'driver' => env('OLD_STORAGE_DRIVER', 'sftp'),
+            'host' => env('OLD_STORAGE_HOST', '10.0.13.38'),
+            'port' => env('OLD_STORAGE_PORT', '22'),
+            'username' => env('OLD_STORAGE_USERNAME', 'root'),
+            'privateKey' => env('OLD_STORAGE_KEY_PATH', '/home/djamur/key/saga.key'),
+            'root' => env('OLD_STORAGE_ROOT_PATH', '/app/lazone.com/website'),
         ],
 
     ],
