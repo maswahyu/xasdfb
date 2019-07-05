@@ -73,12 +73,6 @@ class PostController extends Controller
 	    	abort(404);
 	    }
 
-
-	    if (!session('visit-saved')) {
-    		$post->hit();
-	    	session(['visit-saved' => true]);
-		}
-
 	    $related = News::related($post->slug);
 
 	    return view('frontend.pages.post', [

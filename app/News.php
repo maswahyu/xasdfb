@@ -186,7 +186,7 @@ class News extends Model
 
     public static function getTrending($take = 4)
     {
-        return self::where('publish', 1)->orderBy('updated_at', 'asc')->take($take)->get();
+        return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
     }
 
     public static function getLatest($take = 4)
@@ -201,7 +201,9 @@ class News extends Model
 
     public function getUrlAttribute()
     {
-        return url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug);
+        return isset($this->category->parent) ?
+            url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug) :
+            url('lifestyle/style/'.$this->slug);
     }
 
     public function getThumbnailAttribute()
@@ -214,14 +216,21 @@ class News extends Model
         return optional($this->published_at)->format('j M Y');
     }
 
+    public function getParentNameAttribute()
+    {   
+        return isset($this->category) && isset($this->category->parent) ?
+                optional($this->category->parent)->name : 
+                'Lifestyle';
+    }
+
     public function getCategoryNameAttribute()
     {
-        return ($this->category->name) ? $this->category->name : 'lazone'; 
+        return (isset($this->category) && $this->category->name) ? $this->category->name : 'style';
     }
 
     public function getCategorySlugAttribute()
     {
-        return ($this->category->slug) ? $this->category->slug : 'lazone'; 
+        return (isset($this->category) && $this->category->slug) ? $this->category->slug : 'style';
     }    
 
     public function getTitleLimitAttribute()
@@ -268,9 +277,9 @@ class News extends Model
 
     public function scopeGetStats($query, $days = 'one_day_stats', $orderType = 'DESC', $limit = 10)
     {
-          $query->select('posts.*');
+          $query->select('news.*');
 
-         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'posts.id');
+         $query->leftJoin('popularity_stats', 'popularity_stats.trackable_id', '=', 'news.id');
 
          $query->where( $days, '!=', 0 );
 
