@@ -222,8 +222,9 @@ class News extends Model
     }
 
     public function getViewCountAttribute()
-    {
-        return rand(1, 999);
+    {   
+        return isset($this->popularityStats->all_time_stats) ? number_format_short($this->popularityStats->all_time_stats + $this->view) : number_format_short($this->view);
+
     }
 
     /**
