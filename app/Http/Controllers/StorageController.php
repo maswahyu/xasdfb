@@ -15,7 +15,7 @@ class StorageController extends Controller
     {
         $file = $request->path();
         $file = urldecode(str_replace('storage/', '/', $file));
-        $file = Storage::disk('new')->get($file);
+        $file = Storage::disk('filemanager')->get($file);
         return Image::make($file)->response('png');
     }
 
