@@ -55,7 +55,7 @@ class Stats extends Model
 
 
         // Update raw_stats for date
-        if ( isset( $raw_stats ) && count( $raw_stats ) >= 30 ) {
+        if ( isset( $raw_stats ) && is_array($raw_stats) && count( $raw_stats ) >= 30 ) {
             // remove older than 30 days stats
             array_shift( $raw_stats );
             // add new date
