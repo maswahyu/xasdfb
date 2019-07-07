@@ -97,7 +97,7 @@ class News extends Model
     public static function getRecommended($take = 5)
     {   
         $model = Cache::rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+            return self::where('publish', 1)->latest()->take($take)->get();
         });
 
         return $model;
@@ -106,8 +106,7 @@ class News extends Model
     public static function getTrending($take = 4)
     {   
         $model = Cache::remember('getTrending', 3600, function () use ($take) {
-            // return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
-            return self::where('publish', 1)->latest()->take($take)->get();
+            return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
         });
 
         return $model;
