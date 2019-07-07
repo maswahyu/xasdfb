@@ -106,7 +106,8 @@ class News extends Model
     public static function getTrending($take = 4)
     {   
         $model = Cache::remember('getTrending', 3600, function () use ($take) {
-            return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+            // return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+            return self::where('publish', 1)->latest()->take($take)->get();
         });
 
         return $model;

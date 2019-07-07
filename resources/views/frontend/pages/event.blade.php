@@ -105,7 +105,7 @@
 <script id="x-post-template" type="text/x-handlebars-template">
 
     <div class="span-12 span-md-6 span-lg-12">
-    <a href="{{ url }}" class="event-card event-card--horizontal">
+        <div class="event-card event-card--horizontal">
 
             <div class="event-card__thumbnail event-card__thumbnail--horizontal">
                 <img class="event-card__img event-card__img--horizontal" src="{{ thumbnail }}" alt="">
@@ -121,7 +121,7 @@
 
             </div>
 
-        </a>
+        </div>
     </div>
 
 </script>
