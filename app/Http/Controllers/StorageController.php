@@ -54,4 +54,16 @@ class StorageController extends Controller
         $file = Storage::disk('old')->get($file);
         return Image::make($file)->response('png');
     }
+
+    /**
+     * Handle event Community images.
+     * Contoh: lazone.id/Community/blablabl/filename.jpg
+     */
+    public function eventOldImage(Request $request)
+    {
+        $file = $request->path();
+        $file = urldecode(str_replace('Community/', '/var/assets/Community/', $file));
+        $file = Storage::disk('old')->get($file);
+        return Image::make($file)->response('png');
+    }
 }
