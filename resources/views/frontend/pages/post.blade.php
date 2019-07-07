@@ -203,8 +203,10 @@
         </a>
     </script>
 @endverbatim
-
+<script type="text/javascript">
+    var p_id = '{{ $post->id }}';
+</script>
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
-<script src="{{ asset('static/js/post.js') }}"></script>
+<script src="{{ asset('static/js/post.js') }}?v={{ filemtime(public_path() . '/static/js/post.js') }}"></script>
 @endsection

@@ -80,4 +80,12 @@ class PostController extends Controller
     {
     	return view('frontend.pages.search');
     }
+
+    public function hitperform($id)
+    {	
+    	$post = News::findOrFail($id);
+    	$post->hit();
+
+    	return response()->json(['status'=>'success'], 200);
+    }
 }
