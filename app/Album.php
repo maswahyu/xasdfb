@@ -22,7 +22,7 @@ class Album extends Model
     public static function getSticky($take = 2)
     {
         return self::where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
-    }    
+    }
 
     public static function getLatest($take = 3)
     {
@@ -35,7 +35,7 @@ class Album extends Model
     }
 
     public static function detail($slug)
-    {   
+    {
         return self::where('slug', $slug)->first();
     }
 
@@ -47,6 +47,15 @@ class Album extends Model
 
     public function getThumbnailAttribute()
     {
+        if (empty($this->image)) {
+            if ($this->has('photos') && count($this->photos) > 0) {
+                return imageview($this->photos[0]->thumbnail);
+            }
+
+            /* if this album doesnt have photos, return empty string */
+            return imageview('');
+        }
+
         return imageview($this->image);
     }
 
