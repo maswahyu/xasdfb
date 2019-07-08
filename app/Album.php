@@ -29,27 +29,27 @@ class Album extends Model
     // repository
     public static function getSticky($take = 2)
     {
-        return self::where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
+        return self::where('publish', 1)->where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
     }    
 
     public static function getLatest($take = 3)
     {
-        return self::latest()->take($take)->get();
+        return self::where('publish', 1)->latest()->take($take)->get();
     }
 
     public static function getPage($pageNumber = 1, $paginate = 8)
     {
-        return self::orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getSearch($pageNumber = 1, $query, $paginate = 8)
     {
-        return self::orderBy('created_at', 'DESC')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->orderBy('created_at', 'DESC')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
     {   
-        return self::where('slug', $slug)->first();
+        return self::where('publish', 1)->where('slug', $slug)->first();
     }
 
     // add attribure
@@ -103,5 +103,17 @@ class Album extends Model
         $data->save();
 
         return $data;
+    }
+
+    /**
+     * Get gallery by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', 1);
     }
 }

@@ -186,7 +186,7 @@ class PageController extends Controller
 
     public function sitemapPhoto()
     {   
-        $posts = Album::get();
+        $posts = Album::byPublish()->get();
         return response()
             ->view('frontend.sitemap.category', ['posts' => $posts])
             ->header('Content-Type', 'text/xml');

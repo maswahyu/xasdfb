@@ -16,6 +16,7 @@ class AlbumTableSeeder extends Seeder
 			'name'        => 'Travel',
 			'slug'        => 'travel',
 			'is_featured' => rand(0,1),
+			'publish'     => 1,
 			'image'       => "/storage/news/236669.jpg",
 			'created_at'  => Carbon\Carbon::now(),
 		];
@@ -24,6 +25,7 @@ class AlbumTableSeeder extends Seeder
 			'name'        => 'Tour',
 			'slug'        => 'tour',
 			'is_featured' => rand(0,1),
+			'publish'     => 1,
 			'image'       => "/storage/news/236669.jpg",
 			'created_at'  => Carbon\Carbon::now(),
 		];
@@ -32,6 +34,7 @@ class AlbumTableSeeder extends Seeder
 			'name'        => 'Bold',
 			'slug'        => 'bold',
 			'is_featured' => rand(0,1),
+			'publish'     => 1,
 			'image'       => "/storage/news/236669.jpg",
 			'created_at'  => Carbon\Carbon::now(),
 		];
@@ -43,6 +46,7 @@ class AlbumTableSeeder extends Seeder
 				'name'        => $faker->text(10),
 				'slug'        => $faker->slug(),
 				'is_featured' => rand(0,1),
+				'publish'     => 1,
 				'image'       => "/storage/news/236669.jpg",
 				'created_at'  => Carbon\Carbon::now(),
     		];
