@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Category;
-use Faker\Factory as Faker;
+use App\Tag;
+use App\Http\Resources\NewsCollection;
 
 use Illuminate\Http\Request;
 
@@ -76,9 +77,18 @@ class PostController extends Controller
 	    ]);
     }
 
-    public function tags($lug)
-    {
-    	return view('frontend.pages.search');
+    public function tags($hashtag)
+    {	
+    	return view('frontend.pages.tags');
+    }
+
+    public function feedTags(Request $request)
+    {	
+		$hashtag = strip_tags($request->get('hashtag'));
+		$page    = $request->get('page');
+    	
+	    $posts = News::getNewsTags($page, $hashtag);
+	    return response()->json(new NewsCollection($posts));
     }
 
     public function hitperform($id)

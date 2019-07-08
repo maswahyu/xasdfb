@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 use Carbon\Carbon;
 use Cache;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Gallery extends Model
 {   
-    use SoftDeletes;
+    use SoftDeletes, SearchableTrait;
 
     const PHOTO = "photo";
     const VIDEO = "video";
@@ -21,6 +22,12 @@ class Gallery extends Model
      */
     protected $table = 'galleries';
 
+    protected $searchable = [
+        'columns' => [
+            'galleries.title' => 10,
+        ]
+    ];
+
     public static function getData($paginate = 10, $album_id, $type = self::VIDEO)
     {
         return self::where('publish', 1)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
@@ -28,7 +35,12 @@ class Gallery extends Model
 
     public static function getPage($pageNumber = 1, $type = self::PHOTO, $paginate = 8)
     {
-        return self::where('publish', 1)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->where('type', $type)->latest()->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
+    public static function getSearch($pageNumber = 1, $type = self::PHOTO, $query, $paginate = 8)
+    {
+        return self::where('publish', 1)->where('type', $type)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getCount($album_id, $type)
@@ -108,8 +120,7 @@ class Gallery extends Model
 
     public function getDurationAttribute()
     {   
-        return '';
-        $duration = rand(300, 3600);
+        $duration = rand(300, 3000);
         return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
     }
 

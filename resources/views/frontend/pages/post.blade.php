@@ -1,7 +1,7 @@
 @extends('frontend.layouts.skeleton')
 
 @section('head_title', $post->title)
-@section('head_description', $post->summary)
+@section('head_description', strip_tags($post->summary))
 @section('head_image', imageview($post->image))
 @section('head_url', $post->url)
 

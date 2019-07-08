@@ -79,9 +79,9 @@
 @section('before-body-end')
 
 <script>
-    window.feedUrl = "{{ url('feed') }}";
-    window.photoFeedUrl = "{{ url('feed-photo') }}";
-    window.videoFeedUrl = "{{ url('feed-video') }}";
+    window.feedUrl = "{{ url('feed-search') }}?type=news&q={{ request()->get('search') }}";
+    window.photoFeedUrl = "{{ url('feed-search') }}?type=photo&q={{ request()->get('search') }}";
+    window.videoFeedUrl = "{{ url('feed-search') }}?type=video&q={{ request()->get('search') }}";
 </script>
 
 @verbatim

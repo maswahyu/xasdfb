@@ -13,6 +13,11 @@ class Tag extends Model
      */
     protected $table = 'tags';
 
+    public function news()
+    {
+        return $this->hasMany('App\News_tag', 'tag_id', 'id');
+    }
+
     public static function newRecord($request)
     {
         $data= new Tag;

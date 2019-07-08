@@ -3,15 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Album extends Model
 {
+    use SearchableTrait;
 	 /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'albums';
+
+    protected $searchable = [
+        'columns' => [
+            'albums.name' => 10,
+        ]
+    ];
 
     // relationship
     public function photos() {
@@ -32,6 +40,11 @@ class Album extends Model
     public static function getPage($pageNumber = 1, $paginate = 8)
     {
         return self::orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
+    public static function getSearch($pageNumber = 1, $query, $paginate = 8)
+    {
+        return self::orderBy('created_at', 'DESC')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
