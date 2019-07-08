@@ -37,9 +37,9 @@ class Gallery extends Model
     }
 
     public static function getGallery($type = self::VIDEO, $take = 4)
-    {   
-        $model = Cache::rememberForever('getGallery', function () use ($type, $take) {
-            return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
+    {
+        $model = Cache::rememberForever('getGallery'.$type, function () use ($type, $take) {
+            return self::where('publish', 1)->where('type', $type)->where('is_featured', 0)->latest()->take($take)->get();
         });
 
         return $model;
@@ -47,7 +47,11 @@ class Gallery extends Model
 
     public static function getSticky($type = self::VIDEO)
     {
-        return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('created_at', 'DESC')->first();
+        $model = Cache::rememberForever('getGallerySticky'.$type, function () use ($type) {
+            return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->first();
+        });
+
+        return $model;
     }
 
     public static function detail($type = self::VIDEO, $slug)
@@ -110,15 +114,22 @@ class Gallery extends Model
         return imageview($this->value);
     }
 
+    public static function forgotCache()
+    {
+        Cache::forget('getGallerySticky'.self::VIDEO);
+        Cache::forget('getGallery'.self::VIDEO);
+    }
+
     public static function newRecord($request)
     {   
         $data = new Gallery;
-        $data->value    = $request->get('value');
-        $data->title    = $request->get('title');
-        $data->album_id = $request->get('album_id');
-        $data->type     = $request->get('type');
-        $data->publish  = $request->get('publish');
-        $data->user_id  = Auth::guard('admin')->id();
+        $data->value       = $request->get('value');
+        $data->title       = $request->get('title');
+        $data->album_id    = $request->get('album_id');
+        $data->type        = $request->get('type');
+        $data->publish     = $request->get('publish');
+        $data->user_id     = Auth::guard('admin')->id();
+        $data->is_featured = $request->get('is_featured');
         $data->slug     = str_slug($request->get('title'));
         if (self::whereSlug($data->slug)->exists()) {
             $data->slug     = $data->slug.rand(1, 100);
@@ -126,7 +137,7 @@ class Gallery extends Model
 
         $data->save();
         
-        Cache::forget('getGallery');
+        self::forgotCache();
 
         return $data;
     }
@@ -134,16 +145,16 @@ class Gallery extends Model
     public static function updateRecord($request, $id)
     {
         $data = Gallery::findOrFail($id);
-        $data->value    = $request->get('value');
-        $data->title    = $request->get('title');
-        $data->album_id = $request->get('album_id');
-        $data->type     = $request->get('type');
-        $data->publish  = $request->get('publish');
-        $data->user_id  = Auth::guard('admin')->id();
-
+        $data->value       = $request->get('value');
+        $data->title       = $request->get('title');
+        $data->album_id    = $request->get('album_id');
+        $data->type        = $request->get('type');
+        $data->publish     = $request->get('publish');
+        $data->user_id     = Auth::guard('admin')->id();
+        $data->is_featured = $request->get('is_featured');
         $data->save();
 
-        Cache::forget('getGallery');
+        self::forgotCache();
 
         return $data;
     }

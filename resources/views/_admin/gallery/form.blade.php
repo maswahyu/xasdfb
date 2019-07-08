@@ -51,6 +51,16 @@
     <p class="help-block"></p>
 </div>
 
+<div class="form-group ">
+    <label for="is_featured">{{ 'Featured' }}</label>
+    <select name="is_featured" class="form-control form-control-sm" id="is_featured">
+        <option value="0" {{ (isset($gallery->is_featured) && $gallery->is_featured == 0) ? 'selected' : '' }}>No</option>
+        <option value="1" {{ (isset($gallery->is_featured) && $gallery->is_featured == 1) ? 'selected' : '' }}>Yes</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('is_featured') }}</span>
+    <p class="help-block"></p>
+</div>
+
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

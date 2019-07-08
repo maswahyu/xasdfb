@@ -31,7 +31,7 @@
 
                             <div class="post-meta__category"><span>{{ $album->category }}</span></div>
 
-                            <div class="post-meta__stat"><span>{{ $album->created_at->diffForHumans() }}</span></div>
+                            <div class="post-meta__stat"><span>{{ optional($album->created_at)->diffForHumans() }}</span></div>
 
                             <div class="post-meta__stat"><span>{{ $album->view_count }} views</span></div>
 
