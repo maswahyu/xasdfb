@@ -37,6 +37,13 @@ class News extends Model
         return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
+    public static function getNewsTags($pageNumber = 1, $hashtag, $paginate = 10)
+    {
+        $tags  = Tag::where('slug', $hashtag)->first();
+
+        return self::where('publish', 1)->whereIn('id', $tags->news->pluck('news_id'))->latest()->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
     public static function getSearch($pageNumber = 1, $query, $paginate = 10)
     {
         return self::where('publish', 1)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);

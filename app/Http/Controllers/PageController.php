@@ -27,7 +27,7 @@ class PageController extends Controller
     public function feedSearch(Request $request)
     {
         $page  = $request->get('page');
-        $query = $request->get('q');
+        $query = strip_tags($request->get('q'));
         $type  = $request->get('type');
 
         if($type == "photo") {
