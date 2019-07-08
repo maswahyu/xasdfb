@@ -55,7 +55,7 @@ class SettingsTableSeeder extends Seeder
 	        ],
             [
                 'key' => 'analytics_id',
-                'value' => 'analytics_id'
+                'value' => 'UA-25056701-1'
             ],
 	        [
 	        	'key' => 'fb_id',

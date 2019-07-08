@@ -178,4 +178,28 @@ class Gallery extends Model
 
         return $data;
     }
+
+    /**
+     * Get gallery by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', 1);
+    }
+
+    /**
+     *
+     * Get gallery by type
+     * @param $query
+     * @param $type
+     * @return mixed
+     */
+    public function scopeByCategory($query, $type)
+    {
+        return $query->where("type", $type);
+    }
 }

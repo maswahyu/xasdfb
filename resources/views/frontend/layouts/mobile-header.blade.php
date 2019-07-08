@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="menu">
-                    <a href="{{ url('event') }}" alt="Events">
+                    <a href="{{ url('events') }}" alt="Events">
                         Events
                     </a>
                 </li>

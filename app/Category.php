@@ -103,6 +103,16 @@ class Category extends Model
         return self::where('parent_id', '!=', self::TOP_PARENT)->get();
     }
 
+    public static function getSitemap()
+    {
+        return self::where('parent_id', '!=', self::TOP_PARENT)->get();
+    }
+
+    public static function getMasterSitemap()
+    {
+        return self::where('parent_id', '!=', self::TOP_PARENT)->whereNotIn('slug', ['lensaphoto','sneakerland'])->get();
+    }
+
     public function getUrlAttribute()
     {
         return ($this->parent_id == 0) ? url('/'.$this->slug) : self::getSubUrlAttribute();

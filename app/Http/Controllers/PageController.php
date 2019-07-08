@@ -8,6 +8,7 @@ use App\Contact;
 use Auth;
 use Validator;
 use App\Gallery;
+use App\Category;
 use App\Event;
 use App\News;
 use App\Album;
@@ -147,5 +148,47 @@ class PageController extends Controller
         $page = $request->get('page');
         $posts = Event::getPage($page);
         return response()->json(new EventCollection($posts));
+    }
+
+    public function sitemap()
+    {
+        $category = Category::getSitemap();
+        return response()
+            ->view('frontend.sitemap.sitemap', ['category' => $category])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapMaster()
+    {
+        $category = Category::getMasterSitemap();
+        return response()
+            ->view('frontend.sitemap.master', compact('category'))
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapCategory($category)
+    {   
+        $category = Category::detail($category);
+
+        $posts = News::byPublish()->byCategory($category->id)->orderBy('created_at', 'DESC')->get();
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapVideo()
+    {   
+        $posts = Gallery::byPublish()->byCategory(Gallery::VIDEO)->get();
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapPhoto()
+    {   
+        $posts = Album::get();
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
     }
 }
