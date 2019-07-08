@@ -9,14 +9,44 @@ use Auth;
 use Validator;
 use App\Gallery;
 use App\Event;
+use App\News;
+use App\Album;
 use App\Http\Resources\EventCollection;
+use App\Http\Resources\NewsCollection;
+use App\Http\Resources\GalleryCollection;
+use App\Http\Resources\AlbumCollection;
 use Faker\Factory as Faker;
 
 class PageController extends Controller
-{
+{   
     public function search()
     {
         return view('frontend.pages.search');
+    }
+
+    public function feedSearch(Request $request)
+    {
+        $page  = $request->get('page');
+        $query = $request->get('q');
+        $type  = $request->get('type');
+
+        if($type == "photo") {
+
+            $posts = Album::getSearch($page, $query);
+            return response()->json(new AlbumCollection($posts));
+
+        } else if($type == "video") {
+            
+            $posts = Gallery::getSearch($page, Gallery::VIDEO, $query);
+            return response()->json(new GalleryCollection($posts));
+
+        } else if ($type == 'news') {
+
+            $posts = News::getSearch($page, $query);
+            return response()->json(new NewsCollection($posts));
+
+        }
+
     }
 
     public function points()

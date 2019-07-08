@@ -17,6 +17,7 @@ Route::get('/feed-video', 'GalleryController@feedVideo');
 Route::get('/feed-event', 'PageController@feedEvent');
 
 Route::get('search', 'PageController@search');
+Route::get('/feed-search', 'PageController@feedSearch');
 Route::get('points', 'PageController@points');
 Route::get('contact-us', 'PageController@contact')->name('contact');
 Route::post('contact-us', 'PageController@addContact');
