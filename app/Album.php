@@ -29,8 +29,9 @@ class Album extends Model
     // repository
     public static function getSticky($take = 2)
     {
+
         return self::where('publish', 1)->where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
-    }    
+    }
 
     public static function getLatest($take = 3)
     {
@@ -60,6 +61,15 @@ class Album extends Model
 
     public function getThumbnailAttribute()
     {
+        if (empty($this->image)) {
+            if ($this->has('photos') && count($this->photos) > 0) {
+                return $this->photos[0]->thumbnail;
+            }
+
+            /* if this album doesnt have photos, return empty string */
+            return imageview('');
+        }
+
         return imageview($this->image);
     }
 

@@ -68,8 +68,8 @@ class StorageController extends Controller
     }
 
     /**
-     * Handle event Community images.
-     * Contoh: lazone.id/Community/blablabl/filename.jpg
+     * Handle gallery photo images.
+     * Contoh: lazone.id/gallery-photos/blablabl/filename.jpg
      */
     public function galleryPhotoOldImage(Request $request)
     {

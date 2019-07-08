@@ -30,10 +30,9 @@ if (! function_exists('imageview')) {
 
     function imageview($img)
     {
-
         if($img == null or $img == ''){
-            $img ="avatar.png";
-        }    
+            $img ="/avatar.png";
+        }
 
         return url('/').$img;
     }
@@ -43,10 +42,9 @@ if (! function_exists('imagethumb')) {
 
     function imagethumb($img)
     {
-
         if($img == null or $img == ''){
-            $img ="avatar.png";
-        }    
+            $img ="/avatar.png";
+        }
 
         return url('/').$img;
     }
