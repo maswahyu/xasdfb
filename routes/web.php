@@ -40,6 +40,7 @@ Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
 Route::get('/news/{year}/{path}', 'StorageController@oldImageNewsCover')->where('path', '.+');
 Route::get('/Community/{path}', 'StorageController@eventOldImage')->where('path', '.+');
+Route::get('/gallery-photos/{path}', 'StorageController@galleryPhotoOldImage')->where('path', '.+');
 Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirectFile');
 
 Route::get('{category}', 'PostController@category');
