@@ -1,7 +1,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>#</th><th>Value</th><th>Title</th><th>Album</th><th>Publish</th><th>Actions</th>
+            <th>#</th><th>Value</th><th>Title</th><th>Album</th><th>Type</th><th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +19,9 @@
             <td>{{ $item->album->name }}</td>
             <td>
                 <span class="badge badge-{{ ($item->publish == 0) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span>
+                @if(($item->is_featured == 1))
+                    <span class="badge badge-primary">Featured</span><br>
+                @endif
             </td>
             <td>
                 <div class="btn-group">

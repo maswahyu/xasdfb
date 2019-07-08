@@ -97,7 +97,7 @@ class News extends Model
     public static function getRecommended($take = 5)
     {   
         $model = Cache::rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+            return self::where('publish', 1)->latest()->take($take)->get();
         });
 
         return $model;
@@ -112,14 +112,74 @@ class News extends Model
         return $model;
     }
 
-    public static function getLatest($take = 4)
+    public static function getLatest($take = 4, $category)
     {
-        return self::where('publish', 1)->latest()->take($take)->get();
+        $model = Cache::remember('getLatest'.$category->id, 180, function () use ($take, $category) {
+
+            if ($category->parent_id == 0) {
+
+                return self::where('publish', 1)
+                        ->whereIn('category_id', $category->children()->pluck('id'))
+                        ->latest()
+                        ->take($take)->get();
+
+            }else {
+
+                return self::where('publish', 1)
+                        ->where('category_id', $category->id)
+                        ->latest()
+                        ->take($take)->get();
+            }
+        
+
+        });
+
+        return $model;
     }
 
-    public static function getSticky($take = 4)
+    public static function getSticky($take = 4, $category)
     {
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('featured_at', 'desc')->take($take)->get();
+        $model = Cache::remember('getSticky'.$category->id, 3600, function () use ($take, $category) {
+            if ($category->parent_id == 0) {
+                return self::where('publish', 1)
+                        ->whereIn('category_id',  $category->children()->pluck('id'))
+                        ->where('is_featured', 1)
+                        ->orderBy('featured_at', 'desc')
+                        ->take($take)->get();
+            } else {
+                return self::where('publish', 1)
+                        ->where('category_id', $category->id)
+                        ->where('is_featured', 1)
+                        ->orderBy('featured_at', 'desc')
+                        ->take($take)->get();
+            }
+        });
+
+        return $model;
+    }
+
+    public static function getCatRecomended($take = 5, $category)
+    {
+        $model = Cache::remember('getCatRecomended'.$category->id, 3600, function () use ($take, $category) {
+            
+            if ($category->parent_id == 0) {
+
+                return self::where('publish', 1)
+                        ->whereIn('category_id', $category->children()->pluck('id'))
+                        ->oldest()
+                        ->take($take)->get();
+            } else {
+
+                return self::where('publish', 1)
+                        ->where('category_id', $category->id)
+                        ->oldest()
+                        ->take($take)->get();
+            }
+        
+
+        });
+
+        return $model;
     }
 
     public function getUrlAttribute()
@@ -162,8 +222,9 @@ class News extends Model
     }
 
     public function getViewCountAttribute()
-    {
-        return rand(1, 999);
+    {   
+        return isset($this->popularityStats->all_time_stats) ? number_format_short($this->popularityStats->all_time_stats + $this->view) : number_format_short($this->view);
+
     }
 
     /**

@@ -1,6 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@section('head_title', $category->name)
+@section('head_description', $category->description)
+@section('head_image', $category->img)
+@section('head_url', $type ? $category->url : $subcategory->url)
 
 @section('content')
 
@@ -20,7 +23,7 @@
         <div class="span-12 text-center">
             <ul class="list flex-justify-center">
                 @foreach($category->menu as $key => $item)
-                    <li class="list__item {{ classActiveSegment(2, $item->slug) }} {{ ($key == 0 && !Request::segment(2)) ? 'active' : '' }}">
+                    <li class="list__item {{ classActiveSegment(2, $item->slug) }}">
                         <a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a>
                     </li>
                 @endforeach

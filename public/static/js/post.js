@@ -25,4 +25,22 @@ $(function ()
         resizeSensor: true,
         minWidth: 1023,
     });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    setTimeout(function (){
+        $.ajax({
+            method: "POST",
+            url: '/p/collect/' + p_id,
+            dataType : 'json',
+            success: function(t) {
+
+            }
+        });
+    }, 1000); 
+
 });

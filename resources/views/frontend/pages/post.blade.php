@@ -125,9 +125,9 @@
             </div>
         </div>
         <div class="row">
-            @foreach($relatedPosts as $post)
+            @foreach($relatedPosts as $post_related)
             <div class="span-12 span-lg-4">
-                @include('frontend.partials.post-card-related', ['post' => $post])
+                @include('frontend.partials.post-card-related', ['post' => $post_related])
             </div>
             @endforeach
         </div>
@@ -171,6 +171,7 @@
 @section('before-body-end')
 <script>
     window.feedUrl = "{{ url('feed') }}"
+    var p_id = '{{ $post->id }}';
 </script>
 
 @verbatim
@@ -203,8 +204,7 @@
         </a>
     </script>
 @endverbatim
-
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
-<script src="{{ asset('static/js/post.js') }}"></script>
+<script src="{{ asset('static/js/post.js') }}?v={{ filemtime(public_path() . '/static/js/post.js') }}"></script>
 @endsection

@@ -35,6 +35,7 @@ Route::get('photo/detail/{slug}', 'GalleryController@photoDetail');
 Route::get('video/detail/{slug}', 'GalleryController@videoDetail');
 
 Route::get('tags/{slug}', 'PostController@tags');
+Route::post('p/collect/{id}', 'PostController@hitperform');
 
 Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
