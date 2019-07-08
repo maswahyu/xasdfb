@@ -108,8 +108,7 @@ class Gallery extends Model
 
     public function getDurationAttribute()
     {   
-        return '';
-        $duration = rand(300, 3600);
+        $duration = rand(300, 3000);
         return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
     }
 
