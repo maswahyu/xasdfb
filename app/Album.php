@@ -62,7 +62,7 @@ class Album extends Model
     {
         if (empty($this->image)) {
             if ($this->has('photos') && count($this->photos) > 0) {
-                return imageview($this->photos[0]->thumbnail);
+                return $this->photos[0]->thumbnail;
             }
 
             /* if this album doesnt have photos, return empty string */
