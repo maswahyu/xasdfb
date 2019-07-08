@@ -22,7 +22,7 @@ class IndexController extends Controller
 		$highlight   = News::getHighlight();
 		$recommended = News::getRecommended();
 		$trending    = News::getTrending();
-		$videos      = Gallery::getGallery();
+		$videos      = Gallery::getNewGallery();
 		$slides      = Slide::getFeatured(5);
 
 	    return view('frontend.pages.home', [

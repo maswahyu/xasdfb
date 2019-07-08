@@ -36,6 +36,15 @@ class Gallery extends Model
         return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->count();
     }
 
+    public static function getNewGallery($type = self::VIDEO, $take = 4)
+    {
+        $model = Cache::rememberForever('getNewGallery'.$type, function () use ($type, $take) {
+            return self::where('publish', 1)->where('type', $type)->latest()->take($take)->get();
+        });
+
+        return $model;
+    }
+
     public static function getGallery($type = self::VIDEO, $take = 4)
     {
         $model = Cache::rememberForever('getGallery'.$type, function () use ($type, $take) {
