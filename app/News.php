@@ -17,6 +17,7 @@ class News extends Model
     use SoftDeletes, SearchableTrait;
 
     const NEWS = 'news';
+    const TAKE_RECOMENDED = 5;
 
     protected $dates = ['published_at'];
 
@@ -29,19 +30,19 @@ class News extends Model
 
     public static function getFeed($paginate = 10)
     {
-        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate);  
+        return self::where('publish', 1)->latest('published_at')->paginate($paginate);  
     }
 
     public static function getPage($pageNumber = 1, $paginate = 10)
     {
-        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getNewsTags($pageNumber = 1, $hashtag, $paginate = 10)
     {
         $tags  = Tag::where('slug', $hashtag)->first();
 
-        return self::where('publish', 1)->whereIn('id', $tags->news->pluck('news_id'))->latest()->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->whereIn('id', $tags->news->pluck('news_id'))->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getSearch($pageNumber = 1, $query, $paginate = 10)
@@ -114,11 +115,30 @@ class News extends Model
         return $model;
     }
 
-    public static function getRecommended($take = 5)
-    {   
-        $model = Cache::rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', 1)->latest()->groupBy('category_id')->take($take)->get();
-        });
+    public static function getRecommended($take = self::TAKE_RECOMENDED)
+    {
+        if (Auth::check()) {
+            $interest = Auth::user()->subscribe()->pluck('category_id');
+            if($interest) {
+
+                if (count($interest) < self::TAKE_RECOMENDED) {
+
+                    $model = Cache::rememberForever('getRecommended-'.Auth::id(), function () use ($take, $interest) {
+                        return self::where('publish', 1)->whereIn('category_id', $interest)->latest('published_at')->take($take)->get();
+                    });
+
+                } else {
+
+                    $model = Cache::rememberForever('getRecommended5-'.Auth::id(), function () use ($take, $interest) {
+                        return self::where('publish', 1)->whereIn('category_id', $interest)->latest('published_at')->groupBy('category_id')->take($take)->get();
+                    });
+                }
+            }
+        } else {
+            $model = Cache::rememberForever('getRecommended', function () use ($take) {
+                return self::where('publish', 1)->latest('published_at')->groupBy('category_id')->take($take)->get();
+            });
+        }
 
         return $model;
     }
@@ -130,7 +150,7 @@ class News extends Model
         $to        = Carbon::now()->toDateString();
 
         $model = Cache::remember('getTrendings', $expiresAt, function () use ($take, $from, $to) {
-            return self::where('news.publish', 1)->whereBetween('news.created_at', [$from, $to])->groupBy('category_id')->getStats('all_time_stats', 'DESC', $take)->get();
+            return self::where('news.publish', 1)->whereBetween('news.published_at', [$from, $to])->groupBy('category_id')->getStats('all_time_stats', 'DESC', $take)->get();
         });
 
         return $model;
@@ -144,14 +164,14 @@ class News extends Model
 
                 return self::where('publish', 1)
                         ->whereIn('category_id', $category->children()->pluck('id'))
-                        ->latest()
+                        ->latest('published_at')
                         ->take($take)->get();
 
             }else {
 
                 return self::where('publish', 1)
                         ->where('category_id', $category->id)
-                        ->latest()
+                        ->latest('published_at')
                         ->take($take)->get();
             }
         

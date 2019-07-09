@@ -53,6 +53,10 @@ class User extends Authenticatable
         return false;
     }
 
+    public function subscribe() {
+        return $this->hasMany('App\Subscribe', 'user_id', 'id');
+    }
+
     public static function insertInterest($user_id, $interest)
     {   
         if ($interest) {

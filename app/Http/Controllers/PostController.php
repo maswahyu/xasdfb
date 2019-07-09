@@ -21,7 +21,7 @@ class PostController extends Controller
 
 	    $sticky 	 = News::getSticky(2, $category);
 	    $latest 	 = News::getLatest(3, $category);
-	    $recommended = News::getCatRecomended(5, $category);
+	    $recommended = News::getRecommended();
 	    $type 	 	 = 1;
 
 	    return view('frontend.pages.category', [
@@ -49,7 +49,7 @@ class PostController extends Controller
 
     	$sticky 	 = News::getSticky(2, $subcategory);
 	    $latest 	 = News::getLatest(3, $subcategory);
-	    $recommended = News::getCatRecomended(5, $subcategory);
+	    $recommended = News::getRecommended();
 	    $type 	 	 = 0;
 
 	    return view('frontend.pages.category', [
