@@ -18,6 +18,7 @@ class CreateAlbumsTable extends Migration
             $table->string('slug')->unique();
             $table->string('name')->index();
             $table->string('image')->nullable();
+            $table->integer('publish')->default(0);
             $table->integer('is_featured')->default(0);
             $table->integer('total_view')->default(0);
             $table->integer('is_event')->default(0);

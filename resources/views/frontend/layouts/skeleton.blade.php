@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="{{ mix('static/css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ asset('static/js/modernizr.js') }}"></script>
+    @if($siteInfo['analytics_id'])
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteInfo['analytics_id'] }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ $siteInfo['analytics_id'] }}');
+    </script>
+    @endif
+
     {!! $siteInfo['headercode'] !!}
     @yield('inside-head')
 </head>

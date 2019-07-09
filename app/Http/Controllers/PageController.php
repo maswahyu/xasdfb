@@ -8,6 +8,7 @@ use App\Contact;
 use Auth;
 use Validator;
 use App\Gallery;
+use App\Category;
 use App\Event;
 use App\News;
 use App\Album;
@@ -16,6 +17,8 @@ use App\Http\Resources\NewsCollection;
 use App\Http\Resources\GalleryCollection;
 use App\Http\Resources\AlbumCollection;
 use Faker\Factory as Faker;
+use Cache;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {   
@@ -147,5 +150,64 @@ class PageController extends Controller
         $page = $request->get('page');
         $posts = Event::getPage($page);
         return response()->json(new EventCollection($posts));
+    }
+
+    public function sitemap()
+    {
+        $category = Category::getSitemap();
+        return response()
+            ->view('frontend.sitemap.sitemap', ['category' => $category])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapMaster()
+    {
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+
+        $category = Cache::remember('sitemapMaster', $expiresAt, function () {
+            return Category::getMasterSitemap();
+        });
+
+        return response()
+            ->view('frontend.sitemap.master', compact('category'))
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapCategory($category)
+    {
+        $category_id = optional(Category::detail($category))->id;
+        $expiresAt   = Carbon::now()->endOfDay()->addSecond();
+
+        $posts = Cache::remember('sitemapCategory-'.$category_id, $expiresAt, function () use ($category_id) {
+            return News::byPublish()->byCategory($category_id)->orderBy('created_at', 'DESC')->get();
+        });
+
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapVideo()
+    {
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+        $posts = Cache::remember('sitemapVideo', $expiresAt, function () {
+            return Gallery::byPublish()->byCategory(Gallery::VIDEO)->get();
+        });
+
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
+    }
+
+    public function sitemapPhoto()
+    {
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+        $posts = Cache::remember('sitemapPhoto', $expiresAt, function () {
+            return Album::byPublish()->get();
+        });
+
+        return response()
+            ->view('frontend.sitemap.category', ['posts' => $posts])
+            ->header('Content-Type', 'text/xml');
     }
 }

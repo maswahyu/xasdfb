@@ -140,7 +140,7 @@ class CategoryTableSeeder extends Seeder
 
 		$data[17] = [
 			'name'        => 'Inspiring Places',
-			'slug'        => 'inspiring-places',
+			'slug'        => 'inspiring-place',
 			'parent_id'   => 3,
 			'description' => 'Artikel seputar moview terkini yang wajib kamu tau',
 			'image'       => '/storage/news/236669.jpg',

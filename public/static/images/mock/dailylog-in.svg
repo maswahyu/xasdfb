@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>ico/dailylog-in</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Points" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05a_Point" transform="translate(-230.000000, -1353.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="Content" transform="translate(0.000000, 80.000000)">
+                <g id="how-to" transform="translate(230.000000, 1123.000000)">
+                    <g id="Group-2" transform="translate(0.000000, 150.000000)">
+                        <g id="ico/dailylog-in">
+                            <path d="M56.5,0 L7.5,0 C3.3645,0 0,3.3645 0,7.5 L0,17.5 L5,17.5 L5,7.5 C5,6.1215 6.1215,5 7.5,5 L56.5,5 C57.8785,5 59,6.1215 59,7.5 L59,56.5 C59,57.8785 57.8785,59 56.5,59 L7.5,59 C6.1215,59 5,57.8785 5,56.5 L5,46.5 L0,46.5 L0,56.5 C0,60.6355 3.3645,64 7.5,64 L56.5,64 C60.6355,64 64,60.6355 64,56.5 L64,7.5 C64,3.3645 60.6355,0 56.5,0 Z" id="Path"></path>
+                            <polygon id="Path" points="30 16.4645 26.4645 20 35.9645 29.5 0 29.5 0 34.5 35.9645 34.5 26.4645 44 30 47.5355 45.5355 32"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

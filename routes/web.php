@@ -38,6 +38,15 @@ Route::get('video/detail/{slug}', 'GalleryController@videoDetail');
 Route::get('tags/{hashtag}', 'PostController@tags');
 Route::get('feed-tags', 'PostController@feedTags');
 Route::post('p/collect/{id}', 'PostController@hitperform');
+Route::get('inspiration/inspiring-places', function() {
+    return redirect('inspiration/inspiring-place');
+});
+
+Route::get('sitemaps/sitemap.xml', 'PageController@sitemap');
+Route::get('sitemaps/master.xml', 'PageController@sitemapMaster');
+Route::get('sitemaps/photo.xml', 'PageController@sitemapPhoto');
+Route::get('sitemaps/video.xml', 'PageController@sitemapVideo');
+Route::get('sitemaps/{category}.xml', 'PageController@sitemapCategory');
 
 /* image routes */
 Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
