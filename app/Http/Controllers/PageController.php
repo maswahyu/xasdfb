@@ -17,6 +17,8 @@ use App\Http\Resources\NewsCollection;
 use App\Http\Resources\GalleryCollection;
 use App\Http\Resources\AlbumCollection;
 use Faker\Factory as Faker;
+use Cache;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {   
@@ -159,8 +161,13 @@ class PageController extends Controller
     }
 
     public function sitemapMaster()
-    {
-        $category = Category::getMasterSitemap();
+    {   
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+
+        $category = Cache::remember('sitemapMaster', $expiresAt, function () {
+            return Category::getMasterSitemap();
+        });
+
         return response()
             ->view('frontend.sitemap.master', compact('category'))
             ->header('Content-Type', 'text/xml');
@@ -168,9 +175,13 @@ class PageController extends Controller
 
     public function sitemapCategory($category)
     {   
-        $category = Category::detail($category);
+        $category_id = optional(Category::detail($category))->id;
+        $expiresAt   = Carbon::now()->endOfDay()->addSecond();
 
-        $posts = News::byPublish()->byCategory($category->id)->orderBy('created_at', 'DESC')->get();
+        $posts = Cache::remember('sitemapCategory-'.$category_id, $expiresAt, function () use ($category_id) {
+            return News::byPublish()->byCategory($category_id)->orderBy('created_at', 'DESC')->get();
+        });
+
         return response()
             ->view('frontend.sitemap.category', ['posts' => $posts])
             ->header('Content-Type', 'text/xml');
@@ -178,7 +189,11 @@ class PageController extends Controller
 
     public function sitemapVideo()
     {   
-        $posts = Gallery::byPublish()->byCategory(Gallery::VIDEO)->get();
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+        $posts = Cache::remember('sitemapVideo', $expiresAt, function () {
+            return Gallery::byPublish()->byCategory(Gallery::VIDEO)->get();
+        });
+
         return response()
             ->view('frontend.sitemap.category', ['posts' => $posts])
             ->header('Content-Type', 'text/xml');
@@ -186,7 +201,11 @@ class PageController extends Controller
 
     public function sitemapPhoto()
     {   
-        $posts = Album::byPublish()->get();
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+        $posts = Cache::remember('sitemapPhoto', $expiresAt, function () {
+            return Album::byPublish()->get();
+        });
+
         return response()
             ->view('frontend.sitemap.category', ['posts' => $posts])
             ->header('Content-Type', 'text/xml');
