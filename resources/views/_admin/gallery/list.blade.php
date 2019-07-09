@@ -1,7 +1,14 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>#</th><th>Value</th><th>Title</th><th>Album</th><th>Type</th><th>Actions</th>
+            <th>#</th>
+            <th>Value</th>
+            <th>Title</th>
+            @if(Request::query('type') == 'photo')
+            <th>Album</th>
+            @endif
+            <th>Type</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +23,9 @@
                 @endif
             </td>
             <td>{{ $item->title }}</td>
-            <td>{{ $item->album->name }}</td>
+            @if(Request::query('type') == 'photo')
+            <td>{{ optional($item->album)->name }}</td>
+            @endif
             <td>
                 <span class="badge badge-{{ ($item->publish == 0) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span>
                 @if(($item->is_featured == 1))

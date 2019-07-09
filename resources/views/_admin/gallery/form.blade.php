@@ -21,14 +21,6 @@
     <span class="text-danger">{{ $errors->first('value') }}</span>
     <p class="help-block"></p>
 </div>
-@else
-<div class="form-group">
-    <label for="value">{{ 'Video Youtube Url' }}</label>
-    <input class="form-control" name="value" type="text" id="value" placeholder="Video Youtube Url" value="{{ isset($gallery->value) ? $gallery->value : old('value') }}" >
-    <span class="text-danger">{{ $errors->first('value') }}</span>
-    <p class="help-block"></p>
-</div>
-@endif
 
 <div class="form-group">
     <label for="album_id">{{ 'Album' }}</label>
@@ -40,6 +32,15 @@
     <span class="text-danger">{{ $errors->first('album_id') }}</span>
     <p class="help-block"></p>
 </div>
+
+@else
+<div class="form-group">
+    <label for="value">{{ 'Video Youtube Url' }}</label>
+    <input class="form-control" name="value" type="text" id="value" placeholder="Video Youtube Url" value="{{ isset($gallery->value) ? $gallery->value : old('value') }}" >
+    <span class="text-danger">{{ $errors->first('value') }}</span>
+    <p class="help-block"></p>
+</div>
+@endif
 
 <div class="form-group">
     <label for="publish">{{ 'Publish' }}</label>
