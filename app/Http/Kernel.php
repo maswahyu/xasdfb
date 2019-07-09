@@ -62,6 +62,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'has_any_role' => \App\Http\Middleware\HasAnyRole::class,
         'auth.sso.clear' => \App\Http\Middleware\SsoAuth::class,
+        'auth.sso' => \App\Http\Middleware\SsoAuth::class,
+        'cas.auth'  => \Subfission\Cas\Middleware\CASAuth::class,
+        'cas.guest' => \Subfission\Cas\Middleware\RedirectCASAuthenticated::class,
     ];
 
     /**
