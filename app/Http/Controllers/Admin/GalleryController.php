@@ -40,8 +40,7 @@ class GalleryController extends Controller
     public function create(Request $request)
     {   
         $this->title = ucfirst($request->query('type'));
-        $album = Album::all();
-        return view('_admin.gallery.create', compact('album'))->with('title', $this->title);
+        return view('_admin.gallery.create')->with('title', $this->title);
     }
 
     public function store(GalleryRequest $request)
@@ -57,9 +56,8 @@ class GalleryController extends Controller
     public function edit(Request $request, $id)
     {
         $gallery = Gallery::findOrFail($id);
-        $album = Album::all();
         $this->title = ucfirst($request->query('type'));
-        return view('_admin.gallery.edit', compact('gallery','album'))->with('title', $this->title);
+        return view('_admin.gallery.edit', compact('gallery'))->with('title', $this->title);
     } 
 
     public function show(Request $request, $id)
@@ -87,5 +85,11 @@ class GalleryController extends Controller
         } else {
             return redirect('magic/gallery'.'?type='.$request->query('type'))->with('success', 'Gallery deleted!');
         }
+    }
+
+    public function loadAlbum()
+    {
+        $album = Album::where('publish', 1)->orderBy('name', 'asc')->get();
+        return response()->json($album);
     }
 }

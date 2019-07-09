@@ -60,6 +60,7 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('slidelist', 'SlideController@list');
         
         Route::get('loadtags', 'NewsController@loadTagData');
+        Route::get('loadalbum', 'GalleryController@loadAlbum');
         Route::get('loadtagsnews/{id}', 'NewsController@loadTagNews');
     });
 
