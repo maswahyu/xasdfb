@@ -161,7 +161,7 @@ class PageController extends Controller
     }
 
     public function sitemapMaster()
-    {   
+    {
         $expiresAt = Carbon::now()->endOfDay()->addSecond();
 
         $category = Cache::remember('sitemapMaster', $expiresAt, function () {
@@ -174,7 +174,7 @@ class PageController extends Controller
     }
 
     public function sitemapCategory($category)
-    {   
+    {
         $category_id = optional(Category::detail($category))->id;
         $expiresAt   = Carbon::now()->endOfDay()->addSecond();
 
@@ -188,7 +188,7 @@ class PageController extends Controller
     }
 
     public function sitemapVideo()
-    {   
+    {
         $expiresAt = Carbon::now()->endOfDay()->addSecond();
         $posts = Cache::remember('sitemapVideo', $expiresAt, function () {
             return Gallery::byPublish()->byCategory(Gallery::VIDEO)->get();
@@ -200,7 +200,7 @@ class PageController extends Controller
     }
 
     public function sitemapPhoto()
-    {   
+    {
         $expiresAt = Carbon::now()->endOfDay()->addSecond();
         $posts = Cache::remember('sitemapPhoto', $expiresAt, function () {
             return Album::byPublish()->get();

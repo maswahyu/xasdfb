@@ -125,8 +125,12 @@ class News extends Model
 
     public static function getTrending($take = 4)
     {   
-        $model = Cache::remember('getTrending', 3600, function () use ($take) {
-            return self::where('publish', 1)->getStats('seven_days_stats', 'DESC', $take)->get();
+        $expiresAt = Carbon::now()->endOfDay()->addSecond();
+        $from      = Carbon::now()->subDays(7)->toDateString();
+        $to        = Carbon::now()->toDateString();
+
+        $model = Cache::remember('getTrendings', $expiresAt, function () use ($take, $from, $to) {
+            return self::where('news.publish', 1)->whereBetween('news.created_at', [$from, $to])->groupBy('category_id')->getStats('all_time_stats', 'DESC', $take)->get();
         });
 
         return $model;

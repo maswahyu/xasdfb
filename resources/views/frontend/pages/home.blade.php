@@ -77,12 +77,13 @@
         </div>
 
         <div class="row">
-
+            @if($trending)
             @foreach($trending as $post)
             <div class="span-12 span-md-6 span-lg-3">
                 @include('frontend.partials.post-card-simple', ['post' => $post])
             </div>
             @endforeach
+            @endif
 
         </div>
 
