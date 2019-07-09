@@ -75,7 +75,7 @@
 
 @include('frontend.partials.how-to')
 
-@include('frontend.partials.faq',['faqs' => $faqs])
+@include('frontend.partials.faq')
 
 @include ('frontend.partials.point-tnc')
 

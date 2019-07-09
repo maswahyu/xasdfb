@@ -16,7 +16,6 @@ use App\Http\Resources\EventCollection;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\GalleryCollection;
 use App\Http\Resources\AlbumCollection;
-use Faker\Factory as Faker;
 use Cache;
 use Carbon\Carbon;
 
@@ -54,14 +53,7 @@ class PageController extends Controller
 
     public function points()
     {
-    	$faker = Faker::create();
-        for ($i = 0; $i < 10; $i++) {
-            $faq[] = (object)[
-                'title' => ucfirst($faker->words(rand(6, 10), true)),
-                'description' => ucfirst($faker->sentences(rand(10, 30), true)),
-            ];
-        }
-        return view('frontend.pages.points', ['faqs' => $faq]);
+        return view('frontend.pages.points');
     }
 
     public function contact()

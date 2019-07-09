@@ -117,7 +117,7 @@ class News extends Model
     public static function getRecommended($take = 5)
     {   
         $model = Cache::rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', 1)->latest()->take($take)->get();
+            return self::where('publish', 1)->latest()->groupBy('category_id')->take($take)->get();
         });
 
         return $model;
