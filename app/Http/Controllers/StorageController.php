@@ -33,7 +33,9 @@ class StorageController extends Controller
 
     /**
      * Handle news cover image yang ada url path nya.
-     * Contoh: lazone.id/news/2019/blablabla/blebleble/blobloblo.jpg
+     * Contoh:
+     *     > lazone.id/news/2019/blablabla/blebleble/blobloblo.jpg
+     *     > lazone.id/news/blablabla/blebleble/blobloblo.jpg
      */
     public function oldImageNewsCover(Request $request, $year)
     {

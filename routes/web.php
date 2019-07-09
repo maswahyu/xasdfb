@@ -48,9 +48,11 @@ Route::get('sitemaps/photo.xml', 'PageController@sitemapPhoto');
 Route::get('sitemaps/video.xml', 'PageController@sitemapVideo');
 Route::get('sitemaps/{category}.xml', 'PageController@sitemapCategory');
 
+/* image routes */
 Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
 Route::get('/news/{year}/{path}', 'StorageController@oldImageNewsCover')->where('path', '.+');
+Route::get('/news/{path}', 'StorageController@oldImageNewsCover')->where('path', '.+');
 Route::get('/Community/{path}', 'StorageController@eventOldImage')->where('path', '.+');
 Route::get('/gallery-photos/{path}', 'StorageController@galleryPhotoOldImage')->where('path', '.+');
 Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirectFile');
