@@ -1,3 +1,7 @@
+@section('header')
+<!-- Date Picker -->
+<link rel="stylesheet" href="/dist/plugins/datepicker/datepicker3.css">
+@endsection
 <div class="form-group">
     <label for="title">{{ 'Title' }}</label>
     <input class="form-control" name="title" type="text" id="title" placeholder="{{ucfirst('title')}}" value="{{ isset($event->title) ? $event->title : old('title') }}" required>

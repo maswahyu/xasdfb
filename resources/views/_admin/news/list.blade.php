@@ -22,9 +22,6 @@
                 <span class="badge badge-{{ ($item->publish == '0') ? 'warning' : 'info' }}">{{ ($item->publish == '0') ? 'No' : 'Yes' }}</span>
             </td>
             <td>
-                @if(($item->is_featured == 1))
-                    <span class="badge badge-primary">Recomended</span><br>
-                @endif
                 @if(($item->is_highlight == 1))
                     <span class="badge badge-success">Highlight</span><br>
                 @endif

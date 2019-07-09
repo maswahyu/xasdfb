@@ -89,7 +89,7 @@ class NewsController extends Controller
 
     public function loadTagData(Request $request)
     {
-        $tags = Tag::all();
+        $tags = Tag::orderBy('name', 'ASC')->get();
         return response()->json($tags);
     }    
 

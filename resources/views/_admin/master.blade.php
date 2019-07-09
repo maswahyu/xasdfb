@@ -18,10 +18,8 @@
     {{-- <link rel="stylesheet" href="/dist/plugins/morris/morris.css"> --}}
     <!-- jvectormap -->
     {{-- <link rel="stylesheet" href="/dist/plugins/jvectormap/jquery-jvectormap-1.2.2.css"> --}}
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="/dist/plugins/datepicker/datepicker3.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="/dist/plugins/daterangepicker/daterangepicker-bs3.css">
+    {{-- <link rel="stylesheet" href="/dist/plugins/daterangepicker/daterangepicker-bs3.css"> --}}
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link type="text/css" rel="stylesheet" href="{{ asset('dist/plugins/fancybox/jquery.fancybox.css') }}" media="screen" />

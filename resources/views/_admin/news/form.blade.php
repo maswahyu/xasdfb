@@ -2,6 +2,8 @@
 
     <!-- Select2 -->
   <link rel="stylesheet" href="/dist/plugins/select2/select2.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
   <style type="text/css">
         .select2-container--default 
         .select2-selection--multiple 
@@ -90,13 +92,17 @@
     <p class="help-block"></p>
 </div>
 
-<div class="form-group ">
-    <label for="is_featured">{{ 'Recommended' }}</label>
-    <select name="is_featured" class="form-control form-control-sm" id="is_featured">
-        <option value="0" {{ (isset($news->is_featured) && $news->is_featured == 0) ? 'selected' : '' }}>No</option>
-        <option value="1" {{ (isset($news->is_featured) && $news->is_featured == 1) ? 'selected' : '' }}>Yes</option>
-    </select>
-    <span class="text-danger">{{ $errors->first('is_featured') }}</span>
+<div class="form-group">
+    <label for="publish">Publish Date</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div> 
+        <input class="form-control form-control-sm float-right" name="published_at" type="text" id="datetimepicker" data-toggle="datetimepicker" data-target="#datetimepicker" value="{{ isset($news->published_at) ? $news->published_at : old('published_at') }}" placeholder="Publish Date" autocomplete="off" required> 
+    </div>
+    <span class="text-danger">{{ $errors->first('published_at') }}</span>
     <p class="help-block"></p>
 </div>
 
@@ -125,11 +131,25 @@
 </div>
 
 @section('javascript')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
 <!-- Select2 -->
 <script src="/dist/plugins/select2/select2.full.min.js"></script>
 <script>
     $(function () {
+
+        $('#datetimepicker').datetimepicker({
+            icons: {
+                time: "fa fa-clock",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            },
+            autoclose: true,
+            todayBtn: true,
+        });
+
         $('#category_id').select2();
 
         $('#tags').select2({
