@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Category;
 use App\Subscribe;
+use Cache;
 
 class User extends Authenticatable
 {
@@ -70,6 +71,11 @@ class User extends Authenticatable
                     Subscribe::addSubscribe($user_id, $category_id);
                 }
             }
+
+            Cache::forget('getRecommended');
+            Cache::forget('getRecommended-'.$user_id);
+            Cache::forget('getRecommended5-'.$user_id);
+            
             return true;
         }
 
