@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\NewsRequest;
-use App\News;
 use Auth;
 use App\Category;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsRequest;
+use App\Jobs\NewsScheduler;
+use App\News;
 use App\Tag;
+use Carbon\Carbon;
+use DateTime;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
-{   
+{
     private $title;
 
     function __construct()
@@ -20,7 +23,7 @@ class NewsController extends Controller
     }
 
     public function index(Request $request)
-    {   
+    {
         return view('_admin.news.index')->with('title', $this->title);
     }
 
@@ -45,7 +48,7 @@ class NewsController extends Controller
     }
 
     public function store(NewsRequest $request)
-    {   
+    {
         $validated = $request->validated();
 
         $data = News::newRecord($request);
@@ -54,16 +57,16 @@ class NewsController extends Controller
     }
 
     public function edit(Request $request, $id)
-    {   
+    {
         $category = Category::all();
         $news     = News::findOrFail($id);
 
         return view('_admin.news.edit', compact('news','category'))->with('title', $this->title);
-    } 
+    }
 
     public function show(Request $request, $id)
     {
-        $news = News::findOrFail($id); 
+        $news = News::findOrFail($id);
         return view('_admin.news.show', compact('news'))->with('title', $this->title);
     }
 
@@ -72,6 +75,8 @@ class NewsController extends Controller
         $validated = $request->validated();
 
         $data = News::updateRecord($request, $id);
+        $publishedAt = Carbon::parse($request->get('published_at'));
+        NewsScheduler::dispatch($data)->delay($publishedAt);
 
         return redirect('magic/news')->with('success', 'News updated!');
     }
@@ -91,11 +96,11 @@ class NewsController extends Controller
     {
         $tags = Tag::orderBy('name', 'ASC')->get();
         return response()->json($tags);
-    }    
+    }
 
     public function loadTagNews(Request $request, $id)
-    {   
-        $news = News::findOrFail($id); 
+    {
+        $news = News::findOrFail($id);
         $tags = $news->tags->pluck('tag_id');
         $tags = Tag::whereIn('id', $tags)->get();
         return response()->json($tags);

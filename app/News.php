@@ -13,8 +13,12 @@ use Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class News extends Model
-{   
+{
     use SoftDeletes, SearchableTrait;
+
+    const STATUS_UNPUBLISHED = 0;
+    const STATUS_PUBLISHED = 1;
+    const STATUS_SCHEDULED = 2;
 
     const NEWS = 'news';
     const TAKE_RECOMENDED = 5;
@@ -30,30 +34,30 @@ class News extends Model
 
     public static function getFeed($paginate = 10)
     {
-        return self::where('publish', 1)->latest('published_at')->paginate($paginate);  
+        return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate);
     }
 
     public static function getPage($pageNumber = 1, $paginate = 10)
     {
-        return self::where('publish', 1)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getNewsTags($pageNumber = 1, $hashtag, $paginate = 10)
     {
         $tags  = Tag::where('slug', $hashtag)->first();
 
-        return self::where('publish', 1)->whereIn('id', $tags->news->pluck('news_id'))->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->whereIn('id', $tags->news->pluck('news_id'))->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getSearch($pageNumber = 1, $query, $paginate = 10)
     {
-        return self::where('publish', 1)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
-    {   
+    {
         if (!Cache::has('post'.$slug)) {
-            $data = self::where('publish', 1)->where('slug', $slug)->first();
+            $data = self::where('publish', self::STATUS_PUBLISHED)->where('slug', $slug)->first();
             Cache::forever('post'.$slug, $data);
         }
 
@@ -62,7 +66,7 @@ class News extends Model
 
     public static function related($slug, $category_id)
     {
-        return self::where('publish', 1)->where('category_id', $category_id)->where('slug', '!=', $slug)->take(3)->get();
+        return self::where('publish', self::STATUS_PUBLISHED)->where('category_id', $category_id)->where('slug', '!=', $slug)->take(3)->get();
     }
 
     public function user()
@@ -97,28 +101,28 @@ class News extends Model
     }
 
     public static function getHighlight()
-    {   
+    {
         $model = Cache::rememberForever('getHighlight', function () {
-            return self::where('publish', 1)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
+            return self::where('publish', self::STATUS_PUBLISHED)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
         });
 
         return $model;
     }
 
     public static function getMustReads($take = 2)
-    {   
+    {
         $model = Cache::rememberForever('getMustReads', function () use ($take) {
 
-            return self::where('publish', 1)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
+            return self::where('publish', self::STATUS_PUBLISHED)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
         });
 
         return $model;
     }
 
     public static function getRecommended($take = self::TAKE_RECOMENDED)
-    {   
+    {
         $model = Cache::rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', 1)->latest('published_at')->groupBy('category_id')->take($take)->get();
+            return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->groupBy('category_id')->take($take)->get();
         });
 
         if (Auth::check()) {
@@ -128,13 +132,13 @@ class News extends Model
                 if (count($interest) < self::TAKE_RECOMENDED) {
 
                     $model = Cache::rememberForever('getRecommended-'.Auth::id(), function () use ($take, $interest) {
-                        return self::where('publish', 1)->whereIn('category_id', $interest)->latest('published_at')->take($take)->get();
+                        return self::where('publish', self::STATUS_PUBLISHED)->whereIn('category_id', $interest)->latest('published_at')->take($take)->get();
                     });
 
                 } else {
 
                     $model = Cache::rememberForever('getRecommended5-'.Auth::id(), function () use ($take, $interest) {
-                        return self::where('publish', 1)->whereIn('category_id', $interest)->latest('published_at')->groupBy('category_id')->take($take)->get();
+                        return self::where('publish', self::STATUS_PUBLISHED)->whereIn('category_id', $interest)->latest('published_at')->groupBy('category_id')->take($take)->get();
                     });
                 }
             }
@@ -144,7 +148,7 @@ class News extends Model
     }
 
     public static function getTrending($take = 4)
-    {   
+    {
         $expiresAt = Carbon::now()->endOfDay()->addSecond();
         $from      = Carbon::now()->subDays(7)->toDateString();
         $to        = Carbon::now()->toDateString();
@@ -162,19 +166,19 @@ class News extends Model
 
             if ($category->parent_id == 0) {
 
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id', $category->children()->pluck('id'))
                         ->latest('published_at')
                         ->take($take)->get();
 
             }else {
 
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
                         ->latest('published_at')
                         ->take($take)->get();
             }
-        
+
 
         });
 
@@ -185,13 +189,13 @@ class News extends Model
     {
         $model = Cache::remember('getSticky'.$category->id, 3600, function () use ($take, $category) {
             if ($category->parent_id == 0) {
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id',  $category->children()->pluck('id'))
                         ->where('is_featured', 1)
                         ->orderBy('featured_at', 'desc')
                         ->take($take)->get();
             } else {
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
                         ->where('is_featured', 1)
                         ->orderBy('featured_at', 'desc')
@@ -205,21 +209,21 @@ class News extends Model
     public static function getCatRecomended($take = 5, $category)
     {
         $model = Cache::remember('getCatRecomended'.$category->id, 3600, function () use ($take, $category) {
-            
+
             if ($category->parent_id == 0) {
 
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id', $category->children()->pluck('id'))
                         ->oldest()
                         ->take($take)->get();
             } else {
 
-                return self::where('publish', 1)
+                return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
                         ->oldest()
                         ->take($take)->get();
             }
-        
+
 
         });
 
@@ -244,9 +248,9 @@ class News extends Model
     }
 
     public function getParentNameAttribute()
-    {   
+    {
         return isset($this->category) && isset($this->category->parent) ?
-                optional($this->category->parent)->name : 
+                optional($this->category->parent)->name :
                 'Lifestyle';
     }
 
@@ -258,7 +262,7 @@ class News extends Model
     public function getCategorySlugAttribute()
     {
         return (isset($this->category) && $this->category->slug) ? $this->category->slug : 'style';
-    }    
+    }
 
     public function getTitleLimitAttribute()
     {
@@ -266,9 +270,31 @@ class News extends Model
     }
 
     public function getViewCountAttribute()
-    {   
+    {
         return isset($this->popularityStats->all_time_stats) ? number_format_short($this->popularityStats->all_time_stats + $this->view) : number_format_short($this->view);
+    }
 
+    public function getPublishBadgeAttribute()
+    {
+        switch ($this->publish) {
+            case self::STATUS_PUBLISHED:
+                $level = 'success';
+                $status = 'Yes';
+                break;
+
+            case self::STATUS_SCHEDULED:
+                $level = 'warning';
+                $status = 'Scheduled';
+                break;
+
+            case self::STATUS_UNPUBLISHED:
+            default:
+                $level = 'danger';
+                $status = 'No';
+                break;
+        }
+
+        return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
     }
 
     /**
@@ -319,21 +345,21 @@ class News extends Model
     }
 
     public static function newRecord($request)
-    {   
+    {
         $published_at = $request->get('published_at');
         $published_at = date('Y-m-d H:i:s', strtotime($published_at));
 
         $data = new self;
         $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
+        $data->image        = $request->get('image');
         $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
+        $data->content      = $request->get('content');
         $data->publish      = $request->get('publish');
 
         $data->published_at  = Carbon::createFromFormat('Y-m-d H:i:s', $published_at);
 
         $data->is_featured  = 0;
-        if ($data->is_featured) 
+        if ($data->is_featured)
             $data->featured_at  = Carbon::now();
 
         $data->is_highlight = $request->get('is_highlight');
@@ -363,13 +389,16 @@ class News extends Model
     {
         $data = self::findOrFail($id);
         $data->title        = $request->get('title');
-        $data->image        = $request->get('image');  
+        $data->image        = $request->get('image');
         $data->summary      = $request->get('summary');
-        $data->content      = $request->get('content'); 
+        $data->content      = $request->get('content');
         $data->publish      = $request->get('publish');
 
+        if ($data->publish == self::STATUS_SCHEDULED)
+            $data->published_at = Carbon::parse($request->get('published_at'));
+
         $data->is_featured  = 0;
-        if ($data->is_featured) 
+        if ($data->is_featured)
             $data->featured_at  = Carbon::now();
 
         $data->is_highlight = $request->get('is_highlight');
@@ -386,7 +415,7 @@ class News extends Model
 
         $tags = $request->get('tags');
         if ($tags) {
-            self::updateNewsTag($data->id, $tags);   
+            self::updateNewsTag($data->id, $tags);
         }
 
         self::forgotCache();
@@ -409,7 +438,7 @@ class News extends Model
     }
 
     public static function updateNewsTag($news_id, $tags)
-    {   
+    {
         // delete news tags
         News_tag::where('news_id', $news_id)->delete();
 
@@ -461,7 +490,7 @@ class News extends Model
 
     public function scopeByPublish($query)
     {
-        return $query->where('publish', 1);
+        return $query->where('publish', self::STATUS_PUBLISHED);
     }
 
     /**

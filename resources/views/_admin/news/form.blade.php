@@ -1,3 +1,7 @@
+@php
+use App\News;
+@endphp
+
 @section('header')
 
     <!-- Select2 -->
@@ -5,14 +9,14 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
   <style type="text/css">
-        .select2-container--default 
-        .select2-selection--multiple 
+        .select2-container--default
+        .select2-selection--multiple
         .select2-selection__rendered li {
             list-style: none;
         }
 
-        .select2-container--default 
-        .select2-selection--multiple 
+        .select2-container--default
+        .select2-selection--multiple
         .select2-selection__choice {
             background-color: #007bff;
             border-color: #006fe6;
@@ -25,7 +29,7 @@
 <div class="form-group ">
     <label for="category_id">{{ 'Category' }}</label>
     <select name="category_id" class="form-control form-control-sm select2" id="category_id" style="width: 100%;">
-        @foreach($category as $item) 
+        @foreach($category as $item)
             <optgroup label="{{ $item->name }}">
                 @foreach($item->children as $parent)
                     <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }}</option>
@@ -53,7 +57,7 @@
     @endif
     <div class="input-group">
         <div class="input-group-btn">
-            <button type="button" class="btn btn-block btn-sm btn-default btn-flat" id="button-image">Browse</button> 
+            <button type="button" class="btn btn-block btn-sm btn-default btn-flat" id="button-image">Browse</button>
         </div>
         <input id="image_path" name="image" type="text" class="form-control form-control-sm" value="{{ isset($news->image) ? $news->image : old('image') }}" placeholder="Image" required>
     </div>
@@ -85,22 +89,23 @@
 <div class="form-group ">
     <label for="publish">{{ 'Publish' }}</label>
     <select name="publish" class="form-control form-control-sm" id="publish">
-        <option value="1" {{ (isset($news->publish) && $news->publish == '1') ? 'selected' : '' }}>Yes</option>
-        <option value="0" {{ (isset($news->publish) && $news->publish == '0') ? 'selected' : '' }}>No</option>
+        <option value="{{ News::STATUS_PUBLISHED }}" {{ (isset($news->publish) && $news->publish == News::STATUS_PUBLISHED) ? 'selected' : '' }}>Yes</option>
+        <option value="{{ News::STATUS_SCHEDULED }}" {{ (isset($news->publish) && $news->publish == News::STATUS_SCHEDULED) ? 'selected' : '' }}>Scheduled</option>
+        <option value="{{ News::STATUS_UNPUBLISHED }}" {{ (isset($news->publish) && $news->publish == News::STATUS_UNPUBLISHED) ? 'selected' : '' }}>No</option>
     </select>
     <span class="text-danger">{{ $errors->first('publish') }}</span>
     <p class="help-block"></p>
 </div>
 
-<div class="form-group">
+<div class="form-group {{ $news->publish != News::STATUS_SCHEDULED ? 'd-none' : null }}" id="published-at">
     <label for="publish">Publish Date</label>
     <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">
             <i class="fa fa-calendar"></i>
           </span>
-        </div> 
-        <input class="form-control form-control-sm float-right" name="published_at" type="text" id="datetimepicker" data-toggle="datetimepicker" data-target="#datetimepicker" value="{{ isset($news->published_at) ? $news->published_at : old('published_at') }}" placeholder="Publish Date" autocomplete="off" required> 
+        </div>
+        <input class="form-control form-control-sm float-right" name="published_at" type="text" id="datetimepicker" data-toggle="datetimepicker" data-target="#datetimepicker" value="{{ isset($news->published_at) ? $news->published_at : old('published_at') }}" placeholder="Publish Date" autocomplete="off" required>
     </div>
     <span class="text-danger">{{ $errors->first('published_at') }}</span>
     <p class="help-block"></p>
@@ -156,7 +161,7 @@
             tags: true,
             placeholder: 'Cari...',
             data : {
-                id: '3', 
+                id: '3',
                 text: 'Bold'
             },
             ajax: {
@@ -177,10 +182,18 @@
             }
         });
 
+        $('#publish').on('change', function() {
+            if ($(this).val() == 2) {
+                $('#published-at').removeClass('d-none');
+            } else {
+                $('#published-at').addClass('d-none');
+            }
+        });
+
         @if($formMode === 'edit')
         var newsId = '{{ isset($news->id) ? $news->id : 0 }}';
         var newsSelect = $('#tags');
-        
+
         $.ajax({
             type: 'GET',
             url: '/magic/loadtagsnews/' + newsId
