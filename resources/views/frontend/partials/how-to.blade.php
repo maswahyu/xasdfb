@@ -13,9 +13,6 @@
                     <a href="#tab-complete-profile" class="list__link list__link--tab">Complete Profile</a>
                 </li>
                 <li class="list__item">
-                    <a href="#tab-daily-login" class="list__link list__link--tab">Daily Login</a>
-                </li>
-                <li class="list__item">
                     <a href="#tab-referal-code" class="list__link list__link--tab">Referal code</a>
                 </li>
                 <li class="list__item">
@@ -23,6 +20,9 @@
                 </li>
                 <li class="list__item">
                     <a href="#tab-secret-world" class="list__link list__link--tab">Secret World</a>
+                </li>
+                <li class="list__item">
+                    <a href="#tab-daily-login" class="list__link list__link--tab">Daily Login</a>
                 </li>
             </ul>
 
@@ -44,7 +44,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 8000 points</span>
+                                    <span>5.000 points</span>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="#">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="https://{{ env('CAS_HOSTNAME') }}/profile">GO TO COMPLETE PROFILE</a>
                     </div>
 
                 </div>
@@ -62,38 +62,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Isi data diri dengan lengkap untuk mendapatkan poin</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Kunjungi akun facebook atau instagram LAzone.id untuk menemukan secret word pada gambar
-                                tersebut.</p>
+                            <p>Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto Diri, dll</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Input Secret Word di halaman My Points LAZone.id maksimal tiga hari setelah gambar di
-                                posting.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">04.</div>
-                        <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap Secret Word yang berhasil kamu temukan.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Ikutin terus Secret Word setiap Selasa & Sabtu untuk mendapatkan total 8.000 poin.</p>
+                            <p>Verifikasi nomor handphone atau alamat emailmu</p>
                         </div>
                     </div>
 
@@ -119,7 +102,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 8000 points</span>
+                                    <span>Max 3.100/MONTH</span>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +110,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="#">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO DAILY LOGIN</a>
                     </div>
 
                 </div>
@@ -137,46 +120,28 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Dapatkan 50 poin untuk login di 7 hari pertama setiap harinya.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Setelah kamu berhasil login selama 7 hari berturut-turut, jumlah poin yang akan didapat naik menjadi 75 poin.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kunjungi akun facebook atau instagram LAzone.id untuk menemukan secret word pada gambar
-                                tersebut.</p>
+                            <p>Setelah member berhasil login selama 21 hari berturut-turut, jumlah poin yang akan didapatkan akan naik menjadi 100 poin</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">04.</div>
                         <div class="how-to__text">
-                            <p>Input Secret Word di halaman My Points LAZone.id maksimal tiga hari setelah gambar di
-                                posting.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap Secret Word yang berhasil kamu temukan.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Ikutin terus Secret Word setiap Selasa & Sabtu untuk mendapatkan total 8.000 poin.</p>
+                            <p>Jika gagal untuk login secara berturut-turut, maka perhitungan hari akan dimulai dari awal (hari ke-1)</p>
                         </div>
                     </div>
 
@@ -202,7 +167,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 8000 points</span>
+                                    <span>Max 5.000 points</span>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +175,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="#">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO REFERAL CODE</a>
                     </div>
 
                 </div>
@@ -220,46 +185,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Setiap member akan mendapatkan referal code yang bisa digunakan untuk mendapatkan poin dengan memastikan bahwa anggota baru memasukan referal codemu</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Dapatkan 500 poin untuk setiap anggota baru yang memasukan referal codemu (maksimum 10 orang per bulan)</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kunjungi akun facebook atau instagram LAzone.id untuk menemukan secret word pada gambar
-                                tersebut.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">04.</div>
-                        <div class="how-to__text">
-                            <p>Input Secret Word di halaman My Points LAZone.id maksimal tiga hari setelah gambar di
-                                posting.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap Secret Word yang berhasil kamu temukan.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Ikutin terus Secret Word setiap Selasa & Sabtu untuk mendapatkan total 8.000 poin.</p>
+                            <p>Anggota baru yang berhasil memasukan referal codemu akan mendapatkan 2.000 poin</p>
                         </div>
                     </div>
 
@@ -284,7 +224,7 @@
                                     <img src="{{ asset('static/images/cup.png') }}" alt="">
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 8000 points</span>
+                                    <span>Max 8.000 points</span>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +232,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="#">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO QUIZ</a>
                     </div>
 
                 </div>
@@ -302,46 +242,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Setiap hari <strong>Senin & Kamis, LAZone</strong> akan menyediakan 10 pertanyaan kuis yang akan ditampilkan dihalaman <strong>My Points</strong></p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Setiap jawaban yang benar, member akan mendapatkan 100 poin</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kunjungi akun facebook atau instagram LAzone.id untuk menemukan secret word pada gambar
-                                tersebut.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">04.</div>
-                        <div class="how-to__text">
-                            <p>Input Secret Word di halaman My Points LAZone.id maksimal tiga hari setelah gambar di
-                                posting.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap Secret Word yang berhasil kamu temukan.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Ikutin terus Secret Word setiap Selasa & Sabtu untuk mendapatkan total 8.000 poin.</p>
+                            <p>Semakin banyak jawaban yang benar, semakin tinggi poin yang akan didapat</p>
                         </div>
                     </div>
 
@@ -375,7 +290,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="#">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="javascript:void(0)">GO TO SECRET WORD</a>
                     </div>
 
                 </div>
@@ -385,46 +300,38 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Setiap <strong>Selasa & Sabtu</strong>, akun Facebook dan Instagram  <strong>LAzone.id</strong> akan memposting satu gambar
+                                khusus untuk <strong>Secret Word</strong>.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Setiap Selasa & Sabtu, akun Facebook dan Instagram LAZone.id akan memposting satu gambar
-                                khusus untuk Secret Word.</p>
+                            <p>Kunjungi akun Facebook atau Instagram <strong>LAzone.id</strong> untuk menemukan <strong>Secret Word</strong> pada gambar
+                                tersebut.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kunjungi akun facebook atau instagram LAzone.id untuk menemukan secret word pada gambar
-                                tersebut.</p>
+                            <p>Input <strong>Secret Word</strong> di halaman <strong> My Points LAZone.id</strong> maksimal tiga hari setelah gambar di
+                                posting.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">04.</div>
                         <div class="how-to__text">
-                            <p>Input Secret Word di halaman My Points LAZone.id maksimal tiga hari setelah gambar di
-                                posting.</p>
+                            <p>Dapatkan 1.000 poin untuk setiap <strong>Secret Word</strong> yang berhasil kamu temukan.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">05.</div>
                         <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap Secret Word yang berhasil kamu temukan.</p>
-                        </div>
-                    </div>
-
-                    <div class="how-to__item">
-                        <div class="how-to__number">05.</div>
-                        <div class="how-to__text">
-                            <p>Ikutin terus Secret Word setiap Selasa & Sabtu untuk mendapatkan total 8.000 poin.</p>
+                            <p>Ikutin terus <strong>Secret Word</strong> setiap <strong>Selasa & Sabtu</strong> untuk mendapatkan total <strong>8.000 poin</strong>.</p>
                         </div>
                     </div>
 

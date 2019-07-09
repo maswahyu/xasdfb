@@ -10,11 +10,10 @@
                 <span>Daftar jadi member LAZONE.ID dan Terus Kumpulkan Point-mu!</span>
             </div>
             <div class="point-banner__text">
-                <span>Ingin dapat hadiah menarik tiap bulannya? Yuk daftarkan dirimu jadi member LAZONE.ID sekarang dan
-                    kumpulkan terus poin-mu!</span>
+                <span>Ingin dapat hadiah menarik tiap bulannya? Yuk daftarkan dirimu jadi member LAZONE.ID sekarang dan kumpulkan terus poin-mu!</span>
             </div>
             <div class="point-banner__cta text-center">
-                <a class="btn btn-crimson btn-point" href="#">REGISTER SEKARANG</a>
+                <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>
             </div>
         </div>
     </div>
@@ -48,7 +47,7 @@
                     @for($i=0;$i<5;$i++)
                     <div class="prize-slider__slide">
                         <div class="prize">
-                            <div class="prize__img"><img src="holder.js/380x250?theme=sky&auto=yes" alt=""></div>
+                            <div class="prize__img"><img src="{{ asset('static/images/img_point.jpg') }}" alt=""></div>
                             <div class="prize__info">
                                 <div class="prize__name"><span>Logitech Gaming Mouse Hyperion Fury</span></div>
                                 <div class="prize__requirement">
