@@ -24,7 +24,7 @@ class Event extends Model
     public static function getPage($pageNumber = 1, $paginate = 5)
     {
         $date = Carbon::today()->toDateString();
-        return self::where('publish', 1)->where('start_at', '<', $date)->orderBy('start_at', 'ASC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', 1)->where('start_at', '<', $date)->orderBy('start_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public function getStartAtJAttribute()
