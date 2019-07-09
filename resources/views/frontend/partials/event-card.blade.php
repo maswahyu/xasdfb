@@ -7,8 +7,8 @@
     <div class="event-card__meta">
 
         <div class="event-card__date calendar">
-            <div class="calendar__date">{{ $event->created_at->format('j') }}</div>
-            <div class="calendar__month-year">{{ $event->created_at->format('M y') }}</div>
+            <div class="calendar__date">{{ $event->start_at_j }}</div>
+            <div class="calendar__month-year">{{ $event->start_at_m }}</div>
         </div>
 
         <div class="event-card__info">

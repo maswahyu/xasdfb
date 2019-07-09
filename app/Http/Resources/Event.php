@@ -18,7 +18,7 @@ class Event extends JsonResource
             'url'       => '#',
             'title'     => $this->title,
             'thumbnail' => imageview($this->image),
-            'date'      => $this->created_at->format('j M Y'),
+            'date'      => $this->start_at_c,
             'summary'   => $this->summary,
         ];
     }

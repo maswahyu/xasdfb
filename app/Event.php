@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -16,12 +17,29 @@ class Event extends Model
 
     public static function getSticky($take = 4)
     {
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'desc')->take($take)->get();
+        $date = Carbon::today()->toDateString();
+        return self::where('publish', 1)->where('start_at', '>=', $date)->orWhere('end_at', '>=', $date)->orderBy('start_at', 'ASC')->take($take)->get();
     }
 
     public static function getPage($pageNumber = 1, $paginate = 5)
     {
-        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        $date = Carbon::today()->toDateString();
+        return self::where('publish', 1)->where('start_at', '<', $date)->orderBy('start_at', 'ASC')->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
+    public function getStartAtJAttribute()
+    {
+        return Carbon::parse($this->start_at)->format('j');
+    }
+
+    public function getStartAtMAttribute()
+    {
+        return Carbon::parse($this->start_at)->format('M y');
+    }
+
+    public function getStartAtCAttribute()
+    {
+        return Carbon::parse($this->start_at)->format('j M Y');
     }
 
     public function user()

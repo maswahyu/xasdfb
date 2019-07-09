@@ -128,7 +128,7 @@ class PageController extends Controller
     {
         $stickyEvent = Event::getSticky(4);
         $videos = Gallery::getGallery(Gallery::VIDEO, 2);
-        $photos = Gallery::getGallery(Gallery::PHOTO, 2);
+        $photos = Album::getLatest(2);
 
         return view('frontend.pages.event', [
             'stickyEvents' => $stickyEvent,
