@@ -28,12 +28,36 @@
     <span class="text-danger">{{ $errors->first('summary') }}</span>
     <p class="help-block"></p>
 </div>
+
 <div class="form-group">
-    <label for="content">{{ 'Content' }}</label>
-    <textarea class="form-control wysiwyg-advanced-br" rows="5" name="content" type="textarea" id="content" placeholder="{{ucfirst('content')}}" >{{ isset($event->content) ? $event->content : old('content') }}</textarea>
-    <span class="text-danger">{{ $errors->first('content') }}</span>
+    <label for="publish">Start Date</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
+        <input class="form-control float-right input-datepicker" name="start_at" type="text" id="start_at" value="{{ isset($event->start_at) ? $event->start_at_date : old('start_at') }}" placeholder="Start Date" autocomplete="off" required>
+    </div>
+    <span class="text-danger">{{ $errors->first('start_at') }}</span>
     <p class="help-block"></p>
 </div>
+
+
+<div class="form-group">
+    <label for="publish">End Date</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
+        <input class="form-control float-right input-datepicker" name="end_at" type="text" id="end_at" value="{{ isset($event->end_at) ? $event->end_at_date : old('end_at') }}" placeholder="End Date" autocomplete="off" required>
+    </div>
+    <span class="text-danger">{{ $errors->first('end_at') }}</span>
+    <p class="help-block"></p>
+</div>
+
 <div class="form-group ">
     <label for="publish">{{ 'Publish' }}</label>
     <select name="publish" class="form-control" id="publish">
@@ -43,16 +67,13 @@
     <span class="text-danger">{{ $errors->first('publish') }}</span>
     <p class="help-block"></p>
 </div>
-<div class="form-group ">
-    <label for="is_featured">{{ 'Sticky' }}</label>
-    <select name="is_featured" class="form-control" id="is_featured">
-        <option value="1" {{ (isset($event->is_featured) && $event->is_featured == 1) ? 'selected' : '' }}>Yes</option>
-        <option value="0" {{ (isset($event->is_featured) && $event->is_featured == 0) ? 'selected' : '' }}>No</option>
-    </select>
-    <span class="text-danger">{{ $errors->first('is_featured') }}</span>
+
+<div class="form-group">
+    <label for="content">{{ 'Content' }}</label>
+    <textarea class="form-control" rows="5" name="content" type="textarea" id="content" placeholder="{{ucfirst('content')}}" >{{ isset($event->content) ? $event->content : old('content') }}</textarea>
+    <span class="text-danger">{{ $errors->first('content') }}</span>
     <p class="help-block"></p>
 </div>
-
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

@@ -42,6 +42,16 @@ class Event extends Model
         return Carbon::parse($this->start_at)->format('j M Y');
     }
 
+    public function getStartAtDateAttribute()
+    {
+        return Carbon::parse($this->start_at)->format('Y-m-d');
+    }
+
+    public function getEndAtDateAttribute()
+    {
+        return Carbon::parse($this->end_at)->format('Y-m-d');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Admin', 'created_by');
@@ -54,10 +64,12 @@ class Event extends Model
         $data->slug        = str_slug($request->get('title')).'-'.self::generateRandomString();
         $data->title       = $request->get('title');
         $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->is_featured = 0;
         $data->image       = $request->get('image');
         $data->summary     = $request->get('summary');
         $data->content     = $request->get('content');
+        $data->start_at    = $request->get('start_at');
+        $data->end_at      = $request->get('end_at');
 
         $data->save();
 
@@ -70,10 +82,12 @@ class Event extends Model
         $data->created_by  = Auth::guard('admin')->id();
         $data->title       = $request->get('title');
         $data->publish     = $request->get('publish');
-        $data->is_featured = $request->get('is_featured');
+        $data->is_featured = 0;
         $data->image       = $request->get('image');
         $data->summary     = $request->get('summary');
         $data->content     = $request->get('content');
+        $data->start_at    = $request->get('start_at');
+        $data->end_at      = $request->get('end_at');
 
         $data->save();
 
