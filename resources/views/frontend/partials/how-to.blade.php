@@ -33,7 +33,7 @@
                     <div class="how-to__left">
 
                         <div class="how-to__icon">
-                            <img src="{{ asset('static/images/mock/secret-word-icon.png') }}" alt="">
+                            <img src="{{ asset('static/images/mock/completeprofile.svg') }}" alt="">
                         </div>
 
                         <div class="how-to__info">
@@ -91,7 +91,7 @@
                     <div class="how-to__left">
 
                         <div class="how-to__icon">
-                            <img src="{{ asset('static/images/mock/secret-word-icon.png') }}" alt="">
+                            <img src="{{ asset('static/images/mock/dailylog-in.svg') }}" alt="">
                         </div>
 
                         <div class="how-to__info">
@@ -156,7 +156,7 @@
                     <div class="how-to__left">
 
                         <div class="how-to__icon">
-                            <img src="{{ asset('static/images/mock/secret-word-icon.png') }}" alt="">
+                            <img src="{{ asset('static/images/mock/referalcode.svg') }}" alt="">
                         </div>
 
                         <div class="how-to__info">
@@ -214,7 +214,7 @@
                     <div class="how-to__left">
 
                         <div class="how-to__icon">
-                            <img src="{{ asset('static/images/mock/secret-word-icon.png') }}" alt="">
+                            <img src="{{ asset('static/images/mock/quiz.svg') }}" alt="">
                         </div>
 
                         <div class="how-to__info">
