@@ -116,10 +116,14 @@ class News extends Model
     }
 
     public static function getRecommended($take = self::TAKE_RECOMENDED)
-    {
+    {   
+        $model = Cache::rememberForever('getRecommended', function () use ($take) {
+            return self::where('publish', 1)->latest('published_at')->groupBy('category_id')->take($take)->get();
+        });
+
         if (Auth::check()) {
             $interest = Auth::user()->subscribe()->pluck('category_id');
-            if($interest) {
+            if(count($interest) > 0) {
 
                 if (count($interest) < self::TAKE_RECOMENDED) {
 
@@ -134,10 +138,6 @@ class News extends Model
                     });
                 }
             }
-        } else {
-            $model = Cache::rememberForever('getRecommended', function () use ($take) {
-                return self::where('publish', 1)->latest('published_at')->groupBy('category_id')->take($take)->get();
-            });
         }
 
         return $model;
