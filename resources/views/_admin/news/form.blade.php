@@ -43,9 +43,9 @@ use App\News;
 
 <div class="form-group">
     <label for="title">{{ 'Title' }}</label>
-    <input class="form-control form-control-sm" name="title" type="text" id="title" value="{{ isset($news->title) ? $news->title : old('title') }}" placeholder="Title">
+    <input class="form-control form-control-sm" name="title" type="text" id="title" value="{{ isset($news->title) ? $news->title : old('title') }}" placeholder="Title" maxlength="60">
     <span class="text-danger">{{ $errors->first('title') }}</span>
-    <p class="help-block"></p>
+    <p class="help-block">Max character = 60</p>
 </div>
 
 <div class="form-group ">
