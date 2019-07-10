@@ -158,25 +158,28 @@ class News extends Model
         return $model;
     }
 
-    public static function getLatest($take = 4, $category)
+    public static function getLatest($take = 4, $category, $offset = 2)
     {
-        $model = Cache::remember('getLatest'.$category->id, 180, function () use ($take, $category) {
+        $model = Cache::remember('getLatest'.$category->id, 180, function () use ($take, $category, $offset) {
 
             if ($category->parent_id == 0) {
 
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id', $category->children()->pluck('id'))
                         ->latest('published_at')
-                        ->take($take)->get();
+                        ->take($take)
+                        ->skip($offset)
+                        ->get();
 
             }else {
 
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
                         ->latest('published_at')
-                        ->take($take)->get();
+                        ->take($take)
+                        ->skip($offset)
+                        ->get();
             }
-
 
         });
 
@@ -189,15 +192,15 @@ class News extends Model
             if ($category->parent_id == 0) {
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id',  $category->children()->pluck('id'))
-                        ->where('is_featured', 1)
-                        ->orderBy('featured_at', 'desc')
-                        ->take($take)->get();
+                        ->latest('published_at')
+                        ->take($take)
+                        ->get();
             } else {
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
-                        ->where('is_featured', 1)
-                        ->orderBy('featured_at', 'desc')
-                        ->take($take)->get();
+                        ->latest('published_at')
+                        ->take($take)
+                        ->get();
             }
         });
 

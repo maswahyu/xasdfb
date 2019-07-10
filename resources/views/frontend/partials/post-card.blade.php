@@ -14,6 +14,6 @@
 
     </div>
 
-<div class="post-card__title"><span>{{ $post->title_limit }}</span></div>
+<div class="post-card__title"><span>{{ $post->title }}</span></div>
 
 </a>
