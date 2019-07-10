@@ -117,23 +117,10 @@
     {!! $siteInfo['footercode'] !!}
 
     @yield('before-body-end')
-
-    @guest
-        <script type="text/javascript">
-            $.ajax({
-            type : 'GET',
-            url  : 'https://{{ config('cas.cas_hostname') }}?controller=profile&action=check-login',
-            xhrFields: {
-                withCredentials: true
-            }
-        }).done(function(data) {
-            if (data.error == false) {
-                window.location.href = '/member/login'
-            }
-        });
-        </script>        
-    @endguest
-
+    <script type="text/javascript">
+        var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}'
+    </script>
+    <script src="{{ asset('static/js/auth.js') }}"></script>
 </body>
 
 </html>
