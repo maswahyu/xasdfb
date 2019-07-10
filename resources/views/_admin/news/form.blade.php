@@ -97,7 +97,7 @@ use App\News;
     <p class="help-block"></p>
 </div>
 
-<div class="form-group {{ $news->publish != News::STATUS_SCHEDULED ? 'd-none' : null }}" id="published-at">
+<div class="form-group {{ isset($news->publish) && $news->publish != News::STATUS_SCHEDULED ? 'd-none' : null }}" id="published-at">
     <label for="publish">Publish Date</label>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -181,6 +181,11 @@ use App\News;
               cache: true
             }
         });
+
+        $('#published-at').addClass('d-none');
+        @if(isset($news->publish) && $news->publish == News::STATUS_SCHEDULED)
+        $('#published-at').removeClass('d-none');
+        @endif
 
         $('#publish').on('change', function() {
             if ($(this).val() == 2) {

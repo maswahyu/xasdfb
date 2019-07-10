@@ -344,9 +344,6 @@ class News extends Model
 
     public static function newRecord($request)
     {
-        $published_at = $request->get('published_at');
-        $published_at = date('Y-m-d H:i:s', strtotime($published_at));
-
         $data = new self;
         $data->title        = $request->get('title');
         $data->image        = $request->get('image');
@@ -354,7 +351,7 @@ class News extends Model
         $data->content      = $request->get('content');
         $data->publish      = $request->get('publish');
 
-        $data->published_at  = Carbon::createFromFormat('Y-m-d H:i:s', $published_at);
+        $data->published_at = Carbon::parse($request->get('published_at'));
 
         $data->is_featured  = 0;
         if ($data->is_featured)
