@@ -15,10 +15,10 @@ class Event extends Model
      */
     protected $table = 'events';
 
-    public static function getSticky($take = 4)
+    public static function getSticky($pageNumber = 1, $paginate = 4)
     {
         $date = Carbon::today()->toDateString();
-        return self::where('publish', 1)->where('start_at', '>=', $date)->orWhere('end_at', '>=', $date)->orderBy('start_at', 'ASC')->take($take)->get();
+        return self::where('publish', 1)->where('start_at', '>=', $date)->orWhere('end_at', '>=', $date)->orderBy('start_at', 'ASC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getPage($pageNumber = 1, $paginate = 5)

@@ -15,6 +15,7 @@ Route::get('/feed', 'IndexController@feed');
 Route::get('/feed-photo', 'GalleryController@feedPhoto');
 Route::get('/feed-video', 'GalleryController@feedVideo');
 Route::get('/feed-event', 'PageController@feedEvent');
+Route::get('/new-event', 'PageController@newEvent');
 
 Route::get('search', 'PageController@search');
 Route::get('feed-search', 'PageController@feedSearch');

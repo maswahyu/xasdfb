@@ -126,12 +126,10 @@ class PageController extends Controller
 
     public function events()
     {
-        $stickyEvent = Event::getSticky(4);
         $videos = Gallery::getGallery(Gallery::VIDEO, 2);
         $photos = Album::getLatest(2);
 
         return view('frontend.pages.event', [
-            'stickyEvents' => $stickyEvent,
             'videos' => $videos,
             'photos' => $photos,
         ]);
@@ -141,6 +139,13 @@ class PageController extends Controller
     {
         $page = $request->get('page');
         $posts = Event::getPage($page);
+        return response()->json(new EventCollection($posts));
+    }
+
+    public function newEvent(Request $request)
+    {
+        $page = $request->get('page');
+        $posts = Event::getSticky($page);
         return response()->json(new EventCollection($posts));
     }
 
