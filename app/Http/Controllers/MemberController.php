@@ -89,13 +89,7 @@ class MemberController extends Controller
 
             Auth::loginUsingId($user->id);
             
-            if (url()->previous()) {
-                
-                return redirect(url()->previous());
-            } else {
-
-                return redirect()->route('index');
-            }
+            return redirect()->route('index');
 
         } else {
         	return redirect('/');
