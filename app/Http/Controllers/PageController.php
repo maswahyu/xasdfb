@@ -66,7 +66,7 @@ class PageController extends Controller
     	$validator = Validator::make($request->all(), [
             'email'   => 'required|email',
             'name'    => 'required|min:1|max:255',
-            'phone'   => 'required|integer',
+            'phone'   => 'required',
             'subject' => 'required',
         ]);
 
