@@ -1,5 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html class="no-js" lang="id">
 
 <head>
     <meta charset="utf-8">
@@ -117,6 +117,22 @@
     {!! $siteInfo['footercode'] !!}
 
     @yield('before-body-end')
+
+    @guest
+        <script type="text/javascript">
+            $.ajax({
+            type : 'GET',
+            url  : 'https://{{ config('cas.cas_hostname') }}?controller=profile&action=check-login',
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function(data) {
+            if (data.error == false) {
+                window.location.href = '/member/login'
+            }
+        });
+        </script>        
+    @endguest
 
 </body>
 
