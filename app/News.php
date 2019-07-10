@@ -245,6 +245,11 @@ class News extends Model
         return optional($this->published_at)->format('j M Y');
     }
 
+    public function getPublishedDate12Attribute()
+    {
+        return optional($this->published_at)->format('d/m/y g:i A');
+    }
+
     public function getParentNameAttribute()
     {
         return isset($this->category) && isset($this->category->parent) ?

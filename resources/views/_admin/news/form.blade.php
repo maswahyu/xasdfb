@@ -105,7 +105,7 @@ use App\News;
             <i class="fa fa-calendar"></i>
           </span>
         </div>
-        <input class="form-control form-control-sm float-right" name="published_at" type="text" id="datetimepicker" data-toggle="datetimepicker" data-target="#datetimepicker" value="{{ isset($news->published_at) ? $news->published_at : old('published_at') }}" placeholder="Publish Date" autocomplete="off">
+        <input class="form-control form-control-sm float-right" name="published_at" type="text" id="datetimepicker" data-toggle="datetimepicker" data-target="#datetimepicker" value="{{ isset($news->published_at) ? $news->published_date_12 : old('published_at') }}" placeholder="Publish Date" autocomplete="off">
     </div>
     <span class="text-danger">{{ $errors->first('published_at') }}</span>
     <p class="help-block"></p>
