@@ -95,14 +95,12 @@ class News extends Model
 
     public static function forgotCache()
     {
-        Cache::forget('getHighlight');
-        Cache::forget('getMustReads');
-        Cache::forget('getRecommended');
+        Cache::tags('cacheHomepage')->flush();
     }
 
     public static function getHighlight()
     {
-        $model = Cache::rememberForever('getHighlight', function () {
+        $model = Cache::tags('cacheHomepage')->rememberForever('getHighlight', function () {
             return self::where('publish', self::STATUS_PUBLISHED)->where('is_highlight', 1)->orderBy('highlight_at', 'desc')->first();
         });
 
@@ -111,7 +109,7 @@ class News extends Model
 
     public static function getMustReads($take = 2)
     {
-        $model = Cache::rememberForever('getMustReads', function () use ($take) {
+        $model = Cache::tags('cacheHomepage')->rememberForever('getMustReads', function () use ($take) {
 
             return self::where('publish', self::STATUS_PUBLISHED)->where('is_mustread', 1)->orderBy('mustread_at', 'desc')->take($take)->get();
         });
@@ -121,7 +119,7 @@ class News extends Model
 
     public static function getRecommended($take = self::TAKE_RECOMENDED)
     {
-        $model = Cache::rememberForever('getRecommended', function () use ($take) {
+        $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended', function () use ($take) {
             return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->groupBy('category_id')->take($take)->get();
         });
 
@@ -419,6 +417,7 @@ class News extends Model
         }
 
         self::forgotCache();
+        Cache::get('post'.$data->slug);
 
         return $data;
     }

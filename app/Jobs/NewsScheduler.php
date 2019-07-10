@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Cache;
 
 class NewsScheduler implements ShouldQueue
 {
@@ -35,5 +36,7 @@ class NewsScheduler implements ShouldQueue
     {
         $this->news->publish = News::STATUS_PUBLISHED;
         $this->news->save();
+
+        Cache::tags('cacheHomepage')->flush();
     }
 }
