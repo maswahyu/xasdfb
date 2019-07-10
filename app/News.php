@@ -417,7 +417,7 @@ class News extends Model
         }
 
         self::forgotCache();
-        Cache::get('post'.$data->slug);
+        Cache::forget('post'.$data->slug);
 
         return $data;
     }
