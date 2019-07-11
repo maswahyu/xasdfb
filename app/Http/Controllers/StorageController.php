@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Storage;
 class StorageController extends Controller
 {
     /**
+     * Set cache-control to cache images for 1 year. No need to re-download images from server.
+     * @return void
+     */
+    private function cacheControl()
+    {
+        header_remove('Pragma');
+        header_remove('Cache');
+        header_remove('Expires');
+        header_remove('Content-Type');
+
+        /* cache for 1 year */
+        header('Pragma: public');
+        header('Cache-Control: max-age=31536000');
+        header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
+        header('Content-Type: image/png');
+    }
+
+    /**
      * Handle semua image selain old image dari pimcore.
      */
     public function imageHandler(Request $request)
@@ -16,7 +34,9 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode(str_replace('storage/', '/', $file));
         $file = Storage::disk('filemanager')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -28,7 +48,9 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode(str_replace('website/var/', '/var/', $file));
         $file = Storage::disk('old')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -42,7 +64,9 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode(str_replace('news/', '/var/assets/news/', $file));
         $file = Storage::disk('old')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -54,7 +78,9 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode('/var/assets/' . $file);
         $file = Storage::disk('old')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -66,7 +92,9 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode(str_replace('Community/', '/var/assets/Community/', $file));
         $file = Storage::disk('old')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -78,6 +106,8 @@ class StorageController extends Controller
         $file = $request->path();
         $file = urldecode(str_replace('gallery-photos/', '/var/assets/gallery-photos/', $file));
         $file = Storage::disk('old')->get($file);
-        return Image::make($file)->response('png');
+
+        $this->cacheControl();
+        echo Image::make($file)->encode('png');
     }
 }
