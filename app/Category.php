@@ -30,6 +30,7 @@ class Category extends Model
         }
 
         $data->save();
+        Cache::forget('menu-category');
 
         return $data;
     }
@@ -43,6 +44,9 @@ class Category extends Model
         $data->description = $request->get('description');
 
         $data->save();
+
+        Cache::forget('menu-category');
+        Cache::forget('category'.$data->slug);
 
         return $data;
     }
