@@ -8,6 +8,8 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 class Album extends Model
 {
     use SearchableTrait;
+
+    const STATUS_PUBLISHED = 1;
 	 /**
      * The table associated with the model.
      *
@@ -30,27 +32,27 @@ class Album extends Model
     public static function getSticky($take = 2)
     {
 
-        return self::where('publish', 1)->where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
+        return self::where('publish', self::STATUS_PUBLISHED)->where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
     }
 
     public static function getLatest($take = 3)
     {
-        return self::where('publish', 1)->latest()->take($take)->get();
+        return self::where('publish', self::STATUS_PUBLISHED)->latest()->take($take)->get();
     }
 
     public static function getPage($pageNumber = 1, $paginate = 8)
     {
-        return self::where('publish', 1)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->orderBy('created_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getSearch($pageNumber = 1, $query, $paginate = 8)
     {
-        return self::where('publish', 1)->orderBy('created_at', 'DESC')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->orderBy('created_at', 'DESC')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
     {   
-        return self::where('publish', 1)->where('slug', $slug)->first();
+        return self::where('publish', self::STATUS_PUBLISHED)->where('slug', $slug)->first();
     }
 
     // add attribure
@@ -94,6 +96,7 @@ class Album extends Model
         $data = new Album;
         $data->name  = $request->get('name');
         $data->image = $request->get('image');
+        $data->publish = $request->get('publish');
         $data->slug  = str_slug($request->get('name'));
         if (self::whereSlug($data->slug)->exists()) {
             $data->slug  = $data->slug.rand(1, 100);
@@ -109,6 +112,7 @@ class Album extends Model
         $data = Album::findOrFail($id);
         $data->name = $request->get('name');
         $data->image = $request->get('image');
+        $data->publish = $request->get('publish');
 
         $data->save();
 
@@ -124,6 +128,6 @@ class Album extends Model
 
     public function scopeByPublish($query)
     {
-        return $query->where('publish', 1);
+        return $query->where('publish', self::STATUS_PUBLISHED);
     }
 }

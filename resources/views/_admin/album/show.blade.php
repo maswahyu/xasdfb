@@ -25,17 +25,17 @@
                       <a href="{{ url('/magic/album') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/magic/album/' . $album->id . '/edit') }}" title="Edit album"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('magic/album' . '/' . $album->id) }}" accept-charset="UTF-8" style="display:inline">
+                        {{-- <form method="POST" action="{{ url('magic/album' . '/' . $album->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete album" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th> Id </th><td> {{ $album->id }} </td></tr><tr><th> Name </th><td> {{ $album->name }} </td></tr><tr><th> Created At </th><td> {{ $album->created_at }} </td></tr><tr><th> Updated At </th><td> {{ $album->updated_at }} </td></tr>
+                                    <tr><th> Id </th><td> {{ $album->id }} </td></tr><tr><th> Name </th><td> {{ $album->name }} </td></tr><tr><th> Publish </th><td> {{ $album->publish }} </td></tr><tr><th> Created At </th><td> {{ $album->created_at }} </td></tr><tr><th> Updated At </th><td> {{ $album->updated_at }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
