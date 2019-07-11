@@ -66,7 +66,12 @@ class News extends Model
 
     public static function related($slug, $category_id)
     {
-        return self::where('publish', self::STATUS_PUBLISHED)->where('category_id', $category_id)->where('slug', '!=', $slug)->take(3)->get();
+        return self::where('publish', self::STATUS_PUBLISHED)
+                    ->where('category_id', $category_id)
+                    ->where('slug', '!=', $slug)
+                    ->latest('published_at')
+                    ->take(3)
+                    ->get();
     }
 
     public function user()
