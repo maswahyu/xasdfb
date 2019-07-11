@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Cache;
 
 class Album extends Model
 {
@@ -30,14 +31,31 @@ class Album extends Model
 
     // repository
     public static function getSticky($take = 2)
-    {
+    {   
+        $model = Cache::tags('album')->rememberForever('getAlbumSticky', function () use ($take) {
 
-        return self::where('publish', self::STATUS_PUBLISHED)->where('is_featured', 1)->orderBy('created_at', 'DESC')->take($take)->get();
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->latest()
+                    ->take($take)
+                    ->get();
+
+        });
+
+        return $model;
     }
 
-    public static function getLatest($take = 3)
-    {
-        return self::where('publish', self::STATUS_PUBLISHED)->latest()->take($take)->get();
+    public static function getLatest($take = 3, $offset = 2)
+    {   
+        $model = Cache::tags('album')->rememberForever('getAlbumLatest', function () use ($take, $offset) {
+
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->latest()
+                    ->take($take)
+                    ->skip($offset)
+                    ->get();
+        });
+
+        return $model;
     }
 
     public static function getPage($pageNumber = 1, $paginate = 8)
@@ -104,6 +122,8 @@ class Album extends Model
 
         $data->save();
 
+        Cache::tags('album')->flush();
+
         return $data;
     }
 
@@ -115,6 +135,8 @@ class Album extends Model
         $data->publish = $request->get('publish');
 
         $data->save();
+
+        Cache::tags('album')->flush();
 
         return $data;
     }
