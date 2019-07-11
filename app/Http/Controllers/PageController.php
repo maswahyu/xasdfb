@@ -18,6 +18,7 @@ use App\Http\Resources\GalleryCollection;
 use App\Http\Resources\AlbumCollection;
 use Cache;
 use Carbon\Carbon;
+use App\Prize;
 
 class PageController extends Controller
 {   
@@ -53,6 +54,7 @@ class PageController extends Controller
 
     public function points()
     {
+        $points = Prize::getData();
         return view('frontend.pages.points');
     }
 

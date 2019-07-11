@@ -36,7 +36,7 @@ Route::get('gallery/video', 'GalleryController@video');
 Route::get('photo/detail/{slug}', 'GalleryController@photoDetail');
 Route::get('video/detail/{slug}', 'GalleryController@videoDetail');
 
-Route::get('tags/{hashtag}', 'PostController@tags');
+Route::get('tag/{hashtag}', 'PostController@tags');
 Route::get('feed-tags', 'PostController@feedTags');
 Route::post('p/collect/{id}', 'PostController@hitperform');
 Route::get('inspiration/inspiring-places', function() {

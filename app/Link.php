@@ -21,6 +21,7 @@ class Link extends Model
         $data->url = $request->get('url');
 
         $data->save();
+        Cache::forget('menu-link');
 
         return $data;
     }
@@ -32,6 +33,7 @@ class Link extends Model
         $data->url = $request->get('url');
 
         $data->save();
+        Cache::forget('menu-link');
 
         return $data;
     }

@@ -105,7 +105,7 @@
                 @if($post->tags)
                 <li>TAGS</li>
                 @foreach($post->tags as $item)
-                    <li class="list__item active"><a href="{{ url('tags/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
+                    <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
                 @endforeach
                 @endif
             </ul>

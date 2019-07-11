@@ -145,6 +145,12 @@
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Link</p>
                             </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="{{ url('magic/prize') }}" class="nav-link {!! classActiveSegment(2, 'prize') !!}">
+                                <i class="fa fa-circle nav-icon"></i>
+                                <p>Prize</p>
+                            </a>
                         </li>  
                     </ul>
                 </li>
