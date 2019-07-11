@@ -63,7 +63,7 @@
             <div class="inner">
               <h3  id="news">0</h3>
 
-              <p>News</p>
+              <p>News Publish</p>
             </div>
             <div class="icon">
               <i class="fa fa-newspaper"></i>
