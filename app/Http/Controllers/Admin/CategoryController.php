@@ -25,9 +25,9 @@ class CategoryController extends Controller
     {   
         $keyword = $request->get('only');
         if (!empty($keyword)) {
-            $category = Category::byPublish()->oldest()->paginate(10);
+            $category = Category::oldest()->paginate(10);
         } else {
-            $category = Category::byPublish()->oldest()->paginate(10);
+            $category = Category::oldest()->paginate(10);
         }
         
         return view('_admin.category.list', compact('category','keyword'));
