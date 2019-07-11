@@ -76,11 +76,11 @@ class Category extends Model
     }
 
     public function children() {
-        return $this->hasMany(self::class, 'parent_id', 'id');
+        return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED);
     }
 
     public function menu() {
-        return $this->hasMany(self::class, 'parent_id', 'id')->whereNotIn('slug', ['lensaphoto','sneakerland']);
+        return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED)->whereNotIn('slug', ['lensaphoto','sneakerland']);
     }
 
     public function subscribe() {
