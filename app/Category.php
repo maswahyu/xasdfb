@@ -109,7 +109,7 @@ class Category extends Model
 
     public static function getInterest()
     {   
-        $value = Cache::rememberForever('get-interest', function () use ($parent_id) {
+        $value = Cache::rememberForever('get-interest', function () {
             return self::where('parent_id', '!=', self::TOP_PARENT)->where('publish', self::STATUS_PUBLISHED)->get();
         });
 
