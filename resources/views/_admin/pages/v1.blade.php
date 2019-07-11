@@ -53,7 +53,7 @@
             <div class="icon">
               <i class="fa fa-tasks"></i>
             </div>
-            <a href="{{ url('magic/gallery') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('magic/gallery') }}?type=photo" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -68,7 +68,7 @@
             <div class="icon">
               <i class="fa fa-newspaper"></i>
             </div>
-            <a href="{{ url('magic/news') }}?type=news" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('magic/news') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -76,13 +76,13 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3 id="agent">0</h3>
-              <p>Agent</p>
+              <h3 id="event">0</h3>
+              <p>Event</p>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="{{ url('magic/agent') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('magic/event') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-md-8">
@@ -136,7 +136,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer text-center">
-                <a href="{{ url('magic/agent') }}" class="uppercase">View All</a>
+                <a href="{{ url('magic/news') }}" class="uppercase">View All</a>
               </div>
               <!-- /.card-footer -->
             </div>
@@ -157,7 +157,7 @@
             method: "GET",
             url: '/magic/collect?q=all',
         }).done(function(data) {
-            document.getElementById('agent').innerHTML=data.agent
+            document.getElementById('event').innerHTML=data.event
             document.getElementById('news').innerHTML=data.news
             document.getElementById('gallery').innerHTML=data.gallery
         });
