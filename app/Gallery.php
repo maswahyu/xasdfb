@@ -15,6 +15,7 @@ class Gallery extends Model
 
     const PHOTO = "photo";
     const VIDEO = "video";
+    const STATUS_PUBLISHED = 1;
 	 /**
      * The table associated with the model.
      *
@@ -30,37 +31,42 @@ class Gallery extends Model
 
     public static function getData($paginate = 10, $album_id, $type = self::VIDEO)
     {
-        return self::where('publish', 1)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
+        return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->orderBy('created_at', 'DESC')->paginate($paginate);
     }
 
     public static function getPage($pageNumber = 1, $type = self::PHOTO, $paginate = 8)
     {
-        return self::where('publish', 1)->where('type', $type)->latest()->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->latest()->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getSearch($pageNumber = 1, $type = self::PHOTO, $query, $paginate = 8)
     {
-        return self::where('publish', 1)->where('type', $type)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getCount($album_id, $type)
     {
-        return self::where('publish', 1)->where('album_id', $album_id)->where('type', $type)->count();
+        return self::where('publish', self::STATUS_PUBLISHED)->where('album_id', $album_id)->where('type', $type)->count();
     }
 
     public static function getNewGallery($type = self::VIDEO, $take = 4)
     {
         $model = Cache::rememberForever('getNewGallery'.$type, function () use ($type, $take) {
-            return self::where('publish', 1)->where('type', $type)->latest()->take($take)->get();
+            return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->latest()->take($take)->get();
         });
 
         return $model;
     }
 
-    public static function getGallery($type = self::VIDEO, $take = 4)
+    public static function getGallery($type = self::VIDEO, $take = 4, $offset = 1)
     {
-        $model = Cache::rememberForever('getGallery'.$type, function () use ($type, $take) {
-            return self::where('publish', 1)->where('type', $type)->where('is_featured', 0)->latest()->take($take)->get();
+        $model = Cache::rememberForever('getGallery'.$type, function () use ($type, $take, $offset) {
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->where('type', $type)
+                    ->latest()
+                    ->take($take)
+                    ->skip($offset)
+                    ->get();
         });
 
         return $model;
@@ -69,7 +75,7 @@ class Gallery extends Model
     public static function getSticky($type = self::VIDEO)
     {
         $model = Cache::rememberForever('getGallerySticky'.$type, function () use ($type) {
-            return self::where('publish', 1)->where('type', $type)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->first();
+            return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->latest()->first();
         });
 
         return $model;
@@ -77,7 +83,7 @@ class Gallery extends Model
 
     public static function detail($type = self::VIDEO, $slug)
     {   
-        return self::where('publish', 1)->where('type', $type)->where('slug', $slug)->first();
+        return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->where('slug', $slug)->first();
     }
 
     public function album()
@@ -188,7 +194,7 @@ class Gallery extends Model
 
     public function scopeByPublish($query)
     {
-        return $query->where('publish', 1);
+        return $query->where('publish', self::STATUS_PUBLISHED);
     }
 
     /**
