@@ -44,24 +44,24 @@
 
                 <div class="prize-slider jsPrizeSlider">
 
-                    @for($i=0;$i<5;$i++)
+                    @foreach($points as $item)
                     <div class="prize-slider__slide">
                         <div class="prize">
-                            <div class="prize__img"><img src="{{ asset('static/images/img_point.jpg') }}" alt=""></div>
+                            <div class="prize__img"><img src="{{ imageview($item->image) }}" alt="{{ $item->name }}"></div>
                             <div class="prize__info">
-                                <div class="prize__name"><span>Logitech Gaming Mouse Hyperion Fury</span></div>
+                                <div class="prize__name"><span>{{ $item->name }}</span></div>
                                 <div class="prize__requirement">
                                     <div class="prize__icon">
                                         <img src="{{ asset('static/images/cup.png') }}" alt="">
                                     </div>
                                     <div class="prize__point">
-                                        <span>40.000 points</span>
+                                        <span>{{ seribu($item->poin) }} points</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    @endforeach
 
                 </div>
 

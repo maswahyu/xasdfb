@@ -55,7 +55,8 @@ class PageController extends Controller
     public function points()
     {
         $points = Prize::getData();
-        return view('frontend.pages.points');
+        // dd($points);
+        return view('frontend.pages.points', compact('points'));
     }
 
     public function contact()
