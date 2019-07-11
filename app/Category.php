@@ -16,6 +16,7 @@ class Category extends Model
     protected $table = 'categories';
 
     const TOP_PARENT = 0;
+    const STATUS_PUBLISHED = 1;
 
     public static function newRecord($request)
     {
@@ -130,5 +131,17 @@ class Category extends Model
     public function getImgAttribute()
     {
         return imageview($this->image);
+    }
+
+    /**
+     * Get posts by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', self::STATUS_PUBLISHED);
     }
 }
