@@ -25,11 +25,11 @@
                       <a href="{{ url('/magic/tag') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/magic/tag/' . $tag->id . '/edit') }}" title="Edit tag"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                        <form method="POST" action="{{ url('magic/tag' . '/' . $tag->id) }}" accept-charset="UTF-8" style="display:inline">
+                        {{-- <form method="POST" action="{{ url('magic/tag' . '/' . $tag->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete tag" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

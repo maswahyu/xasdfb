@@ -4,6 +4,7 @@
             <th>#</th>
             <th>Slug</th>
             <th>Name</th>
+            <th>Publish</th>
             <th>Created At</th>
             <th>Actions</th>
         </tr>
@@ -14,6 +15,7 @@
             <td>{{ $items + $tag->firstItem() }}</td>
             <td><a href="" target="_blank">{{ $item->slug }}</a></td>
             <td>{{ $item->name }}</td>
+            <td><span class="badge badge-{{ ($item->publish == 0) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span></td>
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="btn-group">
@@ -25,7 +27,7 @@
 
                         <a class="dropdown-item" href="{{ url('/magic/tag/' . $item->id . '/edit') }}" title="Edit tag"><i class="fa fa-edit"></i> Edit</a>
                          
-                        <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>   
+                        {{-- <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>    --}}
                     </div>
                 </div>
             </td>

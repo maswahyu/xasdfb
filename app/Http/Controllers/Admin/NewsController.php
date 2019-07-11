@@ -94,7 +94,7 @@ class NewsController extends Controller
 
     public function loadTagData(Request $request)
     {
-        $tags = Tag::orderBy('name', 'ASC')->get();
+        $tags = Tag::byPublish()->orderBy('name', 'ASC')->get();
         return response()->json($tags);
     }
 
@@ -102,7 +102,7 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         $tags = $news->tags->pluck('tag_id');
-        $tags = Tag::whereIn('id', $tags)->get();
+        $tags = Tag::byPublish()->whereIn('id', $tags)->get();
         return response()->json($tags);
     }
 }

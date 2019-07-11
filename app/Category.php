@@ -25,6 +25,7 @@ class Category extends Model
         $data->parent_id   = $request->get('parent_id');
         $data->image       = $request->get('image');
         $data->description = $request->get('description');
+        $data->publish     = $request->get('publish');
         $data->slug        = str_slug($request->get('name'));
         if (self::whereSlug($data->slug)->exists()) {
             $data->slug  = $data->slug.rand(1, 100);
@@ -43,6 +44,7 @@ class Category extends Model
         $data->parent_id   = $request->get('parent_id');
         $data->image       = $request->get('image');
         $data->description = $request->get('description');
+        $data->publish     = $request->get('publish');
 
         $data->save();
 
