@@ -15,7 +15,7 @@
             <td>{{ $items + $category->firstItem() }}</td>
             <td><img src="{{ imagethumb($item->image) }}" width="150"></td>
             <td>{{ $item->name }}</td>
-            <td>{{ ($item->parent_id == 0) ? "Top Parent" : $item->parent->name }}</td>
+            <td>{{ ($item->parent_id == 0) ? "Top Parent" : optional($item->parent)->name }}</td>
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="btn-group">
