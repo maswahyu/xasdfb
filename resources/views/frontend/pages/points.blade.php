@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="point-banner">
-    <img src="{{ asset('static/images/point-bg.png') }}" alt="" class="point-banner__bg">
+    <img src="{{ asset('static/images/img_point2.jpg') }}" alt="" class="point-banner__bg">
     <div class="container">
         <div class="point-banner__content">
             <div class="point-banner__title">
