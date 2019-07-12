@@ -50,8 +50,12 @@ class NewsController extends Controller
     public function store(NewsRequest $request)
     {
         $validated = $request->validated();
-
         $data = News::newRecord($request);
+
+        if ($data->publish == News::STATUS_SCHEDULED) {
+            $publishedAt = Carbon::parse($request->get('published_at'));
+            NewsScheduler::dispatch($data)->delay($publishedAt);
+        }
 
         return redirect('magic/news')->with('success', 'News added!');
     }
@@ -73,10 +77,12 @@ class NewsController extends Controller
     public function update(NewsRequest $request, $id)
     {
         $validated = $request->validated();
-
         $data = News::updateRecord($request, $id);
-        $publishedAt = Carbon::parse($request->get('published_at'));
-        NewsScheduler::dispatch($data)->delay($publishedAt);
+
+        if ($data->publish == News::STATUS_SCHEDULED) {
+            $publishedAt = Carbon::parse($request->get('published_at'));
+            NewsScheduler::dispatch($data)->delay($publishedAt);
+        }
 
         return redirect('magic/news')->with('success', 'News updated!');
     }
