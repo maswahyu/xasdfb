@@ -23,6 +23,7 @@ class News extends Model
 
     const NEWS = 'news';
     const TAKE_RECOMENDED = 5;
+    const LENSAPHOTO = 'lensaphoto';
 
     protected $dates = ['published_at'];
 
@@ -176,7 +177,16 @@ class News extends Model
                         ->skip($offset)
                         ->get();
 
-            }else {
+            } elseif ($category->slug == self::LENSAPHOTO) {
+
+                return self::where('publish', self::STATUS_PUBLISHED)
+                        ->whereIn('category_id',  [3286684,4])
+                        ->latest('published_at')
+                        ->take($take)
+                        ->skip($offset)
+                        ->get();
+
+            } else {
 
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->where('category_id', $category->id)
@@ -207,7 +217,21 @@ class News extends Model
                     ->whereNotIn('id', $post)
                     ->paginate($paginate, ['*'], 'page', $pageNumber);
 
-        }else {
+        } elseif ($category->slug == self::LENSAPHOTO) {
+
+            $post = self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereIn('category_id',  [3286684,4])
+                    ->latest('published_at')
+                    ->take($offset)
+                    ->pluck('id');
+
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereIn('category_id',  [3286684,4])
+                    ->latest('published_at')
+                    ->whereNotIn('id', $post)
+                    ->paginate($paginate, ['*'], 'page', $pageNumber);
+
+        } else {
 
             $post = self::where('publish', self::STATUS_PUBLISHED)
                     ->where('category_id', $category->id)
@@ -229,6 +253,12 @@ class News extends Model
             if ($category->parent_id == 0) {
                 return self::where('publish', self::STATUS_PUBLISHED)
                         ->whereIn('category_id',  $category->children()->pluck('id'))
+                        ->latest('published_at')
+                        ->take($take)
+                        ->get();
+            } elseif ($category->slug == self::LENSAPHOTO) {
+                return self::where('publish', self::STATUS_PUBLISHED)
+                        ->whereIn('category_id',  [3286684,4])
                         ->latest('published_at')
                         ->take($take)
                         ->get();
