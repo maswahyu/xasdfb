@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contact;
+use App\News;
+use App\Gallery;
+use App\Event;
 
 class DashboardController extends Controller
 {
@@ -28,16 +31,16 @@ class DashboardController extends Controller
             return response()->json([
                 'error' => false,
                 'error_code' => 200,
-                'agent' => 1,
-                'gallery' => 1,
-                'news' => 1,
+                'event' => Event::byPublish()->count(),
+                'gallery' => Gallery::byPublish()->count(),
+                'news' => News::byPublish()->count(),
             ]);
         } elseif ($q == 'contact') {
             $data = Contact::latest()->take(8)->get();
             return view('_admin.pages.d_contact', compact('data'));
         } elseif ($q == 'agent') {
-            $data = Contact::latest()->take(8)->get();
-            return view('_admin.pages.d_contact', compact('data'));
+            $data = News::latest('published_at')->take(6)->get();
+            return view('_admin.pages.d_news', compact('data'));
         } 
         else {
             return response()->json(['error' => 'Opps']);

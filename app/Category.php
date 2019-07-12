@@ -33,6 +33,7 @@ class Category extends Model
 
         $data->save();
         Cache::forget('menu-category');
+        Cache::forget('get-interest');
 
         return $data;
     }
@@ -49,6 +50,7 @@ class Category extends Model
         $data->save();
 
         Cache::forget('menu-category');
+        Cache::forget('get-interest');
         Cache::forget('category'.$data->slug);
 
         return $data;
@@ -106,8 +108,12 @@ class Category extends Model
     }
 
     public static function getInterest()
-    {
-        return self::where('parent_id', '!=', self::TOP_PARENT)->get();
+    {   
+        $value = Cache::rememberForever('get-interest', function () {
+            return self::where('parent_id', '!=', self::TOP_PARENT)->where('publish', self::STATUS_PUBLISHED)->get();
+        });
+
+        return $value;
     }
 
     public static function getSitemap()

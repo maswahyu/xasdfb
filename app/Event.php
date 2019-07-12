@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Event extends Model
 {
+    const STATUS_PUBLISHED = 1;
 	 /**
      * The table associated with the model.
      *
@@ -18,13 +19,13 @@ class Event extends Model
     public static function getSticky($pageNumber = 1, $paginate = 4)
     {
         $date = Carbon::today()->toDateString();
-        return self::where('publish', 1)->where('start_at', '>=', $date)->orWhere('end_at', '>=', $date)->orderBy('start_at', 'ASC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->where('start_at', '>=', $date)->orWhere('end_at', '>=', $date)->orderBy('start_at', 'ASC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getPage($pageNumber = 1, $paginate = 5)
     {
         $date = Carbon::today()->toDateString();
-        return self::where('publish', 1)->where('start_at', '<', $date)->orderBy('start_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->where('start_at', '<', $date)->orderBy('start_at', 'DESC')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public function getStartAtJAttribute()
@@ -102,5 +103,17 @@ class Event extends Model
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    /**
+     * Get event by publish
+     *
+     * @param $type
+     * @return mixed
+     */
+
+    public function scopeByPublish($query)
+    {
+        return $query->where('publish', self::STATUS_PUBLISHED);
     }
 }
