@@ -29,7 +29,7 @@
                     <div class="user-info">
                         <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
                         <span class="user-info__name"><strong>{{ auth()->user()->name }}</strong></span>
-                        <span class="user-info__point"><span>{{ seribu(auth()->user()->total_point) }} pts</span></span>
+                        <span class="user-info__point"><span id="loyalty_point2"></span> pts</span>
                     </div>
                 </li>
                 <li class="menu">
@@ -56,6 +56,12 @@
                                 <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
                             </li>
                         @endforeach
+                        <li>
+                            <a href="{{ url('lensaphoto') }}" alt="Lensaphoto">Lensaphoto</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('sneakerland') }}" alt="Sneakerland">Sneakerland</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu has-sub-menu">
