@@ -117,7 +117,7 @@
 @section('before-body-end')
 
 <script>
-    window.feedUrl = "{{ url('feed') }}"
+    window.feedUrl = "{{ url('feed') }}?category={{ $type ? $category->slug : $subcategory->slug }}"
 </script>
 
 @verbatim

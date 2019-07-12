@@ -6,6 +6,7 @@ use App\Gallery;
 use App\Http\Resources\NewsCollection;
 use Auth;
 use App\Slide;
+use App\Category;
 
 use Illuminate\Http\Request;
 
@@ -37,8 +38,20 @@ class IndexController extends Controller
 
     public function feed(Request $request)
     {
-	    $page = $request->get('page');
-	    $posts = News::getPage($page);
+        $page     = $request->get('page');
+        $category = $request->get('category');
+
+        if ($category) {
+
+            $category = Category::detail($category);
+            $posts = News::getLatestCategory($category, $page);
+
+        } else {
+
+	       $posts = News::getPage($page);
+
+        }
+
 	    return response()->json(new NewsCollection($posts));
     }
 }

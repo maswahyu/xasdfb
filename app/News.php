@@ -191,6 +191,38 @@ class News extends Model
         return $model;
     }
 
+    public static function getLatestCategory($category, $pageNumber, $offset = 5, $paginate = 10)
+    {
+
+        if ($category->parent_id == 0) {
+            $post = self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereIn('category_id', $category->children()->pluck('id'))
+                    ->latest('published_at')
+                    ->take($offset)
+                    ->pluck('id');
+
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereIn('category_id', $category->children()->pluck('id'))
+                    ->latest('published_at')
+                    ->whereNotIn('id', $post)
+                    ->paginate($paginate, ['*'], 'page', $pageNumber);
+
+        }else {
+
+            $post = self::where('publish', self::STATUS_PUBLISHED)
+                    ->where('category_id', $category->id)
+                    ->latest('published_at')
+                    ->take($offset)
+                    ->pluck('id');
+
+            return self::where('publish', self::STATUS_PUBLISHED)
+                    ->where('category_id', $category->id)
+                    ->latest('published_at')
+                    ->whereNotIn('id', $post)
+                    ->paginate($paginate, ['*'], 'page', $pageNumber);
+        }
+    }
+
     public static function getSticky($take = 4, $category)
     {
         $model = Cache::remember('getSticky'.$category->id, 3600, function () use ($take, $category) {
