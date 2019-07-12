@@ -239,7 +239,7 @@ class News extends Model
     public function getUrlAttribute()
     {
         return isset($this->category->parent) ?
-            url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug) :
+            url(sprintf('%s/%s/%s~%s', $this->category->parent->slug, $this->getCategorySlugAttribute(), $this->slug, $this->id)) :
             url('lifestyle/style/'.$this->slug);
     }
 

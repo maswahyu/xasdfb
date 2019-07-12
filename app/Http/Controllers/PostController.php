@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function category($category)
-    {	
+    {
     	$category = Category::detail($category);
 
 	    if (!$category) {
@@ -34,7 +34,7 @@ class PostController extends Controller
     }
 
     public function subcategory($category, $subcategory)
-    {	
+    {
     	$category = Category::detail($category);
 
 	    if (!$category) {
@@ -63,8 +63,10 @@ class PostController extends Controller
     }
 
     public function detailPost($category, $subcategory, $slug)
-    {	
+    {
+        $slug = preg_replace('/~.+/', '', $slug);
     	$post = News::detail($slug);
+
     	if (!$post) {
 	    	abort(404);
 	    }
@@ -78,21 +80,21 @@ class PostController extends Controller
     }
 
     public function tags($hashtag)
-    {	
+    {
     	return view('frontend.pages.tags');
     }
 
     public function feedTags(Request $request)
-    {	
+    {
 		$hashtag = strip_tags($request->get('hashtag'));
 		$page    = $request->get('page');
-    	
+
 	    $posts = News::getNewsTags($page, $hashtag);
 	    return response()->json(new NewsCollection($posts));
     }
 
     public function hitperform($id)
-    {	
+    {
     	$post = News::findOrFail($id);
     	$post->hit();
 
