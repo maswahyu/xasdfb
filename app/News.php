@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Model\Stats;
 use Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use DB;
 
 class News extends Model
 {
@@ -124,8 +125,8 @@ class News extends Model
 
     public static function getRecommended($take = self::TAKE_RECOMENDED)
     {
-        $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended', function () use ($take) {
-            return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->groupBy('category_id')->take($take)->get();
+        $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended', function () {
+            return self::hydrate(DB::select('SELECT t1.* FROM news t1 JOIN (SELECT category_id, MAX(published_at) published_at FROM news GROUP BY category_id) t2 ON t1.category_id = t2.category_id AND t1.published_at = t2.published_at WHERE t1.publish = 1 and t1.deleted_at is null order by published_at DESC LIMIT 5'));
         });
 
         if (Auth::check()) {
@@ -139,9 +140,8 @@ class News extends Model
                     });
 
                 } else {
-
                     $model = Cache::rememberForever('getRecommended5-'.Auth::id(), function () use ($take, $interest) {
-                        return self::where('publish', self::STATUS_PUBLISHED)->whereIn('category_id', $interest)->latest('published_at')->groupBy('category_id')->take($take)->get();
+                        return self::hydrate(DB::select('SELECT t1.* FROM news t1 JOIN (SELECT post.category_id, MAX(post.published_at) published_at FROM news as post GROUP BY category_id) t2 ON t1.category_id = t2.category_id AND t1.published_at = t2.published_at WHERE t1.publish = 1 and t1.deleted_at is null and t1.category_id in ('.$interest->implode(', ').') order by published_at DESC LIMIT 5'));
                     });
                 }
             }
@@ -239,7 +239,7 @@ class News extends Model
     public function getUrlAttribute()
     {
         return isset($this->category->parent) ?
-            url(sprintf('%s/%s/%s~%s', $this->category->parent->slug, $this->getCategorySlugAttribute(), $this->slug, $this->id)) :
+            url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug) :
             url('lifestyle/style/'.$this->slug);
     }
 

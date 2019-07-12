@@ -10,12 +10,12 @@ use App\Slide;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
-{	
+{
 	function __construct()
     {
         $this->middleware('auth.sso.clear');
     }
-    
+
     public function index()
     {
 		$mustReads   = News::getMustReads();
@@ -36,7 +36,7 @@ class IndexController extends Controller
     }
 
     public function feed(Request $request)
-    {	
+    {
 	    $page = $request->get('page');
 	    $posts = News::getPage($page);
 	    return response()->json(new NewsCollection($posts));
