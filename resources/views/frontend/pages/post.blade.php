@@ -36,7 +36,7 @@
         <div class="span-12 span-lg-10 off-lg-1 span-xl-8 off-xl-2">
 
             <div class="post-header text-center">
- 
+
                 <h1 class="post-header__title">{{ $post->title }}</h1>
 
                 <div class="post-header__meta">
@@ -93,8 +93,11 @@
 
             <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
 
+            <div id="post-content">
+
             {!! $post->content !!}
 
+            </div>
         </div>
 
     </div>

@@ -120,6 +120,13 @@
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}'
     </script>
     <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/contact.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('#post-content img').each(function () {
+                $(this).removeAttr('style')
+            });
+        });
+    </script>
 </body>
 
 </html>
