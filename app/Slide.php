@@ -15,7 +15,7 @@ class Slide extends Model
     protected $table = 'slides';
 
     public static function getFeatured($take = 5)
-    {   
+    {
         $model = Cache::rememberForever('getFeatured', function () use ($take) {
             return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
         });

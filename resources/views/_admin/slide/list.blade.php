@@ -24,8 +24,8 @@
                         <a class="dropdown-item" href="{{ url('/magic/slide/' . $item->id) }}" title="View slide"><i class="fa fa-eye"></i> View</a>
 
                         <a class="dropdown-item" href="{{ url('/magic/slide/' . $item->id . '/edit') }}" title="Edit slide"><i class="fa fa-edit"></i> Edit</a>
-                         
-                        <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>   
+
+                        <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>
                     </div>
                 </div>
             </td>

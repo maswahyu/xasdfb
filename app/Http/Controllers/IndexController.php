@@ -24,7 +24,7 @@ class IndexController extends Controller
 		$recommended = News::getRecommended();
 		$trending    = News::getTrending();
 		$videos      = Gallery::getNewGallery();
-		$slides      = Slide::getFeatured(5);
+		$slides      = Slide::getFeatured(10);
 
 	    return view('frontend.pages.home', [
 	        'mustReads' => $mustReads,
