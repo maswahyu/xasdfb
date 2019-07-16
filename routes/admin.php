@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +14,13 @@ Route::post('magic/login', 'Auth\LoginController@login')->name('admin-login');
 Route::post('magic/logout', 'Auth\LoginController@logout')->name('admin-logout');
 
 Route::group(['middleware' => 'has_any_role:admin','namespace' => 'Admin'], function() {
-    
+
     Route::prefix('magic')->group(function () {
         Route::resource('users', 'UsersController');
         Route::get('userlist', 'UsersController@getdata');
         Route::get('useraction', 'UsersController@useraction');
     });
-    
+
     Route::get('site/settings', 'SettingController@index')->name('site.settings');
     Route::post('site/settings', 'SettingController@update');
     Route::get('site/terms_policy', 'SettingController@termpolicy')->name('site.terms_policy');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'has_any_role:admin','namespace' => 'Admin'], func
 });
 
 Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin'], function() {
-    
+
     Route::prefix('magic')->group(function () {
         Route::get('home', 'DashboardController@versionone')->name('adminpage');
         Route::get('profile', 'UsersController@profile');
@@ -57,8 +57,9 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::resource('event', 'EventController');
         Route::get('eventlist', 'EventController@list');
         Route::resource('slide', 'SlideController');
-        Route::get('slidelist', 'SlideController@list');
-        
+        // Route::get('slidelist', 'SlideController@list');
+        Route::get('slidelist', 'SlideController@listAjax');
+
         Route::get('loadtags', 'NewsController@loadTagData');
         Route::get('loadalbum', 'GalleryController@loadAlbum');
         Route::get('loadtagsnews/{id}', 'NewsController@loadTagNews');

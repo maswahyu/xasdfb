@@ -36,12 +36,12 @@
                             </form>
                         </div>
                     </div>
-                    <div class="p-2 card-body">
-                        <div class="text-center overlay" id="spin">
+                    <div class="card-body">
+                        {{-- <div class="text-center overlay" id="spin">
                             <i class='fa fa-spinner fa-spin loading' style="font-size: 100px;"></i>
-                        </div>
+                        </div> --}}
                         <div style="overflow-x:auto;" id="datalist">
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,12 +51,46 @@
 @endsection
 @section('javascript')
 <script type="text/javascript">
-var url = "{{ url('/magic/slidelist') }}?";
+var url = "{{ url('/magic/slidelist') }}";
 var only = '{{ Request::query('search') }}';
 var urlDelete = '{{ url('/magic/slide') }}/';
 
+// $(document).ready(function() {
+//     dataList.init();
+// });
+
 $(document).ready(function() {
-    dataList.init();
+    var findUserToken = "";
+    $('#datalist').sibdatatable({
+        dataSourceType: 'json',
+        dataSource: url,
+        Columns: [
+          {
+              fields: 'image',
+              title: 'Image'
+          },
+          {
+              fields: 'featured',
+              title: 'Is Featured'
+          },
+          {
+              fields: 'publish',
+              title: 'Publish'
+          },
+          {
+              fields: 'action',
+              title: 'Action'
+          }
+        ],
+        sortable: true,
+        filterable:true,
+        pageable: true,
+        pagingLimit: 10,
+        pagingNumber: 1,
+        order:'asc',
+        orderBy: 'title'
+    });
+
 });
 
 </script>

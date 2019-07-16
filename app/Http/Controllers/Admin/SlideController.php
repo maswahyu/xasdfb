@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SlideRequest;
 use App\Slide;
+use App\Http\Resources\Admin\SliderCollection;
 
 class SlideController extends Controller
 {
@@ -19,6 +20,45 @@ class SlideController extends Controller
     public function index(Request $request)
     {
         return view('_admin.slide.index')->with('title', $this->title);
+    }
+
+    public function listAjax(Request $request)
+    {
+        if($request->has('paging_limit')) {
+            $paging_limit = intval($request->get('paging_limit'));
+            if($paging_limit <= 0) {
+                $paging_limit = 25;
+            }
+        }
+        else {
+            $paging_limit = 25;
+        }
+        if($request->has('page_number')) {
+            $page_number = intval($request->get('page_number'));
+            if($page_number <= 1) {
+                $page_number = 1;
+            }
+        }
+        else {
+            $page_number = 1;
+        }
+        // $skip = $page_number * $paging_limit;
+        if($request->has('orderby')) {
+            $orderby = $request->get('orderby');
+        }
+        else {
+            $orderby = '';
+        }
+        if($request->has('order')) {
+            $order = $request->get('order');
+        }
+        else {
+            $order = 'asc';
+        }
+
+        $posts = Slide::getPage($page_number, $paging_limit, $orderby, $order);
+
+        return response()->json(new SliderCollection($posts));
     }
 
     public function list(Request $request)

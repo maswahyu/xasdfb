@@ -7,6 +7,8 @@ use Cache;
 
 class Slide extends Model
 {
+    const STATUS_UNPUBLISHED = 0;
+    const STATUS_PUBLISHED = 1;
 	 /**
      * The table associated with the model.
      *
@@ -17,10 +19,51 @@ class Slide extends Model
     public static function getFeatured($take = 5)
     {
         $model = Cache::rememberForever('getFeatured', function () use ($take) {
-            return self::where('publish', 1)->where('is_featured', 1)->orderBy('updated_at', 'DESC')->take($take)->get();
+            return self::where('publish', self::STATUS_PUBLISHED)->where('is_featured', self::STATUS_PUBLISHED)->orderBy('updated_at', 'DESC')->take($take)->get();
         });
 
         return $model;
+    }
+
+    public static function getPage($page_number, $paging_limit, $orderby, $order)
+    {
+        return self::latest()->orderBy($orderby, $order)->paginate($paging_limit, ['*'], 'page', $page_number);
+    }
+
+    public function getPublishBadgeAttribute()
+    {
+        switch ($this->publish) {
+            case self::STATUS_PUBLISHED:
+                $level = 'success';
+                $status = 'Yes';
+                break;
+
+            case self::STATUS_UNPUBLISHED:
+            default:
+                $level = 'danger';
+                $status = 'No';
+                break;
+        }
+
+        return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
+    }
+
+    public function getFeaturedBadgeAttribute()
+    {
+        switch ($this->is_featured) {
+            case self::STATUS_PUBLISHED:
+                $level = 'success';
+                $status = 'Yes';
+                break;
+
+            case self::STATUS_UNPUBLISHED:
+            default:
+                $level = 'danger';
+                $status = 'No';
+                break;
+        }
+
+        return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
     }
 
     public static function newRecord($request)

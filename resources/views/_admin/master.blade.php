@@ -30,6 +30,7 @@
     {{-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
     <link rel="stylesheet" href="/dist/css/main.css">
     <link rel="shortcut icon" href="/dist/img/logo.png">
+    <link rel="stylesheet" href="/dist/plugins/sidgrid/sib.datatable.css?v=2">
     @yield('header')
 </head>
 
@@ -39,7 +40,7 @@
         <!-- Header -->
     @include('_admin.header')
         <!-- Sidebar -->
-    @include('_admin.sidebar') 
+    @include('_admin.sidebar')
         <div class="content-wrapper">
             @if (Session::has('success') || Session::has('error') || Session::has('warning'))
                 <div class="px-3 pt-3">
@@ -70,11 +71,11 @@
     @include('_admin.footer')
     </div>
     <!-- ./wrapper -->
-    @endguest 
+    @endguest
     <!-- jQuery -->
     <script type="text/javascript">
         var BASE_URL  = '{{ url('/') }}';
-    </script> 
+    </script>
     <script src="/dist/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -83,10 +84,11 @@
     <script src="{{ asset('dist/plugins/fancybox/helpers/jquery.fancybox-media.js') }}"></script>
     <script src="{{ asset('dist/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('dist/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('dist/plugins/sidgrid/jquery.sib.datatable.js') }}?v=2"></script>
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.js"></script>
     <script src="/dist/js/admin.js"></script>
-    
+
     <script type="text/javascript">
         $('.alert').alert()
 
