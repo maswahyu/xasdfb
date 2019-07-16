@@ -40,7 +40,7 @@ class Slide extends Model
 
             case self::STATUS_UNPUBLISHED:
             default:
-                $level = 'danger';
+                $level = 'warning';
                 $status = 'No';
                 break;
         }
@@ -58,7 +58,7 @@ class Slide extends Model
 
             case self::STATUS_UNPUBLISHED:
             default:
-                $level = 'danger';
+                $level = 'warning';
                 $status = 'No';
                 break;
         }
