@@ -21,7 +21,7 @@ use Carbon\Carbon;
 use App\Prize;
 
 class PageController extends Controller
-{   
+{
     public function search()
     {
         return view('frontend.pages.search');
@@ -39,7 +39,7 @@ class PageController extends Controller
             return response()->json(new AlbumCollection($posts));
 
         } else if($type == "video") {
-            
+
             $posts = Gallery::getSearch($page, Gallery::VIDEO, $query);
             return response()->json(new GalleryCollection($posts));
 
@@ -62,6 +62,21 @@ class PageController extends Controller
     public function contact()
     {
     	return view('frontend.pages.contact');
+    }
+
+    public function about()
+    {
+        return view('frontend.pages.about');
+    }
+
+    public function term()
+    {
+        return view('frontend.pages.term');
+    }
+
+    public function privacy()
+    {
+        return view('frontend.pages.privacy');
     }
 
     public function addContact(Request $request)
@@ -89,7 +104,7 @@ class PageController extends Controller
         // Make and decode POST request:
         $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
         $recaptcha = json_decode($recaptcha);
-        
+
         // Take action based on the score returned:
         if ($recaptcha->score >= 0.5) {
             $input = $request->all();
@@ -110,7 +125,7 @@ class PageController extends Controller
                     ->setBody($data['body']);
                 });
             }
-        
+
             $response = [
                 'info' => 'success',
                 'message' => 'Message delivered to receiver. We will contact you soon.'

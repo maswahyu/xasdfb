@@ -23,6 +23,9 @@ Route::get('points', 'PageController@points');
 Route::get('contact-us', 'PageController@contact')->name('contact');
 Route::post('contact-us', 'PageController@addContact');
 Route::get('events', 'PageController@events');
+Route::get('about-us', 'PageController@about');
+Route::get('terms-conditions', 'PageController@term');
+Route::get('privacy-policy', 'PageController@privacy');
 
 Route::get('interest', 'MemberController@interest');
 Route::post('interest', 'MemberController@addInterest');
