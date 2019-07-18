@@ -1,7 +1,7 @@
 @extends('frontend.layouts.skeleton')
 
 @section('head_title', 'Terms & Conditions')
-@section('head_url', url('about-us'))
+@section('head_url', url('terms-conditions'))
 
 @section('content')
 
