@@ -8,21 +8,21 @@
                 <span class="section-title__label section-title__label--category semibold">How To Get Points?</span>
             </div>
 
-            <ul class="list flex-justify-center jsPointTab">
-                <li class="list__item">
-                    <a href="#tab-complete-profile" class="list__link list__link--tab">Complete Profile</a>
+            <ul class="point-nav flex-justify-center jsPointTab">
+                <li class="point-nav__item">
+                    <a href="#tab-complete-profile" class="point-nav__link point-nav__link--tab">Complete Profile</a>
                 </li>
-                <li class="list__item">
-                    <a href="#tab-referal-code" class="list__link list__link--tab">Referal code</a>
+                <li class="point-nav__item">
+                    <a href="#tab-referal-code" class="point-nav__link point-nav__link--tab">Referal code</a>
                 </li>
-                <li class="list__item">
-                    <a href="#tab-quiz" class="list__link list__link--tab">Quiz</a>
+                <li class="point-nav__item">
+                    <a href="#tab-quiz" class="point-nav__link point-nav__link--tab">Quiz</a>
                 </li>
-                <li class="list__item">
-                    <a href="#tab-secret-world" class="list__link list__link--tab">Secret World</a>
+                <li class="point-nav__item">
+                    <a href="#tab-secret-world" class="point-nav__link point-nav__link--tab">Secret World</a>
                 </li>
-                <li class="list__item">
-                    <a href="#tab-daily-login" class="list__link list__link--tab">Daily Login</a>
+                <li class="point-nav__item">
+                    <a href="#tab-daily-login" class="point-nav__link point-nav__link--tab">Daily Login</a>
                 </li>
             </ul>
 
