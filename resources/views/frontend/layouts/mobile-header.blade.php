@@ -6,13 +6,27 @@
         </span>
     </button>
 
+    @auth
+    <button class="jsUserMenuTrigger close-user-menu hamburger hamburger--slider is-active hidden" type="button">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+    @endauth
+
     <a href="{{ url('/')}}" class="site-logo">
         <img src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
     </a>
 
+    @auth
+    <div class="user-info mobile jsUserMenuTrigger">
+        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+    </div>
+    @endauth
+
 </div>
 
-<nav class="mobile-nav">
+<nav id="nav-mobile-menu" class="mobile-nav">
     <div id="mobile-menu" class="drilldown">
         <div class="drilldown-container">
             <ul class="drilldown-root">
@@ -24,25 +38,6 @@
                         </button>
                     </form>
                 </li>
-                @auth
-                <li class="menu">
-                    <div class="user-info">
-                        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
-                        <span class="user-info__name"><strong>{{ auth()->user()->name }}</strong></span>
-                        <span class="user-info__point"><span id="loyalty_point2"></span> pts</span>
-                    </div>
-                </li>
-                <li class="menu">
-                    <a href="https://{{ env('CAS_HOSTNAME') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
-                </li>
-                <li class="menu">
-                    <a href="{{ env('URL_MYPOINT') }}"><span>My Points</span></a>
-                </li>
-                <li class="menu">
-                    <a href="{{ url('member/logout') }}"><span>Logout</span></a>
-                </li>
-                @endauth
-
                 <li class="menu has-sub-menu">
                     <a target="_blank" href="#">
                         <span>Articles</span>
@@ -108,3 +103,30 @@
         </div>
     </div>
 </nav>
+
+@auth
+<div id="user-mobile-menu" class="mobile-nav">
+    <ul>
+        <li class="menu">
+            <div class="user-info">
+                <div class="user-info__left">
+                    <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+                </div>
+                <div class="user-info__right">
+                    <span class="user-info__name"><strong>{{ auth()->user()->name }}</strong></span>
+                    <span class="user-info__point"><span id="loyalty_point2"></span> pts</span>
+                </div>
+            </div>
+        </li>
+        <li class="menu">
+            <a href="https://{{ env('CAS_HOSTNAME') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
+        </li>
+        <li class="menu">
+            <a href="{{ env('URL_MYPOINT') }}"><span>My Points</span></a>
+        </li>
+        <li class="menu">
+            <a href="{{ url('member/logout') }}" class="btn btn-crimson btn-login">Logout</a>
+        </li>
+    </ul>
+</div>
+@endauth
