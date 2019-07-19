@@ -10,19 +10,19 @@
 
             <ul class="point-nav flex-justify-center jsPointTab">
                 <li class="point-nav__item">
-                    <a href="#tab-complete-profile" class="point-nav__link point-nav__link--tab">Complete Profile</a>
+                    <a href="#tab-complete-profile" class="text-black point-nav__link point-nav__link--tab">Complete Profile</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-referal-code" class="point-nav__link point-nav__link--tab">Referal code</a>
+                    <a href="#tab-referal-code" class="text-black  point-nav__link point-nav__link--tab">Referal code</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-quiz" class="point-nav__link point-nav__link--tab">Quiz</a>
+                    <a href="#tab-quiz" class="text-black  point-nav__link point-nav__link--tab">Quiz</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-secret-world" class="point-nav__link point-nav__link--tab">Secret World</a>
+                    <a href="#tab-secret-world" class="text-black  point-nav__link point-nav__link--tab">Secret World</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-daily-login" class="point-nav__link point-nav__link--tab">Daily Login</a>
+                    <a href="#tab-daily-login" class="text-black  point-nav__link point-nav__link--tab">Daily Login</a>
                 </li>
             </ul>
 

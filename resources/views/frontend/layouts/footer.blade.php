@@ -39,10 +39,10 @@
 
             <div class="footer-top__span">
                 <ul class="point-nav flex-justify-center">
-                    <li class="point-nav__item"><a class="point-nav__link list__link--footer" href="{{ url('about-us') }}">About Us</a></li>
-                    <li class="point-nav__item"><a class="point-nav__link list__link--footer" href="{{ url('terms-conditions') }}">Terms Conditions</a></li>
-                    <li class="point-nav__item"><a class="point-nav__link list__link--footer" href="{{ url('privacy-policy') }}">Privacy Policy</a></li>
-                    <li class="point-nav__item"><a class="point-nav__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>
+                    <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('about-us') }}">About Us</a></li>
+                    <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('terms-conditions') }}">Terms Conditions</a></li>
+                    <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('privacy-policy') }}">Privacy Policy</a></li>
+                    <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>
                 </ul>
             </div>
 
