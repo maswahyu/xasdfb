@@ -15,7 +15,7 @@
     </div>
 
     <div class="post-card__title post-card__title--xlarge">
-        <span>{{ $post->title_limit }}</span>
+        <span>{{ $post->title }}</span>
     </div>
 
     <div class="post-card__excerpt">
