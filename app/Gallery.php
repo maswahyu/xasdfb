@@ -10,7 +10,7 @@ use Cache;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Gallery extends Model
-{   
+{
     use SoftDeletes, SearchableTrait;
 
     const PHOTO = "photo";
@@ -41,7 +41,7 @@ class Gallery extends Model
 
     public static function getSearch($pageNumber = 1, $type = self::PHOTO, $query, $paginate = 8)
     {
-        return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->latest()->where('type', $type)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function getCount($album_id, $type)
@@ -82,7 +82,7 @@ class Gallery extends Model
     }
 
     public static function detail($type = self::VIDEO, $slug)
-    {   
+    {
         return self::where('publish', self::STATUS_PUBLISHED)->where('type', $type)->where('slug', $slug)->first();
     }
 
@@ -122,10 +122,10 @@ class Gallery extends Model
     public function getTitleLimitAttribute()
     {
         return str_limit($this->title, 40);
-    }    
+    }
 
     public function getDurationAttribute()
-    {   
+    {
         $duration = rand(300, 3000);
         return $duration < 3600 ? gmdate("i:s", $duration) : gmdate("H:i:s", $duration);
     }
@@ -147,7 +147,7 @@ class Gallery extends Model
     }
 
     public static function newRecord($request)
-    {   
+    {
         $data = new Gallery;
         $data->value       = $request->get('value');
         $data->title       = $request->get('title');
@@ -162,7 +162,7 @@ class Gallery extends Model
         }
 
         $data->save();
-        
+
         self::forgotCache();
 
         return $data;

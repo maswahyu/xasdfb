@@ -53,7 +53,7 @@ class News extends Model
 
     public static function getSearch($pageNumber = 1, $query, $paginate = 10)
     {
-        return self::where('publish', self::STATUS_PUBLISHED)->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
+        return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->search($query)->paginate($paginate, ['*'], 'page', $pageNumber);
     }
 
     public static function detail($slug)
