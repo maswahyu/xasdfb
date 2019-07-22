@@ -1,7 +1,7 @@
 <a href="{{ $post->url }}" class="post-card post-card--highlight" alt="{{ $post->title }}">
 
     <div class="post-card__thumbnail post-card__thumbnail--large">
-        <img class="post-card__img post-card__img--large" src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
+        <img class="post-card__img post-card__img--large" src="{{ imageview('') }}" data-src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
     </div>
 
     <div class="post-card__meta post-meta post-meta--centered">

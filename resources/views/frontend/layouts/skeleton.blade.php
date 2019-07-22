@@ -112,6 +112,7 @@
     <script src="{{ asset('static/js/jquery.fitvids.js') }}"></script>
     <script src="{{ asset('static/js/infinite-paginator.js') }}"></script>
     <script src="{{ asset('static/js/global.js') }}?v={{ filemtime(public_path() . '/static/js/global.js') }}"></script>
+    <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
 
     {!! $siteInfo['footercode'] !!}
 
@@ -124,6 +125,13 @@
         $(document).ready(function ($) {
             $('#post-content img').each(function () {
                 $(this).removeAttr('style')
+            });
+        });
+
+        $(function() {
+            $('.post-card__img').Lazy({
+                effect: 'fadeIn',
+                visibleOnly: true
             });
         });
     </script>

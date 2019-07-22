@@ -76,12 +76,12 @@
                         <img src="{{ asset('static/images/tw-so.png') }}" alt="">
                     </a>
                 </li>
-                <li class="list__item list__item--social">
+                {{-- <li class="list__item list__item--social">
                     <a data-clipboard-text="{{ url()->current() }}" class="list__link list__link--social jsCopyLink"
                         href="#">
                         <img src="{{ asset('static/images/link-so.png') }}" alt="">
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
         </div>
@@ -89,7 +89,7 @@
         {{-- CONTENT DUMMY --}}
         <div class="span-12 span-lg-10 span-xl-8 post-content">
 
-            <img src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+            <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
             <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
 
