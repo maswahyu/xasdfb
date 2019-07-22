@@ -6,6 +6,7 @@ $(function ()
         prevArrow: '<button type="button" class="home-slider-nav prev"></button>',
         dots: true,
         adaptiveHeight: true,
+        lazyLoad: 'anticipated'
     });
 
     var currentPage = 1,
