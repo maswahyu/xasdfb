@@ -50,7 +50,7 @@
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
                     <a href="{{ $post->url }}" alt="{{ $post->title }}">
-                    <img class="post-card__img" src="/img_placeholder_slider.jpg" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+                    <img class="post-card__img" src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
                     </a>
                 </div>
                 @endforeach
