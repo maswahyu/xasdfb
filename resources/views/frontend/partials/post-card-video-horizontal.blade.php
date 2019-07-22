@@ -2,8 +2,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--video-horizontal">
 
-        <img class="post-card__img post-card__img--video-horizontal"
-            src="https://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" alt="">
+        <img class="post-card__img post-card__img--video-horizontal" src="{{ imageview('') }}" data-src="https://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" alt="">
 
         <div class="post-card__overlay"></div>
 

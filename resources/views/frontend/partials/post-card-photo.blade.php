@@ -2,7 +2,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--photo">
 
-        <img class="post-card__img post-card__img--photo" src="{{ $photo->thumbnail }}" alt="{{ $photo->name }}">
+        <img class="post-card__img post-card__img--photo" src="{{ imageview('') }}" data-src="{{ $photo->thumbnail }}" alt="{{ $photo->name }}">
 
         <div class="post-card__overlay"></div>
 
