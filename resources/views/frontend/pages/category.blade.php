@@ -21,9 +21,9 @@
         </div>
 
         <div class="span-12 text-center">
-            <ul class="list flex-justify-center">
+            <ul class="point-nav list flex-justify-center">
                 @foreach($category->menu as $key => $item)
-                    <li class="list__item {{ classActiveSegment(2, $item->slug) }}">
+                    <li class="point-nav__item list__item {{ classActiveSegment(2, $item->slug) }}">
                         <a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a>
                     </li>
                 @endforeach

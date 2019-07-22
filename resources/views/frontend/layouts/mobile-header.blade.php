@@ -52,7 +52,7 @@
                             </li>
                         @endforeach
                         <li>
-                            <a href="{{ url('lensaphoto') }}" alt="Lensaphoto">Lensaphoto</a>
+                            <a href="{{ url('lensaphoto') }}" alt="Lensaphoto">Lensa</a>
                         </li>
                         <li>
                             <a href="{{ url('sneakerland') }}" alt="Sneakerland">Sneakerland</a>

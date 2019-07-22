@@ -39,6 +39,19 @@
       gtag('config', '{{ $siteInfo['analytics_id'] }}');
     </script>
     @endif
+    <style type="text/css">
+        .point-nav__item.active:after, .point-nav__item:hover:after{
+            bottom: 0px;
+            height: 5px;
+        }
+        .dropdown-menu__dropdown-link.active:after, .dropdown-menu__dropdown-link:hover:after {
+            bottom: 0px;
+            height: 5px;
+        }
+        .mobile-nav {
+            max-width: 30rem;
+        }
+    </style>
 
     {!! $siteInfo['headercode'] !!}
     @yield('inside-head')
