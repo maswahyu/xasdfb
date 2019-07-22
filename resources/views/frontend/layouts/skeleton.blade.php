@@ -113,8 +113,6 @@
     window.siteUrl = "{{ url('/') }}";
     </script>
 
-<script src="{{ asset('static/js/holder.min.js') }}"></script>
-
     <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ asset('static/js/clipboard.min.js') }}"></script>

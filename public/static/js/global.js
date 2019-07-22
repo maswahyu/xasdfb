@@ -84,7 +84,7 @@ $(function ()
 
     $(document).ajaxComplete(function ()
     {
-        Holder.run();
+        // Holder.run();
     });
 
     new ClipboardJS('.jsCopyLink');
