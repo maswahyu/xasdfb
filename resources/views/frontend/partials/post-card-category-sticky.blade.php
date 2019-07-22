@@ -1,7 +1,7 @@
 <a href="{{ $post->url }}" class="post-card post-card--half post-card--elevation">
 
     <div class="post-card__thumbnail post-card__thumbnail--half">
-        <img class="post-card__img post-card__img--half" src="{{ $post->thumbnail }}" alt="">
+        <img class="post-card__img post-card__img--half" src="{{ imageview('') }}" data-src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
     </div>
 
     <div class="post-card__meta post-meta">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="post-card__title post-card__title--large">
-        <span>{{ $post->title_limit }}</span>
+        <span>{{ $post->title }}</span>
     </div>
 
 </a>
