@@ -51,6 +51,9 @@
         .mobile-nav {
             max-width: 30rem;
         }
+        .point-nav__item {
+            cursor: pointer;
+        }
     </style>
 
     {!! $siteInfo['headercode'] !!}
