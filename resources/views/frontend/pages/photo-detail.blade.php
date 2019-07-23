@@ -74,12 +74,12 @@
                                 <img src="{{ asset('static/images/tw-share.png') }}" alt="">
                             </a>
                         </li>
-                        <li class="list__item list__item--social">
+                        {{-- <li class="list__item list__item--social">
                             <a data-clipboard-text="{{ url()->current() }}"
                                 class="list__link list__link--social jsCopyLink" href="#">
                                 <img src="{{ asset('static/images/copy-share.png') }}" alt="">
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
 
