@@ -13,13 +13,13 @@
                     <a href="#tab-complete-profile" class="text-black point-nav__link point-nav__link--tab">Complete Profile</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-referal-code" class="text-black  point-nav__link point-nav__link--tab">Referal code</a>
+                    <a href="#tab-referal-code" class="text-black  point-nav__link point-nav__link--tab">Referral code</a>
                 </li>
                 <li class="point-nav__item">
                     <a href="#tab-quiz" class="text-black  point-nav__link point-nav__link--tab">Quiz</a>
                 </li>
                 <li class="point-nav__item">
-                    <a href="#tab-secret-world" class="text-black  point-nav__link point-nav__link--tab">Secret World</a>
+                    <a href="#tab-secret-world" class="text-black  point-nav__link point-nav__link--tab">Secret Word</a>
                 </li>
                 <li class="point-nav__item">
                     <a href="#tab-daily-login" class="text-black  point-nav__link point-nav__link--tab">Daily Login</a>
@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="how-to__info">
-                            <div class="how-to__name">Referal Code</div>
+                            <div class="how-to__name">Referral Code</div>
                             <div class="how-to__requirement">
                                 <div class="how-to__cup">
                                     <img src="{{ asset('static/images/cup.png') }}" alt="">
@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO REFERAL CODE</a>
+                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO REFERRAL CODE</a>
                     </div>
 
                 </div>
@@ -185,21 +185,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Setiap member akan mendapatkan referal code yang bisa digunakan untuk mendapatkan poin dengan memastikan bahwa anggota baru memasukan referal codemu</p>
+                            <p>Setiap member akan mendapatkan referral code yang bisa digunakan untuk mendapatkan poin dengan memastikan bahwa anggota baru memasukan referral codemu</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Dapatkan 500 poin untuk setiap anggota baru yang memasukan referal codemu (maksimum 10 orang per bulan)</p>
+                            <p>Dapatkan 500 poin untuk setiap anggota baru yang memasukan referral codemu (maksimum 10 orang per bulan)</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Anggota baru yang berhasil memasukan referal codemu akan mendapatkan 2.000 poin</p>
+                            <p>Anggota baru yang berhasil memasukan referral codemu akan mendapatkan 2.000 poin</p>
                         </div>
                     </div>
 
