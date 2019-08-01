@@ -31,7 +31,7 @@ class Album extends Model
 
     // repository
     public static function getSticky($take = 2)
-    {   
+    {
         $model = Cache::tags('album')->rememberForever('getAlbumSticky', function () use ($take) {
 
             return self::where('publish', self::STATUS_PUBLISHED)
@@ -45,7 +45,7 @@ class Album extends Model
     }
 
     public static function getLatest($take = 3, $offset = 2)
-    {   
+    {
         $model = Cache::tags('album')->rememberForever('getAlbumLatest', function () use ($take, $offset) {
 
             return self::where('publish', self::STATUS_PUBLISHED)
@@ -69,7 +69,7 @@ class Album extends Model
     }
 
     public static function detail($slug)
-    {   
+    {
         return self::where('publish', self::STATUS_PUBLISHED)->where('slug', $slug)->first();
     }
 

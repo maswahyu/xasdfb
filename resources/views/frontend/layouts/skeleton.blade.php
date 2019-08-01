@@ -49,10 +49,19 @@
             height: 5px;
         }
         .mobile-nav {
-            max-width: 30rem;
+            max-width: 25rem;
+        }
+        .mobile-nav a {
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-transform: uppercase;
         }
         .point-nav__item {
             cursor: pointer;
+        }
+        .list__item.active:after, .list__item:hover:after {
+            bottom: 0px;
+            height: 5px;
         }
     </style>
 
