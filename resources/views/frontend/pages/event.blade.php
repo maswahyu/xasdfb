@@ -1,5 +1,23 @@
 @extends('frontend.layouts.skeleton')
 
+@section('inside-head')
+
+    <style type="text/css">
+
+        @media screen and (max-width: 600px) {
+          .hide-mobile {
+            visibility: hidden;
+            clear: both;
+            float: left;
+            margin: 10px auto 5px 20px;
+            width: 28%;
+            display: none;
+          }
+        }
+
+    </style>
+
+@endsection
 @section('content')
 
     <div class="container">
@@ -66,7 +84,7 @@
 
             </div>
 
-            <div class="list-with-sidebar__aside">
+            <div class="list-with-sidebar__aside hide-mobile">
 
                 <div class="section-title section-title--plain section-title--has-more">
                     <span class="section-title__label">Videos</span>
