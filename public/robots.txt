@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.lazone.id/sitemap.xml
+Sitemap: https://www.lazone.id/sitemaps/sitemap.xml
