@@ -103,7 +103,7 @@
 
     <div class="span-12 span-md-4 span-lg-3">
 
-        <a href="{{ url }}" class="post-card post-card--fourth">
+        <a href="{{ url }}" class="post-card post-card--fourth-video">
 
             <div class="post-card__thumbnail post-card__thumbnail--fourth">
                 <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
