@@ -23,7 +23,6 @@ $(function ()
     $('#sidebar').stickySidebar({
         topSpacing: 80,
         resizeSensor: true,
-        minWidth: 1023,
     });
 
     $.ajaxSetup({
@@ -41,6 +40,6 @@ $(function ()
 
             }
         });
-    }, 1000); 
+    }, 1000);
 
 });
