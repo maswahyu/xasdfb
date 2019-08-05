@@ -63,6 +63,12 @@
             bottom: 0px;
             height: 5px;
         }
+
+        @media screen and (max-width: 600px) {
+          .shoutbox {
+            min-height: 0;
+          }
+        }
     </style>
 
     {!! $siteInfo['headercode'] !!}

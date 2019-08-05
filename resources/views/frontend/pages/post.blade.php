@@ -2,7 +2,7 @@
 
 @section('head_title', $post->title)
 @section('head_description', strip_tags($post->summary))
-@section('head_image', imageview($post->image))
+@section('head_image', imageview(str_replace(' ', '%20', $post->image)))
 @section('head_url', $post->url)
 
 @section('content')
