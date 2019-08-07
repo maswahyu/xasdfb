@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4ced99019253fcebf6a3c074c25c3d7",
+    "content-hash": "0cef6d9bdf057fa693ea804d5abece05",
     "packages": [
         {
             "name": "alexusmai/laravel-file-manager",

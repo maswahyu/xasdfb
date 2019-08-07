@@ -7,12 +7,13 @@ use App\User;
 use Hash;
 use Auth;
 use App\Category;
+use GuzzleHttp;
 
 class MemberController extends Controller
 {
     public function interest(Request $request)
     {
-        $interest = Category::getInterest(); 
+        $interest = Category::getInterest();
 
 	    return view('frontend.pages.interest', ['interests' => $interest]);
     }
@@ -29,7 +30,7 @@ class MemberController extends Controller
             return response()->json($response);
         }
 
-        $input = $request->all();        
+        $input = $request->all();
 
         if (isset($input['interest'])) {
 
@@ -37,7 +38,7 @@ class MemberController extends Controller
              $model = User::insertInterest(Auth::id(), $interest);
 
             if ($model) {
-                
+
                 $response = [
                         'info' => 'success',
                         'message' => 'Pilihan topik kamu telah berhasil disimpan'
@@ -53,6 +54,44 @@ class MemberController extends Controller
         }
 
         return response()->json($response);
+    }
+
+    public function getPoint()
+    {
+        if (Auth::check()) {
+            try {
+
+                $client = new GuzzleHttp\Client([
+                    'headers' => [
+                        'Authorization' => "Bearer ".User::access_token,
+                        'Content-Type' => 'application/json'
+                    ]
+                ]);
+
+                $response = $client->request('GET', 'https://'.env('CAS_HOSTNAME').'?controller=profile&action=get-user-points&email='.Auth::user()->email);
+                if ($response->getStatusCode() == 200) {
+
+                    return json_decode($response->getBody()->getContents(), true);
+                } else {
+
+                    return false;
+
+                }
+            } catch (Exception $e) {
+
+                return false;
+
+            }
+
+        } else {
+
+            $response = [
+                'info' => 'error',
+                'message' => ''
+            ];
+
+            return response()->json($response);
+        }
     }
 
     public function memberLogin()
@@ -88,7 +127,7 @@ class MemberController extends Controller
             }
 
             Auth::loginUsingId($user->id);
-            
+
             return redirect()->route('index');
 
         } else {

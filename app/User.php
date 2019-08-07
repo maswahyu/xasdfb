@@ -14,6 +14,7 @@ class User extends Authenticatable
     use Notifiable;
 
     const MEMBER = "member";
+    const access_token = "$2y$10$6gQjIqINdK7fyo97.doNe.KDnzgeoyOOqyPGN5ZRtCa.ZWfnX8iFq";
     /**
      * The attributes that are mass assignable.
      *
@@ -59,13 +60,13 @@ class User extends Authenticatable
     }
 
     public static function insertInterest($user_id, $interest)
-    {   
+    {
         if ($interest) {
-            
+
             Subscribe::delSubscribe($user_id);
 
             foreach ($interest as $category_id) {
-                
+
                 $category = Category::find($category_id);
                 if ($category) {
                     Subscribe::addSubscribe($user_id, $category_id);
@@ -75,7 +76,7 @@ class User extends Authenticatable
             Cache::forget('getRecommended');
             Cache::forget('getRecommended-'.$user_id);
             Cache::forget('getRecommended5-'.$user_id);
-            
+
             return true;
         }
 
