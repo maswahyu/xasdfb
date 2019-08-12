@@ -39,6 +39,7 @@ Route::get('gallery/video', 'GalleryController@video');
 Route::get('photo/detail/{slug}', 'GalleryController@photoDetail');
 Route::get('video/detail/{slug}', 'GalleryController@videoDetail');
 Route::get('get-point-details', 'MemberController@getPoint');
+Route::get('get-user-details', 'MemberController@getSsoDetail');
 
 Route::get('tag/{hashtag}', 'PostController@tags');
 Route::get('feed-tags', 'PostController@feedTags');

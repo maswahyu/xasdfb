@@ -21,7 +21,7 @@
     @auth
     <div class="user-info mobile jsUserMenuTrigger">
         <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span>
-        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="{{ str_limit(auth()->user()->name, 7) }}"></span>
+        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 7) }}"></span>
     </div>
     @endauth
 
@@ -111,7 +111,7 @@
         <li class="menu">
             <div class="user-info">
                 <div class="user-info__left">
-                    <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+                    <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile2" alt="User Avatar"></span>
                 </div>
                 <div class="user-info__right">
                     <span class="user-info__name"><strong>{{ str_limit(auth()->user()->name, 7) }}</strong></span>

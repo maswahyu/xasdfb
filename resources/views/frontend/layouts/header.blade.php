@@ -54,7 +54,7 @@
                 @auth
                     <li class="dropdown-menu__item dropdown-menu__item--has-submenu dropdown-menu__item--user-menu jsUserMenu">
                         <span class="dropdown-menu__avatar">
-                            <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar">
+                            <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
                         </span>
                         <ul class="dropdown-menu__dropdown">
                             <li class="dropdown-menu__dropdown-item">

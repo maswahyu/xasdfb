@@ -94,6 +94,44 @@ class MemberController extends Controller
         }
     }
 
+    public function getSsoDetail()
+    {
+        if (Auth::check()) {
+            try {
+
+                $client = new GuzzleHttp\Client([
+                    'headers' => [
+                        'Authorization' => "Bearer ".User::access_token,
+                        'Content-Type' => 'application/json'
+                    ]
+                ]);
+
+                $response = $client->request('GET', 'https://'.env('CAS_HOSTNAME').'?controller=profile&action=find-user&sso_id='.Auth::user()->sso_id);
+                if ($response->getStatusCode() == 200) {
+
+                    return json_decode($response->getBody()->getContents(), true);
+                } else {
+
+                    return false;
+
+                }
+            } catch (Exception $e) {
+
+                return false;
+
+            }
+
+        } else {
+
+            $response = [
+                'info' => 'error',
+                'message' => ''
+            ];
+
+            return response()->json($response);
+        }
+    }
+
     public function memberLogin()
     {
     	if (cas()->isAuthenticated()) {
