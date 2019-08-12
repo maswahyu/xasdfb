@@ -107,4 +107,9 @@ $(function ()
         var href = $(this).attr('href');
         window.open(href, "Facebook", "height=269,width=550,resizable=1");
     });
+
+    if($('.micromodal-slide').length > 0){
+        MicroModal.init();
+    }
+
 });

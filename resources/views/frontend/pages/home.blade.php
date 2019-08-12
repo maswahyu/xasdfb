@@ -29,7 +29,7 @@
 
         <div class="home-grid__recommended">
 
-            <div class="section-title section-title--plain">
+            <div class="section-title section-title--mobile-ribbon">
                 <span class="section-title__label">Recommended</span>
             </div>
 

@@ -20,7 +20,8 @@
 
     @auth
     <div class="user-info mobile jsUserMenuTrigger">
-        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="User Avatar"></span>
+        <span class="user-info__hello">Hi, {{ auth()->user()->name }}</span>
+        <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" alt="{{ auth()->user()->name }}"></span>
     </div>
     @endauth
 

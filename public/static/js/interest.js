@@ -9,7 +9,7 @@ $(function ()
     $(function() {
         $('.js-form').on('submit', function(e) {
             e.preventDefault();
-                
+
             $('#spin').show();
             $(':button[type="submit"]').prop('disabled', true);
             $.ajax({
@@ -24,19 +24,22 @@ $(function ()
                 if (data.info == 'login') {
                     document.location.href = '/member/login';
                 }
-                
+
                 if (data.info == 'error') {
                     $('#its_warning').html(data.message)
                 }
 
                 if (data.info == 'success' ) {
                     $('#its_warning').html(data.message)
+
+                    MicroModal.show('modal-success');
+
                     setTimeout(function(){
                         document.location.href = '/interest';
                     }, 2000);
                 }
-            });           
+            });
         })
     });
-    
+
 });

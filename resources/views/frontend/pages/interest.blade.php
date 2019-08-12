@@ -63,7 +63,19 @@
 
 </div>
 
+<div class="modal micromodal-slide" id="modal-success" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            <main class="modal__content text-center" id="modal-1-content">
+                <h5>Pilihan topik kamu telah berhasil disimpan</h5>
+            </main>
+        </div>
+    </div>
+</div>
+
 @endsection
 @section('before-body-end')
+<script src="{{ asset('static/js/micromodal.min.js') }}"></script>
 <script src="{{ asset('static/js/interest.js') }}?v={{ filemtime(public_path() . '/static/js/interest.js') }}"></script>
 @endsection
