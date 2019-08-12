@@ -25,7 +25,7 @@
 
     @yield('meta')
 
-    <link rel="stylesheet" href="{{ mix('static/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ asset('static/js/modernizr.js') }}"></script>
     @if($siteInfo['analytics_id'])
