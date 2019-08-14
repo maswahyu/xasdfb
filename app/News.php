@@ -157,7 +157,7 @@ class News extends Model
         $from      = Carbon::now()->subDays(7)->toDateString();
         $to        = Carbon::now()->toDateString();
 
-        $model = Cache::remember('getTrendingNow', $expiresAt, function () use ($take, $from, $to) {
+        $model = Cache::remember('getTrendingNow4', $expiresAt, function () use ($take, $from, $to) {
             return self::hydrate(DB::select('select t1.* FROM news t1 join (select category_id FROM news GROUP BY category_id) t2 ON t1.category_id = t2.category_id left join popularity_stats ps on ps.trackable_id = t1.id WHERE t1.published_at between ? and ? and ps.all_time_stats != 0 and t1.publish = 1 and t1.deleted_at is null order by ps.all_time_stats DESC LIMIT 4', [$from, $to]));
         });
 
