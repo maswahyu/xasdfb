@@ -317,7 +317,7 @@ class News extends Model
 
     public function getPublishedDate12Attribute()
     {
-        return optional($this->published_at)->format('d/m/y g:i A');
+        return optional($this->published_at)->format('m/d/y g:i A');
     }
 
     public function getParentNameAttribute()
