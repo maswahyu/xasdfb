@@ -151,14 +151,16 @@ class News extends Model
         return $model;
     }
 
-    public static function getTrending($take = 4)
+    public static function getTrending($take = 50)
     {
         $expiresAt = 3600;
         $from      = Carbon::now()->subDays(7)->toDateString();
         $to        = Carbon::now()->toDateString();
 
-        $model = Cache::remember('getTrendingWeek7777', $expiresAt, function () use ($take, $from, $to) {
-            return self::where('news.publish', 1)->whereBetween('news.published_at', [$from, $to])->groupBy('category_id')->getStats('all_time_stats', 'DESC', $take)->get();
+        $model = Cache::remember('getTrendingWeekly', $expiresAt, function () use ($take, $from, $to) {
+            $model = self::where('news.publish', 1)->whereBetween('news.published_at', [$from, $to])->getStats('all_time_stats', 'DESC', $take)->get();
+
+            return $model->unique('category_id')->take(4);
         });
 
         return $model;
