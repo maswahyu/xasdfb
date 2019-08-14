@@ -33,7 +33,7 @@
                 </div>
                 <div>
                     <ol>
-                        <li> Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia di atas 18 tahun dan tinggal di Indonesia</li>
+                        <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia di atas 18 tahun dan tinggal di Indonesia</li>
                         <li>Program ini tidak berlaku kepada seluruh pihak yang terkait dengan penyelenggaraan Program ini</li>
                         <li>Untuk mendapatkan hadiah, member harus memverifikasi nomor handphone terdaftar mereka.</li>
                         <li>Jangka waktu pengiriman hadiah paling lambat satu minggu setelah pengumuman pemenang</li>
@@ -43,9 +43,10 @@
                         <li>No KTP hanya bisa dimasukkan sekali saja dan tidak dapat diubah.</li>
                         <li>Setiap member hanya dapat memiliki 1 akun My Points</li>
                         <li>Bila ada indikasi kecurangan dari pihak member, pihak penyelenggara berhak untuk mendiskualifikasi member tanpa pemberitahuan terlebih dahulu.</li>
-                        <li>Jika member menang dan tidak dapat dihubungi dalam 3 hari kerja melalui email atau nomor telepon yang tertera, panitia berhak membatalkan pemberian hadiah.</li>
+                        <li>Jika member pemenang hadiah utama tidak dapat dihubungi dalam 3 hari kerja melalui email atau nomor telepon yang tertera, panitia berhak membatalkan pemberian hadiah.</li>
                         <li>Member tidak bisa memenangkan hadiah utama selama 2 bulan berturut-turut.</li>
                         <li>Bila pemenang member (pemenang hadiah bulanan & pemenang hadiah redeem) tidak sesuai dengan T&C, maka pihak penyelenggara berhak untuk tidak mengirimkan hadiah dan poin member otomatis akan hangus tanpa pemberitahuan terlebih dahulu.</li>
+                        <li>Jika pemenang hadiah merchandise tidak merespon pemberitahuan dari pihak logistik selama 3 hari berturut-turut melalui pesan whatsapp, maka pihak panitia berhak untuk tidak mengirimkan merchandise dan merchandise dianggap hangus.</li>
                     </ol>
                 </div>
             </div>
