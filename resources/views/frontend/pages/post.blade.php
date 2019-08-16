@@ -47,7 +47,7 @@
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
-                        <div class="post-meta__stat"><span>{{ $post->view_count }} views</span></div>
+                        <div class="post-meta__stat"><span>{{ isset($post->popularityStats->all_time_stats) ? seribu($post->popularityStats->all_time_stats + $post->view) : seribu($post->view) }} views</span></div>
 
                     </div>
 
