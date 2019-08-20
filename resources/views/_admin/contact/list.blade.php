@@ -28,7 +28,7 @@
                     <center>
                         <input type="checkbox" id="checkbox" class="myCheckboxes" value="{{ $item->id }}">
                     </center>
-                </td> 
+                </td>
                 <td>
                     @if(!$item->read_at)
                     <strong>{{ $item->name }}</strong>
@@ -40,7 +40,7 @@
                     {{ $item->subject }}
                 </td>
                 <td>
-                    <a href="{{action('Admin\ContactController@show', $item->id)}}">{{ str_limit($item->message, 50) }}</a>
+                    <a href="{{action('Admin\ContactController@show', $item->id)}}">{{ $item->message }}</a>
                 </td>
                 <td>
                     {{ $item->created_at->diffForHumans() }}
