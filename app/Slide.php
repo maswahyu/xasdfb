@@ -18,7 +18,7 @@ class Slide extends Model
 
     public static function getFeatured($take = 5)
     {
-        $model = Cache::rememberForever('getFeatured', function () use ($take) {
+        $model = Cache::rememberForever('getFeaturedSlider', function () use ($take) {
             return self::where('publish', self::STATUS_PUBLISHED)->where('is_featured', self::STATUS_PUBLISHED)->orderBy('updated_at', 'DESC')->take($take)->get();
         });
 
@@ -66,17 +66,28 @@ class Slide extends Model
         return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
     }
 
+    public function getImgAttribute()
+    {
+        return imageview($this->image);
+    }
+
+    public function getMobileImgAttribute()
+    {
+        return  $this->mobile_image ? imageview($this->mobile_image) : imageview($this->image);
+    }
+
     public static function newRecord($request)
     {
         $data= new Slide;
         $data->is_featured = $request->get('is_featured');
         $data->publish     = $request->get('publish');
         $data->image       = $request->get('image');
+        $data->mobile_image = $request->get('mobile_image');
         $data->url         = $request->get('url');
         $data->title       = $request->get('title');
 
         $data->save();
-        Cache::forget('getFeatured');
+        Cache::forget('getFeaturedSlider');
 
         return $data;
     }
@@ -87,12 +98,13 @@ class Slide extends Model
         $data->is_featured = $request->get('is_featured');
         $data->publish     = $request->get('publish');
         $data->image       = $request->get('image');
+        $data->mobile_image = $request->get('mobile_image');
         $data->url         = $request->get('url');
         $data->title       = $request->get('title');
 
         $data->save();
 
-        Cache::forget('getFeatured');
+        Cache::forget('getFeaturedSlider');
 
         return $data;
     }

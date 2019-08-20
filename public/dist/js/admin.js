@@ -89,15 +89,15 @@ $(function () {
     //
     $("#button-image").click(function(event){
         event.preventDefault();
-        PopupCenter('/file-manager/fm-button','fm','900','500');  
+        PopupCenter('/file-manager/fm-button','fm','900','500');
     });
 });
 
 var dataList = (function() {
-    
+
     var that = {};
 
-    that.init = function() { 
+    that.init = function() {
         var key = $('#key').val();
         $.ajaxSetup({
             headers: {
@@ -114,7 +114,7 @@ var dataList = (function() {
         }).done(function(data) {
             $('#spin').hide();
             document.getElementById("datalist").innerHTML = data;
-        });   
+        });
 
         $(document).on('click', '.pagination a', function (e) {
             var key = $('#key').val();

@@ -45,12 +45,24 @@
 
     <div class="home-below-fold">
 
-        <div class="home-below-fold__slider">
+        <div class="home-below-fold__slider hide-mobile">
             <div class="home-promo-slider jsHomeSlider">
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
                     <a href="{{ $post->url }}" alt="{{ $post->title }}">
-                    <img src="/img_placeholder_slider.jpg" data-lazy="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+                        <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->img }}" alt="{{ $post->title }}">
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="home-below-fold__slider show-mobile">
+            <div class="home-promo-slider jsHomeSlider">
+                @foreach($slides as $post)
+                <div class="home-promo-slider__slide">
+                    <a href="{{ $post->url }}" alt="{{ $post->title }}">
+                        <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->mobile_img }}" alt="{{ $post->title }}">
                     </a>
                 </div>
                 @endforeach

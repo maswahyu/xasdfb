@@ -41,6 +41,7 @@
                                     <tr><th> Is Featured </th><td> <span class="badge badge-{{ ($slide->is_featured == '0') ? 'warning' : 'info' }}">{{ ($slide->is_featured == '0') ? 'No' : 'Yes' }}</span> </td></tr>
                                     <tr><th> Publish </th><td> <span class="badge badge-{{ ($slide->publish == '0') ? 'warning' : 'info' }}">{{ ($slide->publish == '0') ? 'No' : 'Yes' }}</span> </td></tr>
                                     <tr><th> Image </th><td> <img src="{{ imagethumb($slide->image) }}" width="350"> </td></tr>
+                                    <tr><th> Mobile image </th><td> <img src="{{ imagethumb($slide->mobile_image) }}" width="350"> </td></tr>
                                     <tr><th> Url </th><td> {{ $slide->url }} </td></tr>
                                 </tbody>
                             </table>

@@ -18,6 +18,7 @@ class CreateSlidesTable extends Migration
             $table->integer('is_featured')->default(0);
             $table->integer('publish')->default(0);
             $table->string('image')->nullable();
+            $table->string('mobile_image')->nullable();
             $table->string('url')->nullable();
             $table->string('title')->nullable();
             $table->timestamps();

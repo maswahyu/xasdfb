@@ -70,6 +70,10 @@ $(document).ready(function() {
               title: 'Image'
           },
           {
+              fields: 'mobile_image',
+              title: 'Mobile Image'
+          },
+          {
               fields: 'featured',
               title: 'Is Featured'
           },

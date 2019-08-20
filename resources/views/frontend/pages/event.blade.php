@@ -4,24 +4,6 @@
 @section('head_title', 'Events')
 @section('head_url', url()->current())
 
-@section('inside-head')
-
-    <style type="text/css">
-
-        @media screen and (max-width: 600px) {
-          .hide-mobile {
-            visibility: hidden;
-            clear: both;
-            float: left;
-            margin: 10px auto 5px 20px;
-            width: 28%;
-            display: none;
-          }
-        }
-
-    </style>
-
-@endsection
 @section('content')
 
     <div class="container">
