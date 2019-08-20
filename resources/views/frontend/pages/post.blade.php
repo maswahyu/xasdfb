@@ -1,5 +1,10 @@
 @extends('frontend.layouts.skeleton')
 
+
+@section('meta_title', $post->meta_title ? $post->meta_title : $post->title )
+@section('meta_description', $post->meta_description ? strip_tags($post->meta_description) : strip_tags($post->summary))
+@section('meta_keyword', $post->meta_keyword ? strip_tags($post->meta_keyword) : '')
+
 @section('head_title', $post->title)
 @section('head_description', strip_tags($post->summary))
 @section('head_image', imageview(str_replace(' ', '%20', $post->image)))

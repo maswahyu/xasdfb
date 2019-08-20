@@ -1,5 +1,6 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', 'Privacy Policy')
 @section('head_title', 'Privacy Policy')
 @section('head_url', url('privacy-policy'))
 

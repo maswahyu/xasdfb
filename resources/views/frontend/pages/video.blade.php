@@ -1,6 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@section('meta_title', 'Video')
+@section('head_title', 'Video')
+@section('head_url', url()->current())
 
 @section('content')
 
@@ -28,11 +30,14 @@
 
         </div>
 
-        <div class="row latest-video">
+        <div class="row">
 
             <div class="section-title section-title--plain">
                 <span class="section-title__label">Latest Videos</span>
             </div>
+        </div>
+
+        <div class="row latest-video">
 
             <div class="latest-video__sticky">
                 @include('frontend.partials.post-card-video-sticky', ['video' => $stickyVideo])

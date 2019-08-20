@@ -26,6 +26,7 @@ class PostController extends Controller
 
 	    return view('frontend.pages.category', [
 			'category'         => $category,
+            'head'             => $category,
 			'type'             => $type,
 			'stickyPosts'      => $sticky,
 			'latestPosts'      => $latest,
@@ -55,6 +56,7 @@ class PostController extends Controller
 	    return view('frontend.pages.category', [
 			'category'         => $category,
 			'subcategory'      => $subcategory,
+            'head'             => $subcategory,
 			'type'             => $type,
 			'stickyPosts'      => $sticky,
 			'latestPosts'      => $latest,

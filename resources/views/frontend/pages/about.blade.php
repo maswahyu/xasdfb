@@ -1,5 +1,6 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', 'Abous Us')
 @section('head_title', 'Abous Us')
 @section('head_url', url('about-us'))
 

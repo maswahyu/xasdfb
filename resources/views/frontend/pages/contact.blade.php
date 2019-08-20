@@ -1,5 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', 'Contact Us')
+@section('head_title', 'Contact Us')
+@section('head_url', url()->current())
+
 @section('content')
 <div class="container">
 

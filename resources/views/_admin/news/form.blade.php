@@ -132,6 +132,33 @@ use App\News;
 </div>
 
 <div class="form-group">
+    <a href="javascript:void(0)" id="advancedButton">Advanced +</a>
+    <div id="advanced">
+        <div class="form-group">
+            <label for="meta_title">Meta Title</label>
+            <input class="form-control form-control-sm" name="meta_title" type="text" id="meta_title" placeholder="Meta Title" value="{{ isset($news->meta_title) ? $news->meta_title : old('meta_title') }}" required>
+            <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+            <p class="help-block"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="meta_description">Meta Description</label>
+            <textarea class="form-control form-control-sm" rows="2" name="meta_description" type="textarea" id="meta_description" maxlength="300" placeholder="Meta description">{{ isset($news->meta_description) ? $news->meta_description : old('meta_description') }}</textarea>
+            <span class="text-danger">{{ $errors->first('meta_description') }}</span>
+            <p class="help-block"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="meta_keyword">Meta Keyword</label>
+            <textarea class="form-control form-control-sm" rows="2" name="meta_keyword" type="textarea" id="meta_keyword" maxlength="300" placeholder="ex. style, music, movie">{{ isset($news->meta_keyword) ? $news->meta_keyword : old('meta_keyword') }}</textarea>
+            <span class="text-danger">{{ $errors->first('meta_keyword') }}</span>
+            <p class="help-block"></p>
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
 
@@ -210,6 +237,12 @@ use App\News;
 
         });
         @endif
+
+        $('#advanced').addClass('d-none');
+
+        $('#advancedButton').on('click', function() {
+            $('#advanced').removeClass('d-none');
+        });
     });
 
 </script>

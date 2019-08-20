@@ -1,5 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', $album->name)
+@section('meta_description', $album->name)
+
 @section('head_title', $album->name)
 @section('head_image', $album->thumbnail)
 @section('head_url', $album->url)

@@ -445,6 +445,11 @@ class News extends Model
         $data->category_id  = $request->get('category_id');
         $data->user_id      = Auth::guard('admin')->id();
         $data->slug         = str_slug($request->get('title')).'-'.self::generateRandomString();
+
+        $data->meta_title = $request->get('meta_title');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keyword = $request->get('meta_keyword');
+
         $data->save();
 
         $tags = $request->get('tags');
@@ -483,6 +488,11 @@ class News extends Model
 
         $data->category_id  = $request->get('category_id');
         $data->user_id      = Auth::guard('admin')->id();
+
+        $data->meta_title = $request->get('meta_title');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keyword = $request->get('meta_keyword');
+
         $data->save();
 
         $tags = $request->get('tags');

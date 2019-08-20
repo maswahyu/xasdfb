@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('head_title', $siteInfo['site_meta_title']) | {{ $siteInfo['site_name'] }}</title>
+    <title>@yield('meta_title', $siteInfo['site_meta_title']) | {{ $siteInfo['site_name'] }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="lazone">
-    <meta name="description" content="@yield('head_description', $siteInfo['site_meta_description'])">
-    <meta name="keywords" content="{{ $siteInfo['site_meta_keyword'] }}">
+    <meta name="description" content="@yield('meta_description', $siteInfo['site_meta_description'])">
+    <meta name="keywords" content="@yield('meta_keyword', $siteInfo['site_meta_keyword'])">
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ $siteInfo['site_name'] }}" />
-    <meta property="og:title" content="@yield('head_title', $siteInfo['site_meta_title']) " />
+    <meta property="og:title" content="@yield('head_title', $siteInfo['site_meta_title'])" />
     <meta property="og:image" content="@yield('head_image', asset('static/images/img_point2.jpg'))" />
     <meta property="og:description" content="@yield('head_description', $siteInfo['site_meta_description'])" />
     <meta property="og:url" content="@yield('head_url', url('/'))" />
@@ -22,10 +22,10 @@
     <meta property="og:image:height" content="366" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet">
-
+    <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
-
     <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('static/css/custom.css') }}?v={{ filemtime(public_path() . '/static/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ asset('static/js/modernizr.js') }}"></script>
     @if($siteInfo['analytics_id'])
@@ -39,42 +39,6 @@
       gtag('config', '{{ $siteInfo['analytics_id'] }}');
     </script>
     @endif
-    <style type="text/css">
-        .point-nav__item.active:after, .point-nav__item:hover:after{
-            bottom: 0px;
-            height: 5px;
-        }
-        .dropdown-menu__dropdown-link.active:after, .dropdown-menu__dropdown-link:hover:after {
-            bottom: 0px;
-            height: 5px;
-        }
-        .mobile-nav {
-            max-width: 25rem;
-        }
-        .mobile-nav a {
-            font-size: 1.6rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .point-nav__item {
-            cursor: pointer;
-        }
-        .list__item.active:after, .list__item:hover:after {
-            bottom: 0px;
-            height: 5px;
-        }
-        .avatar{
-            height: 32px;
-            width: 32px;
-        }
-
-        @media screen and (max-width: 600px) {
-          .shoutbox {
-            min-height: 0;
-          }
-        }
-    </style>
-
     {!! $siteInfo['headercode'] !!}
     @yield('inside-head')
 </head>

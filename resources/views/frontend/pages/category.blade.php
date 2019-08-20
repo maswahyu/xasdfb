@@ -1,9 +1,14 @@
 @extends('frontend.layouts.skeleton')
 
-@section('head_title', $category->name)
-@section('head_description', $category->description)
-@section('head_image', $category->img)
-@section('head_url', $type ? $category->url : $subcategory->url)
+
+@section('meta_title', $head->meta_title ? $head->meta_title : $head->name )
+@section('meta_description', $head->meta_description ? strip_tags($head->meta_description) : strip_tags($head->description))
+@section('meta_keyword', $head->meta_keyword ? strip_tags($head->meta_keyword) : '')
+
+@section('head_title', $head->name)
+@section('head_description', $head->description)
+@section('head_image', $head->img)
+@section('head_url', $head->url)
 
 @section('content')
 

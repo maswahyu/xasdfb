@@ -1,5 +1,9 @@
 @extends('frontend.layouts.skeleton', ['contentClass' => 'no-padding'])
 
+@section('meta_title', 'What is My Points?')
+@section('head_title', 'What is My Points?')
+@section('head_url', url()->current())
+
 @section('content')
 
 <div class="point-banner">

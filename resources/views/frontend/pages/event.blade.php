@@ -1,5 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', 'Events')
+@section('head_title', 'Events')
+@section('head_url', url()->current())
+
 @section('inside-head')
 
     <style type="text/css">

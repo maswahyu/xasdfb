@@ -1,5 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', $gallery->title)
+@section('meta_description', $gallery->title)
+
 @section('head_title', $gallery->title)
 @section('head_image', 'https://img.youtube.com/vi/'.$gallery->youtube_id.'/hqdefault.jpg')
 @section('head_url', $gallery->url)

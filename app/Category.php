@@ -31,6 +31,10 @@ class Category extends Model
             $data->slug  = $data->slug.rand(1, 100);
         }
 
+        $data->meta_title = $request->get('meta_title');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keyword = $request->get('meta_keyword');
+
         $data->save();
         Cache::forget('menu-category');
         Cache::forget('get-interest');
@@ -46,6 +50,10 @@ class Category extends Model
         $data->image       = $request->get('image');
         $data->description = $request->get('description');
         $data->publish     = $request->get('publish');
+
+        $data->meta_title = $request->get('meta_title');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keyword = $request->get('meta_keyword');
 
         $data->save();
 
@@ -108,7 +116,7 @@ class Category extends Model
     }
 
     public static function getInterest()
-    {   
+    {
         $value = Cache::rememberForever('get-interest', function () {
             return self::where('parent_id', '!=', self::TOP_PARENT)->where('publish', self::STATUS_PUBLISHED)->get();
         });

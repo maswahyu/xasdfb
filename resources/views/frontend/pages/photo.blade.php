@@ -1,6 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@section('meta_title', 'Photo')
+@section('head_title', 'Photo')
+@section('head_url', url()->current())
 
 @section('content')
 
@@ -14,7 +16,7 @@
             <div class="span-12">
 
                 <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Category Title</span>
+                    <span class="section-title__label section-title__label--category">Gallery</span>
                 </div>
 
             </div>

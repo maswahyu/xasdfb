@@ -1,0 +1,33 @@
+.point-nav__item.active:after, .point-nav__item:hover:after{
+    bottom: 0px;
+    height: 5px;
+}
+.dropdown-menu__dropdown-link.active:after, .dropdown-menu__dropdown-link:hover:after {
+    bottom: 0px;
+    height: 5px;
+}
+.mobile-nav {
+    max-width: 25rem;
+}
+.mobile-nav a {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.point-nav__item {
+    cursor: pointer;
+}
+.list__item.active:after, .list__item:hover:after {
+    bottom: 0px;
+    height: 5px;
+}
+.avatar{
+    height: 32px;
+    width: 32px;
+}
+
+@media screen and (max-width: 600px) {
+  .shoutbox {
+    min-height: 0;
+  }
+}

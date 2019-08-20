@@ -1,5 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta_title', 'Search result for "'.request()->get('search').'"')
+@section('head_title', 'Search result for "'.request()->get('search').'"')
+
 {{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
 
 @section('content')
