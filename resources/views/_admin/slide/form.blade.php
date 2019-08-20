@@ -33,7 +33,7 @@
         <div class="input-group-btn">
             <button type="button" class="btn btn-block btn-sm btn-default btn-flat" id="button-image2">Browse</button>
         </div>
-        <input id="image_path2" name="mobile_image" type="text" class="form-control form-control-sm" value="{{ isset($slide->mobile_image) ? $slide->mobile_image : old('mobile_image') }}" placeholder="Image" required>
+        <input id="image_path2" name="mobile_image" type="text" class="form-control form-control-sm" value="{{ isset($slide->mobile_image) ? $slide->mobile_image : old('mobile_image') }}" placeholder="Mobile Image">
     </div>
     <span class="text-danger">{{ $errors->first('mobile_image') }}</span>
     <p class="help-block"></p>
