@@ -136,7 +136,7 @@ use App\News;
     <div id="advanced">
         <div class="form-group">
             <label for="meta_title">Meta Title</label>
-            <input class="form-control form-control-sm" name="meta_title" type="text" id="meta_title" placeholder="Meta Title" value="{{ isset($news->meta_title) ? $news->meta_title : old('meta_title') }}" required>
+            <input class="form-control form-control-sm" name="meta_title" type="text" id="meta_title" placeholder="Meta Title" value="{{ isset($news->meta_title) ? $news->meta_title : old('meta_title') }}">
             <span class="text-danger">{{ $errors->first('meta_title') }}</span>
             <p class="help-block"></p>
         </div>
