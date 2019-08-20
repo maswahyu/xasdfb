@@ -21,6 +21,9 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keyword')->nullable();
             $table->timestamps();
         });
     }

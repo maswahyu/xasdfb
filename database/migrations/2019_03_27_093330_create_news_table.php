@@ -32,6 +32,9 @@ class CreateNewsTable extends Migration
             $table->dateTime('highlight_at')->nullable();
             $table->dateTime('mustread_at')->nullable();
             $table->string('shortenUrl')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keyword')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
