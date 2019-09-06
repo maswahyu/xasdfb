@@ -98,7 +98,7 @@ class Gallery extends Model
         if (!isset($video_id[1])) {
             $video_id = explode("youtu.be/", $link);
         }
-        $youtubeID = isset($video_id[1]) ? $video_id[1] : null;
+        $youtubeID = isset($video_id[1]) ? $video_id[1] : 'H8vDgljjbHQ';
         if (empty($video_id[1])) $video_id = explode("/v/", $link);
         $video_id = explode("&", $video_id[1]);
         $youtubeVideoID = $video_id[0];
