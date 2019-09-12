@@ -17,6 +17,8 @@ class Category extends Model
 
     const TOP_PARENT = 0;
     const STATUS_PUBLISHED = 1;
+    const LENSA = 'lensaphoto';
+    const SNEAKERLAND = 'sneakerland';
 
     public static function newRecord($request)
     {

@@ -19,6 +19,15 @@ class PostController extends Controller
 	    	abort(404);
 	    }
 
+        if ($category->parent_id != Category::TOP_PARENT) {
+
+            $slug = array(Category::SNEAKERLAND, Category::LENSA);
+
+            if (!in_array($category->slug, $slug)) {
+                return redirect($category->url);
+            }
+        }
+
 	    $sticky 	 = News::getSticky(2, $category);
 	    $latest 	 = News::getLatest(3, $category);
 	    $recommended = News::getRecommended();
@@ -48,6 +57,19 @@ class PostController extends Controller
 	    	abort(404);
 	    }
 
+        if ($subcategory->parent_id == Category::TOP_PARENT) {
+
+            return redirect($category->url);
+
+        } else {
+
+            $slug = array(Category::SNEAKERLAND, Category::LENSA);
+
+            if (in_array($subcategory->slug, $slug)) {
+                return redirect($subcategory->slug);
+            }
+        }
+
     	$sticky 	 = News::getSticky(2, $subcategory);
 	    $latest 	 = News::getLatest(3, $subcategory);
 	    $recommended = News::getRecommended();
@@ -72,6 +94,18 @@ class PostController extends Controller
     	if (!$post) {
 	    	abort(404);
 	    }
+
+        $category = Category::detail($category);
+
+        if (!$category) {
+            return redirect($post->url);
+        }
+
+        $subcategory = Category::detail($subcategory);
+
+        if (!$subcategory) {
+            return redirect($post->url);
+        }
 
 	    $related = News::related($post->slug, $post->category_id);
 
