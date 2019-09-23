@@ -45,3 +45,16 @@
     display: none;
   }
 }
+
+.point-banner {
+    background: url(/static/images/img_point2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.video-padding {
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
