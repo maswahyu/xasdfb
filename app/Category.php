@@ -143,6 +143,14 @@ class Category extends Model
 
     public function getSubUrlAttribute()
     {
+        if ($this->slug == self::LENSA) {
+            return url(self::LENSA);
+        }
+
+        if ($this->slug == self::SNEAKERLAND) {
+            return url(self::SNEAKERLAND);
+        }
+
         return url('/'.$this->parent->slug.'/'.$this->slug);
     }
 

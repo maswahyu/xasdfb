@@ -24,6 +24,7 @@ class News extends Model
     const NEWS = 'news';
     const TAKE_RECOMENDED = 5;
     const LENSAPHOTO = 'lensaphoto';
+    const SNEAKERLAND = 'sneakerland';
 
     protected $dates = ['published_at'];
 
@@ -302,9 +303,19 @@ class News extends Model
 
     public function getUrlAttribute()
     {
-        return isset($this->category->parent) ?
-            url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug) :
-            url('lifestyle/style/'.$this->slug);
+        if (isset($this->category->parent)) {
+
+            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO);
+
+            if (in_array($this->category->slug, $slug)) {
+                return url($this->getCategorySlugAttribute().'/'.$this->slug);
+            }
+
+            return url($this->category->parent->slug.'/'.$this->getCategorySlugAttribute().'/'.$this->slug);
+
+        } else {
+            return url('lifestyle/style/'.$this->slug);
+        }
     }
 
     public function getThumbnailAttribute()
@@ -324,9 +335,20 @@ class News extends Model
 
     public function getParentNameAttribute()
     {
-        return isset($this->category) && isset($this->category->parent) ?
-                optional($this->category->parent)->name :
-                'Lifestyle';
+        if (isset($this->category) && isset($this->category->parent)) {
+
+            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO);
+
+            if (in_array($this->category->slug, $slug)) {
+                return $this->getCategoryNameAttribute();
+            }
+
+            return optional($this->category->parent)->name;
+
+        } else {
+
+            return 'Lifestyle';
+        }
     }
 
     public function getCategoryNameAttribute()

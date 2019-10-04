@@ -107,12 +107,37 @@ class PostController extends Controller
             return redirect($post->url);
         }
 
+        if ($subcategory->slug == Category::SNEAKERLAND) {
+            return redirect(Category::SNEAKERLAND.'/'.$slug);
+        }
+
+        if ($subcategory->slug == Category::LENSA) {
+            return redirect(Category::LENSA.'/'.$slug);
+        }
+
 	    $related = News::related($post->slug, $post->category_id);
 
 	    return view('frontend.pages.post', [
 	        'post' => $post,
 	        'relatedPosts' => $related,
 	    ]);
+    }
+
+    public function topPost($slug)
+    {
+        $slug = preg_replace('/~.+/', '', $slug);
+        $post = News::detail($slug);
+
+        if (!$post) {
+            abort(404);
+        }
+
+        $related = News::related($post->slug, $post->category_id);
+
+        return view('frontend.pages.post', [
+            'post' => $post,
+            'relatedPosts' => $related,
+        ]);
     }
 
     public function tags($hashtag)

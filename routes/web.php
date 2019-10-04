@@ -63,6 +63,9 @@ Route::get('/Community/{path}', 'StorageController@eventOldImage')->where('path'
 Route::get('/gallery-photos/{path}', 'StorageController@galleryPhotoOldImage')->where('path', '.+');
 Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirectFile');
 
+Route::get('lensaphoto/{slug}', 'PostController@topPost');
+Route::get('sneakerland/{slug}', 'PostController@topPost');
+
 Route::get('{category}', 'PostController@category');
 Route::get('{category}/{subcategory}', 'PostController@subcategory');
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');

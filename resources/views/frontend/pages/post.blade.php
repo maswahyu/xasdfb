@@ -30,8 +30,9 @@
     <div class="row flex-justify-center post-breadcrumb">
 
         <ul class="breadcrumb">
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">{{ $post->parent_name }}</a></li>
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="#">{{ $post->category_name }}</a></li>
+
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->parent->url }}">{{ $post->parent_name }}</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->url }}">{{ $post->category_name }}</a></li>
         </ul>
 
     </div>
