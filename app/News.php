@@ -174,7 +174,7 @@ class News extends Model
             if ($category->parent_id == 0) {
 
                 return self::where('publish', self::STATUS_PUBLISHED)
-                        ->whereIn('category_id', $category->children()->pluck('id'))
+                        ->whereIn('category_id', $category->menu()->pluck('id'))
                         ->latest('published_at')
                         ->take($take)
                         ->skip($offset)
@@ -255,7 +255,7 @@ class News extends Model
         $model = Cache::remember('getSticky'.$category->id, 3600, function () use ($take, $category) {
             if ($category->parent_id == 0) {
                 return self::where('publish', self::STATUS_PUBLISHED)
-                        ->whereIn('category_id',  $category->children()->pluck('id'))
+                        ->whereIn('category_id',  $category->menu()->pluck('id'))
                         ->latest('published_at')
                         ->take($take)
                         ->get();
