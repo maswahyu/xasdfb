@@ -209,13 +209,13 @@ class News extends Model
 
         if ($category->parent_id == 0) {
             $post = self::where('publish', self::STATUS_PUBLISHED)
-                    ->whereIn('category_id', $category->children()->pluck('id'))
+                    ->whereIn('category_id', $category->menu()->pluck('id'))
                     ->latest('published_at')
                     ->take($offset)
                     ->pluck('id');
 
             return self::where('publish', self::STATUS_PUBLISHED)
-                    ->whereIn('category_id', $category->children()->pluck('id'))
+                    ->whereIn('category_id', $category->menu()->pluck('id'))
                     ->latest('published_at')
                     ->whereNotIn('id', $post)
                     ->paginate($paginate, ['*'], 'page', $pageNumber);
