@@ -137,12 +137,12 @@ class News extends Model
 
                 if (count($interest) < self::TAKE_RECOMENDED) {
 
-                    $model = Cache::rememberForever('getRecommended-'.Auth::id(), function () use ($take, $interest) {
+                    $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended-'.Auth::id(), function () use ($take, $interest) {
                         return self::where('publish', self::STATUS_PUBLISHED)->whereIn('category_id', $interest)->latest('published_at')->take($take)->get();
                     });
 
                 } else {
-                    $model = Cache::rememberForever('getRecommended5-'.Auth::id(), function () use ($take, $interest) {
+                    $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended5-'.Auth::id(), function () use ($take, $interest) {
                         return self::hydrate(DB::select('SELECT t1.* FROM news t1 JOIN (SELECT post.category_id, MAX(post.published_at) published_at FROM news as post GROUP BY category_id) t2 ON t1.category_id = t2.category_id AND t1.published_at = t2.published_at WHERE t1.publish = 1 and t1.deleted_at is null and t1.category_id in ('.$interest->implode(', ').') order by published_at DESC LIMIT 5'));
                     });
                 }
