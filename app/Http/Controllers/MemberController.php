@@ -166,7 +166,7 @@ class MemberController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            return redirect()->route('index');
+            return redirect()->to(env('URL_MYPOINT'));
 
         } else {
         	return redirect('/');
