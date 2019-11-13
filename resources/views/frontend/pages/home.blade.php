@@ -16,13 +16,13 @@
             <div class="home-grid__must-reads-list">
                 @foreach($mustReads as $post)
                 <div class="span-12 span-md-6 span-lg-12">
-                    @include('frontend.partials.post-card', ['post' => $post])
+                    @include('frontend.partials.post-card', ['post' => $post, 'utm' => '?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail'])
                 </div>
                 @endforeach
             </div>
 
             <div class="home-grid__must-reads-highlights">
-                @include('frontend.partials.post-card-highlight', ['post' => $highlight])
+                @include('frontend.partials.post-card-highlight', ['post' => $highlight, 'utm' => '?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail'])
             </div>
 
         </div>
@@ -36,7 +36,7 @@
             <div class="row">
                 @foreach($recommended as $post)
                 <div class="span-12 span-md-6 span-lg-4 span-xl-12">
-                    @include('frontend.partials.post-card-mini', ['post' => $post])
+                    @include('frontend.partials.post-card-mini', ['post' => $post, 'utm' => auth()->check() ? '?utm_source=Recommended&utm_medium=Login&utm_campaign=LazoneDetail' : '?utm_source=Recommended&utm_medium=NotLogin&utm_campaign=LazoneDetail'])
                 </div>
                 @endforeach
             </div>
@@ -49,7 +49,7 @@
             <div class="home-promo-slider jsHomeSlider">
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
-                    <a href="{{ $post->url }}" alt="{{ $post->title }}">
+                    <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
                         <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->img }}" alt="{{ $post->title }}">
                     </a>
                 </div>
@@ -61,7 +61,7 @@
             <div class="home-promo-slider jsHomeSlider">
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
-                    <a href="{{ $post->url }}" alt="{{ $post->title }}">
+                    <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
                         <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->mobile_img }}" alt="{{ $post->title }}">
                     </a>
                 </div>
@@ -92,7 +92,7 @@
             @if($trending)
             @foreach($trending as $post)
             <div class="span-12 span-md-6 span-lg-3">
-                @include('frontend.partials.post-card-simple', ['post' => $post])
+                @include('frontend.partials.post-card-simple', ['post' => $post, 'utm' => '?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail'])
             </div>
             @endforeach
             @endif
@@ -197,7 +197,7 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <a href="{{ url }}" class="post-card post-card--wide">
+    <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail" class="post-card post-card--wide">
 
         <div class="post-card__thumbnail">
             <img class="post-card__img" src="{{ thumbnail }}" alt="">

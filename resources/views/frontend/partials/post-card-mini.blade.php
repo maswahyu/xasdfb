@@ -1,4 +1,4 @@
-<a href="{{ $post->url }}" class="post-card" alt="{{ $post->title }}">
+<a href="{{ $post->url }}{!! isset($utm) ? $utm : '' !!}" class="post-card" alt="{{ $post->title }}">
 
     <div class="post-card__meta post-meta">
 
@@ -6,7 +6,7 @@
 
     <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
-        <div class="post-meta__stat"><span>{{ $post->view_count }} views</span></div>
+        {{-- <div class="post-meta__stat"><span>{{ $post->view_count }} views</span></div> --}}
 
     </div>
 

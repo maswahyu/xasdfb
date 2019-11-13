@@ -1,4 +1,4 @@
-<a href="{{ $post->url }}" class="post-card post-card--simple" alt="{{ $post->title }}">
+<a href="{{ $post->url }}{!! isset($utm) ? $utm : '' !!}" class="post-card post-card--simple" alt="{{ $post->title }}">
 
     <div class="post-card__thumbnail">
         <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
