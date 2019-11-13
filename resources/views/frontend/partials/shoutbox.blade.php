@@ -7,7 +7,7 @@
         </div>
 
         <div class="shoutbox__cta">
-            <a href="{{ url('interest') }}" class="btn btn-crimson"><strong class="text-white">PILIH MINATMU</strong></a>
+            <a href="{{ url('interest') }}?utm_source=PilihMinatmu&utm_medium=Interest&utm_campaign=LazoneDetail" class="btn btn-crimson"><strong class="text-white">PILIH MINATMU</strong></a>
         </div>
 
     </div>

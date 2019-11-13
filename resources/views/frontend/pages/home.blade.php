@@ -169,7 +169,7 @@
 
             <div class="section-title section-title--plain section-title--has-more">
                 <span class="section-title__label">Videos</span>
-                <a href="{{ url('gallery/video') }}" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
+                <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
             </div>
 
             <div class="row no-gutters">
