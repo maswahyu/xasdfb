@@ -290,7 +290,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="javascript:void(0)">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO SECRET WORD</a>
                     </div>
 
                 </div>
