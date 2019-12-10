@@ -58,3 +58,25 @@
   padding-top: 8rem;
   padding-bottom: 3rem;
 }
+
+.f-none {
+  color: rgba(0, 0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .shoutbox__cta--left {
+      text-align: left;
+      padding-left: 16px;
+  }
+}
+
+.btn-shoutbox {
+    margin-bottom: 1.5rem;
+    padding: .7rem 2.2rem;
+    font-size: 1.4rem;
+}
+
+.new-shoutbox{
+    position: relative;
+    top: 2rem;
+}

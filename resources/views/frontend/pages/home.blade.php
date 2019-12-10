@@ -131,20 +131,23 @@
             {{-- Shoutbox lazone --}}
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background" src={{ asset('static/images/lazone-prize-cta.jpg') }} />
+                <img class="shoutbox__background hide-mobile" src={{ asset('static/images/lazone-prize-12.jpg') }} />
+                <img class="shoutbox__background show-mobile" src={{ asset('static/images/lazone-prize-12-responsive.jpg') }} />
 
                 <div class="shoutbox__content-wrapper">
 
-                    <div class="shoutbox__title shoutbox__title--extra-bold"><span>Menangkan Hadiah Menarik Tiap Bulan!</span></div>
-
-                    <div class="shoutbox__text shoutbox__text--extra-space">
-                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                        <span class="f-none">Menangkan Hadiah Menarik Tiap Bulan!</span>
                     </div>
 
-                    <div class="shoutbox__cta shoutbox__cta--left">
-                        <a href="{{ url('points') }}" class="btn btn-ghost-white btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                    <div class="shoutbox__text shoutbox__text--extra-space">
+                        <p class="f-none">Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    </div>
+
+                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                        <a href="{{ url('points') }}" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
                         @guest
-                        <a href="{{ url('member/login') }}" class="btn btn-white btn-shoutbox" alt="Login"><span class="semibold">DAFTAR SEKARANG</strong></a>
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
                         @endguest
                     </div>
 
