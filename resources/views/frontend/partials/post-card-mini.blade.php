@@ -1,8 +1,12 @@
-<a href="{{ $post->url }}{!! isset($utm) ? $utm : '' !!}" class="post-card" alt="{{ $post->title }}">
+<div class="post-card">
 
     <div class="post-card__meta post-meta">
 
-    <div class="post-meta__category"><span>{{ $post->category_name }}</span></div>
+    <div class="post-meta__category">
+        <a href="{{ $post->category->url }}" alt="{{ $post->category_name }}">
+            <span>{{ $post->category_name }}</span>
+        </a>
+    </div>
 
     <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
@@ -10,6 +14,8 @@
 
     </div>
 
-<div class="post-card__title"><span>{{ $post->title }}</span></div>
+    <a href="{{ $post->url }}{!! isset($utm) ? $utm : '' !!}" alt="{{ $post->title }}">
+        <div class="post-card__title"><span>{{ $post->title }}</span></div>
+    </a>
 
-</a>
+</div>

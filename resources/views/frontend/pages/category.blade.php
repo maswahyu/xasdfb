@@ -128,17 +128,23 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <a href="{{ url }}" class="post-card post-card--wide">
+    <div class="post-card post-card--wide">
 
         <div class="post-card__thumbnail">
-            <img class="post-card__img" src="{{ thumbnail }}" alt="">
+            <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail">
+                <img class="post-card__img" src="{{ thumbnail }}" alt="">
+            </a>
         </div>
 
         <div class="post-card__info">
 
             <div class="post-card__meta post-meta">
 
-                <div class="post-meta__category"><span>{{ category }}</span></div>
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
 
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
@@ -146,13 +152,16 @@
 
             </div>
 
-            <div class="post-card__title">
-                <span>{{ title }}</span>
-            </div>
+            <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
 
         </div>
 
-    </a>
+    </div>
+
 </script>
 @endverbatim
 
