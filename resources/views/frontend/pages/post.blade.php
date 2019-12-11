@@ -49,7 +49,11 @@
 
                     <div class="post-meta post-meta--centered">
 
-                        <div class="post-meta__category"><span>{{ $post->category_name }}</span></div>
+                        <div class="post-meta__category">
+                            <a href="{{ $post->category->url }}" alt="{{ $post->category_name }}">
+                                <span>{{ $post->category_name }}</span>
+                            </a>
+                        </div>
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
@@ -186,32 +190,40 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <a href="{{ url }}" class="post-card post-card--wide">
+    <div class="post-card post-card--wide">
 
-            <div class="post-card__thumbnail">
+        <div class="post-card__thumbnail">
+            <a href="{{ url }}" alt="{{ title }}">
                 <img class="post-card__img" src="{{ thumbnail }}" alt="">
-            </div>
+            </a>
+        </div>
 
-            <div class="post-card__info">
+        <div class="post-card__info">
 
-                <div class="post-card__meta post-meta">
+            <div class="post-card__meta post-meta">
 
-                    <div class="post-meta__category"><span>{{ category }}</span></div>
-
-                    <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
-                    <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}">
+                        <span>{{ category }}</span>
+                    </a>
                 </div>
 
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+
+            </div>
+
+            <a href="{{ url }}" alt="{{ title }}">
                 <div class="post-card__title">
                     <span>{{ title }}</span>
                 </div>
+            </a>
 
-            </div>
+        </div>
 
-        </a>
-    </script>
+    </div>
+</script>
 @endverbatim
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
