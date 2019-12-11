@@ -61,7 +61,7 @@
         <div class="span-12">
 
             <div class="placement">
-                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="">
+                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="ads">
             </div>
 
         </div>
@@ -108,23 +108,31 @@
 
     <div class="span-12 span-md-4 span-lg-3">
 
-        <a href="{{ url }}" class="post-card post-card--fourth">
+        <div class="post-card post-card--fourth">
 
             <div class="post-card__thumbnail post-card__thumbnail--fourth">
-                <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
+                <a href="{{ url }}" alt="{{ title }}">
+                    <img class="post-card__img post-card__img--fourth" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="">
+                </a>
             </div>
 
             <div class="post-card__meta post-meta">
 
-                <div class="post-meta__category"><span>{{ category }}</span></div>
+                <div class="post-meta__category">
+                    <a href="/gallery/video" alt="category">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
 
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
             </div>
 
-            <div class="post-card__title">
-                <span>{{ title }}</span>
-            </div>
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
             <div class="post-card__additional stat-with-icon">
                 <span class="stat-with-icon__icon">
                     @endverbatim
@@ -134,7 +142,7 @@
                 <span class="stat-with-icon__text">{{ duration }}</span>
             </div>
 
-        </a>
+        </div>
 
     </div>
 

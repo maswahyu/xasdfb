@@ -116,23 +116,31 @@
 
     <div class="span-12 span-md-4 span-lg-3">
 
-        <a href="{{ url }}" class="post-card post-card--fourth">
+        <div class="post-card post-card--fourth">
 
             <div class="post-card__thumbnail post-card__thumbnail--fourth">
-            <img class="post-card__img post-card__img--fourth" src="{{ thumbnail }}" alt="">
+                <a href="{{ url }}" alt="{{ title }}">
+                    <img class="post-card__img post-card__img--fourth" src="{{ thumbnail }}" alt="">
+                </a>
             </div>
 
             <div class="post-card__meta post-meta">
 
-                <div class="post-meta__category"><span>{{ category }}</span></div>
+                <div class="post-meta__category">
+                    <a href="/gallery/photo" alt="photo">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
 
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
             </div>
 
-            <div class="post-card__title">
-                <span>{{ title }}</span>
-            </div>
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
             <div class="post-card__additional stat-with-icon">
                 <span class="stat-with-icon__icon">
                     @endverbatim
@@ -142,7 +150,7 @@
                 <span class="stat-with-icon__text">{{ photo_count }}</span>
             </div>
 
-        </a>
+        </div>
 
     </div>
 

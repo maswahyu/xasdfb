@@ -1,8 +1,10 @@
-<a href="{{ url('video/detail/'.$video->slug) }}" class="post-card post-card--video-horizontal">
+<div class="post-card post-card--video-horizontal">
 
     <div class="post-card__thumbnail post-card__thumbnail--video-horizontal">
 
-        <img class="post-card__img post-card__img--video-horizontal" src="{{ imageview('') }}" data-src="https://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" alt="">
+        <a href="{{ $video->url }}" alt="{{ $video->title }}">
+            <img class="post-card__img post-card__img--video-horizontal" src="{{ imageview('') }}" data-src="https://img.youtube.com/vi/{{ $video->youtube_id }}/hqdefault.jpg" alt="">
+        </a>
 
         <div class="post-card__overlay"></div>
 
@@ -24,15 +26,21 @@
 
         <div class="post-card__meta post-meta">
 
-            <div class="post-meta__category"><span>{{ $video->category }}</span></div>
+            <div class="post-meta__category">
+                <a href="{{ url('gallery/video') }}" alt="{{ $video->type }}">
+                    <span>{{ $video->type }}</span>
+                </a>
+            </div>
 
             <div class="post-meta__stat"><span>{{ $video->published_date }}</span></div>
 
         </div>
 
-        <div class="post-card__title post-card__title--horizontal">
-            <span>{{ $video->title }}</span>
-        </div>
+        <a href="{{ $video->url }}" alt="{{ $video->title }}">
+            <div class="post-card__title post-card__title--horizontal">
+                <span>{{ $video->title }}</span>
+            </div>
+        </a>
 
         <div class="post-card__additional stat-with-icon">
             <span class="stat-with-icon__icon">
@@ -43,4 +51,4 @@
 
     </div>
 
-</a>
+</div>

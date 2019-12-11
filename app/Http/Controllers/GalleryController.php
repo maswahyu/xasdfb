@@ -16,7 +16,7 @@ class GalleryController extends Controller
     }
 
     public function photo()
-    {	
+    {
         $sticky = Album::getSticky();
         $latest = Album::getLatest();
 
@@ -27,7 +27,7 @@ class GalleryController extends Controller
     }
 
     public function video()
-    {   
+    {
         $videos      = Gallery::getGallery(Gallery::VIDEO, 3);
         $stickyVideo = Gallery::getSticky(Gallery::VIDEO);
 
@@ -38,7 +38,7 @@ class GalleryController extends Controller
     }
 
     public function photoDetail($slug)
-    {   
+    {
         $album = Album::detail($slug);
 
         return view('frontend.pages.photo-detail', [
@@ -47,9 +47,9 @@ class GalleryController extends Controller
     }
 
     public function videoDetail($slug)
-    {   
+    {
         $gallery = Gallery::detail(Gallery::VIDEO, $slug);
-        
+
         if (!$gallery) {
             abort(404);
         }
@@ -65,7 +65,7 @@ class GalleryController extends Controller
     }
 
     public function feedVideo(Request $request)
-    {   
+    {
         $page = $request->get('page');
         $posts = Gallery::getPage($page, Gallery::VIDEO);
         return response()->json(new GalleryCollection($posts));
