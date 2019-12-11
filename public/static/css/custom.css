@@ -84,3 +84,7 @@
 a:hover {
     text-decoration: none;
 }
+
+.post-meta__category a:hover span {
+    color: #ebebeb;
+}
