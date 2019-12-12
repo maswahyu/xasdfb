@@ -20,7 +20,9 @@
         <div class="span-12">
 
             <div class="placement placement--top-margin-0">
-                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="">
+                <a href="{{ url('points') }}?utm_source=AdsArticle" alt="My Point">
+                    <img class="placement__img" src="{{ asset('static/images/mock/ads_new.jpg') }}" alt="My Point">
+                </a>
             </div>
 
         </div>

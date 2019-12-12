@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cef6d9bdf057fa693ea804d5abece05",
+    "content-hash": "b8e3960ee77ed0edb3e3a0c7e2d7ad0f",
     "packages": [
         {
             "name": "alexusmai/laravel-file-manager",
@@ -1548,21 +1548,21 @@
         },
         {
             "name": "nicolaslopezj/searchable",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolaslopezj/searchable.git",
-                "reference": "4f28c6aebf61f41b63825b87b5de1d34034680e1"
+                "reference": "4cc77efc1d6c23a8b82ee4f5c10943860bcaf031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/4f28c6aebf61f41b63825b87b5de1d34034680e1",
-                "reference": "4f28c6aebf61f41b63825b87b5de1d34034680e1",
+                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/4cc77efc1d6c23a8b82ee4f5c10943860bcaf031",
+                "reference": "4cc77efc1d6c23a8b82ee4f5c10943860bcaf031",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "illuminate/database": "4.2.x|~5.0",
+                "illuminate/database": "^4.2 | ^5.0 | ^6.0",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -1590,7 +1590,7 @@
                 "search",
                 "searchable"
             ],
-            "time": "2019-06-06T15:35:54+00:00"
+            "time": "2019-10-09T14:27:26+00:00"
         },
         {
             "name": "nikic/php-parser",
