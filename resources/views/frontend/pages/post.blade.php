@@ -21,7 +21,7 @@
 
             <div class="placement placement--top-margin-0">
                 <a href="{{ url('points') }}?utm_source=AdsArticle" alt="My Point">
-                    <img class="placement__img" src="{{ asset('static/images/mock/ads_new.jpg') }}" alt="My Point">
+                    <img class="placement__img" src="{{ asset('static/images/mock/ads_new.jpg') }}?v=1" alt="My Point">
                 </a>
             </div>
 

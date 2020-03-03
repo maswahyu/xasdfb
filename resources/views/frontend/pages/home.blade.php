@@ -111,7 +111,7 @@
         <div class="span-12">
 
             <div class="placement">
-                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="">
+                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}?v=1" alt="">
             </div>
 
         </div>
