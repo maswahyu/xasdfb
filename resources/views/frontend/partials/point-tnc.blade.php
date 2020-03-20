@@ -39,7 +39,7 @@
                         <li>Jangka waktu pengiriman hadiah paling lambat satu minggu setelah pengumuman pemenang</li>
                         <li>Jangka waktu pengiriman merchandise yang ditukarkan dengan poin akan dikirimkan di bulan berikutnya, contoh: jika kamu melakukan penukaran barang di bulan Januari 2019, maka merchandise akan dikirimkan di bulan Februari 2019.</li>
                         <li>Kami menjamin kerahasiaan dan keamanan seluruh data/informasi yang Anda berikan. Kami hanya akan menggunakan data/informasi yang diberikan sesuai dengan kebutuhan membership LAZone.id</li>
-                        <li>Member wajib mengisi nama di profile sesuai dengan nama di KTP.</li>
+                        <li>Member wajib mengisi nama & no KTP di profile sesuai dengan nama di KTP</li>
                         <li>No KTP hanya bisa dimasukkan sekali saja dan tidak dapat diubah.</li>
                         <li>Setiap member hanya dapat memiliki 1 akun My Points</li>
                         <li>Bila ada indikasi kecurangan dari pihak member, pihak penyelenggara berhak untuk mendiskualifikasi member tanpa pemberitahuan terlebih dahulu.</li>
