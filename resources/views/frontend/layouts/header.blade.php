@@ -3,7 +3,7 @@
     <div class="row">
 
         <a href="{{ url('/')}}" class="site-logo">
-            <img src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
+            <img src="{{ asset('static/images/logo.png') }}?v={{ filemtime(public_path('static/css/main.css')) }}" alt="LA-ZONE.id">
         </a>
 
         <nav role="navigation" id="primary-nav" class="dropdown-menu">
