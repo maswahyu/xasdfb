@@ -32,9 +32,10 @@
     <div class="row flex-justify-center post-breadcrumb">
 
         <ul class="breadcrumb">
-
+            @if($post->category)
             <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->parent->url }}">{{ $post->parent_name }}</a></li>
             <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->url }}">{{ $post->category_name }}</a></li>
+            @endif
         </ul>
 
     </div>
