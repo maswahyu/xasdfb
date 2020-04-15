@@ -18,7 +18,7 @@ class News extends JsonResource
             'url'            => $this->url,
             'thumbnail'      => $this->thumbnail,
             'category'       => $this->category_name,
-            'category_url'   => $this->category->url,
+            'category_url'   => $this->category ? $this->category->url : '/lifestyle',
             'published_date' => $this->published_date,
             'view_count'     => $this->view_count,
             'title'          => $this->title
