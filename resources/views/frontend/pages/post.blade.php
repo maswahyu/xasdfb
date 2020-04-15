@@ -53,9 +53,11 @@
                     <div class="post-meta post-meta--centered">
 
                         <div class="post-meta__category">
+                            @if($post->category)
                             <a href="{{ $post->category->url }}" alt="{{ $post->category_name }}">
                                 <span>{{ $post->category_name }}</span>
                             </a>
+                            @endif
                         </div>
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
