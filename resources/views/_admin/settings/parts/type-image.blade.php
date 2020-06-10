@@ -7,11 +7,9 @@
     @endif
     <div class="input-group">
         <div class="input-group-btn">
-            <a href="{{ url('/') }}/filemanager/dialog.php?akey={{ env('FILE_KEY') }}&type=1&field_id={{ $setting->key }}&relative_url=1" class="file-iframe-btn" data-fancybox-type="iframe">
-                <button type="button" class="btn btn-block btn-default btn-flat">Browse</button>
-            </a>
+            <button type="button" class="btn btn-block btn-default btn-flat" id="button-image">Browse</button>
         </div>
-        <input name="{{ $setting->key }}" id="{{ $setting->key }}" type="text" class="form-control" value="{{ !empty($setting->value) ? $setting->value : '' }}" placeholder="Image">
+        <input name="{{ $setting->key }}" id="image_path" type="text" class="form-control" value="{{ !empty($setting->value) ? $setting->value : '' }}" placeholder="Image">
     </div>
     <p class="help-block"></p>
 </div>
