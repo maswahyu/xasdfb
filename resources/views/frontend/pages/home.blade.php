@@ -111,7 +111,9 @@
         <div class="span-12">
 
             <div class="placement">
-                <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}?v=1" alt="">
+                <a href="{{ env('URL_ADS') }}?utm_source=AdsHome" alt="Lazone.id">
+                    <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="Lazone.id">
+                </a>
             </div>
 
         </div>
