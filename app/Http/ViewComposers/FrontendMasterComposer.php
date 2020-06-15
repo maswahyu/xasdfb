@@ -3,7 +3,6 @@
 namespace App\Http\ViewComposers;
 use App\Setting;
 use Illuminate\Contracts\View\View;
-use Auth;
 use App\Category;
 use App\Link;
 
