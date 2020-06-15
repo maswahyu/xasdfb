@@ -81,26 +81,13 @@
 
 {{--  Trending Article --}}
 <div class="home-trending">
-
     <div class="container">
-
         <div class="section-title">
             <span class="section-title__label text-white">Trending Articles</span>
         </div>
-
-        <div class="row">
-            @if($trending)
-            @foreach($trending as $post)
-            <div class="span-12 span-md-6 span-lg-3">
-                @include('frontend.partials.post-card-simple', ['post' => $post, 'utm' => '?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail'])
-            </div>
-            @endforeach
-            @endif
-
-        </div>
-
+        <div class="row jsTrendingList"></div>
+        <div class="jsMoreTrending"></div>
     </div>
-
 </div>
 
 {{-- Ads Placement --}}
@@ -178,11 +165,8 @@
             </div>
 
             <div class="row no-gutters">
-                @foreach($videos as $video)
-                <div class="span-12 span-md-6 span-lg-12">
-                    @include('frontend.partials.post-card-video', ['video' => $video])
-                </div>
-                @endforeach
+                <div class="jsVideoList"></div>
+                <div class="jsMoreVideo"></div>
             </div>
 
         </div>
@@ -197,6 +181,8 @@
 
 <script>
     window.feedUrl = "{{ url('feed') }}"
+    window.feedVideoUrl = "{{ url('feed-new-video') }}"
+    window.feedTrendingUrl = "{{ url('feed-trending') }}"
 </script>
 
 @verbatim
@@ -236,7 +222,89 @@
 
     </div>
 </script>
+
+<script id="x-video-template" type="text/x-handlebars-template">
+<div class="span-12 span-md-6 span-lg-12">
+<div class="post-card post-card--video">
+
+    <div class="post-card__thumbnail post-card__thumbnail--video">
+
+        <img class="post-card__img post-card__img--video" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
+
+        <a href="{{ url }}" alt="{{ title_limit }}">
+            <div class="post-card__overlay"></div>
+
+            <div class="post-card__vid-play">
+                <svg class="svg-vid-play">
+                    <use xlink:href="/static/images/sprites.svg#vid-play"></use>
+                </svg>
+            </div>
+
+            <div class="post-card__frame">
+                <svg class="svg-video-frame">
+                    <use xlink:href="/static/images/sprites.svg#video-frame"></use>
+                </svg>
+            </div>
+
+            <div class="post-card__time"><span>{{ duration }}</span></div>
+        </a>
+    </div>
+
+    <div class="post-card__meta post-meta">
+
+        <div class="post-meta__category">
+            <a href="/gallery/video" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+        </div>
+
+        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+    </div>
+
+    <a href="{{ url }}" alt="{{ title_limit }}">
+        <div class="post-card__title">
+            <span>{{ title_limit }}</span>
+        </div>
+    </a>
+</div>
+</div>
+</script>
+
+<script id="x-trending-template" type="text/x-handlebars-template">
+<div class="span-12 span-md-6 span-lg-3">
+    <div class="post-card post-card--simple">
+        <div class="post-card__thumbnail">
+            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <img class="post-card__img" src="{{ thumbnail }}" alt="{{ title }}">
+            </a>
+        </div>
+
+        <div class="post-card__meta post-meta">
+
+        <div class="post-meta__category">
+            <a href="{{ category_url }}" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+        </div>
+
+        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+
+        </div>
+
+        <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+            <div class="post-card__title">
+                <span>{{ title }}</span>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+</script>
 @endverbatim
 
-<script src="{{ asset('static/js/home.min.js') }}"></script>
+<script src="{{ asset('static/js/home.js') }}"></script>
 @endsection

@@ -21,4 +21,30 @@ $(function ()
             });
 
     $('.jsMoreArticle').trigger('click');
+
+    var currentPage = 1,
+        videoList =
+            new Hector_infinitePaginator({
+                container: $('.jsVideoList'),
+                trigger: $('.jsMoreVideo'),
+                template: Handlebars.compile(document.getElementById("x-video-template").innerHTML),
+                url: window.feedVideoUrl,
+                currentPage: currentPage,
+                data: {},
+            });
+
+    $('.jsMoreVideo').trigger('click');
+
+    var currentPage = 1,
+        trendingList =
+            new Hector_infinitePaginator({
+                container: $('.jsTrendingList'),
+                trigger: $('.jsMoreTrending'),
+                template: Handlebars.compile(document.getElementById("x-trending-template").innerHTML),
+                url: window.feedTrendingUrl,
+                currentPage: currentPage,
+                data: {},
+            });
+
+    $('.jsMoreTrending').trigger('click');
 });

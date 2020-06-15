@@ -21,6 +21,7 @@ class Gallery extends JsonResource
             'published_date' => $this->published_date,
             'view_count'     => $this->view_count,
             'title'          => $this->title,
+            'title_limit'    => $this->title_limit,
             'youtube_id'     => ($this->type == 'video') ? $this->youtube_id : 0,
             'duration'       => ($this->type == 'video') ? $this->duration : 0,
         ];

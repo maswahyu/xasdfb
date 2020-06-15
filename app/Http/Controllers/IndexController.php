@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\News;
 use App\Gallery;
 use App\Http\Resources\NewsCollection;
+use App\Http\Resources\News as NewsItem;
 use Auth;
 use App\Slide;
 use App\Category;
@@ -23,7 +24,6 @@ class IndexController extends Controller
 		$highlight   = News::getHighlight();
 		$recommended = News::getRecommended();
 		$trending    = News::getTrending();
-		$videos      = Gallery::getNewGallery();
 		$slides      = Slide::getFeatured(10);
 
 	    return view('frontend.pages.home', [
@@ -31,7 +31,6 @@ class IndexController extends Controller
 	        'highlight' => $highlight,
 	        'recommended' => $recommended,
 	        'trending' => $trending,
-	        'videos' => $videos,
 	        'slides' => $slides,
 	    ]);
     }
@@ -53,5 +52,21 @@ class IndexController extends Controller
         }
 
 	    return response()->json(new NewsCollection($posts));
+    }
+
+    public function feedTrending(Request $request)
+    {
+        $posts = News::getTrending();
+
+        $data = [];
+
+        foreach ($posts as $key => $item) {
+            $data[] = new NewsItem($item);
+        }
+
+        return response()->json([
+            'data' => $data,
+            'total_page' => 1,
+        ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gallery;
 use App\Http\Resources\GalleryCollection;
+use App\Http\Resources\Gallery as GalleryItem;
 use App\Http\Resources\AlbumCollection;
 use App\Album;
 
@@ -70,4 +71,21 @@ class GalleryController extends Controller
         $posts = Gallery::getPage($page, Gallery::VIDEO);
         return response()->json(new GalleryCollection($posts));
     }
+
+    public function feedNewVideo(Request $request)
+    {
+        $posts = Gallery::getNewGallery();
+
+        $data = [];
+
+        foreach ($posts as $key => $item) {
+            $data[] = new GalleryItem($item);
+        }
+
+        return response()->json([
+            'data' => $data,
+            'total_page' => 1,
+        ]);
+    }
+
 }
