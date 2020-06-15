@@ -25,9 +25,8 @@
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
     <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('static/css/custom.css') }}?v={{ filemtime(public_path() . '/static/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <script src="{{ asset('static/js/modernizr.js') }}"></script>
     @if($siteInfo['analytics_id'])
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteInfo['analytics_id'] }}"></script>

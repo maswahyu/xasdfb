@@ -133,8 +133,8 @@
             {{-- Shoutbox lazone --}}
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background hide-mobile" src={{ asset('static/images/lazone-prize-12.jpg') }} />
-                <img class="shoutbox__background show-mobile" src={{ asset('static/images/lazone-prize-12-responsive.jpg') }} />
+                <img class="shoutbox__background hide-mobile" src={{ asset('static/images/lazone-prize-12.webp') }} />
+                <img class="shoutbox__background show-mobile" src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
 
                 <div class="shoutbox__content-wrapper">
 
