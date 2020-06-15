@@ -78,10 +78,12 @@
 
     @yield('before-body-end')
     <script type="text/javascript">
-        var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
-    </script>
-    <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
-    <script type="text/javascript">
+        jQuery.event.special.touchstart = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("touchstart", handle, { passive: true });
+            }
+        };
+
         $(document).ready(function ($) {
             $('#post-content img').each(function () {
                 $(this).removeAttr('style')
