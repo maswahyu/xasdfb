@@ -78,12 +78,6 @@
 
     @yield('before-body-end')
     <script type="text/javascript">
-        jQuery.event.special.touchstart = {
-            setup: function( _, ns, handle ){
-                this.addEventListener("touchstart", handle, { passive: true });
-            }
-        };
-
         $(document).ready(function ($) {
             $('#post-content img').each(function () {
                 $(this).removeAttr('style')

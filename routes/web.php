@@ -19,6 +19,10 @@ Route::get('/new-event', 'PageController@newEvent');
 Route::get('feed-new-video', 'GalleryController@feedNewVideo');
 Route::get('feed-trending', 'IndexController@feedTrending');
 
+Route::get('welcome', function() {
+    return view('welcome');
+});
+
 Route::get('search', 'PageController@search');
 Route::get('feed-search', 'PageController@feedSearch');
 Route::get('points', 'PageController@points');
