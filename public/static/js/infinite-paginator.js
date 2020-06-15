@@ -10,23 +10,6 @@ function Hector_infinitePaginator(settings) {
 
 Hector_infinitePaginator.prototype = {
 
-    blockOpt: {
-        message: '<div class="spinner">' +
-            '<div class="double-bounce1"></div>' +
-            '<div class="double-bounce2"></div>' +
-            '</div>',
-        css: {
-            border: 'none',
-            backgroundColor: 'transparent',
-            margin: '0 0 0 0'
-        },
-        overlayCSS: {
-            backgroundColor: '#000000',
-            opacity: 0.5,
-            cursor: 'wait'
-        },
-    },
-
     init: function () {
         var self = this;
         this.$trigger.on('click', function (e) {
@@ -37,7 +20,6 @@ Hector_infinitePaginator.prototype = {
 
     getFeed: function () {
         var self = this;
-        $.blockUI(self.blockOpt);
 
         var ajax = $.ajax(self.url, {
             data: Object.assign({
@@ -59,7 +41,7 @@ Hector_infinitePaginator.prototype = {
                 self.$trigger.hide();
             }
         }).always(function () {
-            $.unblockUI();
+
         });
         return ajax;
     },

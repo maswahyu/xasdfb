@@ -50,7 +50,7 @@
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
                     <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
-                        <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->img }}" alt="{{ $post->title }}">
+                        <img src="/img_placeholder_slider.webp" data-lazy="{{ $post->img }}" alt="{{ $post->title }}">
                     </a>
                 </div>
                 @endforeach
@@ -62,7 +62,7 @@
                 @foreach($slides as $post)
                 <div class="home-promo-slider__slide">
                     <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
-                        <img src="/img_placeholder_slider.jpg" data-lazy="{{ $post->mobile_img }}" alt="{{ $post->title }}">
+                        <img src="/img_placeholder_slider.webp" data-lazy="{{ $post->mobile_img }}" alt="{{ $post->title }}">
                     </a>
                 </div>
                 @endforeach
@@ -112,7 +112,7 @@
 
             <div class="placement">
                 <a href="{{ env('URL_ADS') }}?utm_source=AdsHome" alt="Lazone.id">
-                    <img class="placement__img" src="{{ asset('static/images/mock/ads.jpg') }}" alt="Lazone.id">
+                    <img class="placement__img post-card__img" src="/img_placeholder_slider.webp" data-src="{{ asset('static/images/mock/ads.jpg') }}" alt="Lazone.id">
                 </a>
             </div>
 
@@ -238,5 +238,5 @@
 </script>
 @endverbatim
 
-<script src="{{ asset('static/js/home.js') }}?v={{ filemtime(public_path() . '/static/js/home.js') }}"></script>
+<script src="{{ asset('static/js/home.min.js') }}"></script>
 @endsection

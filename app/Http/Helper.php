@@ -31,7 +31,7 @@ if (! function_exists('imageview')) {
     function imageview($img)
     {
         if($img == null or $img == ''){
-            $img ="/img_placeholder_point.jpg";
+            $img ="/img_placeholder_point.webp";
         }
 
         return url('/').$img;
@@ -43,7 +43,7 @@ if (! function_exists('imagethumb')) {
     function imagethumb($img)
     {
         if($img == null or $img == ''){
-            $img ="/img_placeholder_point.jpg";
+            $img ="/img_placeholder_point.webp";
         }
 
         return url('/').$img;

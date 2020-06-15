@@ -87,12 +87,12 @@ $(function ()
         // Holder.run();
     });
 
-    new ClipboardJS('.jsCopyLink');
+    // new ClipboardJS('.jsCopyLink');
 
-    $('.jsCopyLink').on('click', function (e)
-    {
-        e.preventDefault();
-    });
+    // $('.jsCopyLink').on('click', function (e)
+    // {
+    //     e.preventDefault();
+    // });
 
     $('.jsTwShare').click(function (e)
     {

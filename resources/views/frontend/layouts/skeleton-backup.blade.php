@@ -63,16 +63,52 @@
 
     @yield('after-site-footer')
 
+    <!-- Old browser notifications -->
+    <script>
+        var $buoop = {required: {e: -4, f: -3, o: -3, s: -1, c: -3}, insecure: true, api: 2018.05};
+
+    function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js";
+        document.body.appendChild(e);
+    };
+    try {
+        document.addEventListener("DOMContentLoaded", $buo_f, false)
+    }
+    catch (e) {
+        window.attachEvent("onload", $buo_f)
+    }
+    </script>
+
+    {{--Polyfill--}}
+    <script src="{{ asset('static/js/polyfill.min.js') }}"></script>
+
+
     <script type="text/javascript">
+        objectFitImages();
+    svg4everybody({
+        validate: function(src){
+            return src.replace('sprites.svg#','/') + '.png';
+        }
+    });
+
+    if (Modernizr.flexbox && Modernizr.flexwrap) {
+    } else {
+        flexibility(document.documentElement);
+    }
     window.siteUrl = "{{ url('/') }}";
     </script>
 
     <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('static/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('static/js/clipboard.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}"></script>
-    <script src="{{ asset('static/js/global-min.js') }}"></script>
+    <script src="{{ asset('static/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('static/js/jquery.fitvids.js') }}"></script>
+    <script src="{{ asset('static/js/infinite-paginator.js') }}"></script>
+    <script src="{{ asset('static/js/global.js') }}?v={{ filemtime(public_path() . '/static/js/global.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
 
     {!! $siteInfo['footercode'] !!}

@@ -3,7 +3,7 @@
     <div class="row">
 
         <a href="{{ url('/')}}" class="site-logo">
-            <img src="{{ asset('static/images/logo.png') }}?v={{ filemtime(public_path('static/css/main.css')) }}" alt="LA-ZONE.id">
+            <img src="{{ asset('static/images/logo.webp') }}" alt="LAZONE.id">
         </a>
 
         <nav role="navigation" id="primary-nav" class="dropdown-menu">
@@ -45,7 +45,7 @@
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--search">
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
-                        <img src="{{ asset('static/images/search.png') }}" alt="">
+                        <img src="{{ asset('static/images/search.webp') }}" alt="Search">
                     </a>
                 </li>
                 <li class="dropdown-menu__item">
@@ -89,7 +89,7 @@
                         <form class="form" action="{{ url('search') }}" method="get">
                             <input type="search" name="search" class="search-input form-control">
                             <button type="submit" class="search-btn-icon">
-                                <img src="{{ asset('static/images/search-black.png') }}" alt="">
+                                <img src="{{ asset('static/images/search-black.webp') }}" alt="">
                             </button>
                         </form>
 

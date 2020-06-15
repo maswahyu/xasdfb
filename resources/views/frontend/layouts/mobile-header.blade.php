@@ -15,7 +15,7 @@
     @endauth
 
     <a href="{{ url('/')}}" class="site-logo">
-        <img src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
+        <img src="{{ asset('static/images/logo.webp') }}" alt="LA-ZONE.id">
     </a>
 
     @auth
@@ -35,7 +35,7 @@
                     <form class="form" action="{{ url('search') }}" method="get">
                         <input type="search" name="search" class="search-input form-control">
                         <button type="submit" class="search-btn-icon">
-                            <img src="{{ asset('static/images/search-black.png') }}" alt="">
+                            <img src="{{ asset('static/images/search-black.webp') }}" alt="">
                         </button>
                     </form>
                 </li>
