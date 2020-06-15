@@ -23,14 +23,12 @@ class IndexController extends Controller
 		$mustReads   = News::getMustReads();
 		$highlight   = News::getHighlight();
 		$recommended = News::getRecommended();
-		$trending    = News::getTrending();
 		$slides      = Slide::getFeatured(10);
 
 	    return view('frontend.pages.home', [
 	        'mustReads' => $mustReads,
 	        'highlight' => $highlight,
 	        'recommended' => $recommended,
-	        'trending' => $trending,
 	        'slides' => $slides,
 	    ]);
     }
