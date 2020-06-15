@@ -306,5 +306,5 @@
 </script>
 @endverbatim
 
-<script src="{{ asset('static/js/home.js') }}"></script>
+<script src="{{ asset('static/js/home.min.js') }}"></script>
 @endsection
