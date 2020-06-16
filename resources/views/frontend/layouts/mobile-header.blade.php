@@ -120,10 +120,10 @@
             </div>
         </li>
         <li class="menu">
-            <a href="https://{{ env('CAS_HOSTNAME') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
+            <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
         </li>
         <li class="menu">
-            <a href="{{ env('URL_MYPOINT') }}"><span>My Points</span></a>
+            <a href="{{ config('cas.url_mypoint') }}"><span>My Points</span></a>
         </li>
         <li class="menu">
             <a href="{{ url('member/logout') }}" class="btn btn-crimson btn-login">Logout</a>

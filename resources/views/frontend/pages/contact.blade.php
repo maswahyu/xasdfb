@@ -92,8 +92,8 @@
 @section('before-body-end')
 <script src="{{ asset('static/js/parsley.min.js') }}"></script>
 <script src="{{ asset('static/js/contact.js') }}?v={{ filemtime(public_path() . '/static/js/contact.js') }}"></script>
-<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_KEY') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('app.google_key') }}"></script>
 <script type="text/javascript">
-    var GOOGLE_KEY = '{{ env('GOOGLE_KEY') }}'
+    var GOOGLE_KEY = '{{ config('app.google_key') }}'
 </script>
 @endsection

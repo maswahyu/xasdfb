@@ -68,7 +68,7 @@ class MemberController extends Controller
                     ]
                 ]);
 
-                $response = $client->request('GET', 'https://'.env('CAS_HOSTNAME').'?controller=profile&action=get-user-points&email='.Auth::user()->email);
+                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'?controller=profile&action=get-user-points&email='.Auth::user()->email);
                 if ($response->getStatusCode() == 200) {
 
                     return json_decode($response->getBody()->getContents(), true);
@@ -106,7 +106,7 @@ class MemberController extends Controller
                     ]
                 ]);
 
-                $response = $client->request('GET', 'https://'.env('CAS_HOSTNAME').'?controller=profile&action=find-user&sso_id='.Auth::user()->sso_id);
+                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'?controller=profile&action=find-user&sso_id='.Auth::user()->sso_id);
                 if ($response->getStatusCode() == 200) {
 
                     return json_decode($response->getBody()->getContents(), true);
@@ -166,7 +166,7 @@ class MemberController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            return redirect()->to(env('URL_MYPOINT'));
+            return redirect()->to(config('cas.url_mypoint'));
 
         } else {
         	return redirect('/');

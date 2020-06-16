@@ -73,7 +73,7 @@
         <div class="span-12">
 
             <div class="placement">
-                <a href="{{ env('URL_ADS') }}?utm_source=AdsHome" alt="Lazone.id">
+                <a href="{{ config('app.url_ads') }}?utm_source=AdsHome" alt="Lazone.id">
                     <img class="placement__img post-card__img" src="/img_placeholder_slider.webp" data-src="{{ asset('static/images/mock/ads.jpg') }}" alt="Lazone.id">
                 </a>
             </div>

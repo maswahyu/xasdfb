@@ -98,7 +98,7 @@ class PageController extends Controller
         }
 
         $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-        $recaptcha_secret = env('GOOGLE_SECRET');
+        $recaptcha_secret = config('app.google_secret');
         $recaptcha_response = $request->get('recaptchaResponse');
 
         // Make and decode POST request:
@@ -110,10 +110,10 @@ class PageController extends Controller
             $input = $request->all();
             Contact::create($input);
 
-            if (env('MAIL_PASSWORD')) {
+            if (config('mail.password')) {
                 $data = [
                     'from' =>  $request->get('email'),
-                    'to'  => env('MAIL_RECEIVER','contact@boldxperience.com'),
+                    'to'  => config('mail.receiver','contact@boldxperience.com'),
                     'subject' => "[".$request->get('name')."] ".$request->get('subject'),
                     'body' => $request->get('message')
                 ];

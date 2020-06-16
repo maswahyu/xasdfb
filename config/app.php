@@ -14,6 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'google_secret' => env('GOOGLE_SECRET', ''),
+    'google_key' => env('GOOGLE_KEY', ''),
+    'url_ads' => env('URL_ADS', ''),
 
     /*
     |--------------------------------------------------------------------------

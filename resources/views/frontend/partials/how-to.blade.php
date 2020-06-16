@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="https://{{ env('CAS_HOSTNAME') }}/profile">GO TO COMPLETE PROFILE</a>
+                        <a class="btn btn-crimson btn-point" href="https://{{ config('cas.cas_hostname') }}/profile">GO TO COMPLETE PROFILE</a>
                     </div>
 
                 </div>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO DAILY LOGIN</a>
+                        <a class="btn btn-crimson btn-point" href="{{ config('cas.url_mypoint') }}">GO TO DAILY LOGIN</a>
                     </div>
 
                 </div>
@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO REFERRAL CODE</a>
+                        <a class="btn btn-crimson btn-point" href="{{ config('cas.url_mypoint') }}">GO TO REFERRAL CODE</a>
                     </div>
 
                 </div>
@@ -232,7 +232,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO QUIZ</a>
+                        <a class="btn btn-crimson btn-point" href="{{ config('cas.url_mypoint') }}">GO TO QUIZ</a>
                     </div>
 
                 </div>
@@ -290,7 +290,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="{{ env('URL_MYPOINT') }}">GO TO SECRET WORD</a>
+                        <a class="btn btn-crimson btn-point" href="{{ config('cas.url_mypoint') }}">GO TO SECRET WORD</a>
                     </div>
 
                 </div>
