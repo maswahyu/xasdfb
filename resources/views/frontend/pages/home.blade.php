@@ -13,16 +13,10 @@
                 <span class="section-title__label">Must Reads</span>
             </div>
 
-            <div class="home-grid__must-reads-list">
-                @foreach($mustReads as $post)
-                <div class="span-12 span-md-6 span-lg-12">
-                    @include('frontend.partials.post-card', ['post' => $post, 'utm' => '?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail'])
-                </div>
-                @endforeach
+            <div class="home-grid__must-reads-list jsMustRead">
             </div>
 
-            <div class="home-grid__must-reads-highlights">
-                @include('frontend.partials.post-card-highlight', ['post' => $highlight, 'utm' => '?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail'])
+            <div class="home-grid__must-reads-highlights jsHighlights">
             </div>
 
         </div>
@@ -33,12 +27,7 @@
                 <span class="section-title__label">Recommended</span>
             </div>
 
-            <div class="row">
-                @foreach($recommended as $post)
-                <div class="span-12 span-md-6 span-lg-4 span-xl-12">
-                    @include('frontend.partials.post-card-mini', ['post' => $post, 'utm' => auth()->check() ? '?utm_source=Recommended&utm_medium=Login&utm_campaign=LazoneDetail' : '?utm_source=Recommended&utm_medium=NotLogin&utm_campaign=LazoneDetail'])
-                </div>
-                @endforeach
+            <div class="row jsRecomended">
             </div>
         </div>
     </div>
@@ -47,25 +36,11 @@
 
         <div class="home-below-fold__slider hide-mobile">
             <div class="home-promo-slider jsHomeSlider">
-                @foreach($slides as $post)
-                <div class="home-promo-slider__slide">
-                    <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
-                        <img src="/img_placeholder_slider.webp" data-lazy="{{ $post->img }}" alt="{{ $post->title }}">
-                    </a>
-                </div>
-                @endforeach
             </div>
         </div>
 
         <div class="home-below-fold__slider show-mobile">
-            <div class="home-promo-slider jsHomeSlider">
-                @foreach($slides as $post)
-                <div class="home-promo-slider__slide">
-                    <a href="{{ $post->url }}?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $post->title }}">
-                        <img src="/img_placeholder_slider.webp" data-lazy="{{ $post->mobile_img }}" alt="{{ $post->title }}">
-                    </a>
-                </div>
-                @endforeach
+            <div class="home-promo-slider jsHomeMobileSlider">
             </div>
         </div>
 
@@ -183,6 +158,7 @@
     window.feedUrl = "{{ url('feed') }}"
     window.feedVideoUrl = "{{ url('feed-new-video') }}"
     window.feedTrendingUrl = "{{ url('feed-trending') }}"
+    window.feedSliderUrl = "{{ url('feed-slider') }}"
 </script>
 
 @verbatim
@@ -304,8 +280,98 @@
 
 </div>
 </script>
-@endverbatim
 
+<script id="x-must-template" type="text/x-handlebars-template">
+<div class="span-12 span-md-6 span-lg-12">
+    <div class="post-card">
+
+        <div class="post-card__thumbnail">
+            <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <img class="post-card__img" src="{{ thumbnail }}" alt="{{ title }}">
+            </a>
+        </div>
+
+        <div class="post-card__meta post-meta">
+
+        <div class="post-meta__category">
+            <a href="{{ category_url }}" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+        </div>
+
+        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+        </div>
+
+        <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+            <div class="post-card__title">
+                <span>{{ title }}</span>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+</script>
+
+<script id="x-recomended-template" type="text/x-handlebars-template">
+<div class="span-12 span-md-6 span-lg-4 span-xl-12">
+    <div class="post-card">
+
+        <div class="post-card__meta post-meta">
+
+            <div class="post-meta__category">
+                <a href="{{ category_url }}" alt="{{ category }}">
+                    <span>{{ category }}</span>
+                </a>
+            </div>
+
+            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+            </div>
+
+            <a href="{{ url }}{{ utm }}" alt="{{ title }}">
+                <div class="post-card__title"><span>{{ title }}</span></div>
+            </a>
+
+        </div>
+
+    </div>
+</script>
+
+<script id="x-highlight-template" type="text/x-handlebars-template">
+<div class="post-card post-card--highlight">
+
+    <div class="post-card__thumbnail post-card__thumbnail--large">
+        <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+            <img class="post-card__img post-card__img--large" src="{{ thumbnail }}" alt="{{ title }}">
+        </a>
+    </div>
+
+    <div class="post-card__meta post-meta post-meta--centered">
+
+        <div class="post-meta__category">
+            <a href="{{ category_url }}" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+        </div>
+
+        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+    </div>
+
+    <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+        <div class="post-card__title post-card__title--xlarge">
+            <span>{{ title }}</span>
+        </div>
+        <div class="post-card__excerpt">
+            <p>{{  summary }}</p>
+        </div>
+    </a>
+
+</div>
+</script>
+@endverbatim
 <script src="{{ asset('static/js/home.min.js') }}"></script>
 <script type="text/javascript">
 var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'

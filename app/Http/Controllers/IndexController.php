@@ -20,17 +20,7 @@ class IndexController extends Controller
 
     public function index()
     {
-		$mustReads   = News::getMustReads();
-		$highlight   = News::getHighlight();
-		$recommended = News::getRecommended();
-		$slides      = Slide::getFeatured(10);
-
-	    return view('frontend.pages.home', [
-	        'mustReads' => $mustReads,
-	        'highlight' => $highlight,
-	        'recommended' => $recommended,
-	        'slides' => $slides,
-	    ]);
+	    return view('frontend.pages.home');
     }
 
     public function feed(Request $request)
@@ -61,6 +51,54 @@ class IndexController extends Controller
         foreach ($posts as $key => $item) {
             $data[] = new NewsItem($item);
         }
+
+        return response()->json([
+            'data' => $data,
+            'total_page' => 1,
+        ]);
+    }
+
+    public function feedMustread(Request $request)
+    {
+        $posts = News::getMustReads();
+
+        $data = [];
+
+        foreach ($posts as $key => $item) {
+            $data[] = new NewsItem($item);
+        }
+
+        return response()->json([
+            'data' => $data,
+            'total_page' => 1,
+        ]);
+    }
+
+    public function feedRecomended(Request $request)
+    {
+        $posts = News::getRecommended();
+
+        $data = [];
+
+        foreach ($posts as $key => $item) {
+            $data[] = new NewsItem($item);
+        }
+
+        return response()->json([
+            'data' => $data,
+            'total_page' => 1,
+            'auth' => Auth::check(),
+        ]);
+    }
+
+    public function feedHighlight()
+    {
+        return new NewsItem(News::getHighlight());
+    }
+
+    public function feedSlider(Request $request)
+    {
+        $data = Slide::getFeatured(10);
 
         return response()->json([
             'data' => $data,

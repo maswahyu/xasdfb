@@ -18,10 +18,10 @@ Route::get('/feed-event', 'PageController@feedEvent');
 Route::get('/new-event', 'PageController@newEvent');
 Route::get('feed-new-video', 'GalleryController@feedNewVideo');
 Route::get('feed-trending', 'IndexController@feedTrending');
-
-Route::get('welcome', function() {
-    return view('welcome');
-});
+Route::get('feed-slider', 'IndexController@feedSlider');
+Route::get('feed-mustread', 'IndexController@feedMustread');
+Route::get('feed-recomended', 'IndexController@feedRecomended');
+Route::get('feed-highlight', 'IndexController@feedHighlight');
 
 Route::get('search', 'PageController@search');
 Route::get('feed-search', 'PageController@feedSearch');
