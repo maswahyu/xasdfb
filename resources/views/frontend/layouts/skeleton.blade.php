@@ -70,7 +70,7 @@
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}"></script>
+    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=1"></script>
     <script src="{{ asset('static/js/global-min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
 

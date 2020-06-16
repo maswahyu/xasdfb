@@ -252,7 +252,7 @@
     <div class="post-card post-card--simple">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -372,7 +372,7 @@
 </div>
 </script>
 @endverbatim
-<script src="{{ asset('static/js/home.min.js') }}"></script>
+<script src="{{ asset('static/js/home.min.js') }}?v=1"></script>
 <script type="text/javascript">
 var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
 </script>
