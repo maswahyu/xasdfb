@@ -50,9 +50,6 @@ Route::get('get-user-details', 'MemberController@getSsoDetail');
 Route::get('tag/{hashtag}', 'PostController@tags');
 Route::get('feed-tags', 'PostController@feedTags');
 Route::post('p/collect/{id}', 'PostController@hitperform');
-Route::get('inspiration/inspiring-places', function() {
-    return redirect('inspiration/inspiring-place');
-});
 
 Route::get('sitemaps/sitemap.xml', 'PageController@sitemap');
 Route::get('sitemaps/master.xml', 'PageController@sitemapMaster');
