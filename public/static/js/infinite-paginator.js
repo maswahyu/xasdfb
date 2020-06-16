@@ -40,6 +40,11 @@ Hector_infinitePaginator.prototype = {
             if(parsedData.total_page < self.currentPage){
                 self.$trigger.hide();
             }
+
+            $('.post-card__img').Lazy({
+                effect: 'fadeIn',
+                visibleOnly: true
+            });
         }).always(function () {
 
         });

@@ -61,6 +61,11 @@ $(function ()
 
         $('.jsHighlights').append(template(parsedData.data));
 
+        $('.post-card__img').Lazy({
+            effect: 'fadeIn',
+            visibleOnly: true
+        });
+
     });
 
     $.ajax(window.siteUrl + '/feed-mustread', {

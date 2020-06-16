@@ -95,8 +95,8 @@
             {{-- Shoutbox lazone --}}
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background hide-mobile" src={{ asset('static/images/lazone-prize-12.webp') }} />
-                <img class="shoutbox__background show-mobile" src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
+                <img class="shoutbox__background hide-mobile post-card__img" data-src={{ asset('static/images/lazone-prize-12.webp') }} />
+                <img class="shoutbox__background show-mobile post-card__img" data-src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
 
                 <div class="shoutbox__content-wrapper">
 
@@ -168,7 +168,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail">
-                <img class="post-card__img" src="{{ thumbnail }}" alt="">
+                <img class="post-card__img" data-src="{{ thumbnail }}" alt="">
             </a>
         </div>
 
@@ -205,7 +205,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--video">
 
-        <img class="post-card__img post-card__img--video" src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
+        <img class="post-card__img post-card__img--video" src="/img_placeholder_point.webp" data-src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
 
         <a href="{{ url }}" alt="{{ title_limit }}">
             <div class="post-card__overlay"></div>
@@ -252,7 +252,7 @@
     <div class="post-card post-card--simple">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -287,7 +287,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -344,7 +344,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--large">
         <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <img class="post-card__img post-card__img--large" src="{{ thumbnail }}" alt="{{ title }}">
+            <img class="post-card__img post-card__img--large" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
         </a>
     </div>
 
