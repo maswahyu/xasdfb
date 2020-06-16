@@ -55,7 +55,7 @@
 </div>
 
 {{--  Trending Article --}}
-<div class="home-trending">
+<div class="home-trending" data-src="/static/images/trending-bg.webp">
     <div class="container">
         <div class="section-title">
             <span class="section-title__label text-white">Trending Articles</span>

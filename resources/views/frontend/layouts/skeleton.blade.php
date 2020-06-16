@@ -89,6 +89,11 @@
                 effect: 'fadeIn',
                 visibleOnly: true
             });
+
+            $('.home-trending').Lazy({
+                effect: 'fadeIn',
+                visibleOnly: true
+            });
         });
     </script>
 </body>
