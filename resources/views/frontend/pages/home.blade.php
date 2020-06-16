@@ -95,8 +95,8 @@
             {{-- Shoutbox lazone --}}
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background hide-mobile post-card__img" data-src={{ asset('static/images/lazone-prize-12.webp') }} />
-                <img class="shoutbox__background show-mobile post-card__img" data-src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
+                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.webp') }} />
+                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
 
                 <div class="shoutbox__content-wrapper">
 
@@ -168,7 +168,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail">
-                <img class="post-card__img" data-src="{{ thumbnail }}" alt="">
+                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
