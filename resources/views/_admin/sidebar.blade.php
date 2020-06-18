@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4"> 
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ url('magic/home') }}" class="brand-link">
         <img src="/dist/img/logo.png" alt="Admin" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin</span>
-    </a> 
+    </a>
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -21,7 +21,7 @@
                             Contact Us <span class="badge badge-warning right" id="unread">0</span>
                         </p>
                     </a>
-                </li>  
+                </li>
                 <li class="nav-item">
                     <a href="{{ url('magic/member') }}" class="nav-link {!! classActiveSegment(2, 'member') !!}">
                         <i class="nav-icon fa fa-users"></i>
@@ -45,7 +45,7 @@
                             Category
                         </p>
                     </a>
-                </li> 
+                </li>
                 <li class="nav-item has-treeview {!! classActivePath(2,'gallery') !!}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-file-image"></i>
@@ -66,7 +66,7 @@
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Video</p>
                             </a>
-                        </li>  
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -119,7 +119,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview {!! classActivePath(1,'site') !!}">
+                <li class="nav-item has-treeview {!! classActivePath(1,'site') !!} {!! classActivePath(2, ['link', 'prize']) !!}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-cog"></i>
                         <p>
@@ -139,23 +139,23 @@
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Website</p>
                             </a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('magic/link') }}" class="nav-link {!! classActiveSegment(2, 'link') !!}">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Link</p>
                             </a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('magic/prize') }}" class="nav-link {!! classActiveSegment(2, 'prize') !!}">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Prize</p>
                             </a>
-                        </li>  
+                        </li>
                     </ul>
                 </li>
                 @endif
             </ul>
-        </nav> 
-    </div> 
+        </nav>
+    </div>
 </aside>

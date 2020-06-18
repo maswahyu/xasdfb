@@ -18,12 +18,12 @@ use App\Setting;
            </div>
        </div>
    </div>
-</section> 
+</section>
 
 <section class="content">
    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12"> 
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex p-0">
                         <div class="btn-group p-2">
@@ -111,5 +111,34 @@ use App\Setting;
         e.preventDefault();
         $('#settings-form').submit();
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+    document.getElementById('button-image-banner_post').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_post';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
+    // second button
+    document.getElementById('button-image-banner_home').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_home';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+  });
+
+  // input
+  let inputId = '';
+
+  // set file link
+  function fmSetLink($url) {
+    document.getElementById(inputId).value = $url;
+  }
+
 </script>
 @endsection
