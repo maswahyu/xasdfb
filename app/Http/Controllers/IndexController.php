@@ -8,6 +8,7 @@ use App\Http\Resources\News as NewsItem;
 use Auth;
 use App\Slide;
 use App\Category;
+use App\Setting;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +21,11 @@ class IndexController extends Controller
 
     public function index()
     {
-	    return view('frontend.pages.home');
+        $ads = [
+            'url' => Setting::getConfig('banner_home_url'),
+            'image' => Setting::getConfig('banner_home'),
+        ];
+	    return view('frontend.pages.home', compact('ads'));
     }
 
     public function feed(Request $request)

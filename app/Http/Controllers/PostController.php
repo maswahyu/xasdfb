@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Category;
+use App\Setting;
 use App\Tag;
 use App\Http\Resources\NewsCollection;
 
@@ -117,9 +118,15 @@ class PostController extends Controller
 
 	    $related = News::related($post->slug, $post->category_id);
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
 	    return view('frontend.pages.post', [
 	        'post' => $post,
 	        'relatedPosts' => $related,
+            'ads' => $ads
 	    ]);
     }
 
@@ -134,9 +141,15 @@ class PostController extends Controller
 
         $related = News::related($post->slug, $post->category_id);
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
         return view('frontend.pages.post', [
             'post' => $post,
             'relatedPosts' => $related,
+            'ads' => $ads,
         ]);
     }
 

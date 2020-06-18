@@ -20,8 +20,8 @@
         <div class="span-12">
 
             <div class="placement placement--top-margin-0">
-                <a href="{{ config('app.url_ads') }}?utm_source=AdsArticle" alt="My Point">
-                    <img class="placement__img" src="{{ asset('static/images/mock/ads_new.jpg') }}" alt="My Point">
+                <a href="{{ $ads['url'] }}?utm_source=AdsArticle" alt="{{ $ads['url'] }}">
+                    <img class="placement__img" src="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
                 </a>
             </div>
 

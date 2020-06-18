@@ -3,7 +3,7 @@
          {{ $setting->name }}
     </label>
     @if(!empty($setting->value))
-        <img src="{{ imageview($setting->value) }}" style="display: block; margin: 5px 0 10px 0; width: 100px;">
+        <img src="{{ imageview($setting->value) }}" style="display: block; margin: 5px 0 10px 0; width: 50%;">
     @endif
     <div class="input-group">
         <div class="input-group-btn">
