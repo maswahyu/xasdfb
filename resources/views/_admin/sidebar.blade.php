@@ -78,6 +78,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/bannerwifi') }}" class="nav-link {!! classActiveSegment(2, 'bannerwifi') !!}">
+                        <i class="nav-icon fa fa-file-image"></i>
+                        <p>
+                            Banner Wifi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/slide') }}" class="nav-link {!! classActiveSegment(2, 'slide') !!}">
                         <i class="nav-icon fa fa-sliders-h"></i>
                         <p>

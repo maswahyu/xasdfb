@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use App\News;
+use App\Slide;
 use App\Gallery;
+use App\Setting;
+use App\Category;
+use App\BannerWifi;
+use Illuminate\Http\Request;
+
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\News as NewsItem;
-use Auth;
-use App\Slide;
-use App\Category;
-use App\Setting;
-
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -25,7 +26,12 @@ class IndexController extends Controller
             'url' => Setting::getConfig('banner_home_url'),
             'image' => Setting::getConfig('banner_home'),
         ];
-	    return view('frontend.pages.home', compact('ads'));
+        $bannerWifi = null;
+        if(request()->get('wifi')) {
+            $bannerWifi = BannerWifi::byPublish()->first();
+        }
+
+	    return view('frontend.pages.home', compact('ads', 'bannerWifi'));
     }
 
     public function feed(Request $request)

@@ -152,6 +152,12 @@
 
 @endsection
 
+{{-- banner wifi --}}
+@if($bannerWifi)
+@include('frontend.partials.wifi-popup')
+@endif
+{{-- end banner wifi --}}
+
 @section('before-body-end')
 
 <script>
