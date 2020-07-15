@@ -23,7 +23,6 @@
   .modal .modal-dialog {
     background-color: #fff;
     width: fit-content;
-    padding: 15px;
     position: relative;
     top: 50%;
     left: 50%;
@@ -34,7 +33,6 @@
     .modal .modal-dialog {
         background-color: #fff;
         width: fit-content;
-        padding: 5px;
         position: relative;
         top: 50%;
         left: 50%;
