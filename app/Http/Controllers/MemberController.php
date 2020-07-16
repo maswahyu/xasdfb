@@ -68,7 +68,7 @@ class MemberController extends Controller
                     ]
                 ]);
 
-                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'?controller=profile&action=get-user-points&email='.Auth::user()->email);
+                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'/lazone/point?email='.Auth::user()->email, ['verify' => (env("APP_ENV", "local") !== "local")]);
                 if ($response->getStatusCode() == 200) {
 
                     return json_decode($response->getBody()->getContents(), true);
@@ -106,7 +106,7 @@ class MemberController extends Controller
                     ]
                 ]);
 
-                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'?controller=profile&action=find-user&sso_id='.Auth::user()->sso_id);
+                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'/lazone/profile?id='.Auth::user()->sso_id, ['verify' => (env("APP_ENV", "local") !== "local")]);
                 if ($response->getStatusCode() == 200) {
 
                     return json_decode($response->getBody()->getContents(), true);
