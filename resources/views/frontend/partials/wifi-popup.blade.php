@@ -1,4 +1,5 @@
 @section('inside-head')
+@parent
 <style>
   body.modal-show {
     overflow-y: hidden;
@@ -57,6 +58,8 @@
 </style>
 @endsection
 
+@section('before-body-end')
+@parent
   <!-- Modal -->
   <div class="modal" id="welcomeWifi" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="welcomeWifiLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -78,17 +81,16 @@
     </div>
   </div>
 
-@section('before-body-end')
 <script>
   $("body").addClass('modal-show');
   $("[data-dismiss=modal]").click( () => {
     $("body").removeClass("modal-show");
-  })
+  });
   $(".modal").click((e) => {
     if($("#welcomeWifi")[0] == $(e.target)[0]) {
       $("body").removeClass("modal-show");
     }
-  })
+  });
 </script>
 @endsection
 
