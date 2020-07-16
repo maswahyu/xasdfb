@@ -158,6 +158,9 @@ class MemberController extends Controller
                 }
                 $user->save();
             } else {
+                if (array_key_exists('FIRST_NAME', $attribute)) {
+                    $user->name = $attribute['FIRST_NAME'];
+                }
                 if (array_key_exists('TOTAL_POINT', $attribute)) {
                     $user->total_point = $attribute['TOTAL_POINT'];
                 }
