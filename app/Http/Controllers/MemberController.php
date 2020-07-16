@@ -166,8 +166,11 @@ class MemberController extends Controller
 
             Auth::loginUsingId($user->id);
 
-            return redirect()->to(config('cas.url_mypoint'));
+            if (isset($attribute['from_wifi']) && $attribute['from_wifi'] !== true) {
+                return redirect()->to(config('cas.url_mypoint') . '?wifi=' . $attribute['from_wifi']);
+            }
 
+            return redirect()->to(config('cas.url_mypoint'));
         } else {
         	return redirect('/');
         }
