@@ -47,8 +47,9 @@
     background-color: transparent;
     font-size: 30px;
     position: absolute;
+    color: #fff;
     top: 0px;
-    right: 0;
+    right: 20px;
     transform: translate(80%, -125%);
   }
 
