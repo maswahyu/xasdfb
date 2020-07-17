@@ -106,7 +106,7 @@ class MemberController extends Controller
                     ]
                 ]);
 
-                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'/lazone/profile?id='.Auth::user()->sso_id, ['verify' => (env("APP_ENV", "local") !== "local")]);
+                $response = $client->request('GET', 'https://'.config('cas.cas_hostname').'/lazone/profile?email='.Auth::user()->email, ['verify' => (env("APP_ENV", "local") !== "local")]);
                 if ($response->getStatusCode() == 200) {
 
                     return json_decode($response->getBody()->getContents(), true);
