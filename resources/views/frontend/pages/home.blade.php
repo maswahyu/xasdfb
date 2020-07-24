@@ -1,7 +1,11 @@
 @extends('frontend.layouts.skeleton')
 
 @section('content')
-
+{{-- banner wifi --}}
+@if(isset($bannerWifi) && $bannerWifi)
+@include('frontend.partials.wifi-banner')
+@endif
+{{-- end banner wifi --}}
 {{-- Above the fold --}}
 <div class="container">
 
@@ -151,12 +155,6 @@
 </div>
 
 @endsection
-
-{{-- banner wifi --}}
-@if($bannerWifi)
-@include('frontend.partials.wifi-popup')
-@endif
-{{-- end banner wifi --}}
 
 @section('before-body-end')
 

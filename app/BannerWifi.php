@@ -38,6 +38,17 @@ class BannerWifi extends Model
         return $data;
     }
 
+    public function getImage()
+    {
+        if (empty($this->image)) {
+
+            /* if this album doesnt have photos, return empty string */
+            return imageview('');
+        }
+
+        return imageview($this->image);
+    }
+
     /**
      * Get posts by publish
      *
