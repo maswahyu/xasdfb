@@ -17,7 +17,7 @@ $(function ()
 
             $html = `<div class="home-promo-slider__slide">
                 <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                    <img src="/img_placeholder_slider.webp" data-lazy="` + value.image + `" alt="` + value.title + `">
+                    <img src="/img_placeholder_slider.jpg" data-lazy="` + value.image + `" alt="` + value.title + `">
                 </a>
             </div>`;
 
@@ -25,7 +25,7 @@ $(function ()
 
             $html = `<div class="home-promo-slider__slide">
                 <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                    <img src="/img_placeholder_point.webp" data-lazy="` + (value.mobile_image ? value.mobile_image : '/img_placeholder_point.webp') + `" alt="` + value.title + `">
+                    <img src="/img_placeholder_point.jpg" data-lazy="` + (value.mobile_image ? value.mobile_image : '/img_placeholder_point.jpg') + `" alt="` + value.title + `">
                 </a>
             </div>`;
 

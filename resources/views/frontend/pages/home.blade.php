@@ -59,7 +59,7 @@
 </div>
 
 {{--  Trending Article --}}
-<div class="home-trending" data-src="/static/images/trending-bg.webp">
+<div class="home-trending" data-src="/static/images/trending-bg.jpg">
     <div class="container">
         <div class="section-title">
             <span class="section-title__label text-white">Trending Articles</span>
@@ -78,7 +78,7 @@
 
             <div class="placement">
                 <a href="{{ $ads['url'] }}?utm_source=AdsHome" alt="{{ $ads['url'] }}">
-                    <img class="placement__img post-card__img" src="/img_placeholder_slider.webp" data-src="{{ imageview($ads['image']) }}" alt="{{ $ads['url'] }}">
+                    <img class="placement__img post-card__img" src="/img_placeholder_slider.jpg" data-src="{{ imageview($ads['image']) }}" alt="{{ $ads['url'] }}">
                 </a>
             </div>
 
@@ -99,8 +99,8 @@
             {{-- Shoutbox lazone --}}
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.webp') }} />
-                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12-responsive.webp') }} />
+                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} />
+                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12-responsive.jpg') }} />
 
                 <div class="shoutbox__content-wrapper">
 
@@ -209,7 +209,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--video">
 
-        <img class="post-card__img post-card__img--video" src="/img_placeholder_point.webp" data-src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
+        <img class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
 
         <a href="{{ url }}" alt="{{ title_limit }}">
             <div class="post-card__overlay"></div>
@@ -256,7 +256,7 @@
     <div class="post-card post-card--simple">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -291,7 +291,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -348,7 +348,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--large">
         <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <img class="post-card__img post-card__img--large" src="img_placeholder_point.webp" data-src="{{ thumbnail }}" alt="{{ title }}">
+            <img class="post-card__img post-card__img--large" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
         </a>
     </div>
 
