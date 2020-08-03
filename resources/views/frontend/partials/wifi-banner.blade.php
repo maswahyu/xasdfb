@@ -2,7 +2,6 @@
 @parent
 <style>
     #bannerWifi > div {
-        width: fit-content;
         margin: 0 auto;
         position: relative;
     }
@@ -22,12 +21,14 @@
         position: relative;
         line-height: 0;
     }
+    #bannerWifi.placement img {
+        width: 100%;
+    }
     @media (min-width: 1024px) {
         .site-content.wifi {
             padding-top: 0px;
         }
         #bannerWifi.placement {
-            margin: 1.5rem;
         }
 
 
@@ -58,8 +59,11 @@
 <div class="container">
     <div class="placement" id="bannerWifi">
         <div>
-            <a href="{{$bannerWifi->cta}}">
-                <img class="placement__img post-card__img" src="{!! $bannerWifi->getImage() !!}" alt="" style="">
+            <a @if(!empty($bannerWifi->cta)) href="{{$bannerWifi->cta}}" @endif>
+                <picture>
+                    <source media="(min-width: 756px)" srcset="{!! $bannerWifi->getImage() !!}">
+                    <img class="placement__img post-card__img" src="{!! $bannerWifi->getImage('mobile_image') !!}" alt="" style="">
+                </picture>
             </a>
             <span class="btn-close"></span>
         </div>
