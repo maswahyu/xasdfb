@@ -66,17 +66,32 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('frontend.pages.about');
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
+        return view('frontend.pages.about', compact('ads'));
     }
 
     public function term()
     {
-        return view('frontend.pages.term');
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
+        return view('frontend.pages.term', compact('ads'));
     }
 
     public function privacy()
     {
-        return view('frontend.pages.privacy');
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
+        return view('frontend.pages.privacy', compact('ads'));
     }
 
     public function addContact(Request $request)
@@ -147,9 +162,15 @@ class PageController extends Controller
         $videos = Gallery::getGallery(Gallery::VIDEO, 2);
         $photos = Album::getLatest(2);
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
         return view('frontend.pages.event', [
             'videos' => $videos,
             'photos' => $photos,
+            'ads' => $ads
         ]);
     }
 

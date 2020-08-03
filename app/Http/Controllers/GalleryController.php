@@ -8,6 +8,7 @@ use App\Http\Resources\GalleryCollection;
 use App\Http\Resources\Gallery as GalleryItem;
 use App\Http\Resources\AlbumCollection;
 use App\Album;
+use App\Setting;
 
 class GalleryController extends Controller
 {
@@ -21,9 +22,15 @@ class GalleryController extends Controller
         $sticky = Album::getSticky();
         $latest = Album::getLatest();
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
         return view('frontend.pages.photo', [
             'stickyPosts' => $sticky,
             'latestPosts' => $latest,
+            'ads' => $ads
         ]);
     }
 
@@ -32,9 +39,15 @@ class GalleryController extends Controller
         $videos      = Gallery::getGallery(Gallery::VIDEO, 3);
         $stickyVideo = Gallery::getSticky(Gallery::VIDEO);
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
         return view('frontend.pages.video', [
             'latestVideos' => $videos,
             'stickyVideo'  => $stickyVideo,
+            'ads' => $ads
         ]);
     }
 
@@ -42,8 +55,14 @@ class GalleryController extends Controller
     {
         $album = Album::detail($slug);
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
         return view('frontend.pages.photo-detail', [
             'album' => $album,
+            'ads' => $ads
         ]);
     }
 
@@ -55,7 +74,12 @@ class GalleryController extends Controller
             abort(404);
         }
 
-        return view('frontend.pages.video-detail', compact('gallery'));
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
+        return view('frontend.pages.video-detail', compact('gallery','ads'));
     }
 
     public function feedPhoto(Request $request)
