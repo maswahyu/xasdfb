@@ -34,6 +34,11 @@ class PostController extends Controller
 	    $recommended = News::getRecommended();
 	    $type 	 	 = 1;
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
 	    return view('frontend.pages.category', [
 			'category'         => $category,
             'head'             => $category,
@@ -41,6 +46,7 @@ class PostController extends Controller
 			'stickyPosts'      => $sticky,
 			'latestPosts'      => $latest,
 			'recommendedPosts' => $recommended,
+            'ads' => $ads
 	    ]);
     }
 
@@ -76,6 +82,11 @@ class PostController extends Controller
 	    $recommended = News::getRecommended();
 	    $type 	 	 = 0;
 
+        $ads = [
+            'url' => Setting::getConfig('banner_post_url'),
+            'image' => Setting::getConfig('banner_post'),
+        ];
+
 	    return view('frontend.pages.category', [
 			'category'         => $category,
 			'subcategory'      => $subcategory,
@@ -84,6 +95,7 @@ class PostController extends Controller
 			'stickyPosts'      => $sticky,
 			'latestPosts'      => $latest,
 			'recommendedPosts' => $recommended,
+            'ads' => $ads
 	    ]);
     }
 
