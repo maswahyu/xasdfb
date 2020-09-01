@@ -38,15 +38,15 @@ class BannerWifi extends Model
         return $data;
     }
 
-    public function getImage()
+    public function getImage($field = 'image')
     {
-        if (empty($this->image)) {
+        if (empty($this->$field)) {
 
             /* if this album doesnt have photos, return empty string */
             return imageview('');
         }
 
-        return imageview($this->image);
+        return imageview($this->$field);
     }
 
     /**
