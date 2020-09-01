@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 class StorageController extends Controller
 {
@@ -33,6 +35,17 @@ class StorageController extends Controller
     {
         $file = $request->path();
         $file = urldecode(str_replace('storage/', '/', $file));
+
+        if (strpos($file, '.gif') !== true) {
+            $path = storage_path('app/public' . $file);
+            $file = File::get($path);
+            $type = File::mimeType($path);
+
+            $response = Response::make($file, 200);
+            $response->header("Content-Type", $type);
+            return $response;
+        }
+
         $file = Storage::disk('filemanager')->get($file);
 
         $this->cacheControl();
