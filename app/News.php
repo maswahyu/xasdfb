@@ -158,8 +158,8 @@ class News extends Model
         $from      = Carbon::now()->subDays(7)->toDateString();
         $to        = Carbon::now()->toDateString();
 
-        $model = Cache::remember('getTrendingWeekly', $expiresAt, function () use ($take, $from, $to) {
-            $model = self::where('news.publish', 1)->whereBetween('news.published_at', [$from, $to])->getStats('all_time_stats', 'DESC', $take)->get();
+        $model = Cache::remember('getTrendingWeeklys', $expiresAt, function () use ($take, $from, $to) {
+            $model = self::where('news.publish', 1)->whereBetween('news.published_at', [$from." 00:00:00", $to." 23:59:59"])->getStats('all_time_stats', 'DESC', $take)->get();
 
             return $model->unique('category_id')->take(4);
         });
