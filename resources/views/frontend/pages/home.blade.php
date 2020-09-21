@@ -62,7 +62,7 @@
 <div class="home-trending" data-src="/static/images/trending-bg.jpg">
     <div class="container">
         <div class="section-title">
-            <span class="section-title__label text-white">Trending Articles</span>
+            <span class="section-title__label text-white">Most Viewed Articles</span>
         </div>
         <div class="row jsTrendingList"></div>
         <div class="jsMoreTrending"></div>
