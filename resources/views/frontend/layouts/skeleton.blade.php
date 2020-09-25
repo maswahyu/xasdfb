@@ -27,6 +27,15 @@
     <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <style>
+        .sticky {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+    </style>
     @if($siteInfo['analytics_id'])
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteInfo['analytics_id'] }}"></script>
@@ -95,6 +104,25 @@
                 visibleOnly: true
             });
         });
+    </script>
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        const stickyBanner = document.getElementsByClassName("placement__img");
+        const sticky = $(".placement__img").offset().top;
+        const webFooter = $(".site-footer").offset().top;
+        const footerHeight = $(".site-footer").innerHeight();
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                $(".placement__img").addClass("sticky");
+                console.log('true');
+            } else {
+                $(".placement__img").removeClass("sticky");
+                console.log('false');
+            }
+        }
+
     </script>
 </body>
 
