@@ -86,6 +86,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/stickybanner') }}" class="nav-link {!! classActiveSegment(2, 'stickybanner') !!}">
+                        <i class="nav-icon fa fa-file-image"></i>
+                        <p>
+                            Sticky Banner
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/slide') }}" class="nav-link {!! classActiveSegment(2, 'slide') !!}">
                         <i class="nav-icon fa fa-sliders-h"></i>
                         <p>
