@@ -9,7 +9,7 @@
 {{-- Above the fold --}}
 @section('inside-head')
 <style type="text/css">
-
+.post-card {padding-bottom: 0.5rem}
 </style>
 @endsection
 <div class="container">
