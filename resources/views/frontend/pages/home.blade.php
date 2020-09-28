@@ -7,6 +7,11 @@
 @endif
 {{-- end banner wifi --}}
 {{-- Above the fold --}}
+@section('inside-head')
+<style type="text/css">
+
+</style>
+@endsection
 <div class="container">
 
     <div class="home-grid">
@@ -186,6 +191,10 @@
                     </a>
                 </div>
 
+
+            </div>
+            <div class="post-card__meta post-meta">
+
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
                 <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
@@ -238,7 +247,12 @@
             </a>
         </div>
 
+    </div>
+
+    <div class="post-card__meta post-meta">
+
         <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+        <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
     </div>
 
@@ -262,13 +276,17 @@
 
         <div class="post-card__meta post-meta">
 
-        <div class="post-meta__category">
-            <a href="{{ category_url }}" alt="{{ category }}">
-                <span>{{ category }}</span>
-            </a>
+            <div class="post-meta__category">
+                <a href="{{ category_url }}" alt="{{ category }}">
+                    <span>{{ category }}</span>
+                </a>
+            </div>
+
         </div>
 
-        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+        <div class="post-card__meta post-meta">
+
+            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
             <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
@@ -297,13 +315,17 @@
 
         <div class="post-card__meta post-meta">
 
-        <div class="post-meta__category">
-            <a href="{{ category_url }}" alt="{{ category }}">
-                <span>{{ category }}</span>
-            </a>
-        </div>
+            <div class="post-meta__category">
+                <a href="{{ category_url }}" alt="{{ category }}">
+                    <span>{{ category }}</span>
+                </a>
+            </div>
 
-        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+        </div>
+        <div class="post-card__meta post-meta">
+
+            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
         </div>
 
@@ -330,17 +352,22 @@
                 </a>
             </div>
 
+        </div>
+
+        <div class="post-card__meta post-meta">
+
             <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
-            </div>
-
-            <a href="{{ url }}{{ utm }}" alt="{{ title }}">
-                <div class="post-card__title"><span>{{ title }}</span></div>
-            </a>
+            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
         </div>
 
+        <a href="{{ url }}{{ utm }}" alt="{{ title }}">
+            <div class="post-card__title"><span>{{ title }}</span></div>
+        </a>
+
     </div>
+
+</div>
 </script>
 
 <script id="x-highlight-template" type="text/x-handlebars-template">
@@ -360,7 +387,11 @@
             </a>
         </div>
 
+    </div>
+    <div class="post-card__meta post-meta post-meta--centered">
+
         <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+        <div class="post-meta__stat"><span>{{ view_count }} views </span></div>
 
     </div>
 
