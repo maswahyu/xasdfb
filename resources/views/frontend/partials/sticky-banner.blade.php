@@ -1,11 +1,11 @@
 @section('inside-head')
 @parent
 <style>
-    #stickyBanner > div {
+    #stickyBannerContainer #stickyBanner > div {
         margin: 0 auto;
         position: relative;
     }
-    #stickyBanner.placement img {
+    #stickyBannerContainer #stickyBanner.placement img {
         width: 100%;
     }
     @media (min-width: 1024px) {
@@ -15,13 +15,13 @@
         #stickyBanner .hide-mobile {
             display: block !important;
         }
-        #stickyBanner .site-content.sticky-banner {
+        .site-content.sticky-banner {
             padding-top: 0px;
         }
-        #stickyBanner .sticky #stickyBanner.placement {
+        #stickyBannerContainer .sticky #stickyBanner.placement {
             margin: 10px 0;
         }
-        #stickyBanner .footer-sticky-banner #stickyBanner.placement {
+        .footer-sticky-banner #stickyBanner.placement {
             margin-top: 2rem;
             margin-bottom: 0;
         }
@@ -50,8 +50,8 @@
     <div class="placement" id="stickyBanner">
         <div>
             <a @if(!empty($stickyBanner->cta)) href="{{$stickyBanner->cta}}" @endif>
-                <img class="placement__img post-card__img hide-mobile" alt="lazone id" src={{ $stickyBanner->getImage() }} />
-                <img class="placement__img post-card__img show-mobile" alt="lazone id" src={{ $stickyBanner->getImage('mobile_image') }} />
+                <img class="placement__img post-card__img hide-mobile" alt="lazone id" src="{!! url($stickyBanner->getImage()) !!}" />
+                <img class="placement__img post-card__img show-mobile" alt="lazone id" src="{!! url($stickyBanner->getImage('mobile_image')) !!}" />
             </a>
         </div>
     </div>

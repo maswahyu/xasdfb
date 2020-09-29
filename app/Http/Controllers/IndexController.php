@@ -35,7 +35,8 @@ class IndexController extends Controller
         }
         $stickyBanner = StickyBanner::where([
             ['status', '=', 1],
-            ['pub_day', '=', Carbon::now()->dayOfWeekIso]
+            ['pub_day', '=', Carbon::now()->dayOfWeekIso],
+            ['page', '=', StickyBanner::PAGE_HOME]
         ])->first();
 	    return view('frontend.pages.home', compact('ads', 'bannerWifi', 'stickyBanner'));
     }
