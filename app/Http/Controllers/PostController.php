@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
-use App\Category;
-use App\Setting;
 use App\Tag;
-use App\Http\Resources\NewsCollection;
+use App\News;
+use App\Setting;
+use App\Category;
+use Carbon\Carbon;
 
+use App\StickyBanner;
 use Illuminate\Http\Request;
+use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
 {
@@ -134,8 +136,12 @@ class PostController extends Controller
             'url' => Setting::getConfig('banner_post_url'),
             'image' => Setting::getConfig('banner_post'),
         ];
-
+        $stickyBanner = StickyBanner::where([
+            ['status', '=', 1],
+            ['pub_day', '=', Carbon::now()->dayOfWeekIso]
+        ])->first();
 	    return view('frontend.pages.post', [
+            'stickyBanner' => $stickyBanner,
 	        'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads

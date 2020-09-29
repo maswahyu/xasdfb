@@ -5,49 +5,33 @@
         margin: 0 auto;
         position: relative;
     }
-    .btn-close {
-        color: #ee3b3e;
-        position: absolute;
-        font-weight: bold;
-        top: 0;
-        right: 0px;
-        padding: 5px;
-        background: #fff;
-        cursor: pointer;
-    }
-    .btn-close::after {
-        font-size: 2.5rem;
-        content: 'x';
-        position: relative;
-        line-height: 0;
-    }
     #stickyBanner.placement img {
         width: 100%;
     }
     @media (min-width: 1024px) {
-        .show-mobile {
+        #stickyBanner .show-mobile {
             display: none !important;
         }
-        .hide-mobile {
+        #stickyBanner .hide-mobile {
             display: block !important;
         }
-        .site-content.sticky-banner {
+        #stickyBanner .site-content.sticky-banner {
             padding-top: 0px;
         }
-        .sticky #stickyBanner.placement {
+        #stickyBanner .sticky #stickyBanner.placement {
             margin: 10px 0;
         }
-        .footer-sticky-banner #stickyBanner.placement {
+        #stickyBanner .footer-sticky-banner #stickyBanner.placement {
             margin-top: 2rem;
             margin-bottom: 0;
         }
 
     }
     @media (max-width: 1024px) {
-        .show-mobile {
+        #stickyBanner .show-mobile {
             display: block !important;
         }
-        .hide-mobile {
+        #stickyBanner .hide-mobile {
             display: none !important;
         }
         #stickyBanner.placement {
@@ -57,20 +41,6 @@
         .footer-sticky-banner #stickyBanner.placement {
             margin-top: 2rem;
             margin-bottom: 0;
-        }
-        .btn-close {
-            color: #ee3b3e;
-            position: absolute;
-            font-weight: bold;
-            top: 2px;
-            right: 2px;
-            padding: 5px;
-            background: #fff;
-        }
-        .btn-close::after {
-            font-size: 1.5rem;
-            content: 'x';
-            position: relative;
         }
     }
 
@@ -89,8 +59,60 @@
 
 @section('before-body-end')
 @parent
-
 <script>
     $(".site-content").addClass('sticky-banner');
+
+    window.onscroll = function() {myFunction()};
+
+    const stickyBanner = document.getElementsByClassName("stickyBanner");
+    const sticky = $(".stickyBanner").offset().top > 0 ? $(".stickyBanner").offset().top : $("#bannerWifi").offset().top;
+    const webFooter = $(".site-footer").offset().top;
+    const footerHeight = $(".site-footer").innerHeight();
+
+
+    function myFunction() {
+        var top_of_element = $(".footer-sticky-banner").offset().top;
+        var bottom_of_element = $(".footer-sticky-banner").offset().top + $(".footer-sticky-banner").outerHeight();
+        var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+        var top_of_screen = $(window).scrollTop();
+        if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+            console.log('stop')
+            $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
+        } else if( window.pageYOffset >= sticky) {
+                console.log('sticky');
+            if($("#bannerWifi").length > 0) {
+                $(".stickyBanner").addClass("sticky").css({
+                    'display': 'block'
+                });
+            } else {
+                $(".stickyBanner").addClass("sticky");
+            }
+        } else {
+            console.log('masasing');
+            if($(".footer-sticky-banner .stickyBanner").length == 0) {
+                console.log('here');
+                if($("#bannerWifi").length > 0) {
+                    $(".stickyBanner").removeClass("sticky").css({
+                        'display':'none'
+                    });
+                } else {
+                    $(".stickyBanner").removeClass("sticky");
+                }
+                return;
+            } else {
+                if($("#bannerWifi").length > 0) {
+                    console.log('lebih besar');
+                    $(".stickyBanner").removeClass("sticky").css({
+                        'display': 'none'
+                    }).prependTo(".site-content.sticky-banner");
+                } else {
+                    console.log('asas');
+                    $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
+                }
+            }
+        }
+    }
+
+
 </script>
 @endsection

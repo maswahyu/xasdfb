@@ -105,61 +105,6 @@
             });
         });
     </script>
-    <script>
-
-        window.onscroll = function() {myFunction()};
-
-        const stickyBanner = document.getElementsByClassName("stickyBanner");
-        const sticky = $(".stickyBanner").offset().top > 0 ? $(".stickyBanner").offset().top : $("#bannerWifi").offset().top;
-        const webFooter = $(".site-footer").offset().top;
-        const footerHeight = $(".site-footer").innerHeight();
-
-
-        function myFunction() {
-            var top_of_element = $(".footer-sticky-banner").offset().top;
-            var bottom_of_element = $(".footer-sticky-banner").offset().top + $(".footer-sticky-banner").outerHeight();
-            var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
-            var top_of_screen = $(window).scrollTop();
-            if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-                console.log('stop')
-                $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
-            } else if( window.pageYOffset >= sticky) {
-                    console.log('sticky');
-                if($("#bannerWifi").length > 0) {
-                    $(".stickyBanner").addClass("sticky").css({
-                        'display': 'block'
-                    });
-                } else {
-                    $(".stickyBanner").addClass("sticky");
-                }
-            } else {
-                console.log('masasing');
-                if($(".footer-sticky-banner .stickyBanner").length == 0) {
-                    console.log('here');
-                    if($("#bannerWifi").length > 0) {
-                        $(".stickyBanner").removeClass("sticky").css({
-                            'display':'none'
-                        });
-                    } else {
-                        $(".stickyBanner").removeClass("sticky");
-                    }
-                    return;
-                } else {
-                    if($("#bannerWifi").length > 0) {
-                        console.log('lebih besar');
-                        $(".stickyBanner").removeClass("sticky").css({
-                            'display': 'none'
-                        }).prependTo(".site-content.sticky-banner");
-                    } else {
-                        console.log('asas');
-                        $(".stickyBanner").removeClass("sticky").prependTo(".site-content.sticky-banner");
-                    }
-                }
-            }
-        }
-
-
-    </script>
 </body>
 
 </html>
