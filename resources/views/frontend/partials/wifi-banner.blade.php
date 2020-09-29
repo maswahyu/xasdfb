@@ -76,8 +76,13 @@
 <script>
     $(".site-content").addClass('wifi');
     $("#bannerWifi .btn-close").click(function(){
-        $("#bannerWifi").hide();
-        $(".site-content").removeClass('wifi');
+        $("#bannerWifi").parent().remove();
+        if($(".stickyBanner").length > 0) {
+            $(".stickyBanner").css({
+                'display':'block'
+            });
+        }
+
     });
 </script>
 @endsection

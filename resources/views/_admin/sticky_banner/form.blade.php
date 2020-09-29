@@ -26,6 +26,23 @@
     <p class="help-block"></p>
 </div>
 
+<div class="form-group ">
+    <label>
+         {{ 'Mobile Image' }}
+    </label>
+    @if(isset($stickyBanner->mobile_image))
+        <img src="{{ imageview($stickyBanner->mobile_image) }}" style="display: block; margin: 5px 0 10px 0; width: 100px;">
+    @endif
+    <div class="input-group">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-block btn-default btn-flat" id="button-image2">Browse</button>
+        </div>
+        <input id="image_path2" name="mobile_image" type="text" class="form-control form-control-sm" value="{{ isset($stickyBanner->mobile_image) ? $stickyBanner->mobile_image : old('mobile_image') }}" placeholder="Mobile Image">
+    </div>
+    <span class="text-danger">{{ $errors->first('mobile_image') }}</span>
+    <p class="help-block"></p>
+</div>
+
 
 <div class="form-group">
     <label for="cta">{{ 'CTA' }}</label>
@@ -60,13 +77,13 @@
     <select name="pub_day" class="form-control form-control-sm" id="pub_day">
         @php
         $dayOfWeek = [
-            0 => 'Senin',
-            1 => 'Selasa',
-            2 => 'Rabu',
-            3 => 'Kamis',
-            4 => 'Jumat',
-            5 => 'Sabtu',
-            6 => 'Minggu',
+            1 => 'Senin',
+            2 => 'Selasa',
+            3 => 'Rabu',
+            4 => 'Kamis',
+            5 => 'Jumat',
+            6 => 'Sabtu',
+            7 => 'Minggu',
         ];
         @endphp
             <option disabled selected>Choose Day</option>

@@ -7,9 +7,12 @@ use App\Slide;
 use App\Gallery;
 use App\Setting;
 use App\Category;
+use Carbon\Carbon;
 use App\BannerWifi;
-use Illuminate\Http\Request;
 
+use App\StickyBanner;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\News as NewsItem;
 
@@ -30,8 +33,11 @@ class IndexController extends Controller
         if(request()->get('wifi')) {
             $bannerWifi = BannerWifi::byPublish()->first();
         }
-
-	    return view('frontend.pages.home', compact('ads', 'bannerWifi'));
+        $stickyBanner = StickyBanner::where([
+            ['status', '=', 1],
+            ['pub_day', '=', Carbon::now()->dayOfWeekIso]
+        ])->first();
+	    return view('frontend.pages.home', compact('ads', 'bannerWifi', 'stickyBanner'));
     }
 
     public function feed(Request $request)

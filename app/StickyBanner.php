@@ -17,6 +17,7 @@ class StickyBanner extends Model
         $data->name  = $request->get('name');
         $data->image = $request->get('image');
         $data->status = $request->get('status');
+        $data->mobile_image = $request->get('mobile_image');
         $data->pub_day  = $request->get('pub_day');
         $data->page = $request->get('page');
         $data->cta  = $request->get('cta');
@@ -33,6 +34,7 @@ class StickyBanner extends Model
         $data->name  = $request->get('name');
         $data->image = $request->get('image');
         $data->status = $request->get('status');
+        $data->mobile_image = $request->get('mobile_image');
         $data->pub_day  = $request->get('pub_day');
         $data->page = $request->get('page');
         $data->cta  = $request->get('cta');
@@ -44,6 +46,17 @@ class StickyBanner extends Model
 
 
         return $data;
+    }
+
+    public function getImage($field = 'image')
+    {
+        if (empty($this->$field)) {
+
+            /* if this album doesnt have photos, return empty string */
+            return imageview('');
+        }
+
+        return imageview($this->$field);
     }
 
     public static function getConstanta($prefix)

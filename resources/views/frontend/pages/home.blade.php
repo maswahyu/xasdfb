@@ -5,6 +5,13 @@
 @if(isset($bannerWifi) && $bannerWifi)
 @include('frontend.partials.wifi-banner')
 @endif
+@if(isset($stickyBanner) && $stickyBanner)
+    @if($stickyBanner->periode_start && (Carbon\Carbon::now()->between(Carbon\Carbon::createFromFormat('Y-m-d', $stickyBanner->periode_start), Carbon\Carbon::createFromFormat('Y-m-d', $stickyBanner->periode_end))) )
+        @include('frontend.partials.sticky-banner')
+    @elseif(!$stickyBanner->periode_start)
+    @include('frontend.partials.sticky-banner')
+    @endif
+@endif
 {{-- end banner wifi --}}
 {{-- Above the fold --}}
 <div class="container">
@@ -154,6 +161,10 @@
 
 </div>
 
+{{-- sticky Banner --}}
+@if(isset($stickyBanner) && $stickyBanner)
+        <div class="footer-sticky-banner"></div>
+        @endif
 @endsection
 
 @section('before-body-end')

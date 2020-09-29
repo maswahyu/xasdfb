@@ -26,6 +26,7 @@ class StickyBannerRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'image' => 'required',
+            'mobile_image' => 'required',
             'cta' => 'nullable|url',
             'pub_day' => 'required',
             'page' => 'required|max:100',

@@ -17,6 +17,7 @@ class CreateStickyBannerTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->text('image');
+            $table->text('mobile_image');
             $table->text('cta')->nullable();
             $table->string('page', 100);
             $table->smallInteger('pub_day');
