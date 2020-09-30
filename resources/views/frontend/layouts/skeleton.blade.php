@@ -49,6 +49,10 @@
     @endif
     {!! $siteInfo['headercode'] !!}
     <style>
+        .stickyBanner-flex {
+            display: flex;
+            justify-content: center;
+        }
         #stickyBannerContainer #stickyBanner > div {
             margin: 0 auto;
             position: relative;

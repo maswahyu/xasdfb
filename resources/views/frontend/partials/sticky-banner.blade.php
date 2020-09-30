@@ -1,4 +1,4 @@
-<div class="container stickyBanner {{ (isset($fixed) && $fixed ? 'sticky fixed' : '') }}" style="{{ (isset($bannerWifi) && $bannerWifi ? 'display:none;' : '') }}">
+<div class="container stickyBanner stickyBanner-flex {{ (isset($fixed) && $fixed ? 'sticky fixed' : '') }}" style="{{ (isset($bannerWifi) && $bannerWifi ? 'display:none;' : '') }}">
     <div class="placement" id="stickyBanner">
         <div>
             <a @if(!empty($stickyBanner->cta)) href="{{$stickyBanner->cta}}" @endif>

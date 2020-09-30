@@ -96,6 +96,7 @@ p {
 
   @include media-over(lg) {
     margin: 3rem 0;
+    width: 960px;
   }
 
   img {

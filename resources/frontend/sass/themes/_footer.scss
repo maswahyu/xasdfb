@@ -37,3 +37,17 @@
     padding: 0;
   }
 }
+
+.point-nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    position: relative;
+    margin: 0 1rem .5rem;
+    list-style: none;
+  }
+}
