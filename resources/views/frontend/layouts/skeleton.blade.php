@@ -196,71 +196,73 @@
 
     @yield('before-body-end')
     <script>
-        $(".site-content").addClass('sticky-banner');
-
-        window.onscroll = function() {myFunction()};
-
         const stickyBanner = document.getElementsByClassName("stickyBanner");
-        const sticky = $(".stickyBanner").offset().top > 0 ? $(".stickyBanner").offset().top : $("#bannerWifi").offset().top;
-        const webFooter = $(".site-footer").offset().top;
-        const footerHeight = $(".site-footer").innerHeight();
+        if(typeof stickyBanner[0] !== typeof undefined) {
+            $(".site-content").addClass('sticky-banner');
 
-        if( ! stickyBanner[0].classList.contains('fixed')) {
-            $(".site-content").addClass('pt-0');
-        }
+            window.onscroll = function() {myFunction()};
 
-        function myFunction() {
-            var top_of_element = $(".footer-sticky-banner").offset().top;
-            var bottom_of_element = $(".footer-sticky-banner").offset().top + $(".footer-sticky-banner").outerHeight();
-            var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
-            var top_of_screen = $(window).scrollTop();
-            if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
-                $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
-                $(".stickyBanner").find('.btn-close').show();
-            } else if( window.pageYOffset >= sticky) {
-                if($("#bannerWifi").length > 0) {
-                    $(".stickyBanner").addClass("sticky").css({
-                        'display': 'block'
-                    });
-                } else {
-                    if($(".footer-sticky-banner .stickyBanner").length == 0) {
-                        $(".stickyBanner").addClass("sticky");
-                    } else {
-                        $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
-                    }
-                    $(".stickyBanner").find(".btn-close").show();
-                }
-            } else {
-                if($(".footer-sticky-banner .stickyBanner").length == 0) {
+            const sticky = $(".stickyBanner").offset().top > 0 ? $(".stickyBanner").offset().top : $("#bannerWifi").offset().top;
+            const webFooter = $(".site-footer").offset().top;
+            const footerHeight = $(".site-footer").innerHeight();
+
+            if( ! stickyBanner[0].classList.contains('fixed')) {
+                $(".site-content").addClass('pt-0');
+            }
+
+            function myFunction() {
+                var top_of_element = $(".footer-sticky-banner").offset().top;
+                var bottom_of_element = $(".footer-sticky-banner").offset().top + $(".footer-sticky-banner").outerHeight();
+                var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+                var top_of_screen = $(window).scrollTop();
+                if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+                    $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
+                    $(".stickyBanner").find('.btn-close').show();
+                } else if( window.pageYOffset >= sticky) {
                     if($("#bannerWifi").length > 0) {
-                        $(".stickyBanner").removeClass("sticky").css({
-                            'display':'none'
+                        $(".stickyBanner").addClass("sticky").css({
+                            'display': 'block'
                         });
                     } else {
-                        if(! stickyBanner[0].classList.contains('fixed')) {
-                            $(".stickyBanner").removeClass("sticky");
+                        if($(".footer-sticky-banner .stickyBanner").length == 0) {
+                            $(".stickyBanner").addClass("sticky");
+                        } else {
+                            $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
                         }
+                        $(".stickyBanner").find(".btn-close").show();
                     }
                 } else {
-                    if($("#bannerWifi").length > 0) {
-                        $(".stickyBanner").removeClass("sticky").css({
-                            'display': 'none'
-                        }).prependTo(".site-content.sticky-banner");
+                    if($(".footer-sticky-banner .stickyBanner").length == 0) {
+                        if($("#bannerWifi").length > 0) {
+                            $(".stickyBanner").removeClass("sticky").css({
+                                'display':'none'
+                            });
+                        } else {
+                            if(! stickyBanner[0].classList.contains('fixed')) {
+                                $(".stickyBanner").removeClass("sticky");
+                            }
+                        }
                     } else {
-                        $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
+                        if($("#bannerWifi").length > 0) {
+                            $(".stickyBanner").removeClass("sticky").css({
+                                'display': 'none'
+                            }).prependTo(".site-content.sticky-banner");
+                        } else {
+                            $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
+                        }
                     }
-                }
-                if(! stickyBanner[0].classList.contains('fixed')) {
-                    $(".stickyBanner").find(".btn-close").hide();
-                }
+                    if(! stickyBanner[0].classList.contains('fixed')) {
+                        $(".stickyBanner").find(".btn-close").hide();
+                    }
 
+                }
             }
-        }
 
-        $("#stickyBanner .btn-close").click(function(){
-            $("#stickyBanner").parent().hide();
-            $(".site-content").removeClass('pt-0');
-        });
+            $("#stickyBanner .btn-close").click(function(){
+                $("#stickyBanner").parent().hide();
+                $(".site-content").removeClass('pt-0');
+            });
+        }
     </script>
     <script type="text/javascript">
         $(document).ready(function ($) {
