@@ -37,15 +37,13 @@
         }
     </style>
     @if($siteInfo['analytics_id'])
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $siteInfo['analytics_id'] }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ $siteInfo['analytics_id'] }}');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ $siteInfo['analytics_id'] }}');</script>
+    <!-- End Google Tag Manager -->
     @endif
     {!! $siteInfo['headercode'] !!}
     <style>
@@ -136,6 +134,12 @@
 
 
 <body class="site-body {{ $bodyClass ?? '' }}">
+    @if($siteInfo['analytics_id'])
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $siteInfo['analytics_id'] }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    @endif
     {!! $siteInfo['bodycode'] !!}
     @include('frontend.layouts.after-body')
 
@@ -224,7 +228,7 @@
                     } else {
                         $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
                     }
-                    $(".stickyBanner").find(".btn-close").hide();
+                    $(".stickyBanner").find(".btn-close").show();
                 }
             } else {
                 if($(".footer-sticky-banner .stickyBanner").length == 0) {
@@ -237,7 +241,6 @@
                             $(".stickyBanner").removeClass("sticky");
                         }
                     }
-                    return;
                 } else {
                     if($("#bannerWifi").length > 0) {
                         $(".stickyBanner").removeClass("sticky").css({
@@ -247,6 +250,10 @@
                         $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
                     }
                 }
+                if(! stickyBanner[0].classList.contains('fixed')) {
+                    $(".stickyBanner").find(".btn-close").hide();
+                }
+
             }
         }
 
