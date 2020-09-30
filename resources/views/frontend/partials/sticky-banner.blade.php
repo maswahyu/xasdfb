@@ -5,7 +5,7 @@
                 <img class="placement__img post-card__img hide-mobile" alt="lazone id" src="{!! url($stickyBanner->getImage()) !!}" />
                 <img class="placement__img post-card__img show-mobile" alt="lazone id" src="{!! url($stickyBanner->getImage('mobile_image')) !!}" />
             </a>
-            <span class="btn-close" style="display:none;"></span>
+            <span class="btn-close" style="{{ (isset($fixed) && $fixed ? 'display: block;' : 'display: none;') }}"></span>
         </div>
     </div>
 </div>

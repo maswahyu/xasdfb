@@ -224,7 +224,7 @@
                     } else {
                         $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
                     }
-                    $(".stickyBanner").find(".btn-close").hide();
+                    $(".stickyBanner").find(".btn-close").show();
                 }
             } else {
                 if($(".footer-sticky-banner .stickyBanner").length == 0) {
@@ -237,7 +237,6 @@
                             $(".stickyBanner").removeClass("sticky");
                         }
                     }
-                    return;
                 } else {
                     if($("#bannerWifi").length > 0) {
                         $(".stickyBanner").removeClass("sticky").css({
@@ -247,6 +246,10 @@
                         $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
                     }
                 }
+                if(! stickyBanner[0].classList.contains('fixed')) {
+                    $(".stickyBanner").find(".btn-close").hide();
+                }
+
             }
         }
 
