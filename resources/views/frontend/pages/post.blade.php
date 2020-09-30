@@ -181,10 +181,6 @@
         </div>
     </div>
 </div>
-{{-- sticky Banner --}}
-@if(isset($stickyBanner) && $stickyBanner)
-    <div class="footer-sticky-banner"></div>
-@endif
 @endsection
 
 

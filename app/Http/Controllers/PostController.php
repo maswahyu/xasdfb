@@ -136,13 +136,7 @@ class PostController extends Controller
             'url' => Setting::getConfig('banner_post_url'),
             'image' => Setting::getConfig('banner_post'),
         ];
-        $stickyBanner = StickyBanner::where([
-            ['status', '=', 1],
-            ['pub_day', '=', Carbon::now()->dayOfWeekIso],
-            ['page', '=', StickyBanner::PAGE_ARTICLE]
-        ])->first();
 	    return view('frontend.pages.post', [
-            'stickyBanner' => $stickyBanner,
 	        'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads
