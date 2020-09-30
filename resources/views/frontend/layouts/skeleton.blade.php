@@ -56,6 +56,25 @@
         #stickyBannerContainer #stickyBanner.placement img {
             width: 100%;
         }
+        #stickyBanner {
+            position: relative;
+        }
+        .btn-close {
+            color: #ee3b3e;
+            position: absolute;
+            font-weight: bold;
+            top: 0;
+            right: 0px;
+            padding: 5px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .btn-close::after {
+            font-size: 2.5rem;
+            content: 'x';
+            position: relative;
+            line-height: 0;
+        }
         @media (min-width: 1024px) {
             #stickyBanner .show-mobile {
                 display: none !important;
@@ -89,6 +108,21 @@
             .footer-sticky-banner #stickyBanner.placement {
                 margin-top: 2rem;
                 margin-bottom: 0;
+            }
+
+            .btn-close {
+                color: #ee3b3e;
+                position: absolute;
+                font-weight: bold;
+                top: 2px;
+                right: 2px;
+                padding: 5px;
+                background: #fff;
+            }
+            .btn-close::after {
+                font-size: 1.5rem;
+                content: 'x';
+                position: relative;
             }
         }
 
@@ -174,6 +208,7 @@
             var top_of_screen = $(window).scrollTop();
             if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
                 $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
+                $(".stickyBanner").find('.btn-close').show();
             } else if( window.pageYOffset >= sticky) {
                 if($("#bannerWifi").length > 0) {
                     $(".stickyBanner").addClass("sticky").css({
@@ -185,6 +220,7 @@
                     } else {
                         $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
                     }
+                    $(".stickyBanner").find(".btn-close").hide();
                 }
             } else {
                 if($(".footer-sticky-banner .stickyBanner").length == 0) {
@@ -195,8 +231,6 @@
                     } else {
                         if(! stickyBanner[0].classList.contains('fixed')) {
                             $(".stickyBanner").removeClass("sticky");
-                        } else {
-                            console.log('sini');
                         }
                     }
                     return;
@@ -212,7 +246,10 @@
             }
         }
 
-
+        $("#stickyBanner .btn-close").click(function(){
+            $("#stickyBanner").parent().hide();
+            $(".site-content").removeClass('pt-0');
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function ($) {
