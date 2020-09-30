@@ -48,6 +48,51 @@
     </script>
     @endif
     {!! $siteInfo['headercode'] !!}
+    <style>
+        #stickyBannerContainer #stickyBanner > div {
+            margin: 0 auto;
+            position: relative;
+        }
+        #stickyBannerContainer #stickyBanner.placement img {
+            width: 100%;
+        }
+        @media (min-width: 1024px) {
+            #stickyBanner .show-mobile {
+                display: none !important;
+            }
+            #stickyBanner .hide-mobile {
+                display: block !important;
+            }
+            .site-content.pt-0 {
+                padding-top: 0px;
+            }
+            #stickyBannerContainer .sticky #stickyBanner.placement {
+                margin: 10px 0;
+            }
+            .footer-sticky-banner #stickyBanner.placement {
+                margin-top: 2rem;
+                margin-bottom: 0;
+            }
+
+        }
+        @media (max-width: 1024px) {
+            #stickyBanner .show-mobile {
+                display: block !important;
+            }
+            #stickyBanner .hide-mobile {
+                display: none !important;
+            }
+            #stickyBanner.placement {
+                margin-top: 0;
+                margin-bottom: 2rem;
+            }
+            .footer-sticky-banner #stickyBanner.placement {
+                margin-top: 2rem;
+                margin-bottom: 0;
+            }
+        }
+
+    </style>
     @yield('inside-head')
 </head>
 
@@ -63,6 +108,28 @@
 
     <div class="site-content {{ isset($contentClass) ? $contentClass : ''  }}">
         @yield('content')
+        @if(Route::currentRouteName() != 'index')
+        @php
+        $stickyBanner = App\StickyBanner::where([
+            ['status', '=', 1],
+            ['pub_day', '=', Carbon\Carbon::now()->dayOfWeekIso],
+            ['page', '=', App\StickyBanner::PAGE_ARTICLE]
+        ])->first();
+        @endphp
+            @if(isset($stickyBanner) && $stickyBanner)
+                <div id="stickyBannerContainer">
+                @if($stickyBanner->periode_start && (Carbon\Carbon::now()->between(Carbon\Carbon::createFromFormat('Y-m-d', $stickyBanner->periode_start), Carbon\Carbon::createFromFormat('Y-m-d', $stickyBanner->periode_end))) )
+                    @include('frontend.partials.sticky-banner', ['fixed' => true])
+                @elseif(!$stickyBanner->periode_start)
+                    @include('frontend.partials.sticky-banner', ['fixed' => true])
+                @endif
+                </div>
+            @endif
+        @endif
+        {{-- sticky Banner --}}
+        @if(isset($stickyBanner) && $stickyBanner)
+        <div class="footer-sticky-banner"></div>
+        @endif
     </div>
 
     <footer class="site-footer">
@@ -86,6 +153,67 @@
     {!! $siteInfo['footercode'] !!}
 
     @yield('before-body-end')
+    <script>
+        $(".site-content").addClass('sticky-banner');
+
+        window.onscroll = function() {myFunction()};
+
+        const stickyBanner = document.getElementsByClassName("stickyBanner");
+        const sticky = $(".stickyBanner").offset().top > 0 ? $(".stickyBanner").offset().top : $("#bannerWifi").offset().top;
+        const webFooter = $(".site-footer").offset().top;
+        const footerHeight = $(".site-footer").innerHeight();
+
+        if( ! stickyBanner[0].classList.contains('fixed')) {
+            $(".site-content").addClass('pt-0');
+        }
+
+        function myFunction() {
+            var top_of_element = $(".footer-sticky-banner").offset().top;
+            var bottom_of_element = $(".footer-sticky-banner").offset().top + $(".footer-sticky-banner").outerHeight();
+            var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+            var top_of_screen = $(window).scrollTop();
+            if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+                $(".stickyBanner").removeClass('sticky').appendTo(".footer-sticky-banner");
+            } else if( window.pageYOffset >= sticky) {
+                if($("#bannerWifi").length > 0) {
+                    $(".stickyBanner").addClass("sticky").css({
+                        'display': 'block'
+                    });
+                } else {
+                    if($(".footer-sticky-banner .stickyBanner").length == 0) {
+                        $(".stickyBanner").addClass("sticky");
+                    } else {
+                        $(".stickyBanner").addClass("sticky").prependTo("#stickyBannerContainer");
+                    }
+                }
+            } else {
+                if($(".footer-sticky-banner .stickyBanner").length == 0) {
+                    if($("#bannerWifi").length > 0) {
+                        $(".stickyBanner").removeClass("sticky").css({
+                            'display':'none'
+                        });
+                    } else {
+                        if(! stickyBanner[0].classList.contains('fixed')) {
+                            $(".stickyBanner").removeClass("sticky");
+                        } else {
+                            console.log('sini');
+                        }
+                    }
+                    return;
+                } else {
+                    if($("#bannerWifi").length > 0) {
+                        $(".stickyBanner").removeClass("sticky").css({
+                            'display': 'none'
+                        }).prependTo(".site-content.sticky-banner");
+                    } else {
+                        $(".stickyBanner").removeClass("sticky").prependTo("#stickyBannerContainer");
+                    }
+                }
+            }
+        }
+
+
+    </script>
     <script type="text/javascript">
         $(document).ready(function ($) {
             $('#post-content img').each(function () {
