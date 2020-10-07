@@ -88,3 +88,33 @@ a:hover {
 .post-meta__category a:hover span {
     color: #ebebeb;
 }
+
+/* New Style update from sticky banner (abhi and sacan) */
+.placement {
+    width: unset;
+}
+
+@media (min-width: 1024px) {
+    .placement {
+        margin: 3rem auto;
+        width: 960px;
+    }
+}
+
+.point-nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.point-nav__item {
+    position: relative;
+    margin: 0 1rem .5rem;
+    list-style: none;
+}
+
+.site-content {
+    padding-bottom: 3rem;
+}
