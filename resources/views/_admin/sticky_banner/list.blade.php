@@ -40,6 +40,8 @@
 
                         <a class="dropdown-item" href="{{ url('/magic/stickybanner/' . $item->id . '/edit') }}" title="Edit Banner Wifi"><i class="fa fa-edit"></i> Edit</a>
 
+                        <a class="dropdown-item copy-sticky" onclick="copyStickyBanner({{$item->id}})" data-id="{{ $item->id }}" href="javascript:void(0)" title="Edit Banner Wifi"><i class="fa fa-copy"></i> Copy</a>
+
                         <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>
                     </div>
                 </div>

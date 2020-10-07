@@ -59,5 +59,23 @@ $(document).ready(function() {
     dataList.init();
 });
 
+function copyStickyBanner(id) {
+    var confirmed = confirm('Want to copy?');
+
+    if(confirmed) {
+        $.ajax({
+            url: 'stickybanner/copy',
+            type: 'post',
+            data: {
+                stickyBanner: id
+            }
+        }).done(function(response) {
+            document.location.reload();
+        })
+    }
+}
+// $(document).on('click', '.copy-sticky', function(e) {
+//     console.log(e.currentTarget);
+// })
 </script>
 @endsection

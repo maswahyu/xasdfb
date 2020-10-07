@@ -79,4 +79,15 @@ class StickyBannerController extends Controller
             return redirect('magic/stickybanner')->with('success', 'Sticky Banner deleted!');
         }
     }
+
+    public function copy(Request $request)
+    {
+        $stickyBanner = StickyBanner::find($request->post('stickyBanner'));
+        if($stickyBanner->copyRecord()) {
+            $request->session()->put('success', 'Sticky Banner <strong>' . $stickyBanner->name .'</strong> copied');
+            return \response()->json(['status' => 1]);
+        }
+        $request->session()->put('success', 'Failed copy Sticky Banner Sticky Banner <strong>' . $stickyBanner->name .'</strong>');
+        return \response()->json(['status' => 0]);
+    }
 }

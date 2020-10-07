@@ -63,6 +63,7 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('bannerwifilist', 'BannerWifiController@list');
 
         Route::resource('stickybanner', 'StickyBannerController');
+        Route::post('stickybanner/copy', 'StickyBannerController@copy');
         Route::get('stickybannerlist', 'StickyBannerController@list');
 
         Route::get('loadtags', 'NewsController@loadTagData');
