@@ -14,15 +14,15 @@ class StickyBanner extends Model
     public static function newRecord($request)
     {
         $data = new StickyBanner();
-        $data->name  =
-        $data->image =
-        $data->status =
-        $data->mobile_image =
-        $data->pub_day  =
-        $data->page =
-        $data->cta  =
-        $data->periode_start  =
-        $data->periode_end  =
+        $data->name  = $request->get('name');
+        $data->image = $request->get('image');
+        $data->status = $request->get('status');
+        $data->mobile_image = $request->get('mobile_image');
+        $data->pub_day  = $request->get('pub_day');
+        $data->page = $request->get('page');
+        $data->cta  = $request->get('cta');
+        $data->periode_start  = $request->get('periode_start');
+        $data->periode_end  = $request->get('periode_end');
 
         $data->save();
         return $data;
@@ -31,15 +31,15 @@ class StickyBanner extends Model
     public static function updateRecord($request, $id)
     {
         $data = StickyBanner::findOrFail($id);
-        $data->name  =
-        $data->image =
-        $data->status =
-        $data->mobile_image =
-        $data->pub_day  =
-        $data->page =
-        $data->cta  =
-        $data->periode_start  =
-        $data->periode_end  =
+        $data->name  = $request->get('name');
+        $data->image = $request->get('image');
+        $data->status = $request->get('status');
+        $data->mobile_image = $request->get('mobile_image');
+        $data->pub_day  = $request->get('pub_day');
+        $data->page = $request->get('page');
+        $data->cta  = $request->get('cta');
+        $data->periode_start  = $request->get('periode_start');
+        $data->periode_end  = $request->get('periode_end');
 
 
         $data->save();

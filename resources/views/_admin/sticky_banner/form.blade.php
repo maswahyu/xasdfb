@@ -103,7 +103,7 @@
             <i class="fa fa-calendar"></i>
           </span>
         </div>
-        <input class="form-control float-right input-datepicker" name="periode_start" type="text" id="periode_start" value="{{ isset($event->periode_start) ? $event->periode_start : old('periode_start') }}" placeholder="Start Date" autocomplete="off">
+        <input class="form-control float-right input-datepicker" name="periode_start" type="text" id="periode_start" value="{{ isset($stickyBanner->periode_start) ? $stickyBanner->periode_start : old('periode_start') }}" placeholder="Start Date" autocomplete="off">
     </div>
     <span class="text-danger">{{ $errors->first('periode_start') }}</span>
     <p class="help-block"></p>
@@ -118,7 +118,7 @@
             <i class="fa fa-calendar"></i>
           </span>
         </div>
-        <input class="form-control float-right input-datepicker" name="periode_end" type="text" id="periode_end" value="{{ isset($event->periode_end) ? $event->periode_end : old('periode_end') }}" placeholder="End Date" autocomplete="off">
+        <input class="form-control float-right input-datepicker" name="periode_end" type="text" id="periode_end" value="{{ isset($stickyBanner->periode_end) ? $stickyBanner->periode_end : old('periode_end') }}" placeholder="End Date" autocomplete="off">
     </div>
     <span class="text-danger">{{ $errors->first('periode_end') }}</span>
     <p class="help-block"></p>
