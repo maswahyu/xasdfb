@@ -61,6 +61,8 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('slidelist', 'SlideController@listAjax');
         Route::resource('bannerwifi', 'BannerWifiController');
         Route::get('bannerwifilist', 'BannerWifiController@list');
+        Route::resource('eventstream', 'EventstreamController');
+        Route::get('eventstreamlist', 'EventstreamController@list');
 
         Route::resource('stickybanner', 'StickyBannerController');
         Route::post('stickybanner/copy', 'StickyBannerController@copy');
