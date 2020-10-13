@@ -47,9 +47,6 @@ $contentClass = 'd-none'
       <div class="stream__chat">
         <div class="stream__chat__header">
           <span>Live Chat</span>
-          <br>
-          <span style="font-size: 10px; position: absolute; right: 20px;"><strong>DEBUG:</strong> @{{ connection.status }}</span>
-          <span style="font-size: 10px; position: absolute; right: 20px; bottom: 0;" @click="joinChat" v-if="connection.status === 'disconnected'"><button>Masuk Lagi</button></span>
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}
@@ -192,7 +189,7 @@ $contentClass = 'd-none'
           >
           <div class="kick-window__box text-center">
             <p class="mb-3">
-              Kamu telah keluar dari chat karena telah diam selama 10 menit.
+              Kamu telah keluar dari chat karena telah diam selama @{{ (this.timer.timeout / 60) }} menit.
             </p>
             <button @click="reEnter" class="btn btn-primary-outline text-uppercase">Masuk Kembali</button>
           </div>
@@ -314,7 +311,7 @@ $contentClass = 'd-none'
       userIdLog: 21,
       showGuestForm: false,
       showChat: false,
-      blocked: true,
+      blocked: false,
       colorCache: {},
       chats: [],
     },
@@ -379,7 +376,6 @@ $contentClass = 'd-none'
         }, function(response) {
           if (response.joined === false) {
             chatApp.$data.connection.status = STATUS_DISCONNECTED;
-            alert('Kamu telah keluar dari chat karena tidak ada interaksi dalam ' + (chatApp.$data.timer.timeout / 60) + ' menit.');
           }
         });
       },
@@ -399,15 +395,16 @@ $contentClass = 'd-none'
       stopTimer() {
         this.leaveChat();
         this.connection.status = STATUS_DISCONNECTED;
+        this.blocked = true;
         clearInterval(this.timer.counter);
       },
       reEnter: function() {
+        this.joinChat();
         this.blocked = false
       }
     },
     watch: {
       'timer.limit': function(newValue) {
-        console.log(this.timer.limit);
         if (newValue <= 0) {
           this.stopTimer();
         }
