@@ -180,6 +180,24 @@ $contentClass = 'd-none'
             <span class="chat-form__char">0/200</span>
           </div>
         </div>
+        {{-- Kick Window --}}
+        <transition
+          mode="out-in"
+          name="fade"
+        >
+          <div
+            v-if="blocked"
+            :class="{'kick-window--show': blocked }"
+            class="kick-window flex-center"
+          >
+          <div class="kick-window__box text-center">
+            <p class="mb-3">
+              Kamu telah keluar dari chat karena telah diam selama 10 menit.
+            </p>
+            <button @click="reEnter" class="btn btn-primary-outline text-uppercase">Masuk Kembali</button>
+          </div>
+        </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -296,6 +314,7 @@ $contentClass = 'd-none'
       userIdLog: 21,
       showGuestForm: false,
       showChat: false,
+      blocked: true,
       colorCache: {},
       chats: [],
     },
@@ -382,6 +401,9 @@ $contentClass = 'd-none'
         this.connection.status = STATUS_DISCONNECTED;
         clearInterval(this.timer.counter);
       },
+      reEnter: function() {
+        this.blocked = false
+      }
     },
     watch: {
       'timer.limit': function(newValue) {
