@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AudienceEventStream;
+use App\EventStream;
+use App\Exports\AudienceEventExport;
 use Illuminate\Http\Request;
+use App\Http\Resources\Event;
+use App\LogAudienceEventStream;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventStreamRequest;
-use App\EventStream;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EventStreamController extends Controller
 {
@@ -57,7 +63,29 @@ class EventStreamController extends Controller
     {
         $eventstream = EventStream::findOrFail($id);
 
-        return view('_admin.eventstream.show', compact('eventstream'))->with('title', $this->title);
+        // get unique audience for reporting
+        if(request()->has('type') && request()->get('tab') == 'report') {
+            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+                $query->latest()->where('event_stream_id', $eventstream->id);
+            })->where('type', request()->get('type'))->paginate(15);
+        } else {
+            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+                $query->latest()->where('event_stream_id', $eventstream->id);
+            })->paginate(15);
+        }
+
+        //get total audience based on type
+        $total_user = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+            $query->latest()->where('event_stream_id', $eventstream->id);
+        })->where('type', AudienceEventStream::TYPE_USER)->count();
+        $total_guest = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+            $query->latest()->where('event_stream_id', $eventstream->id);
+        })->where('type', AudienceEventStream::TYPE_GUEST)->count();
+
+        $total_audience = compact('total_user', 'total_guest');
+
+
+        return view('_admin.eventstream.show', compact('eventstream', 'audience', 'total_audience'))->with('title', $this->title);
     }
 
     public function update(EventStreamRequest $request, $id)
@@ -78,5 +106,20 @@ class EventStreamController extends Controller
         } else {
             return redirect('magic/eventstream')->with('success', 'EventStream deleted!');
         }
+    }
+
+    public function exportAudience($id, Request $request)
+    {
+        $eventstream = EventStream::findOrFail($id);
+        if(request()->has('type') && request()->get('tab') == 'report') {
+            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+                $query->latest()->where('event_stream_id', $eventstream->id);
+            })->with('event')->where('type', request()->get('type'))->get();
+        } else {
+            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
+                $query->latest()->where('event_stream_id', $eventstream->id);
+            })->with('event')->get();
+        }
+        return Excel::download(new AudienceEventExport($audience), 'test.xlsx');
     }
 }

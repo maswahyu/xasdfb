@@ -63,6 +63,9 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('bannerwifilist', 'BannerWifiController@list');
         Route::resource('eventstream', 'EventstreamController');
         Route::get('eventstreamlist', 'EventstreamController@list');
+        Route::prefix('export')->group(function() {
+            Route::get('audience-event-stream/{id}', 'EventstreamController@exportAudience');
+        });
 
         Route::resource('stickybanner', 'StickyBannerController');
         Route::post('stickybanner/copy', 'StickyBannerController@copy');

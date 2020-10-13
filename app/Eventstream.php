@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class EventStream extends Model
 {
-    protected $table = 'event_stream';
+    protected $table = 'events_stream';
 
     public static function newRecord($request)
     {
@@ -21,6 +22,7 @@ class EventStream extends Model
         $model->event_date = $request->get('event_date');
         $model->periode_start = $request->get('periode_start');
         $model->periode_end = $request->get('periode_end');
+        $model->created_by = Auth::guard('admin')->user()->id;
 
         if(! $model->save()) {
             return false;
@@ -46,4 +48,34 @@ class EventStream extends Model
         }
         return $model;
     }
+
+    /******************
+     * Relations
+     *******************/
+
+    /**
+     * Admin user who created this event
+     */
+    public function admin()
+    {
+        return $this->hasOne(\App\Admin::class, 'id');
+    }
+
+    public function audience()
+    {
+        return $this->hasMany(\App\LogAudienceEventStream::class, 'event_stream_id');
+    }
+
+    /**
+     * Get number of audience in one event
+     */
+    public function audienceCount()
+    {
+        return $this->hasMany(\App\LogAudienceEventStream::class, 'event_stream_id')->distinct('audience_id')->count('audience_id');
+    }
+
+    /***************
+     * Bussiness Logic
+     ***************/
+
 }

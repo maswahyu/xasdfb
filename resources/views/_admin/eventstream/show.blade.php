@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                      <a href="{{ url('/magic/eventstream') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/magic/eventstream') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/magic/eventstream/' . $eventstream->id . '/edit') }}" title="Edit eventstream"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                         <form method="POST" action="{{ url('magic/eventstream' . '/' . $eventstream->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -31,53 +31,35 @@
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete eventstream" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
                     </div>
+                </div>
+                <div class="card card-primary card-outline">
+                    <div class="card-header d-flex p-0">
+                        <ul class="nav nav-pills p-2">
+                            <li class="nav-item"><a class="nav-link {{request()->get('tab') == 'event' ? 'active show' : (request()->get('tab', null) == null ? 'active show' : '') }}" href="#event" data-toggle="tab">Event</a></li>
+                            <li class="nav-item"><a class="nav-link {{request()->get('tab') == 'report' ? 'active show' : ''}}" href="#report" data-toggle="tab">Report</a></li>
+                            <li class="nav-item"><a class="nav-link {{request()->get('tab') == 'chat' ? 'active show' : ''}}" href="#chat" data-toggle="tab">Chat</a></li>
+                        </ul>
+                    </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $eventstream->id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th> Name </th>
-                                        <td> {{ $eventstream->name }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Slug </th>
-                                        <td> {{ $eventstream->slug }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Youtube Link </th>
-                                        <td> {{ $eventstream->yt_link }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Thumbnail </th>
-                                        <td> <img src="{{ imagethumb($eventstream->thumbnail) }}" width="200"> </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Event Date </th>
-                                        <td> {{ $eventstream->event_date }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Periode </th>
-                                        <td> {{ $eventstream->periode_start }} s/d {{ $eventstream->periode_end }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Live Chat </th>
-                                        <td> <span class="badge badge-{{ ($eventstream->live_chat == 0) ? 'warning' : 'info' }}">{{ ($eventstream->live_chat == 0) ? 'No' : 'Yes' }}</span> </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Status </th>
-                                        <td><span class="badge badge-{{ ($eventstream->publish == 0) ? 'warning' : 'info' }}">{{ ($eventstream->publish == 0) ? 'No' : 'Yes' }}</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="tab-content">
+                            <div class="tab-pane {{request()->get('tab') == 'event' ? 'active show' : (request()->get('tab', null) == null ? 'active show' : '') }}" id="event">
+                                @include('_admin.eventstream._part.event')
+                            </div>
+                            <div class="tab-pane {{request()->get('tab') == 'report' ? 'active show' : ''}}" id="report">
+                                @include('_admin.eventstream._part.report')
+                            </div>
+                            <div class="tab-pane {{request()->get('tab') == 'chat' ? 'active show' : ''}}" id="chat">
+                                @include('_admin.eventstream._part.chat')
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+@section('javascript')
+@stack('stack_js')
 @endsection

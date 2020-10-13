@@ -15,8 +15,9 @@ class CreateEventStreamTable extends Migration
     {
         Schema::create('events_stream', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('created_by')->unsigned()->index();
             $table->string('name', 200);
-            $table->string('slug', 300);
+            $table->string('slug', 300)->unique();
             $table->string('yt_link', 300);
             $table->string('thumbnail')->nullable();
             $table->boolean('live_chat')->default(true);
@@ -26,6 +27,8 @@ class CreateEventStreamTable extends Migration
             $table->datetime('event_date');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('created_by')->references('id')->on('admins')->onDelete('no action');
         });
     }
 
@@ -36,6 +39,9 @@ class CreateEventStreamTable extends Migration
      */
     public function down()
     {
+        Schema::table('events_stream', function(Blueprint $table) {
+            $table->dropForeign(['created_by']);
+        });
         Schema::dropIfExists('event_stream');
     }
 }
