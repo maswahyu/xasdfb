@@ -74,6 +74,11 @@ class PageController extends Controller
         return view('frontend.pages.about', compact('ads'));
     }
 
+    public function stream()
+    {
+        return view('frontend.pages.stream');
+    }
+
     public function term()
     {
         $ads = [
