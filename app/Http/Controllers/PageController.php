@@ -74,9 +74,12 @@ class PageController extends Controller
         return view('frontend.pages.about', compact('ads'));
     }
 
-    public function stream()
+    public function stream(Request $request)
     {
-        return view('frontend.pages.stream');
+        return view('frontend.pages.stream', [
+            'streamId' => $request->get('stream-id', 'default-stream'),
+            'username' => $request->get('username'),
+        ]);
     }
 
     public function term()

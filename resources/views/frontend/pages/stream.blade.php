@@ -15,7 +15,7 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          {{-- <iframe src="https://www.youtube.com/embed/I8k1dXJpz-I?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+          {{-- <iframe src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
         </div>
         <div class="stream__video__desc">
           <div class="stream__video__caption">
@@ -47,13 +47,16 @@ $contentClass = 'd-none'
       <div class="stream__chat">
         <div class="stream__chat__header">
           <span>Live Chat</span>
+          <br>
+          <span style="font-size: 10px; position: absolute; right: 20px;"><strong>DEBUG:</strong> @{{ connection.status }}</span>
+          <span style="font-size: 10px; position: absolute; right: 20px; bottom: 0;" @click="joinChat" v-if="connection.status === 'disconnected'"><button>Masuk Lagi</button></span>
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}
           <div class="screen-chat screen-chat--center screen-chat--white">
             <div class="login-bar">
               <p class="mb-3">Kamu belum login untuk memulai chat</p>
-              <a href="#" class="button button-carrot">Login</a> <br>
+              <a href="{{ url('member/login') }}" class="button button-carrot">Login</a> <br>
               <span>Atau</span> <br>
               <button
                 class="button button-black"
@@ -81,11 +84,11 @@ $contentClass = 'd-none'
                 <div class="form-holder">
                   <div class="mb-3">
                     <label for="email" class="label-form">Nama</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nama-mu disini">
+                    <input type="text" name="email" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
                   </div>
                   <div class="mb-3">
                     <label for="email" class="label-form">Nomor Handphone</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nomor handphone-mu disini">
+                    <input type="text" name="email" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
                   </div>
                   <button
                     @click.prevent="loginProcess"
@@ -115,7 +118,7 @@ $contentClass = 'd-none'
             >
               <div class="text-center">
                 <p>Silahkan klik button dibawah ini untuk masuk ke live chat stream.</p>
-                <button @click="toChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+                <button @click="joinChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
               </div>
             </div>
           </transition>
@@ -136,8 +139,8 @@ $contentClass = 'd-none'
                 class="chat__item"
                 :class="chat.userId == userIdLog ? 'chat__item--me': null"
               >
-                <div class="chat__item-img" v-if="chat.photo != ''">
-                  <img src="https://source.unsplash.com/user/erondu/800x600" alt="user">
+                <div class="chat__item-img" v-if="chat.photo != '' && chat.photo != null">
+                  <img :src="chat.photo" alt="user">
                 </div>
                 <div class="chat__item-img" :style="{ backgroundColor: randomColor(chat.userId) }" :initial="chat.name.substr(0, 2)" v-else></div>
                 <div class="chat__item-content">
@@ -159,8 +162,8 @@ $contentClass = 'd-none'
             <div class="chat-form__img">
               <img src="https://source.unsplash.com/user/erondu/800x600" alt="User">
             </div>
-            <div class="chat-form__inputs">
-              <input type="text" class="input-form" placeholder="Ketik chat kamu disini">
+            <form class="chat-form__inputs" @submit="sendMessage">
+              <input type="text" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
               <button class="btn btn-post">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip5)">
@@ -173,7 +176,7 @@ $contentClass = 'd-none'
                     </defs>
                   </svg>
               </button>
-            </div>
+            </form>
             <span class="chat-form__char">0/200</span>
           </div>
         </div>
@@ -256,10 +259,37 @@ $contentClass = 'd-none'
 {{-- https://youtu.be/JEK03-EzyHk --}}
 @endsection
 @section('before-body-end')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
 <script type="text/javascript">
+  const CHAT_SERVER = '{{ config("chat.host") }}';
+  const IDLE_TIMEOUT = {{ config("chat.idle_timeout") }}; /* seconds */
+  const STATUS_NOT_CONNECTED = 'not connected';
+  const STATUS_CONNECTING = 'connecting...';
+  const STATUS_CONNECTED = 'connected';
+  const STATUS_DISCONNECTING = 'disconnecting...';
+  const STATUS_DISCONNECTED = 'disconnected';
+
+  var streamId = '{{ $streamId }}';
+  var username = {!! $username ? "'$username'" : "null" !!};
+  var socket = io(CHAT_SERVER);
+  var idleTime = 0;
+
   var chatApp = new Vue({
     el: '#chat-app',
     data: {
+      connection: {
+        status: STATUS_NOT_CONNECTED
+      },
+      timer: {
+        timeout: IDLE_TIMEOUT,
+        limit: 0,
+        counter: null
+      },
+      guest: {
+        name: null,
+        phone: null
+      },
+      message: '',
       show: false,
       done: false,
       login: false,
@@ -267,92 +297,9 @@ $contentClass = 'd-none'
       showGuestForm: false,
       showChat: false,
       colorCache: {},
-      chats: [
-        {
-          id: 100,
-          userId: 27,
-          name: 'Sachan',
-          message: 'Hi Boss',
-          photo: 'https://source.unsplash.com/user/erondu/800x600',
-          status: 1,
-        },
-        {
-          id: 213,
-          userId: 32,
-          name: 'Josua',
-          message: 'Its awesomes',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 465,
-          userId: 56,
-          name: 'Arief',
-          message: 'Absolutly i can try at home',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 233,
-          userId: 21,
-          name: 'Nasir',
-          message: 'Nice dude!!',
-          photo: 'https://source.unsplash.com/user/erondu/800x600',
-          status: 1
-        },
-        {
-          id: 89,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 32,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 23,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 21,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 1
-        },
-        {
-          id: 32,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 2
-        },
-        {
-          id: 54,
-          userId: 54,
-          name: 'Ilham',
-          message: 'Fu**** awesome!!',
-          photo: '',
-          status: 1
-        }
-      ],
+      chats: [],
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
       reminder: function() {
         this.show = true
@@ -380,11 +327,81 @@ $contentClass = 'd-none'
         this.showGuestForm = false
         this.login = true
       },
-      toChat: function() {
+      joinChat: function() {
         this.login = false
         this.scrollToBottom()
         this.showChat = true
-      }
+        this.connection.status = STATUS_CONNECTING;
+        socket.emit('chat.join', {
+          streamId: streamId,
+          user: {
+            id: 1,
+            name: this.guest.name ?? username,
+            photo: null,
+            is_guest: this.guest.name === null ? true : false,
+          }
+        }, function(response) {
+          if (response.joined) {
+            chatApp.$data.connection.status = STATUS_CONNECTED;
+            chatApp.startTimer();
+          }
+        });
+      },
+      leaveChat: function() {
+        this.connection.status = STATUS_DISCONNECTING;
+        socket.emit('chat.leave', {
+          streamId: streamId,
+          user: {
+            id: 1,
+            name: username,
+            photo: null,
+            is_guest: false,
+          }
+        }, function(response) {
+          if (response.joined === false) {
+            chatApp.$data.connection.status = STATUS_DISCONNECTED;
+            alert('Kamu telah keluar dari chat karena tidak ada interaksi dalam ' + (chatApp.$data.timer.timeout / 60) + ' menit.');
+          }
+        });
+      },
+      sendMessage: function(e) {
+        if (this.message !== '') {
+          socket.emit('chat.message', this.message);
+        }
+
+        this.message = '';
+        this.timer.limit = IDLE_TIMEOUT;
+        e.preventDefault();
+      },
+      startTimer: function() {
+        this.timer.limit = IDLE_TIMEOUT;
+        this.timer.counter = setInterval(() => (this.timer.limit--), 1000);
+      },
+      stopTimer() {
+        this.leaveChat();
+        this.connection.status = STATUS_DISCONNECTED;
+        clearInterval(this.timer.counter);
+      },
+    },
+    watch: {
+      'timer.limit': function(newValue) {
+        console.log(this.timer.limit);
+        if (newValue <= 0) {
+          this.stopTimer();
+        }
+      },
+    },
+    created: function() {
+      socket.on('chat.message', function(data) {
+        this.chats.push({
+          id: data.id,
+          userId: data.user.id,
+          name: data.user.name,
+          photo: data.user.photo,
+          status: data.user.is_guest,
+          message: data.message
+        });
+      }.bind(this));
     },
     mounted: function() {
       this.scrollToBottom()
