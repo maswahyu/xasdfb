@@ -1,0 +1,394 @@
+@extends('frontend.layouts.skeleton')
+
+@section('inside-head')
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+@endsection
+
+@section('vue-app')
+{{-- Variable for hide Content Primary --}}
+@php
+$contentClass = 'd-none'
+@endphp
+{{-- Chat APP container --}}
+<div id="chat-app" class="bg-content">
+  <div class="container py-app">
+    <div class="row">
+      <div class="stream__video">
+        <div class="stream__video__inner">
+          {{-- <iframe src="https://www.youtube.com/embed/I8k1dXJpz-I?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+        </div>
+        <div class="stream__video__desc">
+          <div class="stream__video__caption">
+            <h4 class="title__video">Live stream Event @ Lazone.ID</h4>
+            <span class="subtitle__video">LIVE PADA 2 OKTOBER 2020</span>
+          </div>
+          <div class="stream__video__subs">
+            <button
+              @click="reminder"
+              class="btn btn-crimson btn-subs"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                  <path d="M20.7608 6.52931L22.1082 6.12694C21.3553 3.60577 19.6935 1.46569 17.429 0.100922L16.7031 1.30537C18.6672 2.48902 20.1083 4.34428 20.7608 6.52931Z" fill="white"/>
+                  <path d="M7.29689 1.30533L6.57104 0.100922C4.30646 1.46569 2.64469 3.60577 1.89178 6.12694L3.23921 6.52931C3.89175 4.34428 5.33279 2.48902 7.29689 1.30533Z" fill="white"/>
+                  <path d="M4.26562 9.14062V16.6775C4.26562 17.1309 4.08905 17.5572 3.76847 17.8778C3.18225 18.464 2.85938 19.2435 2.85938 20.0725V21.1875H8.55511C8.88173 22.7903 10.3022 24 12 24C13.6978 24 15.1182 22.7903 15.4449 21.1875H21.1406V20.0725C21.1406 19.2434 20.8177 18.464 20.2315 17.8778C19.9109 17.5572 19.7344 17.1309 19.7344 16.6775V9.14062C19.7344 5.11294 16.6395 1.79503 12.7031 1.43855V0H11.2969V1.43855C7.36045 1.79498 4.26562 5.11289 4.26562 9.14062ZM12 22.5938C11.0834 22.5938 10.3018 22.0059 10.0116 21.187H13.9884C13.6982 22.0059 12.9166 22.5938 12 22.5938ZM18.3281 9.14062V16.6775C18.3281 17.5066 18.651 18.286 19.2372 18.8722C19.4881 19.1231 19.6507 19.4386 19.7097 19.7812H4.29037C4.34925 19.4386 4.51195 19.123 4.76283 18.8722C5.349 18.286 5.67188 17.5065 5.67188 16.6775V9.14062C5.67188 5.6513 8.51067 2.8125 12 2.8125C15.4893 2.8125 18.3281 5.6513 18.3281 9.14062Z" fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0">
+                    <rect width="24" height="24" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Atur Pengingat
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="stream__chat">
+        <div class="stream__chat__header">
+          <span>Live Chat</span>
+        </div>
+        <div class="stream__chat__body">
+          {{-- Before Login --}}
+          <div class="screen-chat screen-chat--center screen-chat--white">
+            <div class="login-bar">
+              <p class="mb-3">Kamu belum login untuk memulai chat</p>
+              <a href="#" class="button button-carrot">Login</a> <br>
+              <span>Atau</span> <br>
+              <button
+                class="button button-black"
+                @click="loginGuest"
+              >
+                Login Sebagai Tamu
+              </button>
+            </div>
+          </div>
+          {{-- Form Login --}}
+          <transition
+            name="fadeUp"
+            mode="out-in"
+          >
+            <div
+              v-if="showGuestForm"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--active': showGuestForm }"
+            >
+              <div class="form-login">
+                <h4 class="mb-3">Chat Sebagai Tamu</h4>
+                <p>
+                  Kamu akan masuk sebagai guest di dalam live chat ini. Untuk melanjutkan, silahkan lengkapi data dirimu.
+                </p>
+                <div class="form-holder">
+                  <div class="mb-3">
+                    <label for="email" class="label-form">Nama</label>
+                    <input type="text" name="email" class="input-form" placeholder="Ketik nama-mu disini">
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="label-form">Nomor Handphone</label>
+                    <input type="text" name="email" class="input-form" placeholder="Ketik nomor handphone-mu disini">
+                  </div>
+                  <button
+                    @click.prevent="loginProcess"
+                    class="btn btn-crimson btn-send mb-2"
+                  >
+                    Lanjutkan
+                  </button>
+                  <button
+                    @click.prevent="showGuestForm = false"
+                    class="btn btn-white btn-cancel"
+                  >
+                    Batal
+                  </button>
+                </div>
+              </div>
+            </div>
+          </transition>
+          {{-- After login --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              v-if="login"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--center': login }"
+            >
+              <div class="text-center">
+                <p>Silahkan klik button dibawah ini untuk masuk ke live chat stream.</p>
+                <button @click="toChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+              </div>
+            </div>
+          </transition>
+          {{-- Chat Container --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              ref="chatContainer"
+              v-if="showChat"
+              :class="{'screen-chat--active': showChat }"
+              class="screen-chat screen-chat--smoke screen-chat--overflow"
+            >
+              <div
+                v-for="chat in chats"
+                :key="chat.id"
+                class="chat__item"
+                :class="chat.userId == userIdLog ? 'chat__item--me': null"
+              >
+                <div class="chat__item-img" v-if="chat.photo != ''">
+                  <img src="https://source.unsplash.com/user/erondu/800x600" alt="user">
+                </div>
+                <div class="chat__item-img" :style="{ backgroundColor: randomColor(chat.userId) }" :initial="chat.name.substr(0, 2)" v-else></div>
+                <div class="chat__item-content">
+                  <span class="message">
+                    <strong v-if="chat.userId == userIdLog">Me</strong>
+                    <strong v-else>@{{ chat.name }} @{{ chat.status == 2 ? '(Tamu)': null }}</strong>
+                    @{{ chat.message }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+        <div class="stream__chat__footer flex-center">
+          <div
+            v-if="showChat"
+            class="chat-form"
+          >
+            <div class="chat-form__img">
+              <img src="https://source.unsplash.com/user/erondu/800x600" alt="User">
+            </div>
+            <div class="chat-form__inputs">
+              <input type="text" class="input-form" placeholder="Ketik chat kamu disini">
+              <button class="btn btn-post">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip5)">
+                      <path d="M23.6498 12.0008C23.6498 11.7195 23.4821 11.4653 23.2237 11.3546L0.857066 1.76876C0.601149 1.65908 0.304662 1.71076 0.10085 1.90051C-0.102895 2.09027 -0.175451 2.38238 -0.0842349 2.64543L3.16029 12.0007L-0.0842023 21.3561C-0.172701 21.6112 -0.107106 21.8937 0.0827849 22.0835C0.0886854 22.0894 0.0947182 22.0953 0.100883 22.101C0.304597 22.2907 0.601148 22.3424 0.857033 22.2327L23.2236 12.6471C23.4821 12.5363 23.6498 12.2821 23.6498 12.0008ZM1.76585 3.68822L19.5211 11.2977L4.40487 11.2976L1.76585 3.68822ZM1.76585 20.3133L4.4049 12.7038L19.5212 12.7039L1.76585 20.3133Z" fill="#EC2427"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip5">
+                        <rect width="24" height="24" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+              </button>
+            </div>
+            <span class="chat-form__char">0/200</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- Popup Reminder --}}
+  <transition
+    mode="out-in"
+    name="fade"
+  >
+    <div
+      v-if="show"
+      class="popup"
+      :class="{'popup--active': show }"
+    >
+      <div class="popup__box">
+        <button
+          v-if="done"
+          @click.prevent="closeModal"
+          class="btn popup__close"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 3.97748L20.0225 0L12 8.0225L3.97748 0L0 3.97748L8.02255 12L0 20.0225L3.97748 24L12 15.9775L20.0225 24L24 20.0225L15.9775 12L24 3.97748Z" fill="black"/>
+          </svg>
+        </button>
+        <div
+          v-if="done"
+          class="popup__content"
+        >
+          <svg class="mb-3" width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip1)">
+              <path d="M121.104 38.0876L128.964 35.7404C124.572 21.0335 114.879 8.54976 101.669 0.588623L97.4348 7.6146C108.892 14.5192 117.298 25.3416 121.104 38.0876Z" fill="#EC2427"/>
+              <path d="M42.5652 7.61433L38.331 0.588623C25.121 8.54976 15.4274 21.0335 11.0354 35.7404L18.8954 38.0876C22.7019 25.3416 31.1079 14.5192 42.5652 7.61433Z" fill="#EC2427"/>
+              <path d="M24.8828 53.3203V97.2855C24.8828 99.9305 23.8528 102.417 21.9827 104.287C18.5631 107.707 16.6797 112.253 16.6797 117.089V123.594H49.9048C51.8101 132.943 60.0961 140 70 140C79.9039 140 88.1896 132.943 90.0952 123.594H123.32V117.089C123.32 112.253 121.437 107.707 118.017 104.287C116.147 102.417 115.117 99.9305 115.117 97.2855V53.3203C115.117 29.8255 97.064 10.471 74.1016 8.39152V0H65.8984V8.39152C42.936 10.4707 24.8828 29.8252 24.8828 53.3203ZM70 131.797C64.6529 131.797 60.0939 128.368 58.4008 123.591H81.5989C79.9061 128.368 75.3471 131.797 70 131.797ZM106.914 53.3203V97.2855C106.914 102.122 108.798 106.668 112.217 110.088C113.681 111.551 114.629 113.392 114.973 115.391H25.0272C25.3706 113.392 26.3197 111.551 27.7832 110.088C31.2025 106.668 33.0859 102.122 33.0859 97.2855V53.3203C33.0859 32.9659 49.6456 16.4062 70 16.4062C90.3544 16.4062 106.914 32.9659 106.914 53.3203Z" fill="#EC2427"/>
+            </g>
+            <defs>
+              <clipPath id="clip1">
+                <rect width="140" height="140" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+          <h5 class="text-black m-0">Berhasil</h5>
+          <p>
+            Pengaturan pengingat sudah berhasil. Kami akan mengirimkan email pengingat ke email-mu!
+          </p>
+        </div>
+        {{-- Form Reminder --}}
+        <div
+          v-else
+          class="popup__content"
+        >
+          <p>
+            Apakah kamu yakin ingin mengatur pengingat untuk acara ini?
+            Kami akan mengirimkan pengingat ke email kamu.
+          </p>
+          <div class="form-holder">
+            <div class="mb-3">
+              <label for="email" class="label-form">Email</label>
+              <input type="text" name="email" class="input-form" placeholder="Ketik email-mu disini">
+            </div>
+            <button
+              @click.prevent="sendReminder"
+              class="btn btn-crimson btn-send mb-2"
+            >
+              Lanjutkan
+            </button>
+            <button
+              @click.prevent="closeModal"
+              class="btn btn-white btn-cancel"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+{{-- https://youtu.be/JEK03-EzyHk --}}
+@endsection
+@section('before-body-end')
+<script type="text/javascript">
+  var chatApp = new Vue({
+    el: '#chat-app',
+    data: {
+      show: false,
+      done: false,
+      login: false,
+      userIdLog: 21,
+      showGuestForm: false,
+      showChat: false,
+      colorCache: {},
+      chats: [
+        {
+          id: 100,
+          userId: 27,
+          name: 'Sachan',
+          message: 'Hi Boss',
+          photo: 'https://source.unsplash.com/user/erondu/800x600',
+          status: 1,
+        },
+        {
+          id: 213,
+          userId: 32,
+          name: 'Josua',
+          message: 'Its awesomes',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 465,
+          userId: 56,
+          name: 'Arief',
+          message: 'Absolutly i can try at home',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 233,
+          userId: 21,
+          name: 'Nasir',
+          message: 'Nice dude!!',
+          photo: 'https://source.unsplash.com/user/erondu/800x600',
+          status: 1
+        },
+        {
+          id: 89,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 32,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 23,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 21,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 1
+        },
+        {
+          id: 32,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 2
+        },
+        {
+          id: 54,
+          userId: 54,
+          name: 'Ilham',
+          message: 'Fu**** awesome!!',
+          photo: '',
+          status: 1
+        }
+      ],
+    },
+    computed: {
+
+    },
+    methods: {
+      reminder: function() {
+        this.show = true
+      },
+      closeModal: function() {
+        this.show = false
+        this.done = false
+      },
+      sendReminder: function() {
+        this.done = true
+      },
+      scrollToBottom: function() {
+        this.$nextTick( function () {
+          this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight
+        })
+      },
+      randomColor: function(id) {
+        const r = () => Math.floor(256 * Math.random());
+        return this.colorCache[id] || (this.colorCache[id] = `rgb(${r()}, ${r()}, ${r()})`);
+      },
+      loginGuest: function() {
+        this.showGuestForm = true
+      },
+      loginProcess: function() {
+        this.showGuestForm = false
+        this.login = true
+      },
+      toChat: function() {
+        this.login = false
+        this.scrollToBottom()
+        this.showChat = true
+      }
+    },
+    mounted: function() {
+      this.scrollToBottom()
+    }
+  })
+</script>
+@endsection
