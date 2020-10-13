@@ -148,6 +148,8 @@
     </header>
     @include('frontend.layouts.mobile-header')
 
+    @yield('vue-app')
+
     <div class="site-content {{ isset($contentClass) ? $contentClass : ''  }}">
         @yield('content')
         @if(Route::currentRouteName() != 'index')
@@ -174,7 +176,7 @@
         @endif
     </div>
 
-    <footer class="site-footer">
+    <footer class="site-footer pt-4">
         @include('frontend.layouts.footer')
     </footer>
 
