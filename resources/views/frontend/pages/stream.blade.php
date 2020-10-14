@@ -244,6 +244,7 @@ $contentClass = 'd-none'
           v-else
           class="popup__content"
         >
+          <h5 class="m-0 text-black">Atur Pengingat</h5>
           <p>
             Apakah kamu yakin ingin mengatur pengingat untuk acara ini?
             Kami akan mengirimkan pengingat ke email kamu.
@@ -382,6 +383,7 @@ $contentClass = 'd-none'
       sendMessage: function(e) {
         if (this.message !== '') {
           socket.emit('chat.message', this.message);
+          this.scrollToBottom()
         }
 
         this.message = '';
@@ -420,6 +422,7 @@ $contentClass = 'd-none'
           status: data.user.is_guest,
           message: data.message
         });
+        this.scrollToBottom()
       }.bind(this));
     },
     mounted: function() {
