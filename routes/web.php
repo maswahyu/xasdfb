@@ -32,6 +32,7 @@ Route::get('events', 'PageController@events');
 Route::get('about-us', 'PageController@about');
 Route::get('terms-conditions', 'PageController@term');
 Route::get('privacy-policy', 'PageController@privacy');
+Route::get('stream', 'PageController@stream');
 
 Route::get('interest', 'MemberController@interest');
 Route::post('interest', 'MemberController@addInterest');
@@ -72,3 +73,4 @@ Route::get('sneakerland/{slug}', 'PostController@topPost');
 Route::get('{category}', 'PostController@category');
 Route::get('{category}/{subcategory}', 'PostController@subcategory');
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');
+
