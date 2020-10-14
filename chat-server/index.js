@@ -6,12 +6,16 @@ var Filter = require('bad-words-plus');
 var filter = new Filter();
 var profanityWords;
 
+console.log('STARTING LAZONE CHAT SERVER');
 server.listen(3000);
+console.log('Listening on port 3000');
 
 fs.readFile('blocked-words.txt', 'utf8', function(error, data) {
   if (error) { throw error };
   profanityWords = data.toString();
-  profanityWords = profanityWords.split('\r\n');
+  profanityWords = profanityWords.replace(/(\r\n|\n|\r)/gm, ';');
+  profanityWords = profanityWords.split(';');
+  console.log('Loaded bad words', profanityWords);
   filter.addWords(...profanityWords);
 });
 
@@ -19,7 +23,7 @@ app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket) {
+io.on('connect', function(socket) {
   // var query = socket.handshake.query;
   // var streamId = query.streamId;
   var streamId, user;
@@ -29,6 +33,7 @@ io.on('connection', function(socket) {
     streamId = data.streamId;
     user = data.user;
     socket.join(streamId);
+    console.log(data.user.name+' ['+data.user.phone+'] joined to '+streamId);
     callback({joined: true});
   });
 
@@ -37,6 +42,7 @@ io.on('connection', function(socket) {
     streamId = data.streamId;
     user = data.user;
     socket.leave(streamId);
+    console.log(data.user.name+' ['+data.user.phone+'] leaving '+streamId);
     callback({joined: false});
   });
 
@@ -63,6 +69,7 @@ io.on('connection', function(socket) {
       type: 'message',
       message: message,
     });
+    console.log(user.name+' ['+user.phone+'] said: '+message);
   });
 });
 
