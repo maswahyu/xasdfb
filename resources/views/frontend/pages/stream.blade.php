@@ -381,9 +381,10 @@ $contentClass = 'd-none'
         });
       },
       sendMessage: function(e) {
+        let _vm =  this;
         if (this.message !== '') {
           socket.emit('chat.message', this.message);
-          this.scrollToBottom()
+          _vm.scrollToBottom()
         }
 
         this.message = '';
@@ -413,6 +414,7 @@ $contentClass = 'd-none'
       },
     },
     created: function() {
+      let _vm = this
       socket.on('chat.message', function(data) {
         this.chats.push({
           id: data.id,
@@ -422,12 +424,9 @@ $contentClass = 'd-none'
           status: data.user.is_guest,
           message: data.message
         });
-        this.scrollToBottom()
+        _vm.scrollToBottom()
       }.bind(this));
     },
-    mounted: function() {
-      this.scrollToBottom()
-    }
   })
 </script>
 @endsection
