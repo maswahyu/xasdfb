@@ -15,7 +15,7 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          {{-- <iframe src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore">
           <span class="btn-more">
@@ -24,12 +24,12 @@ $contentClass = 'd-none'
             </svg>
           </span>
           <div class="stream__video__caption">
-            <h4 class="title__video">Live stream Event @ Lazone.ID @ Lazone.ID</h4>
-            <span class="subtitle__video">LIVE PADA 2 OKTOBER 2020</span>
+            <h4 class="title__video">{{ $stream->name }}</h4>
+            <span class="subtitle__video">LIVE PADA {{ $stream->event_date }}</span>
           </div>
           <div class="stream__video__subs">
             <button
-              @click="reminder"
+              @click="showReminder"
               class="btn btn-crimson btn-subs"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -269,7 +269,7 @@ $contentClass = 'd-none'
           <div class="form-holder">
             <div class="mb-3">
               <label for="email" class="label-form">Email</label>
-              <input type="text" name="email" class="input-form" placeholder="Ketik email-mu disini">
+              <input type="text" name="email" class="input-form" placeholder="Ketik email-mu disini" v-model="reminder.email">
             </div>
             <button
               @click.prevent="sendReminder"
@@ -293,6 +293,7 @@ $contentClass = 'd-none'
 @endsection
 @section('before-body-end')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
 <script type="text/javascript">
   const CHAT_SERVER = '{{ config("chat.host") }}';
   const IDLE_TIMEOUT = {{ config("chat.idle_timeout") }}; /* seconds */
@@ -302,7 +303,7 @@ $contentClass = 'd-none'
   const STATUS_DISCONNECTING = 'disconnecting...';
   const STATUS_DISCONNECTED = 'disconnected';
 
-  var streamId = '{{ $streamId }}';
+  var streamId = '{{ $stream->slug }}';
   var username = {!! $username ? "'$username'" : "null" !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
@@ -322,6 +323,9 @@ $contentClass = 'd-none'
         name: null,
         phone: null
       },
+      reminder: {
+        email: null
+      },
       message: '',
       show: false,
       done: false,
@@ -337,7 +341,7 @@ $contentClass = 'd-none'
     },
     computed: {},
     methods: {
-      reminder: function() {
+      showReminder: function() {
         this.show = true
       },
       closeModal: function() {
@@ -345,7 +349,20 @@ $contentClass = 'd-none'
         this.done = false
       },
       sendReminder: function() {
-        this.done = true
+        let _vm = this
+        axios.post('{{ url('stream/remind-me') }}', {
+          csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          stream_id: streamId,
+          email: this.reminder.email
+        })
+        .then(function (response)  {
+          if (response.data.success) {
+            _vm.done = true
+          }
+        })
+        .catch(function (error) {
+          alert('Gagal mengirim data. Silahkan coba lagi.')
+        })
       },
       scrollToBottom: function() {
         this.$nextTick( function () {
@@ -381,6 +398,7 @@ $contentClass = 'd-none'
             id: 1,
             name: this.guest.name ?? username,
             photo: null,
+            phone: this.guest.phone,
             is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
@@ -399,7 +417,8 @@ $contentClass = 'd-none'
             id: 1,
             name: username,
             photo: null,
-            is_guest: false,
+            phone: this.guest.phone,
+            is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
           if (response.joined === false) {
