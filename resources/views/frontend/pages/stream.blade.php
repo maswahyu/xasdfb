@@ -177,7 +177,7 @@ $contentClass = 'd-none'
               <img src="https://source.unsplash.com/user/erondu/800x600" alt="User">
             </div>
             <form class="chat-form__inputs" @submit="sendMessage">
-              <input type="text" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
+              <input type="text" :maxlength="max" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
               <button class="btn btn-post">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip5)">
@@ -191,7 +191,7 @@ $contentClass = 'd-none'
                   </svg>
               </button>
             </form>
-            <span class="chat-form__char">0/200</span>
+          <span class="chat-form__char"><span :style="{ color: message.length > max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}</span>
           </div>
         </div>
         {{-- Kick Window --}}
@@ -327,6 +327,7 @@ $contentClass = 'd-none'
         email: null
       },
       message: '',
+      max: 200, //char length
       show: false,
       done: false,
       login: false,
