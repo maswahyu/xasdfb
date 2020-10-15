@@ -283,6 +283,10 @@ $family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             font-weight: 600;
             color: $white;
+            @media(max-width: 767px) {
+              font-size: 12px;
+              line-height: 23px;
+            }
           }
           img {
             width: 100%;
@@ -299,6 +303,9 @@ $family: 'Montserrat', sans-serif;
           flex-grow: 1;
           max-width: 100%;
           padding-top: 5px;
+          @media(max-width: 767px) {
+            padding-top: 0;
+          }
           .message {
             display: inline-block;
             font-size: 14px;
@@ -386,6 +393,16 @@ $family: 'Montserrat', sans-serif;
     text-align: center;
     font-family: $family;
     transition: all ease-in-out .25s;
+    @media(max-width: 767px) {
+      padding: 0 20px;
+      h5 {
+        font-size: 18px !important;
+      }
+      p,
+      label {
+        font-size: 14px !important;
+      }
+    }
   }
   &__close {
     position: absolute;
@@ -639,6 +656,7 @@ $family: 'Montserrat', sans-serif;
       }
       @media(max-width: 767px) {
         font-size: 14px;
+        padding-right: 100px;
       }
     }
     .btn-post {
