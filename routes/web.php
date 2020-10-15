@@ -32,7 +32,8 @@ Route::get('events', 'PageController@events');
 Route::get('about-us', 'PageController@about');
 Route::get('terms-conditions', 'PageController@term');
 Route::get('privacy-policy', 'PageController@privacy');
-Route::get('stream/{slug}', 'PageController@stream');
+Route::get('stream/{slug}', 'StreamController@stream');
+Route::post('stream/remind-me', 'StreamController@remindMe');
 
 Route::get('interest', 'MemberController@interest');
 Route::post('interest', 'MemberController@addInterest');
