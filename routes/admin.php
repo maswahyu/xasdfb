@@ -61,10 +61,10 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('slidelist', 'SlideController@listAjax');
         Route::resource('bannerwifi', 'BannerWifiController');
         Route::get('bannerwifilist', 'BannerWifiController@list');
-        Route::resource('eventstream', 'EventstreamController');
-        Route::get('eventstreamlist', 'EventstreamController@list');
+        Route::resource('eventstream', 'EventStreamController');
+        Route::get('eventstreamlist', 'EventStreamController@list');
         Route::prefix('export')->group(function() {
-            Route::get('audience-event-stream/{id}', 'EventstreamController@exportAudience');
+            Route::get('audience-event-stream/{id}', 'EventStreamController@exportAudience');
         });
 
         Route::resource('stickybanner', 'StickyBannerController');
