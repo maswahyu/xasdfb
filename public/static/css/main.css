@@ -6384,6 +6384,14 @@ p{
   flex-wrap:wrap;
   position:relative;
 }
+@media screen and (min-width:768px){
+  .stream__video__desc{
+    margin-bottom:20px;
+  }
+  .stream__video__desc .btn-more{
+    display:none;
+  }
+}
 @media (max-width:767px){
   .stream__video__desc{
     padding:10px 20px;
@@ -6476,9 +6484,9 @@ p{
 .stream__video__subs{
   flex-basis:250px;
   width:250px;
-  justify-self:start;
+  align-self:flex-start;
 }
-@media (min-width:992px){
+@media (min-width:768px){
   .stream__video__subs{
     text-align:right;
   }
@@ -6502,7 +6510,7 @@ p{
   box-shadow:0 5px 10px -5px rgba(0, 0, 0, .25);
   overflow:hidden;
 }
-@media (min-width:768px){
+@media (min-width:992px){
   .stream__chat{
     height:622px;
     width:370px;
@@ -6527,7 +6535,7 @@ p{
   text-transform:uppercase;
   font-family:Montserrat,sans-serif;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .stream__chat__header{
     height:50px;
   }
@@ -6612,7 +6620,7 @@ p{
 .stream__chat__body .chat__item--me .chat__item-content .message strong{
   color:#000;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .stream__chat__body{
     height:215px;
   }
@@ -6621,7 +6629,7 @@ p{
   height:102px;
   background-color:#fff;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .stream__chat__footer{
     height:55px;
   }
@@ -6817,7 +6825,7 @@ p{
   visibility:hidden;
   display:none;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .screen-chat.form__login{
     position:fixed;
     height:100vh;
@@ -6844,7 +6852,7 @@ p{
   display:block;
   visibility:visible;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .form-login{
     position:relative;
     top:50%;
@@ -6873,7 +6881,7 @@ p{
   color:#9b9b9b;
   font-size:14px;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .chat-form__char{
     bottom:12px;
     font-size:12px;
@@ -6892,7 +6900,7 @@ p{
      object-fit:cover;
   border-radius:50%;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .chat-form__img{
     width:24px;
     align-self:center;
@@ -6917,7 +6925,7 @@ p{
 .chat-form__inputs:focus-within{
   border-bottom-color:#ec2427;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .chat-form__inputs{
     border-bottom:none;
   }
@@ -6942,7 +6950,7 @@ p{
   outline:none;
   border-bottom-color:#ec2427;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .chat-form__inputs .input-form{
     font-size:14px;
     padding-right:100px;
@@ -7006,7 +7014,7 @@ p{
   font-family:Montserrat,sans-serif;
   color:#000;
 }
-@media (max-width:767px){
+@media (max-width:991px){
   .greeting{
     width:96%;
     left:2%;
