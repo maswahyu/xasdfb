@@ -15,12 +15,12 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          {{-- <iframe src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="stream__video__desc">
           <div class="stream__video__caption">
-            <h4 class="title__video">Live stream Event @ Lazone.ID</h4>
-            <span class="subtitle__video">LIVE PADA 2 OKTOBER 2020</span>
+            <h4 class="title__video">{{ $stream->name }}</h4>
+            <span class="subtitle__video">LIVE PADA {{ $stream->event_date }}</span>
           </div>
           <div class="stream__video__subs">
             <button
@@ -284,7 +284,7 @@ $contentClass = 'd-none'
   const STATUS_DISCONNECTING = 'disconnecting...';
   const STATUS_DISCONNECTED = 'disconnected';
 
-  var streamId = '{{ $streamId }}';
+  var streamId = '{{ $stream->slug }}';
   var username = {!! $username ? "'$username'" : "null" !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
@@ -354,6 +354,7 @@ $contentClass = 'd-none'
             id: 1,
             name: this.guest.name ?? username,
             photo: null,
+            phone: this.guest.phone,
             is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
@@ -371,7 +372,8 @@ $contentClass = 'd-none'
             id: 1,
             name: username,
             photo: null,
-            is_guest: false,
+            phone: this.guest.phone,
+            is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
           if (response.joined === false) {

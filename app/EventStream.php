@@ -78,4 +78,9 @@ class EventStream extends Model
      * Bussiness Logic
      ***************/
 
+    public function getYoutubeVideoId()
+    {
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $this->yt_link, $match);
+        return $match[1];
+    }
 }
