@@ -244,6 +244,7 @@ $contentClass = 'd-none'
           v-else
           class="popup__content"
         >
+          <h5 class="m-0 text-black">Atur Pengingat</h5>
           <p>
             Apakah kamu yakin ingin mengatur pengingat untuk acara ini?
             Kami akan mengirimkan pengingat ke email kamu.
@@ -382,8 +383,10 @@ $contentClass = 'd-none'
         });
       },
       sendMessage: function(e) {
+        let _vm =  this;
         if (this.message !== '') {
           socket.emit('chat.message', this.message);
+          _vm.scrollToBottom()
         }
 
         this.message = '';
@@ -413,6 +416,7 @@ $contentClass = 'd-none'
       },
     },
     created: function() {
+      let _vm = this
       socket.on('chat.message', function(data) {
         this.chats.push({
           id: data.id,
@@ -422,11 +426,9 @@ $contentClass = 'd-none'
           status: data.user.is_guest,
           message: data.message
         });
+        _vm.scrollToBottom()
       }.bind(this));
     },
-    mounted: function() {
-      this.scrollToBottom()
-    }
   })
 </script>
 @endsection
