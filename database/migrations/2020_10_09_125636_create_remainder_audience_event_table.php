@@ -18,8 +18,6 @@ class CreateRemainderAudienceEventTable extends Migration
             $table->string('email');
             $table->bigInteger('event_stream_id')->unsigned();
             $table->timestamps();
-
-            $table->unique(['email', 'event_stream_id']);
         });
     }
 
