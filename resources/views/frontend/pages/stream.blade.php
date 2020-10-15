@@ -180,7 +180,7 @@ $contentClass = 'd-none'
               <input type="text" :maxlength="max" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
               <button class="btn btn-post">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip5)">
+                    <g clip-path="url(#clip5)"></g>
                       <path d="M23.6498 12.0008C23.6498 11.7195 23.4821 11.4653 23.2237 11.3546L0.857066 1.76876C0.601149 1.65908 0.304662 1.71076 0.10085 1.90051C-0.102895 2.09027 -0.175451 2.38238 -0.0842349 2.64543L3.16029 12.0007L-0.0842023 21.3561C-0.172701 21.6112 -0.107106 21.8937 0.0827849 22.0835C0.0886854 22.0894 0.0947182 22.0953 0.100883 22.101C0.304597 22.2907 0.601148 22.3424 0.857033 22.2327L23.2236 12.6471C23.4821 12.5363 23.6498 12.2821 23.6498 12.0008ZM1.76585 3.68822L19.5211 11.2977L4.40487 11.2976L1.76585 3.68822ZM1.76585 20.3133L4.4049 12.7038L19.5212 12.7039L1.76585 20.3133Z" fill="#EC2427"/>
                     </g>
                     <defs>
@@ -191,7 +191,7 @@ $contentClass = 'd-none'
                   </svg>
               </button>
             </form>
-          <span class="chat-form__char"><span :style="{ color: message.length > max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}</span>
+          <span class="chat-form__char"><span :style="{ color: message.length >= max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}</span>
           </div>
         </div>
         {{-- Kick Window --}}
