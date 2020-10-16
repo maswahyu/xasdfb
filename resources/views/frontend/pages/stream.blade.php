@@ -403,7 +403,7 @@ $contentClass = 'd-none'
                 streamId: streamId,
                 user: {
                     id: data.data.id ?? null,
-                    name: data.data.email ?? this.guest.name,
+                    name: data.data.name ?? this.guest.name,
                     photo: data.data.profile_picture ? data.data.profile_picture : null,
                     phone: data.data.phone ? data.data.phone : this.guest.phone,
                     is_guest: data.data.id ? false : true,
