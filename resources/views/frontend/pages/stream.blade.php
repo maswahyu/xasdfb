@@ -174,7 +174,8 @@ $contentClass = 'd-none'
             class="chat-form"
           >
             <div class="chat-form__img">
-              <img src="https://source.unsplash.com/user/erondu/800x600" alt="User">
+              {{-- <img src="https://source.unsplash.com/user/erondu/800x600" alt="User"> --}}
+              <span class="chat-form__initial" initial="NA" style="background-color: lightseagreen"></span>
             </div>
             <form class="chat-form__inputs" @submit="sendMessage">
               <input type="text" :maxlength="max" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
@@ -191,7 +192,9 @@ $contentClass = 'd-none'
                   </svg>
               </button>
             </form>
-          <span class="chat-form__char"><span :style="{ color: message.length >= max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}</span>
+            <div class="chat-form__char">
+              <span :style="{ color: message.length >= max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}
+            </div>
           </div>
         </div>
         {{-- Kick Window --}}
