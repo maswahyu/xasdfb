@@ -12,6 +12,7 @@ use App\Category;
 use App\Event;
 use App\News;
 use App\Album;
+use App\EventStream;
 use App\Http\Resources\EventCollection;
 use App\Http\Resources\NewsCollection;
 use App\Http\Resources\GalleryCollection;
@@ -72,6 +73,14 @@ class PageController extends Controller
         ];
 
         return view('frontend.pages.about', compact('ads'));
+    }
+
+    public function stream($slug)
+    {
+        return view('frontend.pages.stream', [
+            'stream' => EventStream::where('slug', $slug)->firstOrFail(),
+            'username' => null,
+        ]);
     }
 
     public function term()

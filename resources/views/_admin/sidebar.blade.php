@@ -110,6 +110,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('magic/eventstream') }}" class="nav-link {!! classActiveSegment(2, 'eventstream') !!}">
+                        <i class="nav-icon fa fa-calendar-week"></i>
+                        <p>
+                            Event Streaming
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('magic/tag') }}" class="nav-link {!! classActiveSegment(2, 'tag') !!}">
                         <i class="nav-icon fa fa-hashtag"></i>
                         <p>
