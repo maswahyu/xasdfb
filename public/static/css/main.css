@@ -4481,6 +4481,13 @@ p{
   height:10rem;
   width:12.5rem;
 }
+@media (max-width:767px){
+  .site-logo,.site-logo img{
+    height:60px;
+    width:auto;
+    margin-top:-10px;
+  }
+}
 
 .mobile-header{
   position:fixed;
