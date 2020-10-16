@@ -147,7 +147,7 @@ $contentClass = 'd-none'
                 <div class="chat__item-img" v-if="chat.photo != '' && chat.photo != null">
                   <img :src="chat.photo" alt="user">
                 </div>
-                <div class="chat__item-img" :style="{ backgroundColor: randomColor(chat.userId) }" :initial="chat.name.substr(0, 2)" v-else></div>
+                <div class="chat__item-img" :style="{ backgroundColor: userColor }" :initial="chat.name.substr(0, 2)" v-else></div>
                 <div class="chat__item-content">
                   <span class="message">
                     <strong v-if="chat.userId == userIdLog">Me</strong>
@@ -177,8 +177,8 @@ $contentClass = 'd-none'
             class="chat-form"
           >
             <div class="chat-form__img">
-              {{-- <img src="https://source.unsplash.com/user/erondu/800x600" alt="User"> --}}
-              <span class="chat-form__initial" initial="NA" style="background-color: lightseagreen"></span>
+              <img v-if="user !== null && user.profile_picture != '' && user.profile_picture != null" :src="user.profile_picture" alt="User">
+              <span v-else class="chat-form__initial" :initial="user != null ? user.name.substr(0,2) : ( guest.name != null ? guest.name.substr(0,2) : '')" :style="{ backgroundColor: userColor }" ></span>
             </div>
             <form class="chat-form__inputs" @submit="sendMessage">
               <input type="text" :maxlength="max" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
@@ -310,7 +310,7 @@ $contentClass = 'd-none'
   const STATUS_DISCONNECTED = 'disconnected';
 
   var streamId = '{{ $stream->slug }}';
-  var username = {!! Auth::check() ? "'".Auth::user()->email."'" : 'null' !!};
+  var username = {!! Auth::check() ? "'".Auth::user()->name."'" : 'null' !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
 
@@ -337,6 +337,8 @@ $contentClass = 'd-none'
       show: false,
       done: false,
       login: {!! Auth::check() ? 'true' : 'false' !!},
+      user: null,
+      userColor: null,
       userIdLog: 21,
       showGuestForm: false,
       warning: false,
@@ -409,6 +411,12 @@ $contentClass = 'd-none'
         axios.get('{!! env('APP_URL') !!}/get-user-details', {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }).then((data) => {
+            if(data.data.name) {
+                this.user = data.data
+            }
+
+            this.userColor = this.randomColor()
+
             socket.emit('chat.join', {
                 streamId: streamId,
                 user: {
