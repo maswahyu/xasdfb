@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -22,9 +23,9 @@ class EventStream extends Model
         $model->thumbnail = $request->get('thumbnail');
         $model->live_chat = $request->get('live_chat');
         $model->publish = $request->get('publish');
-        $model->event_date = $request->get('event_date');
-        $model->periode_start = $request->get('periode_start');
-        $model->periode_end = $request->get('periode_end');
+        $model->event_date = Carbon::parse($request->get('event_date'));
+        $model->periode_start = Carbon::parse($request->get('periode_start'));
+        $model->periode_end = Carbon::parse($request->get('periode_end'));
         $model->created_by = Auth::guard('admin')->user()->id;
 
         if(! $model->save()) {
@@ -42,9 +43,9 @@ class EventStream extends Model
         $model->thumbnail = $request->get('thumbnail');
         $model->live_chat = $request->get('live_chat');
         $model->publish = $request->get('publish');
-        $model->event_date = $request->get('event_date');
-        $model->periode_start = $request->get('periode_start');
-        $model->periode_end = $request->get('periode_end');
+        $model->event_date = Carbon::parse($request->get('event_date'));
+        $model->periode_start = Carbon::parse($request->get('periode_start'));
+        $model->periode_end = Carbon::parse($request->get('periode_end'));
 
         if(! $model->save()) {
             return false;

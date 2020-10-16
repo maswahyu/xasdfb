@@ -304,7 +304,7 @@ $contentClass = 'd-none'
   const STATUS_DISCONNECTED = 'disconnected';
 
   var streamId = '{{ $stream->slug }}';
-  var username = {!! $username ? "'$username'" : "null" !!};
+  var username = {!! Auth::check() ? "'".Auth::user()->email."'" : 'null' !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
 
@@ -330,7 +330,7 @@ $contentClass = 'd-none'
       max: 200, //char length
       show: false,
       done: false,
-      login: false,
+      login: {!! Auth::check() ? 'true' : 'false' !!},
       userIdLog: 21,
       showGuestForm: false,
       showChat: false,
@@ -393,22 +393,26 @@ $contentClass = 'd-none'
             _vm.greeting = false
           }, 3000)
         })
-        socket.emit('chat.join', {
-          streamId: streamId,
-          user: {
-            id: 1,
-            name: this.guest.name ?? username,
-            photo: null,
-            phone: this.guest.phone,
-            is_guest: this.guest.name === null ? true : false,
-          }
-        }, function(response) {
-          if (response.joined) {
-            chatApp.$data.connection.status = STATUS_CONNECTED;
-            chatApp.startTimer();
-            _vm.scrollToBottom()
-          }
-        });
+        axios.get('{!! env('APP_URL') !!}/get-user-details', {
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        }).then((data) => {
+            socket.emit('chat.join', {
+                streamId: streamId,
+                user: {
+                    id: data.data.id ?? null,
+                    name: data.data.email ?? this.guest.name,
+                    photo: data.data.profile_picture ? data.data.profile_picture : null,
+                    phone: data.data.phone ? data.data.phone : this.guest.phone,
+                    is_guest: data.data.id ? false : true,
+                }
+            }, function(response) {
+                if (response.joined) {
+                chatApp.$data.connection.status = STATUS_CONNECTED;
+                chatApp.startTimer();
+                _vm.scrollToBottom()
+                }
+            });
+        })
       },
       leaveChat: function() {
         this.connection.status = STATUS_DISCONNECTING;
