@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventStream extends Model
 {
+    const STATUS_ON = 1;
+    const STATUS_OFF = 0;
+
     protected $table = 'events_stream';
 
     public static function newRecord($request)
@@ -49,6 +52,11 @@ class EventStream extends Model
         return $model;
     }
 
+    /*****************
+     * Mutator
+     ****************/
+    protected $dates = [ 'periode_start', 'periode_end', 'event_date' ];
+
     /******************
      * Relations
      *******************/
@@ -82,5 +90,15 @@ class EventStream extends Model
     {
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $this->yt_link, $match);
         return $match[1];
+    }
+
+    public function isPublished()
+    {
+        return $this->publish == self::STATUS_ON;
+    }
+
+    public function isChatEnabled()
+    {
+        return $this->live_chat == self::STATUS_ON;
     }
 }

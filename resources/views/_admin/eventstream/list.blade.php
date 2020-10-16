@@ -17,8 +17,8 @@
             <td><img src="{{ imagethumb($item->thumbnail) }}" width="150"></td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->event_date }}</td>
-            <td><span class="badge badge-{{ ($item->live_chat == 0) ? 'warning' : 'info' }}">{{ ($item->live_chat == 0) ? 'No' : 'Yes' }}</span></td>
-            <td><span class="badge badge-{{ ($item->publish == 0) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span></td>
+            <td><span class="badge badge-{{ (! $item->isPublished()) ? 'warning' : 'info' }}">{{ ($item->publish == 0) ? 'No' : 'Yes' }}</span></td>
+            <td><span class="badge badge-{{ (! $item->isChatEnabled()) ? 'warning' : 'info' }}">{{ ($item->live_chat == 0) ? 'No' : 'Yes' }}</span></td>
             <td>
                 <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

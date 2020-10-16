@@ -12,8 +12,13 @@ class StreamController extends Controller
 {
     public function stream($slug)
     {
+        $stream = EventStream::where('slug', $slug)->firstOrFail();
+        if(! $stream->isPublished()) {
+            abort(404);
+        }
+
         return view('frontend.pages.stream', [
-            'stream' => EventStream::where('slug', $slug)->firstOrFail(),
+            'stream' => $stream,
             'username' => null,
         ]);
     }
