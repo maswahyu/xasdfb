@@ -6576,11 +6576,12 @@ p{
   text-transform:uppercase;
   font-weight:600;
   color:#fff;
+  font-family:Montserrat,sans-serif;
 }
 @media (max-width:767px){
   .stream__chat__body .chat__item-img:before{
-    font-size:12px;
-    line-height:23px;
+    font-size:11px;
+    line-height:24px;
   }
 }
 .stream__chat__body .chat__item-img img{
