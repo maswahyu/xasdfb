@@ -6384,14 +6384,6 @@ p{
   flex-wrap:wrap;
   position:relative;
 }
-@media screen and (min-width:768px){
-  .stream__video__desc{
-    margin-bottom:20px;
-  }
-  .stream__video__desc .btn-more{
-    display:none;
-  }
-}
 @media (max-width:767px){
   .stream__video__desc{
     padding:10px 20px;
@@ -6409,6 +6401,14 @@ p{
 }
 .stream__video__desc.more .btn-more{
   transform:rotate(180deg);
+}
+@media screen and (min-width:768px){
+  .stream__video__desc{
+    margin-bottom:20px;
+  }
+  .stream__video__desc .btn-more{
+    display:none;
+  }
 }
 .stream__video__caption,.stream__video__subs{
   position:relative;
@@ -6612,6 +6612,7 @@ p{
   font-size:14px;
   color:#000;
   font-weight:400;
+  word-break:break-word;
 }
 .stream__chat__body .chat__item-content .message strong{
   padding-right:10px;

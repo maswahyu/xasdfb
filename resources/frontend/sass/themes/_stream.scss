@@ -115,12 +115,6 @@ $family: 'Montserrat', sans-serif;
       display: flex;
       flex-wrap: wrap;
       position: relative;
-      @media screen and (min-width: 768px){
-        margin-bottom: 20px;
-        .btn-more {
-          display: none;
-        }
-      }
       @media(max-width: 767px) {
         padding: 10px 20px;
         height: 40px;
@@ -135,6 +129,12 @@ $family: 'Montserrat', sans-serif;
         height: auto;
         .btn-more {
           transform: rotate(180deg);
+        }
+      }
+      @media screen and (min-width: 768px) {
+        margin-bottom: 20px;
+        .btn-more {
+          display: none;
         }
       }
     }
@@ -317,6 +317,7 @@ $family: 'Montserrat', sans-serif;
             font-size: 14px;
             color: $black;
             font-weight: normal;
+            word-break: break-word;
             strong {
               padding-right: 10px;
               color: #6e6e6e;
