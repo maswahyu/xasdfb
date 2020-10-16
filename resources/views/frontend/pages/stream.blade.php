@@ -83,15 +83,18 @@ $contentClass = 'd-none'
                 <p>
                   Kamu akan masuk sebagai guest di dalam live chat ini. Untuk melanjutkan, silahkan lengkapi data dirimu.
                 </p>
+                <strong v-if="warning" class="mb-3 d-block color-crimson">
+                  Form tidak boleh dikosongkan!!
+                </strong>
                 <div class="form-holder">
                   <div class="mb-3">
                     <label for="email" class="label-form">Nama</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
+                    <input type="text" name="name" v-model="guest.name" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
                   </div>
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <label for="email" class="label-form">Nomor Handphone</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
-                  </div>
+                    <input type="text" name="phone" v-model="guest.phone" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
+                  </div> --}}
                   <button
                     @click.prevent="loginProcess"
                     class="btn btn-crimson btn-send mb-2"
@@ -144,7 +147,7 @@ $contentClass = 'd-none'
                 <div class="chat__item-img" v-if="chat.photo != '' && chat.photo != null">
                   <img :src="chat.photo" alt="user">
                 </div>
-                <div class="chat__item-img" :style="{ backgroundColor: randomColor(chat.userId) }" :initial="chat.name.substr(0, 2)" v-else></div>
+                <div class="chat__item-img" :style="{ backgroundColor: userColor }" :initial="chat.name.substr(0, 2)" v-else></div>
                 <div class="chat__item-content">
                   <span class="message">
                     <strong v-if="chat.userId == userIdLog">Me</strong>
@@ -174,8 +177,8 @@ $contentClass = 'd-none'
             class="chat-form"
           >
             <div class="chat-form__img">
-              {{-- <img src="https://source.unsplash.com/user/erondu/800x600" alt="User"> --}}
-              <span class="chat-form__initial" initial="NA" style="background-color: lightseagreen"></span>
+              <img v-if="user !== null && user.profile_picture != '' && user.profile_picture != null" :src="user.profile_picture" alt="User">
+              <span v-else class="chat-form__initial" :initial="user != null ? user.name.substr(0,2) : ( guest.name != null ? guest.name.substr(0,2) : '')" :style="{ backgroundColor: userColor }" ></span>
             </div>
             <form class="chat-form__inputs" @submit="sendMessage">
               <input type="text" :maxlength="max" class="input-form" placeholder="Ketik chat kamu disini" v-model="message">
@@ -307,7 +310,7 @@ $contentClass = 'd-none'
   const STATUS_DISCONNECTED = 'disconnected';
 
   var streamId = '{{ $stream->slug }}';
-  var username = {!! Auth::check() ? "'".Auth::user()->email."'" : 'null' !!};
+  var username = {!! Auth::check() ? "'".Auth::user()->name."'" : 'null' !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
 
@@ -324,7 +327,7 @@ $contentClass = 'd-none'
       },
       guest: {
         name: null,
-        phone: null
+        // phone: null
       },
       reminder: {
         email: null
@@ -334,8 +337,11 @@ $contentClass = 'd-none'
       show: false,
       done: false,
       login: {!! Auth::check() ? 'true' : 'false' !!},
+      user: null,
+      userColor: null,
       userIdLog: 21,
       showGuestForm: false,
+      warning: false,
       showChat: false,
       blocked: false,
       greeting: true,
@@ -381,8 +387,14 @@ $contentClass = 'd-none'
         this.showGuestForm = true
       },
       loginProcess: function() {
-        this.showGuestForm = false
-        this.login = true
+        if(this.guest.name == null) {
+          this.login = false
+          this.warning = true
+        } else {
+          this.showGuestForm = false
+          this.warning = false
+          this.login = true
+        }
       },
       joinChat: function() {
         let _vm = this
@@ -399,13 +411,19 @@ $contentClass = 'd-none'
         axios.get('{!! env('APP_URL') !!}/get-user-details', {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }).then((data) => {
+            if(data.data.name) {
+                this.user = data.data
+            }
+
+            this.userColor = this.randomColor()
+
             socket.emit('chat.join', {
                 streamId: streamId,
                 user: {
                     id: data.data.id ?? null,
                     name: data.data.name ?? this.guest.name,
                     photo: data.data.profile_picture ? data.data.profile_picture : null,
-                    phone: data.data.phone ? data.data.phone : this.guest.phone,
+                    // phone: data.data.phone ? data.data.phone : this.guest.phone,
                     is_guest: data.data.id ? false : true,
                 }
             }, function(response) {
@@ -425,7 +443,7 @@ $contentClass = 'd-none'
             id: 1,
             name: username,
             photo: null,
-            phone: this.guest.phone,
+            // phone: this.guest.phone,
             is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
