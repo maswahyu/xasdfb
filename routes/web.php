@@ -32,8 +32,8 @@ Route::get('events', 'PageController@events');
 Route::get('about-us', 'PageController@about');
 Route::get('terms-conditions', 'PageController@term');
 Route::get('privacy-policy', 'PageController@privacy');
-Route::get('stream/{slug}', 'StreamController@stream');
-Route::post('stream/remind-me', 'StreamController@remindMe');
+Route::get('live/{slug}', 'StreamController@stream');
+Route::post('live/remind-me', 'StreamController@remindMe');
 
 Route::get('email', function () {
   return view('email.template');

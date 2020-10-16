@@ -354,7 +354,7 @@ $contentClass = 'd-none'
       },
       sendReminder: function() {
         let _vm = this
-        axios.post('{{ url('stream/remind-me') }}', {
+        axios.post('{{ url('live/remind-me') }}', {
           csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
           stream_id: streamId,
           email: this.reminder.email
