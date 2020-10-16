@@ -83,14 +83,17 @@ $contentClass = 'd-none'
                 <p>
                   Kamu akan masuk sebagai guest di dalam live chat ini. Untuk melanjutkan, silahkan lengkapi data dirimu.
                 </p>
+                <strong v-if="warning" class="mb-3 d-block color-crimson">
+                  Form tidak boleh dikosongkan!!
+                </strong>
                 <div class="form-holder">
                   <div class="mb-3">
                     <label for="email" class="label-form">Nama</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
+                    <input type="text" name="name" v-model="guest.name" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
                   </div>
                   <div class="mb-3">
                     <label for="email" class="label-form">Nomor Handphone</label>
-                    <input type="text" name="email" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
+                    <input type="text" name="phone" v-model="guest.phone" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
                   </div>
                   <button
                     @click.prevent="loginProcess"
@@ -336,6 +339,7 @@ $contentClass = 'd-none'
       login: {!! Auth::check() ? 'true' : 'false' !!},
       userIdLog: 21,
       showGuestForm: false,
+      warning: false,
       showChat: false,
       blocked: false,
       greeting: true,
@@ -381,8 +385,14 @@ $contentClass = 'd-none'
         this.showGuestForm = true
       },
       loginProcess: function() {
-        this.showGuestForm = false
-        this.login = true
+        if(this.guest.name == null || this.guest.phone == null) {
+          this.login = false
+          this.warning = true
+        } else {
+          this.showGuestForm = false
+          this.warning = false
+          this.login = true
+        }
       },
       joinChat: function() {
         let _vm = this
