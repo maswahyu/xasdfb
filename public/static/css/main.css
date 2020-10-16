@@ -4749,7 +4749,7 @@ p{
   opacity:0;
   padding:2.5rem 3rem;
   width:20rem;
-  z-index:2;
+  z-index:999;
   background-color:#fff;
   border-top:5px solid #ec2427;
   transition:all .5s ease;
