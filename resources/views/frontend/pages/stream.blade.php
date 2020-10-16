@@ -91,10 +91,10 @@ $contentClass = 'd-none'
                     <label for="email" class="label-form">Nama</label>
                     <input type="text" name="name" v-model="guest.name" class="input-form" placeholder="Ketik nama-mu disini" v-model="guest.name">
                   </div>
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <label for="email" class="label-form">Nomor Handphone</label>
                     <input type="text" name="phone" v-model="guest.phone" class="input-form" placeholder="Ketik nomor handphone-mu disini" v-model="guest.phone">
-                  </div>
+                  </div> --}}
                   <button
                     @click.prevent="loginProcess"
                     class="btn btn-crimson btn-send mb-2"
@@ -327,7 +327,7 @@ $contentClass = 'd-none'
       },
       guest: {
         name: null,
-        phone: null
+        // phone: null
       },
       reminder: {
         email: null
@@ -387,7 +387,7 @@ $contentClass = 'd-none'
         this.showGuestForm = true
       },
       loginProcess: function() {
-        if(this.guest.name == null || this.guest.phone == null) {
+        if(this.guest.name == null) {
           this.login = false
           this.warning = true
         } else {
@@ -423,7 +423,7 @@ $contentClass = 'd-none'
                     id: data.data.id ?? null,
                     name: data.data.name ?? this.guest.name,
                     photo: data.data.profile_picture ? data.data.profile_picture : null,
-                    phone: data.data.phone ? data.data.phone : this.guest.phone,
+                    // phone: data.data.phone ? data.data.phone : this.guest.phone,
                     is_guest: data.data.id ? false : true,
                 }
             }, function(response) {
@@ -443,7 +443,7 @@ $contentClass = 'd-none'
             id: 1,
             name: username,
             photo: null,
-            phone: this.guest.phone,
+            // phone: this.guest.phone,
             is_guest: this.guest.name === null ? true : false,
           }
         }, function(response) {
