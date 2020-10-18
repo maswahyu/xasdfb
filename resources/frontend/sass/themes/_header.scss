@@ -19,6 +19,11 @@
   img {
     height: 10rem;
     width: 12.5rem;
+    @media(max-width: 767px) {
+      height: 60px;
+      width: auto;
+      margin-top: -10px;
+    }
   }
 }
 
