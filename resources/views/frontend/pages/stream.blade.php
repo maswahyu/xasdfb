@@ -55,7 +55,7 @@ $contentClass = 'd-none'
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}
-          <div class="screen-chat screen-chat--center screen-chat--white">
+          <div v-if="!login" class="screen-chat screen-chat--center screen-chat--white">
             <div class="login-bar">
               <p class="mb-3">Kamu belum login untuk memulai chat</p>
               <a href="{{ url('member/login') }}" class="button button-carrot">Login</a>
@@ -308,11 +308,16 @@ $contentClass = 'd-none'
   const STATUS_CONNECTED = 'connected';
   const STATUS_DISCONNECTING = 'disconnecting...';
   const STATUS_DISCONNECTED = 'disconnected';
+  const LOCALSTORAGE_KEY = 'lazone-live-chat';
 
   var streamId = '{{ $stream->slug }}';
+  var eventId = '{{ $stream->id }}';
+  var eventName = '{{ $stream->name }}';
   var username = {!! Auth::check() ? "'".Auth::user()->name."'" : 'null' !!};
   var socket = io(CHAT_SERVER);
   var idleTime = 0;
+  const guestSession = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  var login = {!! Auth::check() ? 'true' : 'false' !!};
 
   var chatApp = new Vue({
     el: '#chat-app',
@@ -336,7 +341,7 @@ $contentClass = 'd-none'
       max: 200, //char length
       show: false,
       done: false,
-      login: {!! Auth::check() ? 'true' : 'false' !!},
+      login: login || guestSession ? true : false,
       user: null,
       userColor: null,
       userIdLog: 21,
@@ -396,7 +401,7 @@ $contentClass = 'd-none'
           this.login = true
         }
       },
-      joinChat: function() {
+      joinChat: function(event, reJoin = false) {
         let _vm = this
         this.login = false
         this.scrollToBottom()
@@ -411,26 +416,62 @@ $contentClass = 'd-none'
         axios.get('{!! env('APP_URL') !!}/get-user-details', {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }).then((data) => {
-            if(data.data.name) {
-                this.user = data.data
+
+            if(data.data.name) { //check if user logged
+                this.user = {
+                    id: data.data.id,
+                    name: data.data.name,
+                    photo: data.data.profile_picture ? data.data.profile_picture : null,
+                    is_guest: false
+                }
+            } else { //user not logged
+                if(guestSession) { //check if has guest session
+                    this.user = {
+                        id: null,
+                        name: guestSession.name,
+                        photo: null,
+                        is_guest: true,
+                    }
+                    this.guest.name = guestSession.name;
+                } else { // not have guest session use new guest
+                    this.user = {
+                        id: null,
+                        name: this.guest.name,
+                        photo: null,
+                        is_guest: true
+                    }
+                }
             }
 
             this.userColor = this.randomColor()
 
             socket.emit('chat.join', {
                 streamId: streamId,
-                user: {
-                    id: data.data.id ?? null,
-                    name: data.data.name ?? this.guest.name,
-                    photo: data.data.profile_picture ? data.data.profile_picture : null,
-                    // phone: data.data.phone ? data.data.phone : this.guest.phone,
-                    is_guest: data.data.id ? false : true,
-                }
+                eventId: eventId,
+                eventName: eventName,
+                reJoin: (reJoin || (guestSession && guestSession.eventId.includes(eventId)) ? true : false),
+                user: this.user,
             }, function(response) {
                 if (response.joined) {
-                chatApp.$data.connection.status = STATUS_CONNECTED;
-                chatApp.startTimer();
-                _vm.scrollToBottom()
+                    if(! data.data.id) { //guest login save in localstorage
+                        eventIdArr = [eventId];
+                        if(guestSession) {
+                            eventIdArr = guestSession.eventId;
+                            if( ! guestSession.eventId.includes(eventId)) {
+                                eventIdArr.push(eventId);
+                            }
+                        }
+
+                        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify({
+                            streamId: streamId,
+                            eventId: eventIdArr,
+                            eventName: eventName,
+                            name: chatApp.guest.name,
+                        }));
+                    }
+                    chatApp.$data.connection.status = STATUS_CONNECTED;
+                    chatApp.startTimer();
+                    _vm.scrollToBottom()
                 }
             });
         })
@@ -474,7 +515,7 @@ $contentClass = 'd-none'
         clearInterval(this.timer.counter);
       },
       reEnter: function() {
-        this.joinChat();
+        this.joinChat(true);
         this.blocked = false
       }
     },

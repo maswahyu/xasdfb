@@ -1,11 +1,27 @@
+require('dotenv').config({path: __dirname + '/.env'})
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
+var mysql = require('mysql');
 var Filter = require('bad-words-plus');
 var filter = new Filter();
 var profanityWords;
 
+// database config
+const conn = mysql.createConnection({
+    host: process.env['DB_HOST'],
+    user: process.env['DB_USERNAME'],
+    password: process.env['DB_PASSWORD'],
+    database: process.env['DB_DATABASE']
+});
+
+// connect to database
+conn.connect((err) => {
+    if(err) throw err;
+
+    console.log('Mysql Connected');
+});
 console.log('STARTING LAZONE CHAT SERVER');
 server.listen(3000);
 console.log('Listening on port 3000');
@@ -33,6 +49,35 @@ io.on('connect', function(socket) {
     streamId = data.streamId;
     user = data.user;
     socket.join(streamId);
+    if(data.reJoin == false) {
+        /*INSERT AUDIENCE LOG*/
+        let sql = "INSERT INTO log_audience_event (sso_id, audience_as, event_stream_id, event_name, created_at) VALUES (?)";
+        let date = new Date();
+        let dateString = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        // data
+        let dataSql = [
+            [
+                user.id,
+                user.name,
+                data.eventId,
+                data.eventName,
+                dateString
+            ]
+        ]
+        // execute query
+        let query = conn.query(sql, dataSql, (err, result) => {
+            // dont throw in production
+            if(process.env['APP_ENV'] == 'local') {
+                if(err) throw err;
+            } else {
+                console.log(err);
+                return;
+            }
+            console.log('created user: ' + user.name);
+        });
+    }
+
+
     console.log(data.user.name+' ['+data.user.phone+'] joined to '+streamId);
     callback({joined: true});
   });
