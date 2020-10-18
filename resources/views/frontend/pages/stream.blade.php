@@ -15,7 +15,7 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {{-- <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore"> --}}
         <div class="stream__video__desc more">
