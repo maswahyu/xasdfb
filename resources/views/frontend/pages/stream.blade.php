@@ -144,6 +144,21 @@ $contentClass = 'd-none'
               </div>
             </div>
           </transition>
+          {{--  Chat disabled --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              v-if="chatDisabled"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--center': chatDisabled }"
+            >
+              <div class="text-center">
+                <p>Live Chat dinonaktifkan</p>
+              </div>
+            </div>
+          </transition>
           {{-- Chat Container --}}
           <transition
             mode="out-in"
@@ -382,6 +397,7 @@ $contentClass = 'd-none'
       streaming: true,
       colorCache: {},
       fullRoom: false,
+      chatDisabled: false,
       chats: [],
     },
     computed: {},
