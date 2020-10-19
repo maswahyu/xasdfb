@@ -62,6 +62,7 @@ $contentClass = 'd-none'
               <a href="{{ url('member/login') }}" class="button button-carrot">Login</a>
               <span>Atau</span>
               <button
+                id="LoginGuest"
                 class="button button-black"
                 @click="loginGuest"
               >
@@ -124,7 +125,13 @@ $contentClass = 'd-none'
             >
               <div class="text-center">
                 <p>Maaf kamu belum bisa masuk ke live karena kapasitas live chat telah penuh. Silahkan coba masuk beberapa saat lagi.</p>
-                <button @click="joinChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+                <button
+                  id="LiveChat"
+                  @click="joinChat"
+                  class="btn btn-primary-outline text-uppercase"
+                >
+                  Masuk ke live chat
+                </button>
               </div>
             </div>
           </transition>
@@ -320,6 +327,7 @@ $contentClass = 'd-none'
               <input type="text" name="email" class="input-form" placeholder="Ketik email-mu disini" v-model="reminder.email">
             </div>
             <button
+              id="AturPengingat"
               @click.prevent="sendReminder"
               class="btn btn-crimson btn-send mb-2"
             >
