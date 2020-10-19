@@ -157,7 +157,7 @@
           <br>
           <br>
           <br>
-          <a href="#" class="btn-link" style="display: inline-block;">Watch Live Streaming Now</a>
+          <a href="{{ url('/live/' . $stream->slug) }}" class="btn-link" style="display: inline-block;">Watch Live Streaming Now</a>
         </div>
       </td>
     </tr>
