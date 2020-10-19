@@ -30,6 +30,7 @@ $contentClass = 'd-none'
           </div>
           <div class="stream__video__subs">
             <button
+              id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
             >
@@ -59,7 +60,7 @@ $contentClass = 'd-none'
           <div v-if="!login" class="screen-chat screen-chat--center screen-chat--white">
             <div class="login-bar">
               <p class="mb-3">Kamu belum login untuk memulai chat</p>
-              <a href="{{ url('member/login') }}" class="button button-carrot">Login</a>
+              <a href="{{ url('member/login') }}" class="button button-carrot" id="LoginLiveMusic">Login</a>
               <span>Atau</span>
               <button
                 id="LoginGuest"
