@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use Hash;
 use Auth;
-use App\Category;
+use Hash;
+use App\User;
 use GuzzleHttp;
+use App\Category;
+use App\EventStream;
+use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
@@ -168,7 +169,10 @@ class MemberController extends Controller
             }
 
             Auth::loginUsingId($user->id);
-
+            $event = EventStream::where('slug', 'boldmusic')->first();
+            if($event && $event->isPublished()) {
+                return redirect()->to('live/' . $event->slug);
+            }
             if (isset($attribute['from_wifi']) && $attribute['from_wifi'] !== true) {
                 return redirect()->to(config('cas.url_mypoint') . '?wifi=' . $attribute['from_wifi']);
             }
