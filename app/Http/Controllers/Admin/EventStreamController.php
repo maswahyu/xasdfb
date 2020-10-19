@@ -65,23 +65,17 @@ class EventStreamController extends Controller
 
         // get unique audience for reporting
         if(request()->has('type') && request()->get('tab') == 'report') {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->where('type', request()->get('type'))->paginate(15);
+            if(request()->get('type') == AudienceEventStream::TYPE_GUEST) {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->paginate(15);
+            } else {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->paginate(15);
+            }
         } else {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->paginate(15);
+            $audience = LogAudienceEventStream::where('event_stream_id', $eventstream->id)->latest()->paginate(15);
         }
-
-        //get total audience based on type
-        $total_user = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-            $query->latest()->where('event_stream_id', $eventstream->id);
-        })->where('type', AudienceEventStream::TYPE_USER)->count();
-        $total_guest = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-            $query->latest()->where('event_stream_id', $eventstream->id);
-        })->where('type', AudienceEventStream::TYPE_GUEST)->count();
-
+        // get total audience based on type
+        $total_user = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->count();
+        $total_guest = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->count();
         $total_audience = compact('total_user', 'total_guest');
 
 
@@ -112,13 +106,13 @@ class EventStreamController extends Controller
     {
         $eventstream = EventStream::findOrFail($id);
         if(request()->has('type') && request()->get('tab') == 'report') {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->with('event')->where('type', request()->get('type'))->get();
+            if(request()->get('type') == AudienceEventStream::TYPE_GUEST) {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->paginate(15);
+            } else {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->paginate(15);
+            }
         } else {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->with('event')->get();
+            $audience = LogAudienceEventStream::where([ ['event_stream_id', '=', $eventstream->id]])->get();
         }
         return Excel::download(new AudienceEventExport($audience), 'test.xlsx');
     }

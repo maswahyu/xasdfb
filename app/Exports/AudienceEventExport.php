@@ -20,9 +20,7 @@ class AudienceEventExport implements FromCollection,WithMapping,WithHeadings
     {
         return [
             'Name',
-            'Phone',
-            'Register At Event',
-            'Register Date',
+            'Join Time',
             'Type',
         ];
     }
@@ -30,11 +28,9 @@ class AudienceEventExport implements FromCollection,WithMapping,WithHeadings
     public function map($model): array
     {
         return [
-            $model->name,
-            $model->phone,
-            $model->event->name,
-            $model->created_at ? Date::dateTimeToExcel($model->created_at) : $model->created_at,
-            $model->type,
+            $model->audience_as,
+            $model->created_at,
+            $model->sso_id ? 'User' : 'Guest',
         ];
     }
 
