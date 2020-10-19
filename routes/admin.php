@@ -65,6 +65,7 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('eventstreamlist', 'EventStreamController@list');
         Route::prefix('export')->group(function() {
             Route::get('audience-event-stream/{id}', 'EventStreamController@exportAudience');
+            Route::get('chat-event-stream/{id}', 'EventStreamController@exportChat');
         });
 
         Route::resource('stickybanner', 'StickyBannerController');

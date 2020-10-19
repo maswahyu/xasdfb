@@ -2,12 +2,11 @@
 
 namespace App\Exports;
 
-use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class AudienceEventExport implements FromCollection,WithMapping,WithHeadings
+class ChatMessageExport implements FromCollection,WithMapping,WithHeadings
 {
     private $data;
 
@@ -19,18 +18,20 @@ class AudienceEventExport implements FromCollection,WithMapping,WithHeadings
     public function headings(): array
     {
         return [
+            'Time',
             'Name',
-            'Join Time',
-            'Type',
+            'Message',
+            'Date',
         ];
     }
 
     public function map($model): array
     {
         return [
-            $model->audience_as,
-            $model->created_at,
-            $model->sso_id ? 'User' : 'Guest',
+            $model->chatTime,
+            $model->name,
+            $model->message,
+            $model->created_at
         ];
     }
 

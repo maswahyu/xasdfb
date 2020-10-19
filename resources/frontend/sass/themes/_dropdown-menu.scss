@@ -19,7 +19,33 @@
     display: flex;
     flex-flow: row nowrap;
   }
-
+  &__avatar {
+    position: relative;
+    top: calc(50% - 16px);
+    width: 32px;
+    height: 32px;
+    border: 2px solid #fafafa;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__username {
+    display: block;
+    color: #000;
+    padding-bottom: 3px;
+  }
+  &__separator {
+    display: block;
+    border-top: 1px solid #eaeaea;
+    padding: 0;
+    margin: 15px 0;
+    height: 1px;
+  }
   &__item {
     display: block;
     position: relative;
@@ -69,23 +95,25 @@
 
   &__dropdown {
     position: absolute;
-    left: 0;
-    display: none;
-    visibility: hidden;
+    right: 0;
+    top: 100%;
+    display: block;
+    visibility: visible;
     opacity: 0;
-    padding: 2.5rem 3rem;
+    padding: 15px 0;
     width: 20rem;
     z-index: 999;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.3);
 
     background-color: palette("white");
     border-top: 5px solid palette("crimson");
     transition: all 0.5s ease;
 
     &-item {
-      margin-bottom: 2rem;
+      // margin-bottom: 2rem;
       clear: both;
       width: 100%;
-
+      padding: 10px 25px;
       &:last-child {
         margin-bottom: 0;
       }
