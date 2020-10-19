@@ -32,4 +32,14 @@ class StreamController extends Controller
         return response()->json(['success' => false]);
     }
 
+    public function addViews(Request $request)
+    {
+        $stream = EventStream::where('id', $request->post('eventId'))->firstOrFail();
+        $stream->total_view = $stream->total_view + 1;
+        if($stream->save()) {
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
+    }
+
 }
