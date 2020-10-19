@@ -15,14 +15,15 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore">
-          <span class="btn-more">
+        {{-- <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore"> --}}
+        <div class="stream__video__desc more">
+          {{-- <span class="btn-more">
             <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2.53803 0L0 2.53803L8 10.538L16 2.53803L13.462 0L8 5.46197L2.53803 0Z" fill="#9B9B9B"/>
             </svg>
-          </span>
+          </span> --}}
           <div class="stream__video__caption">
             <h4 class="title__video">{{ $stream->name }}</h4>
             <span class="subtitle__video">LIVE PADA {{ $stream->event_date }}</span>
@@ -111,6 +112,22 @@ $contentClass = 'd-none'
               </div>
             </div>
           </transition>
+          {{-- If stream over capacity --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              v-if="fullRoom"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--center': fullRoom }"
+            >
+              <div class="text-center">
+                <p>Maaf kamu belum bisa masuk ke live karena kapasitas live chat telah penuh. Silahkan coba masuk beberapa saat lagi.</p>
+                <button @click="joinChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+              </div>
+            </div>
+          </transition>
           {{-- After login --}}
           <transition
             mode="out-in"
@@ -171,7 +188,10 @@ $contentClass = 'd-none'
             </div>
           </transition>
         </div>
-        <div class="stream__chat__footer flex-center">
+        <div
+          v-if="streaming"
+          class="stream__chat__footer flex-center"
+        >
           <div
             v-if="showChat"
             class="chat-form"
@@ -199,6 +219,13 @@ $contentClass = 'd-none'
               <span :style="{ color: message.length >= max ? 'red': null }">@{{ message.length > 0 ? message.length : 0 }}</span>/@{{ max }}
             </div>
           </div>
+        </div>
+        {{-- If Live Stream has been ended --}}
+        <div
+          v-else
+          class="stream__chat__footer flex-center"
+        >
+          <span>Live streaming telah berakhir.</span>
         </div>
         {{-- Kick Window --}}
         <transition
@@ -352,7 +379,9 @@ $contentClass = 'd-none'
       blocked: false,
       greeting: true,
       showMore: false,
+      streaming: true,
       colorCache: {},
+      fullRoom: false,
       chats: [],
     },
     computed: {},

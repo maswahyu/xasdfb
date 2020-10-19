@@ -22,7 +22,7 @@
     @media(max-width: 767px) {
       height: 60px;
       width: auto;
-      margin-top: -10px;
+      margin-top: -11px;
     }
   }
 }
@@ -37,7 +37,7 @@
   height: 60px;
   width: 100%;
   background-color: palette("black");
-  z-index: 3;
+  z-index: 500;
 
   @include media-over(xl) {
     display: none;
