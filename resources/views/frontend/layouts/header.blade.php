@@ -65,7 +65,6 @@
                         <ul class="dropdown-menu__dropdown">
                             <li class="dropdown-menu__dropdown-item">
                                 <strong class="dropdown-menu__username">{{ str_limit(auth()->user()->name, 12) }}</strong>
-                                <br>
                                 <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span id="loyalty_point"></span> pts</span>
                             </li>
                             <li class="dropdown-menu__separator">&nbsp;</li>
