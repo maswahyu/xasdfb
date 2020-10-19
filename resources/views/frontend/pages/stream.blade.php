@@ -397,7 +397,7 @@ $contentClass = 'd-none'
       streaming: true,
       colorCache: {},
       fullRoom: false,
-      chatDisabled: false,
+      chatDisabled: {!! $stream->isChatEnabled() ? 'false' : 'true' !!},
       chats: [],
     },
     computed: {},
