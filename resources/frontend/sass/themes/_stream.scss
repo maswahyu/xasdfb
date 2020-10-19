@@ -70,6 +70,8 @@ $family: 'Montserrat', sans-serif;
  * Stream Page
  */
 #chat-app {
+  position: relative;
+  z-index: 1;
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
