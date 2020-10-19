@@ -14,7 +14,6 @@ class AlterTableLogAudienceEvent extends Migration
     public function up()
     {
         Schema::table('log_audience_event', function(Blueprint $table) {
-            $table->dropForeign(['audience_id']);
             $table->dropColumn('audience_id');
             $table->integer('sso_id')->unsigned()->nullable()->after('id');
         });
@@ -29,7 +28,6 @@ class AlterTableLogAudienceEvent extends Migration
     {
         Schema::table('log_audience_event', function(Blueprint $table) {
             $table->bigInteger('audience_id')->unsigned()->index();
-            $table->foreign('audience_id')->references('id')->on('audience_event_stream')->onDelete('no action');
             $table->dropColumn('sso_id');
         });
     }

@@ -14,7 +14,6 @@ class AlterTableAudienceChatHistoryTable extends Migration
     public function up()
     {
         Schema::table('audience_chat_history', function(Blueprint $table) {
-            $table->dropForeign(['audience_id']);
             $table->dropColumn('audience_id');
             $table->bigInteger('log_id')->unsigned()->nullable()->before('event_stream_id');
             $table->string('timestamp_from_event')->change();
@@ -33,7 +32,6 @@ class AlterTableAudienceChatHistoryTable extends Migration
             $table->dropColumn('log_id');
             $table->dropColumn('name');
             $table->bigInteger('audience_id')->unsigned()->index();;
-            $table->foreign('audience_id')->references('id')->on('audience_event_stream')->onDelete('cascade');
         });
     }
 }
