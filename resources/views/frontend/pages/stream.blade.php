@@ -312,6 +312,7 @@ $contentClass = 'd-none'
 
   var streamId = '{{ $stream->slug }}';
   var eventId = '{{ $stream->id }}';
+  var eventStartTimestamp = '{{ $stream->event_date->timestamp }}';
   var eventName = '{{ $stream->name }}';
   var username = {!! Auth::check() ? "'".Auth::user()->name."'" : 'null' !!};
   var socket = io(CHAT_SERVER);
@@ -496,7 +497,12 @@ $contentClass = 'd-none'
       sendMessage: function(e) {
         let _vm =  this;
         if (this.message !== '') {
-          socket.emit('chat.message', this.message);
+          socket.emit('chat.message', {
+              eventId: eventId,
+              name: this.user.name,
+              message: this.message,
+              timestamp: ~~(Date.now()/ 1000) -  eventStartTimestamp
+          });
           _vm.scrollToBottom()
         }
 
