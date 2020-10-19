@@ -30,6 +30,7 @@ $contentClass = 'd-none'
           </div>
           <div class="stream__video__subs">
             <button
+              id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
             >
@@ -59,7 +60,7 @@ $contentClass = 'd-none'
           <div v-if="!login" class="screen-chat screen-chat--center screen-chat--white">
             <div class="login-bar">
               <p class="mb-3">Kamu belum login untuk memulai chat</p>
-              <a href="{{ url('member/login') }}" class="button button-carrot">Login</a>
+              <a href="{{ url('member/login') }}" class="button button-carrot" id="LoginLiveMusic">Login</a>
               <span>Atau</span>
               <button
                 id="LoginGuest"
@@ -126,7 +127,6 @@ $contentClass = 'd-none'
               <div class="text-center">
                 <p>Maaf kamu belum bisa masuk ke live karena kapasitas live chat telah penuh. Silahkan coba masuk beberapa saat lagi.</p>
                 <button
-                  id="LiveChat"
                   @click="joinChat"
                   class="btn btn-primary-outline text-uppercase"
                 >
@@ -147,7 +147,13 @@ $contentClass = 'd-none'
             >
               <div class="text-center">
                 <p>Silahkan klik button dibawah ini untuk masuk ke live chat stream.</p>
-                <button @click="joinChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+                <button
+                  id="LiveChat"
+                  @click="joinChat"
+                  class="btn btn-primary-outline text-uppercase"
+                >
+                  Masuk ke live chat
+                </button>
               </div>
             </div>
           </transition>
