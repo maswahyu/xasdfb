@@ -143,7 +143,7 @@
       <td style="width: 100%; float: left;">
         <div class="content" style="text-align: center">
           <span style="display: block; font-size: 24px; color: #444;">Hi,</span>
-          <b style="display: block; font-size: 24px; color: #000">[NAMA ACARA LIVE STREAMING]</b>
+          <b style="display: block; font-size: 24px; color: #000">{{ $stream->name }}</b>
           <p style="color: #444; font-size: 24px;">sebentar lagi akan dimulai nih!</p>
         </div>
       </td>
