@@ -25,6 +25,8 @@ class AlterTableEventStreamTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('events_stream', function(Blueprint $table) {
+            $table->dropColumn('total_view');
+        });
     }
 }

@@ -22,7 +22,6 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Phone</th>
                         <th>Type</th>
                     </tr>
                 </thead>
@@ -30,11 +29,8 @@
                     @foreach($audience as $items=>$item)
                     <tr>
                         <td>{{ $items + $audience->firstItem() }}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->phone}}</td>
-                        <td>{{$item->type}}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$item->audience_as}}</td>
+                        <td>{{$item->sso_id ? 'User' : 'Guest'}}</td>
                     </tr>
                     @endforeach
                 </tbody>

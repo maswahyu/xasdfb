@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AudienceChatEventStream;
 use App\AudienceEventStream;
 use App\EventStream;
 use App\Exports\AudienceEventExport;
+use App\Exports\ChatMessageExport;
 use Illuminate\Http\Request;
 use App\Http\Resources\Event;
 use App\LogAudienceEventStream;
@@ -65,27 +67,23 @@ class EventStreamController extends Controller
 
         // get unique audience for reporting
         if(request()->has('type') && request()->get('tab') == 'report') {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->where('type', request()->get('type'))->paginate(15);
+            if(request()->get('type') == AudienceEventStream::TYPE_GUEST) {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->paginate(15);
+            } else {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->paginate(15);
+            }
         } else {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->paginate(15);
+            $audience = LogAudienceEventStream::where('event_stream_id', $eventstream->id)->latest()->paginate(15);
         }
-
-        //get total audience based on type
-        $total_user = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-            $query->latest()->where('event_stream_id', $eventstream->id);
-        })->where('type', AudienceEventStream::TYPE_USER)->count();
-        $total_guest = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-            $query->latest()->where('event_stream_id', $eventstream->id);
-        })->where('type', AudienceEventStream::TYPE_GUEST)->count();
-
+        // get total audience based on type
+        $total_user = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->count();
+        $total_guest = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->count();
         $total_audience = compact('total_user', 'total_guest');
 
+        //get list of chat
+        $chats = AudienceChatEventStream::where('event_stream_id', $eventstream->id)->orderBy('timestamp_from_event', 'desc')->paginate(15);
 
-        return view('_admin.eventstream.show', compact('eventstream', 'audience', 'total_audience'))->with('title', $this->title);
+        return view('_admin.eventstream.show', compact('eventstream', 'audience', 'total_audience', 'chats'))->with('title', $this->title);
     }
 
     public function update(EventStreamRequest $request, $id)
@@ -112,14 +110,29 @@ class EventStreamController extends Controller
     {
         $eventstream = EventStream::findOrFail($id);
         if(request()->has('type') && request()->get('tab') == 'report') {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->with('event')->where('type', request()->get('type'))->get();
+            if(request()->get('type') == AudienceEventStream::TYPE_GUEST) {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNull('sso_id')->paginate(15);
+            } else {
+                $audience = LogAudienceEventStream::where('event_stream_id', '=', $eventstream->id)->whereNotNull('sso_id')->paginate(15);
+            }
         } else {
-            $audience = AudienceEventStream::whereHas('log', function($query) use($eventstream) {
-                $query->latest()->where('event_stream_id', $eventstream->id);
-            })->with('event')->get();
+            $audience = LogAudienceEventStream::where([ ['event_stream_id', '=', $eventstream->id]])->get();
         }
         return Excel::download(new AudienceEventExport($audience), 'test.xlsx');
+    }
+
+    public function exportChat($id, Request $request)
+    {
+        $eventstream = EventStream::findOrFail($id);
+        $chats = AudienceChatEventStream::where('event_stream_id', $eventstream->id)->orderBy('timestamp_from_event', 'desc')->get();
+
+        return Excel::download(new ChatMessageExport($chats), 'chat_message_' . $eventstream->name . '.xlsx');
+        // if(request()->has('type') && request()->get('tab') == 'report') {
+        //     if(request()->get('type') == 'excel') {
+        //         return Excel::download(new ChatMessageExport($chats), 'chat_message_' . $eventstream->name . '.xlsx');
+        //     } else {
+        //         return Excel::download(new ChatMessageExport($chats), 'test.xlsx');
+        //     }
+        // }
     }
 }
