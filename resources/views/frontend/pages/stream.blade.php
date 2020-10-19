@@ -127,7 +127,6 @@ $contentClass = 'd-none'
               <div class="text-center">
                 <p>Maaf kamu belum bisa masuk ke live karena kapasitas live chat telah penuh. Silahkan coba masuk beberapa saat lagi.</p>
                 <button
-                  id="LiveChat"
                   @click="joinChat"
                   class="btn btn-primary-outline text-uppercase"
                 >
@@ -148,7 +147,13 @@ $contentClass = 'd-none'
             >
               <div class="text-center">
                 <p>Silahkan klik button dibawah ini untuk masuk ke live chat stream.</p>
-                <button @click="joinChat" class="btn btn-primary-outline text-uppercase">Masuk ke live chat</button>
+                <button
+                  id="LiveChat"
+                  @click="joinChat"
+                  class="btn btn-primary-outline text-uppercase"
+                >
+                  Masuk ke live chat
+                </button>
               </div>
             </div>
           </transition>
