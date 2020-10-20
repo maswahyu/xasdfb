@@ -24,14 +24,16 @@ conn.connect((err) => {
     console.log('Mysql Connected');
 });
 console.log('STARTING LAZONE CHAT SERVER');
-server.listen(3000);
-console.log('Listening on port 3000');
+server.listen(process.env['CHAT_PORT']);
+console.log('Listening on port ' + process.env['CHAT_PORT']);
 
 fs.readFile('blocked-words.txt', 'utf8', function(error, data) {
   if (error) { throw error };
   profanityWords = data.toString();
   profanityWords = profanityWords.replace(/(\r\n|\n|\r)/gm, ';');
-  profanityWords = profanityWords.split(';');
+  profanityWords = profanityWords.split(';').filter(function(el) {
+    return el != '';
+  });
   console.log('Loaded bad words', profanityWords);
   filter.addWords(...profanityWords);
 });
