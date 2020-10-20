@@ -16,7 +16,7 @@ $contentClass = 'd-none'
       <div class="stream__video">
         <div class="stream__video__inner">
           {{-- Banner --}}
-          <a v-if="watchOnYoutube" href="#" target="_blank">
+          <a id="ClickLivestream" v-if="watchOnYoutube" href="#" target="_blank">
             <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
           </a>
           {{-- Video --}}
@@ -34,21 +34,11 @@ $contentClass = 'd-none'
             <span class="subtitle__video">LIVE PADA {{ $stream->event_date }}</span>
           </div>
           <div class="stream__video__subs">
-            <a
-              v-if="watchOnYoutube"
-              href="#"
-              target="_blank"
-              id="watchOnYoutube"
-              class="btn btn-crimson btn-subs"
-            >
-              <img src="{{ asset('static/images/youtube.svg')}}" alt="Youtube Icon">
-              Nonton di Youtube
-            </a>
             <button
-              v-else
               id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
+              :class="{'d-none': watchOnYoutube }"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
@@ -68,8 +58,8 @@ $contentClass = 'd-none'
         </div>
       </div>
       <div class="stream__chat">
-        <div class="stream__chat__header">
-          <span>Live Chat</span>
+        <div class="stream__chat__header" :class="{'stream__chat__header--hide': watchOnYoutube }">
+          <span :class="{'d-none': watchOnYoutube }">Live Chat</span>
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}
@@ -199,7 +189,19 @@ $contentClass = 'd-none'
               :class="{'screen-chat--center': watchOnYoutube }"
             >
               <div class="text-center">
-                <p>Nonton Live Streaming-nya di YOUTUBE</p>
+                <p>
+                  Tonton Live Streaming Virtual Concert di <br>
+                  <b>YouTube LAZone</b>
+                </p>
+                <a
+                  href="#"
+                  target="_blank"
+                  id="TontonSekarang"
+                  class="btn btn-crimson btn-send btn-send--live"
+                >
+                  <img src="{{ asset('static/images/youtube.svg')}}" alt="Youtube Icon">
+                  Tonton Sekarang
+                </a>
               </div>
             </div>
           {{-- Chat Container --}}

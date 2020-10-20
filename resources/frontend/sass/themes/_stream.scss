@@ -239,11 +239,6 @@ $family: 'Montserrat', sans-serif;
           transform: scale(.8);
           margin-right: 10px;
         }
-        img {
-          max-width: 24px;
-          height: auto;
-          margin-right: 10px;
-        }
       }
     }
   }
@@ -269,6 +264,9 @@ $family: 'Montserrat', sans-serif;
       align-items: center;
       border-bottom: 1px solid #eee;
       background-color: $white;
+      &--hide {
+        border-bottom: none;
+      }
       span {
         position: relative;
         font-weight: bold;
@@ -455,13 +453,21 @@ $family: 'Montserrat', sans-serif;
   width: 100%;
   border: none;
   cursor: pointer;
-  padding: 12px 16px;
+  padding: 10px 16px;
 }
 
 .btn-send {
   color: $white;
   font-weight: 600;
   text-transform: uppercase;
+  &--live {
+    width: auto;
+  }
+  img {
+    max-width: 24px;
+    height: auto;
+    margin-right: 10px;
+  }
 }
 
 .btn-cancel {
