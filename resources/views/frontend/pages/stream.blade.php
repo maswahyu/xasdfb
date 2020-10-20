@@ -38,7 +38,7 @@ $contentClass = 'd-none'
               id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
-              :class="{'d-none': watchOnYoutube }"
+              :class="{ 'd-none': watchOnYoutube }"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
@@ -59,7 +59,7 @@ $contentClass = 'd-none'
       </div>
       <div class="stream__chat">
         <div class="stream__chat__header" :class="{'stream__chat__header--hide': watchOnYoutube }">
-          <span :class="{'d-none': watchOnYoutube }">Live Chat</span>
+          <span :class="{ 'd-none': watchOnYoutube }">Live Chat</span>
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}

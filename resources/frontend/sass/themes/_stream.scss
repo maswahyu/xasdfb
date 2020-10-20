@@ -265,7 +265,7 @@ $family: 'Montserrat', sans-serif;
       border-bottom: 1px solid #eee;
       background-color: $white;
       &--hide {
-        border-bottom: none;
+        border-bottom: 0;
       }
       span {
         position: relative;
