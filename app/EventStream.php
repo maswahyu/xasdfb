@@ -11,6 +11,8 @@ class EventStream extends Model
 {
     const STATUS_ON = 1;
     const STATUS_OFF = 0;
+    const STREAM_WEB = 'live_web';
+    const STREAM_YOUTUBE = 'live_youtube';
 
     protected $table = 'events_stream';
 
@@ -22,6 +24,7 @@ class EventStream extends Model
         $model->yt_link = $request->get('yt_link');
         $model->thumbnail = $request->get('thumbnail');
         $model->live_chat = $request->get('live_chat');
+        $model->stream_type = $request->get('stream_type');
         $model->publish = $request->get('publish');
         $model->event_date = Carbon::parse($request->get('event_date'));
         $model->periode_start = Carbon::parse($request->get('periode_start'));
@@ -42,6 +45,7 @@ class EventStream extends Model
         $model->yt_link = $request->get('yt_link');
         $model->thumbnail = $request->get('thumbnail');
         $model->live_chat = $request->get('live_chat');
+        $model->stream_type = $request->get('stream_type');
         $model->publish = $request->get('publish');
         $model->event_date = Carbon::parse($request->get('event_date'));
         $model->periode_start = Carbon::parse($request->get('periode_start'));
@@ -101,5 +105,10 @@ class EventStream extends Model
     public function isChatEnabled()
     {
         return $this->live_chat == self::STATUS_ON;
+    }
+
+    public function isStreamYoutube()
+    {
+        return $this->stream_type == self::STREAM_YOUTUBE;
     }
 }

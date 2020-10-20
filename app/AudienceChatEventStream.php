@@ -18,6 +18,9 @@ class AudienceChatEventStream extends Model
      */
     public function getChatTimeAttribute()
     {
-        return gmdate("H:i:s", $this->timestamp_from_event);
+        if($this->timestamp_from_event < 0) {
+            return  '-' . gmdate("H:i:s", abs($this->timestamp_from_event));
+        }
+        return gmdate("H:i:s", abs($this->timestamp_from_event));
     }
 }
