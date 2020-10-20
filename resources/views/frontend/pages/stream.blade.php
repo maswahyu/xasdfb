@@ -14,7 +14,10 @@ $contentClass = 'd-none'
   <div class="container py-app">
     <div class="row">
       <div class="stream__video">
-        <div class="stream__video__inner">
+        <div
+          class="stream__video__inner"
+          :class="{ 'stream__video__inner--auto': watchOnYoutube }"
+        >
           {{-- Banner --}}
           <a id="ClickLivestream" v-if="watchOnYoutube" href="https://youtu.be/_ZmrfMPZDPA" target="_blank">
             <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
@@ -57,7 +60,7 @@ $contentClass = 'd-none'
           </div>
         </div>
       </div>
-      <div class="stream__chat">
+      <div class="stream__chat" :class="{ 'stream__chat--yt': watchOnYoutube }">
         <div class="stream__chat__header" :class="{'stream__chat__header--hide': watchOnYoutube }">
           <span :class="{ 'd-none': watchOnYoutube }">Live Chat</span>
         </div>
