@@ -16,7 +16,7 @@ $contentClass = 'd-none'
       <div class="stream__video">
         <div class="stream__video__inner">
           {{-- Banner --}}
-          <a id="ClickLivestream" v-if="watchOnYoutube" href="#" target="_blank">
+          <a id="ClickLivestream" v-if="watchOnYoutube" href="https://youtu.be/_ZmrfMPZDPA" target="_blank">
             <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
           </a>
           {{-- Video --}}
@@ -194,7 +194,7 @@ $contentClass = 'd-none'
                   <b>YouTube LAZone</b>
                 </p>
                 <a
-                  href="#"
+                  href="https://youtu.be/_ZmrfMPZDPA"
                   target="_blank"
                   id="TontonSekarang"
                   class="btn btn-crimson btn-send btn-send--live"
