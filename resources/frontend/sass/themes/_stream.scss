@@ -108,6 +108,19 @@ $family: 'Montserrat', sans-serif;
         left: 0;
         top: 0;
       }
+      a {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
       @media(min-width: 768px) {
         height: 360px;
         margin-bottom: 20px;
@@ -224,6 +237,11 @@ $family: 'Montserrat', sans-serif;
         font-family: $family;
         svg {
           transform: scale(.8);
+          margin-right: 10px;
+        }
+        img {
+          max-width: 24px;
+          height: auto;
           margin-right: 10px;
         }
       }

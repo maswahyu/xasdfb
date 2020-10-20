@@ -15,7 +15,12 @@ $contentClass = 'd-none'
     <div class="row">
       <div class="stream__video">
         <div class="stream__video__inner">
-          <iframe src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {{-- Banner --}}
+          <a v-if="watchOnYoutube" href="#" target="_blank">
+            <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
+          </a>
+          {{-- Video --}}
+          <iframe v-else src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {{-- <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore"> --}}
         <div class="stream__video__desc more">
@@ -29,7 +34,18 @@ $contentClass = 'd-none'
             <span class="subtitle__video">LIVE PADA {{ $stream->event_date }}</span>
           </div>
           <div class="stream__video__subs">
+            <a
+              v-if="watchOnYoutube"
+              href="#"
+              target="_blank"
+              id="watchOnYoutube"
+              class="btn btn-crimson btn-subs"
+            >
+              <img src="{{ asset('static/images/youtube.svg')}}" alt="Youtube Icon">
+              Nonton di Youtube
+            </a>
             <button
+              v-else
               id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
@@ -172,6 +188,20 @@ $contentClass = 'd-none'
               </div>
             </div>
           </transition>
+          {{-- Nonton di Youtube --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              v-if="watchOnYoutube"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--center': watchOnYoutube }"
+            >
+              <div class="text-center">
+                <p>Nonton Live Streaming-nya di YOUTUBE</p>
+              </div>
+            </div>
           {{-- Chat Container --}}
           <transition
             mode="out-in"
@@ -411,6 +441,7 @@ $contentClass = 'd-none'
       streaming: true,
       colorCache: {},
       fullRoom: false,
+      watchOnYoutube: true,
       chatDisabled: {!! $stream->isChatEnabled() ? 'false' : 'true' !!},
       chats: [],
     },
