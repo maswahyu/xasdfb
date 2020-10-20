@@ -95,7 +95,8 @@
 
   &__dropdown {
     position: absolute;
-    right: 0;
+    left: 0;
+    right: auto;
     top: 100%;
     display: none;
     visibility: hidden;
@@ -108,6 +109,11 @@
     background-color: palette("white");
     border-top: 5px solid palette("crimson");
     transition: all 0.5s ease;
+
+    &--right {
+      right: 0;
+      left: auto;
+    }
 
     &-item {
       // margin-bottom: 2rem;
