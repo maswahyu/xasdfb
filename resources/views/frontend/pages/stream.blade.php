@@ -202,7 +202,7 @@ $contentClass = 'd-none'
                   class="btn btn-crimson btn-send btn-send--live"
                 >
                   <img src="{{ asset('static/images/youtube.svg')}}" alt="Youtube Icon">
-                  Tonton Sekarang
+                  Klik Sekarang
                 </a>
               </div>
             </div>
