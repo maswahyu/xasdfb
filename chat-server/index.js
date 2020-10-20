@@ -3,6 +3,7 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
+var umoji = require('umoji');
 var mysql = require('mysql');
 var Filter = require('bad-words-plus');
 var filter = new Filter();
@@ -23,14 +24,16 @@ conn.connect((err) => {
     console.log('Mysql Connected');
 });
 console.log('STARTING LAZONE CHAT SERVER');
-server.listen(3000);
-console.log('Listening on port 3000');
+server.listen(process.env['CHAT_PORT']);
+console.log('Listening on port ' + process.env['CHAT_PORT']);
 
 fs.readFile('blocked-words.txt', 'utf8', function(error, data) {
   if (error) { throw error };
   profanityWords = data.toString();
   profanityWords = profanityWords.replace(/(\r\n|\n|\r)/gm, ';');
-  profanityWords = profanityWords.split(';');
+  profanityWords = profanityWords.split(';').filter(function(el) {
+    return el != '';
+  });
   console.log('Loaded bad words', profanityWords);
   filter.addWords(...profanityWords);
 });
@@ -72,7 +75,7 @@ io.on('connect', function(socket) {
                 if(process.env['APP_ENV'] == 'local') {
                     throw err;
                 } else {
-                    console.log(err);
+                    console.log(err.sqlMessage);
                     return;
                 }
             }
@@ -80,7 +83,7 @@ io.on('connect', function(socket) {
     }
 
 
-    console.log(data.user.name+' ['+data.user.phone+'] joined to '+streamId);
+    console.log(data.user.name+' joined to '+streamId);
     callback({joined: true});
   });
 
@@ -89,7 +92,7 @@ io.on('connect', function(socket) {
     streamId = data.streamId;
     user = data.user;
     socket.leave(streamId);
-    console.log(data.user.name+' ['+data.user.phone+'] leaving '+streamId);
+    console.log(data.user.name+' leaving '+streamId);
     callback({joined: false});
   });
 
@@ -105,9 +108,15 @@ io.on('connect', function(socket) {
   });*/
 
   /* MESSAGE RECEIVED */
-  socket.on('chat.message', function(data) {
+  socket.on('chat.message', function(data, callback) {
     message = filterUrl(data.message);
-    filteredMessage = filter.clean(data.message);
+    try {
+        // ada case teks yang isinya cuman emoji ga bisa dilfter
+        filteredMessage = filter.clean(data.message);
+    } catch(e) {
+        console.log('tidak bisa difilter');
+        filteredMessage = data.message;
+    }
 
     // broadcast to room
     io.to(streamId).emit('chat.message', {
@@ -122,7 +131,7 @@ io.on('connect', function(socket) {
     let dataSql = [
         [
             data.eventId,
-            data.message,
+            umoji.emojiToUnicode(data.message),
             data.timestamp,
             data.name,
             dateString
@@ -130,20 +139,32 @@ io.on('connect', function(socket) {
     ];
     let sql = "INSERT INTO audience_chat_history (event_stream_id, message, timestamp_from_event, name, created_at) VALUES(?)";
     // execute query
-    let query = conn.query(sql, dataSql, (err, result, user_id) => {
+    let query = conn.query(sql, dataSql, (err, result) => {
         // dont throw in production
-        console.log(err);
         if(err) {
             if(process.env['APP_ENV'] == 'local') {
                 throw err;
             } else {
-                console.log(err);
+                console.log(err.sqlMessage);
                 return;
             }
         }
-        user_id =  result.insertId;
     });
-    console.log(user.name+' ['+user.phone+'] said: '+message);
+    console.log(data.name+' said: '+message);
+
+    /**
+     * Callback response
+     */
+    status = 'connected';
+    // jika server kerestart, send back ke user status disconnected
+    if(typeof user === typeof undefined) {
+        status = 'disconnected';
+    }
+    res = {
+        status: status,
+        user: user
+    }
+    callback(res);
   });
 });
 

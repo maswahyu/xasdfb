@@ -14,8 +14,16 @@ $contentClass = 'd-none'
   <div class="container py-app">
     <div class="row">
       <div class="stream__video">
-        <div class="stream__video__inner">
-          <iframe id="ytbVideo" src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div
+          class="stream__video__inner"
+          :class="{ 'stream__video__inner--auto': watchOnYoutube }"
+        >
+          {{-- Banner --}}
+          <a id="ClickLivestream" v-if="watchOnYoutube" href="{!! $stream->yt_link !!}" target="_blank">
+            <img src="{{ imageview($stream->thumbnail) }}" alt="Banner">
+          </a>
+          {{-- Video --}}
+          <iframe v-else id="ytbVideo" src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {{-- <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore"> --}}
         <div class="stream__video__desc more">
@@ -33,6 +41,7 @@ $contentClass = 'd-none'
               id="AturPengingat"
               @click="showReminder"
               class="btn btn-crimson btn-subs"
+              :class="{ 'd-none': watchOnYoutube }"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
@@ -51,9 +60,9 @@ $contentClass = 'd-none'
           </div>
         </div>
       </div>
-      <div class="stream__chat">
-        <div class="stream__chat__header">
-          <span>Live Chat</span>
+      <div class="stream__chat" :class="{ 'stream__chat--yt': watchOnYoutube }">
+        <div class="stream__chat__header" :class="{'stream__chat__header--hide': watchOnYoutube }">
+          <span :class="{ 'd-none': watchOnYoutube }">Live Chat</span>
         </div>
         <div class="stream__chat__body">
           {{-- Before Login --}}
@@ -172,6 +181,32 @@ $contentClass = 'd-none'
               </div>
             </div>
           </transition>
+          {{-- Nonton di Youtube --}}
+          <transition
+            mode="out-in"
+            name="fadeUp"
+          >
+            <div
+              v-if="watchOnYoutube"
+              class="screen-chat screen-chat--white p-20"
+              :class="{'screen-chat--center': watchOnYoutube }"
+            >
+              <div class="text-center">
+                <p>
+                  Tonton Live Streaming Virtual Concert di <br>
+                  <b>YouTube LAZone</b>
+                </p>
+                <a
+                  href="{{ $stream->yt_link }}"
+                  target="_blank"
+                  id="TontonSekarang"
+                  class="btn btn-crimson btn-send btn-send--live"
+                >
+                  <img src="{{ asset('static/images/youtube.svg')}}" alt="Youtube Icon">
+                  Tonton Sekarang
+                </a>
+              </div>
+            </div>
           {{-- Chat Container --}}
           <transition
             mode="out-in"
@@ -266,7 +301,10 @@ $contentClass = 'd-none'
             class="kick-window flex-center"
           >
           <div class="kick-window__box text-center">
-            <p class="mb-3">
+            <p class="mb-3" v-if="disconected">
+              Kamu telah terputus dari live chat
+            </p>
+            <p class="mb-3" v-else>
               Kamu telah keluar dari chat karena telah diam selama @{{ (this.timer.timeout / 60) }} menit.
             </p>
             <button @click="reEnter" class="btn btn-primary-outline text-uppercase">Masuk Kembali</button>
@@ -435,6 +473,7 @@ $contentClass = 'd-none'
       done: false,
       login: login || guestSession ? true : false,
       user: null,
+      disconected: true,
       userColor: null,
       userIdLog: 21,
       showGuestForm: false,
@@ -446,6 +485,7 @@ $contentClass = 'd-none'
       streaming: true,
       colorCache: {},
       fullRoom: false,
+      watchOnYoutube: {!! $stream->isStreamYoutube() ? 'true' : 'false' !!},
       chatDisabled: {!! $stream->isChatEnabled() ? 'false' : 'true' !!},
       chats: [],
     },
@@ -565,6 +605,7 @@ $contentClass = 'd-none'
                         }));
                     }
                     chatApp.$data.connection.status = STATUS_CONNECTED;
+                    chatApp.$data.disconected = false;
                     chatApp.startTimer();
                     _vm.scrollToBottom()
                 }
@@ -585,6 +626,7 @@ $contentClass = 'd-none'
         }, function(response) {
           if (response.joined === false) {
             chatApp.$data.connection.status = STATUS_DISCONNECTED;
+            chatApp.$data.disconected = true;
           }
         });
       },
@@ -596,6 +638,11 @@ $contentClass = 'd-none'
               name: this.user.name,
               message: this.message,
               timestamp: ~~(Date.now()/ 1000) -  eventStartTimestamp
+          }, function(response) {
+              if(response.status == STATUS_DISCONNECTED) {
+                chatApp.$data.disconected = true;
+                chatApp.$data.blocked = true;
+              }
           });
           _vm.scrollToBottom()
         }

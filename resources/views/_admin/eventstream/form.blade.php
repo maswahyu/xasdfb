@@ -66,6 +66,15 @@
     <p class="help-block"></p>
 </div>
 <div class="form-group">
+    <label for="stream_type">{{ 'Streaming Type' }}</label>
+    <select name="stream_type" class="form-control form-control-sm" id="stream_type">
+        <option value="{{ \App\EventStream::STREAM_WEB }}" {{ (isset($eventstream->stream_type) && $eventstream->stream_type == \App\EventStream::STREAM_WEB) ? 'selected' : '' }}>WEB</option>
+        <option value="{{ \App\EventStream::STREAM_YOUTUBE }}" {{ (isset($eventstream->stream_type) && $eventstream->stream_type == \App\EventStream::STREAM_YOUTUBE) ? 'selected' : '' }}>Youtube</option>
+    </select>
+    <span class="text-danger">{{ $errors->first('stream_type') }}</span>
+    <p class="help-block"></p>
+</div>
+<div class="form-group">
     <label for="publish">{{ 'Publish' }}</label>
     <select name="publish" class="form-control form-control-sm" id="publish">
         <option value="1" {{ (isset($eventstream->publish) && $eventstream->publish == '1') ? 'selected' : '' }}>Publish</option>

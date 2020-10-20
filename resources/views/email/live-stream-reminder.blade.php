@@ -152,7 +152,7 @@
       <td style="width: 100%; float: left;">
         <div class="content pb50" style="padding-top: 40px; text-align: center;">
           <p style="text-align: center; font-size: 18px; color: #2a2a2a; max-width: 510px; width: 100%; margin: 0 auto;">
-            Live Streaming akan dimulai dalam <strong style="color: red;">30 menit</strong> lagi. Jangan sampai ketinggalan nonton ya! Klik tombol di bawah ini untuk pergi ke halaman Live Streaming.
+            Live Streaming akan dimulai dalam <b style="color: red;">30 menit</b> lagi. Jangan sampai ketinggalan nonton ya! Klik tombol di bawah ini untuk pergi ke halaman Live Streaming.
           </p>
           <br>
           <br>
