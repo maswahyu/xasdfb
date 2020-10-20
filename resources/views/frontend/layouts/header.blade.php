@@ -62,7 +62,7 @@
                         <span class="dropdown-menu__avatar">
                             <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
                         </span>
-                        <ul class="dropdown-menu__dropdown">
+                        <ul class="dropdown-menu__dropdown dropdown-menu__dropdown--right">
                             <li class="dropdown-menu__dropdown-item">
                                 <strong class="dropdown-menu__username">{{ str_limit(auth()->user()->name, 12) }}</strong>
                                 <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span id="loyalty_point"></span> pts</span>
