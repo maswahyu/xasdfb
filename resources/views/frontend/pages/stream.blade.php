@@ -19,8 +19,8 @@ $contentClass = 'd-none'
           :class="{ 'stream__video__inner--auto': watchOnYoutube }"
         >
           {{-- Banner --}}
-          <a id="ClickLivestream" v-if="watchOnYoutube" href="https://youtu.be/_ZmrfMPZDPA" target="_blank">
-            <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
+          <a id="ClickLivestream" v-if="watchOnYoutube" href="{!! $stream->yt_link !!}" target="_blank">
+            <img src="{{ imageview($stream->thumbnail) }}" alt="Banner">
           </a>
           {{-- Video --}}
           <iframe v-else id="ytbVideo" src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -197,7 +197,7 @@ $contentClass = 'd-none'
                   <b>YouTube LAZone</b>
                 </p>
                 <a
-                  href="https://youtu.be/_ZmrfMPZDPA"
+                  href="{{ $stream->yt_link }}"
                   target="_blank"
                   id="TontonSekarang"
                   class="btn btn-crimson btn-send btn-send--live"
@@ -485,7 +485,7 @@ $contentClass = 'd-none'
       streaming: true,
       colorCache: {},
       fullRoom: false,
-      watchOnYoutube: true,
+      watchOnYoutube: {!! $stream->isStreamYoutube() ? 'true' : 'false' !!},
       chatDisabled: {!! $stream->isChatEnabled() ? 'false' : 'true' !!},
       chats: [],
     },
