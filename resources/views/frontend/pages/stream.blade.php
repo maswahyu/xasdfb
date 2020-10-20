@@ -20,7 +20,7 @@ $contentClass = 'd-none'
             <img src="https://www.lazone.id/storage/news/Oktober%202020/13%20Oktober%202020/Virtual%20Concert%20Balik%20Lagi%20Buat%20Nemenin%20Lo%20Semua/Bold-Music-560x928H-all.jpg" alt="Banner">
           </a>
           {{-- Video --}}
-          <iframe v-else src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe v-else id="ytbVideo" src="https://www.youtube.com/embed/{{ $stream->getYoutubeVideoId() }}?autoplay=1&controls=1&modestbranding=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {{-- <div class="stream__video__desc" :class="{ 'more' : showMore }" @click.prevent="showMore = !showMore"> --}}
         <div class="stream__video__desc more">
@@ -386,6 +386,7 @@ $contentClass = 'd-none'
 @section('before-body-end')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 <script type="text/javascript">
   const CHAT_SERVER = '{{ config("chat.host") }}';
   const IDLE_TIMEOUT = {{ config("chat.idle_timeout") }}; /* seconds */
@@ -405,6 +406,40 @@ $contentClass = 'd-none'
   var idleTime = 0;
   const guestSession = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
   var login = {!! Auth::check() ? 'true' : 'false' !!};
+  var watchTime = 0;
+  var watcherTimePlayed;
+
+  window.onYouTubeIframeAPIReady = function() {
+    window.player = new window.YT.Player($("#ytbVideo")[0], {
+      videoId: '{!! $stream->getYoutubeVideoId() !!}',
+      playerVars: {
+        autoplay: 1,
+        modestbranding: 1,
+        rel: 0
+      },
+      events: {
+          'onStateChange': function(data) {
+              if(watchTime < 20) {
+                  if(data.data == 1) {
+                    watcherTimePlayed = setInterval(function() {
+                        watchTime += 1;
+                        if(watchTime == 20) {
+                            axios.post('{{ url('live/views_counter') }}', {
+                                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                eventId: eventId
+                            });
+                            console.log('wath');
+                            clearInterval(watcherTimePlayed);
+                        }
+                    }, 1000);
+                  } else {
+                    clearInterval(watcherTimePlayed);
+                  }
+              }
+          }
+      }
+    });
+  }
 
   var chatApp = new Vue({
     el: '#chat-app',
