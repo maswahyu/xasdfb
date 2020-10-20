@@ -298,7 +298,10 @@ $contentClass = 'd-none'
             class="kick-window flex-center"
           >
           <div class="kick-window__box text-center">
-            <p class="mb-3">
+            <p class="mb-3" v-if="disconected">
+              Kamu telah terputus dari live chat
+            </p>
+            <p class="mb-3" v-else>
               Kamu telah keluar dari chat karena telah diam selama @{{ (this.timer.timeout / 60) }} menit.
             </p>
             <button @click="reEnter" class="btn btn-primary-outline text-uppercase">Masuk Kembali</button>
@@ -467,6 +470,7 @@ $contentClass = 'd-none'
       done: false,
       login: login || guestSession ? true : false,
       user: null,
+      disconected: true,
       userColor: null,
       userIdLog: 21,
       showGuestForm: false,
@@ -598,6 +602,7 @@ $contentClass = 'd-none'
                         }));
                     }
                     chatApp.$data.connection.status = STATUS_CONNECTED;
+                    chatApp.$data.disconected = false;
                     chatApp.startTimer();
                     _vm.scrollToBottom()
                 }
@@ -618,6 +623,7 @@ $contentClass = 'd-none'
         }, function(response) {
           if (response.joined === false) {
             chatApp.$data.connection.status = STATUS_DISCONNECTED;
+            chatApp.$data.disconected = true;
           }
         });
       },
@@ -629,6 +635,11 @@ $contentClass = 'd-none'
               name: this.user.name,
               message: this.message,
               timestamp: ~~(Date.now()/ 1000) -  eventStartTimestamp
+          }, function(response) {
+              if(response.status == STATUS_DISCONNECTED) {
+                chatApp.$data.disconected = true;
+                chatApp.$data.blocked = true;
+              }
           });
           _vm.scrollToBottom()
         }
