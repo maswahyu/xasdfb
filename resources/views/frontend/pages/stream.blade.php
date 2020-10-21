@@ -193,7 +193,7 @@ $contentClass = 'd-none'
             >
               <div class="text-center">
                 <p>
-                  Tonton Live Streaming Virtual Concert di <b>YouTube</b>
+                  Tonton Live Streamingnya di <b>YouTube</b>
                 </p>
                 <a
                   href="{{ $stream->yt_link }}"
