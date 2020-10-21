@@ -17,13 +17,13 @@
   }
 
   &--wide {
-    min-height: 24rem;
     max-width: 80rem;
     width: 100%;
 
     text-align: center;
 
     @include media-over(md) {
+      min-height: 24rem;
       text-align: left;
     }
   }

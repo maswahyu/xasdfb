@@ -136,6 +136,7 @@ $slick-opacity-not-active: 1;
     padding: 0;
     margin: 0;
     width: 100%;
+    z-index: 5;
     li {
         position: relative;
         display: inline-block;
