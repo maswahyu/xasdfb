@@ -187,7 +187,7 @@
     <div class="post-card post-card--wide">
 
         <div class="post-card__thumbnail">
-            <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail">
+            <a href="{{ url }}">
                 <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
@@ -212,7 +212,7 @@
 
             </div>
 
-            <a href="{{ url }}?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+            <a href="{{ url }}" alt="{{ title }}">
                 <div class="post-card__title">
                     <span>{{ title }}</span>
                 </div>

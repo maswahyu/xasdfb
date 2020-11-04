@@ -52,9 +52,13 @@ class IndexController extends Controller
             $posts = News::getLatestCategory($category, $page);
 
         } else {
-
-	       $posts = News::getPage($page);
-
+           $posts = News::getPage($page);
+           if($page == 1) {
+               $posts->getCollection()->transform(function($value) use($page) {
+                   $value->slug = $value->slug . '?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail';
+                   return $value;
+               });
+           }
         }
 
 	    return response()->json(new NewsCollection($posts));
