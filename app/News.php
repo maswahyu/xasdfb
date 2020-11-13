@@ -125,8 +125,25 @@ class News extends Model
         return $model;
     }
 
-    public static function getRecommended($take = self::TAKE_RECOMENDED)
+    /**
+     * Get recomded article
+     * @param int $take
+     * @param boolean $inline wheter recomended article show in center of detail article
+     * @param \App\News $news this param should present when param 2 is true
+     */
+    public static function getRecommended($take = self::TAKE_RECOMENDED, $inline = false, News $news = null)
     {
+        if($inline) {
+            $model = News::with('tags')->whereHas('tags', function($q) use($news) {
+                $q->with('tag')->whereIn('tag_id', $news->tags->map(function($model) {
+                    return [
+                        $model->tag_id
+                    ];
+                } ));
+            })->where('category_id', $news->category_id)->where([['id', '<>', $news->id]])->latest()->first();
+            return $model;
+        }
+
         $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended', function () {
             return self::hydrate(DB::select('SELECT t1.* FROM news t1 JOIN (SELECT category_id, MAX(published_at) published_at FROM news GROUP BY category_id) t2 ON t1.category_id = t2.category_id AND t1.published_at = t2.published_at WHERE t1.publish = 1 and t1.deleted_at is null order by published_at DESC LIMIT 5'));
         });

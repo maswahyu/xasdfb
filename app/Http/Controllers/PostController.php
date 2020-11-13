@@ -130,14 +130,21 @@ class PostController extends Controller
             return redirect(Category::LENSA.'/'.$slug);
         }
 
-	    $related = News::related($post->slug, $post->category_id);
+        $related = News::related($post->slug, $post->category_id);
+
+        // inject recomended artikel inline in last 3 paragraph
+        $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
+        $needle = "<br />\n<br />";
+        $token = explode($needle, $post->content);
+        $token[count($token) - 4] .= '<br /><br /><a href="'.$post->url.'">Baca Juga: ' . $inlineRecomended->title . "</a>";
+        $post->content = implode($needle, $token);
 
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),
             'image' => Setting::getConfig('banner_post'),
         ];
 	    return view('frontend.pages.post', [
-	        'post' => $post,
+            'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads
 	    ]);
