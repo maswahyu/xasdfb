@@ -18,11 +18,15 @@ p {
 .search-input {
   padding-left: 1rem !important;
   padding-right: 3rem !important;
+
+  @include media-under(lg) {
+    border: 1px solid palette("alto") !important;
+  }
 }
 
 .search-btn-icon {
   position: absolute;
-  top: 0.5rem;
+  top: 0.8rem;
   right: 1.5rem;
   height: 2.4rem;
   width: 2.4rem;
