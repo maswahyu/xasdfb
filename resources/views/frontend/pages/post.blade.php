@@ -10,6 +10,16 @@
 @section('head_image', imageview(str_replace(' ', '%20', $post->image)))
 @section('head_url', $post->url)
 
+@section('inside-head')
+<style>
+    @media screen and (max-width: 768px) {
+        .post-card--wide {
+            display: block;
+        }
+    }
+</style>
+@endsection
+
 @section('content')
 
 {{-- Ads Placement --}}
@@ -59,6 +69,10 @@
                             </a>
                             @endif
                         </div>
+
+                    </div>
+
+                    <div class="post-meta post-meta--centered">
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
@@ -112,6 +126,11 @@
 
             {!! $post->content !!}
 
+            <p class="post-content__recommend">
+                Baca juga : 
+                <span class="post-content__recommend--title">Bersaing dengan XBox, Sony Upayakan PS5 Tetap Terjangkau Bersaing dengan XBox, Sony Upayakan PS5 Tetap Terjangkau</span>
+            </p>
+
             </div>
         </div>
 
@@ -138,7 +157,7 @@
         <div class="row">
             <div class="span-12">
                 <div class="section-title section-title--plain">
-                    <span class="section-title__label">Related Articles</span>
+                    <span class="section-title__label">Similar Articles</span>
                 </div>
             </div>
         </div>
@@ -162,7 +181,7 @@
                 <div class="row">
                     <div class="span-12">
                         <div class="section-title">
-                            <span class="section-title__label">Latest Articles</span>
+                            <span class="section-title__label">Recommended</span>
                         </div>
                     </div>
                 </div>
