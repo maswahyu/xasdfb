@@ -148,6 +148,10 @@ Container width for each breakpoints
   }
   @include media-over(xl) {
     max-width: containerW(xl);
+
+    &-home {
+      max-width: 90%;
+    }
   }
 }
 

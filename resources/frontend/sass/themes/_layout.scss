@@ -2,6 +2,10 @@
   padding-top: 8rem;
   padding-bottom: 3rem;
 
+  @include media-over(lg) {
+    padding-top: 14rem;
+  }
+
   &.no-padding {
     padding-top: 0;
   }
@@ -18,7 +22,7 @@
     @include col(12);
 
     @include media-over(xl) {
-      @include col(9);
+      @include col(8);
     }
 
     &-highlights {
@@ -51,10 +55,25 @@
   }
 
   &__recommended {
-    @include col(12);
+    flex: 1 0 103%;
+    max-width: 103%;
+    width: 100%;
+
+    background: palette('athens');
+    border-top: 10px solid palette('crimson');
+    padding: 1rem;
+    margin-left: -.5rem;
 
     @include media-over(xl) {
-      @include col(3);
+      @include col(4);
+      
+      padding: 2rem;
+      margin-left: unset;
+    }
+
+    .post-card--wide:last-child {
+      border-bottom: none !important;
+      padding: 0 .5rem .5rem;
     }
   }
 }
@@ -82,9 +101,9 @@
       @include col(8);
     }
 
-    @include media-over(xl) {
+    /* @include media-over(xl) {
       @include col(9);
-    }
+    } */
   }
 
   &__preference {
@@ -94,9 +113,9 @@
       @include col(4);
     }
 
-    @include media-over(xl) {
+    /* @include media-over(xl) {
       @include col(3);
-    }
+    } */
   }
 }
 
