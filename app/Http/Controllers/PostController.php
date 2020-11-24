@@ -136,7 +136,7 @@ class PostController extends Controller
         $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
         $needle = "<br />\n<br />";
         $token = explode($needle, $post->content);
-        $token[count($token) - 4] .= '<br /><br /><a href="'.$post->url.'">Baca Juga: ' . $inlineRecomended->title . "</a>";
+        $token[count($token) - 4] .= '<br /><br /><p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
         $post->content = implode($needle, $token);
 
         $ads = [
