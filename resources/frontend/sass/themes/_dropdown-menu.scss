@@ -1,8 +1,9 @@
 .dropdown-menu {
   font-family: $nav-font-family;
+  width: 89%;
 
   &__link {
-    font-size: 1.6rem;
+    font-size: 13px;
     color: palette("white");
     text-transform: uppercase;
     line-height: (80/16);
@@ -13,15 +14,45 @@
     }
   }
 
+  &__blanket {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: palette('black');
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .3s ease;
+
+    &.is-active {
+      opacity: .8;
+      z-index: 400;
+    }
+  }
+
   &__list {
     padding: 0;
     margin: 0;
     display: flex;
     flex-flow: row nowrap;
+
+    width: 100%;
+    position: relative;
+  }
+  &__user-container {
+    width: auto;
+    max-width: 150px;
+    margin-left: 1rem;
+    text-transform: uppercase;
+    color: palette('black');
+
+    @include media-over(lg) {
+      color: palette('white');
+    }
   }
   &__avatar {
     position: relative;
-    top: calc(50% - 16px);
     width: 32px;
     height: 32px;
     border: 2px solid #fafafa;
@@ -36,8 +67,9 @@
   }
   &__username {
     display: block;
-    color: #000;
-    padding-bottom: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   &__separator {
     display: block;
@@ -49,8 +81,8 @@
   &__item {
     display: block;
     position: relative;
-    margin: 0 1.5rem;
-    height: 8rem;
+    margin: .75rem 1.5rem;
+    height: 6.5rem;
 
     transition-duration: 0.5s;
 
@@ -59,7 +91,9 @@
     }
 
     &--login {
-      padding-top: 2.2rem;
+      position: absolute;
+      right: 0;
+      top: 1.5rem;
     }
 
     &:hover {
@@ -90,6 +124,14 @@
         opacity: 1;
         display: block;
       }
+      
+    }
+
+    &--user-menu {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -113,6 +155,13 @@
     &--right {
       right: 0;
       left: auto;
+      list-style: none;
+
+      &.is-active {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
     }
 
     &-item {

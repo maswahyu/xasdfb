@@ -23,7 +23,7 @@
 .post-card {padding-bottom: 0.5rem}
 </style>
 @endsection
-<div class="container">
+<div class="container container-home">
 
     <div class="home-grid">
 
@@ -78,20 +78,20 @@
 <div class="home-trending" data-src="/static/images/trending-bg.jpg">
     <div class="container">
         <div class="section-title">
-            <span class="section-title__label text-white">Most Viewed Articles</span>
+            <span class="section-title__label text-white">Trending Articles</span>
         </div>
         <div class="row jsTrendingList"></div>
         <div class="jsMoreTrending"></div>
     </div>
 </div>
 
-{{-- Ads Placement --}}
 <div class="container">
 
     <div class="row">
 
         <div class="span-12">
 
+            {{-- Ads Placement --}}
             <div class="placement">
                 <a href="{{ $ads['url'] }}?utm_source=AdsHome" alt="{{ $ads['url'] }}">
                     <img class="placement__img post-card__img" src="/img_placeholder_slider.jpg" data-src="{{ imageview($ads['image']) }}" alt="{{ $ads['url'] }}">
@@ -102,6 +102,44 @@
 
 
     </div>
+
+    {{-- <div class="row">
+
+        <div class="span-12">
+
+            Shoutbox lazone
+            <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+
+                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} />
+                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12-responsive.jpg') }} />
+
+                <div class="shoutbox__content-wrapper">
+
+                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                        <span class="f-none">Menangkan Hadiah Menarik Tiap Bulan!</span>
+                    </div>
+
+                    <div class="shoutbox__text shoutbox__text--extra-space">
+                        <p class="f-none">Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    </div>
+
+                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                        @guest
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                        @endguest
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hide-mobile jsVideoList"></div>
+        <div class="jsMoreVideo"></div>
+
+    </div> --}}
 
 </div>
 
@@ -285,29 +323,33 @@
             </a>
         </div>
 
-        <div class="post-card__meta post-meta">
+        <div class="post-card__info">
 
-            <div class="post-meta__category">
-                <a href="{{ category_url }}" alt="{{ category }}">
-                    <span>{{ category }}</span>
-                </a>
+            <div class="post-card__meta post-meta">
+
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}" alt="{{ category }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
+    
             </div>
-
-        </div>
-
-        <div class="post-card__meta post-meta">
-
-            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
-            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
-        </div>
-
-        <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <div class="post-card__title">
-                <span>{{ title }}</span>
+    
+            <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+    
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+    
             </div>
-        </a>
+    
+            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+    
+        </div>
 
     </div>
 
@@ -353,28 +395,38 @@
 
 <script id="x-recomended-template" type="text/x-handlebars-template">
 <div class="span-12 span-md-6 span-lg-4 span-xl-12">
-    <div class="post-card">
+    <div class="post-card post-card--wide">
 
-        <div class="post-card__meta post-meta">
+        <div class="post-card__thumbnail-square">
+            <a href="{{ url }}">
+                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+            </a>
+        </div>
 
-            <div class="post-meta__category">
-                <a href="{{ category_url }}" alt="{{ category }}">
-                    <span>{{ category }}</span>
-                </a>
+        <div class="post-card__info">
+
+            <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}" alt="{{ category }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
+    
             </div>
+    
+            <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+    
+            </div>
+    
+            <a href="{{ url }}{{ utm }}" alt="{{ title }}">
+                <div class="post-card__title"><span>{{ title }}</span></div>
+            </a>
 
         </div>
-
-        <div class="post-card__meta post-meta">
-
-            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
-        </div>
-
-        <a href="{{ url }}{{ utm }}" alt="{{ title }}">
-            <div class="post-card__title"><span>{{ title }}</span></div>
-        </a>
 
     </div>
 

@@ -17,30 +17,32 @@
   &::after {
     content: "";
     display: block;
+    width: .4rem;
     height: 1.6rem;
     background-color: palette("crimson");
     transform: skew(-35deg);
+    position: absolute;
+    flex: 0 0 .4rem;
 
     @include media-over(lg) {
       height: 2.6rem;
     }
   }
 
-  &::before {
+  /* &::before {
     flex: 1 1 1%;
 
     @include media-over(lg) {
       flex: 0 0 6.4rem;
     }
-  }
+  } */
 
   &::after {
-    flex: 1 1 1%;
-    width: auto;
+    left: 1.65rem;
   }
 
   &__label {
-    padding: 0 3rem;
+    padding: .5rem 2.5rem 0;
     color: palette("black");
     font-family: $title-font-family;
     font-weight: bold;
@@ -71,19 +73,23 @@
 
   &--plain {
     padding: 0;
-    justify-content: center;
+    // justify-content: center;
 
-    @include media-over(lg) {
+    // @include media-over(lg) {
       justify-content: flex-start;
-    }
+    // }
 
-    &::after,
+    /* &::after,
     &::before {
       display: none !important;
+    } */
+
+    &::after {
+      left: .7rem;
     }
 
     #{$this}__label {
-      padding: 0;
+      padding: .5rem 2.5rem 0;
     }
   }
 

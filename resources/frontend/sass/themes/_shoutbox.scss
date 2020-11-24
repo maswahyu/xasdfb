@@ -12,9 +12,9 @@
   text-align: center;
   background-color: palette("athens");
 
-  @include media-over(lg){
+  /* @include media-over(lg){
     width: 28.1rem;
-  }
+  } */
 
   &--wide {
     max-width: 80rem;

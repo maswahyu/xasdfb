@@ -36,8 +36,14 @@ Route::get('live/{slug}', 'StreamController@stream');
 Route::post('live/remind-me', 'StreamController@remindMe');
 Route::post('live/views_counter', 'StreamController@addViews');
 
-Route::get('email', function () {
-  return view('email.template');
+Route::get('email-verify', function () {
+  return view('email.verification');
+});
+Route::get('email-success', function () {
+  return view('email.success');
+});
+Route::get('email-complete', function () {
+  return view('email.complete');
 });
 
 Route::get('interest', 'MemberController@interest');
