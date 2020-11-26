@@ -134,10 +134,17 @@ class PostController extends Controller
 
         // inject recomended artikel inline in last 3 paragraph
         $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
-        $needle = "<br />\n<br />";
-        $token = explode($needle, $post->content);
-        $token[count($token) - 4] .= '<br /><br /><p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
-        $post->content = implode($needle, $token);
+        if($inlineRecomended) {
+            $needle = "<br />\n<br />";
+            $token = explode($needle, $post->content);
+            $inlineHtml = '<br /><br /><p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            if(\array_key_exists(count($token) - 4, $token)) {
+                $token[count($token) - 4] .= $inlineHtml;
+                $post->content = implode($needle, $token);
+            } else {
+                $post->content .= $inlineHtml;
+            }
+        }
 
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),
