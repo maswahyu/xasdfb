@@ -137,12 +137,21 @@ class PostController extends Controller
         if($inlineRecomended) {
             $needle = "<br />\n<br />";
             $token = explode($needle, $post->content);
-            $inlineHtml = '<br /><br /><p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
             if(\array_key_exists(count($token) - 4, $token)) {
                 $token[count($token) - 4] .= $inlineHtml;
                 $post->content = implode($needle, $token);
             } else {
-                $post->content .= $inlineHtml;
+                $needle = "<p>";
+                $token = explode($needle, $post->content);
+                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+
+                if(\array_key_exists(count($token) - 4, $token)) {
+                    $token[count($token) - 4] .= $inlineHtml;
+                    $post->content = implode($needle, $token);
+                } else {
+                    $post->content .= $inlineHtml;
+                }
             }
         }
 
