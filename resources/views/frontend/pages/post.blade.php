@@ -144,11 +144,6 @@
 
             {!! $post->content !!}
 
-            <p class="post-content__recommend">
-                Baca juga : 
-                <span class="post-content__recommend--title">Bersaing dengan XBox, Sony Upayakan PS5 Tetap Terjangkau Bersaing dengan XBox, Sony Upayakan PS5 Tetap Terjangkau</span>
-            </p>
-
             </div>
         </div>
 
