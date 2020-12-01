@@ -49,9 +49,11 @@ p {
 .svg-video-frame {
   display: block;
   height: 162px;
-  width: 284px;
+  width: 204px;
 
   @include media-over(lg) {
+    width: 284px;
+
     &--large {
       height: 386px;
       width: 681px;
@@ -215,6 +217,26 @@ p {
 
   .inner-wrapper-sticky {
     padding-left: 1rem;
+  }
+
+  @include media-under(md) {
+
+    &.is-affixed .inner-wrapper-sticky {
+      top: 92% !important;
+      box-shadow: 0 -5px 10px -5px hsla(0,0%,80%,.5);
+      background-color: palette('white');
+      z-index: 99;
+      width: 100% !important;
+      height: 62px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .list {
+        justify-content: center;
+        margin-top: 0;
+      }
+    }
   }
 }
 

@@ -96,7 +96,13 @@
                 <li class="list__item list__item--social">
                     <a class="list__link list__link--social jsFbShare"
                         href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
-                        <img src="{{ asset('static/images/fb-so.png') }}" alt="">
+                        <img src="{{ asset('static/images/fb-so-blue.png') }}" alt="">
+                    </a>
+                </li>
+                <li class="list__item list__item--social">
+                    <a class="list__link list__link--social"
+                        href="#">
+                        <img src="{{ asset('static/images/messenger-share.png') }}" alt="">
                     </a>
                 </li>
                 <li class="list__item list__item--social">
@@ -105,12 +111,24 @@
                         <img src="{{ asset('static/images/tw-so.png') }}" alt="">
                     </a>
                 </li>
-                {{-- <li class="list__item list__item--social">
+                <li class="list__item list__item--social">
+                    <a class="list__link list__link--social"
+                        href="#">
+                        <img src="{{ asset('static/images/wa-share.png') }}" alt="">
+                    </a>
+                </li>
+                <li class="list__item list__item--social">
+                    <a class="list__link list__link--social"
+                        href="#">
+                        <img src="{{ asset('static/images/line-share.png') }}" alt="">
+                    </a>
+                </li>
+                <li class="list__item list__item--social">
                     <a data-clipboard-text="{{ url()->current() }}" class="list__link list__link--social jsCopyLink"
                         href="#">
-                        <img src="{{ asset('static/images/link-so.png') }}" alt="">
+                        <img src="{{ asset('static/images/link-share.png') }}" alt="">
                     </a>
-                </li> --}}
+                </li>
             </ul>
 
         </div>
