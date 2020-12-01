@@ -32,38 +32,32 @@
 
 <div class="dropdown-menu__blanket"></div>
 <nav id="nav-mobile-menu" class="mobile-nav">
-    @auth
-        <div id="mobile-menu" class="drilldown">
-            <div class="drilldown-container">
-                <ul class="drilldown-root" style="padding-bottom: 0;">
-                    <li class="dropdown-menu dropdown-menu__item--user-menu">
-                        <span class="dropdown-menu__avatar">
-                            <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
-                        </span>
-                        <div class="dropdown-menu__user-container">
-                            <strong class="dropdown-menu__username">Hi, {{ str_limit(auth()->user()->name, 7) }}</strong>
-                            <span class="dropdown-menu__points"><span id="loyalty_point"></span> pts</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-menu__separator"></li>
-                    <li class="menu">
-                        <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}" alt="Gallery">
-                            My Profile
-                        </a>
-                    </li>
-                    <li class="menu">
-                        <a href="{{ config('cas.url_mypoint') }}" alt="Gallery">
-                            My Points
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-    @endauth    
     <div id="mobile-menu" class="drilldown">
         <div class="drilldown-container">
             <ul class="drilldown-root">
+                @auth
+                <li class="dropdown-menu dropdown-menu__item--user-menu">
+                    <span class="dropdown-menu__avatar">
+                        <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
+                    </span>
+                    <div class="dropdown-menu__user-container">
+                        <strong class="dropdown-menu__username">Hi, {{ str_limit(auth()->user()->name, 7) }}</strong>
+                        <span class="dropdown-menu__points"><span id="loyalty_point"></span> pts</span>
+                    </div>
+                </li>
+                <li class="dropdown-menu__separator"></li>
+                <li class="menu">
+                    <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}" alt="Gallery">
+                        My Profile
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="{{ config('cas.url_mypoint') }}" alt="Gallery">
+                        My Points
+                    </a>
+                </li>
+                <li class="dropdown-menu__separator"></li>
+                @endauth
                 <li class="search">
                     <form class="form" action="{{ url('search') }}" method="get">
                         <input type="search" name="search" class="search-input form-control">
