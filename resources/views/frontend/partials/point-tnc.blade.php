@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="span-12">
+            <div class="span-12 span-lg-5 off-lg-1">
                 <div class="section-title section-title--plain section-title--page">
                     <span class="section-title__label section-title__label--category">Terms And Conditions</span>
                 </div>

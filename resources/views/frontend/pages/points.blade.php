@@ -42,7 +42,7 @@
                 <div class="section-title section-title--plain section-title--page section-title--point">
                     <span class="section-title__label section-title__label--category">Hadiah Bulan Ini</span>
                 </div>
-                <div class="subtitle subtitle--point text-center">
+                <div class="subtitle subtitle--point">
                     <span>Redeem point-mu dengan hadiah menarik BULAN INI</span>
                 </div>
 
