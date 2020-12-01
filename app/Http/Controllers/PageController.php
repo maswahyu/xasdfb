@@ -255,4 +255,8 @@ class PageController extends Controller
             ->view('frontend.sitemap.category', ['posts' => $posts])
             ->header('Content-Type', 'text/xml');
     }
+
+    public function tukarLangsung() {
+        return view('frontend.pages.tukarlangsung');
+    }
 }

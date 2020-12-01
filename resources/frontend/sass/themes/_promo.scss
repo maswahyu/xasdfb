@@ -1,0 +1,76 @@
+.promo {
+  //scoped variable
+  $bg-black: #000;
+  $bg-white: #fff;
+  $bg-smoke: #f5f5fa;
+  $bg-site: #ec2427;
+  font-size: 16px; //base rem size
+  &__header {
+    width: 100%;
+    height: 420px;
+    background-color: $bg-black;
+    @include media-under(md) {
+      height: 200px;
+    }
+  }
+  &__banner {
+    width: 100%;
+    height: 540px;
+    position: relative;
+    margin-bottom: 4em;
+    margin-top: calc((540px / 2) * -1);
+    @include media-under(md) {
+      height: auto;
+      margin-top: calc((200px / 2) * -1);
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__content {
+    width: 100%;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4em;
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .title {
+      color: $bg-black;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: .5em;
+      &__sub {
+        font-size: 1.125em;
+      }
+    }
+    .list-syarat {
+      display: block;
+      list-style: none;
+      position: relative;
+      li {
+        display: block;
+        color: $bg-black;
+        font-size: 1em;
+        position: relative;
+        padding-left: 1.2em;
+        margin-bottom: 1em;
+        &::before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          background-color: $bg-site;
+          position: absolute;
+          left: 0;
+          top: 5px;
+        }
+      }
+    }
+  }
+  &__top {
+    padding-top: 0 !important;
+  }
+}
