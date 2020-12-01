@@ -23,8 +23,8 @@
         </td>
      </tr>
      <tr>
-         <td style="padding: 1.5rem 29rem 0;">
-            Kami ingin memastikan bahwa Lo beneran daftar. Klik button di bawah ini buat aktivasi akun Lo!
+         <td>
+            Kami ingin memastikan bahwa kamu beneran daftar. Klik button di bawah ini buat aktivasi akun kamu!
          </td>
      </tr>
      <tr>
