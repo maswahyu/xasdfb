@@ -139,6 +139,95 @@ $(function ()
                 data: {},
             });
 
+    $.ajax(window.feedVideoUrl, {
+        data: Object.assign({
+            'page': 1,
+        }, {})
+    }).done(function (data) {
+
+        console.log(data)
+
+        if(typeof data === 'object'){
+            var parsedData = data;
+        }else{
+            var parsedData = JSON.parse(data);
+        }
+
+
+
+        $.each(parsedData.data, function (index, value) {
+
+            /* $html = `<div class="home-promo-slider__slide">
+                <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
+                    <img src="/img_placeholder_point.jpg" data-lazy="` + (value.mobile_image ? value.mobile_image : '/img_placeholder_point.jpg') + `" alt="` + value.title + `">
+                </a>
+            </div>`;
+
+            $('.jsVideoMobileSlider').append($html); */
+
+            $html = `<div><div class="post-card post-card--video" style="width: 235px !important; min-height: 314px; margin: 0 1rem;">
+
+                        <div class="post-card__thumbnail post-card__thumbnail--video">
+                    
+                            <img class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/` + value.youtube_id + `/hqdefault.jpg" alt="` + value.title_limit + `">
+                    
+                            <a href="` + value.url + `" alt="` + value.title_limit + `">
+                                <div class="post-card__overlay"></div>
+                    
+                                <div class="post-card__vid-play">
+                                    <svg class="svg-vid-play">
+                                        <use xlink:href="/static/images/sprites.svg#vid-play"></use>
+                                    </svg>
+                                </div>
+                    
+                                <div class="post-card__frame">
+                                    <svg class="svg-video-frame">
+                                        <use xlink:href="/static/images/sprites.svg#video-frame"></use>
+                                    </svg>
+                                </div>
+                    
+                                <div class="post-card__time"><span>` + value.duration + `</span></div>
+                            </a>
+                        </div>
+                    
+                        <div class="post-card__meta post-meta">
+                    
+                            <div class="post-meta__category">
+                                <a href="/gallery/video" alt="` + value.category + `">
+                                    <span>` + value.category + `</span>
+                                </a>
+                            </div>
+                    
+                        </div>
+                    
+                        <div class="post-card__meta post-meta">
+                    
+                            <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
+                            <div class="post-meta__stat"><span>` + value.view_count + ` views</span></div>
+                    
+                        </div>
+                    
+                        <a href="` + value.url + `" alt="` + value.title_limit + `">
+                            <div class="post-card__title">
+                                <span>` + value.title_limit + `</span>
+                            </div>
+                        </a>
+                    </div></div>`;
+
+            $('.jsVideoMobileSlider').append($html);
+        });
+
+        $('.jsVideoMobileSlider').slick({
+            dots: false,
+            lazyLoad: 'anticipated',
+            centerMode: true,
+            centerPadding: '30px',
+            slidesToShow: 1,
+            variableWidth: true
+        });
+
+    });
+
     $('.jsMoreVideo').trigger('click');
 
     var currentPage = 1,

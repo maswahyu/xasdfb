@@ -118,11 +118,15 @@
         height: 10rem;
       }
     }
+    
+    #{$this}__img {
+      height: auto;
+      width: 100%;
+      max-width: 90%;
+    }
 
     @include media-over(md) {
       #{$this}__img {
-        height: auto;
-        width: 100%;
         max-width: 100%;
       }
 
@@ -175,6 +179,24 @@
   &--video {
     max-width: 100%;
     border-bottom: none;
+
+    @include media-under(md) {
+      border: 1px solid palette('athens');
+      padding: 0 0 2rem;
+
+      &:last-child {
+        border-bottom: 1px solid palette('athens') !important;
+      }
+
+      #{$this}__meta,
+      #{$this}__title {
+        padding: 0 1rem;
+      }
+
+      #{$this}__title {
+        font-size: 16px;
+      }
+    }
 
     @include media-over(md) {
       max-width: 30rem;

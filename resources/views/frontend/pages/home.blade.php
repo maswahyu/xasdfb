@@ -144,13 +144,13 @@
 </div>
 
 {{-- List with side --}}
-<div class="container">
+{{-- <div class="container">
 
     <div class="list-with-sidebar">
 
         <div class="list-with-sidebar__main">
 
-            {{-- Shoutbox lazone --}}
+            Shoutbox lazone
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
                 <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} />
@@ -198,7 +198,11 @@
             </div>
 
             <div class="row no-gutters">
-                <div class="jsVideoList"></div>
+                <div class="jsVideoList hide-mobile"></div>
+                <div class="home-below-fold__slider show-mobile">
+                    <div class="home-promo-slider jsVideoMobileSlider">
+                    </div>
+                </div>
                 <div class="jsMoreVideo"></div>
             </div>
 
@@ -206,6 +210,70 @@
 
     </div>
 
+</div> --}}
+
+<div class="container">
+    <div class="row">
+        <div class="span-12">
+            {{-- Shoutbox lazone --}}
+            <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+
+                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} />
+                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+
+                <div class="shoutbox__content-wrapper">
+
+                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
+                    </div>
+
+                    <div class="shoutbox__text shoutbox__text--extra-space">
+                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    </div>
+
+                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                        @guest
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                        @endguest
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style=" margin-top: 5rem;">
+
+        <div class="span-12 span-md-8 order-2 order-md-1">
+            <div class="section-title">
+                <span class="section-title__label">Latest Articles</span>
+            </div>
+
+            <div class="span-12 jsArticleList"></div>
+            <div class="span-12 text-center">
+                <button class="btn btn-ghost-crimson btn-load-more jsMoreArticle">LOAD MORE</button>
+            </div>
+        </div>
+
+        <div class="span-12 span-md-4 order-1 order-md-2">
+            <div class="section-title section-title--plain section-title--has-more">
+                <span class="section-title__label">Videos</span>
+                <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
+            </div>
+
+            <div class="row no-gutters">
+                <div class="jsVideoList hide-mobile"></div>
+                <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
+                    <div class="home-promo-slider jsVideoMobileSlider">
+                    </div>
+                </div>
+                <div class="jsMoreVideo"></div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 @endsection
