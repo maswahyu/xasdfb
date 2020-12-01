@@ -19,8 +19,10 @@
 
         <div class="span-12">
 
-            <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
+            <div class="row flex-justify-center">
+                <div class="section-title section-title--plain section-title--page">
+                    <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
+                </div>
             </div>
 
         </div>
