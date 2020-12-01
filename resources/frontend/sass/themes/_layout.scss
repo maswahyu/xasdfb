@@ -22,7 +22,7 @@
     @include col(12);
 
     @include media-over(xl) {
-      @include col(8);
+      @include col(9);
     }
 
     &-highlights {
@@ -35,7 +35,7 @@
       }
 
       @include media-over(xl) {
-        width: 70%;
+        width: 58rem;
         order: 1;
       }
     }
@@ -48,7 +48,7 @@
       order: 1;
 
       @include media-over(lg) {
-        width: 27%;
+        width: 28rem;
         order: 0;
       }
     }
@@ -69,7 +69,7 @@
     }
 
     @include media-over(xl) {
-      @include col(4);
+      @include col(3);
       
       padding: 2rem;
       margin-left: unset;
@@ -102,7 +102,7 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(8);
+      @include col(9);
     }
 
     /* @include media-over(xl) {
@@ -114,7 +114,7 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(4);
+      @include col(3);
     }
 
     /* @include media-over(xl) {
