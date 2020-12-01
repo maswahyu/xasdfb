@@ -7,7 +7,7 @@ $contentClass = 'promo__top'
   <div class="promo__header"></div>
   <div class="container">
     <div class="promo__banner">
-      <a href="https://mypoints.lazone.id" target="_blank">
+      <a href="{{env('URL_MYPOINT')}}" target="_blank">
         <img src="{{ asset('static/images/banner-tukarlangsung.jpg')}}" alt="Banner Tukar langsung">
       </a>
     </div>
