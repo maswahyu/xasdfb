@@ -76,7 +76,7 @@
     // justify-content: center;
 
     // @include media-over(lg) {
-      justify-content: flex-start;
+      justify-content: flex-start !important;
     // }
 
     /* &::after,

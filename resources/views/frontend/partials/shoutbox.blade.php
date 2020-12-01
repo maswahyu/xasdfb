@@ -1,4 +1,4 @@
-<div class="shoutbox">
+<div class="shoutbox shoutbox--column">
 
         <div class="shoutbox__title"><span>Beritahu Kami Minat Kamu</span></div>
 
