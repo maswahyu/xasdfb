@@ -341,7 +341,7 @@ class News extends Model
     public function getThumbnailAttribute()
     {
         // check if original image is exists
-        if(! Storage::disk('filemanager')->exists(Str::replaceFirst('/storage', '', $this->image))) {
+        if(! Str::contains($this->image, 'storage')  && ! Storage::disk('filemanager')->exists(Str::replaceFirst('/storage', '', $this->image))) {
             return url('/').'/img_placeholder_point.jpg';
         }
 
