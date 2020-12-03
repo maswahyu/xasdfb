@@ -2,16 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 use Auth;
+use Cache;
 use App\Tag;
 use App\News_tag;
 use Carbon\Carbon;
 use App\Model\Stats;
-use Cache;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Nicolaslopezj\Searchable\SearchableTrait;
-use DB;
 
 class News extends Model
 {
@@ -337,7 +340,24 @@ class News extends Model
 
     public function getThumbnailAttribute()
     {
-        return imageview($this->image);
+        // check if original image is exists
+        if(! Storage::disk('filemanager')->exists(Str::replaceFirst('/storage', '', $this->image))) {
+            return url('/').'/img_placeholder_point.jpg';
+        }
+
+        // add thumb_ prefix
+        $tokenPath = explode('/', $this->image);
+        $filename = $tokenPath[count($tokenPath) - 1];
+        $thumb_path = Str::replaceFirst($filename, 'thumb_'.$filename, $this->image);
+        // remove storage folder from paath
+        $path = Str::replaceFirst('/storage', '', $thumb_path);
+        if( ! Storage::disk('filemanager')->exists($path) ) {
+            $image = Image::make(Storage::disk('filemanager')->get(Str::replaceFirst('/storage', '', $this->image)));
+            $image->resize(400, null, function($constraint) {
+                $constraint->aspectRatio();
+            })->save(storage_path('app/public') . $path);
+        }
+        return imageview($thumb_path);
     }
 
     public function getPublishedDateAttribute()

@@ -8,15 +8,12 @@
 
     <div class="container">
 
-        <div class="row ">
+        <div class="row flex-justify-center">
 
-            <div class="span-12">
-
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Events</span>
-                </div>
-
+            <div class="section-title section-title--plain section-title--page">
+                <span class="section-title__label section-title__label--category">Events</span>
             </div>
+            
         </div>
 
         <div class="row jsEventList">

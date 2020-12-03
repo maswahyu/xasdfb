@@ -29,7 +29,7 @@
 
         <div class="home-grid__must-reads">
 
-            <div class="section-title">
+            <div class="section-title" style="margin-top: 2.3rem;">
                 <span class="section-title__label">Must Reads</span>
             </div>
 
@@ -78,7 +78,7 @@
 <div class="home-trending" data-src="/static/images/trending-bg.jpg">
     <div class="container">
         <div class="section-title">
-            <span class="section-title__label text-white">Trending Articles</span>
+            <span class="section-title__label text-white">Most Viewed Articles</span>
         </div>
         <div class="row jsTrendingList"></div>
         <div class="jsMoreTrending"></div>
@@ -384,7 +384,7 @@
 
 <script id="x-trending-template" type="text/x-handlebars-template">
 <div class="span-12 span-md-6 span-lg-3">
-    <div class="post-card post-card--simple">
+    <div class="post-card post-card--simple post-card--simple__max-height">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">

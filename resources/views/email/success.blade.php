@@ -18,7 +18,7 @@
             <p>
                 Hai <strong>Username</strong>, 
                 <br>
-                selamat Lo udah berhasil gabung di
+                selamat kamu udah berhasil gabung di
                 <br>
                 LAZONE.ID
             </p>
@@ -26,12 +26,12 @@
      </tr>
      <tr>
          <td style="padding: 1.5rem 29rem 0;">
-            Sekarang di LAZONE.ID Lo bisa kumpulin poin sebanyak banyaknya dan menjadi peringkat teratas di Leaderboard!
+            Sekarang di LAZONE.ID kamu bisa kumpulin poin sebanyak banyaknya dan menjadi peringkat teratas di Leaderboard!
          </td>
      </tr>
      <tr>
          <td style="padding: 1.5rem 29rem 0;">
-            Setiap bulannya, 5 member dengan poin tertinggi akan mendapatkan hadiah menarik seperti smartphone, kamera, xbox, dan lain-lain. Makanya, kumpulin terus poin lo dan pastiin diri lo jadi salah satu pemenang di bulan ini!
+            Setiap bulannya, 5 member dengan poin tertinggi akan mendapatkan hadiah menarik seperti smartphone, kamera, xbox, dan lain-lain. Makanya, kumpulin terus poin kamu dan pastiin diri kamu jadi salah satu pemenang di bulan ini!
          </td>
      </tr>
      <tr>
@@ -41,12 +41,12 @@
      </tr>
      <tr>
          <td style="padding: 1.5rem 29rem 0;">
-            Lo baru aja dapetin <strong>50 poin</strong> karena telah menyelesaikan Daily Login, tetap semangat!
+            Kamu baru aja dapetin <strong>50 poin</strong> karena telah menyelesaikan Daily Login, tetap semangat!
          </td>
      </tr>
      <tr>
          <td style="padding: 1.5rem 29rem 0;">
-            Dapatkan 5000 poin lagi dengan melengkapi profil Lo!
+            Dapatkan 5000 poin lagi dengan melengkapi profil kamu!
          </td>
      </tr>
      <tr>

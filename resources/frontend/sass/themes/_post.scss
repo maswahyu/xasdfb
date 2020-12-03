@@ -17,6 +17,11 @@
   @include font-size(1.8rem);
   line-height: (24/18);
 
+  @include media-under(md) {
+    font-size: 16px;
+    line-height: 2;
+  }
+
   p,
   img,
   blockquote,

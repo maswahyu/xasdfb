@@ -22,21 +22,22 @@
     @include col(12);
 
     @include media-over(xl) {
-      @include col(8);
+      @include col(9);
     }
 
     &-highlights {
       order: 0;
       width: 100%;
 
-      @include media-over(lg) {
+      /* @include media-over(lg) {
         margin-left: 2rem;
         width: 66rem;
-      }
+      } */
 
-      @include media-over(xl) {
-        width: 70%;
+      @include media-over(lg) {
+        // width: 58rem;
         order: 1;
+        flex: 0 0 70%;
       }
     }
 
@@ -48,8 +49,9 @@
       order: 1;
 
       @include media-over(lg) {
-        width: 27%;
+        // width: 28rem;
         order: 0;
+        flex: 0 0 30%;
       }
     }
   }
@@ -69,7 +71,7 @@
     }
 
     @include media-over(xl) {
-      @include col(4);
+      @include col(3);
       
       padding: 2rem;
       margin-left: unset;
@@ -102,7 +104,7 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(8);
+      @include col(9);
     }
 
     /* @include media-over(xl) {
@@ -114,7 +116,7 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(4);
+      @include col(3);
     }
 
     /* @include media-over(xl) {

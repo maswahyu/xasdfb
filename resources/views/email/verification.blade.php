@@ -23,8 +23,8 @@
         </td>
      </tr>
      <tr>
-         <td style="padding: 1.5rem 29rem 0;">
-            Kami ingin memastikan bahwa Lo beneran daftar. Klik button di bawah ini buat aktivasi akun Lo!
+         <td style="padding: 1.5rem 0 0; font-size: 18px;">
+            Kami ingin memastikan bahwa kamu beneran daftar. <br> Klik button di bawah ini buat aktivasi akun kamu!
          </td>
      </tr>
      <tr>
@@ -41,7 +41,7 @@
          <td style="padding: 1.5rem;">
             Link ini akan hangus dalam 1 jam.
             <br>
-            Lo gak daftar ke <a href="#" style="font-weight: bold; color: #000000; text-decoration: underline;">LAZONE.ID?</a> Tolong abaikan email ini.
+            Kamu gak daftar ke <a href="#" style="font-weight: bold; color: #000000; text-decoration: underline;">LAZONE.ID?</a> Tolong abaikan email ini.
          </td>
      </tr>
     </table>

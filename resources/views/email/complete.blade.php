@@ -16,7 +16,7 @@
      <tr>
         <td style="padding: 1.5rem 29rem 0; font-size: 24px;">
             <p>
-                Selamat <strong>Username!</strong> Lo dapet <strong>5.000 poin</strong> karena udah lengkapin profile Lo
+                Selamat <strong>Username!</strong> Kamu dapet <strong>5.000 poin</strong> karena udah lengkapin profile kamu
             </p>
         </td>
      </tr>
@@ -27,7 +27,7 @@
      </tr>
      <tr>
          <td style="padding: 1.5rem 29rem 0;">
-            Setiap bulannya, 5 member dengan poin tertinggi akan mendapatkan hadiah menarik seperti smartphone, kamera, xbox, dan lain-lain. Makanya, kumpulin terus poin lo dan pastiin diri lo jadi salah satu pemenang di bulan ini!
+            Setiap bulannya, 5 member dengan poin tertinggi akan mendapatkan hadiah menarik seperti smartphone, kamera, xbox, dan lain-lain. Makanya, kumpulin terus poin kamu dan pastiin diri kamu jadi salah satu pemenang di bulan ini!
          </td>
      </tr>
      <tr>

@@ -47,6 +47,13 @@
         color: palette('white');
       }
     }
+
+    @include media-over(md) {
+
+      &__max-height {
+        height: 100%;
+      }
+    }
   }
 
   &--elevation {
@@ -343,7 +350,7 @@
   }
 
   &__title {
-    @include font-size(1.6rem);
+    @include font-size(1rem);
     font-family: $title-font-family;
     color: palette("black");
     line-height: (21/16);
@@ -460,7 +467,7 @@
 
       color: palette("black");
       font-weight: bold;
-      font-size: 1.875rem;
+      font-size: 16px;
 
       &:hover {
         color: rgba(palette("black"), .7) !important;
@@ -486,7 +493,7 @@
 
   &__stat {
     color: palette("nobel");
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 
     &::after {
       content: "|";

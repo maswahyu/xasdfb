@@ -231,11 +231,14 @@ p {
       display: flex;
       justify-content: center;
       align-items: center;
-  
+
       .list {
-        justify-content: center;
         margin-top: 0;
       }
+    }
+  
+    .list {
+      justify-content: center;
     }
   }
 }
