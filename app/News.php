@@ -342,7 +342,7 @@ class News extends Model
     {
         // check if original image is exists
         if(! Str::contains($this->image, 'storage')  && ! Storage::disk('filemanager')->exists(Str::replaceFirst('/storage', '', $this->image))) {
-            return url('/').'/img_placeholder_point.jpg';
+            return imageview($this->image);
         }
 
         // add thumb_ prefix
