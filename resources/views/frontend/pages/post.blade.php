@@ -113,19 +113,19 @@
                 </li>
                 <li class="list__item list__item--social">
                     <a class="list__link list__link--social"
-                        href="#">
+                        href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
                         <img src="{{ asset('static/images/wa-share.png') }}" alt="">
                     </a>
                 </li>
                 <li class="list__item list__item--social">
                     <a class="list__link list__link--social"
-                        href="#">
+                        href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
                         <img src="{{ asset('static/images/line-share.png') }}" alt="">
                     </a>
                 </li>
                 <li class="list__item list__item--social">
-                    <a data-clipboard-text="{{ url()->current() }}" class="list__link list__link--social jsCopyLink"
-                        href="#">
+                    <a data-clipboard-text="{{ url()->current() }}"  id="refCopyLink" class="list__link list__link--social jsCopyLink"
+                        >
                         <img src="{{ asset('static/images/link-share.png') }}" alt="">
                     </a>
                 </li>
@@ -217,9 +217,16 @@
 
 
 @section('before-body-end')
+<script src="{{ asset('static/js/clipboard.min.js') }}"></script>
 <script>
     window.feedUrl = "{{ url('feed') }}"
     var p_id = '{{ $post->id }}';
+
+    var clipboard = new ClipboardJS('#refCopyLink');
+    clipboard.on('success', function(e) {
+        alert('Copied');
+        e.clearSelection();
+    })
 </script>
 
 @verbatim
