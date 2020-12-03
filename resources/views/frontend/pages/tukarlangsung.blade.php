@@ -15,7 +15,7 @@ $contentClass = 'promo__top'
       <h5 class="title text-center text-black">
         Periode
       </h5>
-      <p class="title__sub text-site text-center">1 sampai 25 Desember 2020</p>
+      <p class="title__sub text-site text-center">7 s.d 31 Desember 2020</p>
       <br>
       <br>
       <h5 class="title text-center text-black">
