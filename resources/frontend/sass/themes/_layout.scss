@@ -29,14 +29,15 @@
       order: 0;
       width: 100%;
 
-      @include media-over(lg) {
+      /* @include media-over(lg) {
         margin-left: 2rem;
         width: 66rem;
-      }
+      } */
 
-      @include media-over(xl) {
-        width: 58rem;
+      @include media-over(lg) {
+        // width: 58rem;
         order: 1;
+        flex: 0 0 70%;
       }
     }
 
@@ -48,8 +49,9 @@
       order: 1;
 
       @include media-over(lg) {
-        width: 28rem;
+        // width: 28rem;
         order: 0;
+        flex: 0 0 30%;
       }
     }
   }
