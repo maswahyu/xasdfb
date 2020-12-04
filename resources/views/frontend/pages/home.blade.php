@@ -29,7 +29,7 @@
 
         <div class="home-grid__must-reads">
 
-            <div class="section-title" style="margin-top: 2.3rem;">
+            <div class="section-title" style="margin: 3rem 0 5rem;">
                 <span class="section-title__label">Must Reads</span>
             </div>
 

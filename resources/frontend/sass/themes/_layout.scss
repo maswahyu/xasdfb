@@ -19,6 +19,7 @@
   &__must-reads {
     display: flex;
     flex-flow: row wrap;
+    align-content: baseline;
     @include col(12);
 
     @include media-over(xl) {
