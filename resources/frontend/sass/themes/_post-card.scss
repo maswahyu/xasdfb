@@ -350,7 +350,7 @@
   }
 
   &__title {
-    @include font-size(1rem);
+    font-size: 16px;
     font-family: $title-font-family;
     color: palette("black");
     line-height: (21/16);
