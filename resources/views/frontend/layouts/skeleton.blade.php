@@ -144,7 +144,7 @@
     {!! $siteInfo['bodycode'] !!}
     @include('frontend.layouts.after-body')
 
-    <header class="site-header {{ isset($headerClass) ? $headerClass : ''  }}">
+    <header class="site-header">
         @include('frontend.layouts.header')
     </header>
     @include('frontend.layouts.mobile-header')
@@ -177,7 +177,7 @@
         @endif
     </div>
 
-    <footer class="site-footer pt-4 {{ isset($footerClass) ? $footerClass : ''  }}">
+    <footer class="site-footer pt-4">
         @include('frontend.layouts.footer')
     </footer>
 
