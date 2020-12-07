@@ -13,13 +13,35 @@
       height: 200px;
     }
   }
+  &__backstage {
+    width: 100%;
+    min-height: 420px;
+    background-color: $bg-black;
+    display: block;
+    @include media-under(sm) {
+      display: none;
+    }
+  }
   &__banner {
     width: 100%;
-    height: auto;
+    height: 540px;
     position: relative;
+    z-index: 2;
+    margin-top: calc(540px / 2 * -1);
+    @include media-under(sm) {
+      margin-top: 0;
+      height: auto;
+      .container {
+        padding: 0;
+      }
+    }
     img {
       width: 100%;
       height: auto;
+      border-radius: 16px;
+      @include media-under(sm) {
+        border-radius: 0;
+      }
     }
   }
   &__content {
