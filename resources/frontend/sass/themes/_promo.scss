@@ -18,7 +18,7 @@
     min-height: 420px;
     background-color: $bg-black;
     display: block;
-    @include media-under(sm) {
+    @include media-under(lg) {
       display: none;
     }
   }
@@ -28,7 +28,7 @@
     position: relative;
     z-index: 2;
     margin-top: calc(540px / 2 * -1);
-    @include media-under(sm) {
+    @include media-under(lg) {
       margin-top: 0;
       height: auto;
       .container {
@@ -39,7 +39,7 @@
       width: 100%;
       height: auto;
       border-radius: 16px;
-      @include media-under(sm) {
+      @include media-under(lg) {
         border-radius: 0;
       }
     }
