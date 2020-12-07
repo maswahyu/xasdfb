@@ -35,6 +35,7 @@ Route::get('privacy-policy', 'PageController@privacy');
 Route::get('live/{slug}', 'StreamController@stream');
 Route::post('live/remind-me', 'StreamController@remindMe');
 Route::post('live/views_counter', 'StreamController@addViews');
+Route::get('tukarlangsung', 'PageController@tukarLangsung');
 
 Route::get('email', function () {
   return view('email.template');

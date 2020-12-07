@@ -26,6 +26,7 @@
     @yield('meta')
     <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}">
+    @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
         .sticky {
@@ -143,7 +144,7 @@
     {!! $siteInfo['bodycode'] !!}
     @include('frontend.layouts.after-body')
 
-    <header class="site-header">
+    <header class="site-header {{ isset($headerClass) ? $headerClass : ''  }}">
         @include('frontend.layouts.header')
     </header>
     @include('frontend.layouts.mobile-header')
@@ -176,7 +177,7 @@
         @endif
     </div>
 
-    <footer class="site-footer pt-4">
+    <footer class="site-footer pt-4 {{ isset($footerClass) ? $footerClass : ''  }}">
         @include('frontend.layouts.footer')
     </footer>
 

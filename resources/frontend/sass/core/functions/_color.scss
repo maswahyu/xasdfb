@@ -46,7 +46,8 @@ $palette: () !default;
 $palette: map-merge(
   (
     "white": #ffffff,
-    "black": #000000
+    "black": #000000,
+    "site": #ec2427,
   ),
   $palette
 );
