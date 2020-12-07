@@ -2,25 +2,26 @@
 @section('content')
 @php
     $contentClass = 'promo__top';
-    $headerClass = 'd-none';
-    $footerClass = 'd-none';
 @endphp
   <div class="promo">
+    <div class="promo__backstage"></div>
     <div class="promo__banner">
-      <a href="{{env('URL_MYPOINT')}}" target="_blank">
-        @if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
-          <img class="background" src="{{ asset("static/images/mobile-banner-tukarlangsung.png") }}" alt="Banner Tukar langsung">
-        @else
-          <img class="background" src="{{ asset("static/images/banner-tukarlangsung.jpg") }}" alt="Banner Tukar langsung">
-        @endif
-      </a>
+      <div class="container">
+         <a href="{{ env('URL_MYPOINT') }}" target="_blank">
+          @if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
+            <img class="background" src="{{ asset("static/images/lazone_banner_tukar_langsung_mobile.jpg") }}" alt="Banner Tukar langsung">
+          @else
+            <img class="background" src="{{ asset("static/images/banner-tukarlangsung.jpg") }}" alt="Banner Tukar langsung">
+          @endif
+        </a>
+      </div>
     </div>
     <div class="container">
       <div class="promo__content">
         <h5 class="title text-center text-black">
           Periode
         </h5>
-        <p class="title__sub text-site text-center">1 s.d 25 Desember 2020</p>
+        <p class="title__sub text-site text-center">07 s.d 31 Desember 2020</p>
         <br>
         <div class="text-center">
           <a
@@ -50,7 +51,7 @@
         </ul>
       </div>
     </div>
-    <div class="promo__footer">
+    {{-- <div class="promo__footer">
       <div class="cp-container">
         <div class="cp-text">
           COPYRIGHT © LAZONE.ID ALL RESERVED
@@ -65,6 +66,6 @@
         </svg>
         Contact Us
       </a>
-    </div>
+    </div> --}}
   </div>
 @endsection

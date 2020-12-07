@@ -7301,12 +7301,42 @@ p{
     height:200px;
   }
 }
-.promo__banner{
-  position:relative;
+.promo__backstage{
+  width:100%;
+  min-height:420px;
+  background-color:#000;
+  display:block;
 }
-.promo__banner,.promo__banner img{
+@media (max-width:1279.98px){
+  .promo__backstage{
+    display:none;
+  }
+}
+.promo__banner{
+  width:100%;
+  height:540px;
+  position:relative;
+  z-index:2;
+  margin-top:-270px;
+}
+@media (max-width:1279.98px){
+  .promo__banner{
+    margin-top:0;
+    height:auto;
+  }
+  .promo__banner .container{
+    padding:0;
+  }
+}
+.promo__banner img{
   width:100%;
   height:auto;
+  border-radius:16px;
+}
+@media (max-width:1279.98px){
+  .promo__banner img{
+    border-radius:0;
+  }
 }
 .promo__content{
   width:100%;
