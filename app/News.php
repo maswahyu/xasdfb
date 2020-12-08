@@ -10,6 +10,7 @@ use App\News_tag;
 use Carbon\Carbon;
 use App\Model\Stats;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
