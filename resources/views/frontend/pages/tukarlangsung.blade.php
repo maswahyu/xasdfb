@@ -40,7 +40,7 @@
         <br>
         <ul class="list-syarat">
           <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia minimal 18 tahun yang tinggal di Indonesia dan memiliki KTP yang berlaku.</li>
-          <li>Program berlaku mulai tanggal 11 Desember 2020 s.d 25 Desember 2020.</li>
+          <li>Program berlaku mulai tanggal 11 Desember 2020 s.d 31 Desember 2020.</li>
           <li>Program ini hanya berlaku kepada member yang telah melakukan Complete Profile dan terverfikasi di profil <a href="https://www.lazone.id/" class="text-site">LAZone.id</a></li>
           <li>Untuk mengikuti program ini, member harus melakukan redeem kupon undian di halaman ini.</li>
           <li>Member diperbolehkan untuk me-redeem kupon undian lebih dari satu. 1 akun hanya bisa memenangkan 1 dari 2 hadiah yang tersedia.</li>
