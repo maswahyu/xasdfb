@@ -335,10 +335,14 @@ class News extends Model
         // remove storage folder from paath
         $path = Str::replaceFirst('/storage', '', $thumb_path);
         if( ! Storage::disk('filemanager')->exists($path) ) {
-            $image = Image::make(Storage::disk('filemanager')->get(Str::replaceFirst('/storage', '', $this->image)));
-            $image->resize(400, null, function($constraint) {
-                $constraint->aspectRatio();
-            })->save(storage_path('app/public') . $path);
+            try {
+                $image = Image::make(Storage::disk('filemanager')->get(Str::replaceFirst('/storage', '', $this->image)));
+                $image->resize(400, null, function($constraint) {
+                    $constraint->aspectRatio();
+                })->save(storage_path('app/public') . $path);
+            } catch(\Intervention\Image\Exception\NotReadableException $e) {
+                return imageview($thumb_path);
+            }
         }
         return imageview($thumb_path);
 
