@@ -30,7 +30,7 @@
         <div class="home-grid__must-reads">
 
             <div class="section-title" style="margin: 3rem 0 5rem;">
-                <span class="section-title__label">Must Reads</span>
+                <span class="section-title__label section-title__label--lg">Must Reads</span>
             </div>
 
             <div class="home-grid__must-reads-list jsMustRead">
@@ -319,7 +319,7 @@
             </div>
 
             <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
+                <div class="post-card__title post-card__title--large">
                     <span>{{ title }}</span>
                 </div>
             </a>

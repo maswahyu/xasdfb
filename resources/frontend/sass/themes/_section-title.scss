@@ -45,7 +45,7 @@
     padding: .5rem 2.5rem 0;
     color: palette("black");
     font-family: $title-font-family;
-    font-weight: bold;
+    font-weight: 800;
     @include font-size(2.4rem);
 
     &--adjust {
@@ -58,6 +58,14 @@
 
     &--category {
       @include font-size(3rem);
+    }
+
+    &--lg {
+      @include font-size(2.4rem);
+
+      @include media-over(md) {
+        @include font-size(3.6rem);
+      }
     }
   }
 
