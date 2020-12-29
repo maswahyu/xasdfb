@@ -26,6 +26,7 @@
     @yield('meta')
     <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}">
+    @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
         .sticky {

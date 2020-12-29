@@ -124,7 +124,7 @@
         opacity: 1;
         display: block;
       }
-      
+
     }
 
     &--user-menu {
@@ -137,6 +137,7 @@
 
   &__dropdown {
     position: absolute;
+    list-style: none;
     left: 0;
     right: auto;
     top: 100%;
