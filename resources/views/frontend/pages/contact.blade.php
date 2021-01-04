@@ -7,13 +7,16 @@
 @section('content')
 <div class="container">
 
-    <div class="row no-gutters">
-
-        <div class="section-title section-title--plain section-title--page">
-            <span class="section-title__label section-title__label--category">Contact Us</span>
+    <div class="row no-gutters flex-justify-center">
+        <div class="span-auto">
+            <div class="section-title section-title--plain section-title--page">
+                <span class="section-title__label section-title__label--category">Contact Us</span>
+            </div>
         </div>
+    </div>
+    <div class="row no-gutters flex-justify-center">
 
-        <div class="span-12 span-lg-8 off-lg-2">
+        <div class="span-12 span-lg-8">
 
             <form id="contact-form" action="" method="" class="form">
 

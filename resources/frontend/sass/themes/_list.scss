@@ -21,7 +21,7 @@
   &__item {
     flex: 0 0 auto;
     position: relative;
-    margin: 0 2rem;
+    margin: 0 1.5rem;
 
     &:first-child {
       margin-left: 0;
@@ -42,16 +42,16 @@
       z-index: 1;
     }
 
-    &.active::after {
+    /* &.active::after {
       background-color: rgba(palette("crimson"), 1) !important;
     }
 
     &:hover::after {
       background-color: rgba(palette("crimson"), 0.5);
-    }
+    } */
 
     &.active #{$this}__link {
-      color: palette("black");
+      color: palette("crimson");
     }
 
     &--social {
@@ -80,8 +80,9 @@
     }
 
     &--tag {
-      @include font-size(1.6rem);
-      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: palette("crimson");
     }
 
     &--footer {
@@ -111,7 +112,7 @@
 
       #{$this}__label {
         margin-bottom: 3.5rem;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
 
         &:hover::after {
           display: none;

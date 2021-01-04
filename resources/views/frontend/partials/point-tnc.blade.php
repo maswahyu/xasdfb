@@ -13,7 +13,7 @@
                     <strong class="fs-18">Kebijakan Point</strong>
                 </div>
                 <div>
-                    <ol>
+                    <ol class="styled-list">
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika Member mendapatkan poin mulai bulan Februari 2018, maka poin tersebut akan hangus pada akhir Januari 2019</li>
                         <li>Member dengan jumlah poin sama akan ditentukan pemenangnya berdasarkan waktu perolehan poin tercepat. Contoh: Member A lebih dulu mendapatkan 500 poin diikuti member B yang juga mendapatkan 500 poin, maka yang berada di posisi lebih tinggi pada Leaderboard adalah Member A</li>
                         <li>Mekanisme perolehan poin dan katalog penukaran hadiah dapat berubah sewaktu-waktu</li>
@@ -30,7 +30,7 @@
                     <strong class="fs-18">Kebijakan Personal</strong>
                 </div>
                 <div>
-                    <ol>
+                    <ol class="styled-list">
                         <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia di atas 18 tahun dan tinggal di Indonesia</li>
                         <li>Program ini tidak berlaku kepada seluruh pihak yang terkait dengan penyelenggaraan Program ini</li>
                         <li>Untuk mendapatkan hadiah, member harus memverifikasi nomor handphone terdaftar mereka.</li>

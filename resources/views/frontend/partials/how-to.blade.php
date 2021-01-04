@@ -4,8 +4,12 @@
 
         <div class="span-12 span-lg-10 off-lg-1">
 
-            <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category semibold">How To Get Points?</span>
+            <div class="row flex-justify-center">
+                <div class="span-auto">
+                    <div class="section-title section-title--plain section-title--page">                
+                        <span class="section-title__label section-title__label--category semibold">How To Get Points?</span>
+                    </div>
+                </div>
             </div>
 
             <ul class="point-nav flex-justify-center jsPointTab">

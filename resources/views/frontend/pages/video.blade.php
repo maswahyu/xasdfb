@@ -32,10 +32,11 @@
 
         </div>
 
-        <div class="row">
-
-            <div class="section-title section-title--plain">
-                <span class="section-title__label">Latest Videos</span>
+        <div class="row flex-justify-center">
+            <div class="span-auto span-lg-12">
+                <div class="section-title section-title--plain">
+                    <span class="section-title__label">Latest Videos</span>
+                </div>
             </div>
         </div>
 
@@ -77,9 +78,9 @@
 {{-- More Videos --}}
 <div class="gallery-more container">
 
-    <div class="row">
+    <div class="row flex-justify-center">
 
-        <div class="span-12">
+        <div class="span-auto span-lg-12">
 
             <div class="section-title">
                 <span class="section-title__label">See More Videos</span>

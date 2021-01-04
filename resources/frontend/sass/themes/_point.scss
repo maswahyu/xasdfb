@@ -115,7 +115,7 @@
   }
 
   &__right {
-    flex: 0 0 195px;
+    flex: 0 0 235px;
   }
 
   &__text {
@@ -164,7 +164,7 @@
   &__text {
     margin-bottom: 3rem;
     color: palette("white");
-    @include font-size(1.8rem);
+    font-size: 16px;
     line-height: (24/18);
   }
 

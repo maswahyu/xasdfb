@@ -253,3 +253,9 @@ hr {
   transform: translate3d(0, 0, 0);
   will-change: position, transform;
 }
+
+ol.styled-list {
+  li {
+    margin: 2rem 0;
+  }
+}

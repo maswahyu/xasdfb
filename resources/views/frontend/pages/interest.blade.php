@@ -6,8 +6,12 @@
 
     <div class="row">
         <div class="span-12">
-            <div class="section-title section-title--plain section-title--page section-title--interest">
-                <span class="section-title__label section-title__label--category">Beritahu Kami Minat Kamu</span>
+            <div class="row flex-justify-center">
+                <div class="span-auto">
+                    <div class="section-title section-title--plain section-title--page section-title--interest">
+                        <span class="section-title__label section-title__label--category">Beritahu Kami Minat Kamu</span>
+                    </div>
+                </div>
             </div>
             <p class="subtitle text-center">Pilih topik-topik menarik yang kamu suka.</p>
             <p class="subtitle text-center" style="color: #ec2427;" id="its_warning"></p>
@@ -30,7 +34,7 @@
                     <div class="post-card__info">
 
                         <div class="post-card__interest">
-                            <div class="post-card__interest-checkbox">
+                            <div class="post-card__interest-checkbox" style="font-size: 16px;">
                                 <div class="pretty p-default">
                                     <input type="checkbox" name="interest[]" class="ids" value="{{ $interest->id }}" {{ $interest->isChecked() }}/>
                                     <div class="state p-danger">
