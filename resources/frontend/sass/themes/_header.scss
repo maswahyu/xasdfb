@@ -50,6 +50,29 @@
     margin-top: -3rem;
     right: 0;
     outline: none;
+
+    .hamburger-inner,
+    .hamburger-inner::after,
+    .hamburger-inner::before {
+      width: 25px;
+      height: 3px;
+      border-radius: 5px;
+    }
+
+    &.hamburger--slider.is-active .hamburger-inner:after {
+      transform: translate3d(0, -8px, 0) rotate(-90deg);
+    }
+
+    .hamburger-inner {
+
+      &::after {
+        top: 8px;
+      }
+
+      &::before {
+        top: 16px;
+      }
+    }
   }
 
   .site-logo {

@@ -1,6 +1,5 @@
 .site-content {
-  padding-top: 8rem;
-  padding-bottom: 3rem;
+  padding: 8rem 0rem;
 
   @include media-over(lg) {
     padding-top: 14rem;

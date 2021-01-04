@@ -29,7 +29,7 @@
 
         <div class="home-grid__must-reads">
 
-            <div class="section-title" style="margin: 3rem 0 5rem;">
+            <div class="section-title" style="margin: 2rem 0 5rem;">
                 <span class="section-title__label section-title__label--lg">Must Reads</span>
             </div>
 
@@ -51,6 +51,8 @@
             </div>
         </div>
     </div>
+
+    <hr style="margin-top: 8rem;">
 
     <div class="home-below-fold">
 
@@ -246,7 +248,7 @@
     </div>
     <div class="row" style=" margin-top: 5rem;">
 
-        <div class="span-12 span-md-8 order-2 order-md-1">
+        <div class="span-12 span-md-9 order-2 order-md-1">
             <div class="section-title">
                 <span class="section-title__label">Latest Articles</span>
             </div>
@@ -257,7 +259,7 @@
             </div>
         </div>
 
-        <div class="span-12 span-md-4 order-1 order-md-2">
+        <div class="span-12 span-md-3 order-1 order-md-2">
             <div class="section-title section-title--plain section-title--has-more">
                 <span class="section-title__label">Videos</span>
                 <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
@@ -330,7 +332,7 @@
 </script>
 
 <script id="x-video-template" type="text/x-handlebars-template">
-<div class="span-12 span-md-6 span-lg-12">
+<div class="span-12 span-md-6 span-lg-11">
 <div class="post-card post-card--video">
 
     <div class="post-card__thumbnail post-card__thumbnail--video">
@@ -425,7 +427,7 @@
 </script>
 
 <script id="x-must-template" type="text/x-handlebars-template">
-<div class="span-12 span-md-6 span-lg-12">
+<div class="span-12" style="padding: 0;">
     <div class="post-card">
 
         <div class="post-card__thumbnail">
@@ -451,7 +453,7 @@
         </div>
 
         <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <div class="post-card__title">
+            <div class="post-card__title post-card__title--medium">
                 <span>{{ title }}</span>
             </div>
         </a>
