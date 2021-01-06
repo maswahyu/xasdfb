@@ -232,7 +232,7 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <div class="post-card post-card--wide">
+    <div class="post-card post-card--wide post-card--wide__with-padding">
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}" alt="{{ title }}">
