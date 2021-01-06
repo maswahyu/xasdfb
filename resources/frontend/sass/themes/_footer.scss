@@ -9,13 +9,54 @@
   min-height: 21rem;
   text-align: center;
   font-family: $nav-font-family;
+
+  @include media-under(md) {
+    padding: 5rem 0;
+  }
+
+  &__row {
+    display: block;
+
+    @include media-over(md) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
   &__span {
-    @include col(12);
+    // @include col(12);
     text-align: center;
-    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+
+    @include media-under(md) {
+      display: block;
+    }
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: auto;
+      
+      @include media-over(md) {
+        width: 80px;
+        margin-right: 3rem;
+      }
+    }
+
+    .footer-text-desc {
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 3rem 0;
+
+      @include media-over(md) {
+        text-align: left;
+        margin-right: 3rem;
+      }
     }
   }
 }
@@ -38,15 +79,25 @@
 }
 
 .point-nav {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  display: block !important;
   padding: 0;
-  margin: 0;
+  margin: 2rem 0;
+
+  @include media-over(md) {
+    display: flex !important;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0;
+  }
 
   &__item {
     position: relative;
-    margin: 0 1rem .5rem;
+    margin: 1.5rem 2rem !important;
     list-style: none;
+    text-transform: uppercase;
+
+    @include media-over(md) {
+      margin: 0 2rem .5rem;
+    }
   }
 }
