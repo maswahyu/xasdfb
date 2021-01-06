@@ -62,8 +62,8 @@
     width: 100%;
 
     background: palette('athens');
-    border-top: 10px solid palette('crimson');
-    padding: 1rem;
+    border-top: 5px solid palette('crimson');
+    padding: 1.3rem 1rem 1rem;
     margin-left: -.5rem;
 
     @include media-over(lg) {
@@ -73,8 +73,12 @@
     @include media-over(xl) {
       @include col(3);
       
-      padding: 2rem;
+      padding: 2.3rem 2rem 2rem;
       margin-left: unset;
+    }
+
+    @include media-under(md) {
+      margin-top: 3rem;
     }
 
     .post-card--wide:last-child {

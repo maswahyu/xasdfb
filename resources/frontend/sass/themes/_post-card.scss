@@ -2,8 +2,7 @@
   $this: &;
 
   display: block;
-  padding-bottom: 2rem !important;
-  margin: 2rem auto 2rem;
+  margin: 0 auto;
   width: 100%;
   max-width: 100%;
 
@@ -29,7 +28,7 @@
     @include media-under(lg) {
       display: flex;
       align-items: center;
-      background-color: transparent;
+      // background-color: transparent;
       padding-bottom: 0 !important;
 
       #{$this}__thumbnail {
@@ -42,16 +41,18 @@
         }
       }
 
-      #{$this}__title,
+      #{$this}__title {
+        color: palette('black');
+      }
       .post-meta__category span {
-        color: palette('white');
+        color: palette('crimson');
       }
     }
 
     @include media-over(md) {
 
       &__max-height {
-        height: 100%;
+        height: 90%;
       }
     }
   }
@@ -140,13 +141,14 @@
     @include media-over(md) {
       #{$this}__img {
         max-width: 100%;
+        height: 100%;
       }
 
       #{$this}__thumbnail {
         flex: 0 0 16.6rem;
         margin-right: 2rem;
         margin-bottom: 0;
-        height: auto;
+        height: 10rem;
         width: 16.6rem;
       }
 
@@ -159,6 +161,10 @@
     &:last-child {
       margin-bottom: 2rem !important;
       border-bottom: 1px solid palette("alto") !important;
+
+      @include media-under(md) {
+        border-bottom: none !important;
+      }
     }
   }
 
@@ -192,6 +198,7 @@
   &--video {
     max-width: 100%;
     border-bottom: none;
+    margin-bottom: 2.5rem;
 
     @include media-under(md) {
       border: 1px solid palette('athens');
@@ -368,14 +375,14 @@
     }
 
     &--medium {
-     font-size: 16px;
+     font-size: 18px;
     }
 
     &--large {
       font-size: 16px;
 
       @include media-over(md) {
-        font-size: 20px;
+        font-size: 22px;
       }
     }
 
@@ -393,7 +400,7 @@
   &__excerpt {
     margin-top: 1.8rem;
     color: palette("tundora");
-    @include font-size(1.6rem);
+    font-size: 16px;
 
     &--interest {
       margin-top: 1rem;
@@ -464,6 +471,7 @@
 
   &--centered {
     justify-content: flex-start;
+    margin: 1rem 0;
 
     @include media-over(md) {
       justify-content: center;

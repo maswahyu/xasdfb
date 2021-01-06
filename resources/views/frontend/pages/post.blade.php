@@ -92,7 +92,7 @@
 
         <div id="sidebar" class="span-12 span-lg-1 span-xl-2 sidebar">
             <ul class="list list--vertical flex-align-center">
-                <li class="list__label">Share :</li>
+                <li class="list__label">Share:</li>
                 <li class="list__item list__item--social">
                     <a class="list__link list__link--social jsFbShare"
                         href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">

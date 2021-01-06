@@ -29,7 +29,7 @@
 
         <div class="home-grid__must-reads">
 
-            <div class="section-title" style="margin: 2rem 0 5rem;">
+            <div class="section-title" style="margin: 2rem 0 3rem;">
                 <span class="section-title__label section-title__label--lg">Must Reads</span>
             </div>
 
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <hr style="margin-top: 8rem;">
+    <hr style="margin-top: 8rem;" class="hide-mobile">
 
     <div class="home-below-fold">
 

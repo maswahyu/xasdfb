@@ -4,7 +4,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 2rem;
-  min-height: 32.2rem;
+  min-height: 35rem;
   width: 100%;
 
   text-align: center;
@@ -79,6 +79,10 @@
       width: 90%;
       bottom: 3rem;
     }
+
+    @include media-over(md) {
+      left: 5rem;
+    }
   }
 
   &__title {
@@ -91,7 +95,7 @@
     color: palette("black");
 
     &--extra-bold {
-      @include font-size(3rem);
+      font-size: 3rem !important;
       font-weight: 800;
     }
   }
@@ -119,11 +123,12 @@
     @include media-over(md) {
       &--left {
         text-align: left;
+        padding-left: 0 !important;
       }
     }
 
-    .btn {
+    /* .btn {
       min-width: 232px;
-    }
+    } */
   }
 }

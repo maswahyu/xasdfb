@@ -99,6 +99,7 @@
 
   &--vertical {
     margin-top: 2rem;
+    overflow: unset;
 
     @include media-over(lg) {
       margin-top: 3rem;
@@ -106,7 +107,7 @@
       width: 39px;
 
       #{$this}__link {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         width: 100%;
       }
 
