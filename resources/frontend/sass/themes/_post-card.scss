@@ -77,6 +77,7 @@
     @include media-under(lg) {
       display: flex;
       align-items: center;
+      padding: 1.5rem 0;
 
       #{$this}__thumbnail {
         margin-bottom: 0;
@@ -114,17 +115,23 @@
       padding: 2rem 0;
 
       @include media-under(md) {
+        padding-bottom: .5rem;
+
         #{$this}__thumbnail {
           height: 105px;
           width: 175px !important;
           max-width: 100%;
+
+          a img {
+            height: 100%;
+          }
         }
       }
     }
 
     @include media-over(md) {
       flex-flow: row nowrap;
-      max-width: 80rem;
+      // max-width: 80rem;
     }
 
     #{$this}__thumbnail,
@@ -494,6 +501,10 @@
     justify-content: flex-start;
     margin: 1rem 0;
 
+    &-article {
+      justify-content: center;
+    }
+
     @include media-over(md) {
       justify-content: center;
     }
@@ -542,6 +553,7 @@
     color: palette("nobel");
     font-size: 1.4rem;
     flex: 0 0 auto;
+    padding: 1rem 0;
 
     &::after {
       content: "|";

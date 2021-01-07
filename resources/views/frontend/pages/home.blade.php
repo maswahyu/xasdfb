@@ -19,9 +19,9 @@
 {{-- end of sticky banner --}}
 {{-- Above the fold --}}
 @section('inside-head')
-<style type="text/css">
+{{-- <style type="text/css">
 .post-card {padding-bottom: 0.5rem}
-</style>
+</style> --}}
 @endsection
 <div class="container container-home">
 

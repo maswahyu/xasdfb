@@ -12,11 +12,11 @@
 
 @section('inside-head')
 <style>
-    @media screen and (max-width: 768px) {
+    /* @media screen and (max-width: 768px) {
         .post-card--wide {
             display: block;
         }
-    }
+    } */
 </style>
 @endsection
 
@@ -60,7 +60,7 @@
 
                 <div class="post-header__meta">
 
-                    <div class="post-meta post-meta--centered">
+                    <div class="post-meta post-meta--centered post-meta--centered-article">
 
                         <div class="post-meta__category">
                             @if($post->category)
@@ -72,7 +72,7 @@
 
                     </div>
 
-                    <div class="post-meta post-meta--centered">
+                    <div class="post-meta post-meta--centered post-meta--centered-article">
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 

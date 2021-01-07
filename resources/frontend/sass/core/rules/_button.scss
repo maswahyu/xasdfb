@@ -53,6 +53,7 @@ $button-padding-x: 1rem !default;
   .btn-#{$className} {
     background-color: $btnColor;
     border-color: $btnColor;
+    border: 2px solid $btnColor;
 
     @if (choose-contrast-color($btnColor) == "light") {
       color: $button-light-color;
