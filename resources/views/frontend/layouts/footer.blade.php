@@ -22,30 +22,34 @@
                 
                 @if($siteInfo['contact_facebook'])
                 <a class="btn-social" href="{{ $siteInfo['contact_facebook'] }}" alt="Facebook" }}>
-                    <svg class="fb-icon btn-social__icon">
-                        <use xlink:href="{{ asset('static/images/sprites.svg') }}#fb"></use>
-                    </svg>
+                    {{-- <svg class="fb-icon btn-social__icon">
+                        <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#fb"></use>
+                    </svg> --}}
+                    <img src="{{ asset('static/images/new-icon/fb.png') }}" alt="" class="yt-icon btn-social__icon">
                 </a>
                 @endif
                 @if($siteInfo['contact_twitter'])
                 <a class="btn-social" href="{{ $siteInfo['contact_twitter'] }}" alt="Twitter">
-                    <svg class="tw-icon btn-social__icon">
-                        <use xlink:href="{{ asset('static/images/sprites.svg') }}#tw"></use>
-                    </svg>                        
+                    {{-- <svg class="tw-icon btn-social__icon">
+                        <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#tw"></use>
+                    </svg> --}}
+                    <img src="{{ asset('static/images/new-icon/twitter.png') }}" alt="" class="yt-icon btn-social__icon">
                 </a>
                 @endif
                 @if($siteInfo['contact_instagram'])
                 <a class="btn-social" href="{{ $siteInfo['contact_instagram'] }}" alt="Instagram">
-                    <svg class="ig-icon btn-social__icon">
-                        <use xlink:href="{{ asset('static/images/sprites.svg') }}#ig"></use>
-                    </svg>
+                    {{-- <svg class="ig-icon btn-social__icon">
+                        <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#ig"></use>
+                    </svg> --}}
+                    <img src="{{ asset('static/images/new-icon/ig.png') }}" alt="" class="yt-icon btn-social__icon">
                 </a>
                 @endif
                 @if($siteInfo['contact_youtube'])
                 <a class="btn-social" href="{{ $siteInfo['contact_youtube'] }}" alt="Youtube">
-                    <svg class="yt-icon btn-social__icon">
-                        <use xlink:href="{{ asset('static/images/sprites.svg') }}#yt"></use>
-                    </svg>
+                    {{-- <svg class="yt-icon btn-social__icon">
+                        <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#yt"></use>
+                    </svg> --}}
+                    <img src="{{ asset('static/images/new-icon/youtube.png') }}" alt="" class="yt-icon btn-social__icon">
                 </a>
                 @endif
             </div>
