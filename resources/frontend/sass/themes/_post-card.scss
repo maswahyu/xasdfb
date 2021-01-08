@@ -113,6 +113,7 @@
 
     &__with-padding {
       padding: 2rem 0;
+      border-bottom: unset;
 
       @include media-under(md) {
         padding-bottom: .5rem;
@@ -203,7 +204,7 @@
       }
     }
 
-    @media screen and (min-width: 1600){
+    @media screen and (min-width: 1600px){
       max-width: 90%;
 
       #{$this}__thumbnail--large {
@@ -499,7 +500,6 @@
 
   &--centered {
     justify-content: flex-start;
-    margin: 1rem 0;
 
     &-article {
       justify-content: center;
@@ -553,7 +553,7 @@
     color: palette("nobel");
     font-size: 1.4rem;
     flex: 0 0 auto;
-    padding: 1rem 0;
+    padding: 5px 0 10px;
 
     &::after {
       content: "|";

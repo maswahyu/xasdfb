@@ -104,6 +104,10 @@ $(function ()
 
         $.each(parsedData.data, function (index, value) {
 
+            if (index >= 4) {
+                return
+            }
+            
             if (parsedData.auth) {
                 value.utm = '?utm_source=Recommended&utm_medium=Login&utm_campaign=LazoneDetail'
             } else {
