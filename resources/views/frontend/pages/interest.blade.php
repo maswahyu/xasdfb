@@ -34,7 +34,7 @@
                     <div class="post-card__info">
 
                         <div class="post-card__interest">
-                            <div class="post-card__interest-checkbox" style="font-size: 16px;">
+                            <div class="post-card__interest-checkbox">
                                 <div class="pretty p-default">
                                     <input type="checkbox" name="interest[]" class="ids" value="{{ $interest->id }}" {{ $interest->isChecked() }}/>
                                     <div class="state p-danger">

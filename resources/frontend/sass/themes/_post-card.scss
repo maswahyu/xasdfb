@@ -12,6 +12,10 @@
     max-width: 28rem;
   }
 
+  &__info {
+    padding: 0 1.5rem;
+  }
+
   &--simple,
   &--elevation {
     padding-bottom: 2rem !important;
@@ -113,7 +117,7 @@
 
     &__with-padding {
       padding: 2rem 0;
-      border-bottom: unset;
+      // border-bottom: unset;
 
       @include media-under(md) {
         padding-bottom: .5rem;
@@ -143,7 +147,7 @@
 
     #{$this}__thumbnail-square {
       flex: 0 0 10rem;
-      margin-right: 2rem;
+      margin-right: 15px;
       margin-top: .5rem;
       height: 10rem;
       width: 10rem;
@@ -220,7 +224,7 @@
 
     @include media-over(lg) {
       max-width: 72.2rem;
-      margin-top: 2rem;
+      // margin-top: 2rem;
     }
   }
 
@@ -239,7 +243,7 @@
 
       #{$this}__meta,
       #{$this}__title {
-        padding: 0 1rem;
+        padding: 0 20px;
       }
 
       #{$this}__title {
@@ -323,7 +327,7 @@
   }
 
   &__meta {
-    margin-bottom: .5rem;
+    // margin-bottom: .5rem;
     @include font-size(1.4rem);
   }
 
@@ -442,7 +446,8 @@
   }
 
   &__additional {
-    margin-top: 1rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
 
     &--x-padding {
       padding: 0 1rem;
@@ -475,6 +480,8 @@
 
   &__interest {
     &-checkbox {
+      font-size: 16px;
+      margin: 0 1.5rem;
     }
 
     &-title {

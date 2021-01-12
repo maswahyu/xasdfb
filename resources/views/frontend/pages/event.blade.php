@@ -59,7 +59,7 @@
 
             <div class="list-with-sidebar__main">
 
-                <div class="row horizontal-list jsArticleList"></div>
+                <div class="row horizontal-list horizontal-list--margin-top-0 jsArticleList"></div>
 
                 <div class="row">
                     <div class="span-12 text-center">

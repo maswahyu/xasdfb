@@ -58,7 +58,7 @@
     }
 
     &--category {
-      @include font-size(3rem);
+      font-size: 32px !important;
     }
 
     &--lg {
@@ -106,6 +106,7 @@
 
   &--has-more {
     justify-content: space-between !important;
+    padding-left: 1.3rem;
   }
 
   &--page {
@@ -127,7 +128,7 @@
 
 .subtitle {
   margin-bottom: 3rem;
-  @include font-size(1.4rem);
+  font-size: 16px;
   font-weight: 600;
   line-height: (24/14);
 

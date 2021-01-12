@@ -129,6 +129,10 @@
                     </a>
                 </div>
 
+            </div>
+
+            <div class="post-card__meta post-meta">
+
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
             </div>

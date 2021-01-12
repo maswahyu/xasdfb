@@ -126,11 +126,11 @@
                     </a>
                 </li>
                 @auth
-                    <li class="menu menu__auth">
+                    <li class="menu">
                         <a href="{{ url('member/logout') }}" class="btn btn-crimson btn-login">Logout</a>
                     </li>
                 @else
-                    <li class="menu menu__auth">
+                    <li class="menu">
                         <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
                     </li>
                 @endauth

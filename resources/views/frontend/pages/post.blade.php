@@ -153,7 +153,7 @@
         <div class="span-12 span-lg-10 off-lg-1">
             <ul class="list">
                 @if($post->tags)
-                <li style="font-size: 14px;">TAGS</li>
+                <li style="font-size: 14px; line-height: 1.7;">TAGS</li>
                 @foreach($post->tags as $item)
                     <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
                 @endforeach

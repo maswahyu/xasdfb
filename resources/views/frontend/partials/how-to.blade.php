@@ -7,7 +7,7 @@
             <div class="row flex-justify-center">
                 <div class="span-auto">
                     <div class="section-title section-title--plain section-title--page">                
-                        <span class="section-title__label section-title__label--category semibold">How To Get Points?</span>
+                        <span class="section-title__label section-title__label--category">How To Get Points?</span>
                     </div>
                 </div>
             </div>
