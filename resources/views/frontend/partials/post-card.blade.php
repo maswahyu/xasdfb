@@ -1,4 +1,4 @@
-<div class="post-card">
+<div class="post-card post-card__with-spaces">
 
     <div class="post-card__thumbnail">
         <a href="{{ $post->url }}{!! isset($utm) ? $utm : '' !!}" alt="{{ $post->title }}">

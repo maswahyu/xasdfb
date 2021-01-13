@@ -96,6 +96,10 @@
   &--elevation {
     border: 1px solid #f5f5f6;
     box-shadow: 0 5px 10px -5px rgba(204, 204, 204, 0.5);
+
+    @include media-under(md) {
+      margin-bottom: 2rem;
+    }
   }
 
   &--half {
@@ -394,6 +398,13 @@
     height: auto;
     width: 100%;
     max-width: 100%;
+
+    @include media-under(md) {
+
+      &--interest {
+        min-width: 115px;
+      }
+    }
 
     @include media-over(lg) {
       height: 16.8rem;

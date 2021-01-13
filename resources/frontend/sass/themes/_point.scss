@@ -220,12 +220,13 @@
     font-family: $title-font-family;
     font-weight: 600;
     line-height: (24/20);
-    @include font-size(2rem);
+    font-size: 20px;
   }
 
   &__point {
     color: palette("crimson");
     font-weight: 600;
+    font-size: 16px;
   }
 
   &__requirement {

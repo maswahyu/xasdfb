@@ -33,7 +33,7 @@ class PostController extends Controller
 
 	    $sticky 	 = News::getSticky(2, $category);
 	    $latest 	 = News::getLatest(3, $category);
-	    $recommended = News::getRecommended(4);
+	    $recommended = News::getRecommended(4, $category);
 	    $type 	 	 = 1;
 
         $ads = [
