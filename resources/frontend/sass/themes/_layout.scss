@@ -13,6 +13,7 @@
 
 .home-grid {
   @include row();
+  margin: 0;
   flex-wrap: wrap;
   align-items: stretch;
 
@@ -23,7 +24,11 @@
     @include col(12);
 
     @include media-over(xl) {
-      @include col(9);
+      flex: 1 0 74%;
+      max-width: 74%;
+      padding: 0 1rem;
+      padding-right: 0;
+      width: 100%;
     }
 
     &-highlights {
@@ -58,21 +63,23 @@
   }
 
   &__recommended {
-    flex: 1 0 103%;
-    max-width: 103%;
+    flex: 1 0 108%;
+    max-width: 108%;
     width: 100%;
 
     background: palette('athens');
     border-top: 5px solid palette('crimson');
-    padding: 1.3rem 1rem 1rem;
-    margin-left: -.5rem;
+    padding: 1.3rem 2rem 1rem;
+    margin-left: -1.5rem;
 
     @include media-over(lg) {
       margin-left: -1.5rem;
     }
 
     @include media-over(xl) {
-      @include col(3);
+      flex: 1 0 26%;
+      max-width: 26%;
+      width: 100%;
       
       padding: 2.3rem 2rem 2rem;
       margin-left: unset;
@@ -95,6 +102,8 @@
   flex-wrap: wrap;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  margin-left: 0;
+  margin-right: 0;
 
   @include media-over(lg) {
     margin-top: 8rem;
@@ -109,7 +118,10 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(9);
+      flex: 1 0 74%;
+      max-width: 74%;
+      padding: 0 1rem;
+      width: 100%;
     }
 
     /* @include media-over(xl) {
@@ -121,7 +133,10 @@
     @include col(12);
 
     @include media-over(lg) {
-      @include col(3);
+      flex: 1 0 26%;
+      max-width: 26%;
+      width: 100%;
+      padding-right: 0;
     }
 
     /* @include media-over(xl) {

@@ -58,7 +58,11 @@
     }
 
     &--category {
-      font-size: 32px !important;
+      font-size: 24px !important;
+
+      @include media-over(md) {
+        font-size: 32px !important;
+      }
     }
 
     &--lg {
@@ -133,7 +137,7 @@
   line-height: (24/14);
 
   &--point {
-    @include font-size(1.8rem);
+    font-size: 16px;
     font-weight: normal;
   }
 }

@@ -7,8 +7,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="span-12 span-lg-5 off-lg-1">
+        <div class="row flex-justify-center">
+            <div class="span-11 span-lg-5 off-lg-1">
                 <div>
                     <strong class="fs-18">Kebijakan Point</strong>
                 </div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="span-12 span-lg-5">
+            <div class="span-11 span-lg-5">
                 <div>
                     <strong class="fs-18">Kebijakan Personal</strong>
                 </div>

@@ -17,7 +17,7 @@ hr {
 }
 
 .fs-18 {
-  @include font-size(1.8rem);
+  font-size: 18px;
 }
 
 .search-input {
@@ -257,5 +257,6 @@ hr {
 ol.styled-list {
   li {
     margin: 2rem 0;
+    font-size: 16px;
   }
 }

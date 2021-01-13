@@ -25,7 +25,7 @@
             @foreach($interests as $interest)
             <div class="span-12 span-lg-4">
 
-                <a href="javascript:void(0)" class="post-card post-card--third post-card--elevation post-card--interest">
+                <a href="javascript:void(0)" class="post-card post-card--third post-card--elevation post-card--interest" style="padding: 0 !important;">
 
                     <div class="post-card__thumbnail post-card__thumbnail--interest">
                         <img class="post-card__img post-card__img--interest" src="{{ $interest->img }}" alt="">
@@ -67,7 +67,7 @@
 
 </div>
 
-<div class="modal micromodal-slide" id="modal-success" aria-hidden="true">
+{{-- <div class="modal micromodal-slide" id="modal-success" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
             <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
@@ -76,7 +76,7 @@
             </main>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 @section('before-body-end')

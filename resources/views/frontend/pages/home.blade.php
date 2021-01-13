@@ -50,9 +50,9 @@
             <div class="row jsRecomended">
             </div>
         </div>
-    </div>
 
-    <hr style="margin-top: 8rem;" class="hide-mobile">
+        <hr style="margin-top: 8rem;" class="hide-mobile">
+    </div>
 
     <div class="home-below-fold">
 
@@ -253,14 +253,21 @@
                 <span class="section-title__label">Latest Articles</span>
             </div>
 
-            <div class="span-12 jsArticleList"></div>
+            <div class="span-12 jsArticleList" style="padding: 0;"></div>
             <div class="span-12 text-center">
                 <button class="btn btn-ghost-crimson btn-load-more jsMoreArticle">LOAD MORE</button>
             </div>
         </div>
 
         <div class="span-12 span-md-3 order-1 order-md-2">
-            <div class="section-title section-title--plain section-title--has-more">
+            <div class="show-mobile" style="padding-left: 1rem;">
+                <div class="section-title section-title--plain section-title--has-more">
+                    <span class="section-title__label">Videos</span>
+                    <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
+                </div>
+            </div>
+
+            <div class="section-title section-title--plain section-title--has-more hide-mobile">
                 <span class="section-title__label">Videos</span>
                 <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
             </div>
@@ -386,7 +393,7 @@
 
 <script id="x-trending-template" type="text/x-handlebars-template">
 <div class="span-12 span-md-6 span-lg-3">
-    <div class="post-card post-card--simple post-card--simple__max-height">
+    <div class="post-card post-card--simple post-card--simple__max-height hide-mobile">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
@@ -421,6 +428,40 @@
     
         </div>
 
+    </div>
+    <div class="post-card--most-viewed__mobile show-mobile">
+        <div class="post-card__thumbnail">
+            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
+            </a>
+        </div>
+        <div class="post-card__info">
+
+            <div class="post-card__meta post-meta">
+
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}" alt="{{ category }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
+    
+            </div>
+    
+            <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+    
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+    
+            </div>
+    
+            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+    
+        </div>
     </div>
 
 </div>
