@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <hr style="margin-top: 8rem;" class="hide-mobile">
+        <hr style="margin-top: 8rem; width: 100%;" class="hide-mobile">
     </div>
 
     <div class="home-below-fold">
