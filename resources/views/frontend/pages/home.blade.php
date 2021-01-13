@@ -468,7 +468,7 @@
 </script>
 
 <script id="x-must-template" type="text/x-handlebars-template">
-<div class="span-12" style="padding: 0; margin-top: 3rem;">
+<div class="span-12" style="padding: 0; margin-bottom: 3rem;">
     <div class="post-card">
 
         <div class="post-card__thumbnail">
