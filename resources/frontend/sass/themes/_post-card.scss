@@ -144,6 +144,32 @@
 
   &--interest {
     margin-bottom: 3rem;
+
+    @media screen and (max-width: 320px) {
+      .post-card__interest {
+
+        &-checkbox {
+          margin: 0;
+          font-size: 14px;
+        }
+      
+        .pretty {
+          margin-right: 0;
+        
+          .state label {
+            display: flex;
+            white-space: normal;
+            font-size: 14px;
+  
+            &::before,
+            &::after {
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
   }
 
   &--wide {
@@ -403,6 +429,13 @@
 
       &--interest {
         min-width: 115px;
+      }
+    }
+
+    @media screen and (max-width: 320px) {
+
+      &--interest {
+        min-width: 90px;
       }
     }
 
