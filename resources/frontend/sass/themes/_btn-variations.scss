@@ -103,7 +103,7 @@
 .btn {
 
   @include media-under (md) {
-    padding: 1rem 2rem;
-    font-size: 14px;
+    padding: 1rem;
+    font-size: 12px;
   }
 }

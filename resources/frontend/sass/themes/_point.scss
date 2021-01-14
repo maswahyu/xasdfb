@@ -199,8 +199,8 @@
   border: 1px solid #f5f5f6;
   box-shadow: 0 5px 10px -5px rgba(204, 204, 204, 0.5);
 
-  @media screen and (max-width: 320px) {
-    width: auto;
+  @include media-under(md) {
+    width: 100%;
   }
 
   &__info {
