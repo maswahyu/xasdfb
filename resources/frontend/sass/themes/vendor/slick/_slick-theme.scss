@@ -105,6 +105,10 @@ $slick-opacity-not-active: 1;
             content: $slick-next-character;
         }
     }
+
+    @media screen and (max-width: 320px) {
+        left: -15px;
+    }
 }
 
 .slick-next {
@@ -118,6 +122,10 @@ $slick-opacity-not-active: 1;
         [dir="rtl"] & {
             content: $slick-prev-character;
         }
+    }
+
+    @media screen and (max-width: 320px) {
+        right: -15px;
     }
 }
 
