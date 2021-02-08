@@ -130,7 +130,7 @@ class PostController extends Controller
             return redirect(Category::LENSA.'/'.$slug);
         }
 
-	    $related = News::related($post->slug, $post->category_id);
+	    $related = News::related($post->slug, $post->tags, $post->category_id);
 
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),
@@ -152,7 +152,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $related = News::related($post->slug, $post->category_id);
+        $related = News::related($post->slug, $post->tags, $post->category_id);
 
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),

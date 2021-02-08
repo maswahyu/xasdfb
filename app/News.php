@@ -70,14 +70,34 @@ class News extends Model
         return Cache::get('post'.$slug);
     }
 
-    public static function related($slug, $category_id)
+    public static function related($slug, $tags, $category_id)
     {
-        return self::where('publish', self::STATUS_PUBLISHED)
+        // get related based on category and tags
+        $related = self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereHas('tags', function($query)use($tags) {
+                        return $query->with('tag')->whereIn('tag_id', $tags->map(function($model) {
+                            return [
+                                $model->tag_id
+                            ];
+                        }));
+                    })
                     ->where('category_id', $category_id)
                     ->where('slug', '!=', $slug)
                     ->latest('published_at')
                     ->take(3)
                     ->get();
+
+        if($related->count() === 0) {
+            // get related based on category only
+            $related = self::where('publish', self::STATUS_PUBLISHED)
+            ->where('category_id', $category_id)
+            ->where('slug', '!=', $slug)
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+        }
+
+        return $related;
     }
 
     public function user()
