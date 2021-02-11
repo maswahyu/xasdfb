@@ -212,7 +212,22 @@
     window.feedUrl = "{{ url('feed') }}"
     var p_id = '{{ $post->id }}';
 </script>
-
+@if($post->slug === 'chandra-liow-siap-memberikan-ilmunya-di-lensa-academy-2021-Rrg9A')
+<script>
+    $(function() {
+        if(document.getElementById('registLensaAcademy21')) {
+            $("#registLensaAcademy21").on('click', function(e) => {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Link',
+                    eventAction: 'click',
+                    eventLabel: 'Lensa Academy'
+                });
+            })
+        }
+    });
+</script>
+@endif
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
