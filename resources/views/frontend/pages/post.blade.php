@@ -115,13 +115,13 @@
                     </a>
                 </li>
                 <li class="list__item list__item--social">
-                    <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP }}"
+                    <a class="list__link list__link--social" target="_blank" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP }}"
                         href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
                         <img src="{{ asset('static/images/wa-share.png') }}" alt="">
                     </a>
                 </li>
                 <li class="list__item list__item--social">
-                    <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_LINE }}"
+                    <a class="list__link list__link--social" target="_blank" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_LINE }}"
                         href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
                         <img src="{{ asset('static/images/line-share.png') }}" alt="">
                     </a>
