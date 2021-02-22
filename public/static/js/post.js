@@ -42,4 +42,27 @@ $(function ()
         });
     }, 1000);
 
+    var isSend = false;
+    $("[data-share]").on('click', (e) => {
+        if(isSend === false) {
+            $.ajax({
+                method: "POST",
+                url: '/share-button-count',
+                data:{
+                    channel: $(e.currentTarget).data('share'),
+                    post_id: p_id
+                },
+                beforeSend: () => {
+                    isSend = true;
+                },
+                success: (res) => {
+                    isSend = false;
+                },
+                error: (xhr) => {
+                    isSend = false;
+                    console.log(xhr);
+                }
+            })
+        }
+    })
 });

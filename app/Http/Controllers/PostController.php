@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 use App\StickyBanner;
 use Illuminate\Http\Request;
+use App\ShareNewsChannel;
 use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
@@ -187,4 +188,10 @@ class PostController extends Controller
 
     	return response()->json(['status'=>'success'], 200);
     }
+
+    public function hitShareButton(Request $request) {
+        ShareNewsChannel::newRecord($request);
+        return response()->json()->setStatusCode(200);
+    }
+
 }
