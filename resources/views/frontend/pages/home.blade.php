@@ -30,18 +30,18 @@
         <div class="home-grid__must-reads">
 
             <div class="section-title" style="margin: 2rem 0 3rem;">
-                <span class="section-title__label section-title__label--lg">Must Reads</span>
-            </div>
-
-            <div class="home-grid__must-reads-list jsMustRead">
+                <span class="section-title__label section-title__label--lg text-uppercase">Must Reads</span>
             </div>
 
             <div class="home-grid__must-reads-highlights jsHighlights">
             </div>
 
+            <div class="home-grid__must-reads-list jsMustRead">
+            </div>
+
         </div>
 
-        <div class="home-grid__recommended">
+        {{-- <div class="home-grid__recommended">
 
             <div class="section-title section-title--mobile-ribbon">
                 <span class="section-title__label">Recommended</span>
@@ -49,12 +49,12 @@
 
             <div class="row jsRecomended">
             </div>
-        </div>
+        </div> --}}
 
-        <hr style="margin-top: 8rem; width: 100%;" class="hide-mobile">
+        {{-- <hr style="margin-top: 8rem; width: 100%;" class="hide-mobile"> --}}
     </div>
 
-    <div class="home-below-fold">
+    {{-- <div class="home-below-fold">
 
         <div class="home-below-fold__slider hide-mobile">
             <div class="home-promo-slider jsHomeSlider">
@@ -72,28 +72,63 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
 </div>
 
 {{--  Trending Article --}}
-<div class="home-trending" data-src="/static/images/trending-bg.jpg">
+<div class="home-trending">
     <div class="container">
         <div class="section-title">
-            <span class="section-title__label text-white">Most Viewed Articles</span>
+            <span class="section-title__label text-uppercase">Most Viewed</span>
         </div>
-        <div class="row jsTrendingList"></div>
-        <div class="jsMoreTrending"></div>
+        <div class="row jsTrendingList">
+            @for($i=0; $i<=3; $i++)
+            <div class="span-12 span-md-6 span-lg-3">
+                <div class="post-card post-card--simple post-card--simple__max-height">
+                    <div class="post-card__thumbnail">
+                        <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                            <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
+                        </a>
+                    </div>
+            
+                    <div class="post-card__info">
+                
+                        <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                            <div class="post-card__title">
+                                <span>Test</span>
+                            </div>
+                        </a>
+            
+                        <div class="post-card__meta post-meta">
+
+                            <div class="post-meta__category">
+                                <a href="#" alt="Test">
+                                    <span>Test</span>
+                                </a>
+                            </div>
+                            <div class="post-meta__stat"><span>21 Jan 2021</span></div>
+                
+                        </div>
+                
+                    </div>
+            
+                </div>
+            
+            </div>
+            @endfor
+        </div>
+        {{-- <div class="jsMoreTrending"></div> --}}
     </div>
 </div>
 
-<div class="container">
+{{-- <div class="container">
 
     <div class="row">
 
         <div class="span-12">
 
-            {{-- Ads Placement --}}
+            Ads Placement
             <div class="placement">
                 <a href="{{ $ads['url'] }}?utm_source=AdsHome" alt="{{ $ads['url'] }}">
                     <img class="placement__img post-card__img" src="/img_placeholder_slider.jpg" data-src="{{ imageview($ads['image']) }}" alt="{{ $ads['url'] }}">
@@ -105,7 +140,7 @@
 
     </div>
 
-    {{-- <div class="row">
+    <div class="row">
 
         <div class="span-12">
 
@@ -141,9 +176,9 @@
         <div class="hide-mobile jsVideoList"></div>
         <div class="jsMoreVideo"></div>
 
-    </div> --}}
+    </div>
 
-</div>
+</div> --}}
 
 {{-- List with side --}}
 {{-- <div class="container">
@@ -217,40 +252,24 @@
 <div class="container">
     <div class="row">
         <div class="span-12">
-            {{-- Shoutbox lazone --}}
-            <div class="shoutbox shoutbox--wide shoutbox--has-bg">
-
-                <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} />
-                <img class="shoutbox__background show-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
-
-                <div class="shoutbox__content-wrapper">
-
-                    <div class="shoutbox__title shoutbox__title--extra-bold">
-                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
-                    </div>
-
-                    <div class="shoutbox__text shoutbox__text--extra-space">
-                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
-                    </div>
-
-                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
-                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
-                        @guest
-                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
-                        @endguest
-                    </div>
-
-                </div>
-
-            </div>
         </div>
 
     </div>
     <div class="row" style=" margin-top: 5rem;">
 
-        <div class="span-12 span-md-9 order-2 order-md-1">
+        <div class="span-12 span-md-8 order-2 order-md-1">
+            <div class="home-below-fold__slider hide-mobile">
+                <div class="home-promo-slider jsHomeSlider">
+                </div>
+            </div>
+    
+            <div class="home-below-fold__slider show-mobile">
+                <div class="home-promo-slider jsHomeMobileSlider">
+                </div>
+            </div>
+
             <div class="section-title">
-                <span class="section-title__label">Latest Articles</span>
+                <span class="section-title__label text-uppercase">Latest Article</span>
             </div>
 
             <div class="span-12 jsArticleList" style="padding: 0;"></div>
@@ -259,8 +278,8 @@
             </div>
         </div>
 
-        <div class="span-12 span-md-3 order-1 order-md-2">
-            <div class="show-mobile" style="padding-left: 1rem;">
+        <div class="span-12 span-md-4 order-1 order-md-2">
+            {{-- <div class="show-mobile" style="padding-left: 1rem;">
                 <div class="section-title section-title--plain section-title--has-more">
                     <span class="section-title__label">Videos</span>
                     <a href="{{ url('gallery/video') }}?utm_source=SeeMore&utm_medium=Video&utm_campaign=LazoneDetail" class="section-title__more" alt="See more"><span>SEE MORE</span><span class="arrow-left"></span></a>
@@ -279,6 +298,31 @@
                     </div>
                 </div>
                 <div class="jsMoreVideo"></div>
+            </div> --}}
+            
+            {{-- Shoutbox lazone --}}
+            <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+
+                {{-- <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} /> --}}
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+
+                <div class="shoutbox__content-wrapper">
+
+                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
+                    </div>
+
+                    <div class="shoutbox__text shoutbox__text--extra-space">
+                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    </div>
+
+                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                        @guest
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                        @endguest
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -308,6 +352,19 @@
         </div>
 
         <div class="post-card__info">
+            <!-- <div class="post-card__meta post-meta">
+
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+
+            </div> -->
+
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title post-card__title--large">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
 
             <div class="post-card__meta post-meta">
 
@@ -317,21 +374,9 @@
                     </a>
                 </div>
 
-
-            </div>
-            <div class="post-card__meta post-meta">
-
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
             </div>
-
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title post-card__title--large">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
 
         </div>
 
@@ -393,7 +438,7 @@
 
 <script id="x-trending-template" type="text/x-handlebars-template">
 <div class="span-12 span-md-6 span-lg-3">
-    <div class="post-card post-card--simple post-card--simple__max-height hide-mobile">
+    <div class="post-card post-card--simple post-card--simple__max-height">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
@@ -401,6 +446,20 @@
         </div>
 
         <div class="post-card__info">
+    
+            <!-- <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+    
+                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+    
+            </div> -->
+    
+            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
 
             <div class="post-card__meta post-meta">
 
@@ -409,59 +468,12 @@
                         <span>{{ category }}</span>
                     </a>
                 </div>
-    
-            </div>
-    
-            <div class="post-card__meta post-meta">
-    
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
     
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-    
             </div>
-    
-            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
     
         </div>
 
-    </div>
-    <div class="post-card--most-viewed__mobile show-mobile">
-        <div class="post-card__thumbnail">
-            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
-            </a>
-        </div>
-        <div class="post-card__info">
-
-            <div class="post-card__meta post-meta">
-
-                <div class="post-meta__category">
-                    <a href="{{ category_url }}" alt="{{ category }}">
-                        <span>{{ category }}</span>
-                    </a>
-                </div>
-    
-            </div>
-    
-            <div class="post-card__meta post-meta">
-    
-                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-    
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-    
-            </div>
-    
-            <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
-    
-        </div>
     </div>
 
 </div>
@@ -476,6 +488,17 @@
                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
+        <!-- <div class="post-card__meta post-meta">
+
+            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+
+        </div> -->
+
+        <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+            <div class="post-card__title post-card__title--medium">
+                <span>{{ title }}</span>
+            </div>
+        </a>
 
         <div class="post-card__meta post-meta">
 
@@ -484,20 +507,9 @@
                     <span>{{ category }}</span>
                 </a>
             </div>
-
-        </div>
-        <div class="post-card__meta post-meta">
-
             <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-            <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
         </div>
-
-        <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <div class="post-card__title post-card__title--medium">
-                <span>{{ title }}</span>
-            </div>
-        </a>
 
     </div>
 
@@ -553,21 +565,11 @@
         </a>
     </div>
 
-    <div class="post-card__meta post-meta post-meta--centered">
+    <!-- <div class="post-card__meta post-meta post-meta--centered">
 
-        <div class="post-meta__category">
-            <a href="{{ category_url }}" alt="{{ category }}">
-                <span>{{ category }}</span>
-            </a>
-        </div>
-
-    </div>
-    <div class="post-card__meta post-meta post-meta--centered">
-
-        <div class="post-meta__stat"><span>{{ published_date }}</span></div>
         <div class="post-meta__stat"><span>{{ view_count }} views </span></div>
 
-    </div>
+    </div> -->
 
     <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
         <div class="post-card__title post-card__title--xlarge">
@@ -578,6 +580,18 @@
         </div>
     </a>
 
+    <div class="post-card__meta post-meta">
+
+        <div class="post-meta__category">
+            <a href="{{ category_url }}" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+        </div>
+        <div class="post-meta__stat"><span>13 Jan 2021</span></div>
+        <!-- <div class="post-meta__stat"><span>{{ published_date }}</span></div> -->
+
+    </div>
+    
 </div>
 </script>
 @endverbatim

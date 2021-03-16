@@ -23,16 +23,15 @@
     align-content: baseline;
     @include col(12);
 
-    @include media-over(xl) {
+    /* @include media-over(xl) {
       flex: 1 0 74%;
       max-width: 74%;
       padding: 0 1rem;
       padding-right: 0;
       width: 100%;
-    }
+    } */
 
     &-highlights {
-      order: 0;
       width: 100%;
 
       /* @include media-over(lg) {
@@ -41,9 +40,8 @@
       } */
 
       @include media-over(lg) {
-        // width: 58rem;
-        order: 1;
-        flex: 0 0 70%;
+        width: 646px;
+        margin-right: 4rem;
       }
     }
 
@@ -52,12 +50,9 @@
       flex-flow: row wrap;
       justify-content: center;
       width: 100%;
-      order: 1;
 
       @include media-over(lg) {
-        // width: 28rem;
-        order: 0;
-        flex: 0 0 30%;
+        width: 28rem;
       }
     }
   }
@@ -117,12 +112,12 @@
   &__slider {
     @include col(12);
 
-    @include media-over(lg) {
+    /* @include media-over(lg) {
       flex: 1 0 74%;
       max-width: 74%;
       padding: 0 1rem;
       width: 100%;
-    }
+    } */
 
     /* @include media-over(xl) {
       @include col(9);
@@ -149,10 +144,11 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
 
-  background-image: url("../images/trending-bg.webp");
+  background-color: palette('athens');
+  /* background-image: url("../images/trending-bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
 
   @include media-over(lg) {
     padding-top: 6rem;
