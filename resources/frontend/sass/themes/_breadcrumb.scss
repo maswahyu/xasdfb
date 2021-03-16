@@ -21,7 +21,7 @@
 
       border-style: solid;
       border-width: 5px 0 5px 5px;
-      border-color: transparent transparent transparent palette("nobel");
+      border-color: transparent transparent transparent palette("crimson");
     }
 
     &:last-child::after {
@@ -30,8 +30,9 @@
   }
 
   &__link {
-    color: palette("nobel");
-    font-size: 1.2rem;
+    color: palette("crimson");
+    font-size: 1.4rem;
     font-weight: bold;
+    text-transform: uppercase;
   }
 }
