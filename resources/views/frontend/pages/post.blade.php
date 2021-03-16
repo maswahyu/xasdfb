@@ -39,7 +39,7 @@
 
     </div>
 
-    <div class="row flex-justify-center post-breadcrumb">
+    {{-- <div class="row flex-justify-center post-breadcrumb">
 
         <ul class="breadcrumb">
             @if($post->category)
@@ -48,19 +48,26 @@
             @endif
         </ul>
 
-    </div>
+    </div> --}}
 
     <div class="row">
 
         <div class="span-12 span-lg-10 off-lg-1 span-xl-8 off-xl-2">
 
-            <div class="post-header text-center">
+            <ul class="breadcrumb">
+                @if($post->category)
+                <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->parent->url }}">{{ $post->parent_name }}</a></li>
+                <li class="breadcrumb__item"><a class="breadcrumb__link" href="{{ $post->category->url }}">{{ $post->category_name }}</a></li>
+                @endif
+            </ul>
+
+            <div class="post-header">
 
                 <h1 class="post-header__title">{{ $post->title }}</h1>
 
                 <div class="post-header__meta">
 
-                    <div class="post-meta post-meta--centered post-meta--centered-article">
+                    {{-- <div class="post-meta post-meta--centered post-meta--centered-article">
 
                         <div class="post-meta__category">
                             @if($post->category)
@@ -70,9 +77,9 @@
                             @endif
                         </div>
 
-                    </div>
+                    </div> --}}
 
-                    <div class="post-meta post-meta--centered post-meta--centered-article">
+                    <div class="post-meta">
 
                         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
@@ -90,7 +97,7 @@
 
     <div class="row">
 
-        <div id="sidebar" class="span-12 span-lg-1 span-xl-2 sidebar">
+        <div id="sidebar" class="span-12 span-lg-1 sidebar">
             <ul class="list list--vertical flex-align-center">
                 <li class="list__label">Share:</li>
                 <li class="list__item list__item--social">
@@ -134,33 +141,38 @@
         </div>
 
         {{-- CONTENT DUMMY --}}
-        <div class="span-12 span-lg-10 span-xl-8 post-content">
+        <div class="span-12 span-lg-10">
 
-            <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+            <div class="row flex-justify-center">
+                <div class="span-12">
 
-            <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
+                    <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
-            <div id="post-content">
+                </div>
 
-            {!! $post->content !!}
+                <div class="span-12 span-lg-10">
 
+                    <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
+        
+                    <div id="post-content">
+        
+                        {!! $post->content !!}
+        
+                    </div>
+                    
+                    <ul class="list post-tag">
+                        @if($post->tags)
+                        <li style="font-size: 14px; line-height: 1.7;">TAGS</li>
+                        @foreach($post->tags as $item)
+                            <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
+                        @endforeach
+                        @endif
+                    </ul>
+
+                </div>
             </div>
         </div>
 
-    </div>
-
-    <div class="row post-tag">
-        <div class="span-12 span-lg-10 off-lg-1">
-            <ul class="list">
-                @if($post->tags)
-                <li style="font-size: 14px; line-height: 1.7;">TAGS</li>
-                @foreach($post->tags as $item)
-                    <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
-                @endforeach
-                @endif
-            </ul>
-
-        </div>
     </div>
 
 </div>
@@ -170,14 +182,14 @@
         <div class="row">
             <div class="span-12">
                 <div class="section-title section-title--plain">
-                    <span class="section-title__label">Similar Articles</span>
+                    <span class="section-title__label text-uppercase">Related Articles</span>
                 </div>
             </div>
         </div>
         <div class="row">
             @foreach($relatedPosts as $post_related)
-            <div class="span-12 span-lg-4">
-                @include('frontend.partials.post-card-related', ['post' => $post_related])
+            <div class="span-12 span-lg-3">
+                @include('frontend.partials.post-card-related-new', ['post' => $post_related])
             </div>
             @endforeach
         </div>
@@ -188,20 +200,18 @@
     <div class="container">
 
         <div class="row">
-
-            <div class="span-12 span-lg-8 off-lg-2">
-
-                <div class="row">
-                    <div class="span-12">
-                        <div class="section-title">
-                            <span class="section-title__label">Recommended</span>
-                        </div>
-                    </div>
+            <div class="span-12">
+                <div class="section-title">
+                    <span class="section-title__label text-uppercase">Latest</span>
                 </div>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="span-12 jsArticleList"></div>
-                </div>
+        <div class="row">
+
+            <div class="span-12 span-lg-8">
+
+                <div class="row jsArticleList"></div>
 
                 <div class="row">
                     <div class="span-12 text-center">
@@ -209,6 +219,33 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="span-12 span-md-4">
+                {{-- Shoutbox lazone --}}
+                <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+    
+                    {{-- <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} /> --}}
+                    <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+    
+                    <div class="shoutbox__content-wrapper">
+    
+                        <div class="shoutbox__title shoutbox__title--extra-bold">
+                            <span>Menangkan Hadiah <br> Menarik Tiap Bulan!</span>
+                        </div>
+    
+                        <div class="shoutbox__text shoutbox__text--extra-space">
+                            <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                        </div>
+    
+                        <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                            <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG</strong></a>
+                            @guest
+                            <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                            @endguest
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -232,41 +269,36 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <div class="post-card post-card--wide post-card--wide__with-padding">
-
-        <div class="post-card__thumbnail">
-            <a href="{{ url }}" alt="{{ title }}">
-                <img class="post-card__img" src="{{ thumbnail }}" alt="">
-            </a>
-        </div>
-
-        <div class="post-card__info">
-
-            <div class="post-card__meta post-meta">
-
-                <div class="post-meta__category">
-                    <a href="{{ category_url }}">
-                        <span>{{ category }}</span>
-                    </a>
-                </div>
-
+    <div class="span-12 span-lg-4">
+        <div class="post-card post-card--simple post-card--simple__no-padding">
+            <div class="post-card__thumbnail">
+                <a href="{{ url }}" alt="{{ title }}">
+                    <img class="post-card__img" src="{{ thumbnail }}" alt="">
+                </a>
             </div>
-            <div class="post-card__meta post-meta">
-
-                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
-            </div>
-
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title post-card__title--large">
-                    <span>{{ title }}</span>
+        
+            <div class="post-card__info">
+        
+                <a href="{{ url }}" alt="{{ title }}">
+                    <div class="post-card__title">
+                        <span>{{ title }}</span>
+                    </div>
+                </a>
+        
+                <div class="post-card__meta post-meta">
+        
+                    <div class="post-meta__category">
+                        <a href="{{ category_url }}">
+                            <span>{{ category }}</span>
+                        </a>
+                    </div>
+            
+                    <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+        
                 </div>
-            </a>
-
+        
+            </div>    
         </div>
-
     </div>
 </script>
 @endverbatim
