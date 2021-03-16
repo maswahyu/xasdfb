@@ -82,42 +82,7 @@
         <div class="section-title">
             <span class="section-title__label text-uppercase">Most Viewed</span>
         </div>
-        <div class="row jsTrendingList">
-            @for($i=0; $i<=3; $i++)
-            <div class="span-12 span-md-6 span-lg-3">
-                <div class="post-card post-card--simple post-card--simple__max-height">
-                    <div class="post-card__thumbnail">
-                        <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
-                            <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
-                        </a>
-                    </div>
-            
-                    <div class="post-card__info">
-                
-                        <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
-                            <div class="post-card__title">
-                                <span>Test</span>
-                            </div>
-                        </a>
-            
-                        <div class="post-card__meta post-meta">
-
-                            <div class="post-meta__category">
-                                <a href="#" alt="Test">
-                                    <span>Test</span>
-                                </a>
-                            </div>
-                            <div class="post-meta__stat"><span>21 Jan 2021</span></div>
-                
-                        </div>
-                
-                    </div>
-            
-                </div>
-            
-            </div>
-            @endfor
-        </div>
+        <div class="row jsTrendingList"></div>
         {{-- <div class="jsMoreTrending"></div> --}}
     </div>
 </div>
