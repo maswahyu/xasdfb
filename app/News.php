@@ -76,7 +76,7 @@ class News extends Model
                     ->where('category_id', $category_id)
                     ->where('slug', '!=', $slug)
                     ->latest('published_at')
-                    ->take(3)
+                    ->take(4)
                     ->get();
     }
 
@@ -118,7 +118,7 @@ class News extends Model
         return $model;
     }
 
-    public static function getMustReads($take = 2)
+    public static function getMustReads($take = 4)
     {
         $model = Cache::tags('cacheHomepage')->rememberForever('getMustReads', function () use ($take) {
 
