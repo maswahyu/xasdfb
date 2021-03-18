@@ -48,8 +48,8 @@
 
         <div class="home-grid__must-reads">
 
-            <div class="section-title" style="margin: 2rem 0 3rem;">
-                <span class="section-title__label section-title__label--lg text-uppercase">Must Reads</span>
+            <div class="section-title">
+                <span class="section-title__label section-title__label--lg text-uppercase">Must Read</span>
             </div>
 
             <div class="home-grid__must-reads-highlights jsHighlights">
@@ -98,7 +98,7 @@
 <div class="container">
     <div class="row">
         <div class="span-12 span-md-8 order-2 order-md-1">    
-            <div class="home-below-fold__slider show-mobile" style="margin: 2rem 0;">
+            <div class="home-below-fold__slider show-mobile" style="margin: 4rem 0;">
                 <div class="home-promo-slider jsHomeMobileSlider">
                 </div>
             </div>
@@ -110,14 +110,14 @@
 <div class="home-trending">
     <div class="container">
         <div class="section-title">
-            <span class="section-title__label text-uppercase">Most Viewed</span>
+            <span class="section-title__label section-title__label--lg text-uppercase">Most Viewed</span>
         </div>
         <div class="row">
             
             <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
                 <div class="home-promo-slider jsMobileTrendingList">
                     {{-- @for($i=0; $i<=3; $i++)
-                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 1rem;">
+                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1rem;">
                             <div class="post-card__thumbnail">
                                 <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
                                     <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
@@ -317,12 +317,7 @@
 </div> --}}
 
 <div class="container">
-    <div class="row">
-        <div class="span-12">
-        </div>
-
-    </div>
-    <div class="row" style=" margin-top: 5rem;">
+    <div class="row" style=" margin-top: 4rem;">
 
         <div class="span-12 span-md-8 order-2 order-md-1">
             <div class="home-below-fold__slider hide-mobile">
@@ -336,7 +331,7 @@
             </div> --}}
 
             <div class="section-title">
-                <span class="section-title__label text-uppercase">Latest Article</span>
+                <span class="section-title__label section-title__label--lg text-uppercase">Latest Articles</span>
             </div>
 
             <div class="span-12 jsArticleList" style="padding: 0;"></div>
@@ -346,7 +341,7 @@
         </div>
 
         {{-- Shoutbox lazone Desktop --}}
-        <div class="span-12 span-md-4 order-1 order-md-2 hide-mobile" id="shoutbox">
+        <div class="span-12 span-md-4 order-1 order-md-2 hide-mobile" id="shoutbox" style="padding: 0;">
             {{-- <div class="show-mobile" style="padding-left: 1rem;">
                 <div class="section-title section-title--plain section-title--has-more">
                     <span class="section-title__label">Videos</span>
@@ -375,7 +370,7 @@
                 <div class="shoutbox__content-wrapper">
 
                     <div class="shoutbox__title shoutbox__title--extra-bold">
-                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
+                        <span>Menangkan Hadiah Menarik Tiap Bulan!</span>
                     </div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">
@@ -560,7 +555,7 @@
                         <span>{{ category }}</span>
                     </a>
                 </div>
-                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+                <div class="post-meta__stat"><span>{{ view_count }} Views</span></div>
     
             </div>
     
@@ -600,7 +595,7 @@
                         <span>{{ category }}</span>
                     </a>
                 </div>
-                <div class="post-meta__stat"><span>{{ view }}</span></div>
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
     
             </div>
         </div>
@@ -667,7 +662,7 @@
         <div class="post-card__title post-card__title--xlarge">
             <span>{{ title }}</span>
         </div>
-        <div class="post-card__excerpt">
+        <div class="post-card__excerpt hide-mobile">
             <p>{{  summary }}</p>
         </div>
     </a>
@@ -675,12 +670,11 @@
     <div class="post-card__meta post-meta">
 
         <div class="post-meta__category">
-            <a href="{{ category_url }}" alt="{{ category }}">
+            <a href="{{ category_url }}" alt="{{ category }}" style="font-size: 14px">
                 <span>{{ category }}</span>
             </a>
         </div>
-        <div class="post-meta__stat"><span>13 Jan 2021</span></div>
-        <!-- <div class="post-meta__stat"><span>{{ published_date }}</span></div> -->
+        <div class="post-meta__stat" style="font-size: 14px"><span>{{ published_date }}</span></div>
 
     </div>
     
