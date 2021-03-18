@@ -10,9 +10,9 @@
   text-align: center;
   background-color: palette("athens");
 
-  /* @include media-over(lg){
-    width: 28.1rem;
-  } */
+  @include media-over(lg){
+    padding: 2rem 4rem;
+  }
 
   /* @media screen and (min-width: 1600px) {
     min-height: 47rem;
@@ -80,7 +80,7 @@
 
     @include media-under(md) { */
       position: absolute;
-      width: 90%;
+      width: 79%;
       bottom: 3rem;
     // }
 
@@ -92,7 +92,7 @@
   &__title {
     margin-bottom: 1.4rem;
     font-size: 24px !important;
-    font-family: $title-font-family;
+    font-family: $new-lazone-font;
     font-weight: bold;
     line-height: 32px;
     letter-spacing: -1px;
@@ -100,7 +100,9 @@
 
     &--extra-bold {
       font-size: 2rem !important;
-      font-weight: 800;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: .5px;
 
       /* @include media-under (md) {
         font-size: 2rem !important;
@@ -112,11 +114,11 @@
     margin-bottom: 1.4rem;
     line-height: (26/16);
     color: palette("black");
-    font-size: 16px !important;
+    font-size: 14px !important;
 
     &--extra-space {
       margin-bottom: 0;
-      line-height: (30/16);
+      line-height: 20px;
       font-weight: 400;
 
       /* @include media-under(md) {
@@ -128,15 +130,16 @@
   &__cta {
     text-align: center;
 
-    /* @include media-over(md) {
+    @include media-over(md) {
       &--left {
         text-align: left;
         padding-left: 0 !important;
       }
-    } */
+    }
 
     .btn {
       width: 100%;
+      font-family: $new-lazone-font;
     }
   }
 }
