@@ -1,6 +1,11 @@
 $(function ()
 {
 
+    $('#shoutbox').stickySidebar({
+        topSpacing: 120,
+        resizeSensor: true,
+    });
+
     $.ajax(window.feedSliderUrl, {
         data: Object.assign({
             'page': 1,
@@ -83,6 +88,11 @@ $(function ()
         var template = Handlebars.compile(document.getElementById("x-must-template").innerHTML)
 
         $.each(parsedData.data, function (index, value) {
+
+            if (index >= 4) {
+                return
+            }
+            
             $('.jsMustRead').append(template(value));
         });
 
@@ -246,4 +256,62 @@ $(function ()
             });
 
     $('.jsMoreTrending').trigger('click');
+
+    $.ajax(window.feedTrendingUrl, {
+        data: Object.assign({
+            'page': 1,
+        }, {})
+    }).done(function (data) {
+
+        console.log(data)
+
+        if(typeof data === 'object'){
+            var parsedData = data;
+        }else{
+            var parsedData = JSON.parse(data);
+        }
+
+        $.each(parsedData.data, function (index, value) {
+
+            $html = `<div><div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 1rem;">
+                        <div class="post-card__thumbnail">
+                            <a href="` + value.url + `?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
+                                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="` + value.thumbnail + `" alt="` + value.title + `">
+                            </a>
+                        </div>
+                        
+                        <div class="post-card__info">
+                            
+                            <a href="` + value.url + `?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
+                                <div class="post-card__title">
+                                    <span>` + value.title + `</span>
+                                </div>
+                            </a>
+                
+                            <div class="post-card__meta post-meta">
+
+                                <div class="post-meta__category">
+                                    <a href="` + value.category_url + `" alt="` + value.category + `">
+                                        <span>` + value.category + `</span>
+                                    </a>
+                                </div>
+                                <div class="post-meta__stat"><span>` + value.view + `</span></div>
+                    
+                            </div>
+                    
+                        </div>
+                    </div></div>`;
+
+            $('.jsMobileTrendingList').append($html);
+        });
+
+        $('.jsMobileTrendingList').slick({
+            dots: false,
+            lazyLoad: 'anticipated',
+            centerMode: true,
+            centerPadding: '30px',
+            slidesToShow: 1,
+            variableWidth: true
+        });
+    });
 });

@@ -19,9 +19,28 @@
 {{-- end of sticky banner --}}
 {{-- Above the fold --}}
 @section('inside-head')
-{{-- <style type="text/css">
-.post-card {padding-bottom: 0.5rem}
-</style> --}}
+<style type="text/css">
+    @media screen and (max-width: 768px) {
+        .post-card--highlight {
+            padding-bottom: 2rem;
+        }
+
+        .jsArticleList {
+            margin-top: -3rem;
+        }
+
+        .post-card--wide__with-padding:first-child {
+            padding-top: 3rem;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .post-card--simple__no-padding {
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+    }
+</style>
 @endsection
 <div class="container container-home">
 
@@ -76,13 +95,96 @@
 
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="span-12 span-md-8 order-2 order-md-1">    
+            <div class="home-below-fold__slider show-mobile" style="margin: 2rem 0;">
+                <div class="home-promo-slider jsHomeMobileSlider">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{--  Trending Article --}}
 <div class="home-trending">
     <div class="container">
         <div class="section-title">
             <span class="section-title__label text-uppercase">Most Viewed</span>
         </div>
-        <div class="row jsTrendingList"></div>
+        <div class="row">
+            
+            <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
+                <div class="home-promo-slider jsMobileTrendingList">
+                    {{-- @for($i=0; $i<=3; $i++)
+                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 1rem;">
+                            <div class="post-card__thumbnail">
+                                <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                                    <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
+                                </a>
+                            </div>
+                    
+                            <div class="post-card__info">
+                        
+                                <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                                    <div class="post-card__title">
+                                        <span>Test</span>
+                                    </div>
+                                </a>
+                    
+                                <div class="post-card__meta post-meta">
+    
+                                    <div class="post-meta__category">
+                                        <a href="#" alt="Test">
+                                            <span>Test</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-meta__stat"><span>21 Jan 2021</span></div>
+                        
+                                </div>                        
+                            </div>                    
+                        </div>
+                    @endfor --}}
+                </div>
+            </div>
+
+            <div class="row hide-mobile jsTrendingList">
+                {{-- @for($i=0; $i<=3; $i++)
+                    <div class="span-12 span-md-6 span-lg-3">
+                        <div class="post-card post-card--simple post-card--simple__max-height">
+                            <div class="post-card__thumbnail">
+                                <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                                    <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
+                                </a>
+                            </div>
+                    
+                            <div class="post-card__info">
+                        
+                                <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
+                                    <div class="post-card__title">
+                                        <span>Test</span>
+                                    </div>
+                                </a>
+                    
+                                <div class="post-card__meta post-meta">
+    
+                                    <div class="post-meta__category">
+                                        <a href="#" alt="Test">
+                                            <span>Test</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-meta__stat"><span>21 Jan 2021</span></div>
+                        
+                                </div>
+                        
+                            </div>
+                    
+                        </div>
+                    
+                    </div>
+                @endfor --}}
+            </div>
+        </div>
         {{-- <div class="jsMoreTrending"></div> --}}
     </div>
 </div>
@@ -228,10 +330,10 @@
                 </div>
             </div>
     
-            <div class="home-below-fold__slider show-mobile">
+            {{-- <div class="home-below-fold__slider show-mobile">
                 <div class="home-promo-slider jsHomeMobileSlider">
                 </div>
-            </div>
+            </div> --}}
 
             <div class="section-title">
                 <span class="section-title__label text-uppercase">Latest Article</span>
@@ -243,7 +345,8 @@
             </div>
         </div>
 
-        <div class="span-12 span-md-4 order-1 order-md-2">
+        {{-- Shoutbox lazone Desktop --}}
+        <div class="span-12 span-md-4 order-1 order-md-2 hide-mobile" id="shoutbox">
             {{-- <div class="show-mobile" style="padding-left: 1rem;">
                 <div class="section-title section-title--plain section-title--has-more">
                     <span class="section-title__label">Videos</span>
@@ -265,10 +368,34 @@
                 <div class="jsMoreVideo"></div>
             </div> --}}
             
-            {{-- Shoutbox lazone --}}
+            <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky">
+
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+
+                <div class="shoutbox__content-wrapper">
+
+                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
+                    </div>
+
+                    <div class="shoutbox__text shoutbox__text--extra-space">
+                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                    </div>
+
+                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                        @guest
+                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                        @endguest
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{-- Shoutbox lazone Mobile --}}
+        <div class="span-12 span-md-4 order-1 order-md-2 show-mobile">
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                {{-- <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} /> --}}
                 <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
 
                 <div class="shoutbox__content-wrapper">
@@ -445,8 +572,8 @@
 </script>
 
 <script id="x-must-template" type="text/x-handlebars-template">
-<div class="span-12" style="padding: 0; margin-bottom: 3rem;">
-    <div class="post-card">
+<div class="span-12 span-md-6" style="padding: 0;">
+    <div class="post-card post-card--simple post-card--simple__no-padding">
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
@@ -459,25 +586,25 @@
 
         </div> -->
 
-        <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <div class="post-card__title post-card__title--medium">
-                <span>{{ title }}</span>
+        <div class="post-card__info">
+            <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+    
+            <div class="post-card__meta post-meta">
+    
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}" alt="{{ category }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
+                <div class="post-meta__stat"><span>{{ view }}</span></div>
+    
             </div>
-        </a>
-
-        <div class="post-card__meta post-meta">
-
-            <div class="post-meta__category">
-                <a href="{{ category_url }}" alt="{{ category }}">
-                    <span>{{ category }}</span>
-                </a>
-            </div>
-            <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
         </div>
-
     </div>
-
 </div>
 </script>
 
@@ -560,6 +687,8 @@
 </div>
 </script>
 @endverbatim
+<script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
+<script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('static/js/home.min.js') }}?v=1"></script>
 <script type="text/javascript">
 var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
