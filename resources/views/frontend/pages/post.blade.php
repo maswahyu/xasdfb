@@ -52,7 +52,7 @@
 
     <div class="row">
 
-        <div class="span-12 span-lg-10 off-lg-1 span-xl-8 off-xl-2">
+        <div class="span-12 span-lg-10 off-lg-1 span-xl-7 off-xl-3">
 
             <ul class="breadcrumb">
                 @if($post->category)
@@ -143,26 +143,28 @@
         {{-- CONTENT DUMMY --}}
         <div class="span-12 span-lg-10">
 
-            <div class="row flex-justify-center">
-                <div class="span-12">
+            <div class="row no-gutters flex-justify-center">
+                <div class="span-12 span-lg-10">
 
-                    <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
+                    <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
                 </div>
 
-                <div class="span-12 span-lg-10">
+                <div class="span-12 span-lg-10 span-xl-7">
 
                     <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
         
-                    <div id="post-content">
+                    <div id="post-content" class="post-content">
         
                         {!! $post->content !!}
-        
+                        
+                        <div class="post-content__recommend">Test</div>
+
                     </div>
                     
                     <ul class="list post-tag">
                         @if($post->tags)
-                        <li style="font-size: 14px; line-height: 1.7;">TAGS</li>
+                        <li class="list__item">TAGS</li>
                         @foreach($post->tags as $item)
                             <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
                         @endforeach
@@ -210,7 +212,7 @@
         <div class="row">
             <div class="span-12">
                 <div class="section-title">
-                    <span class="section-title__label text-uppercase">Latest</span>
+                    <span class="section-title__label section-title__label--lg text-uppercase">Latest</span>
                 </div>
             </div>
         </div>

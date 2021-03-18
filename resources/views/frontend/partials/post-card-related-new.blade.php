@@ -21,7 +21,7 @@
                 </a>
             </div>
     
-            <div class="post-meta__stat"><span>{{ $post->view_count }} views</span></div>
+            <div class="post-meta__stat"><span>{{ $post->view_count }} Views</span></div>
 
         </div>
 
