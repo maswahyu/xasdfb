@@ -1,12 +1,12 @@
 .dropdown-menu {
-  font-family: $nav-font-family;
+  font-family: $new-lazone-font;
   width: 89%;
 
   &__link {
-    font-size: 13px;
+    font-size: 16px;
     color: palette("white");
     text-transform: uppercase;
-    line-height: (80/16);
+    line-height: 4;
 
     &:hover {
       text-shadow: 0 0 2px palette("white");
@@ -35,7 +35,7 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-flow: row nowrap;
 
     width: 100%;
@@ -82,7 +82,7 @@
   &__item {
     display: block;
     position: relative;
-    margin: .75rem 1.5rem;
+    margin: .75rem 1.2rem;
     height: 6.5rem;
 
     transition-duration: 0.5s;
@@ -95,6 +95,10 @@
       // position: absolute;
       right: 0;
       top: 1.5rem;
+
+      @include media-over(md) {
+        margin-left: 14.4rem;
+      }
     }
 
     &:hover {
