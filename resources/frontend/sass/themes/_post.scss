@@ -1,29 +1,37 @@
 .post-header {
   &__title {
     margin-top: 2rem;
-    @include font-size(3rem);
-    line-height: (36/30);
+    font-size: 24px;
+    line-height: 32px;
     font-weight: bold;
-    font-family: $title-font-family;
+    font-family: $new-lazone-font;
+    color: palette('black');
 
-    @include media-under(md) {
-      font-size: 24px;
+    @include media-over(md) {
+      font-size: 28px;
+      line-height: 36px;
     }
   }
 
   &__meta {
     margin: 2rem 0;
+
+    .post-meta__stat {
+      font-size: 1.6rem;
+      line-height: 16px;
+    }
   }
 }
 
 .post-content {
   margin-top: 3rem;
-  @include font-size(1.8rem);
-  line-height: (24/18);
+  font-size: 18px;
+  line-height: 30px;
+  color: palette('black');
 
-  @include media-under(md) {
-    font-size: 16px;
-    line-height: 2;
+  @include media-over(md) {
+    font-size: 20px;
+    line-height: 32px;
   }
 
   p,
@@ -73,6 +81,7 @@
     text-align: left;
   }
 
+  p img,
   img {
     height: auto;
     max-width: 100%;
@@ -94,19 +103,26 @@
 
   &__recommend {
     background-color: palette('athens');
-    font-weight: bold;
-    padding: .5rem 1rem;
-    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+    padding: 1.5rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin: 3rem 0;
 
     &--title {
       color: palette('crimson');
+    }
+
+    @include media-over(md) {
+      font-size: 20px;
+      line-height: 20px;
     }
   }
 }
 
 .post-tag {
-    margin-top: 6rem;
+    margin-top: 4rem;
 }

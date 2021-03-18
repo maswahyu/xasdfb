@@ -1,10 +1,10 @@
 .site-content {
   padding: 8rem 0rem;
-  padding-bottom: 80px !important;
+  padding-bottom: 60px !important;
   font-family: $new-lazone-font;
 
   @include media-over(lg) {
-    padding-top: 14rem;
+    padding-top: 5rem;
   }
 
   &.no-padding {
@@ -148,19 +148,14 @@
 }
 
 .home-trending {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
   background-color: palette('athens');
   /* background-image: url("../images/trending-bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; */
-
-  @include media-over(lg) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
 }
 
 .list-with-sidebar {
@@ -266,8 +261,8 @@
   background-color: palette("athens");
 
   @include media-over(md) {
-    padding: 60px 0;
-    margin: 6rem 0;
+    padding: 4rem 0;
+    margin: 4rem 0;
   }
 }
 

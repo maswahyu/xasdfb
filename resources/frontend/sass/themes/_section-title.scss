@@ -6,11 +6,11 @@
   flex-flow: row nowrap;
   align-items: center;
   padding: 0 1rem;
-  margin: 2.5rem 0 3rem;
+  margin: 2.5rem 0 2rem;
   width: 100%;
 
   @include media-over(lg) {
-    margin-bottom: 3rem;
+    margin-bottom: 3.2rem;
     margin-top: 0;
   }
 
@@ -67,9 +67,10 @@
 
     &--lg {
       font-size: 2.4rem !important;
+      line-height: 30px;
 
       @include media-over(md) {
-        font-size: 36px !important;
+        font-size: 28px !important;
       }
     }
   }
@@ -87,17 +88,8 @@
 
   &--plain {
     padding: 0;
-    // justify-content: center;
-
-    // @include media-over(lg) {
-      justify-content: flex-start !important;
-      width: auto;
-    // }
-
-    /* &::after,
-    &::before {
-      display: none !important;
-    } */
+    justify-content: flex-start !important;
+    width: auto;
 
     &::after {
       left: .7rem;
@@ -105,6 +97,13 @@
 
     #{$this}__label {
       padding: .5rem 2.5rem 0;
+
+      font-size: 20px !important;
+      line-height: 30px;
+
+      @include media-over(md) {
+        font-size: 28px !important;
+      }
     }
   }
 

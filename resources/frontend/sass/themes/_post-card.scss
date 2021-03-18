@@ -13,7 +13,11 @@
   }
 
   &__info {
-    padding: 0 1.5rem;
+    padding: 0 1.2rem;
+
+    @include media-over(md) {
+      padding: 0 1.5rem;
+    }
   }
 
   &--simple,
@@ -60,13 +64,24 @@
 
   &--simple {
 
-    &:not(&__max-height) {
+    &__max-height,
+    &__no-padding {
 
-      @include media-under(lg) {
+      #{$this}__title {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+      }
+    }
+
+    @include media-under(md) {
+      
+      &:not(&__max-height) {
         display: flex;
         align-items: center;
         background-color: transparent;
-        padding: 2rem 0 !important;
+        padding: 1rem 0 !important;
   
         #{$this}__thumbnail {
           max-width: 126px;
@@ -79,6 +94,11 @@
           }
         }
   
+        #{$this}__title,
+        #{$this}__meta {
+          padding: 0;
+        }
+
         #{$this}__title {
           color: palette('black');
         }
@@ -86,17 +106,38 @@
           color: palette('crimson');
         }
       }
+
+      &__max-height {
+        box-shadow: 0px 10px 10px -5px rgba(204, 204, 204, 0.6);
+
+        #{$this}__title {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    
+      &__no-padding {
+
+        #{$this}__title {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
     }
 
     @include media-over(md) {
-
       &__max-height {
         height: 100%;
-        box-shadow: 0 5px 10px -5px rgba(204, 204, 204, 0.5);
+        box-shadow: 0px 10px 10px -5px rgba(204, 204, 204, 0.6);
 
         #{$this}__img,
         #{$this}__thumbnail {
           height: 18.3rem;
+        }
+
+        #{$this}__title {
+          font-size: 18px;
+          line-height: 24px;
         }
       }
       
@@ -107,7 +148,13 @@
         #{$this}__meta {
           padding: 0;
         }
+
+        #{$this}__title {
+          font-size: 18px;
+          line-height: 26px;
+        }
       }
+
     }
 
     @media screen and (min-width: 1440px) {
@@ -203,7 +250,7 @@
 
     &__with-padding {
       padding: 1rem 0;
-      border-bottom: unset;
+      // border-bottom: unset;
 
       #{$this}__info {
         margin: auto 0;
@@ -452,6 +499,10 @@
     width: 100%;
     max-width: 100%;
 
+    &-article {
+      height: auto !important;
+    }
+
     @include media-under(md) {
 
       &--interest {
@@ -521,9 +572,14 @@
     font-size: 16px;
     font-family: $new-lazone-font;
     color: palette("black");
-    line-height: 24px;
+    line-height: 20px;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
+
+    @include media-over(md) {
+      margin-bottom: 1rem;
+      line-height: 24px;
+    }
 
     &--horizontal {
       font-weight: 600;
@@ -536,19 +592,20 @@
 
     &--large {
       font-size: 16px;
+      line-height: 20px;
 
       @include media-over(md) {
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 28px;
       }
     }
 
     &--xlarge {
-      font-size: 21px;
-      line-height: 24px;
+      font-size: 22px;
+      line-height: 32px;
 
       @include media-over(md) {
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 24px;
       }
     }
   }
@@ -644,10 +701,22 @@
     }
   }
 
+  &__category,
+  &__stat {
+    font-size: 1.2rem;
+    line-height: 14px;
+    font-weight: 700;
+
+    @include media-over(md) {
+      font-size: 1.4rem;
+      line-height: 16px;
+    }
+  }
+
   &__category {
     flex: 0 0 auto;
     position: relative;
-    margin-right: 1.2rem;
+    // margin-right: 1.2rem;
     // margin-left: 0.5rem;
 
     span {
@@ -657,8 +726,6 @@
       z-index: 2;
 
       color: palette("crimson");
-      font-weight: bold;
-      font-size: 14px;
       text-transform: uppercase;
 
       /* &:hover {
@@ -666,17 +733,12 @@
       } */
     }
 
-    /* &::after {
-      content: "";
-      position: absolute;
-      bottom: 3px;
-      left: 0;
-      z-index: 1;
-      height: 4px;
-      width: 100%;
-      background-color: palette("crimson");
-      transform: skew(-25deg);
-    } */
+    &::after {
+      content: "•";
+      padding: 0 8px;
+      color: palette('nobel');
+      font-size: 16px;
+    }
   }
 
   &__info {
@@ -685,13 +747,13 @@
 
   &__stat {
     color: palette("nobel");
-    font-size: 1.6rem;
     flex: 0 0 auto;
     padding: 5px 0;
 
     &::after {
-      content: "|";
-      padding: 0 0.5rem;
+      content: "•";
+      padding: 0 10px;
+      font-size: 16px;
     }
 
     &:last-child::after {
