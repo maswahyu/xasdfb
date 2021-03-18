@@ -12,11 +12,11 @@
 
 @section('inside-head')
 <style>
-    /* @media screen and (max-width: 768px) {
-        .post-card--wide {
-            display: block;
+    @media screen and (max-width: 768px) {
+        .shoutbox {
+            margin-top: 3rem;
         }
-    } */
+    }
 </style>
 @endsection
 
@@ -188,10 +188,18 @@
         </div>
         <div class="row">
             @foreach($relatedPosts as $post_related)
-            <div class="span-12 span-lg-3">
-                @include('frontend.partials.post-card-related-new', ['post' => $post_related])
-            </div>
+                <div class="span-12 span-lg-3 hide-mobile">
+                    @include('frontend.partials.post-card-related-new', ['post' => $post_related])
+                </div>
             @endforeach
+            
+            <div class="home-below-fold__slider show-mobile">
+                <div class="home-promo-slider jsMobileRelatedList">
+                    @foreach($relatedPosts as $post_related)
+                        @include('frontend.partials.post-card-related-new-mobile', ['post' => $post_related])
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -214,8 +222,8 @@
                 <div class="row jsArticleList"></div>
 
                 <div class="row">
-                    <div class="span-12 text-center">
-                        <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button>
+                    <div class="span-12 text-center jsMoreArticle">
+                        {{-- <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button> --}}
                     </div>
                 </div>
 

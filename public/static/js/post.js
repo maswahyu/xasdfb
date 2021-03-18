@@ -20,11 +20,6 @@ $(function ()
 
     $('.jsMoreArticle').trigger('click');
 
-    $('#sidebar').stickySidebar({
-        topSpacing: 80,
-        resizeSensor: true,
-    });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -42,4 +37,17 @@ $(function ()
         });
     }, 1000);
 
+    $('#sidebar').stickySidebar({
+        topSpacing: 80,
+        resizeSensor: true,
+    });
+
+    $('.jsMobileRelatedList').slick({
+        dots: false,
+        lazyLoad: 'anticipated',
+        centerMode: true,
+        centerPadding: '30px',
+        slidesToShow: 1,
+        variableWidth: true
+    });
 });
