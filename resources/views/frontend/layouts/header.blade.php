@@ -54,9 +54,9 @@
                         </picture>
                     </a>
                 </li>
-                <li class="dropdown-menu__item">
+                {{-- <li class="dropdown-menu__item">
                     <a href="{{ url('interest') }}" class="dropdown-menu__link" alt="Interest">Pick your interest</a>
-                </li>
+                </li> --}}
                 @auth
                     <li class="dropdown-menu__item dropdown-menu__item--has-submenu dropdown-menu__item--user-menu jsUserMenu">
                         <span class="dropdown-menu__avatar">
