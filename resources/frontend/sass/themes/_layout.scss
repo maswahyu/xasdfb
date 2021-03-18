@@ -1,6 +1,7 @@
 .site-content {
   padding: 8rem 0rem;
   padding-bottom: 80px !important;
+  font-family: $new-lazone-font;
 
   @include media-over(lg) {
     padding-top: 14rem;
@@ -40,8 +41,13 @@
       } */
 
       @include media-over(lg) {
-        width: 646px;
-        margin-right: 4rem;
+        width: 54%;
+        margin-right: 2rem;
+        flex: 0 0 54%;
+      }
+
+      @media screen and (min-width: 1440px) {
+        flex: 1 1 auto;
       }
     }
 
@@ -52,7 +58,8 @@
       width: 100%;
 
       @include media-over(lg) {
-        width: 28rem;
+        width: 44%;
+        flex: 0 0 44%;
       }
     }
   }
