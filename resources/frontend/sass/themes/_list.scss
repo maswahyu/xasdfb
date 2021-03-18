@@ -16,6 +16,10 @@
   &__label {
     @include font-size(1.6rem);
     color: palette("black");
+
+    @include media-under(md) {
+      font-size: 13px;
+    }
   }
 
   &__item {
@@ -98,7 +102,7 @@
   }
 
   &--vertical {
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     overflow: unset;
 
     @include media-over(lg) {

@@ -5,6 +5,10 @@ a {
 
 p {
   line-height: (26/16);
+
+  @include media-under(md) {
+    font-size: 18px;
+  }
 }
 
 .semibold {
@@ -237,14 +241,22 @@ hr {
       justify-content: center;
       align-items: center;
 
+      padding-left: 0;
+      left: 0 !important;
+
       .list {
         margin-top: 0;
+        margin-bottom: 0;
+
+        &__label {
+          margin-right: 10rem;
+        }
       }
     }
   
-    .list {
+    /* .list {
       justify-content: center;
-    }
+    } */
   }
 }
 
