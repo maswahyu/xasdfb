@@ -43,7 +43,7 @@ class News extends Model
         return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate);
     }
 
-    public static function getPage($pageNumber = 1, $paginate = 10)
+    public static function getPage($pageNumber = 1, $paginate = 6)
     {
         return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }

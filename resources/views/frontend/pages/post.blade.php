@@ -227,7 +227,10 @@
                 <div class="row jsArticleList"></div>
 
                 <div class="row">
-                    <div class="span-12 text-center jsMoreArticle">
+                    <div class="span-12 text-center jsMoreArticle hide-mobile">
+                        {{-- <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button> --}}
+                    </div>
+                    <div class="span-12 text-center jsMobileMoreArticle show-mobile">
                         {{-- <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button> --}}
                     </div>
                 </div>
@@ -282,7 +285,7 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <div class="span-12 span-lg-4">
+    <div class="span-12 span-lg-4 hide-mobile">
         <div class="post-card post-card--simple post-card--simple__no-padding">
             <div class="post-card__thumbnail">
                 <a href="{{ url }}" alt="{{ title }}">
