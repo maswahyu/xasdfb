@@ -189,14 +189,14 @@ use App\News;
                 <div id="fieldType">
                     <div class="form-group" id="banner_title">
                         <label for="banner_title">Banner Title</label>
-                        <input class="form-control form-control-sm" name="banner_title" type="text" placeholder="Title" value="{{ isset($news->banner_title) ? $news->banner_title : old('banner_title') }}">
+                        <input class="form-control form-control-sm" name="banner_title" type="text" placeholder="Title" value="{{ isset($news->banner_title) ? $news->banner_title : "Menangkan Hadiah <br> Menarik Tiap Bulan!" }}">
                         <span class="text-danger">{{ $errors->first('banner_title') }}</span>
                         <p class="help-block"></p>
                     </div>
 
                     <div class="form-group" id="banner_summary">
                         <label for="banner_summary">Banner Summary</label>
-                        <textarea class="form-control form-control-sm" rows="2" name="banner_summary" type="textarea" maxlength="300" placeholder="Summary">{{ isset($news->banner_summary) ? $news->banner_summary : old('banner_summary') }}</textarea>
+                        <textarea class="form-control form-control-sm" rows="2" name="banner_summary" type="textarea" maxlength="300" placeholder="Summary">{{ isset($news->banner_summary) ? $news->banner_summary : "Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!" }}</textarea>
                         <span class="text-danger">{{ $errors->first('banner_summary') }}</span>
                         <p class="help-block"></p>
                     </div>

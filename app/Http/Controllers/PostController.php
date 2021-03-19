@@ -9,6 +9,7 @@ use App\Category;
 use Carbon\Carbon;
 
 use App\StickyBanner;
+use App\NewsBanner;
 use Illuminate\Http\Request;
 use App\Http\Resources\NewsCollection;
 
@@ -159,10 +160,14 @@ class PostController extends Controller
             'url' => Setting::getConfig('banner_post_url'),
             'image' => Setting::getConfig('banner_post'),
         ];
+
+        $banner = NewsBanner::detail($post->id);
+
 	    return view('frontend.pages.post', [
             'post' => $post,
 	        'relatedPosts' => $related,
-            'ads' => $ads
+            'ads' => $ads,
+            'banner' => $banner
 	    ]);
     }
 

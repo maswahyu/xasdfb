@@ -161,13 +161,13 @@
                 <div class="span-12 span-lg-8 off-lg-1">
 
                     <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
-        
+
                     <div id="post-content" class="post-content">
-        
+
                         {!! $post->content !!}
 
                     </div>
-                    
+
                     <ul class="list post-tag">
                         @if($post->tags)
                         <li class="list__item">TAGS</li>
@@ -241,29 +241,69 @@
 
             <div class="span-12 span-md-4">
                 {{-- Shoutbox lazone --}}
-                <div class="shoutbox shoutbox--wide shoutbox--has-bg">
-    
+
                     {{-- <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} /> --}}
-                    <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
-    
-                    <div class="shoutbox__content-wrapper">
-    
-                        <div class="shoutbox__title shoutbox__title--extra-bold">
-                            <span>Menangkan Hadiah <br> Menarik Tiap Bulan!</span>
-                        </div>
-    
-                        <div class="shoutbox__text shoutbox__text--extra-space">
-                            Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!
-                        </div>
-    
-                        <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
-                            <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG</strong></a>
-                            @guest
-                            <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
-                            @endguest
+                    @if(isset($banner) && $banner->type)
+                        {{-- banner Regular --}}
+                        @if($banner->type == 2)
+
+                            <div class="shoutbox shoutbox--wide">
+                                <a href="{{ $banner->url }}" alt="banner" target="_blank">
+                                    <img class="post-card__img" alt="lazone id" data-src={{ imageview($banner->image) }} />
+                                </a>
+                            </div>
+
+                        {{-- Banner Mypoint --}}
+                        @else
+                            <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+                                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($banner->image) }} />
+
+                                <div class="shoutbox__content-wrapper">
+
+                                    <div class="shoutbox__title shoutbox__title--extra-bold">
+                                        <span>{!! $banner->title !!}</span>
+                                    </div>
+
+                                    <div class="shoutbox__text shoutbox__text--extra-space">
+                                        <span>{!! $banner->summary !!}</span>
+                                    </div>
+
+                                    <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                                        <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG</strong></a>
+                                        @guest
+                                        <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                                        @endguest
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endif
+
+
+                    @else
+                    {{-- Banner default --}}
+                    <div class="shoutbox shoutbox--wide shoutbox--has-bg">
+                        <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+
+                        <div class="shoutbox__content-wrapper">
+
+                            <div class="shoutbox__title shoutbox__title--extra-bold">
+                                <span>Menangkan Hadiah <br> Menarik Tiap Bulan!</span>
+                            </div>
+
+                            <div class="shoutbox__text shoutbox__text--extra-space">
+                                Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!
+                            </div>
+
+                            <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                                <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG</strong></a>
+                                @guest
+                                <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                                @endguest
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endif
             </div>
         </div>
     </div>
@@ -294,28 +334,28 @@
                     <img class="post-card__img" src="{{ thumbnail }}" alt="">
                 </a>
             </div>
-        
+
             <div class="post-card__info">
-        
+
                 <a href="{{ url }}" alt="{{ title }}">
                     <div class="post-card__title">
                         <span>{{ title }}</span>
                     </div>
                 </a>
-        
+
                 <div class="post-card__meta post-meta">
-        
+
                     <div class="post-meta__category">
                         <a href="{{ category_url }}">
                             <span>{{ category }}</span>
                         </a>
                     </div>
-            
+
                     <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-        
+
                 </div>
-        
-            </div>    
+
+            </div>
         </div>
     </div>
 </script>

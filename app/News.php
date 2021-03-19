@@ -625,6 +625,7 @@ class News extends Model
 
         self::forgotCache();
         Cache::forget('post'.$data->slug);
+        Cache::forget('news_banner'.$data->id);
 
         return $data;
     }
