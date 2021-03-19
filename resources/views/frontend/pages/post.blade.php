@@ -16,6 +16,10 @@
         .shoutbox {
             margin-top: 3rem;
         }
+
+        .jsMobileMoreArticle {
+            padding: 0
+        }
     }
 </style>
 @endsection
