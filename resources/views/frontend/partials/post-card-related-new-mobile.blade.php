@@ -1,4 +1,4 @@
-<div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 1rem;">
+<div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1.6rem;">
     <div class="post-card__thumbnail">
         <a href="{{ $post->url }}" alt="{{ $post->title }}">
             <img class="post-card__img" src="{{ imageview('') }}" data-src="{{ $post->thumbnail }}" alt="{{ $post->title }}">

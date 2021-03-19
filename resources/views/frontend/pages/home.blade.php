@@ -126,7 +126,7 @@
             <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
                 <div class="home-promo-slider jsMobileTrendingList">
                     {{-- @for($i=0; $i<=3; $i++)
-                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 2rem;">
+                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1.6rem;">
                             <div class="post-card__thumbnail">
                                 <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
                                     <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
@@ -343,7 +343,8 @@
                 <span class="section-title__label section-title__label--lg text-uppercase">Latest Articles</span>
             </div>
 
-            <div class="span-12 jsArticleList" style="padding: 0;"></div>
+            <div class="span-12 jsArticleList hide-mobile" style="padding: 0;"></div>
+            <div class="span-12 jsMobileArticleList show-mobile" style="padding: 0;"></div>
             <div class="span-12 text-center">
                 <button class="btn btn-ghost-crimson btn-load-more jsMoreArticle">LOAD MORE</button>
             </div>
@@ -379,7 +380,7 @@
                 <div class="shoutbox__content-wrapper">
 
                     <div class="shoutbox__title shoutbox__title--extra-bold">
-                        <span>Menangkan Hadiah Menarik Tiap Bulan!</span>
+                        <span>Menangkan Hadiah Menarik <br> Tiap Bulan!</span>
                     </div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">

@@ -2,7 +2,7 @@ $(function ()
 {
 
     $('#shoutbox').stickySidebar({
-        topSpacing: 120,
+        topSpacing: 40,
         resizeSensor: true,
     });
 
@@ -142,6 +142,62 @@ $(function ()
 
     $('.jsMoreArticle').trigger('click');
 
+    $.ajax(window.feedUrl, {
+        data: Object.assign({
+            'page': 1,
+        }, {})
+    }).done(function (data) {
+
+        console.log(data)
+
+        if(typeof data === 'object'){
+            var parsedData = data;
+        }else{
+            var parsedData = JSON.parse(data);
+        }
+
+        $.each(parsedData.data, function (index, value) {
+
+            if (index >= 5) {
+                return
+            }
+
+            $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
+
+                        <div class="post-card__thumbnail">
+                            <a href="` + value.url + `">
+                                <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
+                            </a>
+                        </div>
+                
+                        <div class="post-card__info">
+                
+                            <a href="` + value.url + `" alt="` + value.title + `">
+                                <div class="post-card__title post-card__title--large">
+                                    <span>` + value.title + `</span>
+                                </div>
+                            </a>
+                
+                            <div class="post-card__meta post-meta">
+                
+                                <div class="post-meta__category">
+                                    <a href="` + value.category_url + `">
+                                        <span>` + value.category + `</span>
+                                    </a>
+                                </div>
+                
+                                <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
+                
+                            </div>
+                
+                        </div>
+                
+                    </div>`;
+
+            $('.jsMobileArticleList').append($html);
+        });
+    });
+
     var currentPage = 1,
         videoList =
             new Hector_infinitePaginator({
@@ -273,7 +329,7 @@ $(function ()
 
         $.each(parsedData.data, function (index, value) {
 
-            $html = `<div><div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 2rem;">
+            $html = `<div><div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 1.6rem;">
                         <div class="post-card__thumbnail">
                             <a href="` + value.url + `?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
                                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="` + value.thumbnail + `" alt="` + value.title + `">
@@ -295,7 +351,7 @@ $(function ()
                                         <span>` + value.category + `</span>
                                     </a>
                                 </div>
-                                <div class="post-meta__stat"><span>` + value.view_count + `</span></div>
+                                <div class="post-meta__stat"><span>` + value.view_count + ` Views</span></div>
                     
                             </div>
                     

@@ -98,7 +98,7 @@
     <div class="row">
 
         <div id="sidebar" class="span-12 span-lg-1 sidebar">
-            <ul class="list list--vertical flex-align-center">
+            <ul class="list list--vertical">
                 <div>
                     <li class="list__label">Share:</li>
                 </div>
@@ -148,21 +148,19 @@
         <div class="span-12 span-lg-10">
 
             <div class="row no-gutters flex-justify-center">
-                <div class="span-12 span-lg-10">
+                <div class="span-12 span-lg-10 off-lg-1">
 
                     <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
                 </div>
 
-                <div class="span-12 span-lg-10 span-xl-7">
+                <div class="span-12 span-lg-8 off-lg-1">
 
                     <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
         
                     <div id="post-content" class="post-content">
         
                         {!! $post->content !!}
-                        
-                        <div class="post-content__recommend">Test</div>
 
                     </div>
                     
@@ -251,7 +249,7 @@
                         </div>
     
                         <div class="shoutbox__text shoutbox__text--extra-space">
-                            <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                            Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!
                         </div>
     
                         <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">

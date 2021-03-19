@@ -40,7 +40,12 @@
   ul,
   ol,
   .video-wrapper {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    line-height: 32px;
+
+    @include media-over(md) {
+      margin-bottom: 3rem;
+    }
   }
 
   ol,
@@ -94,6 +99,8 @@
       margin-left: unset;
     }
   }
+
+  p img { margin-bottom: 0;}
 
   blockquote {
     font-weight: bold;
