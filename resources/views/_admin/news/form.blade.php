@@ -220,7 +220,7 @@ use App\News;
 
                     <div class="form-group" id="banner_url">
                         <label for="banner_url">Banner URL</label>
-                        <input class="form-control form-control-sm" name="banner_url" type="text" placeholder="Banner URL" value="{{ isset($news->banner_url) ? $news->banner_url : old('banner_url') }}">
+                        <input class="form-control form-control-sm" name="banner_url" type="url" placeholder="Banner URL" value="{{ isset($news->banner_url) ? $news->banner_url : old('banner_url') }}">
                         <span class="text-danger">{{ $errors->first('banner_url') }}</span>
                         <p class="help-block"></p>
                     </div>
