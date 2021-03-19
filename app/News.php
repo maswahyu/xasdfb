@@ -7,6 +7,7 @@ use Auth;
 use Cache;
 use App\Tag;
 use App\News_tag;
+use App\NewsBanner;
 use Carbon\Carbon;
 use App\Model\Stats;
 use Illuminate\Support\Str;
@@ -92,6 +93,10 @@ class News extends Model
 
     public function tags() {
         return $this->hasMany('App\News_tag', 'news_id', 'id');
+    }
+
+    public function banner() {
+        return $this->hasOne('App\NewsBanner', 'news_id', 'id');
     }
 
     public function isSelected($id){
@@ -436,6 +441,31 @@ class News extends Model
         return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
     }
 
+    public function getBannerTitleAttribute()
+    {
+        return (isset($this->banner) && $this->banner->title) ? $this->banner->title : '';
+    }
+
+    public function getBannerSummaryAttribute()
+    {
+        return (isset($this->banner) && $this->banner->summary) ? $this->banner->summary : '';
+    }
+
+    public function getBannerTypeAttribute()
+    {
+        return (isset($this->banner) && $this->banner->type) ? $this->banner->type : '';
+    }
+
+    public function getBannerImageAttribute()
+    {
+        return (isset($this->banner) && $this->banner->image) ? $this->banner->image : '';
+    }
+
+    public function getBannerUrlAttribute()
+    {
+        return (isset($this->banner) && $this->banner->url) ? $this->banner->url : '';
+    }
+
     /**
      * Get post stats
      *
@@ -521,6 +551,11 @@ class News extends Model
             self::insertNewsTag($data->id, $tags);
         }
 
+        // insert banner
+        if ($request->get('banner_type')) {
+            NewsBanner::updateOrCreateBanner($data->id, $request);
+        }
+
         self::forgotCache();
 
         return $data;
@@ -562,6 +597,11 @@ class News extends Model
         $tags = $request->get('tags');
         if ($tags) {
             self::updateNewsTag($data->id, $tags);
+        }
+
+        // update banner
+        if ($request->get('banner_type')) {
+            NewsBanner::updateOrCreateBanner($data->id, $request);
         }
 
         self::forgotCache();

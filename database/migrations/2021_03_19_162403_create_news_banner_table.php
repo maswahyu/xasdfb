@@ -19,8 +19,9 @@ class CreateNewsBannerTable extends Migration
             $table->foreign('news_id')->references('id')->on('news');
             $table->integer('type')->default(0);
             $table->string('image')->nullable();
-            $table->string('title')->index();
+            $table->string('title')->nullable();
             $table->text('summary')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
