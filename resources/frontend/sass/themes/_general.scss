@@ -247,9 +247,12 @@ hr {
       .list {
         margin-top: 0;
         margin-bottom: 0;
+        width: 100%;
+        justify-content: space-around;
 
         &__label {
-          margin-right: 10rem;
+          font-size: 16px;
+          line-height: 30px;
         }
       }
     }
