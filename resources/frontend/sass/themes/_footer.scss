@@ -6,7 +6,7 @@
 .footer-top {
   display: flex;
   align-items: center;
-  padding: 5rem 0;
+  padding: 4rem 1.5rem 0;
   text-align: center;
   font-family: $new-lazone-font;
 
@@ -27,10 +27,11 @@
     // @include col(12);
     text-align: center;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 
-    @include media-under(md) {
-      display: block;
+    @include media-over(md) {
+      // display: block;
+      align-items: center;
     }
 
     &:last-child {
@@ -38,11 +39,12 @@
     }
 
     .footer-logo {
-      width: 60px;
-      height: auto;
+      width: auto;
+      height: 47px;
       
       @include media-over(md) {
-        width: 80px;
+        width: auto;
+        height: 62px;
         margin-right: 3rem;
       }
     }
@@ -50,11 +52,11 @@
     .footer-text-desc {
       font-size: 14px;
       text-transform: uppercase;
-      text-align: center;
+      text-align: left;
+      letter-spacing: 1px;
       margin: 3rem 0;
 
       @include media-over(md) {
-        text-align: left;
         margin-right: 3rem;
       }
     }
@@ -69,38 +71,51 @@
 
   background-color: palette("black");
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 12px;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 1px;
 
+  border-top: 1px solid #353535 !important;
+
   @include media-over(lg){
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    line-height: 14px;
   }
 }
 
 .point-nav {
   display: block !important;
-  padding: 0;
-  margin: 2rem 0;
+  margin-right: 5rem !important;
 
   @include media-over(md) {
     display: flex !important;
     flex-flow: row wrap;
     justify-content: center;
-    margin: 0;
+    margin: 0 !important;
   }
 
   &__item {
     position: relative;
-    margin: 1.5rem 2rem !important;
+    margin: 1.5rem 0 !important;
     list-style: none;
     text-transform: uppercase;
     font-size: 16px;
+    text-align: left;
+    letter-spacing: 1px;
+
+    &:first-child {
+      margin-top: 0 !important;
+    }
 
     @include media-over(md) {
-      margin: 0 2rem .5rem;
+      margin: 2rem 1.8rem !important;
+
+      &:first-child {
+        margin-top: 2rem !important;
+      }
     }
   }
 }
