@@ -32,6 +32,13 @@
         .post-card--wide__with-padding:first-child {
             padding-top: 3rem;
         }
+
+        .trending-list-container {
+            padding: 0;
+        }
+        .section-title__latest {
+            margin-top: 4rem;
+        }
     }
     @media screen and (min-width: 768px) {
         .post-card--simple__no-padding {
@@ -112,12 +119,14 @@
         <div class="section-title">
             <span class="section-title__label section-title__label--lg text-uppercase">Most Viewed</span>
         </div>
+    </div>
+    <div class="container trending-list-container">
         <div class="row">
 
             <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
                 <div class="home-promo-slider jsMobileTrendingList">
                     {{-- @for($i=0; $i<=3; $i++)
-                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1rem;">
+                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 2rem;">
                             <div class="post-card__thumbnail">
                                 <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
                                     <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
@@ -330,7 +339,7 @@
                 </div>
             </div> --}}
 
-            <div class="section-title">
+            <div class="section-title section-title__latest">
                 <span class="section-title__label section-title__label--lg text-uppercase">Latest Articles</span>
             </div>
 
@@ -400,7 +409,7 @@
                     </div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">
-                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                        Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!
                     </div>
 
                     <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">

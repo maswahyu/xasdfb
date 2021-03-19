@@ -99,43 +99,47 @@
 
         <div id="sidebar" class="span-12 span-lg-1 sidebar">
             <ul class="list list--vertical flex-align-center">
-                <li class="list__label">Share:</li>
-                <li class="list__item list__item--social">
-                    <a class="list__link list__link--social jsFbShare"
-                        href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
-                        <img src="{{ asset('static/images/fb-so-blue.png') }}" alt="">
-                    </a>
-                </li>
-                <li class="list__item list__item--social">
-                    <a class="list__link list__link--social"
-                        href="#">
-                        <img src="{{ asset('static/images/messenger-share.png') }}" alt="">
-                    </a>
-                </li>
-                <li class="list__item list__item--social">
-                    <a class="list__link list__link--social jsTwShare"
-                        href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
-                        <img src="{{ asset('static/images/tw-so.png') }}" alt="">
-                    </a>
-                </li>
-                <li class="list__item list__item--social">
-                    <a class="list__link list__link--social"
-                        href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
-                        <img src="{{ asset('static/images/wa-share.png') }}" alt="">
-                    </a>
-                </li>
-                <li class="list__item list__item--social">
-                    <a class="list__link list__link--social"
-                        href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
-                        <img src="{{ asset('static/images/line-share.png') }}" alt="">
-                    </a>
-                </li>
-                <li class="list__item list__item--social">
-                    <a data-clipboard-text="{{ url()->current() }}"  id="refCopyLink" class="list__link list__link--social jsCopyLink"
-                        >
-                        <img src="{{ asset('static/images/link-share.png') }}" alt="">
-                    </a>
-                </li>
+                <div>
+                    <li class="list__label">Share:</li>
+                </div>
+                <div class="row flex-justify-center">
+                    <li class="list__item list__item--social">
+                        <a class="list__link list__link--social jsFbShare"
+                            href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
+                            <img src="{{ asset('static/images/fb-so-blue.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="list__item list__item--social">
+                        <a class="list__link list__link--social"
+                            href="#">
+                            <img src="{{ asset('static/images/messenger-share.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="list__item list__item--social">
+                        <a class="list__link list__link--social jsTwShare"
+                            href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
+                            <img src="{{ asset('static/images/tw-so.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="list__item list__item--social">
+                        <a class="list__link list__link--social"
+                            href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
+                            <img src="{{ asset('static/images/wa-share.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="list__item list__item--social">
+                        <a class="list__link list__link--social"
+                            href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
+                            <img src="{{ asset('static/images/line-share.png') }}" alt="">
+                        </a>
+                    </li>
+                    <li class="list__item list__item--social">
+                        <a data-clipboard-text="{{ url()->current() }}"  id="refCopyLink" class="list__link list__link--social jsCopyLink"
+                            >
+                            <img src="{{ asset('static/images/link-share.png') }}" alt="">
+                        </a>
+                    </li>
+                </div>
             </ul>
 
         </div>
@@ -194,14 +198,13 @@
                     @include('frontend.partials.post-card-related-new', ['post' => $post_related])
                 </div>
             @endforeach
-            
-            <div class="home-below-fold__slider show-mobile">
-                <div class="home-promo-slider jsMobileRelatedList">
-                    @foreach($relatedPosts as $post_related)
-                        @include('frontend.partials.post-card-related-new-mobile', ['post' => $post_related])
-                    @endforeach
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="home-below-fold__slider show-mobile" style="padding: 0;">
+        <div class="home-promo-slider jsMobileRelatedList">
+            @foreach($relatedPosts as $post_related)
+                @include('frontend.partials.post-card-related-new-mobile', ['post' => $post_related])
+            @endforeach
         </div>
     </div>
 </div>
