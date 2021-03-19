@@ -46,6 +46,9 @@
             margin-bottom: 3rem;
         }
 
+        #latestArticleContainer {
+            padding-right: 4.5rem;
+        }
     }
 </style>
 @endsection
@@ -328,8 +331,8 @@
 <div class="container">
     <div class="row" style=" margin-top: 4rem;">
 
-        <div class="span-12 span-md-8 order-2 order-md-1">
-            <div class="home-below-fold__slider hide-mobile">
+        <div class="span-12 span-md-8 order-2 order-md-1" id="latestArticleContainer">
+            <div class="home-below-fold__slider hide-mobile" style="padding: 0;">
                 <div class="home-promo-slider jsHomeSlider">
                 </div>
             </div>
@@ -440,7 +443,7 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <div class="post-card post-card--wide post-card--wide__with-padding">
+    <!-- <div class="post-card post-card--wide post-card--wide__with-padding">
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}">
@@ -449,13 +452,6 @@
         </div>
 
         <div class="post-card__info">
-            <!-- <div class="post-card__meta post-meta">
-
-                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
-
-            </div> -->
 
             <a href="{{ url }}" alt="{{ title }}">
                 <div class="post-card__title post-card__title--large">
@@ -477,7 +473,7 @@
 
         </div>
 
-    </div>
+    </div> -->
 </script>
 
 <script id="x-video-template" type="text/x-handlebars-template">
