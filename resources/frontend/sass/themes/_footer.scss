@@ -50,7 +50,7 @@
     }
 
     .footer-text-desc {
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       text-align: left;
       letter-spacing: 1px;
@@ -58,6 +58,7 @@
 
       @include media-over(md) {
         margin-right: 3rem;
+        font-size: 14px;
       }
     }
   }
@@ -88,7 +89,7 @@
 
 .point-nav {
   display: block !important;
-  margin-right: 5rem !important;
+  margin-right: 3.5rem !important;
 
   @include media-over(md) {
     display: flex !important;
