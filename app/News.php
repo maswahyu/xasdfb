@@ -95,6 +95,10 @@ class News extends Model
         return $this->hasMany('App\News_tag', 'news_id', 'id');
     }
 
+    public function readMore() {
+        return $this->hasMany('App\ReadMore', 'news_id', 'id');
+    }
+
     public function banner() {
         return $this->hasOne('App\NewsBanner', 'news_id', 'id');
     }
@@ -551,6 +555,11 @@ class News extends Model
             self::insertNewsTag($data->id, $tags);
         }
 
+        // insert read more
+        if ($request->read_more) {
+            self::insertReadMore($data->id, $request->read_more);
+        }
+
         // insert banner
         if ($request->get('banner_type')) {
             NewsBanner::updateOrCreateBanner($data->id, $request);
@@ -599,6 +608,11 @@ class News extends Model
             self::updateNewsTag($data->id, $tags);
         }
 
+        // update read more
+        if ($request->read_more) {
+            self::updateReadMore($data->id, $request->read_more);
+        }
+
         // update banner
         if ($request->get('banner_type')) {
             NewsBanner::updateOrCreateBanner($data->id, $request);
@@ -631,6 +645,24 @@ class News extends Model
 
         // insert ulang
         self::insertNewsTag($news_id, $tags);
+    }
+
+    public static function insertReadMore($news_id, $more)
+    {
+        if ($more) {
+            foreach ($more as $more_id) {
+                $tag = ReadMore::add($news_id, $more_id);
+            }
+        }
+    }
+
+    public static function updateReadMore($news_id, $more)
+    {
+        // delete news more
+        ReadMore::where('news_id', $news_id)->delete();
+
+        // insert ulang
+        self::insertReadMore($news_id, $more);
     }
 
     public static function generateRandomString($length = 5) {

@@ -12,4 +12,14 @@ class ReadMore extends Model
     {
         return $this->belongsTo('App\News', 'news_id');
     }
+
+    public static function add($news_id, $more_id)
+    {
+        $tag = new self;
+        $tag->news_id = $news_id;
+        $tag->news_more_id  = $more_id;
+        $tag->save();
+
+        return $tag;
+    }
 }

@@ -227,6 +227,16 @@ use App\News;
                 </div>
             </div>
             <div class="form-group">
+                <h4>Baja Juga</h4>
+                    <div class="form-group">
+                        <label>
+                             Artikel
+                        </label>
+                        <select name="read_more[]" id="read_more" class="select2" multiple="multiple" data-placeholder="Select a news" style="width: 100%;"></select>
+                        <p class="help-block"></p>
+                    </div>
+            </div>
+            <div class="form-group">
                 <input class="btn btn-primary btn-sm" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
             </div>
         </div>
@@ -369,6 +379,57 @@ use App\News;
             @else
                 $('#fieldType').addClass('d-none')
             @endif
+        @endif
+
+        var ArticlePageSize = 10;
+        var defaultTxtOnInit = 'a';
+        $('#read_more').select2({
+            tags: true,
+            placeholder: 'Cari...',
+            ajax: {
+              url: '/magic/loadnews',
+              dataType: 'json',
+              delay: 250,
+              data: function (params) {
+                  params.page = params.page || 1;
+                  return {
+                      keyword: params.term ? params.term : defaultTxtOnInit,
+                      pageSize: ArticlePageSize,
+                      page: params.page
+                  };
+              },
+              processResults: function (data, params) {
+                params.page = params.page || 1;
+                return {
+                  results:  $.map(data.data, function (item) {
+                    return {
+                      text: item.title,
+                      id: item.id
+                    }
+                  }),
+                  pagination: {
+                      more: (params.page * ArticlePageSize) < data.Counts
+                  }
+                };
+              },
+              cache: false
+            }
+        });
+
+        @if($formMode === 'edit')
+        var newsId = '{{ isset($news->id) ? $news->id : 0 }}';
+        var moreSelect = $('#read_more');
+
+        $.ajax({
+            type: 'GET',
+            url: '/magic/loadnews/' + newsId
+        }).then(function (data) {
+            $.map(data, function (v) {
+                var option = new Option(v.title, v.id, true, true);
+                moreSelect.append(option).trigger('change');
+            });
+
+        });
         @endif
     });
 
