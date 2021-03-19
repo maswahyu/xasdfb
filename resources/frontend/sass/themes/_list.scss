@@ -103,7 +103,10 @@
 
     &--social {
       display: block;
-      padding-top: 0.5rem;
+
+      @include media-over(md) {
+        padding-top: 0.5rem;
+      }
     }
   }
 

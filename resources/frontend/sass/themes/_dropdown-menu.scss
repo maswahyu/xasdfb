@@ -7,11 +7,7 @@
     color: palette("white");
     text-transform: uppercase;
     line-height: 4;
-
-    &:hover {
-      text-shadow: 0 0 2px palette("white");
-      text-decoration: none;
-    }
+    transition: all 0.2s linear;
   }
 
   &__blanket {
@@ -103,6 +99,11 @@
 
     &:hover {
       cursor: pointer;
+
+      .dropdown-menu__link {
+        color: palette("crimson");
+        text-decoration: none;
+      }
     }
 
     &--has-submenu {

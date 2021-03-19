@@ -3,7 +3,7 @@
   font-family: $new-lazone-font;
 
   @include media-over(lg) {
-    padding-top: 14rem !important;
+    padding: 14rem 0 6rem !important;
   }
 
   &.no-padding {

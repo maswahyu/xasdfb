@@ -64,6 +64,29 @@ class IndexController extends Controller
 	    return response()->json(new NewsCollection($posts));
     }
 
+    public function feedHome(Request $request)
+    {
+        $page     = $request->get('page');
+        $category = $request->get('category');
+
+        if ($category) {
+
+            $category = Category::detail($category);
+            $posts = News::getLatestCategory($category, $page);
+
+        } else {
+           $posts = News::getHomePage($page);
+           if($page == 1) {
+               $posts->getCollection()->transform(function($value) use($page) {
+                   $value->slug = $value->slug . '?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail';
+                   return $value;
+               });
+           }
+        }
+
+	    return response()->json(new NewsCollection($posts));
+    }
+
     public function feedTrending(Request $request)
     {
         $posts = News::getTrending();
