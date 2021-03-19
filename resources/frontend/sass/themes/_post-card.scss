@@ -84,7 +84,7 @@
         padding: 1rem 0 !important;
   
         #{$this}__thumbnail {
-          max-width: 126px;
+          max-width: 160px;
           height: 10rem;
           margin-bottom: 0;
   
@@ -249,7 +249,7 @@
     max-width: 100%;
 
     &__with-padding {
-      padding: 1rem 0;
+      padding: 1.6rem 0;
       // border-bottom: unset;
 
       #{$this}__info {
@@ -257,11 +257,11 @@
       }
 
       @include media-under(md) {
-        padding-bottom: .5rem;
+        padding-bottom: 0;
 
         #{$this}__thumbnail {
           height: 105px;
-          width: 175px !important;
+          // width: 175px !important;
           max-width: 100%;
 
           a img {
@@ -325,7 +325,7 @@
     }
 
     &:last-child {
-      margin-bottom: 2rem !important;
+      margin-bottom: 3.2rem !important;
       border-bottom: 1px solid palette("alto") !important;
 
       @include media-under(md) {
@@ -501,6 +501,12 @@
 
     &-article {
       height: auto !important;
+
+      @include media-under(md) {
+        width: 110%;
+        max-width: 110%;
+        margin-left: -5%;
+      }
     }
 
     @include media-under(md) {
