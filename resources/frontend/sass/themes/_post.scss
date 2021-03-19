@@ -89,9 +89,9 @@
   p img,
   img {
     height: auto;
-    width: 110%;
-    max-width: 110%;
-    margin-left: -5%;
+    width: 112%;
+    max-width: 112%;
+    margin-left: -6%;
 
     @include media-over(md) {
       max-width: 100%;
