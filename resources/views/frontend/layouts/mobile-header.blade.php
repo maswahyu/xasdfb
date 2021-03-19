@@ -1,4 +1,4 @@
-<div class="mobile-header">
+<div class="mobile-header nav-down-mobile">
 
     <button class="mobile-menu-trigger hamburger hamburger--slider" type="button">
         <span class="hamburger-box">
