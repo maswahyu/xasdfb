@@ -140,9 +140,7 @@ $(function ()
                 data: {},
             });
 
-    $('.jsMoreArticle').trigger('click');
-
-    $.ajax(window.feedUrl, {
+    $.ajax(window.siteUrl + '/feed-home', {
         data: Object.assign({
             'page': 1,
         }, {})
@@ -195,8 +193,46 @@ $(function ()
                     </div>`;
 
             $('.jsMobileArticleList').append($html);
+
+            $('.jsMoreArticle').on('click', function() {
+                $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
+
+                        <div class="post-card__thumbnail">
+                            <a href="` + value.url + `">
+                                <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
+                            </a>
+                        </div>
+                
+                        <div class="post-card__info">
+                
+                            <a href="` + value.url + `" alt="` + value.title + `">
+                                <div class="post-card__title post-card__title--large">
+                                    <span>` + value.title + `</span>
+                                </div>
+                            </a>
+                
+                            <div class="post-card__meta post-meta">
+                
+                                <div class="post-meta__category">
+                                    <a href="` + value.category_url + `">
+                                        <span>` + value.category + `</span>
+                                    </a>
+                                </div>
+                
+                                <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
+                
+                            </div>
+                
+                        </div>
+                
+                    </div>`;
+
+                $('.jsMobileArticleList').append($html);
+            });
         });
     });
+
+    $('.jsMoreArticle').trigger('click');
 
     var currentPage = 1,
         videoList =

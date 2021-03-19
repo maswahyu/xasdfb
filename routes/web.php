@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/feed-home', 'IndexController@feedHome');
 Route::get('/feed', 'IndexController@feed');
 Route::get('/feed-photo', 'GalleryController@feedPhoto');
 Route::get('/feed-video', 'GalleryController@feedVideo');
