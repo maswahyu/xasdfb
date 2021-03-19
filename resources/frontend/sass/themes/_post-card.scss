@@ -746,9 +746,9 @@
       color: palette("crimson");
       text-transform: uppercase;
 
-      /* &:hover {
-        color: rgba(palette("black"), .7) !important;
-      } */
+      &:hover {
+        color: rgba(palette("crimson"), .7) !important;
+      }
     }
 
     &::after {

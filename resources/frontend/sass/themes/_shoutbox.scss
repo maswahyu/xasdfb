@@ -142,6 +142,10 @@
     .btn {
       width: 100%;
       font-family: $new-lazone-font;
+
+      &-shoutbox:hover {
+        color: palette('white');
+      }
     }
   }
 }
