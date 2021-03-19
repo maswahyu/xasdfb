@@ -43,6 +43,7 @@ class NewsController extends Controller
     public function create(Request $request)
     {
         $category = Category::where('parent_id', 0)->get();
+        $tags = null;
 
         return view('_admin.news.create', compact('category','tags'))->with('title', $this->title);
     }
