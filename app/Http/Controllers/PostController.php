@@ -134,7 +134,15 @@ class PostController extends Controller
         $related = News::related($post->slug, $post->category_id);
 
         // inject recomended artikel inline in last 3 paragraph
-        $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
+
+        if (isset($post->readMore) && count($post->readMore) > 0) {
+            $firstReadMore = $post->readMore()->first();
+            if ($firstReadMore)
+                $inlineRecomended = News::find($firstReadMore->news_more_id);
+
+        } else {
+            $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
+        }
         if($inlineRecomended) {
             $needle = "<br />\n<br />";
             $token = explode($needle, $post->content);
