@@ -24,6 +24,12 @@
 
     <div class="post-card__info">
 
+        <a href="{{ $video->url }}" alt="{{ $video->title }}">
+            <div class="post-card__title post-card__title--horizontal">
+                <span>{{ $video->title }}</span>
+            </div>
+        </a>
+
         <div class="post-card__meta post-meta">
 
             <div class="post-meta__category">
@@ -35,12 +41,6 @@
             <div class="post-meta__stat"><span>{{ $video->published_date }}</span></div>
 
         </div>
-
-        <a href="{{ $video->url }}" alt="{{ $video->title }}">
-            <div class="post-card__title post-card__title--horizontal">
-                <span>{{ $video->title }}</span>
-            </div>
-        </a>
 
         <div class="post-card__additional stat-with-icon">
             <span class="stat-with-icon__icon">
