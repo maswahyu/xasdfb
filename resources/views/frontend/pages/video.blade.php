@@ -121,6 +121,12 @@
                 </a>
             </div>
 
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+
             <div class="post-card__meta post-meta">
 
                 <div class="post-meta__category">
@@ -129,19 +135,10 @@
                     </a>
                 </div>
 
-            </div>
-
-            <div class="post-card__meta post-meta">
-
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
             </div>
 
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
             <div class="post-card__additional stat-with-icon">
                 <span class="stat-with-icon__icon">
                     @endverbatim
