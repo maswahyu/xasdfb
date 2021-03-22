@@ -126,7 +126,7 @@
     <div class="container trending-list-container">
         <div class="row">
 
-            <div class="home-below-fold__slider show-mobile" style="margin-bottom: 3rem;">
+            <div class="home-below-fold__slider show-mobile">
                 <div class="home-promo-slider jsMobileTrendingList">
                     {{-- @for($i=0; $i<=3; $i++)
                         <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1.6rem;">
