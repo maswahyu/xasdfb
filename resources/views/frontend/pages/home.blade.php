@@ -107,7 +107,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="span-12 span-md-8 order-2 order-md-1">    
+        <div class="span-12 span-md-8 order-2 order-md-1">
             <div class="home-below-fold__slider show-mobile" style="margin: 4rem 0;">
                 <div class="home-promo-slider jsHomeMobileSlider">
                 </div>
@@ -378,16 +378,16 @@
 
             <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_dekstop']) }} />
 
                 <div class="shoutbox__content-wrapper">
 
                     <div class="shoutbox__title shoutbox__title--extra-bold">
-                        <span>Menangkan Hadiah Menarik <br> Tiap Bulan!</span>
+                        <span>{!! $ads['banner_mypoint_title'] !!}</span>
                     </div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">
-                        <p>Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!</p>
+                        <p>{!! $ads['banner_mypoint_summary'] !!}</p>
                     </div>
 
                     <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
@@ -404,16 +404,16 @@
         <div class="span-12 span-md-4 order-1 order-md-2 show-mobile">
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_mobile']) }} />
 
                 <div class="shoutbox__content-wrapper">
 
                     <div class="shoutbox__title shoutbox__title--extra-bold">
-                        <span>Menangkan Hadiah <br class="show-mobile"> Menarik Tiap Bulan!</span>
+                        <span>{!! $ads['banner_mypoint_title'] !!}</span>
                     </div>
 
                     <div class="shoutbox__text shoutbox__text--extra-space">
-                        Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!
+                        {!! $ads['banner_mypoint_summary'] !!}
                     </div>
 
                     <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
@@ -562,7 +562,7 @@
                     </a>
                 </div>
                 <div class="post-meta__stat"><span>{{ view_count }} Views</span></div>
-    
+
             </div>
 
         </div>
@@ -602,7 +602,7 @@
                     </a>
                 </div>
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
-    
+
             </div>
         </div>
     </div>
