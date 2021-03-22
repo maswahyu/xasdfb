@@ -254,29 +254,29 @@
                 {{-- Shoutbox lazone --}}
 
                     {{-- <img class="shoutbox__background hide-mobile post-card__img" alt="lazone id" data-src={{ asset('static/images/lazone-prize-12.jpg') }} /> --}}
-                    @if(isset($banner) && $banner->type)
+                    @if(isset($ads['banner_type']))
                         {{-- banner Regular --}}
-                        @if($banner->type == 2)
+                        @if($ads['banner_type'] == 0)
 
                             <div class="shoutbox shoutbox--wide">
-                                <a href="{{ $banner->url }}" alt="banner" target="_blank">
-                                    <img class="post-card__img" alt="lazone id" data-src={{ imageview($banner->image) }} />
+                                <a href="{{ $ads['banner_post_url'] }}" alt="banner" target="_blank">
+                                    <img class="post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_post_dekstop']) }} />
                                 </a>
                             </div>
 
                         {{-- Banner Mypoint --}}
                         @else
                             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
-                                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($banner->image) }} />
+                                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_post_dekstop']) }} />
 
                                 <div class="shoutbox__content-wrapper">
 
                                     <div class="shoutbox__title shoutbox__title--extra-bold">
-                                        <span>{!! $banner->title !!}</span>
+                                        <span>{!! $ads['banner_post_title'] !!}</span>
                                     </div>
 
                                     <div class="shoutbox__text shoutbox__text--extra-space">
-                                        <span>{!! $banner->summary !!}</span>
+                                        <span>{!! $ads['banner_post_summary'] !!}</span>
                                     </div>
 
                                     <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">

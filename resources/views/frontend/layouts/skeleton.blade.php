@@ -204,7 +204,7 @@
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=1"></script>
+    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
     <script src="{{ asset('static/js/global-min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
 
@@ -319,11 +319,11 @@
 
         function hasScrolled() {
             var st = $(this).scrollTop();
-            
+
             // Make sure they scroll more than delta
             if(Math.abs(lastScrollTop - st) <= delta)
                 return;
-            
+
             // If they scrolled down and are past the navbar, add class .nav-up.
             // This is necessary so you never see what is "behind" the navbar.
             if (st > lastScrollTop && st > navbarHeight || st > lastScrollTop && st > navbarMobileHeight){
@@ -341,7 +341,7 @@
                     $('.inner-wrapper-sticky__shoutbox').addClass('nav-on');
                 }
             }
-            
+
             lastScrollTop = st;
         }
     </script>
