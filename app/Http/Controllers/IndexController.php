@@ -72,6 +72,7 @@ class IndexController extends Controller
     public function feedHome(Request $request)
     {
         $page     = $request->get('page');
+        $size     = $request->get('size');
         $category = $request->get('category');
 
         if ($category) {
@@ -80,7 +81,7 @@ class IndexController extends Controller
             $posts = News::getLatestCategory($category, $page);
 
         } else {
-           $posts = News::getHomePage($page);
+           $posts = News::getHomePage($page, $size);
            if($page == 1) {
                $posts->getCollection()->transform(function($value) use($page) {
                    $value->slug = $value->slug . '?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail';

@@ -134,204 +134,29 @@ $(function ()
             new Hector_infinitePaginator({
                 container: $('.jsArticleList'),
                 trigger: $('.jsMoreArticle'),
-                template: Handlebars.compile(document.getElementById("x-post-template").innerHTML),
-                url: window.feedUrl,
+                showBanner: 1,
+                banner_image: banner_image,
+                banner_url: banner_url,
+                template: Handlebars.compile(document.getElementById("new-post-template").innerHTML),
+                url: window.feedHomeUrl + '?size=7' ,
                 currentPage: currentPage,
                 data: {},
             });
 
-    $.ajax(window.siteUrl + '/feed-home', {
-        data: Object.assign({
-            'page': 1,
-        }, {})
-    }).done(function (data) {
-
-        if(typeof data === 'object'){
-            var parsedData = data;
-        }else{
-            var parsedData = JSON.parse(data);
-        }
-
-        $.each(parsedData.data, function (index, value) {
-
-            if (index >= 8) {
-                return
-            }
-
-            $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
-
-                        <div class="post-card__thumbnail">
-                            <a href="` + value.url + `">
-                                <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
-                            </a>
-                        </div>
-
-                        <div class="post-card__info">
-
-                            <a href="` + value.url + `" alt="` + value.title + `">
-                                <div class="post-card__title post-card__title--large">
-                                    <span>` + value.title + `</span>
-                                </div>
-                            </a>
-
-                            <div class="post-card__meta post-meta">
-
-                                <div class="post-meta__category">
-                                    <a href="` + value.category_url + `">
-                                        <span>` + value.category + `</span>
-                                    </a>
-                                </div>
-
-                                <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>`;
-
-            $('.jsArticleList').append($html);
-
-            $('.jsMoreArticle').on('click', function() {
-                $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
-
-                                <div class="post-card__thumbnail">
-                                    <a href="` + value.url + `">
-                                        <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
-                                    </a>
-                                </div>
-
-                                <div class="post-card__info">
-
-                                    <a href="` + value.url + `" alt="` + value.title + `">
-                                        <div class="post-card__title post-card__title--large">
-                                            <span>` + value.title + `</span>
-                                        </div>
-                                    </a>
-
-                                    <div class="post-card__meta post-meta">
-
-                                        <div class="post-meta__category">
-                                            <a href="` + value.category_url + `">
-                                                <span>` + value.category + `</span>
-                                            </a>
-                                        </div>
-
-                                        <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>`;
-                $('.jsArticleList').append($html);
-            });
-
-            /* Ads container ~sample image~ */
-            $ads = `<div class="post-card__ads-container">
-                        <a href="` + url_banner +`?utm_source=AdsHome" alt="">
-                            <img class="post-card__ads" src="` + banner +`" alt="">
-                        </a>
-                    </div>`;
-            var adsContainer = document.querySelector(".jsArticleList .post-card--wide__with-padding:nth-child(6)")
-            console.log(value.thumbnail);
-            $(adsContainer).html($ads);
-        });
-    });
-
-    $.ajax(window.siteUrl + '/feed-home', {
-        data: Object.assign({
-            'page': 1,
-        }, {})
-    }).done(function (data) {
-
-        console.log(data)
-
-        if(typeof data === 'object'){
-            var parsedData = data;
-        }else{
-            var parsedData = JSON.parse(data);
-        }
-
-        $.each(parsedData.data, function (index, value) {
-
-            if (index >= 5) {
-                return
-            }
-
-            $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
-
-                        <div class="post-card__thumbnail">
-                            <a href="` + value.url + `">
-                                <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
-                            </a>
-                        </div>
-
-                        <div class="post-card__info">
-
-                            <a href="` + value.url + `" alt="` + value.title + `">
-                                <div class="post-card__title post-card__title--large">
-                                    <span>` + value.title + `</span>
-                                </div>
-                            </a>
-
-                            <div class="post-card__meta post-meta">
-
-                                <div class="post-meta__category">
-                                    <a href="` + value.category_url + `">
-                                        <span>` + value.category + `</span>
-                                    </a>
-                                </div>
-
-                                <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>`;
-
-            $('.jsMobileArticleList').append($html);
-
-            $('.jsMoreArticle').on('click', function() {
-                $html = `<div class="post-card post-card--wide post-card--wide__with-padding">
-
-                        <div class="post-card__thumbnail">
-                            <a href="` + value.url + `">
-                                <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
-                            </a>
-                        </div>
-
-                        <div class="post-card__info">
-
-                            <a href="` + value.url + `" alt="` + value.title + `">
-                                <div class="post-card__title post-card__title--large">
-                                    <span>` + value.title + `</span>
-                                </div>
-                            </a>
-
-                            <div class="post-card__meta post-meta">
-
-                                <div class="post-meta__category">
-                                    <a href="` + value.category_url + `">
-                                        <span>` + value.category + `</span>
-                                    </a>
-                                </div>
-
-                                <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>`;
-
-                $('.jsMobileArticleList').append($html);
-            });
-        });
-    });
-
     $('.jsMoreArticle').trigger('click');
+
+    var currentPage = 1,
+        articleList =
+            new Hector_infinitePaginator({
+                container: $('.jsMobileArticleList'),
+                trigger: $('.jsMoreMobileArticle'),
+                template: Handlebars.compile(document.getElementById("new-post-template").innerHTML),
+                url: window.feedHomeUrl + '?size=5',
+                currentPage: currentPage,
+                data: {},
+            });
+
+    $('.jsMoreMobileArticle').trigger('click');
 
     var currentPage = 1,
         videoList =
@@ -350,7 +175,7 @@ $(function ()
         }, {})
     }).done(function (data) {
 
-        console.log(data)
+        // console.log(data)
 
         if(typeof data === 'object'){
             var parsedData = data;
@@ -454,7 +279,7 @@ $(function ()
         }, {})
     }).done(function (data) {
 
-        console.log(data)
+        // console.log(data)
 
         if(typeof data === 'object'){
             var parsedData = data;

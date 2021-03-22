@@ -348,9 +348,12 @@
             </div>
 
             <div class="span-12 jsArticleList hide-mobile" style="padding: 0;"></div>
-            <div class="span-12 jsMobileArticleList show-mobile" style="padding: 0;"></div>
-            <div class="span-12 text-center">
+            <div class="span-12 text-center hide-mobile">
                 <button class="btn btn-ghost-crimson btn-load-more jsMoreArticle">LOAD MORE</button>
+            </div>
+            <div class="span-12 jsMobileArticleList show-mobile" style="padding: 0;"></div>
+            <div class="span-12 text-center show-mobile">
+                <button class="btn btn-ghost-crimson btn-load-more jsMoreMobileArticle">LOAD MORE</button>
             </div>
         </div>
 
@@ -436,6 +439,7 @@
 
 <script>
     window.feedUrl = "{{ url('feed') }}"
+    window.feedHomeUrl = "{{ url('feed-home') }}"
     window.feedVideoUrl = "{{ url('feed-new-video') }}"
     window.feedTrendingUrl = "{{ url('feed-trending') }}"
     window.feedSliderUrl = "{{ url('feed-slider') }}"
@@ -444,7 +448,7 @@
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 
-    <!-- <div class="post-card post-card--wide post-card--wide__with-padding">
+    <div class="post-card post-card--wide post-card--wide__with-padding">
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}">
@@ -474,7 +478,41 @@
 
         </div>
 
-    </div> -->
+    </div>
+</script>
+
+<script id="new-post-template" type="text/x-handlebars-template">
+
+    <div class="post-card post-card--wide post-card--wide__with-padding">
+        <div class="post-card__thumbnail">
+            <a href="{{ url }}">
+                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+            </a>
+        </div>
+
+        <div class="post-card__info">
+
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title post-card__title--large">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+
+            <div class="post-card__meta post-meta">
+
+                <div class="post-meta__category">
+                    <a href="{{ category_url }}">
+                        <span>{{ category }}</span>
+                    </a>
+                </div>
+
+                <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+            </div>
+
+        </div>
+
+    </div>
 </script>
 
 <script id="x-video-template" type="text/x-handlebars-template">
@@ -689,8 +727,8 @@
 </script>
 @endverbatim
 <script type="text/javascript">
-var banner = '{{ imageview($ads['image']) }}'
-var url_banner = '{{ $ads['url'] }}'
+var banner_image = '{{ imageview($ads['image']) }}'
+var banner_url = '{{ $ads['url'] }}'
 </script>
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
