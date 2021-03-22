@@ -129,7 +129,7 @@
 
             <div class="home-below-fold__slider show-mobile">
                 <div class="home-promo-slider jsMobileTrendingList">
-                    @for($i=0; $i<=3; $i++)
+                    {{-- @for($i=0; $i<=3; $i++)
                         <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 2rem;">
                             <div class="post-card__thumbnail">
                                 <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endfor --}}
                 </div>
             </div>
 
