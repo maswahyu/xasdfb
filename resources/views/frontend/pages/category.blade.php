@@ -12,52 +12,55 @@
 
 @section('content')
 
-<div class="container">
-
-    {{-- Judul Kategori --}}
-    <div class="row category-header">
-
-        <div class="span-12">
-
-            <div class="row flex-justify-center">
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
+<div class="faux-bg">
+    <div class="container">
+    
+        {{-- Judul Kategori --}}
+        <div class="row category-header">
+    
+            <div class="span-12">
+    
+                <div class="row flex-lg-justify-center">
+                    <div class="section-title section-title--plain section-title--page" style="margin-left: 2rem;">
+                        <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
+                    </div>
                 </div>
+    
             </div>
-
+    
+            <div class="span-12 text-center">
+                <ul class="point-nav list flex-justify-center">
+                    @foreach($category->menu as $key => $item)
+                        <li class="point-nav__item list__item {{ classActiveSegment(2, $item->slug) }}">
+                            <a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+    
         </div>
-
-        <div class="span-12 text-center">
-            <ul class="point-nav list flex-justify-center">
-                @foreach($category->menu as $key => $item)
-                    <li class="point-nav__item list__item {{ classActiveSegment(2, $item->slug) }}">
-                        <a href="{{ $item->sub_url }}" class="list__link">{{ $item->name }}</a>
-                    </li>
-                @endforeach
-            </ul>
+    
+    
+        {{--  Sticky Post --}}
+        <div class="row category-sticky">
+            @foreach($stickyPosts as $post)
+            <div class="span-12 span-lg-6">
+                @include('frontend.partials.post-card-category-sticky',['post' => $post ])
+            </div>
+            @endforeach
         </div>
-
+    
+        {{-- Latest Post --}}
+        <div class="row category-latest">
+            @foreach($latestPosts as $post)
+            <div class="span-12 span-md-6 span-lg-4">
+                @include('frontend.partials.post-card-third',['post' => $post ])
+            </div>
+            @endforeach
+        </div>
+    
     </div>
-
-
-    {{--  Sticky Post --}}
-    <div class="row category-sticky">
-        @foreach($stickyPosts as $post)
-        <div class="span-12 span-lg-6">
-            @include('frontend.partials.post-card-category-sticky',['post' => $post ])
-        </div>
-        @endforeach
-    </div>
-
-    {{-- Latest Post --}}
-    <div class="row category-latest">
-        @foreach($latestPosts as $post)
-        <div class="span-12 span-md-6 span-lg-4">
-            @include('frontend.partials.post-card-third',['post' => $post ])
-        </div>
-        @endforeach
-    </div>
-
+    
 </div>
 
 {{-- Ads Placement --}}
@@ -97,17 +100,17 @@
 
         <div class="list-with-sidebar__aside">
 
-            <div class="section-title section-title--plain">
+            {{-- <div class="section-title section-title--plain">
                 <span class="section-title__label section-title__label--adjust">Recommended</span>
-            </div>
+            </div> --}}
 
             <div class="row no-gutters-lg">
 
-                @foreach($recommendedPosts as $post)
+                {{-- @foreach($recommendedPosts as $post)
                 <div class="span-12 span-md-6 span-lg-12">
                     @include('frontend.partials.post-card', ['post' => $post])
                 </div>
-                @endforeach
+                @endforeach --}}
 
                 <div class="span-12 shoutbox-sidebar">
                     @include('frontend.partials.shoutbox')
@@ -142,6 +145,12 @@
 
         <div class="post-card__info">
 
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+
             <div class="post-card__meta post-meta">
 
                 <div class="post-meta__category">
@@ -150,21 +159,14 @@
                     </a>
                 </div>
 
-            </div>
-            <div class="post-card__meta post-meta">
-
-
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
+
+            </div>
+            <!-- <div class="post-card__meta post-meta">
 
                 <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
 
-            </div>
-
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
+            </div> -->
 
         </div>
 

@@ -7,6 +7,13 @@
     </div>
 
     <div class="post-card__info">
+
+        <a href="{{ $post->url }}" alt="{{ $post->title }}">
+            <div class="post-card__title post-card__title--medium">
+                <span>{{ $post->title }}</span>
+            </div>
+        </a>
+
         <div class="post-card__meta post-meta">
 
             <div class="post-meta__category">
@@ -15,20 +22,14 @@
                 </a>
             </div>
 
-        </div>
-        <div class="post-card__meta post-meta">
-
             <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
+
+        </div>
+        {{-- <div class="post-card__meta post-meta">
 
             <div class="post-meta__stat"><span>{{ $post->view_count }} views</span></div>
 
-        </div>
-
-        <a href="{{ $post->url }}" alt="{{ $post->title }}">
-            <div class="post-card__title post-card__title--medium">
-                <span>{{ $post->title }}</span>
-            </div>
-        </a>
+        </div> --}}
     </div>
 
 </div>
