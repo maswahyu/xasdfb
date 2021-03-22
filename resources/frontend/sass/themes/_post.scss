@@ -139,4 +139,9 @@
 
 .post-tag {
     margin-top: 4rem;
+
+    &__lists {
+      display: flex;
+      flex-flow: wrap;
+    }
 }
