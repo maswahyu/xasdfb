@@ -147,9 +147,9 @@ class PostController extends Controller
                 $inlineHtml = '<p class="post-content__recommend" style="text-align:left;margin-bottom: -3rem;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
 
                 if ($key == 0) {
-                    $stars = $key + 3;
+                    $stars = $key + 2;
                 } else {
-                    $stars = $key * 5 + 3;
+                    $stars = $key * 5 + 2;
                 }
 
                 if(count($token) > 2) {
