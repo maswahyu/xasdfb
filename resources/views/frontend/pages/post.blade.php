@@ -177,10 +177,14 @@
 
                     <ul class="list post-tag">
                         @if($post->tags)
-                        <li class="list__item">TAGS</li>
-                        @foreach($post->tags as $item)
-                            <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
-                        @endforeach
+                        <div>
+                            <li class="list__item">TAGS</li>
+                        </div>
+                        <div class="post-tag__lists">
+                            @foreach($post->tags as $item)
+                                <li class="list__item active"><a href="{{ url('tag/'.optional($item->tag)->slug) }}" class="list__link list__link--tag">{{ optional($item->tag)->name }}</a></li>
+                            @endforeach
+                        </div>
                         @endif
                     </ul>
 
