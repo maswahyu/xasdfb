@@ -141,6 +141,23 @@ class Category extends Model
         return ($this->parent_id == 0) ? url('/'.$this->slug) : self::getSubUrlAttribute();
     }
 
+    public function getParentUrlAttribute()
+    {
+        if ($this->slug == self::LENSA) {
+            return url(self::LENSA);
+        }
+
+        if ($this->slug == self::SNEAKERLAND) {
+            return url(self::SNEAKERLAND);
+        }
+
+        if ($this->parent) {
+            return $this->parent->url;
+        } else {
+            return $this->url;
+        }
+    }
+
     public function getSubUrlAttribute()
     {
         if ($this->slug == self::LENSA) {

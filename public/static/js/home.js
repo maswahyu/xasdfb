@@ -92,7 +92,7 @@ $(function ()
             if (index >= 4) {
                 return
             }
-            
+
             $('.jsMustRead').append(template(value));
         });
 
@@ -117,7 +117,7 @@ $(function ()
             if (index >= 4) {
                 return
             }
-            
+
             if (parsedData.auth) {
                 value.utm = '?utm_source=Recommended&utm_medium=Login&utm_campaign=LazoneDetail'
             } else {
@@ -165,29 +165,29 @@ $(function ()
                                 <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
                             </a>
                         </div>
-                
+
                         <div class="post-card__info">
-                
+
                             <a href="` + value.url + `" alt="` + value.title + `">
                                 <div class="post-card__title post-card__title--large">
                                     <span>` + value.title + `</span>
                                 </div>
                             </a>
-                
+
                             <div class="post-card__meta post-meta">
-                
+
                                 <div class="post-meta__category">
                                     <a href="` + value.category_url + `">
                                         <span>` + value.category + `</span>
                                     </a>
                                 </div>
-                
+
                                 <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-                
+
                             </div>
-                
+
                         </div>
-                
+
                     </div>`;
 
             $('.jsArticleList').append($html);
@@ -200,36 +200,38 @@ $(function ()
                                         <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
                                     </a>
                                 </div>
-                        
+
                                 <div class="post-card__info">
-                        
+
                                     <a href="` + value.url + `" alt="` + value.title + `">
                                         <div class="post-card__title post-card__title--large">
                                             <span>` + value.title + `</span>
                                         </div>
                                     </a>
-                        
+
                                     <div class="post-card__meta post-meta">
-                        
+
                                         <div class="post-meta__category">
                                             <a href="` + value.category_url + `">
                                                 <span>` + value.category + `</span>
                                             </a>
                                         </div>
-                        
+
                                         <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-                        
+
                                     </div>
-                        
+
                                 </div>
-                        
+
                             </div>`;
                 $('.jsArticleList').append($html);
             });
-            
+
             /* Ads container ~sample image~ */
             $ads = `<div class="post-card__ads-container">
-                        <img class="post-card__ads" src="` + siteUrl + `/static/images/mock/ads_new2.jpg" alt="">
+                        <a href="` + url_banner +`?utm_source=AdsHome" alt="">
+                            <img class="post-card__ads" src="` + banner +`" alt="">
+                        </a>
                     </div>`;
             var adsContainer = document.querySelector(".jsArticleList .post-card--wide__with-padding:nth-child(6)")
             console.log(value.thumbnail);
@@ -264,29 +266,29 @@ $(function ()
                                 <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
                             </a>
                         </div>
-                
+
                         <div class="post-card__info">
-                
+
                             <a href="` + value.url + `" alt="` + value.title + `">
                                 <div class="post-card__title post-card__title--large">
                                     <span>` + value.title + `</span>
                                 </div>
                             </a>
-                
+
                             <div class="post-card__meta post-meta">
-                
+
                                 <div class="post-meta__category">
                                     <a href="` + value.category_url + `">
                                         <span>` + value.category + `</span>
                                     </a>
                                 </div>
-                
+
                                 <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-                
+
                             </div>
-                
+
                         </div>
-                
+
                     </div>`;
 
             $('.jsMobileArticleList').append($html);
@@ -299,29 +301,29 @@ $(function ()
                                 <img class="post-card__img" data-src="` + value.thumbnail + `" alt="` + value.title + `">
                             </a>
                         </div>
-                
+
                         <div class="post-card__info">
-                
+
                             <a href="` + value.url + `" alt="` + value.title + `">
                                 <div class="post-card__title post-card__title--large">
                                     <span>` + value.title + `</span>
                                 </div>
                             </a>
-                
+
                             <div class="post-card__meta post-meta">
-                
+
                                 <div class="post-meta__category">
                                     <a href="` + value.category_url + `">
                                         <span>` + value.category + `</span>
                                     </a>
                                 </div>
-                
+
                                 <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-                
+
                             </div>
-                
+
                         </div>
-                
+
                     </div>`;
 
                 $('.jsMobileArticleList').append($html);
@@ -371,45 +373,45 @@ $(function ()
             $html = `<div><div class="post-card post-card--video" style="width: 235px !important; min-height: 314px; margin: 0 1rem;">
 
                         <div class="post-card__thumbnail post-card__thumbnail--video">
-                    
+
                             <img class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/` + value.youtube_id + `/hqdefault.jpg" alt="` + value.title_limit + `">
-                    
+
                             <a href="` + value.url + `" alt="` + value.title_limit + `">
                                 <div class="post-card__overlay"></div>
-                    
+
                                 <div class="post-card__vid-play">
                                     <svg class="svg-vid-play">
                                         <use xlink:href="/static/images/sprites.svg#vid-play"></use>
                                     </svg>
                                 </div>
-                    
+
                                 <div class="post-card__frame">
                                     <svg class="svg-video-frame">
                                         <use xlink:href="/static/images/sprites.svg#video-frame"></use>
                                     </svg>
                                 </div>
-                    
+
                                 <div class="post-card__time"><span>` + value.duration + `</span></div>
                             </a>
                         </div>
-                    
+
                         <div class="post-card__meta post-meta">
-                    
+
                             <div class="post-meta__category">
                                 <a href="/gallery/video" alt="` + value.category + `">
                                     <span>` + value.category + `</span>
                                 </a>
                             </div>
-                    
+
                         </div>
-                    
+
                         <div class="post-card__meta post-meta">
-                    
+
                             <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
                             <div class="post-meta__stat"><span>` + value.view_count + ` views</span></div>
-                    
+
                         </div>
-                    
+
                         <a href="` + value.url + `" alt="` + value.title_limit + `">
                             <div class="post-card__title">
                                 <span>` + value.title_limit + `</span>
@@ -468,15 +470,15 @@ $(function ()
                                 <img class="post-card__img" src="img_placeholder_point.jpg" data-src="` + value.thumbnail + `" alt="` + value.title + `">
                             </a>
                         </div>
-                        
+
                         <div class="post-card__info">
-                            
+
                             <a href="` + value.url + `?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
                                 <div class="post-card__title">
                                     <span>` + value.title + `</span>
                                 </div>
                             </a>
-                
+
                             <div class="post-card__meta post-meta">
 
                                 <div class="post-meta__category">
@@ -485,9 +487,9 @@ $(function ()
                                     </a>
                                 </div>
                                 <div class="post-meta__stat"><span>` + value.view_count + ` Views</span></div>
-                    
+
                             </div>
-                    
+
                         </div>
                     </div></div>`;
 
