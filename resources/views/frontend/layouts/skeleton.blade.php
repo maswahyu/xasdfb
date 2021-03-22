@@ -135,6 +135,13 @@
         .nav-up-mobile {
             top: -60px;
         }
+
+        #shoutbox.is-affixed .nav-on {
+            top: 120px !important;
+        }
+        #shoutbox.is-affixed .nav-off {
+            top: 40px !important;
+        }
     </style>
     @yield('inside-head')
 </head>
@@ -323,11 +330,15 @@
                 // Scroll Down
                 $('header').removeClass('nav-down').addClass('nav-up');
                 $('.mobile-header').removeClass('nav-down-mobile').addClass('nav-up-mobile');
+                $('.inner-wrapper-sticky__shoutbox').removeClass('nav-on');
+                $('.inner-wrapper-sticky__shoutbox').addClass('nav-off');
             } else {
                 // Scroll Up
                 if(st + $(window).height() < $(document).height()) {
                     $('header').removeClass('nav-up').addClass('nav-down');
                     $('.mobile-header').removeClass('nav-up-mobile').addClass('nav-down-mobile');
+                    $('.inner-wrapper-sticky__shoutbox').removeClass('nav-off');
+                    $('.inner-wrapper-sticky__shoutbox').addClass('nav-on');
                 }
             }
             

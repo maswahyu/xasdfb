@@ -21,6 +21,13 @@
             padding: 0
         }
     }
+
+    @media screen and (min-width: 768px) {
+        .container-title,
+        .container-content {
+            max-width: 630px;
+        }
+    }
 </style>
 @endsection
 
@@ -56,7 +63,7 @@
 
     <div class="row">
 
-        <div class="span-12 span-lg-10 off-lg-1 span-xl-7 off-xl-3">
+        <div class="span-12 span-lg-10 off-lg-1 span-xl-7 off-xl-3 container-title">
 
             <ul class="breadcrumb">
                 @if($post->category)
@@ -152,13 +159,13 @@
         <div class="span-12 span-lg-10">
 
             <div class="row no-gutters flex-justify-center">
-                <div class="span-12 span-lg-10 off-lg-1">
+                <div class="span-12 span-lg-10">
 
                     <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
                 </div>
 
-                <div class="span-12 span-lg-8 off-lg-1">
+                <div class="span-12 span-lg-8 container-content">
 
                     <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
 
