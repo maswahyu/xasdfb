@@ -237,11 +237,7 @@
 .category-sticky,
 .category-latest,
 .shoutbox-sidebar {
-  margin-bottom: 3rem;
-
-  @include media-over(lg) {
-    margin-bottom: 6rem;
-  }
+  margin-bottom: 4rem;
 }
 
 .latest-video {
@@ -249,8 +245,8 @@
     flex: 1 1 100%;
 
     @include media-over(lg) {
-      flex: 0 0 72.2rem;
-      max-width: 72.2rem;
+      flex: 0 0 83.5rem;
+      max-width: 83.5rem;
       margin: 0 auto;
     }
   }
