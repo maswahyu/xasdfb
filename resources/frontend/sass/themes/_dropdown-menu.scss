@@ -34,7 +34,7 @@
     justify-content: center;
     flex-flow: row nowrap;
 
-    width: 100%;
+    width: 90%;
     position: relative;
   }
   &__user-container {
@@ -93,7 +93,9 @@
       top: 1.5rem;
 
       @include media-over(md) {
-        margin-left: 14.4rem;
+        // margin-left: 14.4rem;
+        position: absolute;
+        right: -12rem;
       }
     }
 

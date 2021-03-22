@@ -48,6 +48,7 @@
 
         #latestArticleContainer {
             padding-right: 4.5rem;
+            padding-left: 0;
         }
     }
 </style>
@@ -128,8 +129,8 @@
 
             <div class="home-below-fold__slider show-mobile">
                 <div class="home-promo-slider jsMobileTrendingList">
-                    {{-- @for($i=0; $i<=3; $i++)
-                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 1.6rem;">
+                    @for($i=0; $i<=3; $i++)
+                        <div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin-right: 2rem;">
                             <div class="post-card__thumbnail">
                                 <a href="test?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="">
                                     <img class="post-card__img" src="img_placeholder_point.jpg" data-src="" alt="">
@@ -156,7 +157,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endfor --}}
+                    @endfor
                 </div>
             </div>
 
@@ -376,7 +377,7 @@
                 <div class="jsMoreVideo"></div>
             </div> --}}
 
-            <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky">
+            <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky inner-wrapper-sticky__shoutbox">
 
                 <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ asset('static/images/new-lazone-prize-12-responsive.jpg') }} />
 
