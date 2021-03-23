@@ -565,11 +565,6 @@ class News extends Model
             self::insertReadMore($data->id, $request->read_more);
         }
 
-        // insert banner
-        if ($request->get('banner_type')) {
-            NewsBanner::updateOrCreateBanner($data->id, $request);
-        }
-
         self::forgotCache();
 
         return $data;
@@ -618,14 +613,8 @@ class News extends Model
             self::updateReadMore($data->id, $request->read_more);
         }
 
-        // update banner
-        if ($request->get('banner_type')) {
-            NewsBanner::updateOrCreateBanner($data->id, $request);
-        }
-
         self::forgotCache();
         Cache::forget('post'.$data->slug);
-        Cache::forget('news_banner'.$data->id);
 
         return $data;
     }
