@@ -159,13 +159,15 @@
         <div class="span-12 span-lg-10">
 
             <div class="row no-gutters flex-justify-center">
-                <div class="span-12 span-lg-10">
+                {{-- <div class="span-12 span-lg-10">
 
                     <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
-                </div>
+                </div> --}}
 
                 <div class="span-12 span-lg-8 container-content">
+
+                    <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
                     <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
 
