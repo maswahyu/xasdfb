@@ -174,59 +174,6 @@ use App\News;
     <div class="card card-outline">
         <div class="card-body">
             <div class="form-group">
-                <h4>Banner</h4>
-                    <div class="form-group">
-                        <label>
-                             Type
-                        </label>
-                        <select name="banner_type" id="banner_type" class="form-control form-control-sm">
-                            <option value="0">Select Type</option>
-                            <option value="1" {{ (isset($news->banner_type) && $news->banner_type == 1) ? 'selected' : '' }}>MyPoint</option>
-                            <option value="2" {{ (isset($news->banner_type) && $news->banner_type == 2) ? 'selected' : '' }}>Regular</option>
-                        </select>
-                        <p class="help-block"></p>
-                    </div>
-                <div id="fieldType">
-                    <div class="form-group" id="banner_title">
-                        <label for="banner_title">Banner Title</label>
-                        <input class="form-control form-control-sm" name="banner_title" type="text" placeholder="Title" value="{{ isset($news->banner_title) ? $news->banner_title : "Menangkan Hadiah <br> Menarik Tiap Bulan!" }}">
-                        <span class="text-danger">{{ $errors->first('banner_title') }}</span>
-                        <p class="help-block"></p>
-                    </div>
-
-                    <div class="form-group" id="banner_summary">
-                        <label for="banner_summary">Banner Summary</label>
-                        <textarea class="form-control form-control-sm" rows="2" name="banner_summary" type="textarea" maxlength="300" placeholder="Summary">{{ isset($news->banner_summary) ? $news->banner_summary : "Ingin dapat hadiah eksklusif tiap bulannya? yuk daftar jadi member LAZONE.ID sekarang dan kumpukan terus poin mu!" }}</textarea>
-                        <span class="text-danger">{{ $errors->first('banner_summary') }}</span>
-                        <p class="help-block"></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>
-                             {{ 'Banner Image' }}
-                        </label>
-                        @if(isset($news->banner_image))
-                            <img src="{{ imageview($news->banner_image) }}" style="display: block; margin: 5px 0 10px 0; width: 100px;">
-                        @endif
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-block btn-sm btn-default btn-flat" id="button-image-banner">Browse</button>
-                            </div>
-                            <input id="image_path_banner" name="banner_image" type="text" class="form-control form-control-sm" value="{{ isset($news->banner_image) ? $news->banner_image : old('banner_image') }}" placeholder="Image">
-                        </div>
-                        <span class="text-danger">{{ $errors->first('banner_image') }}</span>
-                        <p class="help-block"></p>
-                    </div>
-
-                    <div class="form-group" id="banner_url">
-                        <label for="banner_url">Banner URL</label>
-                        <input class="form-control form-control-sm" name="banner_url" type="url" placeholder="Banner URL" value="{{ isset($news->banner_url) ? $news->banner_url : old('banner_url') }}">
-                        <span class="text-danger">{{ $errors->first('banner_url') }}</span>
-                        <p class="help-block"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
                 <h4>Baja Juga</h4>
                     <div class="form-group">
                         <label>
@@ -333,53 +280,6 @@ use App\News;
 
           PopupCenter('/file-manager/fm-button','fm','900','500');
         });
-
-        // second button
-        document.getElementById('button-image-banner').addEventListener('click', (event) => {
-          event.preventDefault();
-
-          inputId = 'image_path_banner';
-
-          PopupCenter('/file-manager/fm-button','fm','900','500');
-        });
-
-        $('#fieldType').addClass('d-none')
-
-        $('#banner_type').on('change', function (e) {
-
-            if ($(this).val()) {
-
-                $('#fieldType').removeClass('d-none')
-
-                if ($(this).val() == 1) {
-                    $('#banner_url').addClass('d-none')
-                    $('#banner_title').removeClass('d-none')
-                    $('#banner_summary').removeClass('d-none')
-                } else if($(this).val() == 2) {
-                    $('#banner_url').removeClass('d-none')
-                    $('#banner_title').addClass('d-none')
-                    $('#banner_summary').addClass('d-none')
-                }
-
-            } else {
-                $('#fieldType').addClass('d-none')
-            }
-        })
-
-        @if($formMode === 'edit')
-            $('#fieldType').removeClass('d-none')
-            @if ($news->banner_type == 1)
-                $('#banner_url').addClass('d-none')
-                $('#banner_title').removeClass('d-none')
-                $('#banner_summary').removeClass('d-none')
-            @elseif($news->banner_type == 2)
-                $('#banner_url').removeClass('d-none')
-                $('#banner_title').addClass('d-none')
-                $('#banner_summary').addClass('d-none')
-            @else
-                $('#fieldType').addClass('d-none')
-            @endif
-        @endif
 
         var ArticlePageSize = 10;
         var defaultTxtOnInit = 'a';
