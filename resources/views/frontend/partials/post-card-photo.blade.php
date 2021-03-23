@@ -13,6 +13,8 @@
 
     </div>
 
+    <div class="post-card__title"><span>{{ $photo->name }}</span></div>
+
     <div class="post-card__meta post-meta">
 
         <div class="post-meta__category"><span>{{ $photo->category }}</span></div>
@@ -20,7 +22,5 @@
         <div class="post-meta__stat"><span>{{ $photo->published_date }}</span></div>
 
     </div>
-
-    <div class="post-card__title"><span>{{ $photo->name }}</span></div>
 
 </a>

@@ -130,6 +130,39 @@ use App\Setting;
 
       PopupCenter('/file-manager/fm-button','fm','900','500');
     });
+
+    document.getElementById('button-image-banner_mypoint_dekstop').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_mypoint_dekstop';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
+    document.getElementById('button-image-banner_mypoint_mobile').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_mypoint_mobile';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
+    document.getElementById('button-image-banner_post_dekstop').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_post_dekstop';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
+    document.getElementById('button-image-banner_post_mobile').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_post_mobile';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
   });
 
   // input

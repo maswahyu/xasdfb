@@ -129,6 +129,19 @@
             }
         }
 
+        .nav-up {
+            top: -100px;
+        }
+        .nav-up-mobile {
+            top: -60px;
+        }
+
+        #shoutbox.is-affixed .nav-on {
+            top: 120px !important;
+        }
+        #shoutbox.is-affixed .nav-off {
+            top: 40px !important;
+        }
     </style>
     @yield('inside-head')
 </head>
@@ -144,7 +157,7 @@
     {!! $siteInfo['bodycode'] !!}
     @include('frontend.layouts.after-body')
 
-    <header class="site-header">
+    <header class="site-header nav-down">
         @include('frontend.layouts.header')
     </header>
     @include('frontend.layouts.mobile-header')
@@ -191,7 +204,7 @@
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=1"></script>
+    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
     <script src="{{ asset('static/js/global-min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
 
@@ -285,6 +298,52 @@
                 visibleOnly: true
             });
         });
+
+        /* Sticky header */
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+        var navbarMobileHeight = $('.mobile-header').outerHeight();
+
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
+
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight || st > lastScrollTop && st > navbarMobileHeight){
+                // Scroll Down
+                $('header').removeClass('nav-down').addClass('nav-up');
+                $('.mobile-header').removeClass('nav-down-mobile').addClass('nav-up-mobile');
+                $('.inner-wrapper-sticky__shoutbox').removeClass('nav-on');
+                $('.inner-wrapper-sticky__shoutbox').addClass('nav-off');
+            } else {
+                // Scroll Up
+                if(st + $(window).height() < $(document).height()) {
+                    $('header').removeClass('nav-up').addClass('nav-down');
+                    $('.mobile-header').removeClass('nav-up-mobile').addClass('nav-down-mobile');
+                    $('.inner-wrapper-sticky__shoutbox').removeClass('nav-off');
+                    $('.inner-wrapper-sticky__shoutbox').addClass('nav-on');
+                }
+            }
+
+            lastScrollTop = st;
+        }
     </script>
 </body>
 

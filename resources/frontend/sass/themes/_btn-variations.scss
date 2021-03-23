@@ -2,10 +2,12 @@
   margin-bottom: 1.5rem;
   padding: 0.7rem 3rem;
   @include font-size(1.4rem);
+  min-width: 256px;
 
   @include media-over(md) {
     margin-bottom: 0;
     margin-right: 2rem;
+    min-width: unset;
   }
 
   &:last-child {
@@ -17,18 +19,18 @@
   color: palette("white");
   font-size: 1.6rem;
   font-weight: bold;
-  font-family: $nav-font-family;
+  font-family: $new-lazone-font;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .btn-social {
-  margin: 0 1.5rem;
+  // margin: 0 .25rem;
 
   &,
   &__icon {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -44,9 +46,11 @@
   border-color: palette("crimson");
   background-color: transparent;
   font-size: 1.4rem;
+  font-family: $new-lazone-font;
 
   &:hover {
     background-color: palette("crimson");
+    color: palette('white') !important;
   }
 
   &--wide {
@@ -84,7 +88,7 @@
   color: palette("white");
   text-transform: uppercase;
   font-weight: bold;
-  font-family: $title-font-family;
+  font-family: $new-lazone-font;
   font-size: 1.4rem;
 }
 
@@ -94,6 +98,17 @@
   color: palette("black");
   text-transform: uppercase;
   font-weight: bold;
-  font-family: $title-font-family;
+  font-family: $new-lazone-font;
   font-size: 1.4rem;
+}
+
+.btn {
+
+  @include media-under (md) {
+    padding: 1rem;
+    font-size: 14px;
+    line-height: 24px;
+    height: 40px;
+    padding: .8rem 4rem;
+  }
 }

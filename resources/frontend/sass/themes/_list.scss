@@ -8,24 +8,33 @@
   padding: 0;
   margin: 0;
 
-  overflow-x: auto;
+  /* overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: -ms-autohiding-scrollbar; */
   list-style: none;
 
   &__label {
-    @include font-size(1.6rem);
+    font-size: 13px;
     color: palette("black");
+    margin-right: 1.5rem;
+
+    @include media-over(md) {
+      @include font-size(1.6rem);
+      margin-right: unset;
+    }
   }
 
   &__item {
     flex: 0 0 auto;
     position: relative;
-    margin: 0 2rem;
+    margin: 0 1rem;
+    font-size: 16px;
+    line-height: 18.75px;
 
-    &:first-child {
+    /* &:first-child {
+      margin-right: 1rem;
       margin-left: 0;
-    }
+    } */
 
     &:last-child {
       margin-right: 0;
@@ -42,20 +51,20 @@
       z-index: 1;
     }
 
-    &.active::after {
+    /* &.active::after {
       background-color: rgba(palette("crimson"), 1) !important;
     }
 
     &:hover::after {
       background-color: rgba(palette("crimson"), 0.5);
-    }
+    } */
 
     &.active #{$this}__link {
-      color: palette("black");
+      color: palette("crimson");
     }
 
     &--social {
-      margin: 0 0.5rem;
+      margin: 0 .5rem 0 1rem;
 
       &:hover::after {
         display: none;
@@ -67,7 +76,7 @@
     position: relative;
     z-index: 2;
     color: palette("black");
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.8rem;
 
     &:hover {
@@ -80,8 +89,10 @@
     }
 
     &--tag {
-      @include font-size(1.6rem);
-      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: palette("crimson");
+      line-height: 18.75px;
     }
 
     &--footer {
@@ -92,12 +103,16 @@
 
     &--social {
       display: block;
-      padding-top: 0.5rem;
+
+      @include media-over(md) {
+        padding-top: 0.5rem;
+      }
     }
   }
 
   &--vertical {
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+    overflow: unset;
 
     @include media-over(lg) {
       margin-top: 3rem;
@@ -105,13 +120,13 @@
       width: 39px;
 
       #{$this}__link {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         width: 100%;
       }
 
       #{$this}__label {
         margin-bottom: 3.5rem;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
 
         &:hover::after {
           display: none;

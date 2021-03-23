@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container-header">
 
     <div class="row">
 
@@ -54,20 +54,19 @@
                         </picture>
                     </a>
                 </li>
-                <li class="dropdown-menu__item">
+                {{-- <li class="dropdown-menu__item">
                     <a href="{{ url('interest') }}" class="dropdown-menu__link" alt="Interest">Pick your interest</a>
-                </li>
+                </li> --}}
                 @auth
                     <li class="dropdown-menu__item dropdown-menu__item--has-submenu dropdown-menu__item--user-menu jsUserMenu">
                         <span class="dropdown-menu__avatar">
                             <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
                         </span>
+                        <div class="dropdown-menu__user-container">
+                            <strong class="dropdown-menu__username">{{ str_limit(auth()->user()->name, 12) }}</strong>
+                            <span class="dropdown-menu__points"><span id="loyalty_point"></span> pts</span>
+                        </div>
                         <ul class="dropdown-menu__dropdown dropdown-menu__dropdown--right">
-                            <li class="dropdown-menu__dropdown-item">
-                                <strong class="dropdown-menu__username">{{ str_limit(auth()->user()->name, 12) }}</strong>
-                                <span class="dropdown-menu__dropdown-link dropdown-menu__dropdown-link--no-hover"><span id="loyalty_point"></span> pts</span>
-                            </li>
-                            <li class="dropdown-menu__separator">&nbsp;</li>
                             <li class="dropdown-menu__dropdown-item">
                                 <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}" class="dropdown-menu__dropdown-link" target="_blank"><span>My Profile</span></a>
                             </li>

@@ -76,6 +76,9 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
         Route::get('loadalbum', 'GalleryController@loadAlbum');
         Route::get('loadtagsnews/{id}', 'NewsController@loadTagNews');
 
+        Route::get('loadnews', 'NewsController@loadNewsData');
+        Route::get('loadnews/{id}', 'NewsController@loadMoreData');
+
         Route::resource('prize', 'PrizeController');
         Route::get('prizelist', 'PrizeController@list');
     });

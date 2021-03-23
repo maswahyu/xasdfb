@@ -18,33 +18,21 @@
 
 <section class="content">
     <div class="container-fluid">
-        <div class="row"> 
-            <div class="col-md-12">
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                       <a href="{{ url('/magic/news') }}?type={{ Request::query('type') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                    </div>
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
+      <form method="POST" action="{{ url('/magic/news/' . $news->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+          {{ method_field('PATCH') }}
+          {{ csrf_field() }}
 
-                        <form method="POST" action="{{ url('/magic/news/' . $news->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            {{ csrf_field() }}
-
-                            @include ('_admin.news.form', ['formMode' => 'edit'])
-
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+          @if ($errors->any())
+              <ul class="alert alert-danger">
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          @endif
+          <div class="row">
+            @include ('_admin.news.form', ['formMode' => 'edit'])
+          </div>
+      </form>
     </div>
 </section>
 @endsection

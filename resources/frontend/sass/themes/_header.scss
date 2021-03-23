@@ -3,9 +3,10 @@
 
   @include media-over(xl) {
     display: block;
+    width: 100%;
     height: 8rem;
-    position: relative;
-    z-index: 2;
+    position: fixed;
+    z-index: 999;
 
     background-color: palette("black");
     color: palette("white");
@@ -49,6 +50,29 @@
     margin-top: -3rem;
     right: 0;
     outline: none;
+
+    .hamburger-inner,
+    .hamburger-inner::after,
+    .hamburger-inner::before {
+      width: 25px;
+      height: 3px;
+      border-radius: 5px;
+    }
+
+    &.hamburger--slider.is-active .hamburger-inner:after {
+      transform: translate3d(0, -8px, 0) rotate(-90deg);
+    }
+
+    .hamburger-inner {
+
+      &::after {
+        top: 8px;
+      }
+
+      &::before {
+        top: 16px;
+      }
+    }
   }
 
   .site-logo {
@@ -83,8 +107,10 @@
   transition: transform 0.3s linear;
   transform: translateX(100%);
   z-index: 500;
+  overflow: scroll;
+  padding-bottom: 3rem;
 
-  background-color: palette("black");
+  background-color: palette("white");
 
   @include media-over(xl) {
     display: none;
@@ -110,12 +136,12 @@
   }
 
   a {
-    font-family: $title-font-family;
-    color: palette("white");
+    font-family: $new-lazone-font;
+    color: palette("black");
   }
 
   .has-sub-menu {
-    @include chevron(1.2rem, 2px, palette("white"), right, absolute);
+    @include chevron(1.2rem, 2px, palette("black"), right, absolute);
     &::before {
       margin-top: -0.6rem;
       top: 50%;
@@ -129,13 +155,33 @@
     background-color: palette("white");
   }
 
-  .menu a {
-    display: block;
-    width: 100%;
+  .menu {
+
+    &__auth {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 3.5rem;
+
+      a {
+        height: 50px;
+        display: flex !important;
+        color: palette("white");
+      }
+    }
+
+    a {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-crimson {
+      color: palette("white");
+    }
   }
 
   .drilldown-back {
-    @include chevron(1.2rem, 2px, palette("white"), left, absolute);
+    @include chevron(1.2rem, 2px, palette("black"), left, absolute);
     &::before {
       margin-top: -0.6rem;
       top: 50%;

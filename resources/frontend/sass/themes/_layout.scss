@@ -1,6 +1,10 @@
 .site-content {
-  padding-top: 8rem;
-  padding-bottom: 3rem;
+  padding: 7rem 0rem 4rem !important;
+  font-family: $new-lazone-font;
+
+  @include media-over(lg) {
+    padding: 14rem 0 6rem !important;
+  }
 
   &.no-padding {
     padding-top: 0;
@@ -9,30 +13,44 @@
 
 .home-grid {
   @include row();
+  margin: 0;
   flex-wrap: wrap;
   align-items: stretch;
 
   &__must-reads {
     display: flex;
     flex-flow: row wrap;
+    align-content: baseline;
     @include col(12);
 
-    @include media-over(xl) {
-      @include col(9);
+    @include media-under(md) {
+      padding: 0;
     }
 
+    /* @include media-over(xl) {
+      flex: 1 0 74%;
+      max-width: 74%;
+      padding: 0 1rem;
+      padding-right: 0;
+      width: 100%;
+    } */
+
     &-highlights {
-      order: 0;
       width: 100%;
 
-      @include media-over(lg) {
+      /* @include media-over(lg) {
         margin-left: 2rem;
         width: 66rem;
+      } */
+
+      @include media-over(lg) {
+        width: 54%;
+        margin-right: 2rem;
+        flex: 0 0 54%;
       }
 
-      @include media-over(xl) {
-        width: 58rem;
-        order: 1;
+      @media screen and (min-width: 1440px) {
+        flex: 1 1 auto;
       }
     }
 
@@ -41,20 +59,44 @@
       flex-flow: row wrap;
       justify-content: center;
       width: 100%;
-      order: 1;
 
       @include media-over(lg) {
-        width: 28rem;
-        order: 0;
+        width: 44%;
+        flex: 0 0 44%;
       }
     }
   }
 
   &__recommended {
-    @include col(12);
+    flex: 1 0 108%;
+    max-width: 108%;
+    width: 100%;
+
+    background: palette('athens');
+    border-top: 5px solid palette('crimson');
+    padding: 1.3rem 2rem 1rem;
+    margin-left: -1.5rem;
+
+    @include media-over(lg) {
+      margin-left: -1.5rem;
+    }
 
     @include media-over(xl) {
-      @include col(3);
+      flex: 1 0 26%;
+      max-width: 26%;
+      width: 100%;
+      
+      padding: 2.3rem 2rem 2rem;
+      margin-left: unset;
+    }
+
+    @include media-under(md) {
+      margin-top: 3rem;
+    }
+
+    .post-card--wide:last-child {
+      border-bottom: none !important;
+      // padding: 0 .5rem .5rem;
     }
   }
 }
@@ -65,6 +107,8 @@
   flex-wrap: wrap;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  margin-left: 0;
+  margin-right: 0;
 
   @include media-over(lg) {
     margin-top: 8rem;
@@ -78,40 +122,50 @@
   &__slider {
     @include col(12);
 
-    @include media-over(lg) {
-      @include col(8);
+    @include media-under(md) {
+      padding: 0;
     }
 
-    @include media-over(xl) {
+    /* @include media-over(lg) {
+      flex: 1 0 74%;
+      max-width: 74%;
+      padding: 0 1rem;
+      width: 100%;
+    } */
+
+    /* @include media-over(xl) {
       @include col(9);
-    }
+    } */
   }
 
   &__preference {
     @include col(12);
 
     @include media-over(lg) {
-      @include col(4);
+      flex: 1 0 26%;
+      max-width: 26%;
+      width: 100%;
+      padding-right: 0;
     }
 
-    @include media-over(xl) {
+    /* @include media-over(xl) {
       @include col(3);
-    }
+    } */
   }
 }
 
 .home-trending {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: .5rem;
+  padding-bottom: 4rem;
 
-  background-image: url("../images/trending-bg.webp");
+  background-color: palette('athens');
+  /* background-image: url("../images/trending-bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
 
   @include media-over(lg) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 4rem;
   }
 }
 
@@ -183,11 +237,7 @@
 .category-sticky,
 .category-latest,
 .shoutbox-sidebar {
-  margin-bottom: 3rem;
-
-  @include media-over(lg) {
-    margin-bottom: 6rem;
-  }
+  margin-bottom: 4rem;
 }
 
 .latest-video {
@@ -195,8 +245,8 @@
     flex: 1 1 100%;
 
     @include media-over(lg) {
-      flex: 0 0 72.2rem;
-      max-width: 72.2rem;
+      flex: 0 0 83.5rem;
+      max-width: 83.5rem;
       margin: 0 auto;
     }
   }
@@ -213,9 +263,13 @@
 }
 
 .related-post {
-  padding: 6rem 0;
-  margin: 6rem 0;
+  padding: 1rem 0 4rem;
+  margin: 4rem 0;
   background-color: palette("athens");
+
+  @include media-over(md) {
+    padding: 4rem 0;
+  }
 }
 
 .photo-slider {
@@ -267,5 +321,25 @@
   ol,
   ul {
     padding-left: 1em;
+  }
+}
+
+.order {
+
+  &-1 {
+    order: 1;
+  }
+  &-2 {
+    order: 2;
+  }
+
+  @include media-over(md) {
+
+    &-md-1 {
+      order: 1;
+    }
+    &-md-2 {
+      order: 2;
+    }
   }
 }

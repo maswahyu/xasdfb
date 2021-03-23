@@ -15,8 +15,10 @@
 
             <div class="span-12">
 
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Gallery</span>
+                <div class="row flex-justify-center">
+                    <div class="section-title section-title--plain section-title--page">
+                        <span class="section-title__label section-title__label--category">Gallery</span>
+                    </div>
                 </div>
 
             </div>
@@ -30,10 +32,11 @@
 
         </div>
 
-        <div class="row">
-
-            <div class="section-title section-title--plain">
-                <span class="section-title__label">Latest Videos</span>
+        <div class="row flex-justify-center">
+            <div class="span-auto span-lg-12">
+                <div class="section-title section-title--plain">
+                    <span class="section-title__label">Latest Videos</span>
+                </div>
             </div>
         </div>
 
@@ -75,9 +78,9 @@
 {{-- More Videos --}}
 <div class="gallery-more container">
 
-    <div class="row">
+    <div class="row flex-justify-center">
 
-        <div class="span-12">
+        <div class="span-auto span-lg-12">
 
             <div class="section-title">
                 <span class="section-title__label">See More Videos</span>
@@ -118,6 +121,12 @@
                 </a>
             </div>
 
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+
             <div class="post-card__meta post-meta">
 
                 <div class="post-meta__category">
@@ -130,11 +139,6 @@
 
             </div>
 
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
             <div class="post-card__additional stat-with-icon">
                 <span class="stat-with-icon__icon">
                     @endverbatim

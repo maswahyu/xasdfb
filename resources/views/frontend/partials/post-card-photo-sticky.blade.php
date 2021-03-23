@@ -6,7 +6,13 @@
         </a>
     </div>
 
-    <div class="post-card__meta post-meta">
+    <a href="{{ $post->url }}" alt="{{ $post->name }}">
+        <div class="post-card__title post-card__title--large" style="padding-left: 20px;">
+            <span>{{ $post->name }}</span>
+        </div>
+    </a>
+
+    <div class="post-card__meta post-meta" style="padding-left: 20px;">
 
         <div class="post-meta__category">
             <a href="/gallery/photo" alt="{{ $post->category }}">
@@ -18,13 +24,7 @@
 
     </div>
 
-    <a href="{{ $post->url }}" alt="{{ $post->name }}">
-        <div class="post-card__title post-card__title--large">
-            <span>{{ $post->name }}</span>
-        </div>
-    </a>
-
-    <div class="post-card__additional post-card__additional--x-padding stat-with-icon">
+    <div class="post-card__additional post-card__additional--x-padding stat-with-icon" style="padding-left: 20px;">
         <span class="stat-with-icon__icon">
             <img src="{{ asset('static/images/slides.png') }}" alt="">
         </span>

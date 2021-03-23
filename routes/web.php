@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/feed-home', 'IndexController@feedHome');
 Route::get('/feed', 'IndexController@feed');
 Route::get('/feed-photo', 'GalleryController@feedPhoto');
 Route::get('/feed-video', 'GalleryController@feedVideo');
@@ -39,8 +40,15 @@ Route::get('tukarlangsung', 'PageController@tukarLangsung');
 
 Route::post('share-button-count', 'PostController@hitShareButton');
 
-Route::get('email', function () {
-  return view('email.template');
+
+Route::get('email-verify', function () {
+  return view('email.verification');
+});
+Route::get('email-success', function () {
+  return view('email.success');
+});
+Route::get('email-complete', function () {
+  return view('email.complete');
 });
 
 Route::get('interest', 'MemberController@interest');

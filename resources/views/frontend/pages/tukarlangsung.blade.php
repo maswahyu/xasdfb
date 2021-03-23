@@ -25,7 +25,7 @@
         <br>
         <div class="text-center">
           <a
-            href="https://mypoints.lazone.id/"
+            href="{{ env('URL_MYPOINT') }}"
             target="_blank"
             class="tukar-sekarang btn-crimson"
           >

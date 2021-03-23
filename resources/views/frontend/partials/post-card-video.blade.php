@@ -23,6 +23,12 @@
         </a>
     </div>
 
+    <a href="{{ $video->url }}" alt="{{ $video->title_limit }}">
+        <div class="post-card__title">
+            <span>{{ $video->title_limit }}</span>
+        </div>
+    </a>
+
     <div class="post-card__meta post-meta">
 
         <div class="post-meta__category">
@@ -34,10 +40,4 @@
         <div class="post-meta__stat"><span>{{ $video->published_date }}</span></div>
 
     </div>
-
-    <a href="{{ $video->url }}" alt="{{ $video->title_limit }}">
-        <div class="post-card__title">
-            <span>{{ $video->title_limit }}</span>
-        </div>
-    </a>
 </div>

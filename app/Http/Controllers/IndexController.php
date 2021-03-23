@@ -28,7 +28,12 @@ class IndexController extends Controller
         $ads = [
             'url' => Setting::getConfig('banner_home_url'),
             'image' => Setting::getConfig('banner_home'),
+            'banner_mypoint_dekstop' => Setting::getConfig('banner_mypoint_dekstop'),
+            'banner_mypoint_mobile' => Setting::getConfig('banner_mypoint_mobile'),
+            'banner_mypoint_title' => Setting::getConfig('banner_mypoint_title'),
+            'banner_mypoint_summary' => Setting::getConfig('banner_mypoint_summary'),
         ];
+
         $bannerWifi = null;
         if(request()->get('wifi')) {
             $bannerWifi = BannerWifi::byPublish()->first();
@@ -53,6 +58,30 @@ class IndexController extends Controller
 
         } else {
            $posts = News::getPage($page);
+           if($page == 1) {
+               $posts->getCollection()->transform(function($value) use($page) {
+                   $value->slug = $value->slug . '?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail';
+                   return $value;
+               });
+           }
+        }
+
+	    return response()->json(new NewsCollection($posts));
+    }
+
+    public function feedHome(Request $request)
+    {
+        $page     = $request->get('page');
+        $size     = $request->get('size');
+        $category = $request->get('category');
+
+        if ($category) {
+
+            $category = Category::detail($category);
+            $posts = News::getLatestCategory($category, $page);
+
+        } else {
+           $posts = News::getHomePage($page, $size);
            if($page == 1) {
                $posts->getCollection()->transform(function($value) use($page) {
                    $value->slug = $value->slug . '?utm_source=Latest&utm_medium=Content&utm_campaign=LazoneDetail';

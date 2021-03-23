@@ -5,24 +5,37 @@ a {
 
 p {
   line-height: (26/16);
+
+  @include media-under(md) {
+    font-size: 18px;
+  }
 }
 
 .semibold {
   font-weight: 600 !important;
 }
 
+hr {
+  border: 1px inset palette("alto");
+  opacity: .5;
+}
+
 .fs-18 {
-  @include font-size(1.8rem);
+  font-size: 18px;
 }
 
 .search-input {
   padding-left: 1rem !important;
   padding-right: 3rem !important;
+
+  @include media-under(lg) {
+    border: 1px solid palette("alto") !important;
+  }
 }
 
 .search-btn-icon {
   position: absolute;
-  top: 0.5rem;
+  top: 0.8rem;
   right: 1.5rem;
   height: 2.4rem;
   width: 2.4rem;
@@ -45,9 +58,11 @@ p {
 .svg-video-frame {
   display: block;
   height: 162px;
-  width: 284px;
+  width: 204px;
 
   @include media-over(lg) {
+    width: 284px;
+
     &--large {
       height: 386px;
       width: 681px;
@@ -92,10 +107,10 @@ p {
 }
 
 .placement {
-  margin: 2rem 0;
+  margin: 4rem 0;
 
   @include media-over(lg) {
-    margin: 3rem auto;
+    margin: 4rem auto !important;
     width: 960px;
   }
 
@@ -212,10 +227,55 @@ p {
   .inner-wrapper-sticky {
     padding-left: 1rem;
   }
+
+  @include media-under(md) {
+
+    &.is-affixed .inner-wrapper-sticky {
+      top: 92% !important;
+      box-shadow: 0 -5px 10px -5px hsla(0,0%,80%,.5);
+      background-color: palette('white');
+      z-index: 99;
+      width: 100% !important;
+      height: 62px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding-left: 0;
+      left: 0 !important;
+
+      .list {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100%;
+        justify-content: space-around;
+
+        @media screen and (max-width: 375px) {
+          margin-top: -4px;
+        }
+
+        &__label {
+          font-size: 16px;
+          line-height: 30px;
+        }
+      }
+    }
+  
+    /* .list {
+      justify-content: center;
+    } */
+  }
 }
 
 .sidebar__inner {
   transform: translate(0, 0); /* For browsers don't support translate3d. */
   transform: translate3d(0, 0, 0);
   will-change: position, transform;
+}
+
+ol.styled-list {
+  li {
+    margin: 2rem 0;
+    font-size: 16px;
+  }
 }

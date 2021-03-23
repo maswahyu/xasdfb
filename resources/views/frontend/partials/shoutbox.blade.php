@@ -1,9 +1,9 @@
-<div class="shoutbox">
+<div class="shoutbox shoutbox--column">
 
-        <div class="shoutbox__title"><span>Beritahu Kami Minat Kamu</span></div>
+        <div class="shoutbox__title"><span>Beritahu Kami <br> Minat Kamu</span></div>
 
         <div class="shoutbox__text">
-            <p>Pilih artikel-artikel terkini sesuai minat mu di lazone</p>
+            <p>Pilih topik-topik yang menarik <br> untuk-mu agar tetap update <br> dengan artikel terkini sesuai <br> minat-mu di Lazone!</p>
         </div>
 
         <div class="shoutbox__cta">

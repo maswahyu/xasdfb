@@ -43,6 +43,7 @@ class NewsController extends Controller
     public function create(Request $request)
     {
         $category = Category::where('parent_id', 0)->get();
+        $tags = null;
 
         return view('_admin.news.create', compact('category','tags'))->with('title', $this->title);
     }
@@ -110,5 +111,23 @@ class NewsController extends Controller
         $tags = $news->tags->pluck('tag_id');
         $tags = Tag::byPublish()->whereIn('id', $tags)->get();
         return response()->json($tags);
+    }
+
+    public function loadNewsData(Request $request)
+    {
+        $keyword = $request->get('keyword');
+
+        $news = News::byPublish()->select('id', 'title')->where('title', 'LIKE', '%'.$keyword.'%')->paginate($request->pageSize);
+
+        return response()->json($news);
+    }
+
+    public function loadMoreData(Request $request, $id)
+    {
+        $news = News::findOrFail($id);
+        $more = $news->readMore->pluck('news_more_id');
+        $more = News::byPublish()->whereIn('id', $more)->get();
+
+        return response()->json($more);
     }
 }

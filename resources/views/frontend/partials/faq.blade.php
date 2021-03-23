@@ -1,14 +1,16 @@
 <div class="faq-section">
 
-    <div class="section-title section-title--plain section-title--page">
-        <span class="section-title__label section-title__label--category">FAQ</span>
-    </div>
-
+    
     <div class="container faq-list">
-
+        
         <div class="row">
-
+            
             <div class="span-12 span-lg-10 off-lg-1">
+                <div class="row flex-justify-center">
+                    <div class="section-title section-title--plain section-title--page">
+                        <span class="section-title__label section-title__label--category">FAQ</span>
+                    </div>
+                </div>
                 <div class="expand-collapsed">
                     <div class="expand-collapsed__header">
                         <span class="expand-collapsed__title"> APAKAH SAYA PERLU MENDAFTARKAN AKUN UNTUK MENDAPATKAN POINT? </span>

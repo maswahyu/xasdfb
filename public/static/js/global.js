@@ -2,7 +2,8 @@ $(function ()
 {
     var $mobileMenu = $('#mobile-menu'),
         $userMobileMenu = $('#user-mobile-menu'),
-        $primaryNav = $('#nav-mobile-menu');
+        $primaryNav = $('#nav-mobile-menu'),
+        $mobileMenuBlanket = $('.dropdown-menu__blanket');
 
     $(".mobile-menu-trigger").on('click', function (e)
     {
@@ -12,9 +13,11 @@ $(function ()
             $this.removeClass('is-active');
             $primaryNav.removeClass('active');
             $mobileMenu.drilldown('reset');
+            $mobileMenuBlanket.removeClass('is-active');
         } else {
             $this.addClass('is-active');
             $primaryNav.addClass('active');
+            $mobileMenuBlanket.addClass('is-active');
         }
     });
 
@@ -56,6 +59,10 @@ $(function ()
 
     $('.jsUserMenu .dropdown-menu__dropdown-link').on('click', function(e){
         e.stopPropagation();
+    });
+
+    $('.jsUserMenu').on('mouseover mouseout', function(){
+        $mobileMenuBlanket.toggleClass('is-active');
     });
 
     $('.jsSearchTrigger').on('click', function (e)

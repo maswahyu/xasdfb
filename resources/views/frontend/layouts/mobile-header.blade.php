@@ -1,4 +1,4 @@
-<div class="mobile-header">
+<div class="mobile-header nav-down-mobile">
 
     <button class="mobile-menu-trigger hamburger hamburger--slider" type="button">
         <span class="hamburger-box">
@@ -21,19 +21,43 @@
         </picture>
     </a>
 
-    @auth
+    {{-- @auth
     <div class="user-info mobile jsUserMenuTrigger">
         <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span>
         <img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 7) }}">
     </div>
-    @endauth
+    @endauth --}}
 
 </div>
 
+<div class="dropdown-menu__blanket"></div>
 <nav id="nav-mobile-menu" class="mobile-nav">
     <div id="mobile-menu" class="drilldown">
         <div class="drilldown-container">
             <ul class="drilldown-root">
+                @auth
+                <li class="dropdown-menu dropdown-menu__item--user-menu">
+                    <span class="dropdown-menu__avatar">
+                        <img src="{{ asset('static/images/avatar.png') }}" alt="User Avatar" class="avatar" id="avatar-desktop">
+                    </span>
+                    <div class="dropdown-menu__user-container">
+                        <strong class="dropdown-menu__username">Hi, {{ str_limit(auth()->user()->name, 7) }}</strong>
+                        <span class="dropdown-menu__points"><span id="loyalty_point"></span> pts</span>
+                    </div>
+                </li>
+                <li class="dropdown-menu__separator"></li>
+                <li class="menu">
+                    <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}" alt="Gallery">
+                        My Profile
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="{{ config('cas.url_mypoint') }}" alt="Gallery">
+                        My Points
+                    </a>
+                </li>
+                <li class="dropdown-menu__separator"></li>
+                @endauth
                 <li class="search">
                     <form class="form" action="{{ url('search') }}" method="get">
                         <input type="search" name="search" class="search-input form-control">
@@ -101,17 +125,21 @@
                         Pick your interest
                     </a>
                 </li>
-                @guest
+                @auth
+                    <li class="menu">
+                        <a href="{{ url('member/logout') }}" class="btn btn-crimson btn-login">Logout</a>
+                    </li>
+                @else
                     <li class="menu">
                         <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login">Login</a>
                     </li>
-                @endguest
+                @endauth
             </ul>
         </div>
     </div>
 </nav>
 
-@auth
+{{-- @auth
 <div id="user-mobile-menu" class="mobile-nav">
     <ul>
         <li class="menu">
@@ -136,4 +164,4 @@
         </li>
     </ul>
 </div>
-@endauth
+@endauth --}}

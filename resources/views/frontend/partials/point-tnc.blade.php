@@ -1,21 +1,19 @@
 <div class="tnc-section">
 
     <div class="container">
-        <div class="row">
-            <div class="span-12">
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Terms And Conditions</span>
-                </div>
+        <div class="row flex-justify-center">            
+            <div class="section-title section-title--plain section-title--page">
+                <span class="section-title__label section-title__label--category">Terms And Conditions</span>
             </div>
         </div>
 
-        <div class="row">
-            <div class="span-12 span-lg-5 off-lg-1">
+        <div class="row flex-justify-center">
+            <div class="span-11 span-lg-5 off-lg-1">
                 <div>
                     <strong class="fs-18">Kebijakan Point</strong>
                 </div>
                 <div>
-                    <ol>
+                    <ol class="styled-list">
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika Member mendapatkan poin mulai bulan Februari 2018, maka poin tersebut akan hangus pada akhir Januari 2019</li>
                         <li>Member dengan jumlah poin sama akan ditentukan pemenangnya berdasarkan waktu perolehan poin tercepat. Contoh: Member A lebih dulu mendapatkan 500 poin diikuti member B yang juga mendapatkan 500 poin, maka yang berada di posisi lebih tinggi pada Leaderboard adalah Member A</li>
                         <li>Mekanisme perolehan poin dan katalog penukaran hadiah dapat berubah sewaktu-waktu</li>
@@ -27,12 +25,12 @@
                 </div>
             </div>
 
-            <div class="span-12 span-lg-5">
+            <div class="span-11 span-lg-5">
                 <div>
                     <strong class="fs-18">Kebijakan Personal</strong>
                 </div>
                 <div>
-                    <ol>
+                    <ol class="styled-list">
                         <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia di atas 18 tahun dan tinggal di Indonesia</li>
                         <li>Program ini tidak berlaku kepada seluruh pihak yang terkait dengan penyelenggaraan Program ini</li>
                         <li>Untuk mendapatkan hadiah, member harus memverifikasi nomor handphone terdaftar mereka.</li>

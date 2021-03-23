@@ -7,6 +7,7 @@ use Auth;
 use Cache;
 use App\Tag;
 use App\News_tag;
+use App\NewsBanner;
 use Carbon\Carbon;
 use App\Model\Stats;
 use Illuminate\Support\Str;
@@ -43,7 +44,12 @@ class News extends Model
         return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate);
     }
 
-    public static function getPage($pageNumber = 1, $paginate = 10)
+    public static function getHomePage($pageNumber = 1, $paginate = 10)
+    {
+        return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
+    }
+
+    public static function getPage($pageNumber = 1, $paginate = 6)
     {
         return self::where('publish', self::STATUS_PUBLISHED)->latest('published_at')->paginate($paginate, ['*'], 'page', $pageNumber);
     }
@@ -84,7 +90,7 @@ class News extends Model
                     ->where('category_id', $category_id)
                     ->where('slug', '!=', $slug)
                     ->latest('published_at')
-                    ->take(3)
+                    ->take(4)
                     ->get();
 
         if($related->count() === 0) {
@@ -114,6 +120,14 @@ class News extends Model
         return $this->hasMany('App\News_tag', 'news_id', 'id');
     }
 
+    public function readMore() {
+        return $this->hasMany('App\ReadMore', 'news_id', 'id');
+    }
+
+    public function banner() {
+        return $this->hasOne('App\NewsBanner', 'news_id', 'id');
+    }
+
     public function isSelected($id){
 
         if(!($ids = old('tags'))) {
@@ -138,7 +152,7 @@ class News extends Model
         return $model;
     }
 
-    public static function getMustReads($take = 2)
+    public static function getMustReads($take = 4)
     {
         $model = Cache::tags('cacheHomepage')->rememberForever('getMustReads', function () use ($take) {
 
@@ -148,8 +162,25 @@ class News extends Model
         return $model;
     }
 
-    public static function getRecommended($take = self::TAKE_RECOMENDED)
+    /**
+     * Get recomded article
+     * @param int $take
+     * @param boolean $inline wheter recomended article show in center of detail article
+     * @param \App\News $news this param should present when param 2 is true
+     */
+    public static function getRecommended($take = self::TAKE_RECOMENDED, $inline = false, News $news = null)
     {
+        if($inline) {
+            $model = News::with('tags')->whereHas('tags', function($q) use($news) {
+                $q->with('tag')->whereIn('tag_id', $news->tags->map(function($model) {
+                    return [
+                        $model->tag_id
+                    ];
+                } ));
+            })->where('category_id', $news->category_id)->where([['id', '<>', $news->id]])->latest()->first();
+            return $model;
+        }
+
         $model = Cache::tags('cacheHomepage')->rememberForever('getRecommended', function () {
             return self::hydrate(DB::select('SELECT t1.* FROM news t1 JOIN (SELECT category_id, MAX(published_at) published_at FROM news GROUP BY category_id) t2 ON t1.category_id = t2.category_id AND t1.published_at = t2.published_at WHERE t1.publish = 1 and t1.deleted_at is null order by published_at DESC LIMIT 5'));
         });
@@ -360,12 +391,11 @@ class News extends Model
                 $image->resize(400, null, function($constraint) {
                     $constraint->aspectRatio();
                 })->save(storage_path('app/public') . $path);
-            } catch(\Intervention\Image\Exception\NotReadableException $e) {
-                return imageview($thumb_path);
+            } catch(Exception | \Illuminate\Contracts\Filesystem\FileNotFoundException | \Intervention\Image\Exception\NotReadableException $e) {
+                return imageview(null);
             }
         }
         return imageview($thumb_path);
-
     }
 
     public function getPublishedDateAttribute()
@@ -437,6 +467,31 @@ class News extends Model
         }
 
         return sprintf('<span class="badge badge-%s">%s</span>', $level, $status);
+    }
+
+    public function getBannerTitleAttribute()
+    {
+        return (isset($this->banner) && $this->banner->title) ? $this->banner->title : '';
+    }
+
+    public function getBannerSummaryAttribute()
+    {
+        return (isset($this->banner) && $this->banner->summary) ? $this->banner->summary : '';
+    }
+
+    public function getBannerTypeAttribute()
+    {
+        return (isset($this->banner) && $this->banner->type) ? $this->banner->type : '';
+    }
+
+    public function getBannerImageAttribute()
+    {
+        return (isset($this->banner) && $this->banner->image) ? $this->banner->image : '';
+    }
+
+    public function getBannerUrlAttribute()
+    {
+        return (isset($this->banner) && $this->banner->url) ? $this->banner->url : '';
     }
 
     /**
@@ -524,6 +579,11 @@ class News extends Model
             self::insertNewsTag($data->id, $tags);
         }
 
+        // insert read more
+        if ($request->read_more) {
+            self::insertReadMore($data->id, $request->read_more);
+        }
+
         self::forgotCache();
 
         return $data;
@@ -567,6 +627,11 @@ class News extends Model
             self::updateNewsTag($data->id, $tags);
         }
 
+        // update read more
+        if ($request->read_more) {
+            self::updateReadMore($data->id, $request->read_more);
+        }
+
         self::forgotCache();
         Cache::forget('post'.$data->slug);
 
@@ -594,6 +659,24 @@ class News extends Model
 
         // insert ulang
         self::insertNewsTag($news_id, $tags);
+    }
+
+    public static function insertReadMore($news_id, $more)
+    {
+        if ($more) {
+            foreach ($more as $more_id) {
+                $tag = ReadMore::add($news_id, $more_id);
+            }
+        }
+    }
+
+    public static function updateReadMore($news_id, $more)
+    {
+        // delete news more
+        ReadMore::where('news_id', $news_id)->delete();
+
+        // insert ulang
+        self::insertReadMore($news_id, $more);
     }
 
     public static function generateRandomString($length = 5) {

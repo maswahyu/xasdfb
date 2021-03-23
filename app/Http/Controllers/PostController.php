@@ -9,6 +9,7 @@ use App\Category;
 use Carbon\Carbon;
 
 use App\StickyBanner;
+use App\NewsBanner;
 use Illuminate\Http\Request;
 use App\ShareNewsChannel;
 use App\Http\Resources\NewsCollection;
@@ -34,7 +35,7 @@ class PostController extends Controller
 
 	    $sticky 	 = News::getSticky(2, $category);
 	    $latest 	 = News::getLatest(3, $category);
-	    $recommended = News::getRecommended();
+	    $recommended = News::getRecommended(4);
 	    $type 	 	 = 1;
 
         $ads = [
@@ -133,14 +134,79 @@ class PostController extends Controller
 
 	    $related = News::related($post->slug, $post->tags, $post->category_id);
 
+        // inject read more artikel
+        if (isset($post->readMore) && count($post->readMore) > 0) {
+            $limit = count($post->readMore);
+
+            $needle = "<br />\r\n<br />";
+            $token = explode($needle, $post->content);
+
+            foreach ($post->readMore as $key => $row) {
+
+                $inlineRecomended = News::find($row->news_more_id);
+
+                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;margin-bottom: -3rem;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+
+                if ($key == 0) {
+                    $stars = $key + 2;
+                } else {
+                    $stars = $key * 5 + 2;
+                }
+
+                if(count($token) > 2) {
+                    if(\array_key_exists($stars, $token)) {
+                        $token[$stars] .= $inlineHtml;
+                        $post->content = implode($needle, $token);
+                    }
+                } else {
+                    $post->content .= $inlineHtml;
+                    break;
+                }
+            }
+
+        } else {
+            $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
+            if($inlineRecomended) {
+                $needle = "<br />\n<br />";
+                $token = explode($needle, $post->content);
+                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+
+                if(\array_key_exists(count($token) - 4, $token)) {
+                    $token[count($token) - 4] .= $inlineHtml;
+                    $post->content = implode($needle, $token);
+                } else {
+                    $needle = "<p>";
+                    $token = explode($needle, $post->content);
+                    $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+
+                    if(\array_key_exists(count($token) - 4, $token)) {
+                        $token[count($token) - 4] .= $inlineHtml;
+                        $post->content = implode($needle, $token);
+                    } else {
+                        $post->content .= $inlineHtml;
+                    }
+                }
+            }
+        }
+
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),
             'image' => Setting::getConfig('banner_post'),
+            'banner_type' => Setting::getConfig('banner_type'),
+            'banner_post_mobile' => Setting::getConfig('banner_post_mobile'),
+            'banner_post_dekstop' => Setting::getConfig('banner_post_dekstop'),
+            'banner_post_title' => Setting::getConfig('banner_post_title'),
+            'banner_post_summary' => Setting::getConfig('banner_post_summary'),
+            'banner_post_url' => Setting::getConfig('banner_post_url'),
         ];
+
+        $banner = NewsBanner::detail($post->id);
+
 	    return view('frontend.pages.post', [
-	        'post' => $post,
+            'post' => $post,
 	        'relatedPosts' => $related,
-            'ads' => $ads
+            'ads' => $ads,
+            'banner' => $banner
 	    ]);
     }
 

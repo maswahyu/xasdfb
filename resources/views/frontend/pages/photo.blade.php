@@ -6,6 +6,16 @@
 
 @section('content')
 
+@section('inside-head')
+<style type="text/css">
+    @media screen and (min-width: 768px) {
+        .section-title--plain {
+            margin-left: 1rem;
+        }
+    }
+</style>
+@endsection
+
 <div class="faux-bg">
 
     <div class="container">
@@ -15,8 +25,10 @@
 
             <div class="span-12">
 
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Gallery</span>
+                <div class="row flex-justify-center">
+                    <div class="section-title section-title--plain section-title--page">
+                        <span class="section-title__label section-title__label--category">Gallery</span>
+                    </div>
                 </div>
 
             </div>
@@ -30,8 +42,8 @@
 
         </div>
 
-        <div class="row">
-            <div class="span-12">
+        <div class="row flex-justify-center">
+            <div class="span-auto span-lg-12">
                 <div class="section-title section-title--plain">
                     <span class="section-title__label">Latest Photos</span>
                 </div>
@@ -126,6 +138,12 @@
                 </a>
             </div>
 
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
+
             <div class="post-card__meta post-meta">
 
                 <div class="post-meta__category">
@@ -138,11 +156,6 @@
 
             </div>
 
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
             <div class="post-card__additional stat-with-icon">
                 <span class="stat-with-icon__icon">
                     @endverbatim

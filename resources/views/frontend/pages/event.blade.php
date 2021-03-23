@@ -8,15 +8,12 @@
 
     <div class="container">
 
-        <div class="row ">
+        <div class="row flex-justify-center">
 
-            <div class="span-12">
-
-                <div class="section-title section-title--plain section-title--page">
-                    <span class="section-title__label section-title__label--category">Events</span>
-                </div>
-
+            <div class="section-title section-title--plain section-title--page" style="margin-bottom: unset;">
+                <span class="section-title__label section-title__label--category">Events</span>
             </div>
+            
         </div>
 
         <div class="row jsEventList">
@@ -62,7 +59,7 @@
 
             <div class="list-with-sidebar__main">
 
-                <div class="row horizontal-list jsArticleList"></div>
+                <div class="row horizontal-list horizontal-list--margin-top-0 jsArticleList"></div>
 
                 <div class="row">
                     <div class="span-12 text-center">
@@ -92,7 +89,7 @@
                     <a href="#" class="section-title__more"><span>SEE MORE</span><span class="arrow-left"></span></a>
                 </div>
 
-                <div class="row no-gutters-lg">
+                <div class="row no-gutters">
                     @foreach($photos as $photo)
                         <div class="span-12 span-md-6 span-lg-12">
                             @include('frontend.partials.post-card-photo', ['photo' => $photo])

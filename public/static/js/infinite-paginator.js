@@ -2,6 +2,9 @@ function Hector_infinitePaginator(settings) {
     this.$container = settings.container;
     this.$trigger = settings.trigger;
     this.template = settings.template;
+    this.showBanner = typeof settings.showBanner != 'undefined' ? settings.showBanner : 0;
+    this.banner_image = typeof settings.banner_image != 'undefined' ? settings.banner_image : '';
+    this.banner_url = typeof settings.banner_url != 'undefined' ? settings.banner_url : '';
     this.url = settings.url;
     this.currentPage = settings.currentPage;
     this.data = settings.data;
@@ -32,9 +35,22 @@ Hector_infinitePaginator.prototype = {
             }else{
                 var parsedData = JSON.parse(data);
             }
+
             $.each(parsedData.data, function (index, value) {
                 self.$container.append(self.template(value));
+                if (self.showBanner && index == 4) {
+                    $ads = `<div class="post-card post-card--wide post-card--wide__with-padding">
+                    <div class="post-card__ads-container">
+                        <a href="`+ self.banner_url +`?utm_source=AdsHome" alt="">
+                            <img class="post-card__ads" src="`+ self.banner_image +`" alt="">
+                        </a>
+                    </div></div>`;
+
+                    self.$container.append($ads);
+                }
             });
+
+
             self.currentPage++;
 
             if(parsedData.total_page < self.currentPage){
