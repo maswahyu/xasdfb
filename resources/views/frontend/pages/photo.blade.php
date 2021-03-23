@@ -6,6 +6,16 @@
 
 @section('content')
 
+@section('inside-head')
+<style type="text/css">
+    @media screen and (min-width: 768px) {
+        .section-title--plain {
+            margin-left: 1rem;
+        }
+    }
+</style>
+@endsection
+
 <div class="faux-bg">
 
     <div class="container">
