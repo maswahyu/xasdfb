@@ -72,6 +72,14 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;  
         overflow: hidden;
+
+        @supports (-webkit-touch-callout: none) {
+          /* CSS specific to iOS devices */ 
+          max-height: 48px;
+          overflow: hidden;
+          white-space: normal;
+          text-overflow: ellipsis;
+        }
       }
     }
 
