@@ -15,13 +15,13 @@
 
         <div class="post-card__meta post-meta">
 
-            <div class="post-meta__category">
+            <div class="post-meta__category post-meta__category-empty">
                 <a href="{{ $post->category ? $post->category->url : '/lifestyle/style' }}" alt="{{ $post->category_name }}">
                     <span>{{ $post->category_name }}</span>
                 </a>
             </div>
     
-            <div class="post-meta__stat"><span>{{ $post->view_count }} Views</span></div>
+            {{-- <div class="post-meta__stat"><span>{{ $post->view_count }} Views</span></div> --}}
 
         </div>
 

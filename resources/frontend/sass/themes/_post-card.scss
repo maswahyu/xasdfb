@@ -108,13 +108,22 @@
       }
 
       &__max-height {
-        height: 269px;
+        height: 270px;
         position: relative;
         box-shadow: 0px 10px 10px -5px rgba(204, 204, 204, 0.6);
 
         #{$this}__title {
           font-size: 16px;
           line-height: 24px;
+        }
+
+        #{$this}__thumbnail {
+          height: 155px;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+          }
         }
 
         .post-meta {
@@ -192,7 +201,7 @@
     }
 
     @include media-over(lg) {
-      max-width: 58rem;
+      // max-width: 58rem;
       height: 100%;
     }
   }
@@ -611,7 +620,7 @@
 
       &--half {
         height: 29rem;
-        width: 58rem;
+        // width: 58rem;
       }
 
       &--third {
@@ -805,6 +814,10 @@
       padding: 0 8px;
       color: palette('nobel');
       font-size: 16px;
+    }
+
+    &-empty::after {
+      content: unset;
     }
   }
 
