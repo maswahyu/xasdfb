@@ -12,6 +12,16 @@
 
 @section('content')
 
+@section('inside-head')
+<style type="text/css">
+    @media screen and (min-width: 768px) {
+        .section-title {
+            margin-left: 1rem;
+        }
+    }
+</style>
+@endsection
+
 <div class="faux-bg">
     <div class="container">
     
@@ -112,9 +122,9 @@
                 </div>
                 @endforeach --}}
 
-                <div class="span-12 shoutbox-sidebar">
+                {{-- <div class="span-12 shoutbox-sidebar">
                     @include('frontend.partials.shoutbox')
-                </div>
+                </div> --}}
 
             </div>
 

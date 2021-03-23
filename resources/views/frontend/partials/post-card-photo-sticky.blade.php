@@ -6,6 +6,12 @@
         </a>
     </div>
 
+    <a href="{{ $post->url }}" alt="{{ $post->name }}">
+        <div class="post-card__title post-card__title--large" style="padding-left: 20px;">
+            <span>{{ $post->name }}</span>
+        </div>
+    </a>
+
     <div class="post-card__meta post-meta" style="padding-left: 20px;">
 
         <div class="post-meta__category">
@@ -17,12 +23,6 @@
         <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
 
     </div>
-
-    <a href="{{ $post->url }}" alt="{{ $post->name }}">
-        <div class="post-card__title post-card__title--large" style="padding-left: 20px;">
-            <span>{{ $post->name }}</span>
-        </div>
-    </a>
 
     <div class="post-card__additional post-card__additional--x-padding stat-with-icon" style="padding-left: 20px;">
         <span class="stat-with-icon__icon">
