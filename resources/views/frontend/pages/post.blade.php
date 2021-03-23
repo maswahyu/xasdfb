@@ -10,6 +10,29 @@
 @section('head_image', imageview(str_replace(' ', '%20', $post->image)))
 @section('head_url', $post->url)
 
+{{-- @since 11-02-2021 --}}
+@if($post->slug === 'chandra-liow-siap-memberikan-ilmunya-di-lensa-academy-2021-Rrg9A')
+    @section('inside-head')
+        <!-- Facebook Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2491952821022917');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=2491952821022917&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Facebook Pixel Code -->
+    @endsection
+@endif
+
 @section('inside-head')
 <style>
     @media screen and (max-width: 768px) {
@@ -115,7 +138,7 @@
                 </div>
                 <div class="row flex-justify-center">
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social jsFbShare"
+                        <a class="list__link list__link--social jsFbShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}"
                             href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/fb-so-blue.png') }}" alt="">
                         </a>
@@ -127,25 +150,25 @@
                         </a>
                     </li>
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social jsTwShare"
+                        <a class="list__link list__link--social jsTwShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_TWITTER }}"
                             href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/tw-so.png') }}" alt="">
                         </a>
                     </li>
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social"
+                        <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP }}"
                             href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/wa-share.png') }}" alt="">
                         </a>
                     </li>
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social"
+                        <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_LINE }}"
                             href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
                             <img src="{{ asset('static/images/line-share.png') }}" alt="">
                         </a>
                     </li>
                     <li class="list__item list__item--social">
-                        <a data-clipboard-text="{{ url()->current() }}"  id="refCopyLink" class="list__link list__link--social jsCopyLink"
+                        <a data-clipboard-text="{{ url()->current() }}" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_CLIPBOARD }}" id="refCopyLink" class="list__link list__link--social jsCopyLink"
                             >
                             <img src="{{ asset('static/images/link-share.png') }}" alt="">
                         </a>
@@ -329,14 +352,28 @@
 <script>
     window.feedUrl = "{{ url('feed') }}"
     var p_id = '{{ $post->id }}';
-
     var clipboard = new ClipboardJS('#refCopyLink');
     clipboard.on('success', function(e) {
         alert('Copied');
         e.clearSelection();
     })
 </script>
-
+@if($post->slug === 'chandra-liow-siap-memberikan-ilmunya-di-lensa-academy-2021-Rrg9A')
+<script>
+    $(function() {
+        if(document.getElementById('registLensaAcademy21')) {
+            $("#registLensaAcademy21").on('click', function(e) => {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Link',
+                    eventAction: 'click',
+                    eventLabel: 'Lensa Academy'
+                });
+            })
+        }
+    });
+</script>
+@endif
 @verbatim
 <script id="x-post-template" type="text/x-handlebars-template">
 

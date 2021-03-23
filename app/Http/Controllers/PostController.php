@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\StickyBanner;
 use App\NewsBanner;
 use Illuminate\Http\Request;
+use App\ShareNewsChannel;
 use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
@@ -131,7 +132,7 @@ class PostController extends Controller
             return redirect(Category::LENSA.'/'.$slug);
         }
 
-        $related = News::related($post->slug, $post->category_id);
+	    $related = News::related($post->slug, $post->tags, $post->category_id);
 
         // inject read more artikel
         if (isset($post->readMore) && count($post->readMore) > 0) {
@@ -218,7 +219,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $related = News::related($post->slug, $post->category_id);
+        $related = News::related($post->slug, $post->tags, $post->category_id);
 
         $ads = [
             'url' => Setting::getConfig('banner_post_url'),
@@ -253,4 +254,10 @@ class PostController extends Controller
 
     	return response()->json(['status'=>'success'], 200);
     }
+
+    public function hitShareButton(Request $request) {
+        ShareNewsChannel::newRecord($request);
+        return response()->json()->setStatusCode(200);
+    }
+
 }

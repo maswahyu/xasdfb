@@ -11,10 +11,10 @@ use App\NewsBanner;
 use Carbon\Carbon;
 use App\Model\Stats;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class News extends Model
@@ -76,14 +76,34 @@ class News extends Model
         return Cache::get('post'.$slug);
     }
 
-    public static function related($slug, $category_id)
+    public static function related($slug, $tags, $category_id)
     {
-        return self::where('publish', self::STATUS_PUBLISHED)
+        // get related based on category and tags
+        $related = self::where('publish', self::STATUS_PUBLISHED)
+                    ->whereHas('tags', function($query)use($tags) {
+                        return $query->with('tag')->whereIn('tag_id', $tags->map(function($model) {
+                            return [
+                                $model->tag_id
+                            ];
+                        }));
+                    })
                     ->where('category_id', $category_id)
                     ->where('slug', '!=', $slug)
                     ->latest('published_at')
                     ->take(4)
                     ->get();
+
+        if($related->count() === 0) {
+            // get related based on category only
+            $related = self::where('publish', self::STATUS_PUBLISHED)
+            ->where('category_id', $category_id)
+            ->where('slug', '!=', $slug)
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+        }
+
+        return $related;
     }
 
     public function user()
@@ -367,12 +387,11 @@ class News extends Model
         $path = Str::replaceFirst('/storage', '', $thumb_path);
         if( ! Storage::disk('filemanager')->exists($path) ) {
             try {
-
                 $image = Image::make(Storage::disk('filemanager')->get(Str::replaceFirst('/storage', '', $this->image)));
                 $image->resize(400, null, function($constraint) {
                     $constraint->aspectRatio();
                 })->save(storage_path('app/public') . $path);
-            } catch(Exception | \Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
+            } catch(Exception | \Illuminate\Contracts\Filesystem\FileNotFoundException | \Intervention\Image\Exception\NotReadableException $e) {
                 return imageview(null);
             }
         }

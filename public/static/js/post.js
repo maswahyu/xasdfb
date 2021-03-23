@@ -45,28 +45,28 @@ $(function ()
                                     <img class="post-card__img" src="` + value.thumbnail + `" alt="">
                                 </a>
                             </div>
-                        
+
                             <div class="post-card__info">
-                        
+
                                 <a href="` + value.url + `" alt="` + value.title + `">
                                     <div class="post-card__title text-left">
                                         <span>` + value.title + `</span>
                                     </div>
                                 </a>
-                        
+
                                 <div class="post-card__meta post-meta">
-                        
+
                                     <div class="post-meta__category">
                                         <a href="` + value.category_url + `">
                                             <span>` + value.category + `</span>
                                         </a>
                                     </div>
-                            
+
                                     <div class="post-meta__stat"><span>` + value.published_date + `</span></div>
-                        
+
                                 </div>
-                        
-                            </div>    
+
+                            </div>
                         </div>
                     </div>`;
 
@@ -91,6 +91,30 @@ $(function ()
             }
         });
     }, 1000);
+
+    var isSend = false;
+    $("[data-share]").on('click', (e) => {
+        if(isSend === false) {
+            $.ajax({
+                method: "POST",
+                url: '/share-button-count',
+                data:{
+                    channel: $(e.currentTarget).data('share'),
+                    post_id: p_id
+                },
+                beforeSend: () => {
+                    isSend = true;
+                },
+                success: (res) => {
+                    isSend = false;
+                },
+                error: (xhr) => {
+                    isSend = false;
+                    console.log(xhr);
+                }
+            })
+        }
+    })
 
     $('#sidebar').stickySidebar({
         topSpacing: 80,
