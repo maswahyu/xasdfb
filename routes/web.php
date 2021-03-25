@@ -38,6 +38,8 @@ Route::post('live/remind-me', 'StreamController@remindMe');
 Route::post('live/views_counter', 'StreamController@addViews');
 Route::get('tukarlangsung', 'PageController@tukarLangsung');
 
+Route::post('share-button-count', 'PostController@hitShareButton');
+
 
 Route::get('email-verify', function () {
   return view('email.verification');
