@@ -27,15 +27,53 @@ $(function ()
         if ($userMobileMenu.hasClass('active')) {
             $userMobileMenu.removeClass('active');
             $('.mobile-menu-trigger').show();
-            $('.user-info.mobile').show();
+            $('.user-info.mobile').css('opacity', '1');
             $('.close-user-menu').addClass('hidden');
+            $mobileMenuBlanket.removeClass('is-active');
         } else {
             $userMobileMenu.addClass('active');
-            $('.mobile-menu-trigger').hide();
-            $('.user-info.mobile').hide();
+            /* $('.mobile-menu-trigger').hide(); */
+            $('.user-info.mobile').css('opacity', '0');
             $('.close-user-menu').removeClass('hidden');
+            $mobileMenuBlanket.addClass('is-active');
         }
     });
+
+    var $searchTrigger = $('.searchTrigger'),
+        $searchWrapper = $('.search-wrapper'),
+        $scrollabelMenu = $('.mobile-scrollable-menu'),
+        $siteContent = $('.site-content');
+    $(".searchTrigger").on('click', function (e)
+    {
+        e.preventDefault();
+        if ($searchWrapper.hasClass('is-active')) {
+            $searchWrapper.removeClass('is-active');
+            $scrollabelMenu.show();
+            $siteContent.attr('style', 'padding-top: 110px !important');
+        } else {
+            $searchWrapper.addClass('is-active');
+            $scrollabelMenu.hide();
+            $siteContent.attr('style', 'padding-top: 70px !important');
+        }
+    });
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+            panel.style.marginTop = 0 + "px";
+            panel.style.opacity = 0;
+            panel.style.maxHeight = null;
+            } else {
+            panel.style.marginTop = 20 + "px";
+            panel.style.opacity = 1;
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+        });
+    }
 
     $('.jsUserMenu').on('click', function(e){
         e.preventDefault();
