@@ -17,11 +17,15 @@
     <a href="{{ url('/')}}" class="site-logo">
         <picture>
             {{-- <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp"> --}}
-            <img src="{{ asset('static/images/logo-lazone-horizontal.svg') }}" alt="LA-ZONE.id">
+            <img src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
         </picture>
     </a>
 
+    @auth
+    <div class="search-btn-trigger search-btn-trigger__logged-in searchTrigger">
+    @else
     <div class="search-btn-trigger searchTrigger">
+    @endauth
         <img src="{{ asset('static/images/search.svg') }}" alt="">
     </div>
 

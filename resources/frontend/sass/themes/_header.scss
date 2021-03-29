@@ -317,7 +317,7 @@
     margin-right: 20px;
     img {
       width: 40px;
-      height: auto;
+      height: 40px;
     }
   }
 }
@@ -353,9 +353,13 @@
 }
 
 .search-btn-trigger {
-  margin-left: auto;
-  margin-right: -1rem;
   display: flex;
+  position: absolute;
+  right: 11rem;
+
+  &__logged-in {
+    right: 8rem;
+  }
 }
 .search-wrapper {
   width: 100%;
