@@ -10,7 +10,11 @@
         </a>
 
         <nav role="navigation" id="primary-nav" class="dropdown-menu">
+            @auth
+            <ul class="dropdown-menu__list dropdown-menu__list--logged-in">
+            @else
             <ul class="dropdown-menu__list">
+            @endauth
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
                     <a href="#" class="dropdown-menu__link">Articles</a>
                     <ul class="dropdown-menu__dropdown">

@@ -41,7 +41,7 @@
     @auth
         <div class="user-info mobile jsUserMenuTrigger">
             {{-- <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span> --}}
-            <img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 7) }}">
+            <img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 25) }}">
         </div>
     @else
         <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login user-info">Login</a>
@@ -153,7 +153,7 @@
                     <span><img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile2" alt="User Avatar"></span>
                 </div>
                 <div class="user-info__right">
-                    <span class="user-info__name"><strong>{{ str_limit(auth()->user()->name, 7) }}</strong></span>
+                    <span class="user-info__name"><strong>{{ str_limit(auth()->user()->name, 23) }}</strong></span>
                     <span class="user-info__point"><span id="loyalty_point2"></span> pts</span>
                 </div>
             </div>
@@ -164,8 +164,9 @@
         <li class="menu">
             <a href="{{ config('cas.url_mypoint') }}"><span>My Points</span></a>
         </li>
+        <li class="dropdown-menu__separator"></li>
         <li class="menu">
-            <a href="{{ url('member/logout') }}" class="btn btn-crimson btn-login">Logout</a>
+            <a href="{{ url('member/logout') }}">Logout</a>
         </li>
     </ul>
 </div>

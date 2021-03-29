@@ -36,6 +36,10 @@
 
     width: 90%;
     position: relative;
+
+    &--logged-in {
+      width: 100%;
+    }
   }
   &__user-container {
     width: auto;
@@ -137,7 +141,7 @@
 
     &--user-menu {
       // position: absolute;
-      right: 0;
+      right: -10rem;
       display: flex;
       align-items: center;
     }
