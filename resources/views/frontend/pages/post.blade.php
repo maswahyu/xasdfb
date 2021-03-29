@@ -192,7 +192,7 @@
 
                     <img class="post-card__img post-card__img-article" src="{{ imageview('') }}" data-src="{{ imageview($post->image) }}" alt="{{ $post->title }}">
 
-                    <p><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
+                    <p class="post-summary"><strong>LAZONE.ID</strong> - {!! $post->summary !!}</p>
 
                     <div id="post-content" class="post-content">
 
