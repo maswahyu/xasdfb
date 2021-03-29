@@ -133,7 +133,7 @@
             top: -100px;
         }
         .nav-up-mobile {
-            top: -60px;
+            top: -110px;
         }
 
         #shoutbox.is-affixed .nav-on {

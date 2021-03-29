@@ -39,6 +39,7 @@
   width: 100%;
   background-color: palette("black");
   z-index: 500;
+  transition: top .15s ease;
 
   @include media-over(xl) {
     display: none;
