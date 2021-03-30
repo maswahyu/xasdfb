@@ -425,16 +425,26 @@
   font-size: 15px;
   transition: 0.4s;
   position: relative;
+
+  &-text {
+    position: relative;
+  }
   
   span.chevron {
-    @include chevron(1.2rem, 2px, palette("black"), right, absolute);
+    @include chevron(1rem, 2px, palette("black"), right, absolute);
     &::before {
       margin-top: -0.6rem;
-      top: 50%;
-      right: 1.5rem;
+      top: 75%;
+      right: -3.5rem;
       transform: translateY(-50%) rotate(135deg);
       border-color: palette('white');
+      transition: all .15s ease;
     }
+  }
+
+  &.active span.chevron::before {
+    transform: rotate(-45deg);
+    border-color: palette('crimson');
   }
 }
 

@@ -46,9 +46,12 @@
     }
 
     @media screen and (min-width: 768px) {
-        .container-title,
+        .container-title { 
+            max-width: 800px;
+            margin-left: 19%;
+        }
         .container-content {
-            max-width: 630px;
+            max-width: 780px;
         }
     }
 </style>
@@ -86,7 +89,7 @@
 
     <div class="row">
 
-        <div class="span-12 span-lg-10 off-lg-1 span-xl-7 off-xl-3 container-title">
+        <div class="span-12 span-lg-10 off-lg-1 span-xl-7 container-title">
 
             <ul class="breadcrumb">
                 @if($post->category)

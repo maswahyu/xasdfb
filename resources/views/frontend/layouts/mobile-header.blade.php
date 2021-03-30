@@ -114,8 +114,10 @@
             <ul class="drilldown-root" data-accordion="false">
                 <li class="menu" style="margin-top: 2rem;">
                     <a href="#" class="accordion">
-                        <span class="chevron"></span>
-                        <span>Community</span>
+                        <span class="accordion-text">
+                            Community
+                            <span class="chevron"></span>
+                        </span>
                         <ul class="panel">
                             @foreach($siteLink as $item)
                                 <li>
