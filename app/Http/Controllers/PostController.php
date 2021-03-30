@@ -165,28 +165,29 @@ class PostController extends Controller
             }
 
         } else {
-            $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
-            if($inlineRecomended) {
-                $needle = "<br />\n<br />";
-                $token = explode($needle, $post->content);
-                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            /* DICOMMENT DULU, DISURUH ILHAM, SAKSINA MALIKI & ABHI */
+            // $inlineRecomended = News::getRecommended(News::TAKE_RECOMENDED, true, $post);
+            // if($inlineRecomended) {
+            //     $needle = "<br />\n<br />";
+            //     $token = explode($needle, $post->content);
+            //     $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
 
-                if(\array_key_exists(count($token) - 4, $token)) {
-                    $token[count($token) - 4] .= $inlineHtml;
-                    $post->content = implode($needle, $token);
-                } else {
-                    $needle = "<p>";
-                    $token = explode($needle, $post->content);
-                    $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            //     if(\array_key_exists(count($token) - 4, $token)) {
+            //         $token[count($token) - 4] .= $inlineHtml;
+            //         $post->content = implode($needle, $token);
+            //     } else {
+            //         $needle = "<p>";
+            //         $token = explode($needle, $post->content);
+            //         $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
 
-                    if(\array_key_exists(count($token) - 4, $token)) {
-                        $token[count($token) - 4] .= $inlineHtml;
-                        $post->content = implode($needle, $token);
-                    } else {
-                        $post->content .= $inlineHtml;
-                    }
-                }
-            }
+            //         if(\array_key_exists(count($token) - 4, $token)) {
+            //             $token[count($token) - 4] .= $inlineHtml;
+            //             $post->content = implode($needle, $token);
+            //         } else {
+            //             $post->content .= $inlineHtml;
+            //         }
+            //     }
+            // }
         }
 
         $ads = [
