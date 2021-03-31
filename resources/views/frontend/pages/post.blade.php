@@ -294,14 +294,14 @@
 
                             <div class="shoutbox shoutbox--wide">
                                 <a href="{{ $ads['banner_post_url'] }}" alt="banner" target="_blank">
-                                    <img class="post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_post_dekstop']) }} />
+                                    <img class="post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_post_dekstop']) }}" />
                                 </a>
                             </div>
 
                         {{-- Banner Mypoint --}}
                         @else
                             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
-                                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_post_dekstop']) }} />
+                                <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_post_dekstop']) }}" />
 
                                 <div class="shoutbox__content-wrapper">
 
