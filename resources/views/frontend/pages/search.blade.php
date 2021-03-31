@@ -97,7 +97,13 @@
             </a>
         </div>
 
-        <div class="post-card__info">
+        <div class="post-card__info" style="margin: auto 0;">
+
+            <a href="{{ url }}" alt="{{ title }}">
+                <div class="post-card__title">
+                    <span>{{ title }}</span>
+                </div>
+            </a>
 
             <div class="post-card__meta post-meta">
 
@@ -109,15 +115,9 @@
 
                 <div class="post-meta__stat"><span>{{ published_date }}</span></div>
 
-                <div class="post-meta__stat"><span>{{ view_count }} views</span></div>
+                <!-- <div class="post-meta__stat"><span>{{ view_count }} views</span></div> -->
 
             </div>
-
-            <a href="{{ url }}" alt="{{ title }}">
-                <div class="post-card__title">
-                    <span>{{ title }}</span>
-                </div>
-            </a>
 
         </div>
 
