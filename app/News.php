@@ -92,17 +92,16 @@ class News extends Model
                     ->latest('published_at')
                     ->take(4)
                     ->get();
-
-        if($related->count() === 0) {
+        if($related->count() === 0 || $related->count() < 4) {
             // get related based on category only
-            $related = self::where('publish', self::STATUS_PUBLISHED)
+            $related_category = self::where('publish', self::STATUS_PUBLISHED)
             ->where('category_id', $category_id)
             ->where('slug', '!=', $slug)
             ->latest('published_at')
-            ->take(3)
+            ->take($related->count() < 4 ? 4 - $related->count() : 4)
             ->get();
+            $related = $related->toBase()->merge($related_category);
         }
-
         return $related;
     }
 
