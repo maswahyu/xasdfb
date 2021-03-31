@@ -125,6 +125,23 @@ hr {
   &--top-margin-0 {
     margin-top: 0;
   }
+
+  @include media-under(md) {
+    a {
+      width: 320px;
+      height: 100px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -.25rem;
+    }
+    img {
+      width: auto;
+      max-width: unset;
+      height: 100%;
+    }
+  }
 }
 
 .slick-arrow-crimson {
