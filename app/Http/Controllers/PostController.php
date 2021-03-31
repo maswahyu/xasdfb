@@ -78,6 +78,7 @@ class PostController extends Controller
             $slug = array(Category::SNEAKERLAND, Category::LENSA);
 
             if (in_array($subcategory->slug, $slug)) {
+                dd('sneaker or lensa');
                 return redirect($subcategory->slug);
             }
         }
@@ -234,7 +235,13 @@ class PostController extends Controller
         $ads = [
             'url' => Setting::getConfig('banner_ads_post_url'),
             'image' => Setting::getConfig('banner_ads_post_desktop'),
-            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile'),
+            'banner_type' => Setting::getConfig('banner_type'),
+            'banner_post_mobile' => Setting::getConfig('banner_post_mobile'),
+            'banner_post_dekstop' => Setting::getConfig('banner_post_dekstop'),
+            'banner_post_title' => Setting::getConfig('banner_post_title'),
+            'banner_post_summary' => Setting::getConfig('banner_post_summary'),
+            'banner_post_url' => Setting::getConfig('banner_post_url'),
         ];
 
         return view('frontend.pages.post', [
