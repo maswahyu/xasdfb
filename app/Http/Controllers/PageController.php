@@ -68,8 +68,9 @@ class PageController extends Controller
     public function about()
     {
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.about', compact('ads'));
@@ -86,8 +87,9 @@ class PageController extends Controller
     public function term()
     {
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.term', compact('ads'));
@@ -96,8 +98,9 @@ class PageController extends Controller
     public function privacy()
     {
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.privacy', compact('ads'));
@@ -172,8 +175,9 @@ class PageController extends Controller
         $photos = Album::getLatest(2);
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.event', [

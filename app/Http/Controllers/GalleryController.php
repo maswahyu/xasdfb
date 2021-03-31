@@ -23,8 +23,9 @@ class GalleryController extends Controller
         $latest = Album::getLatest();
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.photo', [
@@ -40,8 +41,9 @@ class GalleryController extends Controller
         $stickyVideo = Gallery::getSticky(Gallery::VIDEO);
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.video', [
@@ -56,8 +58,9 @@ class GalleryController extends Controller
         $album = Album::detail($slug);
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.photo-detail', [
@@ -75,8 +78,9 @@ class GalleryController extends Controller
         }
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.video-detail', compact('gallery','ads'));

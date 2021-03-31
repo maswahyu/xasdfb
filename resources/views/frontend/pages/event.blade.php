@@ -23,7 +23,7 @@
             <div class="section-title section-title--plain section-title--page" style="margin-bottom: unset;">
                 <span class="section-title__label section-title__label--category">Events</span>
             </div>
-            
+
         </div>
 
         <div class="row jsEventList">
@@ -51,7 +51,10 @@
 
                 <div class="placement">
                     <a href="{{ $ads['url'] }}?utm_source=AdsArticle" alt="{{ $ads['url'] }}">
-                        <img class="placement__img" src="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                        <picture>
+                            <source media="(min-width: 756px)" srcset="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                            <img class="placement__img" src="{{ $ads['image_mobile'] }}" alt="{{ $ads['url'] }}">
+                        </picture>
                     </a>
                 </div>
 

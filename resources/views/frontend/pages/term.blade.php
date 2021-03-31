@@ -15,7 +15,10 @@
 
             <div class="placement placement--top-margin-0">
                 <a href="{{ $ads['url'] }}?utm_source=AdsArticle" alt="{{ $ads['url'] }}">
-                    <img class="placement__img" src="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                    <picture>
+                        <source media="(min-width: 756px)" srcset="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                        <img class="placement__img" src="{{ $ads['image_mobile'] }}" alt="{{ $ads['url'] }}">
+                    </picture>
                 </a>
             </div>
 

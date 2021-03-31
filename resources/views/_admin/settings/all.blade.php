@@ -114,10 +114,18 @@ use App\Setting;
 
     document.addEventListener("DOMContentLoaded", function() {
 
-    document.getElementById('button-image-banner_post').addEventListener('click', (event) => {
+    document.getElementById('button-image-banner_ads_post_desktop').addEventListener('click', (event) => {
       event.preventDefault();
 
-      inputId = 'image_path_banner_post';
+      inputId = 'image_path_banner_ads_post_desktop';
+
+      PopupCenter('/file-manager/fm-button','fm','900','500');
+    });
+
+    document.getElementById('button-image-banner_ads_post_mobile').addEventListener('click', (event) => {
+      event.preventDefault();
+
+      inputId = 'image_path_banner_ads_post_mobile';
 
       PopupCenter('/file-manager/fm-button','fm','900','500');
     });
