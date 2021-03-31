@@ -142,6 +142,12 @@
         #shoutbox.is-affixed .nav-off {
             top: 40px !important;
         }
+
+        @media (max-width: 768px) {
+            #stickyBannerContainer,.footer-sticky-banner {
+                display: none
+            }
+        }
     </style>
     @yield('inside-head')
 </head>
