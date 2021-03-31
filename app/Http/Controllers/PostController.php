@@ -39,8 +39,9 @@ class PostController extends Controller
 	    $type 	 	 = 1;
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
 	    return view('frontend.pages.category', [
@@ -87,8 +88,9 @@ class PostController extends Controller
 	    $type 	 	 = 0;
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
 	    return view('frontend.pages.category', [
@@ -197,8 +199,9 @@ class PostController extends Controller
         }
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile'),
             'banner_type' => Setting::getConfig('banner_type'),
             'banner_post_mobile' => Setting::getConfig('banner_post_mobile'),
             'banner_post_dekstop' => Setting::getConfig('banner_post_dekstop'),
@@ -229,8 +232,9 @@ class PostController extends Controller
         $related = News::related($post->slug, $post->tags, $post->category_id);
 
         $ads = [
-            'url' => Setting::getConfig('banner_post_url'),
-            'image' => Setting::getConfig('banner_post'),
+            'url' => Setting::getConfig('banner_ads_post_url'),
+            'image' => Setting::getConfig('banner_ads_post_desktop'),
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
         ];
 
         return view('frontend.pages.post', [

@@ -27,20 +27,20 @@
 
 <div class="faux-bg">
     <div class="container">
-    
+
         {{-- Judul Kategori --}}
         <div class="row category-header">
-    
+
             <div class="span-12">
-    
+
                 <div class="row flex-lg-justify-center">
                     <div class="section-title section-title--plain section-title--page" style="margin-left: 2rem;">
                         <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <div class="span-12 text-center">
                 <ul class="point-nav list list--subcategory flex-justify-center">
                     @foreach($category->menu as $key => $item)
@@ -50,10 +50,10 @@
                     @endforeach
                 </ul>
             </div>
-    
+
         </div>
-    
-    
+
+
         {{--  Sticky Post --}}
         <div class="row category-sticky">
             @foreach($stickyPosts as $post)
@@ -62,7 +62,7 @@
             </div>
             @endforeach
         </div>
-    
+
         {{-- Latest Post --}}
         <div class="row category-latest">
             @foreach($latestPosts as $post)
@@ -71,9 +71,9 @@
             </div>
             @endforeach
         </div>
-    
+
     </div>
-    
+
 </div>
 
 {{-- Ads Placement --}}
@@ -83,7 +83,10 @@
 
         <div class="placement">
             <a href="{{ $ads['url'] }}?utm_source=AdsArticle" alt="{{ $ads['url'] }}">
-                <img class="placement__img" src="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                <picture>
+                    <source media="(min-width: 756px)" srcset="{{ $ads['image'] }}" alt="{{ $ads['url'] }}">
+                    <img class="placement__img" src="{{ $ads['image_mobile'] }}" alt="{{ $ads['url'] }}">
+                </picture>
             </a>
         </div>
 
