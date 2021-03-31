@@ -4,6 +4,16 @@
 @section('head_title', 'Events')
 @section('head_url', url()->current())
 
+@section('inside-head')
+<style>
+    @media screen and (max-width: 768px) {
+        #stickyBannerContainer {
+            display: none !important;
+        }
+    }
+</style>
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -33,7 +43,7 @@
     </div>
 
     {{-- Ads Placement --}}
-    <div class="container">
+    <div class="container hide-mobile">
 
         <div class="row">
 
@@ -53,7 +63,7 @@
     </div>
 
     {{-- Listing --}}
-    <div class="container">
+    <div class="container" style="margin-top: 1.6rem;">
 
         <div class="list-with-sidebar">
 

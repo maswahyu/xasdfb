@@ -43,6 +43,9 @@
         .jsMobileMoreArticle {
             padding: 0
         }
+        #stickyBannerContainer {
+            display: none !important;
+        }
     }
 
     @media screen and (min-width: 768px) {
@@ -62,7 +65,7 @@
 {{-- Ads Placement --}}
 <div class="container">
 
-    <div class="row">
+    <div class="row hide-mobile">
 
         <div class="span-12">
 
@@ -87,7 +90,7 @@
 
     </div> --}}
 
-    <div class="row">
+    <div class="row" style="margin-top: 1.6rem;">
 
         <div class="span-12 span-lg-10 off-lg-1 span-xl-7 container-title">
 

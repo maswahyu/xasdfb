@@ -14,6 +14,9 @@
 
 @section('inside-head')
 <style type="text/css">
+    #stickyBannerContainer {
+        display: none !important;
+    }
     @media screen and (min-width: 768px) {
         .section-title {
             margin-left: 1rem;

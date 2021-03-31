@@ -9,6 +9,14 @@
 
 @section('content')
 
+@section('inside-head')
+<style type="text/css">
+    #stickyBannerContainer {
+        display: none !important;
+    }
+</style>
+@endsection
+
 <div class="container">
 
     <div class="row">
