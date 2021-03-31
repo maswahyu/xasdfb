@@ -44,14 +44,14 @@
       } */
 
       @include media-over(lg) {
-        width: 54%;
-        margin-right: 2rem;
-        flex: 0 0 54%;
+        width: 646px;
+        // margin-right: 2rem;
+        flex: 0 0 646px;
       }
 
-      @media screen and (min-width: 1440px) {
+      /* @media screen and (min-width: 1440px) {
         flex: 1 1 auto;
-      }
+      } */
     }
 
     &-list {
@@ -61,8 +61,8 @@
       width: 100%;
 
       @include media-over(lg) {
-        width: 44%;
-        flex: 0 0 44%;
+        width: 602px;
+        flex: 0 0 602px;
       }
     }
   }

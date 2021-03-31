@@ -42,8 +42,14 @@
     }
     @media screen and (min-width: 768px) {
         .post-card--simple__no-padding {
-            padding: 0 1.5rem;
+            padding-left: 1.6rem;
             margin-bottom: 3rem;
+        }
+        .post-card__img {
+            width: 28.5rem;
+        }
+        .post-card__img--large {
+            width: 64.6rem;
         }
 
         #latestArticleContainer {
