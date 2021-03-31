@@ -140,12 +140,18 @@ class PostController extends Controller
 
             $needle = "<br />\r\n<br />";
             $token = explode($needle, $post->content);
-
+            if(count($token) < 3) {
+                $needle = "<p>";
+                $token = explode($needle, $post->content);
+            }
+            if($token[0] == '') {
+                \array_shift($token);
+            }
             foreach ($post->readMore as $key => $row) {
 
                 $inlineRecomended = News::find($row->news_more_id);
 
-                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;margin-bottom: -3rem;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;margin-bottom: -3rem;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'?utm_source=DetailArticle&utm_medium=BacaJuga&utm_campaign=BacaJuga">' . $inlineRecomended->title . "</a></span></p>";
 
                 if ($key == 0) {
                     $stars = $key + 2;
@@ -170,7 +176,7 @@ class PostController extends Controller
             // if($inlineRecomended) {
             //     $needle = "<br />\n<br />";
             //     $token = explode($needle, $post->content);
-            //     $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            //     $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'?utm_source=DetailArticle&utm_medium=BacaJuga&utm_campaign=BacaJuga">' . $inlineRecomended->title . "</a></span></p>";
 
             //     if(\array_key_exists(count($token) - 4, $token)) {
             //         $token[count($token) - 4] .= $inlineHtml;
@@ -178,7 +184,7 @@ class PostController extends Controller
             //     } else {
             //         $needle = "<p>";
             //         $token = explode($needle, $post->content);
-            //         $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'">' . $inlineRecomended->title . "</a></span></p>";
+            //         $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'?utm_source=DetailArticle&utm_medium=BacaJuga&utm_campaign=BacaJuga">' . $inlineRecomended->title . "</a></span></p>";
 
             //         if(\array_key_exists(count($token) - 4, $token)) {
             //             $token[count($token) - 4] .= $inlineHtml;

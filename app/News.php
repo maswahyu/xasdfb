@@ -392,7 +392,7 @@ class News extends Model
                     $constraint->aspectRatio();
                 })->save(storage_path('app/public') . $path);
             } catch(Exception | \Illuminate\Contracts\Filesystem\FileNotFoundException | \Intervention\Image\Exception\NotReadableException $e) {
-                return imageview(null);
+                return imageview($this->image);
             }
         }
         return imageview($thumb_path);
