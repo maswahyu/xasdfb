@@ -7,7 +7,21 @@
 
 @section('content')
 
-<div class="container">
+@section('inside-head')
+<style type="text/css">
+    #is-value,
+    #notfound {
+        display: none;
+    }
+
+    #notfound .row { min-height: 50vh;}
+    #notfound .row h3, #notfound .row p { text-align: center}
+    #notfound .row h3 { font-family: Montserrat, sans-serif; font-weight: 700; font-size: 3rem; line-height: 36.57px; text-transform: uppercase;}
+    #notfound .row p { font-family: Open Sans, sans-serif; font-weight: 400; font-size: 1.8rem; line-height: 24px;}
+</style>
+@endsection
+
+<div class="container" id="is-value">
 
     {{-- Judul Kategori --}}
     <div class="row category-header">
@@ -29,53 +43,67 @@
         </div>
 
     </div>
-
-</div>
-
-<div id="post-list" class="container search-result">
-
-    <div class="row">
-
-        <div class="span-12">
-
-            <div class="row horizontal-list horizontal-list--margin-top-0">
-                <div class="span-12 jsArticleList"></div>
+        
+    <div class="spinner" id="spinner" style="display: none;">
+        <div class="double-bounce2"></div>
+    </div>
+    
+    <div id="searchResult">
+    
+        <div id="post-list" class="container search-result">
+        
+            <div class="row">
+        
+                <div class="span-12">
+        
+                    <div class="row horizontal-list horizontal-list--margin-top-0">
+                        <div class="span-12 jsArticleList"></div>
+                        <div class="span-12 text-center">
+                            <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button>
+                        </div>
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+        
+        <div id="video-list" class="gallery-more container search-result">
+        
+            <div class="row jsVideoList"></div>
+        
+            <div class="row">
                 <div class="span-12 text-center">
-                    <button class="btn btn-ghost btn-load-more jsMoreArticle">LOAD MORE</button>
+                    <button class="btn btn-ghost btn-load-more jsMoreVideo">LOAD MORE</button>
                 </div>
             </div>
-
+        
         </div>
-
-    </div>
-
-</div>
-
-<div id="video-list" class="gallery-more container search-result">
-
-    <div class="row jsVideoList"></div>
-
-    <div class="row">
-        <div class="span-12 text-center">
-            <button class="btn btn-ghost btn-load-more jsMoreVideo">LOAD MORE</button>
-        </div>
-    </div>
-
-</div>
-
-<div id="photo-list" class="gallery-more container search-result">
-
-    <div class="row jsPhotoList"></div>
-
-    <div class="row">
-        <div class="span-12 text-center">
-            <button class="btn btn-ghost btn-load-more jsMorePhoto">LOAD MORE</button>
+        
+        <div id="photo-list" class="gallery-more container search-result">
+        
+            <div class="row jsPhotoList"></div>
+        
+            <div class="row">
+                <div class="span-12 text-center">
+                    <button class="btn btn-ghost btn-load-more jsMorePhoto">LOAD MORE</button>
+                </div>
+            </div>
+        
         </div>
     </div>
 
 </div>
 
-
+<div class="container" id="notfound">
+    <div class="row flex-justify-center flex-align-center">
+        <div class="not-found-wrapper">
+            <h3>your search was not <br> successful!</h3>
+            <p>Please try some different keywords.</p>
+        </div>
+    </div>
+</div>
 
 @endsection
 
