@@ -162,7 +162,7 @@ class PostController extends Controller
 
                 $inlineRecomended = News::find($row->news_more_id);
 
-                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;margin-bottom: -3rem;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'?utm_source=DetailArticle&utm_medium=BacaJuga&utm_campaign=BacaJuga">' . $inlineRecomended->title . "</a></span></p>";
+                $inlineHtml = '<p class="post-content__recommend" style="text-align:left;">Baca Juga: <span class="post-content__recommend--title"><a style="color: #ec2427;" href="'.$inlineRecomended->url.'?utm_source=DetailArticle&utm_medium=BacaJuga&utm_campaign=BacaJuga">' . $inlineRecomended->title . "</a></span></p>";
 
                 if ($key == 0) {
                     $stars = $key + 2;
