@@ -18,22 +18,12 @@ $(function ()
             var parsedData = JSON.parse(data);
         }
 
-        console.log(data)
-
         if(data.total_page == 1) {
             $('#notfound').css('display', 'block');
-            console.log('nodata')
         } else {
             $('#is-value').css('display', 'block');
-            console.log('data')
-        }
 
-        $.each(parsedData.data, function (index, value) {
-
-            if(!data) {
-                console.log('text')
-                $('#is-value').addClass('test');
-            } else {
+            $.each(parsedData.data, function (index, value) {
                 document.getElementById("spinner").style.display = "block";
 
                 setTimeout(showPage, 2500);
@@ -100,8 +90,8 @@ $(function ()
                 
                     $('.jsTab li').first().trigger('click');
                 }
-            }
-        });
+            });
+        }
 
     });
 });
