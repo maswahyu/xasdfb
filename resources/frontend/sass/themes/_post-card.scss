@@ -233,15 +233,17 @@
         margin-bottom: 0;
 
         &--third {
-          max-width: 11.1rem;
+          max-width: 14.5rem;
+          min-height: 8.6rem;
           height: 100%;
           overflow-x: hidden;
 
           display: flex;
           align-items: center;
+          justify-content: center;
 
           a img {
-            height: auto;
+            height: 100%;
             object-fit: cover;
           }
         }
@@ -249,6 +251,11 @@
 
       #{$this}__info {
         padding: 1rem 1.2rem;
+
+        .post-meta__category,
+        .post-meta__stat {
+          font-size: 1.1rem;
+        }
       }
     }
 
@@ -688,6 +695,11 @@
 
     &--medium {
      font-size: 18px;
+
+     @include media-under(md) {
+       font-size: 14px;
+       line-height: 18px;
+     }
     }
 
     &--large {
