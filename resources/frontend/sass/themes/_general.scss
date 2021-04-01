@@ -127,9 +127,11 @@ hr {
   }
 
   @include media-under(md) {
+    display: flex;
+    justify-content: center;
     a {
       width: 320px;
-      height: 100px;
+      height: auto;
       overflow: hidden;
       display: flex;
       align-items: center;
