@@ -41,7 +41,11 @@ class PostController extends Controller
         $ads = [
             'url' => Setting::getConfig('banner_ads_post_url'),
             'image' => Setting::getConfig('banner_ads_post_desktop'),
-            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile'),
+            'banner_mypoint_dekstop' => Setting::getConfig('banner_mypoint_dekstop'),
+            'banner_mypoint_mobile' => Setting::getConfig('banner_mypoint_mobile'),
+            'banner_mypoint_title' => Setting::getConfig('banner_mypoint_title'),
+            'banner_mypoint_summary' => Setting::getConfig('banner_mypoint_summary'),
         ];
 
 	    return view('frontend.pages.category', [
@@ -90,7 +94,11 @@ class PostController extends Controller
         $ads = [
             'url' => Setting::getConfig('banner_ads_post_url'),
             'image' => Setting::getConfig('banner_ads_post_desktop'),
-            'image_mobile' => Setting::getConfig('banner_ads_post_mobile')
+            'image_mobile' => Setting::getConfig('banner_ads_post_mobile'),
+            'banner_mypoint_dekstop' => Setting::getConfig('banner_mypoint_dekstop'),
+            'banner_mypoint_mobile' => Setting::getConfig('banner_mypoint_mobile'),
+            'banner_mypoint_title' => Setting::getConfig('banner_mypoint_title'),
+            'banner_mypoint_summary' => Setting::getConfig('banner_mypoint_summary'),
         ];
 
 	    return view('frontend.pages.category', [

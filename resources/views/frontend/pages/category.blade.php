@@ -21,6 +21,17 @@
         .section-title {
             margin-left: 1rem;
         }
+
+        .list-with-sidebar__main {
+            flex: 1 0 65.66%;
+            max-width: 65.66%;
+        }
+
+        .list-with-sidebar__aside {
+            flex: 1 1 433px;
+            max-width: 433px;
+            margin-left: 0;
+        }
     }
 </style>
 @endsection
@@ -120,7 +131,7 @@
                 <span class="section-title__label section-title__label--adjust">Recommended</span>
             </div> --}}
 
-            <div class="row no-gutters-lg">
+            <div class="row no-gutters-lg" id="shoutbox">
 
                 {{-- @foreach($recommendedPosts as $post)
                 <div class="span-12 span-md-6 span-lg-12">
@@ -131,6 +142,29 @@
                 {{-- <div class="span-12 shoutbox-sidebar">
                     @include('frontend.partials.shoutbox')
                 </div> --}}
+
+                <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky inner-wrapper-sticky__shoutbox">
+
+                    <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_dekstop']) }} />
+    
+                    <div class="shoutbox__content-wrapper">
+    
+                        <div class="shoutbox__title shoutbox__title--extra-bold">
+                            <span>{!! $ads['banner_mypoint_title'] !!}</span>
+                        </div>
+    
+                        <div class="shoutbox__text shoutbox__text--extra-space">
+                            <p>{!! $ads['banner_mypoint_summary'] !!}</p>
+                        </div>
+    
+                        <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
+                            <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
+                            @guest
+                            <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox" alt="Login"><span class="text-white semibold">DAFTAR SEKARANG</strong></a>
+                            @endguest
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -191,5 +225,7 @@
 </script>
 @endverbatim
 
+<script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
+<script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('static/js/category.js') }}"></script>
 @endsection
