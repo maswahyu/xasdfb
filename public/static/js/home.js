@@ -292,7 +292,7 @@ $(function ()
             $html = `<div><div class="post-card post-card--simple post-card--simple__max-height" style="max-width: 235px !important; margin: 0 .8rem;">
                         <div class="post-card__thumbnail">
                             <a href="` + value.url + `?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="` + value.thumbnail + `" alt="` + value.title + `">
+                                <img class="post-card__img" src="img_placeholder_point.jpg" alt="` + value.title + `">
                             </a>
                         </div>
 
@@ -323,7 +323,7 @@ $(function ()
 
         $('.jsMobileTrendingList').slick({
             dots: false,
-            lazyLoad: 'anticipated',
+            lazyLoad: 'ondemand',
             centerMode: true,
             centerPadding: '30px',
             slidesToShow: 1,
