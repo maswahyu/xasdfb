@@ -45,9 +45,9 @@
             padding-left: 1.6rem;
             margin-bottom: 3rem;
         }
-        .post-card__img {
+        /* .post-card__img {
             width: 28.5rem;
-        }
+        } */
         .post-card__img--large {
             width: 64.6rem;
         }
@@ -388,7 +388,7 @@
 
             <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky inner-wrapper-sticky__shoutbox">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_dekstop']) }} />
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_dekstop']) }}" />
 
                 <div class="shoutbox__content-wrapper">
 
@@ -414,7 +414,7 @@
         <div class="span-12 span-md-4 order-1 order-md-2 show-mobile">
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_mobile']) }} />
+                <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_mobile']) }} "/>
 
                 <div class="shoutbox__content-wrapper">
 
