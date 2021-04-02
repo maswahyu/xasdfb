@@ -1,11 +1,6 @@
 $(function ()
 {
 
-    $('#shoutbox').stickySidebar({
-        topSpacing: 40,
-        resizeSensor: true,
-    });
-
     $('.jsHomeSlider').slick({
         arrows: false,
         dots: true,
@@ -23,4 +18,9 @@ $(function ()
         });
 
     $('.jsMoreArticle').trigger('click');
+
+    $('#shoutbox').stickySidebar({
+        topSpacing: 40,
+        resizeSensor: true,
+    });
 });

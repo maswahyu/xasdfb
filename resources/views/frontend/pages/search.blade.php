@@ -99,8 +99,8 @@
 <div class="container" id="notfound">
     <div class="row flex-justify-center flex-align-center">
         <div class="not-found-wrapper">
-            <h3>your search was not <br> successful!</h3>
-            <p>Please try some different keywords.</p>
+            <h3>Sorry, Search not found</h3>
+            <p>Please try again with some different keywords.</p>
         </div>
     </div>
 </div>

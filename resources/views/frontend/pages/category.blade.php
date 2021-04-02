@@ -17,6 +17,13 @@
     #stickyBannerContainer {
         display: none !important;
     }
+
+    @media screen and (max-width: 768px) {
+        .shoutbox--wide {
+            height: 410px;
+        }
+        .list-with-sidebar__main .section-title { margin-top: 4rem;}
+    }
     @media screen and (min-width: 768px) {
         .section-title {
             margin-left: 1rem;

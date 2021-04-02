@@ -1,11 +1,6 @@
 $(function ()
 {
 
-    $('#shoutbox').stickySidebar({
-        topSpacing: 40,
-        resizeSensor: true,
-    });
-
     $.ajax(window.feedSliderUrl, {
         data: Object.assign({
             'page': 1,
@@ -329,5 +324,10 @@ $(function ()
             slidesToShow: 1,
             variableWidth: true
         });
+    });
+
+    $('#shoutbox').stickySidebar({
+        topSpacing: 40,
+        resizeSensor: true,
     });
 });

@@ -233,22 +233,37 @@
         margin-bottom: 0;
 
         &--third {
-          max-width: 11.1rem;
+          max-width: 9.9rem;
+          max-height: 6rem;
           height: 100%;
           overflow-x: hidden;
+          margin: 1.2rem;
 
           display: flex;
           align-items: center;
+          justify-content: center;
 
           a img {
-            height: auto;
+            height: 100%;
             object-fit: cover;
           }
         }
       }
 
       #{$this}__info {
-        padding: 1rem 1.2rem;
+        padding: 0;
+
+        #{$this}__title--medium,
+        .post-meta {
+          padding: 0;
+        }
+        .post-meta {
+          &__category,
+          &__stat {
+            font-size: 1.2rem;
+            padding: 0;
+          }
+        }
       }
     }
 
@@ -688,6 +703,11 @@
 
     &--medium {
      font-size: 18px;
+
+     @include media-under(md) {
+       font-size: 14px;
+       line-height: 18px;
+     }
     }
 
     &--large {
