@@ -22,7 +22,7 @@
                 </a>
             </div>
 
-            <div class="post-meta__stat"><span>{{ $post->published_date }}</span></div>
+            <div class="post-meta__stat"><span>{{ Carbon\Carbon::parse($post->published_date)->diffForHumans() }}</span></div>
 
         </div>
         {{-- <div class="post-card__meta post-meta">
