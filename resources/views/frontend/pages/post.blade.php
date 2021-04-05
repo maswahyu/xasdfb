@@ -472,7 +472,7 @@
 <script>
     $(function() {
         if(document.getElementById('regist')) {
-            $("#regist").on('click', function(e) => {
+            $("#regist").on('click', function(e) {
                 e.preventDefault();
                 var href = $(e.currentTarget);
                 firePEvent(72);
