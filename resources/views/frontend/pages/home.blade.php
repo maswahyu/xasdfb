@@ -579,7 +579,7 @@
     <div class="post-card post-card--simple post-card--simple__max-height">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="img_placeholder_point.jpg" alt="{{ title }}">
+                <img class="post-card__img" src="{{thumbnail}}" alt="{{ title }}">
             </a>
         </div>
 
