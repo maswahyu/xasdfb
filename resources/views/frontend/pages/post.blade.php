@@ -421,7 +421,7 @@
 @endverbatim
 @if($post->slug === 'berhadiah-rp-50-juta-bold-battlegrounds-pubg-mobile-siap-di-SMJGZ')
 {{-- POKKT LA BOLD PUBG TRACKING --}}
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
 <script type="text/javascript">
   function get(name){
     if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
