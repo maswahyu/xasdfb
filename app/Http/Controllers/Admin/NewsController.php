@@ -118,7 +118,7 @@ class NewsController extends Controller
     {
         $keyword = $request->get('keyword');
 
-        $news = News::byPublish()->select('id', DB::raw("CONCAT(title, ' (', published_at, ')') AS title"))->where('title', 'LIKE', '%'.$keyword.'%')->latest('published_at')->paginate($request->pageSize);
+        $news = News::byPublish()->select('id', DB::raw("CONCAT(title, ' (', DATE_FORMAT(published_at, '%d-%m-%Y'), ')') AS title"))->where('title', 'LIKE', '%'.$keyword.'%')->latest('published_at')->paginate($request->pageSize);
         return response()->json($news);
     }
 
