@@ -419,6 +419,70 @@
     </div>
 </script>
 @endverbatim
+@if($post->slug === 'berhadiah-rp-50-juta-bold-battlegrounds-pubg-mobile-siap-di-SMJGZ')
+{{-- POKKT LA BOLD PUBG TRACKING --}}
+{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
+<script type="text/javascript">
+  function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+      return decodeURIComponent(name[1]);
+  }
+
+  function logIt(msg){
+    if(typeof console !== 'undefined'){
+      console.log(msg);
+    }
+  }
+
+  function fireTracker(url) {
+    $.ajax({
+      url: url
+    });
+  }
+
+  var pokktParam = get("pokkt_idfa");
+  var appId = get("aid");
+  var offerId = get("oid");
+  var bundleName = get("bn");
+
+  if(typeof pokktParam !== 'undefined' && pokktParam.trim() !== "")
+  {
+    var impTracker = "https://us-tracker.pokkt.com/api/VideoEventTracker?birthday=&country=philippines&app_version=&device_model=&categoryIab=&city=manila&app_bundle_name=[BUNDLE_NAME]&latitude=0.0&screen=0&skip=0&language=&device_type=&creative_id=-1&platform=android&device_name=android&eap=2.0&mac_address=&appId=[APP_ID]&exdi=&sdk_version=&adv_id=467&state=national+capital+region&deal_id=&carrier_name=Philippine+Long+Distance+Telephone&brand=Generic&campaign_id=6224&opt_userid=&timestamp=1524814992941&longitude=0.0&device_id=814dc408-3445-4d81-966a-463e5382e257&connection_type=&appName=Hay+Day+Android&ip=119.92.244.146&os_version=&sex=&advertisingID=[IDFA]&partner_param=&vc=0.0&offer_id=[OFFER_ID]&token=2ddca0f3f60656c28a41e0d88f1f9ed6&ad_id=8898&user_id=0&track_id=1af93010-16c2-4ba0-9080-71ff2f91adbc&marketing_name=&channel_id=2394&encodedPubParams=&event=71&r_type=img";
+
+    $(document).ready(function() {
+        logIt("adding imp tracker!! "+pokktParam);
+        var impTr = impTracker.replace("[IDFA]",pokktParam).replace("[BUNDLE_NAME]",bundleName).replace("[APP_ID]",appId).replace("[OFFER_ID]",offerId);
+        logIt("imp tracker!! "+impTr);
+        $('body').append("<img height=\"1\" width=\"1\" src='"+impTr+"' style=\"display: none\" />");
+    });
+  }
+
+  function firePEvent(event_id) {
+	  if(typeof pokktParam !== 'undefined' && pokktParam.trim() !== "")
+	  {
+	    var clkTracker = "https://us-tracker.pokkt.com/api/VideoEventTracker?birthday=&country=philippines&app_version=&device_model=&categoryIab=&city=manila&app_bundle_name=[BUNDLE_NAME]&latitude=0.0&screen=0&skip=0&language=&device_type=&creative_id=-1&platform=android&device_name=android&eap=2.0&mac_address=&appId=[APP_ID]&exdi=&sdk_version=&adv_id=467&state=national+capital+region&deal_id=&carrier_name=Philippine+Long+Distance+Telephone&brand=Generic&campaign_id=6224&opt_userid=&timestamp=1524814992941&longitude=0.0&device_id=814dc408-3445-4d81-966a-463e5382e257&connection_type=&appName=Hay+Day+Android&ip=119.92.244.146&os_version=&sex=&advertisingID=[IDFA]&partner_param=&vc=0.0&offer_id=[OFFER_ID]&token=2ddca0f3f60656c28a41e0d88f1f9ed6&ad_id=8898&user_id=0&track_id=1af93010-16c2-4ba0-9080-71ff2f91adbc&marketing_name=&channel_id=2394&encodedPubParams=&event=[EVENT]";
+
+	      logIt("click on button!! "+pokktParam+" event "+event_id);
+	      var clkTr = clkTracker.replace("[IDFA]",pokktParam).replace("[BUNDLE_NAME]",bundleName).replace("[APP_ID]",appId).replace("[OFFER_ID]",offerId).replace("[EVENT]",event_id);
+	      logIt("clkTracker!! "+clkTr);
+	      fireTracker(clkTr);
+	  }
+  }
+</script>
+<script>
+    $(function() {
+        if(document.getElementById('regist')) {
+            $("#regist").on('click', function(e) {
+                e.preventDefault();
+                var href = $(e.currentTarget);
+                firePEvent(72);
+                window.open(href.attr('href'));
+            })
+        }
+    });
+</script>
+{{-- END POKKT LA BOLD PUBG TRACKING --}}
+@endif
 <script src="{{ asset('static/js/jquery.fitvids.js') }}"></script>
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>

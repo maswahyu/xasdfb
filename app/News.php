@@ -373,6 +373,10 @@ class News extends Model
 
     public function getThumbnailAttribute()
     {
+        // dont generate thumbnial for highlight feed
+        if(request()->route()->getActionMethod() === 'feedHighlight') {
+            return imageview($this->image);
+        }
         // check if original image is exists
         if(! Str::contains($this->image, 'storage')  && ! Storage::disk('filemanager')->exists(Str::replaceFirst('/storage', '', $this->image))) {
             return imageview($this->image);
