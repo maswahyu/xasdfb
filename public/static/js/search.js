@@ -26,7 +26,7 @@ $(function ()
             $.each(parsedData.data, function (index, value) {
                 document.getElementById("spinner").style.display = "block";
 
-                setTimeout(showPage, 2500);
+                setTimeout(showPage, 1000);
 
                 function showPage() {
                     document.getElementById("spinner").style.display = "none";

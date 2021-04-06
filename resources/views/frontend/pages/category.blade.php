@@ -38,6 +38,7 @@
             flex: 1 1 433px;
             max-width: 433px;
             margin-left: 0;
+            padding-right: 0;
         }
     }
 </style>
