@@ -12,6 +12,7 @@ use App\Tag;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -117,8 +118,7 @@ class NewsController extends Controller
     {
         $keyword = $request->get('keyword');
 
-        $news = News::byPublish()->select('id', 'title')->where('title', 'LIKE', '%'.$keyword.'%')->paginate($request->pageSize);
-
+        $news = News::byPublish()->select('id', DB::raw("CONCAT(title, ' (', published_at, ')') AS title"))->where('title', 'LIKE', '%'.$keyword.'%')->latest('published_at')->paginate($request->pageSize);
         return response()->json($news);
     }
 
