@@ -215,7 +215,7 @@
   }
 
   &--third {
-    max-width: 38rem;
+    max-width: 41rem;
 
     #{$this}__title {
       display: -webkit-box;
@@ -256,6 +256,7 @@
         #{$this}__title--medium,
         .post-meta {
           padding: 0;
+          padding-right: 1rem;
         }
         .post-meta {
           &__category,
@@ -668,7 +669,7 @@
 
       &--third {
         height: 22.9rem;
-        width: 38rem;
+        width: 41rem;
       }
 
       &--fourth {
