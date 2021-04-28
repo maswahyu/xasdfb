@@ -21,11 +21,75 @@
     <meta property="og:image:width" content="650" />
     <meta property="og:image:height" content="366" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet">
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
-    <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
+    {{-- *********** IMPROVE FCP *********** --}}
+    {{-- load main css via js biar di load belakangan --}}
+    <script>
+    var head = document.getElementsByTagName('HEAD')[0];
+    var mainCss = document.createElement('link');
+    var customCss = document.createElement('link');
+    var googleFont = document.createElement('link');
+    mainCss.rel = 'stylesheet';
+    mainCss.type = 'text/css';
+    mainCss.href = '{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}';
+    customCss.rel = 'stylesheet';
+    customCss.type = 'text/css';
+    customCss.href = '{{ asset('static/css/custom.min.css') }}';
+    googleFont.rel = 'stylesheet';
+    googleFont.type = 'text/css';
+    googleFont.href = 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap';
+    head.appendChild(mainCss);
+    head.appendChild(customCss);
+    head.appendChild(googleFont);
+    </script>
+    <style>
+        .site-body {
+            -js-display: flex;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            flex: 1;
+        }
+        @media (min-width: 1280px) {
+            .site-header {
+                display: block !important;
+                width: 100%;
+                height: 8rem;
+                position: fixed;
+                z-index: 999;
+                background-color: #000;
+                color: #fff;
+            }
+        }
+        .site-header {
+            display: none;
+        }
+        @media (min-width: 1280px) {
+            .mobile-header {
+                display: none !important;
+            }
+        }
+        .mobile-header {
+            position: fixed;
+            -js-display: flex;
+            display: flex;
+            align-items: center;
+            top: 0;
+            left: 0;
+            padding: 0 10px;
+            height: 60px;
+            width: 100%;
+            background-color: #000;
+            z-index: 500;
+            transition: top .15s ease;
+        }
+    </style>
+    {{-- end fcp improvement --}}
     @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
