@@ -20,7 +20,7 @@
 
         <div class="row flex-justify-center">
 
-            <div class="section-title section-title--plain section-title--page" style="margin-bottom: unset;">
+            <div class="section-title section-title--plain section-title--page" style="margin-bottom: unset; padding-bottom: 20px;">
                 <span class="section-title__label section-title__label--category">Events</span>
             </div>
 
