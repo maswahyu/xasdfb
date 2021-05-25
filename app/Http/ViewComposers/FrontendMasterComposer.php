@@ -38,8 +38,10 @@ class FrontendMasterComposer
         ];
 
         $siteCategory = Category::getMenu();
+        $siteCategoryNetwork = Category::getMenuNetworks();
         $siteLink = Link::getMenu();
         $view->with('siteCategory', $siteCategory);
+        $view->with('siteCategoryNetwork', $siteCategoryNetwork);
         $view->with('siteLink', $siteLink);
         $view->with('siteInfo', $siteInfo);
     }

@@ -20,6 +20,8 @@ class Category extends Model
     const LENSA = 'lensaphoto';
     const SNEAKERLAND = 'sneakerland';
 
+    const NETWORKS_CATEGORY = ['LA Streetball', 'Scooterland'];
+
     public static function newRecord($request)
     {
         $data = new Category;
@@ -111,7 +113,17 @@ class Category extends Model
     {
         $value = Cache::rememberForever('menu-category', function () use ($parent_id) {
 
-            return self::select('name','slug','parent_id')->where('parent_id', $parent_id)->get();
+            return self::select('name','slug','parent_id')->where('parent_id', $parent_id)->whereNotIn('name', self::NETWORKS_CATEGORY)->get();
+        });
+
+        return $value;
+    }
+
+    public static function getMenuNetworks($parent_id = 0)
+    {
+        $value = Cache::rememberForever('menu-category-networks', function () use ($parent_id) {
+
+            return self::select('name','slug','parent_id')->where('parent_id', $parent_id)->whereIn('name', self::NETWORKS_CATEGORY)->get();
         });
 
         return $value;

@@ -23,22 +23,27 @@
                                 <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
                             </li>
                         @endforeach
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="{{ url('lensaphoto') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'lensaphoto') }}" alt="Lensa"><span>Lensa</span></a>
-                        </li>
-                        <li class="dropdown-menu__dropdown-item">
-                            <a href="{{ url('sneakerland') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'sneakerland') }}" alt="Sneakerland"><span>Sneakerland</span></a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
-                    <a href="#" class="dropdown-menu__link">Community</a>
+                    <a href="#" class="dropdown-menu__link">Networks</a>
                     <ul class="dropdown-menu__dropdown">
                         @foreach($siteLink as $item)
                             <li class="dropdown-menu__dropdown-item">
                                 <a href="{{ $item->url }}" target="_blank" class="dropdown-menu__dropdown-link" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
                             </li>
                         @endforeach
+                        @foreach($siteCategoryNetwork as $item)
+                            <li class="dropdown-menu__dropdown-item">
+                                <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
+                            </li>
+                        @endforeach
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="{{ url('lensaphoto') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'lensaphoto') }}" alt="Lensa"><span>Lensa</span></a>
+                        </li>
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="{{ url('sneakerland') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'sneakerland') }}" alt="Sneakerland"><span>Sneakerland</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item">

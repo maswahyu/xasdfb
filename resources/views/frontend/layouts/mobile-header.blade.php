@@ -41,7 +41,7 @@
             </button>
         </form>
     </div>
-    
+
     @auth
         <div class="user-info mobile jsUserMenuTrigger">
             {{-- <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span> --}}
@@ -57,12 +57,6 @@
                 <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
             </li>
         @endforeach
-        <li>
-            <a href="{{ url('lensaphoto') }}" alt="Lensaphoto">Lensa</a>
-        </li>
-        <li>
-            <a href="{{ url('sneakerland') }}" alt="Sneakerland">Sneakerland</a>
-        </li>
     </ul>
 
 </div>
@@ -115,7 +109,7 @@
                 <li class="menu" style="margin-top: 2rem;">
                     <a href="#" class="accordion">
                         <span class="accordion-text">
-                            Community
+                            Networks
                             <span class="chevron"></span>
                         </span>
                         <ul class="panel">
@@ -124,6 +118,17 @@
                                     <a href="{{ $item->url }}" target="_blank" alt="{{ $item->name }}">{{ $item->name }}</a>
                                 </li>
                             @endforeach
+                            @foreach($siteCategoryNetwork as $item)
+                                <li>
+                                    <a href="{{ $item->url }}" target="_blank" alt="{{ $item->name }}">{{ $item->name }}</a>
+                                </li>
+                            @endforeach
+                            <li>
+                                <a href="{{ url('lensaphoto') }}" target="_blank" alt="Lensaphoto">Lensa</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('sneakerland') }}" target="_blank" alt="Sneakerland">Sneakerland</a>
+                            </li>
                         </ul>
                     </a>
                 </li>
