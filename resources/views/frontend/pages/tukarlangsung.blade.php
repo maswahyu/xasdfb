@@ -9,9 +9,9 @@
       <div class="container">
          <a href="https://mypoints.lazone.id/" target="_blank">
           @if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
-            <img class="background" src="{{ asset("static/images/TuLanG-Mobile.jpg") }}" alt="Banner Tukar langsung">
+            <img class="background" src="{{ asset("static/images/TuLang-Mobile.jpg") }}" alt="Banner Tukar langsung">
           @else
-            <img class="background" src="{{ asset("static/images/TuLanG-Desktop.jpg") }}" alt="Banner Tukar langsung">
+            <img class="background" src="{{ asset("static/images/TuLang-Desktop.jpg") }}" alt="Banner Tukar langsung">
           @endif
         </a>
       </div>
