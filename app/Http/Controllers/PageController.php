@@ -76,6 +76,16 @@ class PageController extends Controller
         return view('frontend.pages.about', compact('ads'));
     }
 
+    public function game()
+    {
+    	return view('frontend.pages.game');
+    }
+
+    public function gameProfile()
+    {
+    	return view('frontend.pages.game-profile');
+    }
+
     public function stream($slug)
     {
         return view('frontend.pages.stream', [

@@ -74,3 +74,13 @@
         </div>
     </div>
 </div>
+
+
+<div class="floating-game-btn">
+    <a class="btn-link" href="{{ url('game') }}">
+        <img src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" class="link-image">
+    </a>
+    <button class="btn-close">
+        <img src="{{ asset('static/images/play-game-btn-close.png') }}" alt="close" class="close-btn-image">
+    </button>
+</div>

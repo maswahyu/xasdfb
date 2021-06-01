@@ -286,6 +286,238 @@ hr {
   }
 }
 
+
+.sidebar-v2 {
+  .list--vertical {
+    align-items: center;
+    
+    @include media-over(lg) {
+      width: 90px;
+    }
+
+    > div {
+      width: 100%;
+    }
+
+    .list__label {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .tooltip {
+    border: none;
+    background: none;
+    padding: 0.8rem;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: -0.8rem;
+  }
+
+  .tooltip-image {
+    height: 16px;
+    display: inline-block;
+  }
+
+  .inner-wrapper-sticky {
+    @include media-over(lg) {
+      padding-left: 4rem;
+    }
+  }
+
+  .list__item {
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 8px 15px;
+    margin: 0 0 1rem;
+
+    @include media-over(lg) {
+      margin: 0 auto 1rem;
+      background: #F5F5F6;
+      border: 1px solid #E0E0E0;
+    }
+  }
+
+  .list__item:last-child {
+    @include media-over(lg) {
+      margin: 0 auto 1rem !important;
+    }
+  }
+
+  .list__link {
+    margin-bottom: 0.25em;
+    cursor: pointer;
+  }
+
+  .list__link img {
+    display: block;
+    width: 25px;
+  }
+
+  .point {
+    color: #EC2427;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .point-image {
+    width: 10px;
+  }
+
+  .dropdown {
+    @include media-over(lg) {
+      position: relative;
+    }
+  }
+
+  .dropdown-menu {
+
+    padding: 24px;
+    background: black;
+    color: white;
+    position: absolute;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    pointer-events: none; 
+    width: 100vw;
+    left: 50%;
+    transform: translate(-50%);
+    top: calc(100% - 2rem);
+    max-width: 480px;
+
+    @include media-over(lg) {
+      width: 280px;
+      transform: none;
+      top: -10px;
+      left: calc(100% + 24px);
+    }
+
+    &.is-shown {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 24px;
+      border: solid;
+      border-width: 12px 10px;
+      border-color: transparent black black transparent;
+      top: -20px;
+      right: calc(100% - 6rem);
+
+      @include media-over(lg) {
+        top: 24px;
+        right:100%;
+        width: 24px;
+        height: 20px;
+        border-width: 10px 12px;
+        border-color: black black transparent transparent;
+      }
+    }
+
+    .dropdown-title {
+      font-family: $title-font-family;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0 0 0.6em;
+
+      @include media-over(lg) {
+        font-size: 20px;
+      }
+    }
+
+    .dropdown-copy p {
+      font-size: 12px;
+      line-height: 150%;
+
+      @include media-over(lg) {
+        font-size: 16px;
+      }
+    }
+
+    .point-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1em;
+
+      li {
+        font-weight: bold;
+        color: #EC2427;
+        margin-bottom: 0.35em;
+        font-size: 15px;
+      }
+
+      .list-image {
+        width: 22px;
+        margin-right: 0.5em;
+        vertical-align: middle;
+        transform: translate(0, -12%);
+      }
+    }
+
+    .cta-btn {
+      width: 100%;
+      margin: 0;
+      text-align: left;
+
+      span {
+        width: 100%;
+      }
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      background: none;
+      padding: 10px;
+
+      &::after {
+        display: none;
+      }
+
+      .btn-image {
+        display: block;
+        width: 14px;
+      }
+    }
+  }
+
+  &.is-affixed .dropdown-menu {
+    @include media-under(lg) {
+      top: auto;
+      bottom: calc(100% + 2rem);
+    }
+
+    &::after {
+      @include media-under(lg) {
+        top: 100%;
+        border-color: black transparent transparent black;
+      }
+    }
+  }
+
+  &.is-affixed .inner-wrapper-sticky {
+    @include media-under(lg) {
+      padding-top: 2rem;
+      top: calc(100% - 7rem) !important;
+      height: 7rem;
+    }
+  }
+}
+
+
 .sidebar__inner {
   transform: translate(0, 0); /* For browsers don't support translate3d. */
   transform: translate3d(0, 0, 0);
@@ -296,5 +528,67 @@ ol.styled-list {
   li {
     margin: 2rem 0;
     font-size: 16px;
+  }
+}
+
+
+
+.floating-game-btn {
+  position: fixed;
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transform-origin: bottom right;
+  bottom: 80px;
+  right: 10px;
+
+  @include media-over(md) {
+    transform: scale(0.8);
+    right: 20px;
+    bottom: 200px;
+  }
+
+  @include media-over(lg) {
+    transform: scale(0.9);
+  }
+
+  @include media-over(xl) {
+    transform: scale(1);
+  }
+
+  &.is-shown {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .btn-link {
+    display: block;
+    width: 145px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .link-image {
+    display: block;
+    width: 100%;
+  }
+
+  .btn-close {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    
+    &:after {
+      display: none;
+    }
+  }
+
+  .close-btn-image {
+    width: 22px;
+    display: block;
   }
 }

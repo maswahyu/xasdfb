@@ -38,6 +38,12 @@ Route::post('live/remind-me', 'StreamController@remindMe');
 Route::post('live/views_counter', 'StreamController@addViews');
 Route::get('tukarlangsung', 'PageController@tukarLangsung');
 
+
+/* Game pages */
+Route::get('game', 'PageController@game');
+Route::get('game-profile', 'PageController@gameProfile');
+
+
 Route::post('share-button-count', 'PostController@hitShareButton');
 
 
@@ -91,4 +97,3 @@ Route::get('{category}', 'PostController@category');
 Route::get('{category}/{subcategory}', 'PostController@subcategory');
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');
 //sementara
-
