@@ -42,7 +42,7 @@ use App\News;
                     @foreach($category as $item)
                         <optgroup label="{{ $item->name }}">
                             @foreach($item->subcategory as $parent)
-                                <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }}</option>
+                                <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }} <i>{{ !$parent->publish ? ' - (unpublished category)' : '' }}</i></option>
                             @endforeach
                         </optgroup>
                     @endforeach
