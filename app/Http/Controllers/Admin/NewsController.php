@@ -64,7 +64,7 @@ class NewsController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $category = Category::all();
+        $category = Category::where('parent_id', 0)->get();
         $news     = News::findOrFail($id);
 
         return view('_admin.news.edit', compact('news','category'))->with('title', $this->title);
