@@ -2,7 +2,7 @@
 
 @php
 $title = "Berita Seputar ".ucwords(str_replace('-', ' ', request()->segment(2)))." Terbaru Hari Ini";
-$desc = "Temukan berita terbaru seputar ".request()->segment(2)." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
+$desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request()->segment(2)))." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
 @endphp
 
 @section('meta_title', $title)
