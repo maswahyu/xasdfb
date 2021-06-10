@@ -1,6 +1,21 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@php
+if($tag):
+$title = "Berita Seputar ".$tag->name." Terbaru Hari Ini";
+$desc = "Temukan berita terbaru seputar ".$tag->name." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
+else:
+$title = "Berita Seputar ".request()->segment(2)." Terbaru Hari Ini";
+$desc = "Temukan berita terbaru seputar ".request()->segment(2)." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
+endif;
+@endphp
+
+@section('meta_title', $title)
+@section('meta_description', $desc)
+
+@section('head_title', $title)
+@section('head_description', $desc)
+@section('head_url', url()->current())
 
 @section('content')
 
