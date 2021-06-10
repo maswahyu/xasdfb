@@ -1,13 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
 @php
-if($tag):
-$title = "Berita Seputar ".$tag->name." Terbaru Hari Ini";
-$desc = "Temukan berita terbaru seputar ".$tag->name." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
-else:
-$title = "Berita Seputar ".request()->segment(2)." Terbaru Hari Ini";
+$title = "Berita Seputar ".ucwords(str_replace('-', ' ', request()->segment(2)))." Terbaru Hari Ini";
 $desc = "Temukan berita terbaru seputar ".request()->segment(2)." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
-endif;
 @endphp
 
 @section('meta_title', $title)

@@ -269,9 +269,7 @@ class PostController extends Controller
 
     public function tags($hashtag)
     {
-        $tag = Tag::where('slug', $hashtag)->first();
-
-    	return view('frontend.pages.tags', compact('tag'));
+        return view('frontend.pages.tags');
     }
 
     public function feedTags(Request $request)
