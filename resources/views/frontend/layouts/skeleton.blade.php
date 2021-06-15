@@ -282,7 +282,7 @@
 
     <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
-    <script src="{{ asset('static/js/slick.min.js') }}"></script>
+    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
     <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
     <script src="{{ asset('static/js/global-min.js') }}"></script>
