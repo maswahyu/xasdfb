@@ -124,7 +124,7 @@
                                 </li>
                             @endforeach
                             <li>
-                                <a href="{{ url('lensaphoto') }}" target="_blank" alt="Lensaphoto">Lensa</a>
+                                <a href="{{ url('lensacommunity') }}" target="_blank" alt="Lensacommunity">Lensa</a>
                             </li>
                             <li>
                                 <a href="{{ url('sneakerland') }}" target="_blank" alt="Sneakerland">Sneakerland</a>
