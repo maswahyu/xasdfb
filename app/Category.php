@@ -89,6 +89,10 @@ class Category extends Model
                 ->orderBy('featured_at', 'desc');
     }
 
+    public function subcategory() {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
     public function children() {
         return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED);
     }

@@ -41,8 +41,8 @@ use App\News;
                 <select name="category_id" class="form-control form-control-sm select2" id="category_id" style="width: 100%;">
                     @foreach($category as $item)
                         <optgroup label="{{ $item->name }}">
-                            @foreach($item->children as $parent)
-                                <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }}</option>
+                            @foreach($item->subcategory as $parent)
+                                <option value="{{ $parent->id }}" {{ (isset($news->category_id) && $news->category_id == $parent->id) ? 'selected' : ''}}>{{ $parent->name }} <i>{{ !$parent->publish ? ' - (unpublished category)' : '' }}</i></option>
                             @endforeach
                         </optgroup>
                     @endforeach

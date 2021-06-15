@@ -135,6 +135,10 @@ class PostController extends Controller
             return redirect($post->url);
         }
 
+        if($post->category_id != $subcategory->id){
+            return redirect($post->url, 301);
+        }
+
         if ($subcategory->slug == Category::SNEAKERLAND) {
             return redirect(Category::SNEAKERLAND.'/'.$slug);
         }
@@ -238,6 +242,10 @@ class PostController extends Controller
             abort(404);
         }
 
+        if(!in_array($post->category_slug, [News::LENSAPHOTO, News::SNEAKERLAND])){
+             return redirect($post->url, 301);
+        }
+
         $related = News::related($post->slug, $post->tags, $post->category_id);
 
         $ads = [
@@ -261,7 +269,7 @@ class PostController extends Controller
 
     public function tags($hashtag)
     {
-    	return view('frontend.pages.tags');
+        return view('frontend.pages.tags');
     }
 
     public function feedTags(Request $request)

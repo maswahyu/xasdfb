@@ -212,12 +212,22 @@
                 display: none
             }
         }
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgb(249,249,249);
+        }
     </style>
     @yield('inside-head')
 </head>
 
 
 <body class="site-body {{ $bodyClass ?? '' }}">
+    <div class="loader"></div>
     @if($siteInfo['analytics_id'])
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $siteInfo['analytics_id'] }}"
@@ -358,6 +368,9 @@
         });
 
         $(function() {
+
+            $(".loader").fadeOut('slow');
+
             $('.post-card__img').Lazy({
                 effect: 'fadeIn',
                 visibleOnly: true
