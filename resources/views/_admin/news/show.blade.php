@@ -41,7 +41,7 @@
                                     <tr><th> Summary </th><td> {{ $news->summary }} </td></tr>
                                     <tr><th> Category </th><td> {{ optional($news->category)->name }} </td></tr>
                                     <tr><th> Content </th><td> {!! $news->content !!} </td></tr>
-                                    <tr><th> Views </th><td> {!! $news->view !!} </td></tr>
+                                    <tr><th> Views </th><td> {!! $news->view_count !!} </td></tr>
                                 </tbody>
                             </table>
                         </div>
