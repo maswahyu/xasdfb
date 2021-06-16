@@ -153,18 +153,18 @@
 
                 <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky inner-wrapper-sticky__shoutbox">
 
-                    <img class="shoutbox__background post-card__img" alt="lazone id" data-src={{ imageview($ads['banner_mypoint_dekstop']) }} />
-    
+                    <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_dekstop']) }}" />
+
                     <div class="shoutbox__content-wrapper">
-    
+
                         <div class="shoutbox__title shoutbox__title--extra-bold">
                             <span>{!! $ads['banner_mypoint_title'] !!}</span>
                         </div>
-    
+
                         <div class="shoutbox__text shoutbox__text--extra-space">
                             <p>{!! $ads['banner_mypoint_summary'] !!}</p>
                         </div>
-    
+
                         <div class="shoutbox__cta shoutbox__cta--left new-shoutbox">
                             <a href="{{ url('points') }}?utm_source=BannerHome" class="btn btn-ghost-crimson btn-shoutbox" alt="Points"><span class="semibold">PELAJARI TENTANG POIN</strong></a>
                             @guest
