@@ -15,8 +15,7 @@
                 <div class="page-card position-relative">
                     <header class="card-header page-header text-center">
                         <h1 class="page-title card-title">
-                            <small>Mini Game</small> 
-                            The Running Agent
+                            <img src="{{ asset('static/images/title-image-mini-game-running-agent.png') }}" alt="Mini Game: The Running Agent" class="title-image">
                         </h1>
 
                         <div class="video-wrapper position-relative">
@@ -30,6 +29,9 @@
                     </header>
 
                     <div class="card-content">
+                        <div class="cta-wrapper text-center">
+                            <a href="" class="btn btn-play"><span>PLAY NOW</span></a>
+                        </div>
                         <h3 class="card-subtitle">How to Play</h3>
 
                         <ul>

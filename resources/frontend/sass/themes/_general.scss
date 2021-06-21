@@ -151,6 +151,11 @@ hr {
   background-color: palette("crimson");
 
   &:hover {
+    background-color: lighten(palette("crimson"), 5%);
+  }
+
+  &:active,
+  &:focus, {
     background-color: darken(palette("crimson"), 5%);
   }
 
@@ -538,10 +543,10 @@ ol.styled-list {
   z-index: 9;
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.8);
+  transform: scale(.6);
   transform-origin: bottom right;
-  bottom: 80px;
   right: 10px;
+  bottom: 20px;
 
   @include media-over(md) {
     transform: scale(0.8);
@@ -567,6 +572,7 @@ ol.styled-list {
     width: 145px;
     position: relative;
     z-index: 2;
+    background: none;
   }
 
   .link-image {

@@ -1,6 +1,7 @@
 $(function ()
 {
-    $('.jsPrizeSlider').slick({
+
+    $('.jsRewardsSlider').slick({
         arrows: true,
         dots: false,
         slidesToShow: 1,
@@ -10,13 +11,43 @@ $(function ()
         mobileFirst: true,
         responsive: [
             {
-                breakpoint: 1199,
+                breakpoint: 767,
                 settings: {
                     slidesToShow: 3,
                 },
             },
         ]
     });
+
+    $('.jsRewardSingleSlider').slick({
+        arrows: true,
+        dots: false,
+        slidesToShow: 1,
+        infinite: false,
+        nextArrow: '<button type="button" class="slick-next slick-arrow-crimson"><span class="arrow-left"></span></button>',
+        prevArrow: '<button type="button" class="slick-prev slick-arrow-crimson"><span class="arrow-right"></span></button>',
+        variableWidth: true,
+        centerMode: true
+       });
+
+
+    // $('.jsPrizeSlider').slick({
+    //     arrows: true,
+    //     dots: false,
+    //     slidesToShow: 1,
+    //     infinite: false,
+    //     nextArrow: '<button type="button" class="slick-next slick-arrow-crimson"><span class="arrow-left"></span></button>',
+    //     prevArrow: '<button type="button" class="slick-prev slick-arrow-crimson"><span class="arrow-right"></span></button>',
+    //     mobileFirst: true,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1199,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //             },
+    //         },
+    //     ]
+    // });
 
     $('.jsPointTab li').on('click', function (e)
     {

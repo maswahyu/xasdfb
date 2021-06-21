@@ -9,6 +9,15 @@
   &.no-padding {
     padding-top: 0;
   }
+
+  &.fit-padding {
+    padding-top: 6rem !important;
+
+    @include media-over(xl) {
+      padding-top: 8rem !important;
+    }
+
+  }
 }
 
 .home-grid {
