@@ -66,21 +66,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Isi data diri dengan lengkap untuk mendapatkan poin</p>
+                            <p>Daftar atau login ke akun LAZone.ID untuk bisa bermain Game.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto Diri, dll</p>
+                            <p>Gerakkan karakter atas dan bawah untuk menghindar dari rintangan.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Verifikasi nomor handphone atau alamat emailmu</p>
+                            <p>Kumpulkan poin sebanyak- banyaknya untuk ditukar dengan hadiah eksklusif.</p>
                         </div>
                     </div>
 

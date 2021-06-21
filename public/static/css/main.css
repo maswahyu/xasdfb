@@ -7763,6 +7763,9 @@ ol.styled-list li{
   z-index:3;
   position:relative;
 }
+.point-banner .rewards-list .rewards-link{
+  text-decoration:none !important;
+}
 .point-banner .rewards-list .rewards-wrapper__card{
   padding:0 0 1rem;
   box-shadow:none;
