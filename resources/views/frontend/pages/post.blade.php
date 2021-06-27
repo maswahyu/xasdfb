@@ -48,7 +48,7 @@
         }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
         .container-title {
             max-width: 800px;
             margin-left: 19%;

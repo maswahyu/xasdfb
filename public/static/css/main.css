@@ -4546,9 +4546,6 @@ hr{
   padding:0;
   will-change:min-height;
 }
-.sidebar .inner-wrapper-sticky{
-  padding-left:1rem;
-}
 @media (max-width:1023.98px){
   .sidebar.is-affixed .inner-wrapper-sticky{
     top:92% !important;
@@ -4564,11 +4561,15 @@ hr{
     padding-left:0;
     left:0 !important;
   }
+  .sidebar.is-affixed .inner-wrapper-sticky .row{
+    width:100%;
+  }
   .sidebar.is-affixed .inner-wrapper-sticky .list{
-    margin-top:0;
-    margin-bottom:0;
     width:100%;
     justify-content:space-around;
+    padding:0;
+    max-width:480px;
+    margin:0 auto;
   }
 }
 @media screen and (max-width:1023.98px) and (max-width:375px){
@@ -4578,26 +4579,44 @@ hr{
 }
 @media (max-width:1023.98px){
   .sidebar.is-affixed .inner-wrapper-sticky .list__label{
-    font-size:16px;
+    font-size:13px;
     line-height:30px;
   }
 }
 
+@media screen and (max-width:1023px){
+  .sidebar-v2{
+    max-width:460px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
 .sidebar-v2 .list--vertical{
   align-items:center;
+  width:100%;
+  justify-content:space-between;
+  padding:0 15px;
 }
 @media (min-width:1024px){
   .sidebar-v2 .list--vertical{
     width:90px;
+    padding:0;
   }
 }
 .sidebar-v2 .list--vertical>div{
   width:100%;
 }
 .sidebar-v2 .list--vertical .list__label{
-  text-align:center;
-  width:100%;
+  text-align:left;
+  width:7rem;
   margin-bottom:2rem;
+  margin-right:0;
+}
+@media (min-width:1024px){
+  .sidebar-v2 .list--vertical .list__label{
+    width:100%;
+    text-align:center;
+  }
 }
 .sidebar-v2 .tooltip{
   border:none;
@@ -4619,7 +4638,7 @@ hr{
 .sidebar-v2 .list__item{
   box-sizing:border-box;
   border-radius:10px;
-  padding:8px 15px;
+  padding:8px 0;
   margin:0 0 1rem;
 }
 @media (min-width:1024px){
@@ -4627,6 +4646,7 @@ hr{
     margin:0 auto 1rem;
     background:#f5f5f6;
     border:1px solid #e0e0e0;
+    padding:8px 15px;
   }
 }
 @media (min-width:1024px){
@@ -4720,7 +4740,7 @@ hr{
   }
 }
 .sidebar-v2 .dropdown-menu .dropdown-copy p{
-  font-size:12px;
+  font-size:14px;
   line-height:150%;
 }
 @media (min-width:1024px){
@@ -4780,7 +4800,7 @@ hr{
     border-color:#000 transparent transparent #000;
   }
 }
-@media (max-width:1279.98px){
+@media (max-width:1023.98px){
   .sidebar-v2.is-affixed .inner-wrapper-sticky{
     padding-top:2rem;
     top:calc(100% - 7rem) !important;
@@ -4807,7 +4827,7 @@ ol.styled-list li{
   transform:scale(.6);
   transform-origin:bottom right;
   right:10px;
-  bottom:20px;
+  bottom:80px;
 }
 @media (min-width:768px){
   .floating-game-btn{
@@ -5418,6 +5438,23 @@ ol.styled-list li{
   .point-nav__item:first-child{
     margin-top:2rem !important;
   }
+}
+
+.pointNavSlider .slick-list{
+  overflow:visible;
+}
+.pointNavSlider .slick-slide{
+  padding-left:15px;
+  padding-right:15px;
+}
+@media (min-width:768px){
+  .pointNavSlider .slick-slide{
+    padding:0;
+  }
+}
+.pointNavSlider .point-nav__item.active .point-nav__link{
+  color:#ec2427 !important;
+  font-weight:900;
 }
 
 .dropdown-menu{
@@ -7383,6 +7420,17 @@ ol.styled-list li{
   justify-content:space-between;
   border-bottom:1px solid #d8d8d8;
 }
+.how-to__header .btn{
+  height:auto;
+  line-height:1.2;
+  padding-left:1em;
+  padding-right:1em;
+}
+@media (min-width:768px){
+  .how-to__header .btn{
+    padding:.8rem 4rem;
+  }
+}
 .how-to__icon{
   flex:0 0 100%;
   height:6.4rem;
@@ -7474,7 +7522,12 @@ ol.styled-list li{
   font-weight:600;
 }
 .how-to__right{
-  flex:0 0 235px;
+  flex:0 0 60%;
+}
+@media (min-width:768px){
+  .how-to__right{
+    flex:0 0 235px;
+  }
 }
 .how-to__text{
   margin-left:2rem;
@@ -7622,7 +7675,7 @@ ol.styled-list li{
   }
 }
 .point-banner__video-wrapper .video-outer{
-  padding:0 2rem 3rem;
+  padding:0 0 3rem;
 }
 @media (min-width:768px){
   .point-banner__video-wrapper .video-outer{
@@ -7964,8 +8017,8 @@ ol.styled-list li{
 }
 .point-banner .rewards-list__multiple .rewards-wrapper__card{
   padding:0;
-  width:280px;
-  flex:0 0 280px;
+  width:100%;
+  flex:0 0 100%;
   flex-direction:column;
 }
 @media (min-width:768px){
@@ -7990,7 +8043,7 @@ ol.styled-list li{
   width:100%;
   height:100%;
   flex-direction:column;
-  margin-bottom:10px;
+  margin-bottom:30px;
   align-items:stretch;
   -js-display:flex;
   display:flex;

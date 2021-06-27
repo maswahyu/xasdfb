@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <ul class="point-nav flex-justify-center jsPointTab">
+            <ul class="point-nav flex-justify-center jsPointTab pointNavSlider">
                 <li class="point-nav__item">
                     <a href="#tab-complete-profile" class="text-black point-nav__link point-nav__link--tab">Complete Profile</a>
                 </li>

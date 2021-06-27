@@ -248,9 +248,9 @@ hr {
   padding: 0;
   will-change: min-height;
 
-  .inner-wrapper-sticky {
-    padding-left: 1rem;
-  }
+  // .inner-wrapper-sticky {
+  //   padding-left: 1rem;
+  // }
 
   @include media-under(md) {
 
@@ -268,18 +268,27 @@ hr {
       padding-left: 0;
       left: 0 !important;
 
+      .row {
+        width: 100%;
+      }
+
       .list {
         margin-top: 0;
         margin-bottom: 0;
         width: 100%;
         justify-content: space-around;
+        padding: 0;
+
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
 
         @media screen and (max-width: 375px) {
           margin-top: -4px;
         }
 
         &__label {
-          font-size: 16px;
+          font-size: 13px;
           line-height: 30px;
         }
       }
@@ -293,11 +302,21 @@ hr {
 
 
 .sidebar-v2 {
+  @media screen and (max-width: 1023px) {
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .list--vertical {
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 15px;
     
     @include media-over(lg) {
       width: 90px;
+      padding: 0px;
     }
 
     > div {
@@ -305,9 +324,17 @@ hr {
     }
 
     .list__label {
-      text-align: center;
-      width: 100%;
+      text-align: left;
+      width: 7rem;
       margin-bottom: 2rem;
+      margin-right: 0;
+      // margin-right: calc(7vw - 14px);
+
+      @include media-over(lg) {
+        width: 100%;
+        text-align: center;
+        // margin-right: 2.5rem;
+      }
     }
   }
 
@@ -334,13 +361,18 @@ hr {
   .list__item {
     box-sizing: border-box;
     border-radius: 10px;
-    padding: 8px 15px;
+    padding: 8px 0;
     margin: 0 0 1rem;
+
+    // @media only screen and (min-width: 340px) {
+    //   padding: 8px 15px;
+    // }
 
     @include media-over(lg) {
       margin: 0 auto 1rem;
       background: #F5F5F6;
       border: 1px solid #E0E0E0;
+      padding: 8px 15px;
     }
   }
 
@@ -442,7 +474,7 @@ hr {
     }
 
     .dropdown-copy p {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 150%;
 
       @include media-over(lg) {
@@ -514,7 +546,7 @@ hr {
   }
 
   &.is-affixed .inner-wrapper-sticky {
-    @include media-under(lg) {
+    @include media-under(md) {
       padding-top: 2rem;
       top: calc(100% - 7rem) !important;
       height: 7rem;
@@ -546,7 +578,7 @@ ol.styled-list {
   transform: scale(.6);
   transform-origin: bottom right;
   right: 10px;
-  bottom: 20px;
+  bottom: 80px;
 
   @include media-over(md) {
     transform: scale(0.8);
