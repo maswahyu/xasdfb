@@ -9321,14 +9321,13 @@ ol.styled-list li{
 }
 .game-profile .page-title{
   font-weight:700;
-  font-size:24px;
   line-height:120%;
   color:#fff;
   background:#000;
   display:inline-block;
   transform:translateY(50%);
   max-width:calc(100% - 30px);
-  font-size:14px;
+  font-size:18px;
   padding:1.4em 1.5em;
   margin:-2.2em 0 0;
   text-transform:uppercase;
@@ -9383,7 +9382,7 @@ ol.styled-list li{
   }
 }
 .game-profile .section-copy p{
-  font-size:12px;
+  font-size:16px;
   line-height:120%;
   margin:0 0 .6em;
   line-height:1.6em;

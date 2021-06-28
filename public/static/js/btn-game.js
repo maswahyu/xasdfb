@@ -30,8 +30,38 @@ $(function () {
       }
   }
 
-  if(!checkCookie()){ //cookie does not exist
-      // alert('cookie does not exist');
+  function setSessionStorage(sname, value) {
+    sessionStorage.setItem(sname, value);
+  }
+
+  function checkSessionStorage(sname) {
+    var sessionStatus = sessionStorage.getItem(sname);
+    if (sessionStatus != "active") {
+        return false;
+    } else {
+        return true;
+    }
+  }
+
+
+//   if(!checkCookie()){ //cookie does not exist
+//       // alert('cookie does not exist');
+//       $('.floating-game-btn').addClass('is-shown');
+
+//       $('.floating-game-btn .btn-close').on('click', function () {
+//           $('.floating-game-btn').css('transition', 'opacity 0.5s ease-in');
+//           $('.floating-game-btn').removeClass('is-shown'); //hide button
+
+//           //alert('set cookie');
+//           setCookie('lazonegamebtn', 'active', 10); // hidden for the next 10 minutes
+//       })
+//   } else { // increase cookie time
+//       //alert('cookie exists');
+//       setCookie('lazonegamebtn', 'active', 10); // hidden for the next 10 minutes
+//   }
+
+    // Check Button using Window.SessionStorage
+    if(!checkSessionStorage('lazonegamebtn')) {
       $('.floating-game-btn').addClass('is-shown');
 
       $('.floating-game-btn .btn-close').on('click', function () {
@@ -39,11 +69,7 @@ $(function () {
           $('.floating-game-btn').removeClass('is-shown'); //hide button
 
           //alert('set cookie');
-          setCookie('lazonegamebtn', 'active', 10); // hidden for the next 10 minutes
+          setSessionStorage('lazonegamebtn', 'active'); // hidden until tab closed
       })
-  } else { // increase cookie time
-      //alert('cookie exists');
-      setCookie('lazonegamebtn', 'active', 10); // hidden for the next 10 minutes
-  }
-
+    }
 });
