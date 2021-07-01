@@ -3,7 +3,13 @@
 @section('meta_title', 'What is My Points?')
 @section('head_title', 'What is My Points?')
 @section('head_url', url()->current())
-
+@section('inside-head')
+<style>
+    .point-banner > .container {
+        padding-bottom: 4rem;
+    }
+</style>
+@endsection
 @section('content')
 
 <div class="point-banner">
