@@ -15,14 +15,14 @@
 <div class="point-banner">
     {{-- <img src="{{ asset('static/images/img_point2.jpg') }}" alt="" class="point-banner__bg"> --}}
     <div class="container">
-        <div class="row video-padding">
+        {{-- <div class="row video-padding">
             <div class="span-12 span-lg-10 off-lg-1">
                 <video id="player" playsinline loop muted autoplay>
                     <source src="https://www.lazone.id/static/video/mypoints_lazoneid360.mp4" type="video/mp4" size="360">
                     <source src="https://www.lazone.id/static/video/mypoints_lazoneid720.mp4" type="video/mp4" size="720">
                 </video>
             </div>
-        </div>
+        </div> --}}
         <div class="point-banner__content">
             <div class="point-banner__title">
                 <span>Daftar jadi member LAZONE.ID dan Terus Kumpulkan Point-mu!</span>
