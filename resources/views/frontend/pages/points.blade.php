@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="faux-bg">
+{{-- <div class="faux-bg">
 
     <div class="container">
 
@@ -44,7 +44,7 @@
                         <span class="section-title__label section-title__label--category">Hadiah Bulan Ini</span>
                     </div>
                 </div>
-                
+
                 <div class="subtitle subtitle--point text-center">
                     <span>Redeem point-mu dengan hadiah menarik BULAN INI</span>
                 </div>
@@ -86,7 +86,7 @@
 
     </div>
 
-</div>
+</div> --}}
 
 @include('frontend.partials.how-to')
 
