@@ -1,4 +1,11 @@
 @extends('frontend.layouts.skeleton')
+@section('inside-head')
+    <style>
+        .promo__banner {
+            height: unset;
+        }
+    </style>
+@endsection
 @section('content')
 @php
     $contentClass = 'promo__top';
@@ -9,9 +16,9 @@
       <div class="container">
          <a href="https://mypoints.lazone.id/" target="_blank">
           @if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
-            <img class="background" src="{{ asset("static/images/TuLang-Mobile.jpg") }}" alt="Banner Tukar langsung">
+            <img class="background" src="{{ asset("static/images/LAZONE_MY POINTS_BANNERS-03-popup-min.jpg") }}" alt="Banner Tukar langsung">
           @else
-            <img class="background" src="{{ asset("static/images/TuLang-Desktop.jpg") }}" alt="Banner Tukar langsung">
+            <img class="background" src="{{ asset("static/images/LAZONE_MY POINTS_BANNERS-01-landingpage-min.jpg") }}" alt="Banner Tukar langsung">
           @endif
         </a>
       </div>
@@ -21,7 +28,7 @@
         <h5 class="title text-center text-black">
           Periode
         </h5>
-        <p class="title__sub text-site text-center">7 Mei - 3 Juni 2021</p>
+        <p class="title__sub text-site text-center">4 - 3 Juli 2021</p>
         <br>
         <div class="text-center">
           <a
@@ -40,7 +47,7 @@
         <br>
         <ul class="list-syarat">
           <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia minimal 18 tahun yang tinggal di Indonesia dan memiliki KTP yang berlaku.</li>
-          <li>Program berlaku mulai tanggal 7 Mei - 3 Juni 2021.</li>
+          <li>Program berlaku mulai tanggal 4 - 3 Juli 2021.</li>
           <li>Program ini hanya berlaku kepada member yang telah melakukan Complete Profile dan terverfikasi di profil <a href="https://www.lazone.id/" class="text-site">LAZone.id</a></li>
           <li>Untuk mengikuti program ini, member harus melakukan redeem kupon undian di halaman ini.</li>
           <li>Member diperbolehkan untuk me-redeem kupon undian lebih dari satu.</li>
