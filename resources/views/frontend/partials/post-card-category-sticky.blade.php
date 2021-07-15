@@ -7,9 +7,7 @@
     </div>
 
     <a href="{{ $post->url }}" alt="{{ $post->title }}">
-        <div class="post-card__title post-card__title--large">
-            <span>{{ $post->title }}</span>
-        </div>
+        <h2 class="post-card__title post-card__title--large">{{ $post->title }}</h2>
     </a>
 
     <div class="post-card__meta post-meta">

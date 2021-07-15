@@ -22,7 +22,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
         <div class="span-12">
 
             <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category">Tagged In #{{ request()->segment(2) }}</span>
+                <h1 class="section-title__label section-title__label--category">Tagged In #{{ request()->segment(2) }}</h1>
             </div>
 
         </div>
@@ -78,9 +78,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 
             </div>
 
-            <div class="post-card__title">
-                <span>{{ title }}</span>
-            </div>
+            <h2 class="post-card__title">{{ title }}</h2>
 
         </div>
 

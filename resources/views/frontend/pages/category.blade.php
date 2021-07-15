@@ -54,7 +54,7 @@
 
                 <div class="row flex-lg-justify-center">
                     <div class="section-title section-title--plain section-title--page" style="margin-left: 2rem;">
-                        <span class="section-title__label section-title__label--category">{{ $category->name }}</span>
+                        <h1 class="section-title__label section-title__label--category">{{ $category->name }}</h1>
                     </div>
                 </div>
 
