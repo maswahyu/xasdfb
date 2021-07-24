@@ -17,7 +17,7 @@
     <a href="{{ url('/')}}" class="site-logo">
         <picture>
             {{-- <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp"> --}}
-            <img src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
+            <img width="133" height="106" src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
         </picture>
     </a>
 
@@ -26,7 +26,7 @@
     @else
     <div class="search-btn-trigger searchTrigger">
     @endauth
-        <img src="{{ asset('static/images/search.svg') }}" alt="">
+        <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
     </div>
 
     <div class="search-wrapper">
@@ -36,7 +36,7 @@
             <button type="submit" class="search-btn-icon">
                 <picture>
                     {{-- <source srcset="{{ asset('static/images/search-black.webp') }}" type="image/webp"> --}}
-                    <img src="{{ asset('static/images/search.svg') }}" alt="">
+                    <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
                 </picture>
             </button>
         </form>
@@ -124,7 +124,7 @@
                                 </li>
                             @endforeach
                             <li>
-                                <a href="{{ url('lensaphoto') }}" target="_blank" alt="Lensaphoto">Lensa</a>
+                                <a href="{{ url('lensacommunity') }}" target="_blank" alt="Lensacommunity">Lensa</a>
                             </li>
                             <li>
                                 <a href="{{ url('sneakerland') }}" target="_blank" alt="Sneakerland">Sneakerland</a>

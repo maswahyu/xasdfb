@@ -3,7 +3,16 @@
 @section('meta_title', 'What is My Points?')
 @section('head_title', 'What is My Points?')
 @section('head_url', url()->current())
-
+@section('inside-head')
+<style>
+    .point-banner > .container {
+        padding-bottom: 4rem;
+    }
+    .site-content.no-padding {
+        padding-top: 8rem !important;
+    }
+</style>
+@endsection
 @section('content')
 
 <div class="point-banner">
@@ -18,7 +27,13 @@
                     @if ($hasVideo)
                         <div class="point-banner-header with-video">
                             <div class="row">
-                                <div class="span-12 span-md-6 point-banner__video-wrapper">
+                                <div class="span-12 span-md-6 order-md-2 point-banner__title-wrapper">
+                                    <div class="point-banner__title">
+                                        <span>Daftar Jadi Member LAZONE.ID dan Dapatkan Hadiah Eksklusif!</span>
+                                    </div>
+                                </div>
+
+                                <div class="span-12 span-md-6 order-md-1 point-banner__video-wrapper">
                                     <div class="video-outer">
                                         <video id="player" playsinline loop muted autoplay>
                                             <source src="https://www.lazone.id/static/video/mypoints_lazoneid360.mp4" type="video/mp4" size="360">
@@ -26,11 +41,7 @@
                                         </video>
                                     </div>
                                 </div>
-                                <div class="span-12 span-md-6 point-banner__title-wrapper">
-                                    <div class="point-banner__title">
-                                        <span>Daftar Jadi Member LAZONE.ID dan Dapatkan Hadiah Eksklusif!</span>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     @else

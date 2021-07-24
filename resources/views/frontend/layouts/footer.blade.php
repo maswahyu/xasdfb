@@ -5,7 +5,7 @@
         <div class="row footer-top__row">
 
             <div class="footer-top__span">
-                <img src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
+                <img width="160" height="125" src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
                 <ul class="point-nav">
                     {{-- <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('about-us') }}">About Us</a></li> --}}
                     <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>

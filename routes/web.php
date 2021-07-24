@@ -90,7 +90,7 @@ Route::get('/Community/{path}', 'StorageController@eventOldImage')->where('path'
 Route::get('/gallery-photos/{path}', 'StorageController@galleryPhotoOldImage')->where('path', '.+');
 Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirectFile');
 
-Route::get('lensaphoto/{slug}', 'PostController@topPost');
+Route::get('lensacommunity/{slug}', 'PostController@topPost');
 Route::get('sneakerland/{slug}', 'PostController@topPost');
 
 Route::get('{category}', 'PostController@category');

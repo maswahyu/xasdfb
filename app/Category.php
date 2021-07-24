@@ -17,7 +17,7 @@ class Category extends Model
 
     const TOP_PARENT = 0;
     const STATUS_PUBLISHED = 1;
-    const LENSA = 'lensaphoto';
+    const LENSA = 'lensacommunity';
     const SNEAKERLAND = 'sneakerland';
 
     const NETWORKS_CATEGORY = ['LA Streetball', 'Scooterland'];
@@ -89,12 +89,16 @@ class Category extends Model
                 ->orderBy('featured_at', 'desc');
     }
 
+    public function subcategory() {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
     public function children() {
         return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED);
     }
 
     public function menu() {
-        return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED)->whereNotIn('slug', ['lensaphoto','sneakerland']);
+        return $this->hasMany(self::class, 'parent_id', 'id')->where('publish', self::STATUS_PUBLISHED)->whereNotIn('slug', [self::LENSA,self::SNEAKERLAND]);
     }
 
     public function subscribe() {

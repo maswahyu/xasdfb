@@ -212,12 +212,22 @@
                 display: none
             }
         }
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgb(249,249,249);
+        }
     </style>
     @yield('inside-head')
 </head>
 
 
 <body class="site-body {{ $bodyClass ?? '' }}">
+    <div class="loader"></div>
     @if($siteInfo['analytics_id'])
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $siteInfo['analytics_id'] }}"
@@ -272,7 +282,7 @@
 
     <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
-    <script src="{{ asset('static/js/slick.min.js') }}"></script>
+    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
     <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
     <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
     <script src="{{ asset('static/js/global-min.js') }}"></script>
@@ -359,6 +369,9 @@
         });
 
         $(function() {
+
+            $(".loader").fadeOut('slow');
+
             $('.post-card__img').Lazy({
                 effect: 'fadeIn',
                 visibleOnly: true

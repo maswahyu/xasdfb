@@ -28,7 +28,7 @@
                             </p>
                         </div>
 
-                        <p class="points">1.000</p>
+                        {{-- <p class="points">1.000</p> --}}
                     </section>
 
                     <section class="section section__info text-center">

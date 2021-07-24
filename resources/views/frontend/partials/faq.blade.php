@@ -1,10 +1,10 @@
 <div class="faq-section">
 
-    
+
     <div class="container faq-list">
-        
+
         <div class="row">
-            
+
             <div class="span-12 span-lg-10 off-lg-1">
                 <div class="row flex-justify-center">
                     <div class="section-title section-title--plain section-title--page">
@@ -22,6 +22,19 @@
                     </div>
                     <div class="expand-collapsed__content" style="display: none;">
                         YA, KAMU PERLU MENDAFTARKAN AKUN UNTUK MENDAPATKAN POIN
+                    </div>
+                </div>
+                <div class="expand-collapsed">
+                    <div class="expand-collapsed__header">
+                        <span class="expand-collapsed__title"> BAGAIMANA CARA SAYA MENDAPATKAN POINT? </span>
+                        <span class="expand-collapsed__icon">
+                            <svg class="svg-plus">
+                                <use xlink:href="{{ asset('static/images/sprites.svg') }}#plus"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="expand-collapsed__content" style="display: none;">
+                        KAMU BISA CEK <a href="https://mypoints.lazone.id/earn-points">https://mypoints.lazone.id/earn-points</a> UNTUK MENGETAHUI BAGAIMANA CARA MENDAPATKAN POIN
                     </div>
                 </div>
                 <div class="expand-collapsed">
@@ -100,19 +113,6 @@
                     </div>
                     <div class="expand-collapsed__content" style="display: none;">
                         YA, KAMI MENJAMIN BAHWA SITUS INI AMAN UNTUK DIAKSES, KARENA : DAPAT DILIHAT BAHWA WEBSITE INI SUDAH MENGGUNAKAN PROTOKOL HTTPS DENGAN SERTIFIKAT SECURE SOCKET LAYERS (SSL) YAITU TEKNOLOGI KEAMANAN YANG MEMUNGKINKAN UNTUK MELAKUKAN ENKRIPSI TERHADAP DATA YANG AKAN DITRANSMISIKAN ANTARA CLIENT DAN SERVER
-                    </div>
-                </div>
-                <div class="expand-collapsed">
-                    <div class="expand-collapsed__header">
-                        <span class="expand-collapsed__title"> SAMPAI KAPAN POSISI SAYA BISA BERTAHAN DI LEADERBOARD? </span>
-                        <span class="expand-collapsed__icon">
-                            <svg class="svg-plus">
-                                <use xlink:href="{{ asset('static/images/sprites.svg') }}#plus"></use>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="expand-collapsed__content" style="display: none;">
-                        KAMU AKAN BERTAHAN DI LEADERBOARD HINGGA PUKUL 23:59 SETIAP AKHIR BULAN.
                     </div>
                 </div>
             </div>

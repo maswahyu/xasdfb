@@ -9,9 +9,7 @@
     <div class="post-card__info">
 
         <a href="{{ $post->url }}" alt="{{ $post->title }}">
-            <div class="post-card__title post-card__title--medium">
-                <span>{{ $post->title }}</span>
-            </div>
+            <h3 class="post-card__title post-card__title--medium">{{ $post->title }}</h3>
         </a>
 
         <div class="post-card__meta post-meta">

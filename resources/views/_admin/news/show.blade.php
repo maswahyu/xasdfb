@@ -31,16 +31,17 @@
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete news" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
                     </div>
-                    <div class="card-body"> 
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
-                                <tbody> 
+                                <tbody>
                                     <tr><th> Title </th><td> {{ $news->title }} </td></tr>
                                     <tr><th> User </th><td> {{ optional($news->user)->name }} </td></tr>
                                     <tr><th> Image </th><td> <img src="{{ imageview($news->image) }}" width="150"> </td></tr>
-                                    <tr><th> Summary </th><td> {{ $news->summary }} </td></tr>                                    
+                                    <tr><th> Summary </th><td> {{ $news->summary }} </td></tr>
                                     <tr><th> Category </th><td> {{ optional($news->category)->name }} </td></tr>
                                     <tr><th> Content </th><td> {!! $news->content !!} </td></tr>
+                                    <tr><th> Views </th><td> {!! $news->view_count !!} </td></tr>
                                 </tbody>
                             </table>
                         </div>

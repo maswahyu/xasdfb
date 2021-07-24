@@ -39,7 +39,7 @@
                             </li>
                         @endforeach
                         <li class="dropdown-menu__dropdown-item">
-                            <a href="{{ url('lensaphoto') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'lensaphoto') }}" alt="Lensa"><span>Lensa</span></a>
+                            <a href="{{ url('lensacommunity') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'lensacommunity') }}" alt="Lensa"><span>Lensa</span></a>
                         </li>
                         <li class="dropdown-menu__dropdown-item">
                             <a href="{{ url('sneakerland') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'sneakerland') }}" alt="Sneakerland"><span>Sneakerland</span></a>

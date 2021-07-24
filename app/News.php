@@ -27,7 +27,7 @@ class News extends Model
 
     const NEWS = 'news';
     const TAKE_RECOMENDED = 5;
-    const LENSAPHOTO = 'lensaphoto';
+    const LENSAPHOTO = 'lensacommunity';
     const SNEAKERLAND = 'sneakerland';
 
     protected $dates = ['published_at'];

@@ -388,7 +388,7 @@
 
             <div class="shoutbox shoutbox--wide shoutbox--has-bg inner-wrapper-sticky inner-wrapper-sticky__shoutbox">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_dekstop']) }}" />
+                <img class="shoutbox__background post-card__img" alt="lazone id" width="380" height="250" src="img_placeholder_point.jpg" data-src="{{ imageview($ads['banner_mypoint_dekstop']) }}" />
 
                 <div class="shoutbox__content-wrapper">
 
@@ -414,7 +414,7 @@
         <div class="span-12 span-md-4 order-1 order-md-2 show-mobile">
             <div class="shoutbox shoutbox--wide shoutbox--has-bg">
 
-                <img class="shoutbox__background post-card__img" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_mobile']) }} "/>
+                <img class="shoutbox__background post-card__img" width="380" height="250" src="img_placeholder_point.jpg" alt="lazone id" data-src="{{ imageview($ads['banner_mypoint_mobile']) }} "/>
 
                 <div class="shoutbox__content-wrapper">
 
@@ -458,7 +458,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}">
-                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img width="380" height="250" src="/img_placeholder_point.jpg" class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -492,7 +492,7 @@
     <div class="post-card post-card--wide post-card--wide__with-padding">
         <div class="post-card__thumbnail">
             <a href="{{ url }}">
-                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img width="380" height="250" src="/img_placeholder_point.jpg" class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -527,7 +527,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--video">
 
-        <img class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
+        <img class="post-card__img post-card__img--video" width="380" height="250" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/{{ youtube_id }}/hqdefault.jpg" alt="{{ title_limit }}">
 
         <a href="{{ url }}" alt="{{ title_limit }}">
             <div class="post-card__overlay"></div>
@@ -579,7 +579,7 @@
     <div class="post-card post-card--simple post-card--simple__max-height">
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=Trending&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="{{thumbnail}}" alt="{{ title }}">
+                <img class="post-card__img" height="236" width="400" src="{{thumbnail}}" alt="{{ title }}">
             </a>
         </div>
 
@@ -623,7 +623,7 @@
 
         <div class="post-card__thumbnail">
             <a href="{{ url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-                <img class="post-card__img" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" width="380" height="250" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
         <!-- <div class="post-card__meta post-meta">
@@ -660,7 +660,7 @@
 
         <div class="post-card__thumbnail-square">
             <a href="{{ url }}">
-                <img class="post-card__img" data-src="{{ thumbnail }}" alt="{{ title }}">
+                <img class="post-card__img" width="380" height="250" src="/img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
             </a>
         </div>
 
@@ -699,7 +699,7 @@
 
     <div class="post-card__thumbnail post-card__thumbnail--large">
         <a href="{{ url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ title }}">
-            <img class="post-card__img post-card__img--large" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
+            <img class="post-card__img post-card__img--large" width="380" height="250" src="img_placeholder_point.jpg" data-src="{{ thumbnail }}" alt="{{ title }}">
         </a>
     </div>
 
@@ -736,7 +736,7 @@
 var banner_image = '{{ imageview($ads['image']) }}'
 var banner_url = '{{ $ads['url'] }}'
 </script>
-<script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
-<script src="{{ asset('static/js/ResizeSensor.js') }}"></script>
-<script src="{{ asset('static/js/home.js') }}?v=1"></script>
+<script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
+<script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>
+<script async src="{{ asset('static/js/home.js') }}?v=1"></script>
 @endsection

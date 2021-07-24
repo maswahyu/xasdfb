@@ -16,15 +16,24 @@
                 <li class="point-nav__item">
                     <a href="#tab-complete-profile" class="text-black point-nav__link point-nav__link--tab">Complete Profile</a>
                 </li>
-                <li class="point-nav__item">
+                {{-- <li class="point-nav__item">
                     <a href="#tab-referal-code" class="text-black  point-nav__link point-nav__link--tab">Referral code</a>
-                </li>
+                </li> --}}
                 <li class="point-nav__item">
                     <a href="#tab-quiz" class="text-black  point-nav__link point-nav__link--tab">Quiz</a>
                 </li>
                 <li class="point-nav__item">
                     <a href="#tab-secret-world" class="text-black  point-nav__link point-nav__link--tab">Secret Word</a>
                 </li>
+
+                <li class="point-nav__item">
+                    <a href="#tab-play-game" class="text-black  point-nav__link point-nav__link--tab">Play Game</a>
+                </li>
+
+                <li class="point-nav__item">
+                    <a href="#tab-share-article" class="text-black  point-nav__link point-nav__link--tab">Share Article</a>
+                </li>
+
                 <li class="point-nav__item">
                     <a href="#tab-daily-login" class="text-black  point-nav__link point-nav__link--tab">Daily Login</a>
                 </li>
@@ -153,7 +162,7 @@
 
             </div>
 
-            <div id="tab-referal-code" class="how-to">
+            {{-- <div id="tab-referal-code" class="how-to">
 
                 <div class="how-to__header">
 
@@ -209,7 +218,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
             <div id="tab-quiz" class="how-to">
 
@@ -343,6 +352,119 @@
 
             </div>
 
+            <div id="tab-play-game" class="how-to">
+
+                <div class="how-to__header">
+
+                    <div class="how-to__left">
+
+                        <div class="how-to__icon">
+                            <img src="{{ asset('static/images/play-game-icon.png') }}" alt="">
+                        </div>
+
+                        <div class="how-to__info">
+                            <div class="how-to__name">Play Game</div>
+                            <div class="how-to__requirement">
+                                <div class="how-to__cup">
+                                    <img src="{{ asset('static/images/cup.png') }}" alt="">
+
+                                </div>
+                                <div class="how-to__point">
+                                    <span>1000 points</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="how-to__right">
+                        <a class="btn btn-crimson btn-point" href="">MAINKAN GAME</a>
+                    </div>
+
+                </div>
+
+                <div class="how-to__content">
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">01.</div>
+                        <div class="how-to__text">
+                            <p>Daftar atau login ke akun LAZone.ID untuk bisa bermain Game.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">02.</div>
+                        <div class="how-to__text">
+                            <p>Gerakkan karakter atas dan bawah untuk menghindar dari rintangan.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">03.</div>
+                        <div class="how-to__text">
+                            <p>Kumpulkan poin sebanyak- banyaknya untuk ditukar dengan hadiah eksklusif.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tab-share-article" class="how-to">
+
+                <div class="how-to__header">
+
+                    <div class="how-to__left">
+
+                        <div class="how-to__icon">
+                            <img src="{{ asset('static/images/share-article-icon.png') }}" alt="">
+                        </div>
+
+                        <div class="how-to__info">
+                            <div class="how-to__name">Share Article</div>
+                            <div class="how-to__requirement">
+                                <div class="how-to__cup">
+                                    <img src="{{ asset('static/images/cup.png') }}" alt="">
+
+                                </div>
+                                <div class="how-to__point">
+                                    <span>100 points</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="how-to__right">
+                        <a class="btn btn-crimson btn-point" href="">BACA ARTIKEL</a>
+                    </div>
+
+                </div>
+
+                <div class="how-to__content">
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">01.</div>
+                        <div class="how-to__text">
+                            <p>Daftar atau login ke akun LAZone.ID dan buka artikel yang mau kamu baca.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">02.</div>
+                        <div class="how-to__text">
+                            <p>Setelah di halaman artikel, klik tombol share artikel ke Facebook atau Twitter.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">03.</div>
+                        <div class="how-to__text">
+                            <p>Setiap melakukan share artikel, kamu akan mendapatkan 100 points di akun MyPoints kamu.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>

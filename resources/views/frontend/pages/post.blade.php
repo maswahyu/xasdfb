@@ -157,28 +157,19 @@
 
                                 <ul class="point-list">
                                     <li>
-                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB"> + 50 Points
+                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB"> + 100 Points
                                     </li>
                                     <li>
-                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW"> + 50 Points
-                                    </li>
-                                    <li>
-                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-wa.png') }}" alt="WhatsApp"> + 50 Points
-                                    </li>
-                                    <li>
-                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-line.png') }}" alt="LINE"> + 50 Points
-                                    </li>
-                                    <li>
-                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-link.png') }}" alt="Copy link"> + 50 Points
+                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW"> + 100 Points
                                     </li>
                                 </ul>
 
                                 <div class="cta-wrapper">
-                                    <a href="" class="btn cta-btn btn-crimson btn-shoutbox btn-link"><span class="text-white semibold">MORE INFO</span></a>
+                                    <a href="{{ url('points') }}" target="_blank" class="btn cta-btn btn-crimson btn-shoutbox btn-link"><span class="text-white semibold">MORE INFO</span></a>
                                 </div>
                             @else
                                 <div class="dropdown-copy">
-                                    <p>Login ke MyPoints dan dapatkan hingga 50 points setiap kali kamu share artikel, yang nanti bisa kamu tukarkan dengan <strong>hadiah menarik</strong>!</p>
+                                    <p>Login ke MyPoints dan dapatkan hingga 100 points setiap kali kamu share artikel, yang nanti bisa kamu tukarkan dengan <strong>hadiah menarik</strong>!</p>
                                 </div>
                                 <div class="cta-wrapper">
                                     <a href="{{ url('member/login') }}" class="btn cta-btn btn-crimson btn-shoutbox btn-link"><span class="text-white semibold">LOGIN</span></a>
@@ -193,7 +184,7 @@
                             href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
                         </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 50</span>
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 100</span>
                     </li>
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social jsTwShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_TWITTER }}"
@@ -215,21 +206,18 @@
                             href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/share-v2/ico-wa.png') }}" alt="WhatsApp">
                         </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 50</span>
                     </li>
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_LINE }}"
                             href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
                             <img src="{{ asset('static/images/share-v2/ico-line.png') }}" alt="LINE">
                         </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 50</span>
                     </li>
                     <li class="list__item list__item--social">
                         <a data-clipboard-text="{{ url()->current() }}" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_CLIPBOARD }}" id="refCopyLink" class="list__link list__link--social jsCopyLink"
                             >
                             <img src="{{ asset('static/images/share-v2/ico-link.png') }}" alt="Copy link">
                         </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 50</span>
                     </li>
                 </ul>
             </div>

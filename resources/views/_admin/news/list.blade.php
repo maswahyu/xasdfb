@@ -6,6 +6,7 @@
             <th>Category</th>
             <th>Image</th>
             <th>Summary</th>
+            <th>Views Count</th>
             <th>Publish</th>
             <th>Type</th>
             <th>Actions</th>
@@ -19,6 +20,7 @@
             <td>{{ optional($item->category)->name }}</td>
             <td><img src="{{ imagethumb($item->image) }}" width="150"> </td>
             <td>{{ $item->summary }}</td>
+            <td>{{ $item->view_count }}</td>
             <td>{!! $item->publishBadge !!}</td>
             <td>
                 @if(($item->is_highlight == 1))

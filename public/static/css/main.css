@@ -7419,35 +7419,39 @@ ol.styled-list li{
   align-items:center;
   justify-content:space-between;
   border-bottom:1px solid #d8d8d8;
+  flex-direction:column;
+}
+@media (min-width:768px){
+  .how-to__header{
+    flex-direction:row;
+  }
 }
 .how-to__header .btn{
   height:auto;
   line-height:1.2;
-  padding-left:1em;
-  padding-right:1em;
-}
-@media (min-width:768px){
-  .how-to__header .btn{
-    padding:.8rem 4rem;
-  }
+  width:100%;
+  padding:.8em 1em;
 }
 .how-to__icon{
-  flex:0 0 100%;
   height:6.4rem;
   width:6.4rem;
-  margin-right:3rem;
   margin-bottom:1rem;
+  flex:0 0 100px;
+  margin-right:0;
 }
 @media (min-width:768px){
   .how-to__icon{
     flex:0 0 6.4rem;
     margin-bottom:0;
+    margin-right:3rem;
   }
 }
 .how-to__icon img{
   max-width:100%;
   width:auto;
   height:auto;
+  display:block;
+  margin:0 auto;
 }
 .how-to__cup{
   margin-right:1rem;
@@ -7455,11 +7459,20 @@ ol.styled-list li{
   width:20px;
 }
 .how-to__name{
-  font-size:2rem;
-  font-weight:600;
   width:100%;
+  font-weight:600;
+  font-size:18px;
+  color:#000;
+  margin-bottom:.5em;
 }
-@media (max-width:1024px){
+@media (min-width:768px){
+  .how-to__name{
+    font-size:2rem;
+    font-weight:600;
+    width:100%;
+  }
+}
+@media (min-width:768px) and (max-width:1024px){
   .how-to__name{
     font-size:calc(.62rem + 1.34766vw);
   }
@@ -7470,10 +7483,26 @@ ol.styled-list li{
   flex-flow:row nowrap;
   align-items:center;
   width:100%;
+  font-size:16px;
+}
+@media (min-width:768px){
+  .how-to__requirement{
+    font-size:1.8rem;
+  }
+}
+@media (min-width:768px) and (max-width:1024px){
+  .how-to__requirement{
+    font-size:calc(.57rem + 1.20117vw);
+  }
 }
 .how-to__info{
-  flex:1 1 31rem;
-  max-width:31rem;
+  flex:0 0 calc(100% - 100px);
+}
+@media (min-width:768px){
+  .how-to__info{
+    flex:1 1 31rem;
+    max-width:31rem;
+  }
 }
 .how-to__item{
   -js-display:flex;
@@ -7506,10 +7535,14 @@ ol.styled-list li{
   display:flex;
   flex-flow:row wrap;
   align-items:center;
+  width:100%;
+  margin-bottom:2rem;
 }
 @media (min-width:768px){
   .how-to__left{
     flex-flow:row nowrap;
+    width:50%;
+    margin-bottom:0;
   }
 }
 .how-to__number{
@@ -7522,11 +7555,13 @@ ol.styled-list li{
   font-weight:600;
 }
 .how-to__right{
-  flex:0 0 60%;
+  flex:0 0 100%;
+  width:100%;
 }
 @media (min-width:768px){
   .how-to__right{
     flex:0 0 235px;
+    width:auto;
   }
 }
 .how-to__text{
@@ -7571,7 +7606,7 @@ ol.styled-list li{
   margin:0 auto;
   z-index:2;
   text-align:center;
-  padding:40px 0 0;
+  padding:32px 0 0;
 }
 @media (min-width:768px){
   .point-banner__content{
@@ -7589,7 +7624,12 @@ ol.styled-list li{
   }
 }
 .point-banner .point-banner-header.with-video{
-  margin-bottom:3rem;
+  margin-bottom:4rem;
+}
+@media (min-width:768px){
+  .point-banner .point-banner-header.with-video{
+    margin-bottom:3rem;
+  }
 }
 @media (min-width:1024px){
   .point-banner .point-banner-header.with-video{
@@ -7607,16 +7647,17 @@ ol.styled-list li{
 .point-banner__text{
   margin-bottom:3rem;
   color:#fff;
-  line-height:1.3333333333;
   letter-spacing:.025em;
   max-width:40em;
   margin-left:auto;
   margin-right:auto;
-  font-size:12px;
+  line-height:1.5;
+  font-size:16px;
 }
 @media (min-width:768px){
   .point-banner__text{
     font-size:14px;
+    line-height:1.3333333333;
   }
 }
 @media (min-width:1024px){
@@ -7645,13 +7686,12 @@ ol.styled-list li{
   font-weight:700;
   color:#fff;
   text-align:center;
-  font-size:3.2rem;
-  margin-bottom:.6em;
-}
-@media (max-width:1024px){
-  .point-banner__title{
-    font-size:calc(.92rem + 2.22656vw);
-  }
+  max-width:15em;
+  font-size:18px;
+  line-height:1.5;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:32px;
 }
 @media (min-width:768px){
   .point-banner__title{
@@ -7659,6 +7699,7 @@ ol.styled-list li{
     margin-left:auto;
     margin-right:auto;
     font-size:3rem;
+    line-height:1.3;
   }
 }
 @media (min-width:768px) and (max-width:1024px){
@@ -7673,9 +7714,6 @@ ol.styled-list li{
     max-width:11em;
     text-align:left;
   }
-}
-.point-banner__video-wrapper .video-outer{
-  padding:0 0 3rem;
 }
 @media (min-width:768px){
   .point-banner__video-wrapper .video-outer{

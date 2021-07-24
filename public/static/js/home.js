@@ -17,7 +17,7 @@ $(function ()
 
             $html = `<div class="home-promo-slider__slide">
                 <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                    <img src="/img_placeholder_slider.jpg" data-lazy="` + value.image + `" alt="` + value.title + `">
+                    <img width="380" height="250" src="/img_placeholder_slider.jpg" data-lazy="` + value.image + `" alt="` + value.title + `">
                 </a>
             </div>`;
 
@@ -25,7 +25,7 @@ $(function ()
 
             $html = `<div class="home-promo-slider__slide">
                 <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                    <img src="/img_placeholder_point.jpg" data-lazy="` + (value.mobile_image ? value.mobile_image : '/img_placeholder_point.jpg') + `" alt="` + value.title + `">
+                    <img width="380" height="250" src="/img_placeholder_point.jpg" data-lazy="` + (value.mobile_image ? value.mobile_image : '/img_placeholder_point.jpg') + `" alt="` + value.title + `">
                 </a>
             </div>`;
 
@@ -194,7 +194,7 @@ $(function ()
 
                         <div class="post-card__thumbnail post-card__thumbnail--video">
 
-                            <img class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/` + value.youtube_id + `/hqdefault.jpg" alt="` + value.title_limit + `">
+                            <img width="380" height="250" class="post-card__img post-card__img--video" src="/img_placeholder_point.jpg" data-src="https://img.youtube.com/vi/` + value.youtube_id + `/hqdefault.jpg" alt="` + value.title_limit + `">
 
                             <a href="` + value.url + `" alt="` + value.title_limit + `">
                                 <div class="post-card__overlay"></div>

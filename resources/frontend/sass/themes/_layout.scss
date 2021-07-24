@@ -11,7 +11,11 @@
   }
 
   &.fit-padding {
-    padding-top: 6rem !important;
+    padding-top: 10rem !important;
+
+    @include media-over(md) {
+      padding-top: 6rem !important;
+    }
 
     @include media-over(xl) {
       padding-top: 8rem !important;

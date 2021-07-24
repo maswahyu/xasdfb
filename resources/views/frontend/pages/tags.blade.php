@@ -1,6 +1,16 @@
 @extends('frontend.layouts.skeleton')
 
-{{-- Available Yield: meta, inside-header, after-site-footer, before-body-end --}}
+@php
+$title = "Berita Seputar ".ucwords(str_replace('-', ' ', request()->segment(2)))." Terbaru Hari Ini";
+$desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request()->segment(2)))." disini. Dapatkan hadiah menarik setiap bulannya dengan mengumpulkan My Points. GRATIS Hanya di LAzone";
+@endphp
+
+@section('meta_title', $title)
+@section('meta_description', $desc)
+
+@section('head_title', $title)
+@section('head_description', $desc)
+@section('head_url', url()->current())
 
 @section('content')
 
@@ -12,7 +22,7 @@
         <div class="span-12">
 
             <div class="section-title section-title--plain section-title--page">
-                <span class="section-title__label section-title__label--category">Tagged In #{{ request()->segment(2) }}</span>
+                <h1 class="section-title__label section-title__label--category">Tagged In #{{ request()->segment(2) }}</h1>
             </div>
 
         </div>
@@ -68,9 +78,7 @@
 
             </div>
 
-            <div class="post-card__title">
-                <span>{{ title }}</span>
-            </div>
+            <h2 class="post-card__title">{{ title }}</h2>
 
         </div>
 
