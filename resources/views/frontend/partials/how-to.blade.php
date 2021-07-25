@@ -378,7 +378,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="">MAINKAN GAME</a>
+                        <a class="btn btn-crimson btn-point" href="https://mypoint.lazone.saga.id/" target="_blank">MAINKAN GAME</a>
                     </div>
 
                 </div>
@@ -435,7 +435,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="">BACA ARTIKEL</a>
+                        <a class="btn btn-crimson btn-point" href="https://mypoint.lazone.saga.id/" target="_blank">BACA ARTIKEL</a>
                     </div>
 
                 </div>
