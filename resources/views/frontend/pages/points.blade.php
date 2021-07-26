@@ -13,7 +13,7 @@
         <div class="point-banner__content">
             <div class="row">
                 <div class="span-12 span-lg-10 off-lg-1">
-                    @php ($hasVideo = true)
+                    @php ($hasVideo = false)
 
                     @if ($hasVideo)
                         <div class="point-banner-header with-video">
@@ -68,7 +68,7 @@
                             <div class="rewards-wrapper rewards-wrapper__card">
                                 <a href="" class="card-inner rewards-link">
                                     <div class="rewards-img-wrapper">
-                                        <div class="rewards-img" style="background-image: url({{ imageview($item->image) }});"></div>
+                                        <div class="rewards-img" style="background-image: url('{!! imageview($item->image) !!}');"></div>
                                     </div>
                                     <div class="rewards-desc d-flex flex-column">
                                         <p class="rewards-desc__category">Category</p>
