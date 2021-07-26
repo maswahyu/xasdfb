@@ -77,7 +77,7 @@
 
 
 <div class="floating-game-btn">
-    <a class="btn-link" href="{{ url('game') }}">
+    <a class="btn-link" href="{{ route('game-index') }}">
         <img src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" class="link-image">
     </a>
     <button class="btn-close">

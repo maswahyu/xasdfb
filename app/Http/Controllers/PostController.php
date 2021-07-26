@@ -11,8 +11,9 @@ use Carbon\Carbon;
 use App\NewsBanner;
 use App\StickyBanner;
 use App\ShareNewsChannel;
-use Illuminate\Http\Request;
 use App\Component\MyPoint;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
@@ -226,7 +227,7 @@ class PostController extends Controller
 
         $banner = NewsBanner::detail($post->id);
 	    return view('frontend.pages.post', [
-            'shareArticles' => (new MyPoint())->getShareArticle(url()->current())['data'],
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current()),
             'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads,
@@ -262,7 +263,7 @@ class PostController extends Controller
         ];
 
         return view('frontend.pages.post', [
-            'shareArticles' => (new MyPoint())->getShareArticle(url()->current())['data'],
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current()),
             'post' => $post,
             'relatedPosts' => $related,
             'ads' => $ads,
@@ -295,13 +296,13 @@ class PostController extends Controller
         ShareNewsChannel::newRecord($request);
         if(Auth::check()) { //only login user can get point, otherwise just can share
             $data = (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
-            return response(200)->json([
+            return response()->json([
                 'message' => 'Kamu berhasil mendapatkan point'
-            ]);
+            ], 200);
         }
-        return \response(200)->json([
+        return \response()->json([
             'message' => 'Login untuk mendapatkan poin'
-        ]);
+        ], 401);
     }
 
 }

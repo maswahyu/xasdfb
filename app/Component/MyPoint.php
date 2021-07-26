@@ -106,21 +106,23 @@ class MyPoint
     public function getShareArticle($link)
     {
         try {
+            if(Auth::check()) {
+                $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_SHARE_ARTICLE;
 
-            $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_SHARE_ARTICLE;
+                $this->loginUser(Auth::user()->email, 'lazone.id');
 
-            $this->loginUser(Auth::user()->email, 'lazone.id');
+                $client = new Client($this->getClientHeaders());
 
-            $client = new Client($this->getClientHeaders());
-
-            $response = $client->get($ENDPOINT, [
-                'http_errors' => false,
-                'query' => [
-                    'link' => \strtolower($link)
-                ]
-            ]);
-            $response = \GuzzleHttp\json_decode($response->getBody(), true);
-            return $response;
+                $response = $client->get($ENDPOINT, [
+                    'http_errors' => false,
+                    'query' => [
+                        'link' => \strtolower($link)
+                    ]
+                ]);
+                $response = \GuzzleHttp\json_decode($response->getBody(), true);
+                return $response['data'];
+            }
+            return;
         } catch(Exception $e) {
             return array(
                 'code' => 500,

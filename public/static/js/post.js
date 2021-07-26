@@ -107,8 +107,19 @@ $(function ()
                 beforeSend: () => {
                     isSend = true;
                 },
-                success: (res) => {
+                success: (res, status) => {
                     isSend = false;
+                    if(status == 'success') {
+                        share_btn = $(`[data-share=${channel}]`);
+                        share_btn.removeAttr('data-share');
+
+                        ico = share_btn.siblings('span').find('img');
+                        ico_src = ico.attr('src');
+                        ico.attr('src', ico_src.replace('star', 'check'));
+
+                        $(`[data-share=facebook]`).siblings('span').html(ico[0].outerHTML);
+
+                    }
                 },
                 error: (xhr) => {
                     isSend = false;
