@@ -16,7 +16,7 @@
                 <div class="page-card position-relative">
                     <header class="page-header text-center">
                         <h1 class="page-title">
-                            CONGRATULATIONS, TOBI JAMES!
+                            CONGRATULATIONS, {{auth()->user()->name}}
                         </h1>
                     </header>
 
@@ -28,13 +28,13 @@
                             </p>
                         </div>
 
-                        {{-- <p class="points">1.000</p> --}}
+                        {{-- <p class="points">{{ number_format($lastPoint['point'], 0, 0, '.')}}</p> --}}
                     </section>
 
                     <section class="section section__info text-center">
                         @auth
                             <div class="section-copy">
-                                <p>Skormu telah dikonversikan menjadi <span>1.000 points</span> di MyPoints.</p>
+                                <p>Skormu telah dikonversikan menjadi <span>{{ number_format($lastPoint['point'], 0, 0, '.')}} points</span> di MyPoints.</p>
                             </div>
 
                             <div class="shoutbox__cta">
@@ -44,7 +44,7 @@
                         @else
                             <div class="section-copy">
                                 <p>
-                                    Login untuk mendapatkan <span>1.000 points</span> di MyPoints. <br />Points dapat ditukarkan dengan <strong>hadiah menarik</strong>!
+                                    Login untuk mendapatkan <span>{{ number_format($lastPoint['point'], 0, 0, '.')}} points</span> di MyPoints. <br />Points dapat ditukarkan dengan <strong>hadiah menarik</strong>!
                                 </p>
                             </div>
 

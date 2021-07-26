@@ -30,7 +30,7 @@
 
                     <div class="card-content">
                         <div class="cta-wrapper text-center">
-                            <a href="" class="btn btn-play"><span>PLAY NOW</span></a>
+                            <a href="{{route('game-running')}}" class="btn btn-play"><span>PLAY NOW</span></a>
                         </div>
                         <h3 class="card-subtitle">How to Play</h3>
 
@@ -84,7 +84,7 @@
 
         $('.video-trigger').on('click', function(e) {
             $('.video-trigger').addClass('hidden');
-            
+
             player.playVideo();
         })
     }

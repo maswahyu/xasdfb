@@ -4,6 +4,7 @@ namespace App\Component;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,6 +14,7 @@ class MyPoint
     const ENDPOINT_LOGIN = 'users/auth/login/';
     const ENDPOINT_LOGOUT = 'users/auth/logout/';
     const ENDPOINT_SHARE_ARTICLE = 'share-article';
+    const ENDPOINT_POINT_HISTORY = 'users/profile/point-history-monthly';
 
 
     const ACCESS_TOKEN_VAR = "myPointToken";
@@ -80,7 +82,7 @@ class MyPoint
 
             $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_SHARE_ARTICLE .'/';
 
-            $this->loginUser('abhiyustho1@gmail.com', 'lazone.id');
+            $this->loginUser(Auth::user()->email, 'lazone.id');
 
             $client = new Client($this->getClientHeaders());
 
@@ -107,7 +109,7 @@ class MyPoint
 
             $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_SHARE_ARTICLE;
 
-            $this->loginUser('abhiyustho1@gmail.com', 'lazone.id');
+            $this->loginUser(Auth::user()->email, 'lazone.id');
 
             $client = new Client($this->getClientHeaders());
 
@@ -120,6 +122,38 @@ class MyPoint
             $response = \GuzzleHttp\json_decode($response->getBody(), true);
             return $response;
         } catch(Exception $e) {
+            return array(
+                'code' => 500,
+                'message' => 'Failed'
+            );
+        }
+    }
+
+    public function getLastGamePoint()
+    {
+        try {
+            $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_POINT_HISTORY;
+            $this->loginUser(Auth::user()->email, 'lazone.id');
+
+            $client = new Client($this->getClientHeaders());
+
+            $response = $client->get($ENDPOINT, [
+                'http_errors' => false,
+                'query' => [
+                    'month' => 0,
+                    "year" => 0,
+                    "page" => 1,
+                    "activity" => 'GAME-POINT',
+                    "limit" => 1,
+                    "latest" => true
+                ]
+            ]);
+            $response = \GuzzleHttp\json_decode($response->getBody(), true);
+            if(isset($response['data']['list']) && count($response['data']['list']) > 0) {
+                return $response['data']['list'][0];
+            }
+            return null;
+        }catch(Exception $e) {
             return array(
                 'code' => 500,
                 'message' => 'Failed'

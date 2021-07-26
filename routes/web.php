@@ -42,7 +42,7 @@ Route::get('tukarlangsung', 'PageController@tukarLangsung');
 /* Game pages */
 Route::get('game', 'GameController@game');
 Route::get('game-profile', 'GameController@gameProfile');
-Route::get('game-running', 'GameController@run');
+Route::get('game-running', 'GameController@run')->name('game-running');
 
 
 Route::post('share-button-count', 'PostController@hitShareButton');

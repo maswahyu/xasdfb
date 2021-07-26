@@ -16,7 +16,10 @@ class GameController extends Controller
 
     public function gameProfile()
     {
-    	return view('frontend.pages.game-profile');
+        $mypoint = new MyPoint();
+    	return view('frontend.pages.game-profile', [
+            'lastPoint' => $mypoint->getLastGamePoint()
+        ]);
     }
 
     public function run()
