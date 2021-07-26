@@ -6,7 +6,7 @@
 
             <div class="row flex-justify-center">
                 <div class="span-auto">
-                    <div class="section-title section-title--plain section-title--page">                
+                    <div class="section-title section-title--plain section-title--page">
                         <span class="section-title__label section-title__label--category">How To Get Points?</span>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 3.100 / month</span>
+                                    <span>Max 2.300 Points / month</span>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                                     <img src="{{ asset('static/images/cup.png') }}" alt="">
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 10.000 points</span>
+                                    <span>Max 10.000 points / month</span>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +295,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 8000 points</span>
+                                    <span>Max 10.000 points / month</span>
                                 </div>
                             </div>
                         </div>
@@ -370,7 +370,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 1.000 points / day</span>
+                                    <span>Max 30.000 points / month</span>
                                 </div>
                             </div>
                         </div>
@@ -427,7 +427,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 1.000 points / day</span>
+                                    <span>Max 9.000 points / month</span>
                                 </div>
                             </div>
                         </div>
