@@ -8,13 +8,13 @@
 </head>
 
 <body class="bg-dark">
-  <script>
-    window.game_endpoint = '{{ $api_endpoint }}';
-    window.api_token = '{{ $api_token }}';
-  </script>
-	<script src="libs/sweetalert.min.js?v=2"></script>
-  <script src="libs/SpineWebGLPlugin.js?v=2b"></script>
-  <script src="libs/phaser.min.js?v=2b"></script>
+    <script>
+        window.game_endpoint = '{{ $api_endpoint }}';
+        window.api_token = '{{ $api_token }}';
+    </script>
+	<script src="../libs/sweetalert.min.js?v=2"></script>
+    <script src="/libs/SpineWebGLPlugin.js?v=2b"></script>
+    <script src="/libs/phaser.min.js?v=2b"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="js/api.js?v=3"></script>
 	<script src="js/dialog_result.js?v=5b"></script>
@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="js/play.js?v=37b"></script>
     <script>
         dir = '';
-        resVersion = '?v=3';
+        resVersion = '?v=2';
     </script>
 </body>
 </html>
