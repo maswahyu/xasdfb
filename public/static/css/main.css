@@ -3987,7 +3987,12 @@ a.plyr__control{
   padding-top:0;
 }
 .site-content.fit-padding{
-  padding-top:6rem !important;
+  padding-top:102px !important;
+}
+@media (min-width:768px){
+  .site-content.fit-padding{
+    padding-top:6rem !important;
+  }
 }
 @media (min-width:1280px){
   .site-content.fit-padding{
