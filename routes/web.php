@@ -40,8 +40,8 @@ Route::get('tukarlangsung', 'PageController@tukarLangsung');
 
 
 /* Game pages */
-Route::get('game', 'GameController@game');
-Route::get('game-profile', 'GameController@gameProfile');
+Route::get('games', 'GameController@game')->name('game-index');
+Route::get('game-profile', 'GameController@gameProfile')->name('game-profile');
 Route::get('game-running', 'GameController@run')->name('game-running');
 
 
