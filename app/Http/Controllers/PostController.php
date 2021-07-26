@@ -293,7 +293,15 @@ class PostController extends Controller
 
     public function hitShareButton(Request $request) {
         ShareNewsChannel::newRecord($request);
-        return (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
+        if(Auth::check()) { //only login user can get point, otherwise just can share
+            $data = (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
+            return response(200)->json([
+                'message' => 'Kamu berhasil mendapatkan point'
+            ]);
+        }
+        return \response(200)->json([
+            'message' => 'Login untuk mendapatkan poin'
+        ]);
     }
 
 }
