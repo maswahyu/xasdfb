@@ -28,7 +28,7 @@
                                         <li>Setiap hari Senin &amp; Kamis, LAZone akan menyediakan 10
                                             pertanyaan kuis yang akan ditampilkan di halaman My Points.</li>
                                         <li>
-                                            Setiap jawaban yang benar, member akan mendapatkan <b>100</b> poin.
+                                            Setiap jawaban yang benar, member akan mendapatkan <b>125</b> poin.
                                         </li>
                                     </ol>
                                 </li>
@@ -40,7 +40,7 @@
                                         menemukan Secret Word pada gambar tersebut.</li>
                                         <li> Input Secret Word di halaman My Points LAZone.id maksimal tiga
                                         hari setelah gambar di posting. </li>
-                                        <li> Dapatkan <b>1000</b> poin untuk setiap Secret Word yang berhasil kamu
+                                        <li> Dapatkan <b>1250</b> poin untuk setiap Secret Word yang berhasil kamu
                                         temukan. </li>
                                     </ol>
                                 </li>

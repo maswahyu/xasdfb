@@ -6,12 +6,12 @@
     padding: 14rem 0 6rem !important;
   }
 
-  &.no-padding {
+  &.no-padding { 
     padding-top: 0;
   }
 
   &.fit-padding {
-    padding-top: 10rem !important;
+    padding-top: 102px !important;
 
     @include media-over(md) {
       padding-top: 6rem !important;
