@@ -142,7 +142,7 @@
 
         <div id="sidebar" class="span-12 span-lg-1 sidebar sidebar-v2">
             <div class="row flex-justify-center">
-                <ul class="list list--vertical">
+                <ul class="list list--vertical" data-link={!! url()->current() !!}>
                     <li class="list__label dropdown">Share: <button id="toggleDropdownShareArticle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" class="tooltip dropdown-toggle"><img src="{{ asset('static/images/share-v2/ico-question.png') }}" alt="Tooltip" class="tooltip-image"></button>
                         <div id="dropdownShareArticle" class="dropdown-menu" aria-labelledby="dropdownShareArticle">
                             <button class="btn btn-close" id="closeDropdownShareArticle">
@@ -180,26 +180,34 @@
 
 
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social jsFbShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}"
-                            href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
+                        {{-- check if user already share this article --}}
+                        @if(array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK), array_column($shareArticles, 'share_type')) > -1)
+                        <a class="list__link list__link--social" disabled>
+                            <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
+                        </a>
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
+                        <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}">
                             <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
                         </a>
                         <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 100</span>
+                        @endif
                     </li>
                     <li class="list__item list__item--social">
+                        {{-- check if user already share this article --}}
+                        @if(array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER), array_column($shareArticles, 'share_type')) > -1)
+                        <a class="list__link list__link--social jsTwShare">
+                            <img src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW">
+                        </a>
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
                         <a class="list__link list__link--social jsTwShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_TWITTER }}"
                             href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW">
                         </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image">100</span>
+                        @endif
                     </li>
-
-                    {{-- <li class="list__item list__item--social">
-                        <a class="list__link list__link--social"
-                            href="#">
-                            <img src="{{ asset('static/images/messenger-share.png') }}" alt="">
-                        </a>
-                    </li> --}}
 
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP }}"
@@ -412,7 +420,7 @@
         $('#dropdownShareArticle').removeClass('is-shown');
     })
 
-    
+
 
 
 </script>
@@ -532,6 +540,15 @@
 </script>
 {{-- END POKKT LA BOLD PUBG TRACKING --}}
 @endif
+<script>
+    const SHARE_CHANNEL = {
+        facebook: '{{\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK}}',
+        twitter: '{{\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER}}',
+        whatsapp: '{{\App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP}}',
+        line: '{{\App\ShareNewsChannel::SHARE_CHANNEL_LINE}}',
+        clipboard: '{{\App\ShareNewsChannel::SHARE_CHANNEL_CLIPBOARD}}'
+    }
+</script>
 <script src="{{ asset('static/js/jquery.fitvids.js') }}"></script>
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>

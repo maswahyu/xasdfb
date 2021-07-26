@@ -8,10 +8,11 @@ use App\Setting;
 use App\Category;
 use Carbon\Carbon;
 
-use App\StickyBanner;
 use App\NewsBanner;
-use Illuminate\Http\Request;
+use App\StickyBanner;
 use App\ShareNewsChannel;
+use Illuminate\Http\Request;
+use App\Component\MyPoint;
 use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
@@ -224,8 +225,8 @@ class PostController extends Controller
         ];
 
         $banner = NewsBanner::detail($post->id);
-
 	    return view('frontend.pages.post', [
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current())['data'],
             'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads,
@@ -261,6 +262,7 @@ class PostController extends Controller
         ];
 
         return view('frontend.pages.post', [
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current())['data'],
             'post' => $post,
             'relatedPosts' => $related,
             'ads' => $ads,
@@ -291,7 +293,7 @@ class PostController extends Controller
 
     public function hitShareButton(Request $request) {
         ShareNewsChannel::newRecord($request);
-        return response()->json()->setStatusCode(200);
+        return (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
     }
 
 }
