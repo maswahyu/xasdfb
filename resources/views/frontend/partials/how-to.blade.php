@@ -115,7 +115,7 @@
 
                                 </div>
                                 <div class="how-to__point">
-                                    <span>Max 2.300 Points / month</span>
+                                    <span>Max 3.100 Points / month</span>
                                 </div>
                             </div>
                         </div>
