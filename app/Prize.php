@@ -19,12 +19,13 @@ class Prize extends Model
     {
         $data= new Prize;
         $data->name    = $request->get('name');
+        $data->category    = $request->get('category');
         $data->image   = $request->get('image');
         $data->poin    = $request->get('poin');
         $data->publish = $request->get('publish');
 
         $data->save();
-        
+
         Cache::forget('all-prizes');
 
         return $data;
@@ -34,6 +35,7 @@ class Prize extends Model
     {
         $data = Prize::findOrFail($id);
         $data->name    = $request->get('name');
+        $data->category    = $request->get('category');
         $data->image   = $request->get('image');
         $data->poin    = $request->get('poin');
         $data->publish = $request->get('publish');
@@ -49,7 +51,7 @@ class Prize extends Model
     {
         $value = Cache::rememberForever('all-prizes', function () {
 
-            return self::select('name', 'image', 'poin')->where('publish', self::STATUS_PUBLISHED)->get();
+            return self::select('name', 'category', 'image', 'poin')->where('publish', self::STATUS_PUBLISHED)->get();
         });
 
         return $value;

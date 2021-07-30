@@ -5,6 +5,13 @@
     <p class="help-block"></p>
 </div>
 
+<div class="form-group">
+    <label for="category">{{ 'Category' }}</label>
+    <input class="form-control form-control-sm" name="category" type="text" id="category" placeholder="{{ucfirst('category')}}" value="{{ isset($prize->category) ? $prize->category : old('category') }}">
+    <span class="text-danger">{{ $errors->first('category') }}</span>
+    <p class="help-block"></p>
+</div>
+
 <div class="form-group ">
     <label>
          {{ 'Image' }}

@@ -71,7 +71,7 @@
                                         <div class="rewards-img" style="background-image: url('{!! imageview($item->image) !!}');"></div>
                                     </div>
                                     <div class="rewards-desc d-flex flex-column">
-                                        <p class="rewards-desc__category">Category</p>
+                                        <p class="rewards-desc__category">{{ $item->category }}</p>
                                         <p class="rewards-desc__title">{{ $item->name }}</p>
                                         <p class="rewards-desc__point"><strong><i class="ico-star"></i>{{ seribu($item->poin) }} Points</strong></p>
                                     </div>
