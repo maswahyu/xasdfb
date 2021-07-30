@@ -180,31 +180,23 @@
 
 
                     <li class="list__item list__item--social">
-                        {{-- check if user already share this article --}}
-                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK), array_column($shareArticles, 'share_type')) > -1)
-                        <a class="list__link list__link--social" disabled>
-                            <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
-                        </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
-                        @else
                         <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}">
                             <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
                         </a>
+                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK), array_column($shareArticles, 'share_type')) > -1)
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
                         <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 100</span>
                         @endif
                     </li>
                     <li class="list__item list__item--social">
-                        {{-- check if user already share this article --}}
-                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER), array_column($shareArticles, 'share_type')) > -1)
-                        <a class="list__link list__link--social jsTwShare">
-                            <img src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW">
-                        </a>
-                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
-                        @else
                         <a class="list__link list__link--social jsTwShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_TWITTER }}"
                             href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
                             <img src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW">
                         </a>
+                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER), array_column($shareArticles, 'share_type')) > -1)
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
                         <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image">100</span>
                         @endif
                     </li>

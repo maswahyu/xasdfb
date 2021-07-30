@@ -144,7 +144,7 @@ $(function ()
             });
         } else if( SHARE == SHARE_CHANNEL.twitter) { //twitter
             twttr.events.bind('tweet', (e) => {
-                console.log(e);
+                sendLogShare(SHARE_CHANNEL.twitter, LINK);
             });
 
         }
