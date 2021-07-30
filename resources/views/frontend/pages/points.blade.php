@@ -1,7 +1,7 @@
 @extends('frontend.layouts.skeleton', ['contentClass' => 'fit-padding'])
 
-@section('meta_title', 'What is My Points?')
-@section('head_title', 'What is My Points?')
+@section('meta_title', 'My Points')
+@section('head_title', 'My Points')
 @section('head_url', url()->current())
 
 @section('content')
