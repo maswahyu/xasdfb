@@ -337,7 +337,7 @@
                     <div class="how-to__item">
                         <div class="how-to__number">04.</div>
                         <div class="how-to__text">
-                            <p>Dapatkan 1.000 poin untuk setiap <strong>Secret Word</strong> yang berhasil kamu temukan.</p>
+                            <p>Dapatkan 1.200 poin untuk setiap <strong>Secret Word</strong> yang berhasil kamu temukan.</p>
                         </div>
                     </div>
 
