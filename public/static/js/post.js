@@ -147,6 +147,8 @@ $(function ()
                 sendLogShare(SHARE_CHANNEL.twitter, LINK);
             });
 
+        } else {
+            window.open($(e.currentTarget).attr('href'));
         }
     })
 

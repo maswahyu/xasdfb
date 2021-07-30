@@ -302,9 +302,15 @@ class PostController extends Controller
                 ], 200);
             }
             $data = (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
-            return response()->json([
-                'message' => 'Kamu berhasil mendapatkan point'
-            ], 200);
+            if(isset($data['meta']) && isset($data['meta']['code']) && $data['meta']['code'] == 200) {
+                return response()->json([
+                    'message' => 'Kamu berhasil mendapatkan point'
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'You have reach limit today'
+                ], 400);
+            }
         }
         return \response()->json([
             'message' => 'Login untuk mendapatkan poin'
