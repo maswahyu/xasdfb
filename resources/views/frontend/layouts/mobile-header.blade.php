@@ -147,7 +147,7 @@
                 <li class="dropdown-menu__separator"></li>
                 <li class="menu">
                     <a href="{{ url('points') }}" alt="Points">
-                        What is My Points?
+                        My Points
                     </a>
                 </li>
             </ul>
@@ -173,7 +173,7 @@
             <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}"><span>My Profile</span></a>
         </li>
         <li class="menu">
-            <a href="{{ config('cas.url_mypoint') }}"><span>My Points</span></a>
+            <a href="{{ config('cas.url_mypoint') }}"><span>My Points Profile</span></a>
         </li>
         <li class="dropdown-menu__separator"></li>
         <li class="menu">

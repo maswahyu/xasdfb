@@ -53,7 +53,7 @@
                     <a href="{{ url('gallery') }}" class="dropdown-menu__link" alt="Gallery">Gallery</a>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('points') }}" class="dropdown-menu__link" alt="Points">What is My Points?</a>
+                    <a href="{{ url('points') }}" class="dropdown-menu__link" alt="Points">My Points</a>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--search">
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
@@ -80,7 +80,7 @@
                                 <a href="https://{{ config('cas.cas_hostname') }}/profile/?service={{ url('/') }}" class="dropdown-menu__dropdown-link" target="_blank"><span>My Profile</span></a>
                             </li>
                             <li class="dropdown-menu__dropdown-item">
-                                <a href="{{ config('cas.url_mypoint') }}" class="dropdown-menu__dropdown-link" target="_blank"><span>My Points</span></a>
+                                <a href="{{ config('cas.url_mypoint') }}" class="dropdown-menu__dropdown-link" target="_blank"><span>My Points Profile</span></a>
                             </li>
                             <li class="dropdown-menu__dropdown-item">
                                 <a href="{{ url('member/logout') }}" class="dropdown-menu__dropdown-link"><span>Logout</span></a>
