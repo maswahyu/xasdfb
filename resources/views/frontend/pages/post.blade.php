@@ -428,6 +428,7 @@
 </script>
 @endverbatim
 @if($post->slug === 'berhadiah-rp-50-juta-bold-battlegrounds-pubg-mobile-siap-di-SMJGZ')
+<script type="text/javascript">(function(){var a=document.createElement("iframe");a.setAttribute("src","https://fork.gotrackier.com/pixel?adid=6064213fce28704ab67481a4");a.style.width="1";a.style.height="1";document.body.appendChild(a)})();</script>
 {{-- POKKT LA BOLD PUBG TRACKING --}}
 {{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
 <script type="text/javascript">
