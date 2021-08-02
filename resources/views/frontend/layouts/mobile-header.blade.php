@@ -147,7 +147,7 @@
                 <li class="dropdown-menu__separator"></li>
                 <li class="menu">
                     <a href="{{ url('points') }}" alt="Points">
-                        What is My Points?
+                        My Points
                     </a>
                 </li>
             </ul>

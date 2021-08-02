@@ -53,7 +53,7 @@
                     <a href="{{ url('gallery') }}" class="dropdown-menu__link" alt="Gallery">Gallery</a>
                 </li>
                 <li class="dropdown-menu__item">
-                    <a href="{{ url('points') }}" class="dropdown-menu__link" alt="Points">What is My Points?</a>
+                    <a href="{{ url('points') }}" class="dropdown-menu__link" alt="Points">My Points</a>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--search">
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
