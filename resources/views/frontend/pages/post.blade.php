@@ -46,6 +46,10 @@
         #stickyBannerContainer {
             display: none !important;
         }
+        .post-content h2 {
+            font-size: 3rem;
+            line-height: initial;
+        }
     }
 
     @media screen and (min-width: 768px) {
@@ -55,6 +59,10 @@
         }
         .container-content {
             max-width: 780px;
+        }
+        .post-content h2 {
+            font-size: 2rem;
+            line-height: initial;
         }
     }
 </style>
