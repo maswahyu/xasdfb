@@ -75,21 +75,21 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Daftar atau login ke akun LAZone.ID untuk bisa bermain Game.</p>
+                            <p>Isi data diri dengan lengkap untuk mendapatkan poin</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Gerakkan karakter atas dan bawah untuk menghindar dari rintangan.</p>
+                            <p>Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto Diri, dll.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kumpulkan poin sebanyak- banyaknya untuk ditukar dengan hadiah eksklusif.</p>
+                            <p>Verifikasi nomor handphone atau alamat emailmu.</p>
                         </div>
                     </div>
 
@@ -388,21 +388,35 @@
                     <div class="how-to__item">
                         <div class="how-to__number">01.</div>
                         <div class="how-to__text">
-                            <p>Daftar atau login ke akun LAZone.ID untuk bisa bermain Game.</p>
+                            <p>Buka game dengan klik “MAINKAN GAME” di MyPoints atau “CLICK HERE TO PLAY” di Lazone.id.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Gerakkan karakter atas dan bawah untuk menghindar dari rintangan.</p>
+                            <p>Hindari rintangan dengan menggerakkan karakter dengan tombol atas dan bawah.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Kumpulkan poin sebanyak- banyaknya untuk ditukar dengan hadiah eksklusif.</p>
+                            <p>Setiap 3 detik permainan kamu akan mendapatkan 20 poin di dalam game, dan terus bertambah maksimal selama 150 detik.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">04.</div>
+                        <div class="how-to__text">
+                            <p>Permainan berhenti jika kamu menabrak rintangan sebanyak 3 kali.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-to__item">
+                        <div class="how-to__number">05.</div>
+                        <div class="how-to__text">
+                            <p>Mainkan gamenya setiap hari, dan dapatkan hingga 1.000 point di My Point per hari.</p>
                         </div>
                     </div>
                 </div>
@@ -452,14 +466,14 @@
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Setelah di halaman artikel, klik tombol share artikel ke Facebook atau Twitter.</p>
+                            <p>Setelah di halaman artikel, klik tombol share artikel ke Facebook atau Twitter (Maksimum 3 artikel yang bisa di share dalam satu hari).</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Setiap melakukan share artikel, kamu akan mendapatkan 100 points di akun MyPoints kamu.</p>
+                            <p>Setiap melakukan share artikel, kamu akan mendapatkan 100 poin di akun MyPoints kamu.</p>
                         </div>
                     </div>
                 </div>
