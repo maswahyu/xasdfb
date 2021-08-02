@@ -57,6 +57,44 @@
             padding-left: 0;
         }
     }
+
+    #modalHome {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+    }
+    #modalHome .modal-content {
+        position: absolute;
+        z-index: 1;
+        width: fit-content;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #modalHome .modal-content .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(30px, -30px);
+        background: transparent
+    }
+    #modalHome .modal-content .btn-close::after {
+        font-size: 4rem;
+        font-weight: 800;
+    }
+    #modalHome .modal-content img {
+        width: 450px;
+    }
+    #modalHome .backdrop {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.5);
+    }
 </style>
 @endsection
 <div class="container container-home">
@@ -441,6 +479,18 @@
 
 @endsection
 
+@section('after-site-footer')
+<div id="modalHome">
+    <div class="modal-content">
+        <span class="btn-close"></span>
+        <a href="{{url('points')}}">
+            <img src="static\images\Popup_Home.jpg" alt="">
+        </a>
+    </div>
+    <div class="backdrop"></div>
+</div>
+@endsection
+
 @section('before-body-end')
 
 <script>
@@ -735,6 +785,10 @@
 <script type="text/javascript">
 var banner_image = '{{ imageview($ads['image']) }}'
 var banner_url = '{{ $ads['url'] }}'
+
+$("#modalHome .btn-close, #modalHome .backdrop").on('click', () => {
+    $("#modalHome").remove();
+})
 </script>
 <script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>
