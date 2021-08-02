@@ -1,7 +1,7 @@
 @extends('frontend.layouts.skeleton', ['contentClass' => 'no-padding'])
 
-@section('meta_title', 'What is My Points?')
-@section('head_title', 'What is My Points?')
+@section('meta_title', 'My Points')
+@section('head_title', 'My Points')
 @section('head_url', url()->current())
 @section('inside-head')
 <style>
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row video-padding">
             <div class="span-12 span-lg-10 off-lg-1">
-                <img style="width: 100%;" src="{{ asset('static/images/LAZONE_MY POINTS_BANNERS-01-landingpage-min.jpg')}}" alt="">
+                <img style="width: 100%;" src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_TEASER-1000x400-H.jpg')}}" alt="">
                 {{-- <video id="player" playsinline loop muted autoplay>
                     <source src="https://www.lazone.id/static/video/mypoints_lazoneid360.mp4" type="video/mp4" size="360">
                     <source src="https://www.lazone.id/static/video/mypoints_lazoneid720.mp4" type="video/mp4" size="720">
