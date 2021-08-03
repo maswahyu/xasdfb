@@ -56,7 +56,7 @@
 
                             <div class="shoutbox__cta">
                                 <a href="{{ route('game-running') }}" class="btn btn-crimson btn-shoutbox"><span class="text-white semibold">Play Again</span></a>
-                                <a href="" class="btn btn-ghost-crimson btn-shoutbox"><span class="semibold">MORE INFO</span></a>
+                                <a href="{{ url('/points')}}" class="btn btn-ghost-crimson btn-shoutbox"><span class="semibold">MORE INFO</span></a>
                                 <a href="{{ url('/')}}" class="btn btn-shoutbox"><span class="semibold text-crimson">Kembali ke homepage</span></a>
                             </div>
                             @endif
@@ -69,7 +69,7 @@
 
                             <div class="shoutbox__cta">
                                 <a href="{{ url('member/login') }}" class="btn btn-crimson btn-shoutbox"><span class="text-white semibold">LOGIN KE MYPOINTS</span></a>
-                                <a href="" class="btn btn-ghost-crimson btn-shoutbox"><span class="semibold">MORE INFO</span></a>
+                                <a href="{{ url('/points')}}" class="btn btn-ghost-crimson btn-shoutbox"><span class="semibold">MORE INFO</span></a>
                                 <a href="{{ url('/')}}" class="btn btn-shoutbox"><span class="semibold text-crimson">Kembali ke homepage</span></a>
                             </div>
                         @endauth

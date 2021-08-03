@@ -39,7 +39,7 @@
                             <li>Karaktermu memiliki refleksi atas dan bawah, tekan tombol atas dan tombol bawah untuk menggerakkan karakter atas dan bawah. </li>
                             <li>Kamu memiliki 3 nyawa, dan bisa bertahan maksimum selama 150 detik. </li>
                             <li>Jika menabrak rintangan lebih dari 3 kali maka permainan akan selesai secara otomatis. </li>
-                            <li>Gunakan kesempatan sebaik mungkin, karena kamu hanya bisa memainkan game 1 kali dalam 1 hari.</li>
+                            <li>Gunakan kesempatan sebaik mungkin, karena kamu hanya bisa mendapatkan poin game 1 kali dalam 1 hari.</li>
                         </ul>
 
                         <h3 class="card-subtitle">Scoring</h3>
