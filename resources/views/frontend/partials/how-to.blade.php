@@ -378,7 +378,7 @@
                     </div>
 
                     <div class="how-to__right">
-                        <a class="btn btn-crimson btn-point" href="https://mypoint.lazone.saga.id/" target="_blank">MAINKAN GAME</a>
+                        <a class="btn btn-crimson btn-point" href="{{route('game-index')}}" target="_blank">MAINKAN GAME</a>
                     </div>
 
                 </div>
@@ -416,7 +416,7 @@
                     <div class="how-to__item">
                         <div class="how-to__number">05.</div>
                         <div class="how-to__text">
-                            <p>Mainkan gamenya setiap hari, dan dapatkan hingga 1.000 point di My Point per hari.</p>
+                            <p>Mainkan gamenya setiap hari, dan dapatkan hingga 1.000 poin per hari.</p>
                         </div>
                     </div>
                 </div>
