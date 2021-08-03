@@ -41,6 +41,7 @@ class MyPoint
         $response = \GuzzleHttp\json_decode($response->getBody(), true);
         Session::put(self::ACCESS_TOKEN_VAR, $response["data"]["access_token"]);
         Session::put(self::REFRESH_TOKEN_VAR, $response["data"]["refresh_token"]);
+        Session::save();
         return true;
     }
 
@@ -73,6 +74,7 @@ class MyPoint
         $response = \GuzzleHttp\json_decode($response->getBody(), true);
         Session::put(self::ACCESS_TOKEN_VAR, $response["data"]["access_token"]);
         Session::put(self::REFRESH_TOKEN_VAR, $response["data"]["refresh_token"]);
+        Session::save();
     }
 
 
@@ -93,6 +95,10 @@ class MyPoint
                     'link' => $link
                 ]
             ]);
+
+            if($this->checkResponse($response)) {
+                return $this->ShareArticle($type, $link);
+            }
             $response = \GuzzleHttp\json_decode($response->getBody(), true);
             return $response;
         } catch(Exception $e) {
@@ -119,6 +125,10 @@ class MyPoint
                         'link' => \strtolower($link)
                     ]
                 ]);
+
+                if($this->checkResponse($response)) {
+                    return $this->getShareArticle($link);
+                }
                 $response = \GuzzleHttp\json_decode($response->getBody(), true);
                 return $response['data'];
             }
@@ -126,7 +136,7 @@ class MyPoint
         } catch(Exception $e) {
             return array(
                 'code' => 500,
-                'message' => 'Failed'
+                'message' => $e->getMessage()
             );
         }
     }
@@ -135,7 +145,6 @@ class MyPoint
     {
         try {
             $ENDPOINT = config('mypoint.base_url') . self::ENDPOINT_POINT_HISTORY;
-            $this->loginUser(Auth::user()->email, 'lazone.id');
 
             $client = new Client($this->getClientHeaders());
 
@@ -150,15 +159,18 @@ class MyPoint
                     "latest" => true
                 ]
             ]);
+            if($this->checkResponse($response)) {
+                return $this->getLastGamePoint();
+            }
             $response = \GuzzleHttp\json_decode($response->getBody(), true);
             if(isset($response['data']['list']) && count($response['data']['list']) > 0) {
                 return $response['data']['list'][0];
             }
-            return null;
+            return $response;
         }catch(Exception $e) {
             return array(
                 'code' => 500,
-                'message' => 'Failed'
+                'message' => $e->getMessage()
             );
         }
     }
@@ -222,6 +234,28 @@ class MyPoint
             throw new Exception($response->getBody()->getContents());
         }
         return true;
+    }
+
+    /**
+     * Check response
+     * @param $response
+     */
+    private function checkResponse($response)
+    {
+        if($response->getStatusCode() == 500) {
+            if(Auth::check()) {
+                $this->loginUser(Auth::user()->email, 'lazone.id');
+                return true;
+            } else {
+                throw new Exception('User not login');
+            }
+        }
+        else if($response->getStatusCode() == 403)
+        {
+            $this->refreshToken();
+            return true;
+        }
+        return false;
     }
 
     /**
