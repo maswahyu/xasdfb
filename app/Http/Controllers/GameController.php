@@ -21,9 +21,12 @@ class GameController extends Controller
             $mypoint = new MyPoint();
             $data['lastPoint'] = $mypoint->getLastGamePoint();
         }
-        else
+        else if(request()->filled('score'))
         {
-            $data['lastPoint']['point'] = request()->get('score', 0);
+            request()->session()->put('game-point', request()->get('score', 0) * 20);
+            return redirect(route('game-profile'));
+        } else {
+            $data['lastPoint']['point'] = request()->session()->get('game-point');
         }
 
     	return view('frontend.pages.game-profile', $data);
