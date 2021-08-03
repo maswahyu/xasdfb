@@ -16,7 +16,7 @@ class GameController extends Controller
 
     public function gameProfile()
     {
-        if(Auth::check())
+        if(Auth::check() && !request()->filled('score') && !request()->session()->get('game-point', false))
         {
             $mypoint = new MyPoint();
             $data['lastPoint'] = $mypoint->getLastGamePoint();
@@ -24,9 +24,11 @@ class GameController extends Controller
         else if(request()->filled('score'))
         {
             request()->session()->put('game-point', request()->get('score', 0));
+            request()->session()->put('game-repeat', (Auth::check() && request()->filled('score')) );
             return redirect(route('game-profile'));
         } else {
             $data['lastPoint']['point'] = request()->session()->get('game-point');
+            $data['gameRepeat'] = request()->session()->get('game-repeat');
         }
 
     	return view('frontend.pages.game-profile', $data);

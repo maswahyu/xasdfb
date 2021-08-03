@@ -37,6 +37,7 @@
 
                     <section class="section section__info text-center">
                         @auth
+                            @if(! $gameRepeat)
                             <div class="section-copy">
                                 <p>Skormu telah dikonversikan menjadi <span>{{ number_format($lastPoint['point'], 0, 0, '.')}} points</span> di MyPoints.</p>
                             </div>
@@ -45,6 +46,20 @@
                                 <a href="" class="btn btn-crimson btn-shoutbox"><span class="text-white semibold">LIHAT POINTS</span></a>
                                 <a href="{{ url('/')}}" class="btn btn-shoutbox"><span class="semibold text-crimson">Kembali ke homepage</span></a>
                             </div>
+                            @else
+                            <div class="section-copy">
+                                <p>
+                                    Poin tidak ditambahkan ke dalam My Points karena kamu sudah memainkan game hari ini.<br>
+                                    Mainkan lagi Game-nya besok dan kumpulkan poin sebanyak-banyaknya.
+                                </p>
+                            </div>
+
+                            <div class="shoutbox__cta">
+                                <a href="{{ route('game-running') }}" class="btn btn-crimson btn-shoutbox"><span class="text-white semibold">Play Again</span></a>
+                                <a href="" class="btn btn-ghost-crimson btn-shoutbox"><span class="semibold">MORE INFO</span></a>
+                                <a href="{{ url('/')}}" class="btn btn-shoutbox"><span class="semibold text-crimson">Kembali ke homepage</span></a>
+                            </div>
+                            @endif
                         @else
                             <div class="section-copy">
                                 <p>
