@@ -16,7 +16,11 @@
                 <div class="page-card position-relative">
                     <header class="page-header text-center">
                         <h1 class="page-title">
+                            @auth
                             CONGRATULATIONS, {{auth()->user()->name}}
+                            @else
+                            CONGRATULATIONS
+                            @endauth
                         </h1>
                     </header>
 

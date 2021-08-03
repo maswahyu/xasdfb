@@ -27,6 +27,7 @@ var Api = Object({
     _initialized: false,
     _initializing: false,
     _logged_in: false,
+    _sandbox_mode: false,
 
     /**
      * Init API panggil dengan parameter callback
@@ -76,10 +77,12 @@ var Api = Object({
                 }
             });
         };
-
-        fetchUserData();
+            fetchUserData();
     },
-
+    enableSanbox: function() {
+        this._user.canPlay = true
+        this._sandbox_mode = true
+    },
     isInitialized: function() {
         return this._initialized
     },
@@ -117,7 +120,11 @@ var Api = Object({
      * @param {*} cb callback yg akan dipanggil setelah init selesai, dengan parameter isSuccess(boolean)
      */
     setUserScore: function(score, cb) {
+
+        if (this._sandbox_mode) { return }
+
         if (this._settingscore) { return }
+
         if (typeof this._user.id_user === typeof undefined) {
             //console.log("Undefined user");
             return;
@@ -153,4 +160,18 @@ var Api = Object({
             diz._settingscore = false;
         })
     },
+
+
+    // callback Home Button on Dialog Result
+    homeButtonCb: function(){
+
+        console.log("DEBUG | Home button pressed!");
+        // when user not legged in
+        if (this._sandbox_mode) {
+            window.location.href = `/game-profile`;
+        }
+        else {
+            window.location.href = `/game-profile?score=${this.parent.scene.scoreCount}`;
+        }
+    }
 });
