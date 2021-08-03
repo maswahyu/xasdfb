@@ -63,6 +63,7 @@ var Api = Object({
                     // console.log('Failed parse data from server' + resData.meta.message);
                 } else {
                     diz._user = resData;
+                    diz._user.canPlay = true;
                     diz._initialized = true;
                     diz._logged_in = true;
                 }
