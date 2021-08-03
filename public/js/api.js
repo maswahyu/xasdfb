@@ -19,7 +19,7 @@ var Api = Object({
         jarak_obs_min: 350,
         random_jarak_add: 200,
         heart: 3,
-        score_value: 1,
+        score_value: 20,
         score_interval: 3,
         score_max: 50,
         timer: 150

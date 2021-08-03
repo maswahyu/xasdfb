@@ -23,7 +23,7 @@ class GameController extends Controller
         }
         else if(request()->filled('score'))
         {
-            request()->session()->put('game-point', request()->get('score', 0) * 20);
+            request()->session()->put('game-point', request()->get('score', 0));
             return redirect(route('game-profile'));
         } else {
             $data['lastPoint']['point'] = request()->session()->get('game-point');
