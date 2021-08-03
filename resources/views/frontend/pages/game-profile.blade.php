@@ -32,7 +32,7 @@
                             </p>
                         </div>
 
-                        {{-- <p class="points">{{ number_format($lastPoint['point'], 0, 0, '.')}}</p> --}}
+                        <p class="points">{{ number_format($lastPoint['point'], 0, 0, '.')}}</p>
                     </section>
 
                     <section class="section section__info text-center">
