@@ -21,7 +21,7 @@ var Api = Object({
         heart: 3,
         score_value: 20,
         score_interval: 3,
-        score_max: 50,
+        score_max: 1000,
         timer: 150
     },
     _initialized: false,

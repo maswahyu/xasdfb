@@ -82,14 +82,14 @@
                     <div class="how-to__item">
                         <div class="how-to__number">02.</div>
                         <div class="how-to__text">
-                            <p>Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto Diri, dll.</p>
+                            <p>Verifikasi nomor handphone atau alamat emailmu.</p>
                         </div>
                     </div>
 
                     <div class="how-to__item">
                         <div class="how-to__number">03.</div>
                         <div class="how-to__text">
-                            <p>Verifikasi nomor handphone atau alamat emailmu.</p>
+                            <p>Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto KTP, dll.</p>
                         </div>
                     </div>
 

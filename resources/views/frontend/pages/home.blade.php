@@ -62,7 +62,7 @@
         }
 
         #modalHome .modal-content img {
-            width: 300px;
+            width: 350px;
         }
     }
     @media screen and (min-width: 1400px) {
