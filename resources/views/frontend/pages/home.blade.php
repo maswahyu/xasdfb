@@ -39,6 +39,10 @@
         .section-title__latest {
             margin-top: 4rem;
         }
+
+        #modalHome .modal-content img {
+            max-width: 300px
+        }
     }
     @media screen and (min-width: 768px) {
         .post-card--simple__no-padding {
@@ -55,6 +59,15 @@
         #latestArticleContainer {
             padding-right: 4.5rem;
             padding-left: 0;
+        }
+
+        #modalHome .modal-content img {
+            width: 300px;
+        }
+    }
+    @media screen and (min-width: 1400px) {
+        #modalHome .modal-content img {
+            width: 450px;
         }
     }
 
@@ -84,9 +97,6 @@
     #modalHome .modal-content .btn-close::after {
         font-size: 4rem;
         font-weight: 800;
-    }
-    #modalHome .modal-content img {
-        width: 450px;
     }
     #modalHome .backdrop {
         position: absolute;
