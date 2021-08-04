@@ -493,7 +493,7 @@
 <div id="modalHome">
     <div class="modal-content">
         <span class="btn-close"></span>
-        <a href="{{url('points')}}">
+        <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
             <img src="static\images\Popup_Home.jpg" alt="">
         </a>
     </div>
