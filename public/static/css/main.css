@@ -7590,8 +7590,16 @@ ol.styled-list li{
   align-items:center;
   min-height:472px;
   width:100%;
-  background:url(/static/images/bg-point-v2.jpg) no-repeat 50% fixed !important;
+  background-image:url(/static/images/bg-point-v2.jpg);
+  background-size:auto 120rem;
+  background-attachment:fixed;
+  background-position:top;
   overflow:hidden;
+}
+@media (min-width:768px){
+  .point-banner{
+    background-size:cover;
+  }
 }
 .point-banner .hero-header{
   display:block;
@@ -7778,8 +7786,13 @@ ol.styled-list li{
   }
 }
 .point-banner .rewards-list.rewards-list__alternate-bg:before{
-  top:calc(-10% + 140px);
-  height:calc(110% - 139px);
+  top:calc(55vw - 4rem);
+  height:100%;
+}
+@media screen and (min-width:520px){
+  .point-banner .rewards-list.rewards-list__alternate-bg:before{
+    top:24rem;
+  }
 }
 @media (min-width:768px){
   .point-banner .rewards-list.rewards-list__alternate-bg:before{

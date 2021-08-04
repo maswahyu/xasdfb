@@ -194,8 +194,18 @@
   align-items: center;
   min-height: 472px;
   width: 100%;
-  background: url('/static/images/bg-point-v2.jpg') no-repeat center center fixed !important;
+  // background: url('/static/images/bg-point-v2.jpg') no-repeat center top fixed !important;
+  // background-size: cover !important;
+  background-image: url('/static/images/bg-point-v2.jpg');
+  background-size: auto 120rem;
+  background-attachment: fixed;
+  background-position: center top;
   overflow: hidden;
+
+
+  @include media-over(md) {
+    background-size: cover;
+  }
 
   .hero-header {
     display: block;
@@ -384,8 +394,12 @@
     }
 
     &.rewards-list__alternate-bg:before {
-      top: calc(-10% + 140px);
-      height: calc(110% - 139px);
+      top: calc(55vw - 4rem);
+      height: calc(100%);
+
+      @media screen and (min-width:520px) {
+        top: calc(24rem);
+      }
 
       @include media-over(md) {
         top: calc(-10% + 110px);
