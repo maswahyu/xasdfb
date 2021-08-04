@@ -68,17 +68,19 @@
 
     var player;
     function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '100%',
-        width: '100%',
-        videoId: $('#player').data('video-id'),
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
+        player = new YT.Player('player', {
+            height: '100%',
+            width: '100%',
+            videoId: $('#player').data('video-id'),
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+        var src = $("iframe").attr('src') + '&rel=0';
+        $("iframe").attr('src', src);
     }
 
-    // 4. The API will call this function when the video player is ready.
+// 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
         $('.video-trigger').removeClass('disabled');
 

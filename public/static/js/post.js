@@ -117,7 +117,7 @@ $(function ()
                         ico_src = ico.attr('src');
                         ico.attr('src', ico_src.replace('star', 'check'));
 
-                        $(`[data-share=facebook]`).siblings('span').html(ico[0].outerHTML);
+                        share_btn.siblings('span').html(ico[0].outerHTML);
 
                     }
                 },
