@@ -49,7 +49,7 @@
                             @else
                             <div class="section-copy">
                                 <p>
-                                    Poin tidak ditambahkan ke dalam My Points karena kamu sudah memainkan game hari ini.<br>
+                                    Poin tidak ditambahkan ke dalam My Points,<br> karena kamu sudah memainkan game hari ini.<br>
                                     Mainkan lagi Game-nya besok dan kumpulkan poin sebanyak-banyaknya.
                                 </p>
                             </div>
