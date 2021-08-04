@@ -7,21 +7,9 @@
 @section('content')
 
 <div class="point-banner">
-    <img src="{{ asset('static/images/new_mypoints_banner.jpg') }}" alt="" class="hero-header">
+    <img src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_MAIN-500x1366-H.jpg') }}" alt="" class="hero-header">
 
     <div class="container">
-<<<<<<< HEAD
-        <div class="row video-padding">
-            <div class="span-12 span-lg-10 off-lg-1">
-                <img style="width: 100%;" src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_TEASER-1000x400-H.jpg')}}" alt="">
-                {{-- <video id="player" playsinline loop muted autoplay>
-                    <source src="https://www.lazone.id/static/video/mypoints_lazoneid360.mp4" type="video/mp4" size="360">
-                    <source src="https://www.lazone.id/static/video/mypoints_lazoneid720.mp4" type="video/mp4" size="720">
-                </video> --}}
-            </div>
-        </div>
-=======
->>>>>>> enhancements
         <div class="point-banner__content">
             <div class="row">
                 <div class="span-12 span-lg-10 off-lg-1">
