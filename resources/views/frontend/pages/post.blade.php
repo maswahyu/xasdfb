@@ -533,6 +533,7 @@
 {{-- END POKKT LA BOLD PUBG TRACKING --}}
 @endif
 <script>
+    const FB_SHARE_ID = '{{env('FB_SHARE')}}';
     const SHARE_CHANNEL = {
         facebook: '{{\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK}}',
         twitter: '{{\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER}}',

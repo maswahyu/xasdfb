@@ -172,7 +172,7 @@ $(function ()
      */
      window.fbAsyncInit = function() {
         FB.init({
-          appId      : '381697226275226',
+          appId      : FB_SHARE_ID,
           xfbml      : true,
           version    : 'v11.0'
         });
