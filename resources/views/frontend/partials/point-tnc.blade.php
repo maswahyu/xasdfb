@@ -14,10 +14,8 @@
                 </div>
                 <div>
                     <ol class="styled-list">
-                        <li>Hadiah utama dan merchandise bulanan per bulan Juli 2021 ini sudah ditiadakan
-                            dan digantikan dengan Tukar Langsung ASUS ROG Strixg 15.</li>
-                        <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin
-                            dengan Tukar Langsung ASUS ROG Strixg 15.</li>
+                        <li>Hadiah utama dan merchandise bulanan per bulan Agustus 2021 adalah #TukarLAngsung Sony Alpha a5100 Mirrorless Digital Camera dan #CustomLAngsung Jaket BOLD Riders X Bulls Syndicate.</li>
+                        <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin dengan hadiah.</li>
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika
                             Member mendapatkan poin mulai bulan Februari 2021, maka poin tersebut akan
                             hangus pada Januari 2022.</li>
@@ -28,7 +26,7 @@
                                         <li>Setiap hari Senin &amp; Kamis, LAZone akan menyediakan 10
                                             pertanyaan kuis yang akan ditampilkan di halaman My Points.</li>
                                         <li>
-                                            Setiap jawaban yang benar, member akan mendapatkan <b>100</b> poin.
+                                            Setiap jawaban yang benar, member akan mendapatkan <b>125</b> poin.
                                         </li>
                                     </ol>
                                 </li>
@@ -40,7 +38,7 @@
                                         menemukan Secret Word pada gambar tersebut.</li>
                                         <li> Input Secret Word di halaman My Points LAZone.id maksimal tiga
                                         hari setelah gambar di posting. </li>
-                                        <li> Dapatkan <b>1000</b> poin untuk setiap Secret Word yang berhasil kamu
+                                        <li> Dapatkan <b>1250</b> poin untuk setiap Secret Word yang berhasil kamu
                                         temukan. </li>
                                     </ol>
                                 </li>
@@ -58,9 +56,24 @@
                                 <li>Complete Profile
                                     <ol class="styled-list" type="i">
                                         <li> Isi data diri dengan lengkap untuk mendapatkan poin</li>
-                                        <li> Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto Diri, dll</li>
+                                        <li> Pergi ke halaman "My Profile" dan isi semua data yang dibutuhkan, termasuk upload Foto KTP, dll</li>
                                         <li> Verifikasi nomor handphone atau alamat emailmu</li>
                                         <li> Poin yang didapatkan dari melengkapi data diri member adalah <b>5000</b> poin</li>
+                                    </ol>
+                                </li>
+                                <li>Play Game
+                                    <ol class="styled-list" type="i">
+                                        <li> Game bisa dimainkan setiap hari, tetapi hanya permainan pertama yang bisa mendapatkan point di My Points.</li>
+                                        <li> Setiap 3 detik permainan kamu akan mendapatkan <b>20</b> poin di dalam game.</li>
+                                        <li> Lama permainan maksimum adalah 150 detik.</li>
+                                        <li> Permainan berhenti jika kamu menabrak rintangan sebanyak 3 kali.</li>
+                                        <li> Mainkan gamenya setiap hari, dan dapatkan hingga <b>1.000</b> point di My Points per hari.</li>
+                                    </ol>
+                                </li>
+                                <li>Share Article
+                                    <ol class="styled-list" type="i">
+                                        <li> Dapatkan <b>100</b> poin setiap kamu melakukan share article yang ada di lazone.id ke Facebook atau Twitter.</li>
+                                        <li> Jumlah maksimum artikel yang bisa kamu share dalam sehari adalah 3 artikel.</li>
                                     </ol>
                                 </li>
                             </ol>
@@ -93,7 +106,7 @@
                                         <li> Isi data diri. </li>
                                         <li> Masukkan berapa jumlah hadiah yang akan ditukarkan </li>
                                         <li> Konfirmasi data dan pemesan lalu tekan tombol “Redeem Point”. </li>
-                                        <li> Setelah itu hadiah akan diproses untuk dikirimkan. </li>
+                                        <li> Setelah itu pemenang akan diundi dan diumumkan di media sosial LAZone.id </li>
                                     </ol>
                                 </li>
                                 <li>Event Ticket:
@@ -105,6 +118,17 @@
                                         <li> Masukkan berapa jumlah hadiah yang akan ditukarkan </li>
                                         <li> Konfirmasi data dan pemesan lalu tekan tombol “Redeem Point”. </li>
                                         <li> Setelah itu hadiah /undangan tiket akan diproses untuk dikirimkan melalu email/no handphone yang sudah terverifikasi. </li>
+                                    </ol>
+                                </li>
+                                <li>Custom Langsung:
+                                    <ol class="styled-list" type="i">
+                                        <li> Pastikan poin yang dimiliki cukup untuk ditukarkan dan pastikan telah melengkapi profile.</li>
+                                        <li> Tekan tombol “Redeem” pada hadiah. </li>
+                                        <li> Unggah KTP. </li>
+                                        <li> Isi data diri. </li>
+                                        <li> Masukkan berapa jumlah hadiah yang akan ditukarkan </li>
+                                        <li> Konfirmasi data dan pemesan lalu tekan tombol “Redeem Point”. </li>
+                                        <li> Setelah itu hadiah akan diproses untuk dikirimkan. </li>
                                     </ol>
                                 </li>
                             </ol>

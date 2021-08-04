@@ -93,26 +93,62 @@ $(function ()
     }, 1000);
 
     var isSend = false;
-    $("[data-share]").on('click', (e) => {
+    function sendLogShare(channel, link)
+    {
         if(isSend === false) {
             $.ajax({
                 method: "POST",
                 url: '/share-button-count',
                 data:{
-                    channel: $(e.currentTarget).data('share'),
-                    post_id: p_id
+                    channel: channel,
+                    post_id: p_id,
+                    link: link
                 },
                 beforeSend: () => {
                     isSend = true;
                 },
-                success: (res) => {
+                success: (res, status) => {
                     isSend = false;
+                    if(status == 'success') {
+                        share_btn = $(`[data-share=${channel}]`);
+                        share_btn.removeAttr('data-share');
+
+                        ico = share_btn.siblings('span').find('img');
+                        ico_src = ico.attr('src');
+                        ico.attr('src', ico_src.replace('star', 'check'));
+
+                        share_btn.siblings('span').html(ico[0].outerHTML);
+
+                    }
                 },
                 error: (xhr) => {
                     isSend = false;
                     console.log(xhr);
                 }
             })
+        }
+    }
+    $("[data-share]").on('click', (e) => {
+        e.preventDefault();
+        const SHARE = $(e.currentTarget).data('share');
+        const LINK = $(e.currentTarget).parent().parent().data('link');
+        if( SHARE == SHARE_CHANNEL.facebook) { //facebook
+            FB.ui({
+                method: 'share',
+                href: LINK,
+            },
+            function(response) {
+                if (response && !response.error_code) {
+                    sendLogShare(SHARE_CHANNEL.facebook, LINK);
+                }
+            });
+        } else if( SHARE == SHARE_CHANNEL.twitter) { //twitter
+            twttr.events.bind('tweet', (e) => {
+                sendLogShare(SHARE_CHANNEL.twitter, LINK);
+            });
+
+        } else {
+            window.open($(e.currentTarget).attr('href'));
         }
     })
 
@@ -129,4 +165,44 @@ $(function ()
         slidesToShow: 1,
         variableWidth: true
     });
+
+
+    /**
+     * Facebook connect social plugin
+     */
+     window.fbAsyncInit = function() {
+        FB.init({
+          appId      : FB_SHARE_ID,
+          xfbml      : true,
+          version    : 'v11.0'
+        });
+    };
+     (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+    /**
+     * Twitter widget javascript api
+     */
+    window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));
+
 });

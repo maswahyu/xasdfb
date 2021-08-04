@@ -19,26 +19,55 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-
     border-bottom: 1px solid palette("alto");
+    flex-direction: column;
+
+
+    @include media-over(md) {
+      flex-direction: row;
+    }
+
+
+    .btn {
+      height: auto;
+      line-height: 1.2;
+      padding-left: 1em;
+      padding-right: 1em;
+      width: 100%;
+      padding-top: 0.8em;
+      padding-bottom: 0.8em;
+
+      // @include media-over(md) {
+      //   padding: .8rem 4rem;
+      //   width: auto;
+      // }
+    }
   }
 
   &__icon {
-    flex: 0 0 100%;
     height: 6.4rem;
     width: 6.4rem;
-    margin-right: 3rem;
     margin-bottom: 1rem;
+    flex: 0 0 100px;
+    margin-right: 0;
+
 
     @include media-over(md) {
       flex: 0 0 6.4rem;
       margin-bottom: 0;
+      margin-right: 3rem;
     }
 
     img {
       max-width: 100%;
       width: auto;
       height: auto;
+
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+
     }
   }
 
@@ -49,9 +78,19 @@
   }
 
   &__name {
-    @include font-size(2rem);
     font-weight: 600;
     width: 100%;
+
+    font-weight: 600;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 0.5em;
+
+    @include media-over(md) {
+      @include font-size(2rem);
+      font-weight: 600;
+      width: 100%;
+    }
   }
 
   &__requirement {
@@ -59,11 +98,20 @@
     flex-flow: row nowrap;
     align-items: center;
     width: 100%;
+    font-size: 16px;
+
+    @include media-over(md) {
+      @include font-size(1.8rem);
+    }
   }
 
   &__info {
-    flex: 1 1 31rem;
-    max-width: 31rem;
+    flex: 0 0 calc(100% - 100px);
+
+    @include media-over(md) {
+      flex: 1 1 31rem;
+      max-width: 31rem;
+    }
   }
 
   &__item {
@@ -97,9 +145,13 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-
+    width: 100%;
+    margin-bottom: 2rem;
+    
     @include media-over(md) {
       flex-flow: row nowrap;
+      width: 50%;
+      margin-bottom: 0;
     }
   }
 
@@ -115,7 +167,13 @@
   }
 
   &__right {
-    flex: 0 0 235px;
+    flex: 0 0 100%;
+    width: 100%;
+    
+    @include media-over(md) {
+      flex: 0 0 235px;
+      width: auto;
+    }
   }
 
   &__text {
@@ -136,6 +194,23 @@
   align-items: center;
   min-height: 472px;
   width: 100%;
+  // background: url('/static/images/bg-point-v2.jpg') no-repeat center top fixed !important;
+  // background-size: cover !important;
+  background-image: url('/static/images/bg-point-v2.jpg');
+  background-size: auto 120rem;
+  background-attachment: fixed;
+  background-position: center top;
+  overflow: hidden;
+
+
+  @include media-over(md) {
+    background-size: cover;
+  }
+
+  .hero-header {
+    display: block;
+    width: 100%;
+  }
 
   &__bg {
     position: absolute;
@@ -153,9 +228,43 @@
     position: relative;
     margin: 0 auto;
     z-index: 2;
-    max-width: 78rem;
-    width: 100%;
+    // max-width: 78rem;
+    // width: 100%;
     text-align: center;
+    padding: 32px 0 0;
+    // overflow: hidden;
+
+    @include media-over(md) {
+      padding: 60px 0 0;
+    }
+
+    @include media-over(lg) {
+      padding: 70px 0 0;
+    }
+  
+    @include media-over(xl) {
+      padding: 80px 0 0;
+    }
+
+  }
+
+  .point-banner-header {
+
+    &.with-video {
+      margin-bottom: 4rem;
+
+      @include media-over(md) {
+        margin-bottom: 3rem;
+      }
+
+      @include media-over(lg) {
+        margin-bottom: 4rem;
+      }
+  
+      @include media-over(xl) {
+        margin-bottom: 5rem;
+      }
+    }
   }
 
   &__cta {
@@ -165,17 +274,474 @@
   &__text {
     margin-bottom: 3rem;
     color: palette("white");
+    letter-spacing: 0.025em;
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 16px;
-    line-height: (24/18);
+    line-height: 1.5;
+    font-size: 16px;
+
+    @include media-over(md) {
+      font-size: 14px;
+      line-height: (24/18);
+    }
+
+    @include media-over(lg) {
+      font-size: 15px;
+      margin-bottom: 3.5rem;
+    }
+
+    @include media-over(xl) {
+      font-size: 16px;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__title-wrapper {
+    padding: 0 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   &__title {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     font-family: $title-font-family;
     font-weight: bold;
     color: palette("white");
-    @include font-size(3rem);
+    text-align: center;
+    max-width: 15em;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+
+    @include media-over(md) {
+      max-width: 23em;
+      margin-left: auto;
+      margin-right: auto;
+      @include font-size(3rem);
+      line-height: 1.3;
+    }
   }
+
+  .with-video &__title {
+    @include media-over(md) {
+      padding-left: 1rem;
+      margin: 0;
+      max-width: 11em;
+      text-align: left;
+    }
+  }
+
+  &__video-wrapper {
+    .video-outer {
+      @include media-over(md) {
+        padding: 0;
+        padding-left: 1rem;
+      }
+  
+      @include media-over(lg) {
+        padding-right: 1rem;
+        padding-left: 2rem;
+      }
+    }
+  }
+
+  .reward-list-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .rewards-list {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    &:before {
+      content: "";
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      width: 100vw;
+      transform: translate(-50%);
+      top: 140px;
+      height: calc(100% - 139px);
+
+      @include media-over(md) {
+        top: 110px;
+        height: calc(100% - 109px);
+      }
+
+      @include media-over(lg) {
+        top: 150px;
+        height: calc(100% - 149px);
+      }
+    
+      @include media-over(xl) {
+        top: 190px;
+        height: calc(100% - 189px);
+      }
+    }
+
+    &.rewards-list__alternate-bg:before {
+      top: calc(55vw - 4rem);
+      height: calc(100%);
+
+      @media screen and (min-width:520px) {
+        top: calc(24rem);
+      }
+
+      @include media-over(md) {
+        top: calc(-10% + 110px);
+        height: calc(110% - 109px);
+      }
+
+      @include media-over(lg) {
+        top: calc(-10% + 150px);
+        height: calc(110% - 149px);
+      }
+    
+      @include media-over(xl) {
+        top: calc(-10% + 190px);
+        height: calc(110% - 189px);
+      }
+    }
+
+    &.rewards-list__single:before {
+      top: calc(60%);
+      height: calc(40% + 1px);
+    }
+
+    .slick-list {
+      min-width: 100%;
+    }
+
+    .slick-track {
+      display: flex !important;
+
+      .slick-slide {
+        height: inherit !important;
+
+        & > div {
+          height: 100% !important;
+          position: relative;
+        }
+      }
+
+      .rewards-wrapper__card {
+        width: 280px !important;
+        display: flex !important;
+        height: 100%;
+        margin: 0 auto;
+
+        @include media-over(md) {
+          width: 220px !important;
+        }
+  
+        @include media-over(lg) {
+          width: 300px !important;
+        }
+      
+        @include media-over(xl) {
+          width: 380px !important;
+        }
+      }
+    }
+
+    &.rewards-list__single .slick-track .rewards-wrapper__card {
+      width: 280px !important;
+
+      @include media-over(md) {
+        width: 400px !important;
+      }
+
+      @include media-over(lg) {
+        width: 520px !important;
+      }
+
+      @include media-over(xl) {
+        width: 630px !important;
+      }
+    }
+    
+    .rewards-wrapper {
+      display: flex;
+      z-index: 3;
+      position: relative;
+    }
+
+    .rewards-link {
+      text-decoration: none !important;
+    }
+
+    .rewards-wrapper__card {
+      padding: 0 0 1rem;
+      box-shadow: none;
+      background: none;
+
+      .card-inner {
+        box-shadow: 0 4px 10px rgba(0,0,0,.15);
+        position: relative;
+        background-color: #fff;
+      }
+    }
+
+    .rewards-desc {
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rewards-desc__title {
+      margin: 0 0 auto;
+      padding: 0 0 1.2em;
+      text-align: center;
+      color: black;
+    }
+
+    .ico-star {
+      background-image: url("/static/images/ico-star.png");
+      width: 1em;
+      height: 1em;
+      margin-right: .5em;
+      background-size: 100% 100%;
+      display: inline-block;
+      vertical-align: middle;
+      transform: translate(0, -7%);
+    }
+
+    .rewards-desc__point {
+      margin-top: 0;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 0;
+      color: #ec2427;
+
+      @include media-over(md) {
+        font-size: 14px;
+      }
+
+      @include media-over(lg) {
+        font-size: 15px;
+      }
+    
+      @include media-over(xl) {
+        font-size: 16px;
+      }
+    }
+
+    .rewards-desc {
+      padding: 15px;
+      font-family: $title-font-family;
+
+      .rewards-desc__category {
+        font-weight: bold;
+        margin: 0 0 0.8em;
+        line-height: 150%;
+        text-align: center;
+        color: #EC2427;
+        text-decoration: none;
+        font-size: 10px;
+
+        @include media-over(md) {
+          font-size: 12px;
+        }
+
+        @include media-over(lg) {
+          font-size: 13px;
+        }
+      
+        @include media-over(xl) {
+          font-size: 14px;
+        }
+      }
+
+      .rewards-desc__title {
+        font-size: 14px;
+        line-height: 1.3;
+        font-weight: bold;
+
+        @include media-over(md) {
+          font-size: 14px;
+        }
+
+        @include media-over(lg) {
+          font-size: 15px;
+        }
+      
+        @include media-over(xl) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .rewards-list__single {
+    .rewards-wrapper__card {
+      padding: 0;
+      width: 280px;
+      flex: 0 0 280px;
+      flex-direction: column;
+
+      @include media-over(md) {
+        width: 400px;
+        flex: 0 0 400px;
+      }
+
+      @include media-over(lg) {
+        width: 520px;
+        flex: 0 0 520px;
+      }
+
+      @include media-over(xl) {
+        width: 630px;
+        flex: 0 0 630px;
+      }
+    }
+
+    .card-inner {
+      display: flex;
+      width: 100%;
+    }
+    
+    .rewards-img-wrapper {
+      height: 100%;
+      position: relative;
+      width: 50%;
+      padding-top: 63%;
+      flex: 0 0 50%;
+
+      @include media-over(md) {
+        padding-top: 40%;
+      }
+    }
+
+    .rewards-desc {
+      width: 50%;
+      flex: 0 0 50%;
+      justify-content: center;
+
+
+      @include media-over(md) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      @include media-over(lg) {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      @include media-over(xl) {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    .rewards-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .rewards-desc__title {
+      margin-bottom: 0;
+
+      @include media-over(md) {
+        padding: 0 0 1.6em;
+        font-size: 16px;
+      }
+
+      @include media-over(lg) {
+        padding: 0 0 1.8em;
+        font-size: 17px;
+      }
+
+      @include media-over(xl) {
+        padding: 0 0 2em;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .rewards-list__multiple {
+    .rewards-wrapper__card {
+      padding: 0;
+      width: 100%;
+      flex: 0 0 100%;
+      flex-direction: column;
+
+      @include media-over(md) {
+        width: 220px;
+        flex: 0 0 220px;
+      }
+
+      @include media-over(lg) {
+        width: 300px;
+        flex: 0 0 300px;
+      }
+
+      @include media-over(xl) {
+        width: 380px;
+        flex: 0 0 380px;
+      }
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      margin-bottom: 30px;
+      align-items: stretch;
+      display: flex;
+
+      @include media-over(md) {
+        margin-bottom: 20px;
+      }
+  
+      @include media-over(lg) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .rewards-img-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 50%;
+      -webkit-box-flex: 0;
+      display: block;
+      height: auto;
+    }
+
+    .rewards-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .rewards-desc {
+      flex: 0 1 100%;
+    }
+  }
+
 }
 
 .prize-slider {

@@ -1,0 +1,3437 @@
+{
+"skeleton": { "hash": "ViiRhPOEwQM+b1hBuUk/osiEhwQ", "spine": "3.6.38", "width": 451.62, "height": 177.18, "images": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "Mobil", "parent": "root", "length": 60.62, "rotation": -0.42, "x": 204.99, "y": 32.67, "color": "1f8465ff" },
+	{ "name": "Asap", "parent": "Mobil", "length": 11.03, "rotation": -179.58, "x": -153.24, "y": -4.66, "color": "1f8465ff" },
+	{ "name": "Badan", "parent": "root", "length": 59.73, "rotation": 88.58, "x": -1.22, "y": 79.36 },
+	{ "name": "BahuKanan", "parent": "Badan", "length": 27.85, "rotation": 165.59, "x": 50.85, "y": 17.72 },
+	{ "name": "BahuKiri", "parent": "Badan", "length": 27.01, "rotation": -179.48, "x": 51.46, "y": -15.61 },
+	{ "name": "BanBelakang", "parent": "Mobil", "length": -6, "x": -85.28, "y": -1.54, "color": "1f8465ff" },
+	{ "name": "BanDepan", "parent": "Mobil", "length": -6, "x": 115.14, "y": 0.71, "color": "1f8465ff" },
+	{ "name": "PahaKanan", "parent": "Badan", "length": 32.72, "rotation": 174.75, "x": -1.91, "y": 8.82 },
+	{ "name": "BetisKanan", "parent": "PahaKanan", "length": 28.87, "rotation": 0.37, "x": 37.4, "y": -0.09 },
+	{ "name": "PahaKiri", "parent": "Badan", "length": 31.26, "rotation": -175.88, "x": -1.9, "y": -8.49 },
+	{ "name": "BetisKiri", "parent": "PahaKiri", "length": 26.84, "rotation": -5.86, "x": 37.98, "y": -0.95 },
+	{ "name": "KakiKanan", "parent": "BetisKanan", "length": 12.15, "rotation": 75.97, "x": 34.23, "y": 1.44 },
+	{ "name": "KakiKiri", "parent": "BetisKiri", "length": 12.23, "rotation": 78.16, "x": 33.32, "y": 1.2 },
+	{ "name": "Kepala", "parent": "Badan", "length": 24.9, "rotation": 1.9, "x": 66.28, "y": -0.05 },
+	{ "name": "LenganKanan", "parent": "BahuKanan", "length": 18.08, "rotation": 8.45, "x": 33.01, "y": 0.37 },
+	{ "name": "LenganKiri", "parent": "BahuKiri", "length": 16.67, "rotation": 2.35, "x": 31.66, "y": -0.35 },
+	{ "name": "Mobilbody", "parent": "Mobil", "length": 22.45, "rotation": 90.42, "x": 13.3, "y": 6.73, "color": "1f8465ff" },
+	{ "name": "TanganKanan", "parent": "LenganKanan", "length": 7.17, "rotation": 7.37, "x": 22.95, "y": 0.2, "shearY": 0.24 },
+	{ "name": "TanganKiri", "parent": "LenganKiri", "length": 6.54, "rotation": 0.4, "x": 20.5, "y": 0.96 }
+],
+"slots": [
+	{ "name": "TanganKiri", "bone": "TanganKiri", "attachment": "TanganKepal" },
+	{ "name": "LenganKiri", "bone": "LenganKiri", "attachment": "Lengan" },
+	{ "name": "BahuKiri", "bone": "BahuKiri", "attachment": "Bahu" },
+	{ "name": "SepatuKiri", "bone": "KakiKiri", "attachment": "Sepatu" },
+	{ "name": "BetisKiri", "bone": "BetisKiri", "attachment": "Betis" },
+	{ "name": "PahaKiri", "bone": "PahaKiri", "attachment": "Paha" },
+	{ "name": "SepatuKanan", "bone": "KakiKanan", "attachment": "Sepatu" },
+	{ "name": "BetisKanan", "bone": "BetisKanan", "attachment": "Betis" },
+	{ "name": "PahaKanan", "bone": "PahaKanan", "attachment": "Paha" },
+	{ "name": "Badan", "bone": "Badan", "attachment": "Badan" },
+	{ "name": "TanganKanan", "bone": "TanganKanan", "attachment": "TanganKepal" },
+	{ "name": "LenganKanan", "bone": "LenganKanan", "attachment": "Lengan" },
+	{ "name": "BahuKanan", "bone": "BahuKanan", "attachment": "Bahu" },
+	{ "name": "Kepala", "bone": "Kepala", "attachment": "Kepala" },
+	{ "name": "MobilBody", "bone": "Mobilbody", "attachment": "MobilBody" },
+	{ "name": "BanDepan", "bone": "BanDepan", "attachment": "MobilRoda" },
+	{ "name": "MobilRoda", "bone": "BanBelakang", "attachment": "MobilRoda" },
+	{ "name": "MobilAsap", "bone": "Asap", "attachment": "MobilAsap" }
+],
+"skins": {
+	"default": {
+		"Badan": {
+			"Badan": { "x": 27.67, "y": 1.69, "rotation": -88.58, "width": 41, "height": 81 }
+		},
+		"BahuKanan": {
+			"Bahu": { "x": 15.77, "y": -0.12, "rotation": 105.83, "width": 21, "height": 37 }
+		},
+		"BahuKiri": {
+			"Bahu": { "x": 12.34, "y": -3.04, "rotation": 111.5, "width": 21, "height": 37 }
+		},
+		"BanDepan": {
+			"MobilRoda": { "rotation": 0.42, "width": 67, "height": 66 }
+		},
+		"BetisKanan": {
+			"Betis": { "x": 12.4, "y": 1.09, "rotation": 96.29, "width": 16, "height": 42 }
+		},
+		"BetisKiri": {
+			"Betis": { "x": 10.32, "y": 1.06, "rotation": 97.91, "width": 16, "height": 42 }
+		},
+		"Kepala": {
+			"Kepala": { "x": 13.82, "y": -1.03, "rotation": -90.49, "width": 26, "height": 33 }
+		},
+		"LenganKanan": {
+			"Lengan": { "x": 9.28, "y": -0.29, "rotation": 97.37, "width": 14, "height": 29 }
+		},
+		"LenganKiri": {
+			"Lengan": { "x": 6.31, "y": -0.56, "rotation": 99.31, "width": 14, "height": 29 }
+		},
+		"MobilAsap": {
+			"MobilAsap": { "width": 12, "height": 13 }
+		},
+		"MobilBody": {
+			"MobilBody": { "x": 28.45, "y": -4.54, "rotation": -89.91, "width": 386, "height": 103 }
+		},
+		"MobilRoda": {
+			"MobilRoda": { "rotation": 0.42, "width": 67, "height": 66 }
+		},
+		"PahaKanan": {
+			"Paha": { "x": 15.07, "y": 0.47, "rotation": 96.67, "width": 22, "height": 42 }
+		},
+		"PahaKiri": {
+			"Paha": { "x": 12.94, "y": -1.23, "rotation": 99.99, "width": 22, "height": 42 }
+		},
+		"SepatuKanan": {
+			"Sepatu": { "x": 6.58, "y": 1.28, "rotation": 20.32, "width": 26, "height": 13 }
+		},
+		"SepatuKiri": {
+			"Sepatu": { "x": 6.54, "y": 1.49, "rotation": 15, "width": 26, "height": 13 }
+		},
+		"TanganKanan": {
+			"TanganKananBuka": { "x": 6.21, "y": 4.26, "rotation": 16.93, "width": 20, "height": 12 },
+			"TanganKepal": { "x": 3.04, "y": 0.41, "rotation": 90, "width": 14, "height": 14 }
+		},
+		"TanganKiri": {
+			"TanganKepal": { "x": 3.12, "y": -0.19, "rotation": 98.44, "width": 14, "height": 14 },
+			"TanganKiriBuka": { "x": 6.61, "y": 1.51, "rotation": -2.41, "width": 20, "height": 15 }
+		}
+	}
+},
+"animations": {
+	"death": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"TanganKanan": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKananBuka" }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKiriBuka" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -266.86 },
+					{ "time": 0.4333, "angle": -261.59 },
+					{ "time": 0.5333, "angle": -266.86, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -266.86 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -73.54, "y": 5.4 },
+					{ "time": 0.3333, "x": -90.98, "y": -62.89 },
+					{ "time": 0.4333, "x": -90.98, "y": -49.21 },
+					{ "time": 0.5333, "x": -90.98, "y": -62.89 },
+					{ "time": 0.7, "x": -90.98, "y": -54.53 },
+					{ "time": 0.8333, "x": -90.98, "y": -62.89 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.8333, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.2, "angle": -29.96 },
+					{ "time": 0.3333, "angle": -9.72 },
+					{ "time": 0.4333, "angle": 14.81 },
+					{ "time": 0.5333, "angle": -9.72 },
+					{ "time": 0.7, "angle": 14.81 },
+					{ "time": 0.8333, "angle": 9.01 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -336.23 },
+					{ "time": 0.4333, "angle": -350.03 },
+					{ "time": 0.5333, "angle": -336.23 },
+					{ "time": 0.7, "angle": -342.47 },
+					{ "time": 0.8333, "angle": -336.23 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -45.03, "curve": "stepped" },
+					{ "time": 0.5333, "angle": -45.03, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -45.03 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -68.06 },
+					{ "time": 0.4333, "angle": -39.23 },
+					{ "time": 0.5333, "angle": -68.06 },
+					{ "time": 0.7, "angle": -39.23 },
+					{ "time": 0.8333, "angle": -68.06 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3333, "x": -1.82, "y": -3.04, "curve": "stepped" },
+					{ "time": 0.5333, "x": -1.82, "y": -3.04, "curve": "stepped" },
+					{ "time": 0.8333, "x": -1.82, "y": -3.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": 17.84 },
+					{ "time": 0.4333, "angle": -3.25 },
+					{ "time": 0.5333, "angle": 17.84 },
+					{ "time": 0.7, "angle": 6.86 },
+					{ "time": 0.8333, "angle": 17.84 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -88.75, "curve": "stepped" },
+					{ "time": 0.5333, "angle": -88.75, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -88.75 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.2, "angle": 56.4 },
+					{ "time": 0.4333, "angle": 73.15 },
+					{ "time": 0.5333, "angle": 350.81 },
+					{ "time": 0.7, "angle": 6.61 },
+					{ "time": 0.8333, "angle": 337.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3333, "x": 0.4, "y": 13.39, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0.4, "y": 13.39, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0.4, "y": 13.39 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1, "angle": 70.7 },
+					{ "time": 0.5333, "angle": 25.82 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.2, "angle": -296.1 },
+					{ "time": 0.4333, "angle": -267.17 },
+					{ "time": 0.5333, "angle": 7.55 },
+					{ "time": 0.7, "angle": -329.67 },
+					{ "time": 0.8333, "angle": 9.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3333, "x": -0.3, "y": -10, "curve": "stepped" },
+					{ "time": 0.5333, "x": -0.3, "y": -10, "curve": "stepped" },
+					{ "time": 0.8333, "x": -0.3, "y": -10 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1, "angle": 42.78 },
+					{ "time": 0.3333, "angle": 14.01, "curve": "stepped" },
+					{ "time": 0.5333, "angle": 14.01, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 14.01 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1, "angle": 46.37 },
+					{ "time": 0.3333, "angle": -33.83, "curve": "stepped" },
+					{ "time": 0.5333, "angle": -33.83, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -33.83 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"finish": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" }
+				]
+			},
+			"MobilAsap": {
+				"color": [
+					{ "time": 0.8333, "color": "ffffff00" },
+					{ "time": 0.9, "color": "fffffffe" },
+					{ "time": 0.9667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "MobilAsap" },
+					{ "time": 0.8333, "name": "MobilAsap" },
+					{ "time": 0.9333, "name": "MobilAsap" }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": "MobilBody" }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" }
+				]
+			},
+			"TanganKanan": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" },
+					{ "time": 0.5, "name": "TanganKananBuka" }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" },
+					{ "time": 0.5, "name": "TanganKiriBuka" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -17.61 },
+					{ "time": 0.1, "angle": -30.64 },
+					{ "time": 0.2, "angle": -22.83 },
+					{ "time": 0.3, "angle": -9.59 },
+					{ "time": 0.4, "angle": -17.61 },
+					{ "time": 0.5, "angle": -37.8 },
+					{ "time": 0.6, "angle": 56.75 },
+					{ "time": 0.6667, "angle": 18.55 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -5.95, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": -5.95 },
+					{ "time": 0.5, "x": 2.88, "y": 16.13 },
+					{ "time": 0.6, "x": 60.39, "y": 21.67 },
+					{ "time": 0.6667, "x": 83.39, "y": -1.34 },
+					{ "time": 0.7333, "x": 91.49, "y": -34.14, "curve": "stepped" },
+					{ "time": 1, "x": 91.49, "y": -34.14 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 25.01 },
+					{ "time": 0.1, "angle": 31.6 },
+					{ "time": 0.2, "angle": 21.65 },
+					{ "time": 0.3, "angle": 12.02 },
+					{ "time": 0.4, "angle": 25.01 },
+					{ "time": 0.6, "angle": -35.67 },
+					{ "time": 0.7333, "angle": -13.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -0.33, "y": -3.9 },
+					{ "time": 0.3, "x": -1.97, "y": -4.96 },
+					{ "time": 0.4, "x": 0, "y": 0 },
+					{ "time": 0.6, "x": -0.67, "y": -2.02 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -16.14 },
+					{ "time": 0.1, "angle": -313.33 },
+					{ "time": 0.2, "angle": -279.71 },
+					{ "time": 0.4, "angle": -304.86 },
+					{ "time": 0.6, "angle": -271.77 },
+					{ "time": 0.6667, "angle": -232.26 },
+					{ "time": 0.7333, "angle": -253.5 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": 5.31, "y": -8.48 },
+					{ "time": 0.4, "x": 0.35, "y": -15.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -46.21 },
+					{ "time": 0.1, "angle": -109.86 },
+					{ "time": 0.2, "angle": -67.17 },
+					{ "time": 0.3, "angle": -30.21 },
+					{ "time": 0.4, "angle": 2.03 },
+					{ "time": 0.6, "angle": -100.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -0.8, "y": -1.37 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -52.34 },
+					{ "time": 0.2, "angle": -15.53 },
+					{ "time": 0.3, "angle": 11.46 },
+					{ "time": 0.4, "angle": 4.75 },
+					{ "time": 0.5, "angle": -51.37 },
+					{ "time": 0.6, "angle": 23.31 },
+					{ "time": 0.6667, "angle": -31.71 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": -0.67, "y": -2.9 },
+					{ "time": 0.6667, "x": -1.54, "y": 0.85 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 55.6 },
+					{ "time": 0.1, "angle": 49.36 },
+					{ "time": 0.2, "angle": 355.28 },
+					{ "time": 0.3, "angle": 325 },
+					{ "time": 0.4, "angle": 337.38 },
+					{ "time": 0.6, "angle": 100.57 },
+					{ "time": 0.6667, "angle": 120.17 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -0.77, "y": 2.66 },
+					{ "time": 0.3, "x": -1.77, "y": 10.1 },
+					{ "time": 0.4, "x": 0.69, "y": 17.66 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 9.19 },
+					{ "time": 0.1, "angle": -40.55 },
+					{ "time": 0.2, "angle": -0.59 },
+					{ "time": 0.3, "angle": -28.01 },
+					{ "time": 0.4, "angle": -30.89 },
+					{ "time": 0.6, "angle": -105.82 },
+					{ "time": 0.6667, "angle": -99.87 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -4.8, "y": -1.97 },
+					{ "time": 0.4, "x": -1.92, "y": -3.01 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 3.07 },
+					{ "time": 0.1, "angle": 19.67 },
+					{ "time": 0.2, "angle": 5.64 },
+					{ "time": 0.3, "angle": -45.81 },
+					{ "time": 0.4, "angle": -64.56 },
+					{ "time": 0.6, "angle": 27 },
+					{ "time": 0.6667, "angle": -34.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 278.4 },
+					{ "time": 0.1, "angle": 310.61 },
+					{ "time": 0.2, "angle": 49.04 },
+					{ "time": 0.3, "angle": 29.08 },
+					{ "time": 0.4, "angle": 46.27 },
+					{ "time": 0.5, "angle": 54.72 },
+					{ "time": 0.6, "angle": 305.41 },
+					{ "time": 0.7333, "angle": 2.95 },
+					{ "time": 0.8, "angle": 30.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": -4.13, "y": 20.55 },
+					{ "time": 0.1, "x": -1.91, "y": 20.74 },
+					{ "time": 0.2, "x": 2.05, "y": 7.11 },
+					{ "time": 0.3, "x": 1.79, "y": 8.67 },
+					{ "time": 0.4, "x": 5.73, "y": 12.27 },
+					{ "time": 0.5667, "x": -12.96, "y": 12.13 },
+					{ "time": 0.6, "x": -1.86, "y": 5.82 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 90.45 },
+					{ "time": 0.1, "angle": 70.09 },
+					{ "time": 0.2, "angle": 109.15 },
+					{ "time": 0.3, "angle": 69.74 },
+					{ "time": 0.4, "angle": 90.45 },
+					{ "time": 0.5, "angle": 0.17 },
+					{ "time": 0.7333, "angle": 96.31 },
+					{ "time": 0.8, "angle": 59.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -4.57, "y": 0.49 },
+					{ "time": 0.4, "x": -2.03, "y": 2.83 },
+					{ "time": 0.5, "x": -2.33, "y": 0.6 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 16.5 },
+					{ "time": 0.2, "angle": 2.6 },
+					{ "time": 0.4, "angle": 16.5, "curve": "stepped" },
+					{ "time": 0.5, "angle": 16.5 },
+					{ "time": 0.5333, "angle": 43.07 },
+					{ "time": 0.7333, "angle": -24.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -4.02, "y": -0.24 },
+					{ "time": 0.4, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -301.71 },
+					{ "time": 0.1, "angle": -329.85 },
+					{ "time": 0.2, "angle": -29.94 },
+					{ "time": 0.3, "angle": -63.68 },
+					{ "time": 0.4, "angle": -61.67 },
+					{ "time": 0.6, "angle": -87.75 },
+					{ "time": 0.7333, "angle": -315.52 },
+					{ "time": 0.8, "angle": -304.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 2.19, "y": -7.63, "curve": "stepped" },
+					{ "time": 0.4, "x": 2.19, "y": -7.63 },
+					{ "time": 0.6, "x": 3.18, "y": -10.56 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 81.4 },
+					{ "time": 0.2, "angle": 94.13 },
+					{ "time": 0.3, "angle": 107.73 },
+					{ "time": 0.4, "angle": 81.4 },
+					{ "time": 0.5, "angle": 20.93 },
+					{ "time": 0.6, "angle": 90.27 },
+					{ "time": 0.7333, "angle": 46.03 },
+					{ "time": 0.8, "angle": 28.64 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -3.1, "y": -0.57 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 5.6, "curve": "stepped" },
+					{ "time": 0.4, "angle": 5.6 },
+					{ "time": 0.6, "angle": 43.89 },
+					{ "time": 0.7333, "angle": -20.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -2.91, "y": -0.41 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Mobil": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 363.32, "y": 0 },
+					{ "time": 0.6667, "x": -92.09, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": -92.09, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BanBelakang": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BanDepan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Mobilbody": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 0.02, "y": -2.18 },
+					{ "time": 0.8667, "x": 0, "y": 0 },
+					{ "time": 0.9, "x": 0.02, "y": -2.18 },
+					{ "time": 0.9333, "x": 0, "y": 0 },
+					{ "time": 0.9667, "x": 0.02, "y": -2.18 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Asap": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -3.55, "y": 3.87, "curve": "stepped" },
+					{ "time": 0.8333, "x": -3.55, "y": 3.87 },
+					{ "time": 0.9333, "x": -44.8, "y": 4.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"finish3": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" },
+					{ "time": 0.2667, "name": "MobilRoda" },
+					{ "time": 0.5333, "name": "MobilRoda" },
+					{ "time": 0.8, "name": "MobilRoda" },
+					{ "time": 1, "name": "MobilRoda" }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": "MobilAsap" }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": "MobilBody" }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" },
+					{ "time": 0.2667, "name": "MobilRoda" },
+					{ "time": 0.5333, "name": "MobilRoda" },
+					{ "time": 0.8, "name": "MobilRoda" },
+					{ "time": 1, "name": "MobilRoda" }
+				]
+			},
+			"TanganKanan": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" },
+					{ "time": 0.5, "name": "TanganKananBuka" }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" },
+					{ "time": 0.5, "name": "TanganKiriBuka" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -17.61 },
+					{ "time": 0.1, "angle": -30.64 },
+					{ "time": 0.2, "angle": -22.83 },
+					{ "time": 0.3, "angle": -9.59 },
+					{ "time": 0.4, "angle": -17.61 },
+					{ "time": 0.5, "angle": -37.8 },
+					{ "time": 0.6, "angle": 56.75 },
+					{ "time": 0.6667, "angle": 18.55 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -5.95, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": -5.95 },
+					{ "time": 0.5, "x": 2.88, "y": 16.13 },
+					{ "time": 0.6, "x": 60.39, "y": 21.67 },
+					{ "time": 0.6667, "x": 83.39, "y": -1.34 },
+					{ "time": 0.7333, "x": 91.49, "y": -34.14, "curve": "stepped" },
+					{ "time": 1, "x": 91.49, "y": -34.14 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 25.01 },
+					{ "time": 0.1, "angle": 31.6 },
+					{ "time": 0.2, "angle": 21.65 },
+					{ "time": 0.3, "angle": 12.02 },
+					{ "time": 0.4, "angle": 25.01 },
+					{ "time": 0.6, "angle": -35.67 },
+					{ "time": 0.7333, "angle": -13.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -0.33, "y": -3.9 },
+					{ "time": 0.3, "x": -1.97, "y": -4.96 },
+					{ "time": 0.4, "x": 0, "y": 0 },
+					{ "time": 0.6, "x": -0.67, "y": -2.02 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -16.14 },
+					{ "time": 0.1, "angle": -313.33 },
+					{ "time": 0.2, "angle": -279.71 },
+					{ "time": 0.4, "angle": -304.86 },
+					{ "time": 0.6, "angle": -271.77 },
+					{ "time": 0.6667, "angle": -232.26 },
+					{ "time": 0.7333, "angle": -253.5 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": 5.31, "y": -8.48 },
+					{ "time": 0.4, "x": 0.35, "y": -15.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -46.21 },
+					{ "time": 0.1, "angle": -109.86 },
+					{ "time": 0.2, "angle": -67.17 },
+					{ "time": 0.3, "angle": -30.21 },
+					{ "time": 0.4, "angle": 2.03 },
+					{ "time": 0.6, "angle": -100.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -0.8, "y": -1.37 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -52.34 },
+					{ "time": 0.2, "angle": -15.53 },
+					{ "time": 0.3, "angle": 11.46 },
+					{ "time": 0.4, "angle": 4.75 },
+					{ "time": 0.5, "angle": -51.37 },
+					{ "time": 0.6, "angle": 23.31 },
+					{ "time": 0.6667, "angle": -31.71 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": -0.67, "y": -2.9 },
+					{ "time": 0.6667, "x": -1.54, "y": 0.85 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 55.6 },
+					{ "time": 0.1, "angle": 49.36 },
+					{ "time": 0.2, "angle": 355.28 },
+					{ "time": 0.3, "angle": 325 },
+					{ "time": 0.4, "angle": 337.38 },
+					{ "time": 0.6, "angle": 100.57 },
+					{ "time": 0.6667, "angle": 120.17 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -0.77, "y": 2.66 },
+					{ "time": 0.3, "x": -1.77, "y": 10.1 },
+					{ "time": 0.4, "x": 0.69, "y": 17.66 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 9.19 },
+					{ "time": 0.1, "angle": -40.55 },
+					{ "time": 0.2, "angle": -0.59 },
+					{ "time": 0.3, "angle": -28.01 },
+					{ "time": 0.4, "angle": -30.89 },
+					{ "time": 0.6, "angle": -105.82 },
+					{ "time": 0.6667, "angle": -99.87 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -4.8, "y": -1.97 },
+					{ "time": 0.4, "x": -1.92, "y": -3.01 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 3.07 },
+					{ "time": 0.1, "angle": 19.67 },
+					{ "time": 0.2, "angle": 5.64 },
+					{ "time": 0.3, "angle": -45.81 },
+					{ "time": 0.4, "angle": -64.56 },
+					{ "time": 0.6, "angle": 27 },
+					{ "time": 0.6667, "angle": -34.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 278.4 },
+					{ "time": 0.1, "angle": 310.61 },
+					{ "time": 0.2, "angle": 49.04 },
+					{ "time": 0.3, "angle": 29.08 },
+					{ "time": 0.4, "angle": 46.27 },
+					{ "time": 0.5, "angle": 54.72 },
+					{ "time": 0.6, "angle": 305.41 },
+					{ "time": 0.7333, "angle": 2.95 },
+					{ "time": 0.8, "angle": 30.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": -4.13, "y": 20.55 },
+					{ "time": 0.1, "x": -1.91, "y": 20.74 },
+					{ "time": 0.2, "x": 2.05, "y": 7.11 },
+					{ "time": 0.3, "x": 1.79, "y": 8.67 },
+					{ "time": 0.4, "x": 5.73, "y": 12.27 },
+					{ "time": 0.5667, "x": -12.96, "y": 12.13 },
+					{ "time": 0.6, "x": -1.86, "y": 5.82 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 90.45 },
+					{ "time": 0.1, "angle": 70.09 },
+					{ "time": 0.2, "angle": 109.15 },
+					{ "time": 0.3, "angle": 69.74 },
+					{ "time": 0.4, "angle": 90.45 },
+					{ "time": 0.5, "angle": 0.17 },
+					{ "time": 0.7333, "angle": 96.31 },
+					{ "time": 0.8, "angle": 59.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -4.57, "y": 0.49 },
+					{ "time": 0.4, "x": -2.03, "y": 2.83 },
+					{ "time": 0.5, "x": -2.33, "y": 0.6 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 16.5 },
+					{ "time": 0.2, "angle": 2.6 },
+					{ "time": 0.4, "angle": 16.5, "curve": "stepped" },
+					{ "time": 0.5, "angle": 16.5 },
+					{ "time": 0.5333, "angle": 43.07 },
+					{ "time": 0.7333, "angle": -24.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -4.02, "y": -0.24 },
+					{ "time": 0.4, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -301.71 },
+					{ "time": 0.1, "angle": -329.85 },
+					{ "time": 0.2, "angle": -29.94 },
+					{ "time": 0.3, "angle": -63.68 },
+					{ "time": 0.4, "angle": -61.67 },
+					{ "time": 0.6, "angle": -87.75 },
+					{ "time": 0.7333, "angle": -315.52 },
+					{ "time": 0.8, "angle": -304.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 2.19, "y": -7.63, "curve": "stepped" },
+					{ "time": 0.4, "x": 2.19, "y": -7.63 },
+					{ "time": 0.6, "x": 3.18, "y": -10.56 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 81.4 },
+					{ "time": 0.2, "angle": 94.13 },
+					{ "time": 0.3, "angle": 107.73 },
+					{ "time": 0.4, "angle": 81.4 },
+					{ "time": 0.5, "angle": 20.93 },
+					{ "time": 0.6, "angle": 90.27 },
+					{ "time": 0.7333, "angle": 46.03 },
+					{ "time": 0.8, "angle": 28.64 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -3.1, "y": -0.57 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 5.6, "curve": "stepped" },
+					{ "time": 0.4, "angle": 5.6 },
+					{ "time": 0.6, "angle": 43.89 },
+					{ "time": 0.7333, "angle": -20.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -2.91, "y": -0.41 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Mobil": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -795.79, "y": 0 },
+					{ "time": 0.3333, "x": 77.26, "y": 0 },
+					{ "time": 0.6667, "x": -92.09, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": -92.09, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BanBelakang": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.0667, "angle": -89.58 },
+					{ "time": 0.1333, "angle": 180.42 },
+					{ "time": 0.2, "angle": 90.42 },
+					{ "time": 0.2667, "angle": 0 },
+					{ "time": 0.3333, "angle": -89.58 },
+					{ "time": 0.4, "angle": 180.42 },
+					{ "time": 0.4667, "angle": 90.42 },
+					{ "time": 0.5333, "angle": 0 },
+					{ "time": 0.6, "angle": -89.58 },
+					{ "time": 0.6667, "angle": 180.42 },
+					{ "time": 0.7333, "angle": 90.42 },
+					{ "time": 0.8, "angle": 0 },
+					{ "time": 0.8667, "angle": -89.58 },
+					{ "time": 0.9333, "angle": 180.42 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.58, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.5333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.8, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"BanDepan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.0667, "angle": -89.58 },
+					{ "time": 0.1333, "angle": 180.42 },
+					{ "time": 0.2, "angle": 90.42 },
+					{ "time": 0.2667, "angle": 0 },
+					{ "time": 0.3333, "angle": -89.58 },
+					{ "time": 0.4, "angle": 180.42 },
+					{ "time": 0.4667, "angle": 90.42 },
+					{ "time": 0.5333, "angle": 0 },
+					{ "time": 0.6, "angle": -89.58 },
+					{ "time": 0.6667, "angle": 180.42 },
+					{ "time": 0.7333, "angle": 90.42 },
+					{ "time": 0.8, "angle": 0 },
+					{ "time": 0.8667, "angle": -89.58 },
+					{ "time": 0.9333, "angle": 180.42 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.58, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.5333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.8, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"Mobilbody": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Asap": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -3.55, "y": 3.87 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"finishjalan": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" },
+					{ "time": 0.2667, "name": "MobilRoda" }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": "MobilAsap" }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": "MobilBody" }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": "MobilRoda" },
+					{ "time": 0.2667, "name": "MobilRoda" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": 18.55 }
+				],
+				"translate": [
+					{ "time": 0, "x": 91.49, "y": -34.14 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": -13.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": -0.67, "y": -2.02 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 106.5 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.35, "y": -15.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -100.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -31.71 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.54, "y": 0.85 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 120.17 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.69, "y": 17.66 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -99.87 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.92, "y": -3.01 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -34.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 30.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.86, "y": 5.82 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 59.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.33, "y": 0.6 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -24.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 55.05 }
+				],
+				"translate": [
+					{ "time": 0, "x": 3.18, "y": -10.56 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 28.64 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -20.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Mobil": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -92.09, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BanBelakang": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.0667, "angle": -90.86 },
+					{ "time": 0.1333, "angle": -172.86 },
+					{ "time": 0.2, "angle": 103.01 },
+					{ "time": 0.2667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2667, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0 }
+				]
+			},
+			"BanDepan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.0667, "angle": -90.86 },
+					{ "time": 0.1333, "angle": -172.86 },
+					{ "time": 0.2, "angle": 103.01 },
+					{ "time": 0.2667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2667, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2667, "x": 0, "y": 0 }
+				]
+			},
+			"Mobilbody": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.02, "y": -2.18 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Asap": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.3, "y": 1.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 },
+					{ "time": 0.5, "x": 1, "y": 0.973 },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": 354.96 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": 13.55 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": 3.33 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": 4.77 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"jump": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" },
+					{ "time": 0.6667, "name": "TanganKiriBuka" },
+					{ "time": 0.7, "name": "TanganKepal" },
+					{ "time": 0.8333, "name": "TanganKepal" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -28.41 },
+					{ "time": 0.3333, "angle": -24.16 },
+					{ "time": 0.5, "angle": 8.79 },
+					{ "time": 0.6667, "angle": -60.14 },
+					{ "time": 0.8333, "angle": -12.66 }
+				],
+				"translate": [
+					{ "time": 0, "x": -7.71, "y": -35.85 },
+					{ "time": 0.1667, "x": 4.64, "y": 47.06 },
+					{ "time": 0.3333, "x": -11, "y": 51.46 },
+					{ "time": 0.5, "x": -8.07, "y": 26.53 },
+					{ "time": 0.6667, "x": -1.2, "y": -39.3 },
+					{ "time": 0.8333, "x": -0.72, "y": -5.71 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 44.36 },
+					{ "time": 0.3333, "angle": -13.61 },
+					{ "time": 0.5, "angle": -27.31 },
+					{ "time": 0.6667, "angle": 50.96 },
+					{ "time": 0.8333, "angle": 12.43 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.38, "y": -4.03 },
+					{ "time": 0.3333, "x": -1.57, "y": -2.17 },
+					{ "time": 0.6667, "x": 0.2, "y": -2.99 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -264.84 },
+					{ "time": 0.1667, "angle": -349.58 },
+					{ "time": 0.3333, "angle": -222.84 },
+					{ "time": 0.5, "angle": -314.3 },
+					{ "time": 0.6667, "angle": -229.57 },
+					{ "time": 0.8333, "angle": -328.94 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": -1.93, "y": -0.95 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -114.38 },
+					{ "time": 0.1667, "angle": -5.97 },
+					{ "time": 0.3333, "angle": -125.47 },
+					{ "time": 0.5, "angle": -37.06 },
+					{ "time": 0.6667, "angle": -102.2 },
+					{ "time": 0.8333, "angle": -36.26 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 41.99 },
+					{ "time": 0.1667, "angle": -62.18 },
+					{ "time": 0.3333, "angle": -23.74 },
+					{ "time": 0.5, "angle": -53.84 },
+					{ "time": 0.6667, "angle": 30.34 },
+					{ "time": 0.8333, "angle": 13.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -1.41, "y": -2.94 },
+					{ "time": 0.6667, "x": -3.54, "y": -0.34 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 111.04 },
+					{ "time": 0.1667, "angle": 354.97 },
+					{ "time": 0.3333, "angle": 108.67 },
+					{ "time": 0.5, "angle": 39.87 },
+					{ "time": 0.8333, "angle": 26.91 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": 2.98, "y": 7.19 },
+					{ "time": 0.8333, "x": -2.69, "y": 4.07 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -128.15 },
+					{ "time": 0.1667, "angle": 6.58 },
+					{ "time": 0.3333, "angle": -133.19 },
+					{ "time": 0.5, "angle": -21.6 },
+					{ "time": 0.6667, "angle": -88.3 },
+					{ "time": 0.8333, "angle": -20.85 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.56, "y": -3.98 },
+					{ "time": 0.1667, "x": -5.9, "y": 0.47 },
+					{ "time": 0.3333, "x": -6.77, "y": -0.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 36.98 },
+					{ "time": 0.1667, "angle": -72.2 },
+					{ "time": 0.3333, "angle": 11.95 },
+					{ "time": 0.5, "angle": -55.73 },
+					{ "time": 0.6667, "angle": 34.88 },
+					{ "time": 0.8333, "angle": 6.03 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -2.82, "y": -2.02 },
+					{ "time": 0.3333, "x": -2.01, "y": 0.53 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 276.19 },
+					{ "time": 0.0667, "angle": 53.47 },
+					{ "time": 0.1667, "angle": 150.6 },
+					{ "time": 0.2333, "angle": 48.22 },
+					{ "time": 0.3333, "angle": 262.79 },
+					{ "time": 0.5, "angle": 137.17 },
+					{ "time": 0.6667, "angle": 46.1 },
+					{ "time": 0.8333, "angle": 357.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.6, "y": 13.96 },
+					{ "time": 0.2333, "x": 3.11, "y": 15.92 },
+					{ "time": 0.3333, "x": -3.59, "y": 10.95 },
+					{ "time": 0.6667, "x": -2.23, "y": 1.99 },
+					{ "time": 0.8333, "x": -3.13, "y": 5.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 82.24 },
+					{ "time": 0.2333, "angle": 103.18 },
+					{ "time": 0.3333, "angle": 107.85 },
+					{ "time": 0.4333, "angle": -146.56 },
+					{ "time": 0.5, "angle": 9.73 },
+					{ "time": 0.8333, "angle": 34.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -1.77, "y": 2.6 },
+					{ "time": 0.3333, "x": -6.42, "y": -0.17 },
+					{ "time": 0.6667, "x": -6.56, "y": 0.72 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": 17.65, "curve": "stepped" },
+					{ "time": 0.6667, "angle": 17.65 },
+					{ "time": 0.7, "angle": 16.24 },
+					{ "time": 0.8333, "angle": 10.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6667, "x": 0, "y": 0 },
+					{ "time": 0.7, "x": -0.72, "y": 1.1 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -59.43 },
+					{ "time": 0.0667, "angle": -297.93 },
+					{ "time": 0.1667, "angle": -214.61 },
+					{ "time": 0.2333, "angle": -273.75 },
+					{ "time": 0.3333, "angle": -65.2 },
+					{ "time": 0.5, "angle": -114.59 },
+					{ "time": 0.6667, "angle": -40.85 },
+					{ "time": 0.8333, "angle": -15.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": -0.24, "y": -3.62 },
+					{ "time": 0.3333, "x": -1.48, "y": -11.54 },
+					{ "time": 0.5, "x": -0.91, "y": -7.2 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 71.52 },
+					{ "time": 0.2333, "angle": 112.16 },
+					{ "time": 0.3333, "angle": 108.64 },
+					{ "time": 0.5, "angle": -21.19 },
+					{ "time": 0.6667, "angle": 31.74 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": -53.53 },
+					{ "time": 0.6667, "angle": 31.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"jump1": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0, "name": "TanganKepal" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -28.41 },
+					{ "time": 0.3333, "angle": -24.16 }
+				],
+				"translate": [
+					{ "time": 0, "x": -7.71, "y": -35.85 },
+					{ "time": 0.1667, "x": 4.64, "y": 47.06 },
+					{ "time": 0.3333, "x": -11, "y": 61.46 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 44.36 },
+					{ "time": 0.3333, "angle": -13.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.38, "y": -4.03 },
+					{ "time": 0.3333, "x": -1.57, "y": -2.17 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 95.16 },
+					{ "time": 0.1667, "angle": -349.58 },
+					{ "time": 0.3333, "angle": -222.84 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -114.38 },
+					{ "time": 0.1667, "angle": -5.97 },
+					{ "time": 0.3333, "angle": -150.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 41.99 },
+					{ "time": 0.1667, "angle": -62.18 },
+					{ "time": 0.3333, "angle": -59.54 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -1.41, "y": -2.94 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 111.04 },
+					{ "time": 0.1667, "angle": 354.97 },
+					{ "time": 0.3333, "angle": 93.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -128.15 },
+					{ "time": 0.1667, "angle": 6.58 },
+					{ "time": 0.3333, "angle": -147.73 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.56, "y": -3.98 },
+					{ "time": 0.1667, "x": -5.9, "y": 0.47 },
+					{ "time": 0.3333, "x": -6.77, "y": -0.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 36.98 },
+					{ "time": 0.1667, "angle": -72.2 },
+					{ "time": 0.3333, "angle": 11.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -2.82, "y": -2.02 },
+					{ "time": 0.3333, "x": -2.01, "y": 0.53 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -83.81 },
+					{ "time": 0.0667, "angle": 53.47 },
+					{ "time": 0.1667, "angle": 150.6 },
+					{ "time": 0.2333, "angle": 48.22 },
+					{ "time": 0.3333, "angle": 262.79 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.6, "y": 13.96 },
+					{ "time": 0.2333, "x": 3.11, "y": 15.92 },
+					{ "time": 0.3333, "x": -3.59, "y": 10.95 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 82.24 },
+					{ "time": 0.2333, "angle": 103.18 },
+					{ "time": 0.3333, "angle": 107.85 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": -1.77, "y": 2.6 },
+					{ "time": 0.3333, "x": -6.42, "y": -0.17 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -59.43 },
+					{ "time": 0.0667, "angle": -297.93 },
+					{ "time": 0.1667, "angle": -214.61 },
+					{ "time": 0.2333, "angle": -273.75 },
+					{ "time": 0.3333, "angle": -65.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": -0.24, "y": -3.62 },
+					{ "time": 0.3333, "x": -1.48, "y": -11.54 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 71.52 },
+					{ "time": 0.2333, "angle": 112.16 },
+					{ "time": 0.3333, "angle": 126.89 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"jump2": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -24.16 }
+				],
+				"translate": [
+					{ "time": 0, "x": -11, "y": 61.46 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": -13.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.57, "y": -2.17 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -222.84 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -150.44 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -59.54 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 93.62 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -147.73 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.77, "y": -0.58 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 11.95 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.01, "y": 0.53 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 262.79 }
+				],
+				"translate": [
+					{ "time": 0, "x": -3.59, "y": 10.95 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 107.85 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.42, "y": -0.17 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -65.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.48, "y": -11.54 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 126.89 }
+				]
+			}
+		}
+	},
+	"jump3": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"TanganKiri": {
+				"attachment": [
+					{ "time": 0.3333, "name": "TanganKiriBuka" },
+					{ "time": 0.3667, "name": "TanganKepal" },
+					{ "time": 0.5, "name": "TanganKepal" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -24.16 },
+					{ "time": 0.1667, "angle": 8.79 },
+					{ "time": 0.3333, "angle": -60.14 },
+					{ "time": 0.5, "angle": -12.66 }
+				],
+				"translate": [
+					{ "time": 0, "x": -11, "y": 61.46 },
+					{ "time": 0.1667, "x": -8.07, "y": 26.53 },
+					{ "time": 0.3333, "x": -1.2, "y": -38.72 },
+					{ "time": 0.5, "x": -0.72, "y": -5.71 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": -13.61 },
+					{ "time": 0.1667, "angle": -27.31 },
+					{ "time": 0.3333, "angle": 50.96 },
+					{ "time": 0.5, "angle": 12.43 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.57, "y": -2.17 },
+					{ "time": 0.3333, "x": 0.2, "y": -2.99 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 137.16 },
+					{ "time": 0.1667, "angle": -314.3 },
+					{ "time": 0.3333, "angle": -229.57 },
+					{ "time": 0.5, "angle": -328.94 }
+				],
+				"translate": [
+					{ "time": 0, "x": -0.77, "y": -0.38 },
+					{ "time": 0.5, "x": -1.93, "y": -0.95 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -150.44 },
+					{ "time": 0.1667, "angle": -37.06 },
+					{ "time": 0.3333, "angle": -102.2 },
+					{ "time": 0.5, "angle": -36.26 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -59.54 },
+					{ "time": 0.1667, "angle": -53.84 },
+					{ "time": 0.3333, "angle": 30.34 },
+					{ "time": 0.5, "angle": 13.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.12, "y": -2.07 },
+					{ "time": 0.3333, "x": -3.54, "y": -0.34 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 93.62 },
+					{ "time": 0.1667, "angle": 39.87 },
+					{ "time": 0.5, "angle": 26.91 }
+				],
+				"translate": [
+					{ "time": 0, "x": 1.49, "y": 3.6 },
+					{ "time": 0.3333, "x": 2.98, "y": 7.19 },
+					{ "time": 0.5, "x": -2.69, "y": 4.07 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -147.73 },
+					{ "time": 0.1667, "angle": -21.6 },
+					{ "time": 0.3333, "angle": -88.3 },
+					{ "time": 0.5, "angle": -20.85 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.77, "y": -0.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 11.95 },
+					{ "time": 0.1667, "angle": -55.73 },
+					{ "time": 0.3333, "angle": 34.88 },
+					{ "time": 0.5, "angle": 6.03 }
+				],
+				"translate": [
+					{ "time": 0, "x": -2.01, "y": 0.53 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": -97.21 },
+					{ "time": 0.1667, "angle": 137.17 },
+					{ "time": 0.3333, "angle": 46.1 },
+					{ "time": 0.5, "angle": 357.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": -3.59, "y": 10.95 },
+					{ "time": 0.3333, "x": -2.23, "y": 1.99 },
+					{ "time": 0.5, "x": -3.13, "y": 5.58 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 107.85 },
+					{ "time": 0.1, "angle": -146.56 },
+					{ "time": 0.1667, "angle": 9.73 },
+					{ "time": 0.5, "angle": 34.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.42, "y": -0.17 },
+					{ "time": 0.3333, "x": -6.56, "y": 0.72 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 11.76 },
+					{ "time": 0.1667, "angle": 17.65, "curve": "stepped" },
+					{ "time": 0.3333, "angle": 17.65 },
+					{ "time": 0.3667, "angle": 16.24 },
+					{ "time": 0.5, "angle": 10.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0, "y": 0 },
+					{ "time": 0.3667, "x": -0.72, "y": 1.1 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -65.2 },
+					{ "time": 0.1667, "angle": -114.59 },
+					{ "time": 0.3333, "angle": -40.85 },
+					{ "time": 0.5, "angle": -15.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": -1.48, "y": -11.54 },
+					{ "time": 0.1667, "x": -0.91, "y": -7.2 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 126.89 },
+					{ "time": 0.1667, "angle": -21.19 },
+					{ "time": 0.3333, "angle": 31.74 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -35.69 },
+					{ "time": 0.1667, "angle": -53.53 },
+					{ "time": 0.3333, "angle": 31.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"run": {
+		"slots": {
+			"BanDepan": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilAsap": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilBody": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"MobilRoda": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Badan": {
+				"rotate": [
+					{ "time": 0, "angle": -17.61 },
+					{ "time": 0.1, "angle": -30.64 },
+					{ "time": 0.2, "angle": -22.83 },
+					{ "time": 0.3, "angle": -9.59 },
+					{ "time": 0.4, "angle": -17.61 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -5.95, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": -5.95 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"Kepala": {
+				"rotate": [
+					{ "time": 0, "angle": 25.01 },
+					{ "time": 0.1, "angle": 31.6 },
+					{ "time": 0.2, "angle": 21.65 },
+					{ "time": 0.3, "angle": 12.02 },
+					{ "time": 0.4, "angle": 25.01 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -0.33, "y": -3.9 },
+					{ "time": 0.3, "x": -1.97, "y": -4.96 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -16.14 },
+					{ "time": 0.1, "angle": -313.33 },
+					{ "time": 0.2, "angle": -279.71 },
+					{ "time": 0.4, "angle": -304.86 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": 5.31, "y": -8.48 },
+					{ "time": 0.4, "x": 0.35, "y": -15.04 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -46.21 },
+					{ "time": 0.1, "angle": -109.86 },
+					{ "time": 0.2, "angle": -67.17 },
+					{ "time": 0.3, "angle": -30.21 },
+					{ "time": 0.4, "angle": 2.03 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -0.8, "y": -1.37 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -52.34 },
+					{ "time": 0.2, "angle": -15.53 },
+					{ "time": 0.3, "angle": 11.46 },
+					{ "time": 0.4, "angle": 4.75 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"PahaKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 55.6 },
+					{ "time": 0.1, "angle": 49.36 },
+					{ "time": 0.2, "angle": 355.28 },
+					{ "time": 0.3, "angle": 325 },
+					{ "time": 0.4, "angle": 337.38 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -0.77, "y": 2.66 },
+					{ "time": 0.3, "x": -1.77, "y": 10.1 },
+					{ "time": 0.4, "x": 0.69, "y": 17.66 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BetisKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 9.19 },
+					{ "time": 0.1, "angle": -40.55 },
+					{ "time": 0.2, "angle": -0.59 },
+					{ "time": 0.3, "angle": -28.01 },
+					{ "time": 0.4, "angle": -30.89 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": -4.8, "y": -1.97 },
+					{ "time": 0.4, "x": -1.92, "y": -3.01 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"KakiKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 3.07 },
+					{ "time": 0.1, "angle": 19.67 },
+					{ "time": 0.2, "angle": 5.64 },
+					{ "time": 0.3, "angle": -45.81 },
+					{ "time": 0.4, "angle": -64.56 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 278.4 },
+					{ "time": 0.1, "angle": 310.61 },
+					{ "time": 0.2, "angle": 49.04 },
+					{ "time": 0.3, "angle": 29.08 },
+					{ "time": 0.4, "angle": 46.27 }
+				],
+				"translate": [
+					{ "time": 0, "x": -4.13, "y": 20.55 },
+					{ "time": 0.1, "x": -1.91, "y": 20.74 },
+					{ "time": 0.2, "x": 2.05, "y": 7.11 },
+					{ "time": 0.3, "x": 1.79, "y": 8.67 },
+					{ "time": 0.4, "x": 5.73, "y": 12.27 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 90.45 },
+					{ "time": 0.1, "angle": 70.09 },
+					{ "time": 0.2, "angle": 109.15 },
+					{ "time": 0.3, "angle": 69.74 },
+					{ "time": 0.4, "angle": 90.45 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.2, "x": -4.57, "y": 0.49 },
+					{ "time": 0.4, "x": -2.03, "y": 2.83 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKiri": {
+				"rotate": [
+					{ "time": 0, "angle": 16.5 },
+					{ "time": 0.2, "angle": 2.6 },
+					{ "time": 0.4, "angle": 16.5 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -4.02, "y": -0.24 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"BahuKanan": {
+				"rotate": [
+					{ "time": 0, "angle": -301.71 },
+					{ "time": 0.1, "angle": -329.85 },
+					{ "time": 0.2, "angle": -29.94 },
+					{ "time": 0.3, "angle": -63.68 },
+					{ "time": 0.4, "angle": -61.67 }
+				],
+				"translate": [
+					{ "time": 0, "x": 2.19, "y": -7.63, "curve": "stepped" },
+					{ "time": 0.4, "x": 2.19, "y": -7.63 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"LenganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 81.4 },
+					{ "time": 0.2, "angle": 94.13 },
+					{ "time": 0.3, "angle": 107.73 },
+					{ "time": 0.4, "angle": 81.4 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -3.1, "y": -0.57 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			},
+			"TanganKanan": {
+				"rotate": [
+					{ "time": 0, "angle": 5.6, "curve": "stepped" },
+					{ "time": 0.4, "angle": 5.6 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3, "x": -2.91, "y": -0.41 },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.4, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

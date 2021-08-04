@@ -1,0 +1,424 @@
+.game-profile {
+  .page-card {
+    margin: 0px auto;
+    max-width: 600px;
+    width: 100%;
+
+    @include media-over(md) {
+      margin: 40px auto;
+    }
+
+    @include media-over(lg) {
+      margin: 40px auto;
+      max-width: 700px;
+    }
+
+    @include media-over(xl) {
+      margin: 40px auto;
+      max-width: 800px;
+    }
+  }
+
+  .page-header {
+
+  }
+
+  .page-title {
+    font-weight: bold;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin: 0px;
+    padding: 20px;
+    background: black;
+    display: inline-block;
+    transform: translate(0, 50%);
+    max-width: calc(100% - 30px);
+    font-size: 18px;
+    padding: 1.4em 1.5em;
+    margin-top: -2.2em;
+    text-transform: uppercase;
+
+    @include media-over(md) {
+      font-size: 18px;
+    }
+
+    @include media-over(lg) {
+      font-size: 20px;
+    }
+
+    @include media-over(xl) {
+      font-size: 24px;
+    }
+  }
+
+  .section__points {
+    background: palette("crimson");
+    padding: 60px 20px 30px;
+    color: white;
+
+    @include media-over(md) {
+      padding: 70px 20px 30px;
+    }
+
+    @include media-over(lg) {
+      padding: 75px 25px 35px;
+    }
+
+    @include media-over(xl) {
+      padding: 80px 30px 40px;
+    } 
+  }
+
+  .section__info {
+    padding: 30px 20px;
+    background: #F5F5F6;
+
+    @include media-over(md) {
+
+    }
+
+    @include media-over(lg) {
+      padding: 35px 25px 35px;
+    }
+
+    @include media-over(xl) {
+      padding: 40px 30px 40px;
+    } 
+  }
+
+  .section-copy {
+    p {
+      font-size: 16px;
+      line-height: 120%;
+      margin: 0 0 0.6em;
+      line-height: 1.6em;
+
+      @include media-over(md) {
+        font-size: 16px;
+      }
+  
+      @include media-over(lg) {
+        font-size: 18px;
+      }
+  
+      @include media-over(xl) {
+        font-size: 20px;
+      }
+
+
+      span {
+        font-weight: bold;
+        color: palette("crimson");
+      }
+    }
+  }
+
+  .points {
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    font-family: $title-font-family;
+
+    @include media-over(md) {
+      font-size: 70px;
+    }
+
+    @include media-over(lg) {
+      font-size: 82px;
+    }
+
+    @include media-over(xl) {
+      font-size: 96px;
+    }
+  }
+
+  .shoutbox__cta {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    margin: 20px auto 0;
+
+    @include media-over(md) {
+      margin: 30px auto 0;
+    }
+
+    @include media-over(lg) {
+      margin: 35px auto 0;
+    }
+
+    @include media-over(xl) {
+      margin: 40px auto 0;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding-top: 0.6em;
+      padding-bottom: 0.6em;
+      min-width: 0;
+      height: auto;
+
+      @include media-over(md) {
+        font-size: 18px;
+      }
+  
+      @include media-over(lg) {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+
+.game-instruction {
+  .page-card {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .card-header {
+    background: palette("crimson");
+    background-image: url("../images/bg-video.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 20px 30px;
+
+    @include media-over(md) {
+      padding: 30px 60px;
+    }
+
+    @include media-over(lg) {
+      padding: 35px 70px;
+    }
+
+    @include media-over(xl) {
+      padding: 40px 80px;
+    }
+  }
+
+  .card-title {
+    color: white;
+    font-family: $title-font-family;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 120%;
+    text-transform: uppercase;
+    margin: 0 0 1em;
+
+    @include media-over(md) {
+      font-size: 24px;
+    }
+
+    @include media-over(lg) {
+      font-size: 30px;
+    }
+
+    @include media-over(xl) {
+      font-size: 36px;
+    }
+
+
+    small {
+      font-size: 0.5em;
+      display: block;
+    }
+
+    .title-image {
+      max-width: 70rem;
+      width: 80%;
+    }
+  }
+
+  .video-wrapper {
+    width: 100%;
+    margin: 0 auto -31%;
+    padding-top: 56.25%;
+  }
+
+  #player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .video-trigger {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in;
+    opacity: 1;
+    pointer-events: all;
+
+    &.disabled {
+      pointer-events: none;
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .btn-image {
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in;
+    width: 45px;
+    height: 45px;
+
+    @include media-over(md) {
+      width: 55px;
+      height: 55px;
+    }
+
+    @include media-over(lg) {
+      width: 65px;
+      height: 65px;
+    }
+
+    @include media-over(xl) {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
+  .video-trigger:hover .btn-image {
+    opacity: 1;
+  }
+
+  .cta-wrapper {
+    margin-bottom: 1.6rem;
+
+    @include media-over(lg) {
+      margin-bottom: 2rem;
+    }
+
+    .btn-play {
+      background: linear-gradient(96.21deg, #ECECEC 2.83%, #BCBCBC 100.92%);
+      border-radius: 5px;
+      padding: 0;
+      color: white;
+      font-weight: bold;
+      height: auto;
+      font-size: 16px;
+
+      @include media-over(lg) {
+        font-size: 18px;
+      }
+  
+      @include media-over(xl) {
+        font-size: 20px;
+      } 
+
+      span {
+        background: #EC2427;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 0.5em;
+        transition: all 0.15s ease-in;
+        display: inline-block;
+      }
+
+      &:hover span {
+        background: lighten(#EC2427, 10%)
+      }
+      &:active span,
+      &:focus span {
+        background: darken(#EC2427, 10%)
+      }
+    }
+  }
+
+  .card-content {
+    padding: 27% 30px 30px;
+    background: #F5F5F6;
+    
+    @include media-over(md) {
+      padding: 27% 60px 30px;
+    }
+
+    @include media-over(lg) {
+      padding: 27% 70px 35px;
+    }
+
+    @include media-over(xl) {
+      padding: 27% 80px 40px;
+    } 
+
+    ul {
+      list-style: none;
+      margin: 0 0 2em;
+      padding: 0;
+    }
+
+    li {
+      font-size: 12px;
+      line-height: 120%;
+      margin: 0 0 0.6em;
+      line-height: 1.6em;
+      position: relative;
+      padding-left: 1.6em;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0.6em;
+        height: 0.6em;
+        background: #ec2427;
+        left: 0;
+        top: 0.55em;
+      }
+
+      @include media-over(md) {
+        font-size: 16px;
+      }
+  
+      @include media-over(lg) {
+        font-size: 18px;
+      }
+  
+      @include media-over(xl) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .card-subtitle {
+    font-size: 20px;
+    text-transform: none;
+    color: black;
+    margin: 0 0 0.8em;
+
+    @include media-over(md) {
+      font-size: 24px;
+    }
+
+    @include media-over(lg) {
+      font-size: 26px;
+    }
+
+    @include media-over(xl) {
+      font-size: 28px;
+    }
+  }
+}

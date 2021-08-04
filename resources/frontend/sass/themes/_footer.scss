@@ -121,3 +121,23 @@
     }
   }
 }
+
+.pointNavSlider {
+  .slick-list {
+    overflow: visible;
+  }
+
+  .slick-slide {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include media-over(md) {
+      padding: 0;
+    }
+  }
+
+  .point-nav__item.active .point-nav__link {
+    color: #EC2427 !important;
+    font-weight: 900;
+  }
+}

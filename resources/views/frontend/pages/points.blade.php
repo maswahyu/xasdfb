@@ -1,23 +1,16 @@
-@extends('frontend.layouts.skeleton', ['contentClass' => 'no-padding'])
+@extends('frontend.layouts.skeleton', ['contentClass' => 'fit-padding'])
 
 @section('meta_title', 'My Points')
 @section('head_title', 'My Points')
 @section('head_url', url()->current())
-@section('inside-head')
-<style>
-    .point-banner > .container {
-        padding-bottom: 4rem;
-    }
-    .site-content.no-padding {
-        padding-top: 8rem !important;
-    }
-</style>
-@endsection
+
 @section('content')
 
 <div class="point-banner">
-    {{-- <img src="{{ asset('static/images/img_point2.jpg') }}" alt="" class="point-banner__bg"> --}}
+    <img src="{{ asset('static/images/new_mypoints_banner.jpg') }}" alt="" class="hero-header">
+
     <div class="container">
+<<<<<<< HEAD
         <div class="row video-padding">
             <div class="span-12 span-lg-10 off-lg-1">
                 <img style="width: 100%;" src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_TEASER-1000x400-H.jpg')}}" alt="">
@@ -27,48 +20,100 @@
                 </video> --}}
             </div>
         </div>
+=======
+>>>>>>> enhancements
         <div class="point-banner__content">
-            <div class="point-banner__title">
-                <span>Daftar jadi member LAZONE.ID dan Terus Kumpulkan Point-mu!</span>
+            <div class="row">
+                <div class="span-12 span-lg-10 off-lg-1">
+                    @php ($hasVideo = false)
+
+                    @if ($hasVideo)
+                        <div class="point-banner-header with-video">
+                            <div class="row">
+                                <div class="span-12 span-md-6 order-md-2 point-banner__title-wrapper">
+                                    <div class="point-banner__title">
+                                        <span>Daftar Jadi Member LAZONE.ID dan Dapatkan Hadiah Eksklusif!</span>
+                                    </div>
+                                </div>
+
+                                <div class="span-12 span-md-6 order-md-1 point-banner__video-wrapper">
+                                    <div class="video-outer">
+                                        <video id="player" playsinline loop muted autoplay>
+                                            <source src="https://www.lazone.id/static/video/mypoints_lazoneid360.mp4" type="video/mp4" size="360">
+                                            <source src="https://www.lazone.id/static/video/mypoints_lazoneid720.mp4" type="video/mp4" size="720">
+                                        </video>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        <div class="point-banner-header without-video">
+                            <div class="row">
+                                <div class="span-12 point-banner__title-wrapper">
+                                    <div class="point-banner__title">
+                                        <span>Daftar Jadi Member LAZONE.ID dan Dapatkan Hadiah Eksklusif!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    <div class="row">
+                        <div class="span-12">
+                            <div class="point-banner__text">
+                                <span>Dapatkan <strong>Jaket Bold Riders x Bulls Syndicate</strong>, yang bisa di #CustomLAngsung dengan patch nama kamu atau #TukarLAngsung point kamu, buat kesempatan menangin <strong>Kamera Sony Mirrorless</strong>.</span>
+                            </div>
+                            {{-- <div class="point-banner__cta text-center">
+                                <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>
+                            </div> --}}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="point-banner__text">
-                <span>Ingin dapat hadiah menarik tiap bulannya? Yuk daftarkan dirimu jadi member LAZONE.ID sekarang dan kumpulkan terus poin-mu!</span>
-            </div>
-            <div class="point-banner__cta text-center">
-                <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>
+
+            <div class="row">
+                <div class="span-12">
+                    <div class="rewards-list {{  (count($points) > 1) ? 'rewards-list__multiple jsRewardsSlider' : 'rewards-list__single jsRewardSingleSlider' }}  {{  ($hasVideo) ? '' : 'rewards-list__alternate-bg' }}">
+                        @foreach($points as $item)
+                            <div class="rewards-wrapper rewards-wrapper__card">
+                                <a href="" class="card-inner rewards-link">
+                                    <div class="rewards-img-wrapper">
+                                        <div class="rewards-img" style="background-image: url('{!! imageview($item->image) !!}');"></div>
+                                    </div>
+                                    <div class="rewards-desc d-flex flex-column">
+                                        <p class="rewards-desc__category">{{ $item->category }}</p>
+                                        <p class="rewards-desc__title">{{ $item->name }}</p>
+                                        <p class="rewards-desc__point"><strong><i class="ico-star"></i>{{ seribu($item->poin) }} Points</strong></p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- <div class="faux-bg">
-
+<!-- <div class="faux-bg">
     <div class="container">
-
         <div class="row point-heading">
-
             <div class="span-12">
-
                 <div class="row flex-justify-center">
                     <div class="section-title section-title--plain section-title--page section-title--point">
                         <span class="section-title__label section-title__label--category">Hadiah Bulan Ini</span>
                     </div>
                 </div>
-
                 <div class="subtitle subtitle--point text-center">
                     <span>Redeem point-mu dengan hadiah menarik BULAN INI</span>
                 </div>
-
             </div>
-
         </div>
-
         <div class="row">
-
             <div class="span-12">
-
                 <div class="prize-slider jsPrizeSlider">
-
                     @foreach($points as $item)
                     <div class="prize-slider__slide">
                         <div class="prize">
@@ -87,16 +132,11 @@
                         </div>
                     </div>
                     @endforeach
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-</div> --}}
+</div> -->
 
 @include('frontend.partials.how-to')
 

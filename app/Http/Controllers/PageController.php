@@ -76,6 +76,7 @@ class PageController extends Controller
         return view('frontend.pages.about', compact('ads'));
     }
 
+
     public function stream($slug)
     {
         return view('frontend.pages.stream', [

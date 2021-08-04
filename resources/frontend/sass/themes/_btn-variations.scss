@@ -112,3 +112,10 @@
     padding: .8rem 4rem;
   }
 }
+
+.btn-link {
+  background-image: url("../images/bg-btn-link.png");   
+  background-size: 1em;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1.3em) 50%;
+}

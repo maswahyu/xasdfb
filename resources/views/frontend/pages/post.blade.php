@@ -52,7 +52,7 @@
         }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
         .container-title {
             max-width: 800px;
             margin-left: 19%;
@@ -148,51 +148,87 @@
 
     <div class="row">
 
-        <div id="sidebar" class="span-12 span-lg-1 sidebar">
-            <ul class="list list--vertical">
-                <div>
-                    <li class="list__label">Share:</li>
-                </div>
-                <div class="row flex-justify-center">
-                    <li class="list__item list__item--social">
-                        <a class="list__link list__link--social jsFbShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}"
-                            href="{{ 'https://www.facebook.com/sharer/sharer.php?' . 'u=' . urlencode(url()->current()) }}">
-                            <img src="{{ asset('static/images/fb-so-blue.png') }}" alt="">
-                        </a>
+        <div id="sidebar" class="span-12 span-lg-1 sidebar sidebar-v2">
+            <div class="row flex-justify-center">
+                <ul class="list list--vertical" data-link={!! url()->current() !!}>
+                    <li class="list__label dropdown">Share: <button id="toggleDropdownShareArticle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" class="tooltip dropdown-toggle"><img src="{{ asset('static/images/share-v2/ico-question.png') }}" alt="Tooltip" class="tooltip-image"></button>
+                        <div id="dropdownShareArticle" class="dropdown-menu" aria-labelledby="dropdownShareArticle">
+                            <button class="btn btn-close" id="closeDropdownShareArticle">
+                                <img src="{{ asset('static/images/ico-close.png') }}" alt="Close" class="btn-image">
+                            </button>
+                            <h3 class="dropdown-title">Share Article</h3>
+
+                            @auth
+                                <div class="dropdown-copy">
+                                    <p>Poin yang akan kamu dapatkan setelah share:</p>
+                                </div>
+
+                                <ul class="point-list">
+                                    <li>
+                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB"> + 100 Points
+                                    </li>
+                                    <li>
+                                        <img class="list-image" src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW"> + 100 Points
+                                    </li>
+                                </ul>
+
+                                <div class="cta-wrapper">
+                                    <a href="{{ url('points') }}" target="_blank" class="btn cta-btn btn-crimson btn-shoutbox btn-link"><span class="text-white semibold">MORE INFO</span></a>
+                                </div>
+                            @else
+                                <div class="dropdown-copy">
+                                    <p>Login ke MyPoints dan dapatkan hingga 100 points setiap kali kamu share artikel, yang nanti bisa kamu tukarkan dengan <strong>hadiah menarik</strong>!</p>
+                                </div>
+                                <div class="cta-wrapper">
+                                    <a href="{{ url('member/login') }}" class="btn cta-btn btn-crimson btn-shoutbox btn-link"><span class="text-white semibold">LOGIN</span></a>
+                                </div>
+                            @endauth
+                        </div>
                     </li>
+
+
                     <li class="list__item list__item--social">
-                        <a class="list__link list__link--social"
-                            href="#">
-                            <img src="{{ asset('static/images/messenger-share.png') }}" alt="">
+                        <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK }}">
+                            <img src="{{ asset('static/images/share-v2/ico-fb.png') }}" alt="FB">
                         </a>
+                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK), array_column($shareArticles, 'share_type')) > -1)
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image"> 100</span>
+                        @endif
                     </li>
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social jsTwShare" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_TWITTER }}"
                             href="{{ 'https://twitter.com/intent/tweet/' . '?text='. urlencode($post->title) .'&url=' . urlencode(url()->current()) }}">
-                            <img src="{{ asset('static/images/tw-so.png') }}" alt="">
+                            <img src="{{ asset('static/images/share-v2/ico-tw.png') }}" alt="TW">
                         </a>
+                        @if(!empty($shareArticles) && array_search(strtoupper(\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER), array_column($shareArticles, 'share_type')) > -1)
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-check.png') }}" alt="" class="point-image"></span>
+                        @else
+                        <span class="point"><img src="{{ asset('static/images/share-v2/ico-star.png') }}" alt="" class="point-image">100</span>
+                        @endif
                     </li>
+
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP }}"
                             href="{{ 'https://api.whatsapp.com/send?text=' . urlencode($post->title) . ' ' . urlencode(url()->current()) }}">
-                            <img src="{{ asset('static/images/wa-share.png') }}" alt="">
+                            <img src="{{ asset('static/images/share-v2/ico-wa.png') }}" alt="WhatsApp">
                         </a>
                     </li>
                     <li class="list__item list__item--social">
                         <a class="list__link list__link--social" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_LINE }}"
                             href="{{ 'https://social-plugins.line.me/lineit/share?url='.urlencode(url()->current()).'&text=' . urlencode($post->title) }}">
-                            <img src="{{ asset('static/images/line-share.png') }}" alt="">
+                            <img src="{{ asset('static/images/share-v2/ico-line.png') }}" alt="LINE">
                         </a>
                     </li>
                     <li class="list__item list__item--social">
                         <a data-clipboard-text="{{ url()->current() }}" data-share="{{ \App\ShareNewsChannel::SHARE_CHANNEL_CLIPBOARD }}" id="refCopyLink" class="list__link list__link--social jsCopyLink"
                             >
-                            <img src="{{ asset('static/images/link-share.png') }}" alt="">
+                            <img src="{{ asset('static/images/share-v2/ico-link.png') }}" alt="Copy link">
                         </a>
                     </li>
-                </div>
-            </ul>
-
+                </ul>
+            </div>
         </div>
 
         {{-- CONTENT DUMMY --}}
@@ -374,6 +410,19 @@
         alert('Copied');
         e.clearSelection();
     })
+
+
+    $('#toggleDropdownShareArticle').on('click', function() {
+        $('#dropdownShareArticle').toggleClass('is-shown');
+    })
+
+    $('#closeDropdownShareArticle').on('click', function() {
+        $('#dropdownShareArticle').removeClass('is-shown');
+    })
+
+
+
+
 </script>
 @if($post->slug === 'chandra-liow-siap-memberikan-ilmunya-di-lensa-academy-2021-Rrg9A')
 <script>
@@ -492,6 +541,16 @@
 </script>
 {{-- END POKKT LA BOLD PUBG TRACKING --}}
 @endif
+<script>
+    const FB_SHARE_ID = '{{env('FB_SHARE')}}';
+    const SHARE_CHANNEL = {
+        facebook: '{{\App\ShareNewsChannel::SHARE_CHANNEL_FACEBOOK}}',
+        twitter: '{{\App\ShareNewsChannel::SHARE_CHANNEL_TWITTER}}',
+        whatsapp: '{{\App\ShareNewsChannel::SHARE_CHANNEL_WHATSAPP}}',
+        line: '{{\App\ShareNewsChannel::SHARE_CHANNEL_LINE}}',
+        clipboard: '{{\App\ShareNewsChannel::SHARE_CHANNEL_CLIPBOARD}}'
+    }
+</script>
 <script src="{{ asset('static/js/jquery.fitvids.js') }}"></script>
 <script src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script src="{{ asset('static/js/ResizeSensor.js') }}"></script>

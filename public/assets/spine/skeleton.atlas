@@ -1,0 +1,97 @@
+
+skeleton.png
+size: 390,390
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Badan
+  rotate: false
+  xy: 2, 134
+  size: 41, 81
+  orig: 41, 81
+  offset: 0, 0
+  index: -1
+Bahu
+  rotate: false
+  xy: 45, 178
+  size: 21, 37
+  orig: 21, 37
+  offset: 0, 0
+  index: -1
+Betis
+  rotate: false
+  xy: 95, 241
+  size: 16, 42
+  orig: 16, 42
+  offset: 0, 0
+  index: -1
+Kepala
+  rotate: false
+  xy: 2, 99
+  size: 26, 33
+  orig: 26, 33
+  offset: 0, 0
+  index: -1
+Lengan
+  rotate: true
+  xy: 71, 225
+  size: 14, 29
+  orig: 14, 29
+  offset: 0, 0
+  index: -1
+MobilAsap
+  rotate: false
+  xy: 2, 69
+  size: 12, 13
+  orig: 12, 13
+  offset: 0, 0
+  index: -1
+MobilBody
+  rotate: false
+  xy: 2, 285
+  size: 386, 103
+  orig: 386, 103
+  offset: 0, 0
+  index: -1
+MobilRoda
+  rotate: false
+  xy: 2, 217
+  size: 67, 66
+  orig: 67, 66
+  offset: 0, 0
+  index: -1
+Paha
+  rotate: false
+  xy: 71, 241
+  size: 22, 42
+  orig: 22, 42
+  offset: 0, 0
+  index: -1
+Sepatu
+  rotate: false
+  xy: 2, 84
+  size: 26, 13
+  orig: 26, 13
+  offset: 0, 0
+  index: -1
+TanganKananBuka
+  rotate: true
+  xy: 30, 112
+  size: 20, 12
+  orig: 20, 12
+  offset: 0, 0
+  index: -1
+TanganKepal
+  rotate: false
+  xy: 113, 269
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+TanganKiriBuka
+  rotate: false
+  xy: 45, 161
+  size: 20, 15
+  orig: 20, 15
+  offset: 0, 0
+  index: -1

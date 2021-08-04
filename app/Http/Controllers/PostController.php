@@ -8,10 +8,12 @@ use App\Setting;
 use App\Category;
 use Carbon\Carbon;
 
-use App\StickyBanner;
 use App\NewsBanner;
-use Illuminate\Http\Request;
+use App\StickyBanner;
 use App\ShareNewsChannel;
+use App\Component\MyPoint;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\NewsCollection;
 
 class PostController extends Controller
@@ -224,8 +226,8 @@ class PostController extends Controller
         ];
 
         $banner = NewsBanner::detail($post->id);
-
 	    return view('frontend.pages.post', [
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current()),
             'post' => $post,
 	        'relatedPosts' => $related,
             'ads' => $ads,
@@ -261,6 +263,7 @@ class PostController extends Controller
         ];
 
         return view('frontend.pages.post', [
+            'shareArticles' => (new MyPoint())->getShareArticle(url()->current()),
             'post' => $post,
             'relatedPosts' => $related,
             'ads' => $ads,
@@ -291,7 +294,27 @@ class PostController extends Controller
 
     public function hitShareButton(Request $request) {
         ShareNewsChannel::newRecord($request);
-        return response()->json()->setStatusCode(200);
+        if(Auth::check()) { //only login user can get point, otherwise just can share
+            $list_share = (new MyPoint())->getShareArticle($request->input('link'));
+            if(!empty($list_share) && array_search(strtoupper($request->input('channel')), array_column($list_share, 'share_type')) > -1) {
+                return response()->json([
+                    'message' => 'Kamu sudah mendapatkan point dari article ini',
+                ], 200);
+            }
+            $data = (new MyPoint())->ShareArticle($request->input('channel'),$request->input('link'));
+            if(isset($data['meta']) && isset($data['meta']['code']) && $data['meta']['code'] == 200) {
+                return response()->json([
+                    'message' => 'Kamu berhasil mendapatkan point'
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'You have reach limit today'
+                ], 400);
+            }
+        }
+        return \response()->json([
+            'message' => 'Login untuk mendapatkan poin'
+        ], 401);
     }
 
 }

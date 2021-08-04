@@ -6,8 +6,21 @@
     padding: 14rem 0 6rem !important;
   }
 
-  &.no-padding {
+  &.no-padding { 
     padding-top: 0;
+  }
+
+  &.fit-padding {
+    padding-top: 110px !important;
+
+    @include media-over(md) {
+      padding-top: 6rem !important;
+    }
+
+    @include media-over(xl) {
+      padding-top: 8rem !important;
+    }
+
   }
 }
 
