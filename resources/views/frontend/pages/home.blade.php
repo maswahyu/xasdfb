@@ -494,7 +494,7 @@
     <div class="modal-content">
         <span class="btn-close"></span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
-            <img src="static\images\Popup_Home.jpg" alt="">
+            <img src="static\images\LAZONE_Home_Mobile_banner_580x755-01.jpg" alt="">
         </a>
     </div>
     <div class="backdrop"></div>
