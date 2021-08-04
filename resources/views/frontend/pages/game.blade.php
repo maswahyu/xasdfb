@@ -19,7 +19,7 @@
                         </h1>
 
                         <div class="video-wrapper position-relative">
-                            <div id="player" data-video-id="M7lc1UVf-VE">
+                            <div id="player" data-video-id="B9Rgj53LlbI">
 
                             </div>
                             <button class="video-trigger disabled" style="background-image: url({{ asset('static/images/mock/video-cover.jpg') }})">
