@@ -122,7 +122,7 @@ class MyPoint
                 $response = $client->get($ENDPOINT, [
                     'http_errors' => false,
                     'query' => [
-                        'link' => \strtolower($link)
+                        'link' => $link
                     ]
                 ]);
 
