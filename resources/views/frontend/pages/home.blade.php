@@ -1,5 +1,9 @@
 @extends('frontend.layouts.skeleton')
 
+@section('meta')
+    <link rel="preload" as="image" href="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" />
+@endsection
+
 @section('content')
 {{-- banner wifi --}}
 @if(isset($bannerWifi) && $bannerWifi)
@@ -20,6 +24,18 @@
 {{-- Above the fold --}}
 @section('inside-head')
 <style type="text/css">
+    #modalHome {
+        transition: all ease .3s;
+    }
+    #modalHome.modal--hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #modalHome .modal-content a {
+        display: block;
+    }
+
     @media screen and (max-width: 768px) {
         .post-card--highlight {
             padding-bottom: 2rem;
@@ -41,7 +57,8 @@
         }
 
         #modalHome .modal-content img {
-            max-width: 300px
+            max-width: 300px;
+            height: auto;
         }
     }
     @media screen and (min-width: 768px) {
@@ -63,11 +80,13 @@
 
         #modalHome .modal-content img {
             width: 350px;
+            height: auto;
         }
     }
     @media screen and (min-width: 1400px) {
         #modalHome .modal-content img {
             width: 450px;
+            height: auto;
         }
     }
 
@@ -490,15 +509,25 @@
 @endsection
 
 @section('after-site-footer')
-<div id="modalHome">
+<div id="modalHome" class="modal--hidden js-initially-hidden">
+{{-- <div id="modalHome"> --}}
     <div class="modal-content">
         <span class="btn-close"></span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
-            <img src="static\images\LAZONE_Home_Mobile_banner_580x755-01.jpg" alt="">
+            <img src="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" alt="LAZONE My Points" width="300" height="391">
         </a>
     </div>
     <div class="backdrop"></div>
 </div>
+{{-- <div id="modalHome">
+    <div class="modal-content">
+        <span class="btn-close"></span>
+        <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
+            <img src="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" alt="LAZONE My Points">
+        </a>
+    </div>
+    <div class="backdrop"></div>
+</div> --}}
 @endsection
 
 @section('before-body-end')
@@ -793,8 +822,12 @@
 </script>
 @endverbatim
 <script type="text/javascript">
-var banner_image = '{{ imageview($ads['image']) }}'
-var banner_url = '{{ $ads['url'] }}'
+var banner_image = '{{ imageview($ads['image']) }}';
+var banner_url = '{{ $ads['url'] }}';
+
+setTimeout(function() {
+    $('.js-initially-hidden').removeClass('modal--hidden');
+}, 3000);
 
 $("#modalHome .btn-close, #modalHome .backdrop").on('click', () => {
     $("#modalHome").remove();

@@ -23,6 +23,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
+    <link href=’https://www.google-analytics.com’ rel=’preconnect’ crossorigin>
+    <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
     {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
@@ -90,6 +92,11 @@
         }
     </style>
     {{-- end fcp improvement --}}
+    {{-- TODO: load critical css then load the whole css --}}
+    {{-- <link rel="preload" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
+    </noscript> --}}
     @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>

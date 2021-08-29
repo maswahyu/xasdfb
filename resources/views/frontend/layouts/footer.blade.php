@@ -78,10 +78,10 @@
 
 <div class="floating-game-btn">
     <a class="btn-link" href="{{ route('game-index') }}">
-        <img src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" class="link-image">
+        <img width="145" height="151" class="link-image" src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" srcset="{{ asset('static/images/play-game.png') }} 1x, {{ asset('static/images/play-game@2x.png') }} 2x">
         <span class="d-none">PLAY GAME</span>
     </a>
     <button class="btn-close">
-        <img src="{{ asset('static/images/play-game-btn-close.png') }}" alt="close" class="close-btn-image">
+        <img width="22" height="22" src="{{ asset('static/images/play-game-btn-close.png') }}" alt="close" class="close-btn-image">
     </button>
 </div>
