@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="span-12">
                             <div class="point-banner__text">
-                                <span>Dapatkan <strong>Jaket Bold Riders x Bulls Syndicate</strong>, yang bisa di #CustomLAngsung dengan patch nama kamu atau #TukarLAngsung point kamu, buat kesempatan menangin <strong>Kamera Sony Mirrorless</strong>.</span>
+                                <span>Dapatkan #Merchandise <strong>T-Shirt Streetball</strong> dan <strong>Hoodie Streetball </strong> atau #TukarLAngsung point kamu, buat kesempatan menangin <strong>Apple Watch Series 6</strong>.</span>
                             </div>
                             {{-- <div class="point-banner__cta text-center">
                                 <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>

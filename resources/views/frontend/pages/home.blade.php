@@ -509,21 +509,11 @@
 @endsection
 
 @section('after-site-footer')
-<div id="modalHome" class="modal--hidden js-initially-hidden">
-{{-- <div id="modalHome"> --}}
+{{-- <div id="modalHome" class="modal--hidden js-initially-hidden">
     <div class="modal-content">
         <span class="btn-close"></span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
             <img src="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" alt="LAZONE My Points" width="300" height="391">
-        </a>
-    </div>
-    <div class="backdrop"></div>
-</div>
-{{-- <div id="modalHome">
-    <div class="modal-content">
-        <span class="btn-close"></span>
-        <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
-            <img src="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" alt="LAZONE My Points">
         </a>
     </div>
     <div class="backdrop"></div>
