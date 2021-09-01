@@ -490,7 +490,7 @@
 @endsection
 
 @section('after-site-footer')
-<div id="modalHome">
+{{-- <div id="modalHome">
     <div class="modal-content">
         <span class="btn-close"></span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
@@ -498,7 +498,7 @@
         </a>
     </div>
     <div class="backdrop"></div>
-</div>
+</div> --}}
 @endsection
 
 @section('before-body-end')

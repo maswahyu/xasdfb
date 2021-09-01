@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <ol class="styled-list">
-                        <li>Hadiah utama dan merchandise bulanan per bulan Agustus 2021 adalah #TukarLAngsung Sony Alpha a5100 Mirrorless Digital Camera dan #CustomLAngsung Jaket BOLD Riders X Bulls Syndicate.</li>
+                        <li>Hadiah utama dan merchandise bulanan per bulan September 2021 adalah #TukarLAngsung Apple Watch Series 6 dan #Merchandise T-Shirt Streetball dan Hoodie Streetball.</li>
                         <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin dengan hadiah.</li>
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika
                             Member mendapatkan poin mulai bulan Februari 2021, maka poin tersebut akan
