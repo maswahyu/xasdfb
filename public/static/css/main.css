@@ -4918,6 +4918,13 @@ ol.styled-list li{
 
 .mobile-header{
   position:fixed;
+  width:100%;
+  z-index:500;
+  background-color:#000;
+  transition:top .15s ease;
+}
+.mobile-header-inner{
+  position:relative;
   -js-display:flex;
   display:flex;
   align-items:center;
@@ -4925,44 +4932,40 @@ ol.styled-list li{
   left:0;
   padding:0 10px;
   height:60px;
-  width:100%;
-  background-color:#000;
-  z-index:500;
-  transition:top .15s ease;
 }
 @media (min-width:1280px){
-  .mobile-header{
+  .mobile-header-inner{
     display:none;
   }
 }
-.mobile-header .btn-login{
+.mobile-header-inner .btn-login{
   padding:.8rem .5rem;
   margin-right:10px;
 }
-.mobile-header .close-user-menu{
+.mobile-header-inner .close-user-menu{
   right:10px;
   top:5px;
 }
-.mobile-header .close-user-menu .hamburger-box{
+.mobile-header-inner .close-user-menu .hamburger-box{
   width:20px;
 }
-.mobile-header .close-user-menu .hamburger-inner,.mobile-header .close-user-menu .hamburger-inner:after,.mobile-header .close-user-menu .hamburger-inner:before{
+.mobile-header-inner .close-user-menu .hamburger-inner,.mobile-header-inner .close-user-menu .hamburger-inner:after,.mobile-header-inner .close-user-menu .hamburger-inner:before{
   width:18px;
   height:2px;
 }
-.mobile-header .close-user-menu.hamburger--slider.is-active .hamburger-box{
+.mobile-header-inner .close-user-menu.hamburger--slider.is-active .hamburger-box{
   top:0;
 }
-.mobile-header .close-user-menu.hamburger--slider.is-active .hamburger-inner:after{
+.mobile-header-inner .close-user-menu.hamburger--slider.is-active .hamburger-inner:after{
   transform:translate3d(0, -6px, 0) rotate(-90deg);
 }
-.mobile-header .close-user-menu .hamburger-inner:after{
+.mobile-header-inner .close-user-menu .hamburger-inner:after{
   top:6px;
 }
-.mobile-header .close-user-menu .hamburger-inner:before{
+.mobile-header-inner .close-user-menu .hamburger-inner:before{
   top:12px;
 }
-.mobile-header .mobile-menu-trigger{
+.mobile-header-inner .mobile-menu-trigger{
   position:absolute;
   top:50%;
   margin-top:-3rem;
@@ -4970,29 +4973,55 @@ ol.styled-list li{
   outline:none;
   padding:20px;
 }
-.mobile-header .mobile-menu-trigger__left{
+.mobile-header-inner .mobile-menu-trigger__left{
   left:0;
   right:unset;
 }
-.mobile-header .mobile-menu-trigger .hamburger-inner,.mobile-header .mobile-menu-trigger .hamburger-inner:after,.mobile-header .mobile-menu-trigger .hamburger-inner:before{
+.mobile-header-inner .mobile-menu-trigger .hamburger-inner,.mobile-header-inner .mobile-menu-trigger .hamburger-inner:after,.mobile-header-inner .mobile-menu-trigger .hamburger-inner:before{
   width:18px;
   height:2px;
 }
-.mobile-header .mobile-menu-trigger.hamburger--slider.is-active .hamburger-box{
+.mobile-header-inner .mobile-menu-trigger.hamburger--slider.is-active .hamburger-box{
   top:0;
 }
-.mobile-header .mobile-menu-trigger.hamburger--slider.is-active .hamburger-inner:after{
+.mobile-header-inner .mobile-menu-trigger.hamburger--slider.is-active .hamburger-inner:after{
   transform:translate3d(0, -6px, 0) rotate(-90deg);
 }
-.mobile-header .mobile-menu-trigger .hamburger-inner:after{
+.mobile-header-inner .mobile-menu-trigger .hamburger-inner:after{
   top:6px;
 }
-.mobile-header .mobile-menu-trigger .hamburger-inner:before{
+.mobile-header-inner .mobile-menu-trigger .hamburger-inner:before{
   top:12px;
 }
-.mobile-header .site-logo{
+.mobile-header-inner .site-logo{
   margin-left:5rem;
   margin-top:2rem;
+}
+.mobile-header #polling-bar-mobile{
+  padding:10px 20px;
+  background-color:#ec2427;
+  font-size:14px;
+  color:#fff;
+  -js-display:flex;
+  display:flex;
+}
+.mobile-header #polling-bar-mobile .left{
+  -js-display:flex;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  width:95%;
+}
+.mobile-header #polling-bar-mobile .left span:first-child{
+  font-weight:700;
+  margin:0 0 5px;
+}
+.mobile-header #polling-bar-mobile .right{
+  -js-display:flex;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:5%;
 }
 
 .search-form{
@@ -5329,6 +5358,23 @@ ol.styled-list li{
 
 #polling-bar{
   background-color:#ec2427;
+}
+#polling-bar .container-header{
+  -js-display:flex;
+  display:flex;
+  padding:10px 0;
+  justify-content:center;
+  align-items:center;
+  font-size:14px;
+}
+#polling-bar .container-header span:first-child{
+  font-weight:700;
+}
+#polling-bar .container-header span:nth-child(2){
+  margin:0 25px;
+}
+#polling-bar .container-header .btn{
+  font-size:14px;
 }
 
 .site-footer{

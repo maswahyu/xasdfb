@@ -118,4 +118,10 @@
 
 </div>
 
-<div id="polling-bar">asd</div>
+<div id="polling-bar">
+    <div class="container container-header">
+        <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
+        <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+        <button class="btn btn-ghost-white">Tampilkan Polling</button>
+    </div>
+</div>

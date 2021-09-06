@@ -69,7 +69,7 @@
         .site-header {
             display: none;
         }
-        @media (min-width: 1280px) {
+        /* @media (min-width: 1280px) {
             .mobile-header {
                 display: none !important;
             }
@@ -87,7 +87,7 @@
             background-color: #000;
             z-index: 500;
             transition: top .15s ease;
-        }
+        } */
     </style>
     {{-- end fcp improvement --}}
     @yield('page-style')
