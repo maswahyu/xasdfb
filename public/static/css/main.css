@@ -934,6 +934,10 @@ a:hover{
   position:relative;
 }
 
+.position-absolute{
+  position:absolute;
+}
+
 .underline{
   text-decoration:underline;
 }
@@ -5321,6 +5325,10 @@ ol.styled-list li{
 }
 .panel li:last-child{
   margin-bottom:0 !important;
+}
+
+#polling-bar{
+  background-color:#ec2427;
 }
 
 .site-footer{
