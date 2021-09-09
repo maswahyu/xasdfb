@@ -122,6 +122,6 @@
     <div class="container container-header">
         <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
         <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
-        <button class="btn btn-ghost-white">Tampilkan Polling</button>
+        <button class="btn btn-ghost-white btn-show-modal-polling">Tampilkan Polling</button>
     </div>
 </div>

@@ -433,6 +433,40 @@
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
     </script>
     <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
+
+    <div id="modalPolling" class="modal">
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <span><strong>//</strong>&nbsp;&nbsp;LAZONE POLLING</span>
+                <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+                <a href="#" class="btn-close">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="modal-content-inner">
+                <ol>
+                    <li>Supreme x North Face Jacket</li>
+                    <li class="selected">Apple Watch Series 6</li>
+                    <li>Nike SB Dunk Low Pro</li>
+                    <li>Garmin Smart Watch Fenix 5s</li>
+                </ol>
+            </div>
+        </div>
+        <div class="backdrop"></div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
+                $("#modalPolling").show();
+            })
+
+            $("#modalPolling .btn-close, #modalPolling .backdrop").on('click', function() {
+                $("#modalPolling").hide();
+            })
+        });
+    </script>
 </body>
 
 </html>

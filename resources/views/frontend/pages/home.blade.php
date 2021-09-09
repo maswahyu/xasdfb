@@ -796,9 +796,12 @@
 var banner_image = '{{ imageview($ads['image']) }}'
 var banner_url = '{{ $ads['url'] }}'
 
-$("#modalHome .btn-close, #modalHome .backdrop").on('click', () => {
-    $("#modalHome").remove();
-})
+$(function(){
+    $("#modalHome .btn-close, #modalHome .backdrop").on('click', function() {
+        $("#modalHome").remove();
+    })
+});
+
 </script>
 <script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>
