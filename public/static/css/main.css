@@ -4998,6 +4998,7 @@ ol.styled-list li{
   margin-top:2rem;
 }
 .mobile-header #polling-bar-mobile{
+  display:none;
   cursor:pointer;
   padding:10px 20px;
   background-color:#ec2427;
@@ -5358,6 +5359,7 @@ ol.styled-list li{
 }
 
 #polling-bar{
+  display:none;
   background-color:#ec2427;
 }
 #polling-bar .container-header{
@@ -9877,7 +9879,6 @@ ol.styled-list li{
 #modalPolling .modal-content{
   background-color:#eee;
   width:320px;
-  min-height:320px;
 }
 @media screen and (max-width:375px){
   #modalPolling .modal-content{
@@ -9893,7 +9894,7 @@ ol.styled-list li{
   padding:16px;
 }
 #modalPolling .modal-content-header span{
-  display:inline-block;
+  display:block;
 }
 #modalPolling .modal-content-header span:first-child{
   font-size:14px;
@@ -9949,4 +9950,11 @@ ol.styled-list li{
   content:url('data:image/svg+xml; utf8, <svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5L3.5 7.5L9.5 1.5" stroke="%23EC2427" stroke-width="2"/></svg>');
   border:1px solid #fff;
   background-color:#fff;
+}
+#modalPolling .modal-content-inner .message-success{
+  display:none;
+  margin-top:16px;
+  font-weight:700;
+  font-size:16px;
+  color:#3d3d3d;
 }

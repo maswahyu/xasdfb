@@ -133,6 +133,7 @@
   }
 
   #polling-bar-mobile{
+    display: none;
     cursor: pointer;
     padding: 10px 20px;
     background-color: palette("crimson");
@@ -508,6 +509,7 @@
 }
 
 #polling-bar{
+  display: none;
   background-color: palette("crimson");
 
   .container-header{

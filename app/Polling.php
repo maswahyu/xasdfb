@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Cache;
 
 class Polling extends Model
 {
@@ -23,13 +24,13 @@ class Polling extends Model
         ]
     ];
 
-    public function scopeByPublish($query)
+    public function scopePublish($query)
     {
         return $query->where('publish', self::STATUS_PUBLISHED);
     }
 
-    public function questions() {
-        return $this->hasMany('App\PollingQuestion', 'polling_id', 'id');
+    public function options() {
+        return $this->hasMany('App\PollingOption', 'polling_id', 'id');
     }
 
     // admin crud record
@@ -50,12 +51,14 @@ class Polling extends Model
 
         $data->save();
 
-        foreach($request->question as $question){
-            $poll = new PollingQuestion;
+        foreach($request->option as $option){
+            $poll = new PollingOption;
             $poll->polling_id = $data->id;
-            $poll->question = $question;
+            $poll->option = $option;
             $poll->save();
         }
+
+        Cache::tags('polling')->flush();
 
         return $data;
     }
@@ -73,25 +76,36 @@ class Polling extends Model
 
         $data->save();
 
-        foreach($request->question as $key => $question){
-            if(isset($request->question_id[$key]))
+        foreach($request->option as $key => $option){
+            if(isset($request->option_id[$key]))
             {
-                $poll = PollingQuestion::find($request->question_id[$key]);
+                $poll = PollingOption::find($request->option_id[$key]);
             } 
             else 
             {
-                $poll = new PollingQuestion;
+                $poll = new PollingOption;
                 $poll->polling_id = $id;
             }
 
-            $poll->question = $question;
+            $poll->option = $option;
             $poll->save();
         }
 
-        if(!empty($request->question_deleted)){
-            PollingQuestion::destroy($request->question_deleted);
+        if(!empty($request->option_deleted)){
+            PollingOption::destroy($request->option_deleted);
         }
 
+        Cache::tags('polling')->flush();
+
         return $data;
+    }
+
+    public static function getCurrentActivePolling()
+    {
+        $model = Cache::tags('polling')->rememberForever('currentActivePolling', function () {
+            return self::publish()->first();
+        });
+
+        return $model;
     }
 }

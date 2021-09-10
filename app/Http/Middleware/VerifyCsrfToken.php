@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        'polling',
         'api/point',
         'api/agent/{user_id}'
     ];

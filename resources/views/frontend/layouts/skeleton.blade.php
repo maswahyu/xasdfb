@@ -438,7 +438,7 @@
         <div class="modal-content">
             <div class="modal-content-header">
                 <span><strong>//</strong>&nbsp;&nbsp;LAZONE POLLING</span>
-                <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+                <span id="polling-title"></span>
                 <a href="#" class="btn-close">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="white"/>
@@ -446,25 +446,44 @@
                 </a>
             </div>
             <div class="modal-content-inner">
-                <ol>
-                    <li>Supreme x North Face Jacket</li>
-                    <li class="selected">Apple Watch Series 6</li>
-                    <li>Nike SB Dunk Low Pro</li>
-                    <li>Garmin Smart Watch Fenix 5s</li>
+                <ol id="polling-options">
                 </ol>
+                <span class="message-success">Terima kasih telah memilih!</span>
             </div>
         </div>
         <div class="backdrop"></div>
     </div>
     <script type="text/javascript">
-        $(function(){
-            $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
-                $("#modalPolling").show();
-            })
+        var currentPolling = {!! json_encode($current_polling) !!};
 
-            $("#modalPolling .btn-close, #modalPolling .backdrop").on('click', function() {
-                $("#modalPolling").hide();
-            })
+        $(function(){
+            if(localStorage.getItem("polling_"+currentPolling.id) === null){
+                $('#polling-bar, #polling-bar-mobile').css('display','block');
+
+                $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
+                    $("#modalPolling").show();
+                })
+
+                $("#modalPolling .btn-close, #modalPolling .backdrop").on('click', function() {
+                    $("#modalPolling").hide();
+                })
+
+                $('#polling-title').text(currentPolling.question);
+                $.each(currentPolling.options,function(key,item){
+                    $('#polling-options').append('<li data-id="'+item.id+'">'+item.option+'</li>');
+                })
+                $('#polling-bar').show();
+
+                $("#modalPolling").on('click','li',function(){
+                    var id = $(this).data('id');
+                    $(this).addClass('selected');
+                    $('#polling-bar, #polling-bar-mobile').hide();
+                    $.post('polling',{id},function(){
+                        localStorage.setItem("polling_"+currentPolling.id,'1');
+                        $('#modalPolling .message-success').show();
+                    },'json');
+                });
+            }
         });
     </script>
 </body>

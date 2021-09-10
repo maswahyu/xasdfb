@@ -118,6 +118,7 @@
 
 </div>
 
+@if(!empty($current_polling))
 <div id="polling-bar">
     <div class="container container-header">
         <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
@@ -125,3 +126,4 @@
         <button class="btn btn-ghost-white btn-show-modal-polling">Tampilkan Polling</button>
     </div>
 </div>
+@endif

@@ -52,7 +52,6 @@
     .modal-content {
         background-color: #EEEEEE;
         width: 320px;
-        min-height: 320px;
 
         @media screen and (max-width: 375px) {
             width: 90%;
@@ -67,7 +66,7 @@
             padding: 16px;
 
             span{
-                display: inline-block;
+                display: block;
 
                 &:nth-child(1){
                     font-size: 14px;
@@ -133,6 +132,15 @@
                         }
                     }
                 }
+            }
+
+
+            .message-success{
+                display: none;
+                margin-top: 16px;
+                font-weight: bold;
+                font-size: 16px;
+                color: #3D3D3D;
             }
         }
     }

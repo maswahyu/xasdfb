@@ -59,6 +59,7 @@
             @endforeach
         </ul>
     </div>
+    @if(!empty($current_polling))
     <div id="polling-bar-mobile">
         <div class="left">
             <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
@@ -68,6 +69,7 @@
             <span>>></span>
         </div>
     </div>
+    @endif
 </div>
 
 
