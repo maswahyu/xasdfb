@@ -1,7 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
 @section('meta')
-    <link rel="preload" as="image" href="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" />
+    {{-- if there is banner, preload it here --}}
+    {{-- <link rel="preload" as="image" href="{{ asset('static/images/LAZONE_Home_Mobile_banner_580x755-01.jpg') }}" /> --}}
 @endsection
 
 @section('content')
