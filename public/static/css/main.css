@@ -9887,6 +9887,7 @@ ol.styled-list li{
 #modalPolling .modal-content-header{
   color:#fff;
   background:url(../images/poll-modal-bg.jpg);
+  background-color:#ec2427;
   background-repeat:no-repeat;
   background-size:cover;
   padding:16px;
