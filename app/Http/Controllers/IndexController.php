@@ -43,7 +43,11 @@ class IndexController extends Controller
             ['pub_day', '=', Carbon::now()->dayOfWeekIso],
             ['page', '=', StickyBanner::PAGE_HOME]
         ])->first();
-	    return view('frontend.pages.home', compact('ads', 'bannerWifi', 'stickyBanner'));
+
+        $posts_highlight = News::getHighlight();
+        $posts_must_read = News::getMustReads();
+
+        return view('frontend.pages.home', compact('ads', 'bannerWifi', 'stickyBanner', 'posts_highlight', 'posts_must_read'));
     }
 
     public function feed(Request $request)

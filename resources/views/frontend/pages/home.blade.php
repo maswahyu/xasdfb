@@ -137,10 +137,71 @@
                 <span class="section-title__label section-title__label--lg text-uppercase">Must Read</span>
             </div>
 
-            <div class="home-grid__must-reads-highlights jsHighlights">
+            <div class="home-grid__must-reads-highlights">
+                <div class="post-card post-card--highlight">
+
+                    <div class="post-card__thumbnail post-card__thumbnail--large">
+                        <a href="{{ $posts_highlight->url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $posts_highlight->title }}">
+                            <img class="post-card__img post-card__img--large" width="380" height="250" src="{{ asset('img_placeholder_point.jpg') }}" data-src="{{ $posts_highlight->thumbnail }}" alt="{{ $posts_highlight->title }}">
+                        </a>
+                    </div>
+
+                    <a href="{{ $posts_highlight->url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $posts_highlight->title }}">
+                        <div class="post-card__title post-card__title--xlarge">
+                            <span>{{ $posts_highlight->title }}</span>
+                        </div>
+                        <div class="post-card__excerpt hide-mobile">
+                            <p>{{ $posts_highlight->summary }}</p>
+                        </div>
+                    </a>
+
+                    <div class="post-card__meta post-meta">
+
+                        <div class="post-meta__category">
+                            <a href="{{ $posts_highlight->category ? $posts_highlight->category->url : '/lifestyle' }}" alt="{{ $posts_highlight->category_name }}" style="font-size: 14px">
+                                <span>{{ $posts_highlight->category_name }}</span>
+                            </a>
+                        </div>
+                        <div class="post-meta__stat" style="font-size: 14px"><span>{{ $posts_highlight->published_date }}</span></div>
+
+                    </div>
+
+                </div>
             </div>
 
-            <div class="home-grid__must-reads-list jsMustRead">
+            <div class="home-grid__must-reads-list">
+                @foreach ($posts_must_read as $item)
+                    <div class="span-12 span-md-6" style="padding: 0;">
+                        <div class="post-card post-card--simple post-card--simple__no-padding">
+
+                            <div class="post-card__thumbnail">
+                                <a href="{{ $item->url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $item->title }}">
+                                    <img class="post-card__img" width="380" height="250" src="img_placeholder_point.jpg" data-src="{{ $item->thumbnail }}" alt="{{ $item->title }}">
+                                </a>
+                            </div>
+
+                            <div class="post-card__info">
+                                <a href="{{ $item->url }}?utm_source=MustReads&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $item->title }}">
+                                    <div class="post-card__title">
+                                        <span>{{ $item->title }}</span>
+                                    </div>
+                                </a>
+
+                                <div class="post-card__meta post-meta">
+
+                                    <div class="post-meta__category">
+                                        <a href="{{ $item->category ? $item->category->url : '/lifestyle' }}" alt="{{ $item->category_name }}">
+                                            <span>{{ $item->category_name }}</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-meta__stat"><span>{{ $item->published_date }}</span></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
             </div>
 
         </div>
