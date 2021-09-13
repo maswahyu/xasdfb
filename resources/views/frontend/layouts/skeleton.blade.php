@@ -439,7 +439,7 @@
             <div class="modal-content-header">
                 <span><strong>//</strong>&nbsp;&nbsp;LAZONE POLLING</span>
                 <span id="polling-title"></span>
-                <a href="#" class="btn-close">
+                <a href="javascript:void(0);" class="btn-close">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="white"/>
                     </svg>
@@ -458,7 +458,9 @@
 
         $(function(){
             if(localStorage.getItem("polling_"+currentPolling.id) === null){
-                $('#polling-bar, #polling-bar-mobile').css('display','block');
+                $('#polling-bar').css('display','block');
+                $('#polling-bar-mobile').css('display','flex');
+                $('.site-content').addClass('poll-active');
 
                 $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
                     $("#modalPolling").show();
@@ -475,9 +477,11 @@
                 $('#polling-bar').show();
 
                 $("#modalPolling").on('click','li',function(){
+                    $("#modalPolling").off('click','li');
                     var id = $(this).data('id');
                     $(this).addClass('selected');
                     $('#polling-bar, #polling-bar-mobile').hide();
+                    $('.site-content').removeClass('poll-active');
                     $.post('polling',{id},function(){
                         localStorage.setItem("polling_"+currentPolling.id,'1');
                         $('#modalPolling .message-success').show();
