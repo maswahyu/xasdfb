@@ -47,7 +47,7 @@ class StorageController extends Controller
                 return $response;
             }
 
-            $file = Storage::disk('local')->get($file);
+            $file = Storage::disk('filemanager')->get($file);
 
             $this->cacheControl();
             echo Image::make($file)->encode('png');
@@ -65,7 +65,7 @@ class StorageController extends Controller
         try {
             $file = $request->path();
             $file = urldecode(str_replace('website/var/', '/var/', $file));
-            $file = Storage::disk('local')->get($file);
+            $file = Storage::disk('old')->get($file);
 
             $this->cacheControl();
             echo Image::make($file)->encode('png');
@@ -85,7 +85,7 @@ class StorageController extends Controller
         try {
             $file = $request->path();
             $file = urldecode(str_replace('news/', '/var/assets/news/', $file));
-            $file = Storage::disk('local')->get($file);
+            $file = Storage::disk('old')->get($file);
 
             $this->cacheControl();
             echo Image::make($file)->encode('png');
@@ -102,7 +102,7 @@ class StorageController extends Controller
     {
         $file = $request->path();
         $file = urldecode('/var/assets/' . $file);
-        $file = Storage::disk('local')->get($file);
+        $file = Storage::disk('old')->get($file);
 
         $this->cacheControl();
         echo Image::make($file)->encode('png');
@@ -116,7 +116,7 @@ class StorageController extends Controller
     {
         $file = $request->path();
         $file = urldecode(str_replace('Community/', '/var/assets/Community/', $file));
-        $file = Storage::disk('local')->get($file);
+        $file = Storage::disk('old')->get($file);
 
         $this->cacheControl();
         echo Image::make($file)->encode('png');
@@ -130,7 +130,7 @@ class StorageController extends Controller
     {
         $file = $request->path();
         $file = urldecode(str_replace('gallery-photos/', '/var/assets/gallery-photos/', $file));
-        $file = Storage::disk('local')->get($file);
+        $file = Storage::disk('old')->get($file);
 
         $this->cacheControl();
         echo Image::make($file)->encode('png');
