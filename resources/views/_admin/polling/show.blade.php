@@ -74,6 +74,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Option</th>
+                                                <th width="15%">Non Member</th>
+                                                <th width="10%">Member</th>
                                                 <th width="10%">Total Vote</th>
                                             </tr>
                                         </thead>
@@ -81,6 +83,8 @@
                                             @foreach($polling->polling_options as $option)
                                             <tr>
                                                 <td>{{$option->option}}</td>
+                                                <td>{{$option->votes - $polling->polling_users()->where('option_id', $option->id)->get()->count() }}</td>
+                                                <td>{{$polling->polling_users()->where('option_id', $option->id)->get()->count()}}</td>
                                                 <td>{{$option->votes}}</td>
                                             </tr>
                                             @endforeach
