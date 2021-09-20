@@ -2,8 +2,16 @@
   padding: 11rem 0rem 4rem !important;
   font-family: $new-lazone-font;
 
+  &.poll-active{
+    padding-top: 20rem !important;
+  }
+
   @include media-over(lg) {
     padding: 14rem 0 6rem !important;
+
+    &.poll-active{
+      padding-top: 18rem !important;
+    }
   }
 
   &.no-padding { 

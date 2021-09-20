@@ -3982,9 +3982,15 @@ a.plyr__control{
   padding:11rem 0 4rem !important;
   font-family:Roboto,sans-serif;
 }
+.site-content.poll-active{
+  padding-top:20rem !important;
+}
 @media (min-width:1024px){
   .site-content{
     padding:14rem 0 6rem !important;
+  }
+  .site-content.poll-active{
+    padding-top:18rem !important;
   }
 }
 .site-content.no-padding{
@@ -5004,8 +5010,7 @@ ol.styled-list li{
   background-color:#ec2427;
   font-size:14px;
   color:#fff;
-  -js-display:flex;
-  display:flex;
+  margin-top:50px;
 }
 .mobile-header #polling-bar-mobile .left{
   -js-display:flex;
