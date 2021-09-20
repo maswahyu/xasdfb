@@ -455,9 +455,9 @@
     </div>
     <script type="text/javascript">
         var currentPolling = {!! json_encode($current_polling) !!};
-
+        const IS_AUTH = {!! Auth::check() ? 'true' : 'false' !!};
         $(function(){
-            if(localStorage.getItem("polling_"+currentPolling.id) === null){
+            if(localStorage.getItem("polling_"+currentPolling.id) === null || (IS_AUTH === true && localStorage.getItem("auth_polling_"+currentPolling.id) == null) ){
                 $('#polling-bar, #polling-bar-mobile').css('display','block');
 
                 $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
@@ -473,15 +473,40 @@
                     $('#polling-options').append('<li data-id="'+item.id+'">'+item.option+'</li>');
                 })
                 $('#polling-bar').show();
-
+                var send = false;
                 $("#modalPolling").on('click','li',function(){
                     var id = $(this).data('id');
                     $(this).addClass('selected');
                     $('#polling-bar, #polling-bar-mobile').hide();
-                    $.post('polling',{id},function(){
-                        localStorage.setItem("polling_"+currentPolling.id,'1');
-                        $('#modalPolling .message-success').show();
-                    },'json');
+                    if(send === false) {
+
+                        $.ajax({
+                            url: 'polling',
+                            type: 'post',
+                            data: {id: id},
+                            dataType: 'json',
+                            beforeSend: () => {
+                                send = true;
+                            },
+                            success: (res, content, xhr) => {
+                                if(xhr.status === 200) {
+                                    if(IS_AUTH) {
+                                        localStorage.setItem("auth_polling_"+currentPolling.id,'1');
+                                    } else {
+                                        localStorage.setItem("polling_"+currentPolling.id,'1');
+                                    }
+
+                                    $("#modalPolling").off('click', 'li');
+                                    $('#modalPolling .message-success').show();
+                                }
+                                send = false;
+                                setTimeout(() => {
+                                    $("#modalPolling").hide();
+                                }, 3000)
+                            }
+                        })
+
+                    }
                 });
             }
         });
