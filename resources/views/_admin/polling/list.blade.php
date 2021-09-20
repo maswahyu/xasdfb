@@ -21,10 +21,10 @@
                         Actions
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <!-- <a class="dropdown-item" href="{{ url('/magic/polling/' . $item->id) }}" title="View polling"><i class="fa fa-eye"></i> View</a> -->
+                        <a class="dropdown-item" href="{{ url('/magic/polling/' . $item->id) }}" title="View polling"><i class="fa fa-eye"></i> View</a>
 
                         <a class="dropdown-item" href="{{ url('/magic/polling/' . $item->id . '/edit') }}" title="Edit polling"><i class="fa fa-edit"></i> Edit</a>
-                         
+
                         {{-- <a class="dropdown-item" onclick="user_action({{$item->id}}, 'destroy')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete </a>    --}}
                     </div>
                 </div>

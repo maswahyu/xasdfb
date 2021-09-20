@@ -80,8 +80,8 @@ class Polling extends Model
             if(isset($request->option_id[$key]))
             {
                 $poll = PollingOption::find($request->option_id[$key]);
-            } 
-            else 
+            }
+            else
             {
                 $poll = new PollingOption;
                 $poll->polling_id = $id;
@@ -107,5 +107,18 @@ class Polling extends Model
         });
 
         return $model;
+    }
+
+
+    /************
+     * Relations
+     ************/
+    public function polling_options()
+    {
+        return $this->hasMany(PollingOption::class);
+    }
+    public function polling_users()
+    {
+        return $this->hasMany(PollingUser::class);
     }
 }
