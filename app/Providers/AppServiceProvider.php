@@ -28,27 +28,5 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
-        $polling = \App\Polling::getCurrentActivePolling();
-        $pollingData = null;
-
-        if(!empty($polling)){
-            $options = [];
-
-            foreach($polling->options as $option)
-            {
-                $options[] = [
-                    'id' => $option->id,
-                    'option' => $option->option
-                ];
-            }
-
-            $pollingData = [
-                'id' => $polling->id,
-                'question' => $polling->name,
-                'options' => $options,
-            ];
-        }
-
-        View::share('current_polling',$pollingData);
     }
 }
