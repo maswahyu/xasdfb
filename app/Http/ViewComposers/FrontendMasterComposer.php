@@ -44,5 +44,29 @@ class FrontendMasterComposer
         $view->with('siteCategoryNetwork', $siteCategoryNetwork);
         $view->with('siteLink', $siteLink);
         $view->with('siteInfo', $siteInfo);
+
+        // polling view share data
+        $polling = \App\Polling::getCurrentActivePolling();
+        $pollingData = null;
+
+        if(!empty($polling)){
+            $options = [];
+
+            foreach($polling->options as $option)
+            {
+                $options[] = [
+                    'id' => $option->id,
+                    'option' => $option->option
+                ];
+            }
+
+            $pollingData = [
+                'id' => $polling->id,
+                'question' => $polling->name,
+                'options' => $options,
+            ];
+        }
+
+        $view->with('current_polling',$pollingData);
     }
 }
