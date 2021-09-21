@@ -1,8 +1,8 @@
 <div class="container container-header">
 
-    <div class="row">
+    <div class="row position-relative">
 
-        <a href="{{ url('/')}}" class="site-logo">
+        <a href="{{ url('/')}}" class="site-logo position-absolute">
             <picture>
                 <img src="{{ asset('static/images/logo-lazone.svg') }}" alt="LAZONE.id">
                 <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp">
@@ -117,3 +117,13 @@
     </div>
 
 </div>
+
+@if(!empty($current_polling))
+<div id="polling-bar">
+    <div class="container container-header">
+        <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
+        <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+        <button class="btn btn-ghost-white btn-show-modal-polling">Tampilkan Polling</button>
+    </div>
+</div>
+@endif

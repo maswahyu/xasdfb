@@ -82,6 +82,8 @@ Route::get('sitemaps/photo.xml', 'PageController@sitemapPhoto');
 Route::get('sitemaps/video.xml', 'PageController@sitemapVideo');
 Route::get('sitemaps/{category}.xml', 'PageController@sitemapCategory');
 
+Route::post('polling', 'PollingController@doVote');
+
 /* image routes */
 Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');

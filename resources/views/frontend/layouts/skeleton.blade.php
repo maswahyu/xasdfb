@@ -71,7 +71,7 @@
         .site-header {
             display: none;
         }
-        @media (min-width: 1280px) {
+        /* @media (min-width: 1280px) {
             .mobile-header {
                 display: none !important;
             }
@@ -89,7 +89,7 @@
             background-color: #000;
             z-index: 500;
             transition: top .15s ease;
-        }
+        } */
     </style>
     {{-- end fcp improvement --}}
     {{-- TODO: load critical css then load the whole css --}}
@@ -440,6 +440,88 @@
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
     </script>
     <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
+
+    <div id="modalPolling" class="modal">
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <span><strong>//</strong>&nbsp;&nbsp;LAZONE POLLING</span>
+                <span id="polling-title"></span>
+                <a href="javascript:void(0);" class="btn-close">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="modal-content-inner">
+                <ol id="polling-options">
+                </ol>
+                <span class="message-success">Terima kasih telah memilih!</span>
+            </div>
+        </div>
+        <div class="backdrop"></div>
+    </div>
+    <script type="text/javascript">
+        var currentPolling = {!! json_encode($current_polling) !!};
+        const IS_AUTH = {!! Auth::check() ? 'true' : 'false' !!};
+        $(function(){
+            if(localStorage.getItem("polling_"+currentPolling.id) === null || (IS_AUTH === true && localStorage.getItem("auth_polling_"+currentPolling.id) == null) ){
+                $('#polling-bar').css('display','block');
+                $('#polling-bar-mobile').css('display','flex');
+                $('.site-content').addClass('poll-active');
+
+                $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
+                    $("#modalPolling").show();
+                })
+
+                $("#modalPolling .btn-close, #modalPolling .backdrop").on('click', function() {
+                    $("#modalPolling").hide();
+                })
+
+                $('#polling-title').text(currentPolling.question);
+                $.each(currentPolling.options,function(key,item){
+                    $('#polling-options').append('<li data-id="'+item.id+'">'+item.option+'</li>');
+                })
+                $('#polling-bar').show();
+                var send = false;
+                $("#modalPolling").on('click','li',function(){
+                    $("#modalPolling").off('click','li');
+                    var id = $(this).data('id');
+                    $(this).addClass('selected');
+                    $('#polling-bar, #polling-bar-mobile').hide();
+                    $('.site-content').removeClass('poll-active');
+                    if(send === false) {
+
+                        $.ajax({
+                            url: 'polling',
+                            type: 'post',
+                            data: {id: id},
+                            dataType: 'json',
+                            beforeSend: () => {
+                                send = true;
+                            },
+                            success: (res, content, xhr) => {
+                                if(xhr.status === 200) {
+                                    if(IS_AUTH) {
+                                        localStorage.setItem("auth_polling_"+currentPolling.id,'1');
+                                    } else {
+                                        localStorage.setItem("polling_"+currentPolling.id,'1');
+                                    }
+
+                                    $("#modalPolling").off('click', 'li');
+                                    $('#modalPolling .message-success').show();
+                                }
+                                send = false;
+                                setTimeout(() => {
+                                    $("#modalPolling").hide();
+                                }, 3000)
+                            }
+                        })
+
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

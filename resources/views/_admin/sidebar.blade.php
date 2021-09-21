@@ -133,6 +133,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('magic/polling') }}" class="nav-link {!! classActiveSegment(2, 'polling') !!}">
+                        <i class="nav-icon fa fa-poll"></i>
+                        <p>
+                            Polling
+                        </p>
+                    </a>
+                </li>
                 @if(auth()->guard('admin')->user()->usertype == "admin")
                 <li class="nav-header">ADMIN NAVIGATION</li>
                 <li class="nav-item">

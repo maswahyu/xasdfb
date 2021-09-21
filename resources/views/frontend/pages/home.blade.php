@@ -884,9 +884,12 @@ setTimeout(function() {
     $('.js-initially-hidden').removeClass('modal--hidden');
 }, 3000);
 
-$("#modalHome .btn-close, #modalHome .backdrop").on('click', () => {
-    $("#modalHome").remove();
-})
+$(function(){
+    $("#modalHome .btn-close, #modalHome .backdrop").on('click', function() {
+        $("#modalHome").remove();
+    })
+});
+
 </script>
 <script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>

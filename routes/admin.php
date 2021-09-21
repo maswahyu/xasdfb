@@ -81,6 +81,9 @@ Route::group(['middleware' => 'has_any_role:admin,editor', 'namespace' => 'Admin
 
         Route::resource('prize', 'PrizeController');
         Route::get('prizelist', 'PrizeController@list');
+
+        Route::resource('polling', 'PollingController');
+        Route::get('pollinglist', 'PollingController@list');
     });
 
     Route::get('contact/list', 'ContactController@index');
