@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="span-12">
                             <div class="point-banner__text">
-                                <span>Dapatkan #Merchandise <strong>T-Shirt Streetball</strong> dan <strong>Hoodie Streetball </strong> atau #TukarLAngsung point kamu, buat kesempatan menangin <strong>Apple Watch Series 6</strong>.</span>
+                                <span>Dapatkan <strong>#Merchandise</strong> Puma Active Big Logo Men's T-Shirt atau <strong>#TukarLAngsung</strong> point kamu, buat kesempatan menangin Santa Cruz Skateboards 8.0 atau Nike Dunk Low "Giraffe".</span>
                             </div>
                             {{-- <div class="point-banner__cta text-center">
                                 <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>

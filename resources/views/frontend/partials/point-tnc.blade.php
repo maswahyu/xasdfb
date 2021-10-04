@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <ol class="styled-list">
-                        <li>Hadiah utama dan merchandise bulanan per bulan September 2021 adalah #TukarLAngsung Apple Watch Series 6 dan #Merchandise T-Shirt Streetball dan Hoodie Streetball.</li>
+                        <li>Hadiah utama dan merchandise bulanan per bulan Oktober 2021 adalah <strong>#TukarLAngsung</strong> Santa Cruz Skateboards 8.0 dan Nike Dunk Low "Giraffe" dan <strong>#Merchandise</strong> Puma Active Big Logo Men's T-Shirt.</li>
                         <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin dengan hadiah.</li>
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika
                             Member mendapatkan poin mulai bulan Februari 2021, maka poin tersebut akan
