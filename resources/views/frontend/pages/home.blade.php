@@ -4,6 +4,9 @@
     @if (!empty($posts_highlight) && !empty($posts_highlight->image))
         <link rel="preload" as="image" href="{{ asset($posts_highlight->image) }}" />
     @endif
+    @if (!empty($posts_highlight) && !empty($posts_highlight->thumbnail))
+        <link rel="preload" as="image" href="{{ asset($posts_highlight->thumbnail) }}" />
+    @endif
 @endsection
 
 @section('critical-css')
