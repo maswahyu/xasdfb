@@ -59,7 +59,7 @@
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
                         <picture>
                             <source srcset="{{ asset('static/images/search.webp') }}" type="image/webp">
-                            <img src="{{ asset('static/images/search.png') }}" alt="Search">
+                            <img width="20" height="20" src="{{ asset('static/images/search.png') }}" alt="Search">
                         </picture>
                     </a>
                 </li>
