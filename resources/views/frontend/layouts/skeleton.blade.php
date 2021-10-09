@@ -23,11 +23,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
-    <link href=’https://www.google-analytics.com’ rel=’preconnect’ crossorigin>
-    <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
-    <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
+    <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
 
     @yield('preload-images')
+
+    <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
+    <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}

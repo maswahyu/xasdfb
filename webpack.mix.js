@@ -34,7 +34,12 @@ mix
             { url: '/', template: 'index' },
         ],
         options: {
+            width: 380,
+            height: 1200,
             minify: true,
+            // penthouse: {
+            //     forceInclude: ['.post-meta', '.post-meta__category', '.post-meta__category span', '.post-meta__stat'],
+            // },
         }
     })
     .browserSync({
