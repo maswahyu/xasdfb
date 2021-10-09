@@ -25,12 +25,32 @@
     @yield('meta')
     <link href=’https://www.google-analytics.com’ rel=’preconnect’ crossorigin>
     <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
+    <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
+
+    @yield('preload-images')
+
     {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
+
+    @yield('critical-css')
+
     {{-- *********** IMPROVE FCP *********** --}}
+    <link rel="preload" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
+    </noscript>
+    <link rel="preload" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}">
+    </noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap">
+    </noscript>
+
     {{-- load main css via js biar di load belakangan --}}
-    <script>
+    {{-- <script>
     var head = document.getElementsByTagName('HEAD')[0];
     var mainCss = document.createElement('link');
     var customCss = document.createElement('link');
@@ -47,7 +67,7 @@
     head.appendChild(mainCss);
     head.appendChild(customCss);
     head.appendChild(googleFont);
-    </script>
+    </script> --}}
     <style>
         .site-body {
             -js-display: flex;
@@ -92,11 +112,7 @@
         } */
     </style>
     {{-- end fcp improvement --}}
-    {{-- TODO: load critical css then load the whole css --}}
-    {{-- <link rel="preload" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
-    </noscript> --}}
+
     @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
@@ -219,6 +235,19 @@
                 display: none
             }
         }
+        /* .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgb(249,249,249);
+        } */
+    </style>
+
+    @section('loader')
+        <style>
         .loader {
             position: fixed;
             left: 0px;
@@ -228,7 +257,10 @@
             z-index: 9999;
             background: rgb(249,249,249);
         }
-    </style>
+
+        </style>
+    @show
+
     @yield('inside-head')
 </head>
 
@@ -289,12 +321,12 @@
 
     <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
-    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
-    <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
-    <script src="{{ asset('static/js/global-min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
-    <script src="{{ asset('static/js/btn-game.js') }}"></script>
+    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
+    <script defer src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
+    <script defer src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
+    <script defer src="{{ asset('static/js/global-min.js') }}"></script>
+    <script defer src="{{ asset('static/js/btn-game.js') }}"></script>
 
     {!! $siteInfo['footercode'] !!}
 
