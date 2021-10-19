@@ -23,6 +23,9 @@
                                 <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
                             </li>
                         @endforeach
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="{{ url('relationship') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'relationship') }}" alt="Relationship"><span>Relationship</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">

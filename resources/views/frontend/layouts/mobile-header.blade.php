@@ -57,6 +57,9 @@
                     <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
                 </li>
             @endforeach
+            <li>
+                <a href="relationship" alt="Relationship">Relationship</a>
+            </li>
         </ul>
     </div>
     @if(!empty($current_polling))

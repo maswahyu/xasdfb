@@ -95,6 +95,7 @@ Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirect
 
 Route::get('lensacommunity/{slug}', 'PostController@topPost');
 Route::get('sneakerland/{slug}', 'PostController@topPost');
+Route::get('relationship/{slug}', 'PostController@topPost');
 
 Route::get('{category}', 'PostController@category');
 Route::get('{category}/{subcategory}', 'PostController@subcategory');

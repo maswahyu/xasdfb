@@ -19,6 +19,7 @@ class Category extends Model
     const STATUS_PUBLISHED = 1;
     const LENSA = 'lensacommunity';
     const SNEAKERLAND = 'sneakerland';
+    const RELATIONSHIP = 'relationship';
 
     const NETWORKS_CATEGORY = ['LA Streetball', 'Scooterland'];
 
