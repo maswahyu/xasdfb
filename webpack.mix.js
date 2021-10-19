@@ -1,5 +1,7 @@
 let mix = require('laravel-mix');
 
+require('laravel-mix-criticalcss');
+
 mix
     .sass('resources/frontend/sass/main.scss', 'public/static/css/main.css')
     .options({
@@ -20,6 +22,33 @@ mix
                 }]
             })
         ]
+    })
+    .criticalCss({
+        enabled: mix.inProduction(),
+        paths: {
+            base: 'http://lazone.local/',
+            templates: './public/static/css/',
+            suffix: '_critical.min'
+        },
+        urls: [
+            { url: '/', template: 'index' },
+        ],
+        options: {
+            dimensions: [
+                {
+                    width: 380,
+                    height: 1200,
+                },
+                {
+                    width: 1440,
+                    height: 900,
+                },
+            ],
+            minify: true,
+            // penthouse: {
+            //     forceInclude: ['.post-meta', '.post-meta__category', '.post-meta__category span', '.post-meta__stat'],
+            // },
+        }
     })
     .browserSync({
         proxy: 'http://lazone-site.test'
