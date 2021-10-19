@@ -416,7 +416,7 @@ class News extends Model
     {
         if (isset($this->category) && isset($this->category->parent)) {
 
-            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO);
+            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO, News::RELATIONSHIP);
 
             if (in_array($this->category->slug, $slug)) {
                 return $this->getCategoryNameAttribute();

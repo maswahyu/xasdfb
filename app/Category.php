@@ -168,6 +168,10 @@ class Category extends Model
             return url(self::SNEAKERLAND);
         }
 
+        if ($this->slug == self::RELATIONSHIP) {
+            return url(self::RELATIONSHIP);
+        }
+
         if ($this->parent) {
             return $this->parent->url;
         } else {
@@ -183,6 +187,10 @@ class Category extends Model
 
         if ($this->slug == self::SNEAKERLAND) {
             return url(self::SNEAKERLAND);
+        }
+
+        if ($this->slug == self::RELATIONSHIP) {
+            return url(self::RELATIONSHIP);
         }
 
         return url('/'.$this->parent->slug.'/'.$this->slug);
