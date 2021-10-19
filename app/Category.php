@@ -72,7 +72,7 @@ class Category extends Model
     public static function detail($slug)
     {
         if (!Cache::has('category'.$slug)) {
-            $data = self::where('slug', $slug)->first();
+            $data = self::where('slug', $slug)->where('publish', Category::STATUS_PUBLISHED)->first();
             Cache::forever('category'.$slug, $data);
         }
 
