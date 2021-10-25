@@ -66,7 +66,7 @@
                     <div class="rewards-list {{  (count($points) > 1) ? 'rewards-list__multiple jsRewardsSlider' : 'rewards-list__single jsRewardSingleSlider' }}  {{  ($hasVideo) ? '' : 'rewards-list__alternate-bg' }}">
                         @foreach($points as $item)
                             <div class="rewards-wrapper rewards-wrapper__card">
-                                <a href="" class="card-inner rewards-link">
+                                <a href="https://mypoints.lazone.id/" class="card-inner rewards-link">
                                     <div class="rewards-img-wrapper">
                                         <div class="rewards-img" style="background-image: url('{!! imageview($item->image) !!}');"></div>
                                     </div>
