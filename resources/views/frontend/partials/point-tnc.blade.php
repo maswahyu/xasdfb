@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <ol class="styled-list">
-                        <li>Hadiah utama dan merchandise bulanan per bulan Oktober 2021 adalah <strong>#TukarLAngsung</strong> Santa Cruz Skateboards 8.0 dan Nike Dunk Low "Giraffe" dan <strong>#Merchandise</strong> Puma Active Big Logo Men's T-Shirt.</li>
+                        <li>Hadiah utama dan merchandise bulanan per bulan November 2021 adalah <strong>#TukarLAngsung</strong> Samsung Galaxy Note 20 Ultra dan <strong>#Merchandise</strong> Sweatshirt LAZone Lets Do It.</li>
                         <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin dengan hadiah.</li>
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika
                             Member mendapatkan poin mulai bulan Februari 2021, maka poin tersebut akan

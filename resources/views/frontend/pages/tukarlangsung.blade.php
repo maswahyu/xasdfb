@@ -28,7 +28,7 @@
         <h5 class="title text-center text-black">
           Periode
         </h5>
-        <p class="title__sub text-site text-center">4 - 31 Oktober 2021</p>
+        <p class="title__sub text-site text-center">1 - 30 November 2021</p>
         <br>
         <div class="text-center">
           <a
@@ -47,7 +47,7 @@
         <br>
         <ul class="list-syarat">
           <li>Program ini hanya bisa diikuti oleh Warga Negara Indonesia yang berusia minimal 18 tahun yang tinggal di Indonesia dan memiliki KTP yang berlaku.</li>
-          <li>Program berlaku mulai tanggal 4 - 31 Oktober 2021.</li>
+          <li>Program berlaku mulai tanggal 1 - 30 November 2021.</li>
           <li>Program ini hanya berlaku kepada member yang telah melakukan Complete Profile dan terverfikasi di profil <a href="https://www.lazone.id/" class="text-site">LAZone.id</a></li>
           <li>Untuk mengikuti program ini, member harus melakukan redeem kupon undian di halaman ini.</li>
           <li>Member diperbolehkan untuk me-redeem kupon undian lebih dari satu.</li>
