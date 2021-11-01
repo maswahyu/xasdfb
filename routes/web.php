@@ -98,6 +98,12 @@ Route::get('sneakerland/{slug}', 'PostController@topPost');
 Route::get('relationship/{slug}', 'PostController@topPost');
 
 Route::get('{category}', 'PostController@category');
-Route::get('{category}/{subcategory}', 'PostController@subcategory');
+Route::get('{category}/{subcategory}', 'PostController@subcategory')->name('subcategory');
+Route::get('{category}/relationship85/{slug}', function($category, $slug) {
+    return redirect(route('subcategory', [
+        'category' => $category,
+        'subcategory' => $slug
+    ]), 301);
+});
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');
 //sementara
