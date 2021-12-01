@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <ol class="styled-list">
-                        <li>Hadiah utama dan merchandise bulanan per bulan Desember 2021 adalah <strong>#TukarLAngsung</strong> PlayStation 5 dan <strong>#Merchandise</strong> Merchandise Pack - Scratch Visible X LAZone.ID</li>
+                        <li>{!! $copy['tnc']  !!}</li>
                         <li>Poin yang dikumpulkan member tidak hangus dan masih bisa meredeem poin dengan hadiah.</li>
                         <li>Poin akan hangus setelah 12 bulan, terhitung sejak poin didapat. Contoh: Jika
                             Member mendapatkan poin mulai bulan Februari 2021, maka poin tersebut akan

@@ -32,6 +32,8 @@ class IndexController extends Controller
             'banner_mypoint_mobile' => Setting::getConfig('banner_mypoint_mobile'),
             'banner_mypoint_title' => Setting::getConfig('banner_mypoint_title'),
             'banner_mypoint_summary' => Setting::getConfig('banner_mypoint_summary'),
+            'popup_mypoint_status' => Setting::getConfig('point_popup_status'),
+            'popup_mypoint' => Setting::getConfig('point_popup'),
         ];
 
         $bannerWifi = null;

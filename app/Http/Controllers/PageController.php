@@ -58,8 +58,11 @@ class PageController extends Controller
     public function points()
     {
         $points = Prize::getData();
-        // dd($points);
-        return view('frontend.pages.points', compact('points'));
+        $copy = [
+            'point' => Setting::getConfig('point_copy'),
+            'tnc' => Setting::getConfig('point_tnc_copy'),
+        ];
+        return view('frontend.pages.points', compact('points', 'copy'));
     }
 
     public function contact()
