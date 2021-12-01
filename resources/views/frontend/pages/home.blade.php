@@ -130,7 +130,9 @@
         top: 0;
         right: 0;
         transform: translate(30px, -30px);
-        background: transparent
+        background: transparent;
+        font-size: 3rem;
+        font-weight: 800;
     }
     #modalHome .modal-content .btn-close::after {
         font-size: 4rem;
@@ -595,7 +597,7 @@
 @if($ads['popup_mypoint_status'])
 <div id="modalHome" class="modal--hidden js-initially-hidden">
     <div class="modal-content">
-        <span class="btn-close"></span>
+        <span class="btn-close">x</span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
             <img src="{{ asset($ads['popup_mypoint']) }}" alt="LAZONE My Points" width="300" height="391">
         </a>
