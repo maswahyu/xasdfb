@@ -30,9 +30,20 @@ class FileUploadedListener
     {
         foreach ($event->files() as $file) {
             if($this->isImage($file['extension'])) {
+                // replace space in file name
+                $file_path = $file['path'];
+                $file_path = explode('/', $file_path);
+                $filename = \array_pop($file_path);
+                $has_space_name = strpos($filename, ' ');
+                $filename = str_replace(' ', '-', $filename);
+                $file_path = implode('/', $file_path) . "/$filename";
+                $file_path = Storage::disk($event->disk())->path('') . $file_path;
                 // save image with quality to optimize the size
-                Image::make(Storage::disk($event->disk())->path($file['path']))
-                    ->save(null, 85);
+                if(Image::make(Storage::disk($event->disk())->path($file['path']))
+                    ->save($file_path, 85) && $has_space_name) {
+                        // deleting old file
+                        Storage::disk($event->disk())->delete($file['path']);
+                    }
             }
         }
     }
