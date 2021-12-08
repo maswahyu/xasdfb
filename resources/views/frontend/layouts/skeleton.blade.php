@@ -27,7 +27,7 @@
 
     @yield('preload-images')
 
-    <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
+    <link rel="preload" as="image" href="{{ asset('img_placeholder_hero.jpg') }}" />
     <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

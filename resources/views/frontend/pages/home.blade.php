@@ -157,7 +157,7 @@
                         <a href="{{ $posts_highlight->url }}?utm_source=Highlight&utm_medium=Content&utm_campaign=LazoneDetail" alt="{{ $posts_highlight->title }}">
                             <picture>
                                 <source media="(min-width: 756px)" srcset="{{ asset($posts_highlight->image) }}" alt="{{ $posts_highlight->title }}">
-                                <img class="post-card__img post-card__img--large" width="400" height="236" src="{{ $posts_highlight->thumbnail }}" alt="{{ $posts_highlight->title }}">
+                                <img class="post-card__img post-card__img--large" width="400" height="236" src="img_placeholder_hero.jpg" data-src="{{ $posts_highlight->thumbnail }}" alt="{{ $posts_highlight->title }}">
                             </picture>
                         </a>
                     </div>
