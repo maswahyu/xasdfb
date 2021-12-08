@@ -12,13 +12,12 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 @section('head_description', $desc)
 @section('head_url', url()->current())
 
-@section('critical-css')
+{{-- @section('critical-css')
     <link rel="stylesheet" href="{{ asset('static/css/tag_critical.min.css') }}?v={{ filemtime(public_path() . '/static/css/tag_critical.min.css') }}">
 @endsection
 
-{{-- don't use loader for landing page --}}
 @section('loader')
-@endsection
+@endsection --}}
 
 @section('content')
 

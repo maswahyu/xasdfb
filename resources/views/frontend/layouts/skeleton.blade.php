@@ -33,6 +33,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=optional">
+    </noscript>
+
     {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
@@ -49,9 +54,9 @@
     <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}">
     </noscript>
 
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Open+Sans:400,600,700|Poppins:700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Poppins:700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Open+Sans:400,600,700|Poppins:700&display=optional">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Poppins:700&display=optional">
     </noscript>
 
     {{-- load main css via js biar di load belakangan --}}
