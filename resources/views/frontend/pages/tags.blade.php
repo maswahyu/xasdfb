@@ -12,6 +12,15 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 @section('head_description', $desc)
 @section('head_url', url()->current())
 
+@section('critical-css')
+    {{-- <link rel="stylesheet" href="{{ asset('static/css/index_critical.min.css') }}?v={{ filemtime(public_path() . '/static/css/index_critical.min.css') }}"> --}}
+    @include('frontend.partials.critical-css')
+@endsection
+
+{{-- don't use loader for landing page --}}
+@section('loader')
+@endsection
+
 @section('content')
 
 <div class="container">
