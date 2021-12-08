@@ -30,6 +30,12 @@
     <link rel="preload" as="image" href="{{ asset('img_placeholder_point.jpg') }}" />
     <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=optional" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=optional" rel="stylesheet">
+
     {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
@@ -45,10 +51,8 @@
     <noscript>
     <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}">
     </noscript>
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap">
-    </noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Poppins:700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Poppins:700&display=swap">
 
     {{-- load main css via js biar di load belakangan --}}
     {{-- <script>
@@ -320,7 +324,7 @@
     window.siteUrl = "{{ url('/') }}";
     </script>
 
-    <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('static/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
     <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
@@ -496,8 +500,8 @@
     <script type="text/javascript">
         var currentPolling = {!! json_encode($current_polling) !!};
         const IS_AUTH = {!! Auth::check() ? 'true' : 'false' !!};
-        $(function(){
-            if(localStorage.getItem("polling_"+currentPolling.id) === null || (IS_AUTH === true && localStorage.getItem("auth_polling_"+currentPolling.id) == null) ){
+        $ (function() {
+            if (currentPolling && (localStorage.getItem("polling_"+currentPolling.id) === null || (IS_AUTH === true && localStorage.getItem("auth_polling_"+currentPolling.id) == null)) ){
                 $('#polling-bar').css('display','block');
                 $('#polling-bar-mobile').css('display','flex');
                 $('.site-content').addClass('poll-active');
