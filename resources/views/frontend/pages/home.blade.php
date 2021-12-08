@@ -43,13 +43,6 @@
 {{-- Above the fold --}}
 @section('inside-head')
 <style type="text/css">
-    #modalHome {
-        transition: all ease .3s;
-    }
-    #modalHome.modal--hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
 
     #modalHome .modal-content a {
         display: block;
@@ -595,7 +588,7 @@
 
 @section('after-site-footer')
 @if($ads['popup_mypoint_status'])
-<div id="modalHome" class="modal--hidden js-initially-hidden">
+<div id="modalHome">
     <div class="modal-content">
         <span class="btn-close">x</span>
         <a href="{{url('points')}}?utm_source=HomeBanner&utm_medium=PopUp&utm_campaign=PopUpBanner">
@@ -901,10 +894,6 @@
 <script type="text/javascript">
 var banner_image = '{{ imageview($ads['image']) }}';
 var banner_url = '{{ $ads['url'] }}';
-
-setTimeout(function() {
-    $('.js-initially-hidden').removeClass('modal--hidden');
-}, 3000);
 
 $(function(){
     $("#modalHome .btn-close, #modalHome .backdrop").on('click', function() {
