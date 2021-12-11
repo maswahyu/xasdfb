@@ -5,7 +5,10 @@
         <div class="row footer-top__row">
 
             <div class="footer-top__span">
-                <img width="160" height="125" src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
+                <picture>
+                    <source srcset="{{ asset('static/images/logo-2.webp') }}" type="image/webp">
+                    <img width="80" height="63" src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
+                </picture>
                 <ul class="point-nav">
                     {{-- <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('about-us') }}">About Us</a></li> --}}
                     <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>

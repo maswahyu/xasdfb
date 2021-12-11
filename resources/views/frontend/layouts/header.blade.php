@@ -4,8 +4,8 @@
 
         <a href="{{ url('/')}}" class="site-logo position-absolute">
             <picture>
-                <img src="{{ asset('static/images/logo-lazone.svg') }}" alt="LAZONE.id">
                 <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp">
+                <img src="{{ asset('static/images/logo-lazone.svg') }}" alt="LAZONE.id">
             </picture>
         </a>
 

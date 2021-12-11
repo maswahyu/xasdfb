@@ -16,7 +16,7 @@
 
         <a href="{{ url('/')}}" class="site-logo">
             <picture>
-                {{-- <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp"> --}}
+                <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp">
                 <img width="133" height="106" src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
             </picture>
         </a>

@@ -29,7 +29,7 @@
 
     @yield('preload-images')
 
-    <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
+    <link rel="preload" as="image" href="{{ asset('static/images/logo.webp') }}" type="image/webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,49 +79,6 @@
     head.appendChild(customCss);
     head.appendChild(googleFont);
     </script> --}}
-    <style>
-        .site-body {
-            -js-display: flex;
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            margin: 0;
-            flex: 1;
-        }
-        @media (min-width: 1280px) {
-            .site-header {
-                display: block !important;
-                width: 100%;
-                height: 8rem;
-                position: fixed;
-                z-index: 999;
-                background-color: #000;
-                color: #fff;
-            }
-        }
-        .site-header {
-            display: none;
-        }
-        /* @media (min-width: 1280px) {
-            .mobile-header {
-                display: none !important;
-            }
-        }
-        .mobile-header {
-            position: fixed;
-            -js-display: flex;
-            display: flex;
-            align-items: center;
-            top: 0;
-            left: 0;
-            padding: 0 10px;
-            height: 60px;
-            width: 100%;
-            background-color: #000;
-            z-index: 500;
-            transition: top .15s ease;
-        } */
-    </style>
     {{-- end fcp improvement --}}
 
     @yield('page-style')
@@ -246,15 +203,6 @@
                 display: none
             }
         }
-        /* .loader {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: rgb(249,249,249);
-        } */
     </style>
 
     @section('loader')
