@@ -40,7 +40,8 @@ class FileUploadedListener
                 $file_path = Storage::disk($event->disk())->path('') . $file_path;
                 // save image with quality to optimize the size
                 if(Image::make(Storage::disk($event->disk())->path($file['path']))
-                    ->save($file_path, 80) && $has_space_name) {
+                    ->interlace()
+                    ->save($file_path, 75) && $has_space_name) {
                         // deleting old file
                         Storage::disk($event->disk())->delete($file['path']);
                     }

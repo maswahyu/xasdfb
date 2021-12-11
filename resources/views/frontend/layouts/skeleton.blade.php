@@ -283,7 +283,7 @@
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
     <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
     <script defer src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script defer src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
+    <script defer src="{{ asset('static/js/infinite-paginator-min.js') }}?v=1000"></script>
     <script defer src="{{ asset('static/js/global-min.js') }}"></script>
     <script defer src="{{ asset('static/js/btn-game.js') }}"></script>
 
@@ -368,6 +368,8 @@
 
             $(".loader").fadeOut('slow');
 
+            $('.lazy').lazy();
+
             $('.post-card__img').Lazy({
                 effect: 'fadeIn',
                 visibleOnly: true
@@ -425,10 +427,10 @@
             lastScrollTop = st;
         }
     </script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
     </script>
-    <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
+    <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script> --}}
 
     <div id="modalPolling" class="modal">
         <div class="modal-content">

@@ -904,5 +904,5 @@ $(function(){
 </script>
 <script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
 <script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>
-<script async src="{{ asset('static/js/home.js') }}?v=1"></script>
+<script async src="{{ asset('static/js/home.js') }}?v=2"></script>
 @endsection

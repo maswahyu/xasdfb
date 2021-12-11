@@ -26,12 +26,13 @@ mix
     .criticalCss({
         enabled: mix.inProduction(),
         paths: {
-            base: 'http://lazone.local/',
+            base: 'http://lazone.test/',
             templates: './public/static/css/',
             suffix: '_critical.min'
         },
         urls: [
             { url: '/', template: 'index' },
+            { url: '/tag/lifestyle', template: 'tag' },
         ],
         options: {
             dimensions: [

@@ -272,7 +272,10 @@ class PostController extends Controller
 
     public function tags($hashtag)
     {
-        return view('frontend.pages.tags');
+        $page = 1;
+        $posts = News::getNewsTags($page, $hashtag);
+
+        return view('frontend.pages.tags', compact('posts'));
     }
 
     public function feedTags(Request $request)

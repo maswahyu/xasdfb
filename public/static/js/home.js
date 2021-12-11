@@ -17,7 +17,7 @@ $(function ()
 
             $html = `<div class="home-promo-slider__slide">
                 <a href="` + value.url + `?utm_source=Banner&utm_medium=Content&utm_campaign=LazoneDetail" alt="` + value.title + `">
-                    <img width="380" height="250" src="/img_placeholder_slider.jpg" data-lazy="` + value.image + `" alt="` + value.title + `">
+                    <img width="600" height="220" src="/img_placeholder_slider.jpg" data-lazy="` + value.image + `" alt="` + value.title + `">
                 </a>
             </div>`;
 
