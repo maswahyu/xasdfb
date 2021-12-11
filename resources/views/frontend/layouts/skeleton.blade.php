@@ -25,9 +25,10 @@
     @yield('meta')
     <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
 
+    <link rel="preload" as="image" href="{{ asset('img_placeholder_hero.jpg') }}" />
+
     @yield('preload-images')
 
-    <link rel="preload" as="image" href="{{ asset('img_placeholder_hero.jpg') }}" />
     <link rel="preload" as="image" href="{{ asset('static/images/logo.png') }}" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -338,8 +339,6 @@
     <script defer src="{{ asset('static/js/global-min.js') }}"></script>
     <script defer src="{{ asset('static/js/btn-game.js') }}"></script>
 
-    {!! $siteInfo['footercode'] !!}
-
     @yield('before-body-end')
     <script>
         const stickyBanner = document.getElementsByClassName("stickyBanner");
@@ -564,6 +563,8 @@
             }
         });
     </script>
+
+    {!! $siteInfo['footercode'] !!}
 </body>
 
 </html>
