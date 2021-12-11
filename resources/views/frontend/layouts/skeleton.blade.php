@@ -427,10 +427,10 @@
             lastScrollTop = st;
         }
     </script>
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
     </script>
-    <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script> --}}
+    <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
 
     <div id="modalPolling" class="modal">
         <div class="modal-content">
