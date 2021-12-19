@@ -55,11 +55,11 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 
             <div class="row horizontal-list horizontal-list--margin-top-0">
                 <div class="span-12 jsArticleList">
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $index => $post)
                         <a href="{{ $post->url }}" class="post-card post-card--wide post-card--full">
 
                             <div class="post-card__thumbnail">
-                                <img width="144" height="72" class="post-card__img" src="{{ $post->thumbnail }}" alt="">
+                                <img width="144" height="72" {{ $index > 3 ? 'loading="lazy"' : '' }}loading="lazy" class="{{ $index > 3 ? 'lazy' : '' }} post-card__img" src="{{ $post->thumbnail }}" alt="">
                             </div>
 
                             <div class="post-card__info">
