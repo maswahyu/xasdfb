@@ -23,7 +23,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
-    <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
+    <link rel='dns-prefetch' href='https://www.googletagmanager.com'>
 
     @yield('preload-images')
 
@@ -86,6 +86,7 @@
             z-index: 9999;
         }
     </style>
+    @if (request('no_tracking') != 1)
     @if($siteInfo['analytics_id'])
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -94,6 +95,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','{{ $siteInfo['analytics_id'] }}');</script>
     <!-- End Google Tag Manager -->
+    @endif
     @endif
     {!! $siteInfo['headercode'] !!}
     <style>
