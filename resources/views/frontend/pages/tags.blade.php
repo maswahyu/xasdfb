@@ -152,7 +152,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 @endsection
 
 {{-- if query string has no_tracking=1, override footercode content --}}
-@if (request('no_tracking', 1))
+@if (request('no_tracking') == 1)
     @section('footercode')
     @endsection
 @endif
