@@ -59,7 +59,11 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
                         <a href="{{ $post->url }}" class="post-card post-card--wide post-card--full">
 
                             <div class="post-card__thumbnail">
-                                <img width="144" height="72" {{ $index > 3 ? 'loading="lazy"' : '' }}loading="lazy" class="{{ $index > 3 ? 'lazy' : '' }} post-card__img" src="{{ $post->thumbnail }}" alt="">
+                                @if ($index <= 3)
+                                    <img width="144" height="72" class="post-card__img" src="{{ $post->thumbnail }}" alt="{{ $post->title }} thumbnail">
+                                @else
+                                    <img width="144" height="72" class="lazyload post-card__img" data-src="{{ $post->thumbnail }}" alt="{{ $post->title }} thumbnail">
+                                @endif
                             </div>
 
                             <div class="post-card__info">
@@ -128,6 +132,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 </script>
 @endverbatim
 
+<script src="{{ asset('static/js/lazysizes.min.js') }}"></script>
 {{-- <script src="{{ asset('static/js/tags.js') }}"></script> --}}
 <script>
     $(function () {
