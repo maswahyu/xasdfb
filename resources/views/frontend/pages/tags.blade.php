@@ -59,7 +59,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
                         <a href="{{ $post->url }}" class="post-card post-card--wide post-card--full">
 
                             <div class="post-card__thumbnail">
-                                <img width="144" height="85" class="post-card__img" src="{{ $post->thumbnail }}" alt="">
+                                <img width="144" height="72" class="post-card__img" src="{{ $post->thumbnail }}" alt="">
                             </div>
 
                             <div class="post-card__info">
@@ -105,7 +105,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
     <a href="{{ url }}" class="post-card post-card--wide post-card--full">
 
         <div class="post-card__thumbnail">
-            <img width="144" height="85" class="post-card__img" src="{{ thumbnail }}" alt="">
+            <img width="144" height="72" class="post-card__img" src="{{ thumbnail }}" alt="">
         </div>
 
         <div class="post-card__info">
