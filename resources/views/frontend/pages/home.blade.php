@@ -1,6 +1,8 @@
 @extends('frontend.layouts.skeleton')
 
 @section('preload-images')
+    <link rel="preload" as="image" href="{{ asset('img_placeholder_hero.jpg') }}" />
+
     {{-- @if (!empty($posts_highlight) && !empty($posts_highlight->image))
         <link rel="preload" as="image" href="{{ asset($posts_highlight->image) }}" />
     @endif --}}
@@ -902,7 +904,6 @@ $(function(){
 });
 
 </script>
-<script defer src="{{ asset('static/js/jquery.sticky-sidebar.min.js') }}"></script>
-<script defer src="{{ asset('static/js/ResizeSensor.js') }}"></script>
+<script defer src="{{ asset('static/js/jquery.sticky-sidebar-with-resize-sensor.min.js') }}"></script>
 <script async src="{{ asset('static/js/home.js') }}?v=2"></script>
 @endsection

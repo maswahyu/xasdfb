@@ -90,7 +90,7 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 
 @section('before-body-end')
 
-<script>
+{{-- <script>
     window.feedUrl = "{{ url('feed-tags') }}?hashtag={{ request()->segment(2) }}";
 </script>
 
@@ -120,7 +120,13 @@ $desc = "Temukan berita terbaru seputar ".ucwords(str_replace('-', ' ', request(
 
     </a>
 </script>
-@endverbatim
+@endverbatim --}}
 
 <script src="{{ asset('static/js/tags.js') }}"></script>
 @endsection
+
+{{-- if query string has no_tracking=1, override footercode content --}}
+@if (request('no_tracking', 1))
+    @section('footercode')
+    @endsection
+@endif

@@ -25,8 +25,6 @@
     @yield('meta')
     <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
 
-    <link rel="preload" as="image" href="{{ asset('img_placeholder_hero.jpg') }}" />
-
     @yield('preload-images')
 
     <link rel="preload" as="image" href="{{ asset('static/images/logo.webp') }}" type="image/webp">
@@ -38,10 +36,6 @@
     <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=optional">
     </noscript>
-
-    {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
 
     @yield('critical-css')
 
@@ -279,6 +273,29 @@
     </script>
 
     <script src="{{ asset('static/js/jquery-3.6.0.min.js') }}"></script>
+    {{-- remove Pagespeed warning about passive listener --}}
+    <script>
+        jQuery.event.special.touchstart = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.touchmove = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.wheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("wheel", handle, { passive: true });
+            }
+        };
+        jQuery.event.special.mousewheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("mousewheel", handle, { passive: true });
+            }
+        };
+    </script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
     <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
@@ -358,17 +375,14 @@
         }
     </script>
     <script type="text/javascript">
-        $(document).ready(function ($) {
+        $(function() {
             $('#post-content img').each(function () {
                 $(this).removeAttr('style')
             });
-        });
-
-        $(function() {
 
             $(".loader").fadeOut('slow');
 
-            $('.lazy').lazy();
+            $('.lazy').Lazy();
 
             $('.post-card__img').Lazy({
                 effect: 'fadeIn',
@@ -514,7 +528,9 @@
         });
     </script>
 
-    {!! $siteInfo['footercode'] !!}
+    @section('footercode')
+        {!! $siteInfo['footercode'] !!}
+    @show
 </body>
 
 </html>
