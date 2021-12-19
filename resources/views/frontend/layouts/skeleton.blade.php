@@ -24,6 +24,7 @@
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
     <link rel='dns-prefetch' href='https://www.googletagmanager.com'>
+    <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
 
     @yield('preload-images')
 
