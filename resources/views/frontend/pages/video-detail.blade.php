@@ -87,7 +87,7 @@
             </div>
 
             <div class="photo-header__title photo-header__title--video">
-                <span>Waktunya unjuk gigi di LA Indie Movie : Your Movie Goes Digital!</span>
+                <span>{{ $gallery->title }}</span>
             </div>
 
         </div>
