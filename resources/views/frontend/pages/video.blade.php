@@ -138,7 +138,7 @@
                 </div>
             </a>
 
-            <div class="post-card__meta post-meta">
+            <div class="post-card__meta post-meta mb-3">
 
                 <div class="post-meta__category">
                     <a href="/gallery/video" alt="category">
@@ -150,7 +150,7 @@
 
             </div>
 
-            <div class="post-card__additional stat-with-icon">
+            <div class="post-card__additional stat-with-icon d-none">
                 <span class="stat-with-icon__icon">
                     @endverbatim
                     <img src="{{ asset('static/images/clock.png') }}" alt="">
