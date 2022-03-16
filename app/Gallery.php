@@ -132,7 +132,8 @@ class Gallery extends Model
 
     public function getViewCountAttribute()
     {
-        return rand(1, 999);
+        $json = json_decode(file_get_contents("https://www.googleapis.com/youtube/v3/videos?id={$this->youtube_id}&key=AIzaSyBUgz1BHNM_PyGEirbgUfathH_DqdCE2NE&part=statistics"));
+        return $json->items[0] ? $json->items[0]->statistics->viewCount : 0;
     }
 
     public function getThumbnailAttribute()
