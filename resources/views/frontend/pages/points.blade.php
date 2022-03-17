@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="point-banner">
-    <img src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_MAIN-500x1366-H.jpg') }}" alt="" class="hero-header">
+    <img src="{{ asset('static/images/banner-mypoints.jpg') }}" alt="" class="hero-header">
 
     <div class="container">
         <div class="point-banner__content">

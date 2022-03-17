@@ -132,7 +132,8 @@ class Gallery extends Model
 
     public function getViewCountAttribute()
     {
-        $json = json_decode(file_get_contents("https://www.googleapis.com/youtube/v3/videos?id={$this->youtube_id}&key=AIzaSyBUgz1BHNM_PyGEirbgUfathH_DqdCE2NE&part=statistics"));
+        $key = env('YOUTUBE_KEY', 'AIzaSyD1E7JXHOpuFhNcXNTMljmnT-ObV-ntl28');
+        $json = json_decode(file_get_contents("https://www.googleapis.com/youtube/v3/videos?id={$this->youtube_id}&key={$key}&part=statistics"));
         return $json->items[0] ? $json->items[0]->statistics->viewCount : 0;
     }
 
