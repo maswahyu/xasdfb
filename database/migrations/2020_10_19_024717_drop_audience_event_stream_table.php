@@ -14,7 +14,7 @@ class DropAudienceEventStreamTable extends Migration
     public function up()
     {
         Schema::table('audience_event_stream', function(Blueprint $table) {
-            // $table->dropForeign(['event_stream_id']);
+            $table->dropForeign(['first_event']);
         });
         Schema::dropIfExists('audience_event_stream');
 
