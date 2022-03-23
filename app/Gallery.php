@@ -156,11 +156,8 @@ class Gallery extends Model
         $data->publish     = $request->get('publish');
         $data->user_id     = Auth::guard('admin')->id();
         $data->is_featured = $request->get('is_featured');
-        $data->slug     = str_slug($request->get('title'));
-        if (self::whereSlug($data->slug)->exists()) {
-            $data->slug     = $data->slug.rand(1, 100);
-        }
-
+        $data->slug     = static::incrementSlug($request->get('title'));
+        
         $data->save();
 
         self::forgotCache();
@@ -168,6 +165,18 @@ class Gallery extends Model
         return $data;
     }
 
+    protected static function incrementSlug($title) {
+        $slugsFound = self::where('title', 'like', $title)->count();;
+        $counter = 0;
+        $counter += $slugsFound;
+
+        $slug = str_slug($title);
+
+        if ($counter) {
+            $slug = $slug . '-' . $counter;
+        }
+        return $slug;
+    }
     public static function updateRecord($request, $id)
     {
         $data = Gallery::findOrFail($id);
