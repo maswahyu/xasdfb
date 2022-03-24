@@ -19,7 +19,7 @@ class Gallery extends JsonResource
             'thumbnail'      => ($this->type == 'photo') ? $this->thumbnail : '',
             'category'       => $this->type,
             'published_date' => $this->published_date,
-            'view_count'     => $this->view_count,
+            // 'view_count'     => $this->view_count,
             'title'          => $this->title,
             'title_limit'    => $this->title_limit,
             'youtube_id'     => ($this->type == 'video') ? $this->youtube_id : 0,

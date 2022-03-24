@@ -33,23 +33,27 @@ class StorageController extends Controller
      */
     public function imageHandler(Request $request)
     {
-        $file = $request->path();
-        $file = urldecode(str_replace('storage/', '/', $file));
+        try {
+            $file = $request->path();
+            $file = urldecode(str_replace('storage/', '/', $file));
 
-        if (strpos($file, '.gif') !== true) {
-            $path = storage_path('app/public' . $file);
-            $file = File::get($path);
-            $type = File::mimeType($path);
+            if (strpos($file, '.gif') !== true) {
+                $path = storage_path('app/public' . $file);
+                $file = File::get($path);
+                $type = File::mimeType($path);
 
-            $response = Response::make($file, 200);
-            $response->header("Content-Type", $type);
-            return $response;
+                $response = Response::make($file, 200);
+                $response->header("Content-Type", $type);
+                return $response;
+            }
+
+            $file = Storage::disk('filemanager')->get($file);
+
+            $this->cacheControl();
+            echo Image::make($file)->encode('png');
+        } catch (\Exception $e) {
+            abort(404);
         }
-
-        $file = Storage::disk('filemanager')->get($file);
-
-        $this->cacheControl();
-        echo Image::make($file)->encode('png');
     }
 
     /**
@@ -58,12 +62,16 @@ class StorageController extends Controller
      */
     public function oldImage(Request $request)
     {
-        $file = $request->path();
-        $file = urldecode(str_replace('website/var/', '/var/', $file));
-        $file = Storage::disk('old')->get($file);
+        try {
+            $file = $request->path();
+            $file = urldecode(str_replace('website/var/', '/var/', $file));
+            $file = Storage::disk('old')->get($file);
 
-        $this->cacheControl();
-        echo Image::make($file)->encode('png');
+            $this->cacheControl();
+            echo Image::make($file)->encode('png');
+        } catch (\Exception $e) {
+            abort(404);
+        }
     }
 
     /**
@@ -74,12 +82,16 @@ class StorageController extends Controller
      */
     public function oldImageNewsCover(Request $request, $year)
     {
-        $file = $request->path();
-        $file = urldecode(str_replace('news/', '/var/assets/news/', $file));
-        $file = Storage::disk('old')->get($file);
+        try {
+            $file = $request->path();
+            $file = urldecode(str_replace('news/', '/var/assets/news/', $file));
+            $file = Storage::disk('old')->get($file);
 
-        $this->cacheControl();
-        echo Image::make($file)->encode('png');
+            $this->cacheControl();
+            echo Image::make($file)->encode('png');
+        } catch (\Exception $e) {
+            abort(404);
+        }
     }
 
     /**

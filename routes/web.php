@@ -36,7 +36,9 @@ Route::get('privacy-policy', 'PageController@privacy');
 Route::get('live/{slug}', 'StreamController@stream');
 Route::post('live/remind-me', 'StreamController@remindMe');
 Route::post('live/views_counter', 'StreamController@addViews');
-Route::get('tukarlangsung', 'PageController@tukarLangsung');
+Route::get('tukarlangsung', function() {
+    return redirect('/points', 302);
+});
 
 
 /* Game pages */
@@ -82,6 +84,8 @@ Route::get('sitemaps/photo.xml', 'PageController@sitemapPhoto');
 Route::get('sitemaps/video.xml', 'PageController@sitemapVideo');
 Route::get('sitemaps/{category}.xml', 'PageController@sitemapCategory');
 
+Route::post('polling', 'PollingController@doVote');
+
 /* image routes */
 Route::get('/storage/{path}', 'StorageController@imageHandler')->where('path', '.+');
 Route::get('/website/var/tmp/{path}', 'StorageController@oldImage')->where('path', '.+');
@@ -93,8 +97,15 @@ Route::get('/{filename}.{extension}', 'StorageController@oldImageNewsCoverDirect
 
 Route::get('lensacommunity/{slug}', 'PostController@topPost');
 Route::get('sneakerland/{slug}', 'PostController@topPost');
+Route::get('relationship/{slug}', 'PostController@topPost');
 
 Route::get('{category}', 'PostController@category');
-Route::get('{category}/{subcategory}', 'PostController@subcategory');
+Route::get('{category}/{subcategory}', 'PostController@subcategory')->name('subcategory');
+Route::get('{category}/relationship85/{slug}', function($category, $slug) {
+    return redirect(route('subcategory', [
+        'category' => $category,
+        'subcategory' => $slug
+    ]), 301);
+});
 Route::get('{category}/{subcategory}/{slug}', 'PostController@detailPost');
 //sementara

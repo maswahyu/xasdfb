@@ -1,11 +1,11 @@
 <div class="container container-header">
 
-    <div class="row">
+    <div class="row position-relative">
 
-        <a href="{{ url('/')}}" class="site-logo">
+        <a href="{{ url('/')}}" class="site-logo position-absolute">
             <picture>
-                <img src="{{ asset('static/images/logo-lazone.svg') }}" alt="LAZONE.id">
                 <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp">
+                <img src="{{ asset('static/images/logo-lazone.svg') }}" alt="LAZONE.id">
             </picture>
         </a>
 
@@ -23,6 +23,9 @@
                                 <a href="{{ url($item->slug) }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, $item->slug) }}" alt="{{ $item->name }}"><span>{{ $item->name }}</span></a>
                             </li>
                         @endforeach
+                        <li class="dropdown-menu__dropdown-item">
+                            <a href="{{ url('relationship') }}" class="dropdown-menu__dropdown-link {{ classActiveSegment(1, 'relationship') }}" alt="Relationship"><span>Relationship</span></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown-menu__item dropdown-menu__item--has-submenu">
@@ -59,7 +62,7 @@
                     <a href="#" class="dropdown-menu__link jsSearchTrigger">
                         <picture>
                             <source srcset="{{ asset('static/images/search.webp') }}" type="image/webp">
-                            <img src="{{ asset('static/images/search.png') }}" alt="Search">
+                            <img width="20" height="20" src="{{ asset('static/images/search.png') }}" alt="Search">
                         </picture>
                     </a>
                 </li>
@@ -117,3 +120,13 @@
     </div>
 
 </div>
+
+@if(!empty($current_polling))
+<div id="polling-bar">
+    <div class="container container-header">
+        <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
+        <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+        <button class="btn btn-ghost-white btn-show-modal-polling">Tampilkan Polling</button>
+    </div>
+</div>
+@endif

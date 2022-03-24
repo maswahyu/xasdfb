@@ -23,12 +23,40 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="canonical" href="@yield('head_url', url('/'))" />
     @yield('meta')
-    {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Fira+Sans:700|Muli:400,700|Open+Sans:400,600,700|Poppins:700&display=swap" rel="stylesheet"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}"> --}}
+    <link rel='dns-prefetch' href='https://www.googletagmanager.com'>
+    <link href='https://www.google-analytics.com' rel='preconnect' crossorigin>
+
+    @yield('preload-images')
+
+    <link rel="preload" as="image" href="{{ asset('static/images/logo.webp') }}" type="image/webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=optional">
+    </noscript>
+
+    @yield('critical-css')
+
     {{-- *********** IMPROVE FCP *********** --}}
+    <link rel="preload" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="{{ asset('static/css/main.css') }}?v={{ filemtime(public_path() . '/static/css/main.css') }}">
+    </noscript>
+    <link rel="preload" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="{{ asset('static/css/custom.min.css') }}?v={{ filemtime(public_path() . '/static/css/custom.min.css') }}">
+    </noscript>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Poppins:700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,800|Poppins:700&display=optional">
+    </noscript>
+
     {{-- load main css via js biar di load belakangan --}}
-    <script>
+    {{-- <script>
     var head = document.getElementsByTagName('HEAD')[0];
     var mainCss = document.createElement('link');
     var customCss = document.createElement('link');
@@ -45,51 +73,9 @@
     head.appendChild(mainCss);
     head.appendChild(customCss);
     head.appendChild(googleFont);
-    </script>
-    <style>
-        .site-body {
-            -js-display: flex;
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            margin: 0;
-            flex: 1;
-        }
-        @media (min-width: 1280px) {
-            .site-header {
-                display: block !important;
-                width: 100%;
-                height: 8rem;
-                position: fixed;
-                z-index: 999;
-                background-color: #000;
-                color: #fff;
-            }
-        }
-        .site-header {
-            display: none;
-        }
-        @media (min-width: 1280px) {
-            .mobile-header {
-                display: none !important;
-            }
-        }
-        .mobile-header {
-            position: fixed;
-            -js-display: flex;
-            display: flex;
-            align-items: center;
-            top: 0;
-            left: 0;
-            padding: 0 10px;
-            height: 60px;
-            width: 100%;
-            background-color: #000;
-            z-index: 500;
-            transition: top .15s ease;
-        }
-    </style>
+    </script> --}}
     {{-- end fcp improvement --}}
+
     @yield('page-style')
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
@@ -101,6 +87,7 @@
             z-index: 9999;
         }
     </style>
+    @if (request('no_tracking') != 1)
     @if($siteInfo['analytics_id'])
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -109,6 +96,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','{{ $siteInfo['analytics_id'] }}');</script>
     <!-- End Google Tag Manager -->
+    @endif
     @endif
     {!! $siteInfo['headercode'] !!}
     <style>
@@ -212,6 +200,10 @@
                 display: none
             }
         }
+    </style>
+
+    @section('loader')
+        <style>
         .loader {
             position: fixed;
             left: 0px;
@@ -221,7 +213,10 @@
             z-index: 9999;
             background: rgb(249,249,249);
         }
-    </style>
+
+        </style>
+    @show
+
     @yield('inside-head')
 </head>
 
@@ -280,16 +275,37 @@
     window.siteUrl = "{{ url('/') }}";
     </script>
 
-    <script src="{{ asset('static/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('static/js/jquery-3.6.0.min.js') }}"></script>
+    {{-- remove Pagespeed warning about passive listener --}}
+    <script>
+        jQuery.event.special.touchstart = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.touchmove = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.wheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("wheel", handle, { passive: true });
+            }
+        };
+        jQuery.event.special.mousewheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("mousewheel", handle, { passive: true });
+            }
+        };
+    </script>
     <script src="{{ asset('static/js/jquery.drilldown.min.js') }}"></script>
-    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
-    <script src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
-    <script src="{{ asset('static/js/infinite-paginator-min.js') }}?v=999"></script>
-    <script src="{{ asset('static/js/global-min.js') }}"></script>
     <script src="{{ asset('static/js/jquery.lazy.min.js') }}"></script>
-    <script src="{{ asset('static/js/btn-game.js') }}"></script>
-
-    {!! $siteInfo['footercode'] !!}
+    <script defer src="{{ asset('static/js/slick.min.js') }}"></script>
+    <script defer src="{{ asset('static/js/handlebars.min-latest.js') }}"></script>
+    <script defer src="{{ asset('static/js/infinite-paginator-min.js') }}?v=1000"></script>
+    <script defer src="{{ asset('static/js/global-min.js') }}"></script>
+    <script defer src="{{ asset('static/js/btn-game.js') }}"></script>
 
     @yield('before-body-end')
     <script>
@@ -362,15 +378,14 @@
         }
     </script>
     <script type="text/javascript">
-        $(document).ready(function ($) {
+        $(function() {
             $('#post-content img').each(function () {
                 $(this).removeAttr('style')
             });
-        });
-
-        $(function() {
 
             $(".loader").fadeOut('slow');
+
+            $('.lazy').Lazy();
 
             $('.post-card__img').Lazy({
                 effect: 'fadeIn',
@@ -433,6 +448,92 @@
         var _c_url = '{{ config('cas.cas_hostname') }}', _c_email = '{{ auth()->check() ? auth()->user()->email : '' }}', _c_auth = '{{ auth()->check() }}', _c_sso_id = '{{ auth()->check() ? auth()->user()->sso_id : '' }}'
     </script>
     <script src="{{ asset('static/js/auth.js') }}?v={{ filemtime(public_path() . '/static/js/auth.js') }}"></script>
+
+    <div id="modalPolling" class="modal">
+        <div class="modal-content">
+            <div class="modal-content-header">
+                <span><strong>//</strong>&nbsp;&nbsp;LAZONE POLLING</span>
+                <span id="polling-title"></span>
+                <a href="javascript:void(0);" class="btn-close">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="modal-content-inner">
+                <ol id="polling-options">
+                </ol>
+                <span class="message-success">Terima kasih telah memilih!</span>
+            </div>
+        </div>
+        <div class="backdrop"></div>
+    </div>
+    <script type="text/javascript">
+        var currentPolling = {!! json_encode($current_polling) !!};
+        const IS_AUTH = {!! Auth::check() ? 'true' : 'false' !!};
+        $ (function() {
+            if (currentPolling && (localStorage.getItem("polling_"+currentPolling.id) === null || (IS_AUTH === true && localStorage.getItem("auth_polling_"+currentPolling.id) == null)) ){
+                $('#polling-bar').css('display','block');
+                $('#polling-bar-mobile').css('display','flex');
+                $('.site-content').addClass('poll-active');
+
+                $("#polling-bar .btn, #polling-bar-mobile").on('click', function() {
+                    $("#modalPolling").show();
+                })
+
+                $("#modalPolling .btn-close, #modalPolling .backdrop").on('click', function() {
+                    $("#modalPolling").hide();
+                })
+
+                $('#polling-title').text(currentPolling.question);
+                $.each(currentPolling.options,function(key,item){
+                    $('#polling-options').append('<li data-id="'+item.id+'">'+item.option+'</li>');
+                })
+                $('#polling-bar').show();
+                var send = false;
+                $("#modalPolling").on('click','li',function(){
+                    $("#modalPolling").off('click','li');
+                    var id = $(this).data('id');
+                    $(this).addClass('selected');
+                    $('#polling-bar, #polling-bar-mobile').hide();
+                    $('.site-content').removeClass('poll-active');
+                    if(send === false) {
+
+                        $.ajax({
+                            url: 'polling',
+                            type: 'post',
+                            data: {id: id},
+                            dataType: 'json',
+                            beforeSend: () => {
+                                send = true;
+                            },
+                            success: (res, content, xhr) => {
+                                if(xhr.status === 200) {
+                                    if(IS_AUTH) {
+                                        localStorage.setItem("auth_polling_"+currentPolling.id,'1');
+                                    } else {
+                                        localStorage.setItem("polling_"+currentPolling.id,'1');
+                                    }
+
+                                    $("#modalPolling").off('click', 'li');
+                                    $('#modalPolling .message-success').show();
+                                }
+                                send = false;
+                                setTimeout(() => {
+                                    $("#modalPolling").hide();
+                                }, 3000)
+                            }
+                        })
+
+                    }
+                });
+            }
+        });
+    </script>
+
+    @section('footercode')
+        {!! $siteInfo['footercode'] !!}
+    @show
 </body>
 
 </html>

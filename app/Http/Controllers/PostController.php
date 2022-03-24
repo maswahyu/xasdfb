@@ -28,7 +28,7 @@ class PostController extends Controller
 
         if ($category->parent_id != Category::TOP_PARENT) {
 
-            $slug = array(Category::SNEAKERLAND, Category::LENSA);
+            $slug = array(Category::SNEAKERLAND, Category::LENSA,  Category::RELATIONSHIP);
 
             if (!in_array($category->slug, $slug)) {
                 return redirect($category->url);
@@ -81,10 +81,10 @@ class PostController extends Controller
 
         } else {
 
-            $slug = array(Category::SNEAKERLAND, Category::LENSA);
+            $slug = array(Category::SNEAKERLAND, Category::LENSA, Category::RELATIONSHIP);
 
             if (in_array($subcategory->slug, $slug)) {
-                dd('sneaker or lensa');
+                // dd('sneaker or lensa');
                 return redirect($subcategory->slug);
             }
         }
@@ -244,7 +244,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        if(!in_array($post->category_slug, [News::LENSAPHOTO, News::SNEAKERLAND])){
+        if(!in_array($post->category_slug, [News::LENSAPHOTO, News::SNEAKERLAND, News::RELATIONSHIP])){
              return redirect($post->url, 301);
         }
 
@@ -272,7 +272,10 @@ class PostController extends Controller
 
     public function tags($hashtag)
     {
-        return view('frontend.pages.tags');
+        $page = 1;
+        $posts = News::getNewsTags($page, $hashtag);
+
+        return view('frontend.pages.tags', compact('posts'));
     }
 
     public function feedTags(Request $request)

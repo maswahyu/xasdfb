@@ -1,65 +1,80 @@
 <div class="mobile-header nav-down-mobile">
+    <div class="mobile-header-inner">
+        <button class="mobile-menu-trigger mobile-menu-trigger__left hamburger hamburger--slider" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
 
-    <button class="mobile-menu-trigger mobile-menu-trigger__left hamburger hamburger--slider" type="button">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
+        {{-- @auth --}}
+        <button class="jsUserMenuTrigger close-user-menu hamburger hamburger--slider is-active hidden" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+        {{-- @endauth --}}
 
-    {{-- @auth --}}
-    <button class="jsUserMenuTrigger close-user-menu hamburger hamburger--slider is-active hidden" type="button">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-    {{-- @endauth --}}
+        <a href="{{ url('/')}}" class="site-logo">
+            <picture>
+                <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp">
+                <img width="133" height="106" src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
+            </picture>
+        </a>
 
-    <a href="{{ url('/')}}" class="site-logo">
-        <picture>
-            {{-- <source srcset="{{ asset('static/images/logo.webp') }}" type="image/webp"> --}}
-            <img width="133" height="106" src="{{ asset('static/images/logo.png') }}" alt="LA-ZONE.id">
-        </picture>
-    </a>
-
-    @auth
-    <div class="search-btn-trigger search-btn-trigger__logged-in searchTrigger">
-    @else
-    <div class="search-btn-trigger searchTrigger">
-    @endauth
-        <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
-    </div>
-
-    <div class="search-wrapper">
-        <div class="close-button searchTrigger"></div>
-        <form class="form" action="{{ url('search') }}" method="get">
-            <input type="search" name="search" class="search-input form-control" placeholder="search">
-            <button type="submit" class="search-btn-icon">
-                <picture>
-                    {{-- <source srcset="{{ asset('static/images/search-black.webp') }}" type="image/webp"> --}}
-                    <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
-                </picture>
-            </button>
-        </form>
-    </div>
-
-    @auth
-        <div class="user-info mobile jsUserMenuTrigger">
-            {{-- <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span> --}}
-            <img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 25) }}">
+        @auth
+        <div class="search-btn-trigger search-btn-trigger__logged-in searchTrigger">
+        @else
+        <div class="search-btn-trigger searchTrigger">
+        @endauth
+            <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
         </div>
-    @else
-        <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login user-info">Login</a>
-    @endauth
 
-    <ul class="mobile-scrollable-menu">
-        @foreach($siteCategory as $item)
+        <div class="search-wrapper">
+            <div class="close-button searchTrigger"></div>
+            <form class="form" action="{{ url('search') }}" method="get">
+                <input type="search" name="search" class="search-input form-control" placeholder="search">
+                <button type="submit" class="search-btn-icon">
+                    <picture>
+                        {{-- <source srcset="{{ asset('static/images/search-black.webp') }}" type="image/webp"> --}}
+                        <img width="20" height="20" src="{{ asset('static/images/search.svg') }}" alt="">
+                    </picture>
+                </button>
+            </form>
+        </div>
+
+        @auth
+            <div class="user-info mobile jsUserMenuTrigger">
+                {{-- <span class="user-info__hello">Hi, {{ str_limit(auth()->user()->name, 7) }}</span> --}}
+                <img class="user-info__avatar" src="{{ asset('static/images/avatar.png') }}" id="avatar-mobile" alt="{{ str_limit(auth()->user()->name, 25) }}">
+            </div>
+        @else
+            <a href="{{ url('member/login') }}" alt="Login" class="btn btn-crimson btn-login user-info">Login</a>
+        @endauth
+
+        <ul class="mobile-scrollable-menu">
+            @foreach($siteCategory as $item)
+                <li>
+                    <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
+                </li>
+            @endforeach
             <li>
-                <a href="{{ url($item->slug) }}" alt="{{ $item->name }}">{{ $item->name }}</a>
+                <a href="relationship" alt="Relationship">Relationship</a>
             </li>
-        @endforeach
-    </ul>
-
+        </ul>
+    </div>
+    @if(!empty($current_polling))
+    <div id="polling-bar-mobile">
+        <div class="left">
+            <span>//&nbsp;&nbsp;&nbsp;LAZONE POLLING</span>
+            <span>Apa hadiah yang kamu mau untuk periode MyPoints berikutnya?</span>
+        </div>
+        <div class="right">
+            <span>>></span>
+        </div>
+    </div>
+    @endif
 </div>
+
 
 <div class="dropdown-menu__blanket"></div>
 {{-- <nav id="nav-mobile-menu" class="mobile-nav">

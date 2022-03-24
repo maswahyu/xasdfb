@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Setting;
-use App\Contact;
 use Auth;
-use Validator;
-use App\Gallery;
-use App\Category;
-use App\Event;
+use Cache;
 use App\News;
 use App\Album;
-use App\EventStream;
-use App\Http\Resources\EventCollection;
-use App\Http\Resources\NewsCollection;
-use App\Http\Resources\GalleryCollection;
-use App\Http\Resources\AlbumCollection;
-use Cache;
-use Carbon\Carbon;
+use App\Event;
 use App\Prize;
+use Validator;
+use App\Contact;
+use App\Gallery;
+use App\Setting;
+use App\Category;
+use Carbon\Carbon;
+use App\EventStream;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use App\Http\Resources\NewsCollection;
+use App\Http\Resources\AlbumCollection;
+use App\Http\Resources\EventCollection;
+use App\Http\Resources\GalleryCollection;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -56,8 +58,11 @@ class PageController extends Controller
     public function points()
     {
         $points = Prize::getData();
-        // dd($points);
-        return view('frontend.pages.points', compact('points'));
+        $copy = [
+            'point' => Setting::getConfig('point_copy'),
+            'tnc' => Setting::getConfig('point_tnc_copy'),
+        ];
+        return view('frontend.pages.points', compact('points', 'copy'));
     }
 
     public function contact()
@@ -232,9 +237,14 @@ class PageController extends Controller
             return News::byPublish()->byCategory($category_id)->orderBy('created_at', 'DESC')->get();
         });
 
-        return response()
-            ->view('frontend.sitemap.category', ['posts' => $posts])
-            ->header('Content-Type', 'text/xml');
+        $sitemapFilename = 'sitemapCategory-'.$category_id.'.xml';
+        // save file
+        Cache::remember('sitemapCategory-'.$category_id.'.xml', $expiresAt, function () use ($sitemapFilename, $posts) {
+            return Storage::disk('local')->put("sitemap/$sitemapFilename", view('frontend.sitemap.category', ['posts' => $posts])->render());
+        });
+        return response(file_get_contents(\storage_path("app/sitemap/$sitemapFilename")), 200, [
+            'Content-Type' => 'application/xml'
+        ]);
     }
 
     public function sitemapVideo()

@@ -42,7 +42,7 @@ Hector_infinitePaginator.prototype = {
                     $ads = `<div class="post-card post-card--wide post-card--wide__with-padding">
                     <div class="post-card__ads-container">
                         <a href="`+ self.banner_url +`?utm_source=AdsHome" alt="">
-                            <img class="post-card__ads" src="`+ self.banner_image +`" alt="">
+                            <img class="lazy post-card__ads" src="`+ self.banner_image +`" alt="">
                         </a>
                     </div></div>`;
 

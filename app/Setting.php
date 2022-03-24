@@ -30,6 +30,7 @@ class Setting extends Model
     const SORT_ABOUT_US = 4;
     const SORT_CONTACT_US = 5;
     const SORT_NEWS = 6;
+    const SORT_MYPOINT = 7;
 
     public $timestamps = false;
 
@@ -49,7 +50,7 @@ class Setting extends Model
 
         return sprintf('<p class="text-center text-%s">%s</p>', $state, $label);
     }
-    
+
     public static function find_key($key)
     {
     	return Setting::where('key', $key)->first()->value;

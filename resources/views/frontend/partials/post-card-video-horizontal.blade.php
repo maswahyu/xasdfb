@@ -42,12 +42,12 @@
 
         </div>
 
-        <div class="post-card__additional stat-with-icon">
+        {{-- <div class="post-card__additional stat-with-icon">
             <span class="stat-with-icon__icon">
                 <img src="{{ asset('static/images/clock.png') }}" alt="">
             </span>
         <span class="stat-with-icon__text">{{ $video->duration }}</span>
-        </div>
+        </div> --}}
 
     </div>
 

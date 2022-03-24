@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="point-banner">
-    <img src="{{ asset('static/images/LAZONE_NEW-MY-POINTS_MAIN-500x1366-H.jpg') }}" alt="" class="hero-header">
+    <img src="{{ asset('static/images/banner-mypoints.jpg') }}" alt="" class="hero-header">
 
     <div class="container">
         <div class="point-banner__content">
@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="span-12">
                             <div class="point-banner__text">
-                                <span>Dapatkan #Merchandise <strong>T-Shirt Streetball</strong> dan <strong>Hoodie Streetball </strong> atau #TukarLAngsung point kamu, buat kesempatan menangin <strong>Apple Watch Series 6</strong>.</span>
+                                <span>{!! $copy['point'] !!}</span>
                             </div>
                             {{-- <div class="point-banner__cta text-center">
                                 <a class="btn btn-crimson btn-point" href="{{ url('member/login') }}" alt="login">REGISTER SEKARANG</a>
@@ -66,7 +66,7 @@
                     <div class="rewards-list {{  (count($points) > 1) ? 'rewards-list__multiple jsRewardsSlider' : 'rewards-list__single jsRewardSingleSlider' }}  {{  ($hasVideo) ? '' : 'rewards-list__alternate-bg' }}">
                         @foreach($points as $item)
                             <div class="rewards-wrapper rewards-wrapper__card">
-                                <a href="" class="card-inner rewards-link">
+                                <a href="https://mypoints.lazone.id/" class="card-inner rewards-link">
                                     <div class="rewards-img-wrapper">
                                         <div class="rewards-img" style="background-image: url('{!! imageview($item->image) !!}');"></div>
                                     </div>

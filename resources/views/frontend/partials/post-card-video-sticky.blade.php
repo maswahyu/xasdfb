@@ -18,7 +18,7 @@
                 </svg>
             </div>
 
-        <div class="post-card__time post-card__time--large"><span>{{ $video->duration }}</span></div>
+        {{-- <div class="post-card__time post-card__time--large"><span>{{ $video->duration }}</span></div> --}}
 
         </div>
 

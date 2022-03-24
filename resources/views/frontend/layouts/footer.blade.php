@@ -5,7 +5,10 @@
         <div class="row footer-top__row">
 
             <div class="footer-top__span">
-                <img width="160" height="125" src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
+                <picture>
+                    <source srcset="{{ asset('static/images/logo-2.webp') }}" type="image/webp">
+                    <img width="80" height="63" src="{{ asset('static/images/logo-2.png') }}" alt="LAZONE.id" class="footer-logo">
+                </picture>
                 <ul class="point-nav">
                     {{-- <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('about-us') }}">About Us</a></li> --}}
                     <li class="point-nav__item"><a class="text-white point-nav__link list__link--footer" href="{{ url('contact-us') }}">Contact Us</a></li>
@@ -25,7 +28,7 @@
                         {{-- <svg class="fb-icon btn-social__icon">
                             <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#fb"></use>
                         </svg> --}}
-                        <img src="{{ asset('static/images/new-icon/fb.png') }}" alt="" class="yt-icon btn-social__icon">
+                        <img width="40" height="40" src="{{ asset('static/images/new-icon/fb.png') }}" alt="" class="lazy yt-icon btn-social__icon">
                     </a>
                     @endif
                     @if($siteInfo['contact_twitter'])
@@ -33,7 +36,7 @@
                         {{-- <svg class="tw-icon btn-social__icon">
                             <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#tw"></use>
                         </svg> --}}
-                        <img src="{{ asset('static/images/new-icon/twitter.png') }}" alt="" class="yt-icon btn-social__icon">
+                        <img width="40" height="40" src="{{ asset('static/images/new-icon/twitter.png') }}" alt="" class="lazy yt-icon btn-social__icon">
                     </a>
                     @endif
                     @if($siteInfo['contact_instagram'])
@@ -41,7 +44,7 @@
                         {{-- <svg class="ig-icon btn-social__icon">
                             <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#ig"></use>
                         </svg> --}}
-                        <img src="{{ asset('static/images/new-icon/ig.png') }}" alt="" class="yt-icon btn-social__icon">
+                        <img width="40" height="40" src="{{ asset('static/images/new-icon/ig.png') }}" alt="" class="lazy yt-icon btn-social__icon">
                     </a>
                     @endif
                     @if($siteInfo['contact_youtube'])
@@ -49,7 +52,7 @@
                         {{-- <svg class="yt-icon btn-social__icon">
                             <use xlink:href="{{ asset('static/images/new-icon/sprites.svg') }}#yt"></use>
                         </svg> --}}
-                        <img src="{{ asset('static/images/new-icon/youtube.png') }}" alt="" class="yt-icon btn-social__icon">
+                        <img width="40" height="40" src="{{ asset('static/images/new-icon/youtube.png') }}" alt="" class="lazy yt-icon btn-social__icon">
                     </a>
                     @endif
                 </div>
@@ -78,10 +81,10 @@
 
 <div class="floating-game-btn">
     <a class="btn-link" href="{{ route('game-index') }}">
-        <img src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" class="link-image">
+        <img width="145" height="151" class="lazy link-image" src="{{ asset('static/images/play-game.png') }}" alt="PLAY GAME" srcset="{{ asset('static/images/play-game.png') }} 1x, {{ asset('static/images/play-game@2x.png') }} 2x">
         <span class="d-none">PLAY GAME</span>
     </a>
     <button class="btn-close">
-        <img src="{{ asset('static/images/play-game-btn-close.png') }}" alt="close" class="close-btn-image">
+        <img width="22" height="22" src="{{ asset('static/images/play-game-btn-close.png') }}" alt="close" class="lazy close-btn-image">
     </button>
 </div>

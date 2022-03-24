@@ -19,6 +19,7 @@ class Category extends Model
     const STATUS_PUBLISHED = 1;
     const LENSA = 'lensacommunity';
     const SNEAKERLAND = 'sneakerland';
+    const RELATIONSHIP = 'relationship';
 
     const NETWORKS_CATEGORY = ['LA Streetball', 'Scooterland'];
 
@@ -71,7 +72,7 @@ class Category extends Model
     public static function detail($slug)
     {
         if (!Cache::has('category'.$slug)) {
-            $data = self::where('slug', $slug)->first();
+            $data = self::where('slug', $slug)->where('publish', Category::STATUS_PUBLISHED)->first();
             Cache::forever('category'.$slug, $data);
         }
 
@@ -167,6 +168,10 @@ class Category extends Model
             return url(self::SNEAKERLAND);
         }
 
+        if ($this->slug == self::RELATIONSHIP) {
+            return url(self::RELATIONSHIP);
+        }
+
         if ($this->parent) {
             return $this->parent->url;
         } else {
@@ -182,6 +187,10 @@ class Category extends Model
 
         if ($this->slug == self::SNEAKERLAND) {
             return url(self::SNEAKERLAND);
+        }
+
+        if ($this->slug == self::RELATIONSHIP) {
+            return url(self::RELATIONSHIP);
         }
 
         return url('/'.$this->parent->slug.'/'.$this->slug);

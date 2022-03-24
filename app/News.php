@@ -29,6 +29,7 @@ class News extends Model
     const TAKE_RECOMENDED = 5;
     const LENSAPHOTO = 'lensacommunity';
     const SNEAKERLAND = 'sneakerland';
+    const RELATIONSHIP = 'relationship';
 
     protected $dates = ['published_at'];
 
@@ -358,7 +359,7 @@ class News extends Model
     {
         if (isset($this->category->parent)) {
 
-            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO);
+            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO, News::RELATIONSHIP);
 
             if (in_array($this->category->slug, $slug)) {
                 return url($this->getCategorySlugAttribute().'/'.$this->slug);
@@ -415,7 +416,7 @@ class News extends Model
     {
         if (isset($this->category) && isset($this->category->parent)) {
 
-            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO);
+            $slug = array(News::SNEAKERLAND, News::LENSAPHOTO, News::RELATIONSHIP);
 
             if (in_array($this->category->slug, $slug)) {
                 return $this->getCategoryNameAttribute();

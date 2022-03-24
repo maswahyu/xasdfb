@@ -87,7 +87,7 @@
             </div>
 
             <div class="photo-header__title photo-header__title--video">
-                <span>Waktunya unjuk gigi di LA Indie Movie : Your Movie Goes Digital!</span>
+                <span>{{ $gallery->title }}</span>
             </div>
 
         </div>
@@ -177,11 +177,11 @@
                 </div>
 
                 <a href="{{ url }}" alt="{{ title }}">
-                    <div class="post-card__title">
+                    <div class="post-card__title mb-3">
                         <span>{{ title }}</span>
                     </div>
                 </a>
-                <div class="post-card__additional stat-with-icon">
+                <div class="post-card__additional stat-with-icon d-none">
                     <span class="stat-with-icon__icon">
                         @endverbatim
                         <img src="{{ asset('static/images/clock.png') }}" alt="">

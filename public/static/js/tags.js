@@ -1,11 +1,6 @@
 $(function ()
-{   
-    $('.jsHomeSlider').slick({
-        arrows: false,
-        dots: true,
-    });
-    
-    var currentPage = 1,
+{
+    var currentPage = 2,
         articleList =
         new Hector_infinitePaginator({
             container: $('.jsArticleList'),
@@ -16,6 +11,6 @@ $(function ()
             data: {},
         });
 
-    $('.jsMoreArticle').trigger('click');
+    // $('.jsMoreArticle').trigger('click');
 
 });
