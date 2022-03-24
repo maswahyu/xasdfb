@@ -159,20 +159,19 @@ class Gallery extends Model
         $data->user_id     = Auth::guard('admin')->id();
         $data->is_featured = $request->get('is_featured');
         $data->slug = static::incrementSlug($request->get('title'));
-
         $data->save();
 
         self::forgotCache();
 
         return $data;
     }
-	
+
 	protected static function incrementSlug($title)
 	{
 		$slug = str_slug($title);
-        $slugsFound = self::where('slug', 'like', $slug)->count();;
+        $slugsFound = self::where('slug', 'like', $slug.'%')->count();
         if ($slugsFound) {
-            $slug = $slug . '-' . ($slugsFound+1);
+            $slug .= '-' . ($slugsFound+1);
         }
 		
         return $slug;
