@@ -170,8 +170,10 @@ class Gallery extends Model
 	{
 		$slug = str_slug($title);
         $slugsFound = self::where('slug', 'like', $slug.'%')->count();
-        while (self::whereSlug($slug)->exists()) {
-			$slug = str_slug($title).'-'. $slugsFound++;
+        if($slugsFound > 0){
+			while (self::whereSlug($slug)->exists()) {
+				$slug = str_slug($title).'-'. $slugsFound++;
+			}
 		}
 		
         return $slug;
