@@ -22,7 +22,7 @@
                     <img src="https://img.youtube.com/vi/{{ $item->youtube_id }}/mqdefault.jpg" width="150">
                 @endif
             </td>
-            <td>{{ $item->title }}</td>
+            <td><p title="{{ $item->slug }}">{{ $item->title }}</p></td>
             @if(Request::query('type') == 'photo')
             <td>{{ optional($item->album)->name }}</td>
             @endif
